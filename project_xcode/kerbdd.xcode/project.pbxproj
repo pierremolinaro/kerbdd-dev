@@ -298,6 +298,7 @@
 				CF103D8607AFE6B30093400D,
 				CF103D8707AFE6B30093400D,
 				CF103D8907AFE6C80093400D,
+				CF505BB907BF77D40059963C,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2068,6 +2069,20 @@
 			settings = {
 			};
 		};
+		CF505BB807BF77D40059963C = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
+			name = action.tiff;
+			path = cocoa_galgas/action.tiff;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF505BB907BF77D40059963C = {
+			fileRef = CF505BB807BF77D40059963C;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		CF6702F605C072FF0065267C = {
 			fileEncoding = 5;
 			isa = PBXFileReference;
@@ -2990,6 +3005,7 @@
 		};
 		CFAD482E0591BCF700BF8381 = {
 			children = (
+				CF505BB807BF77D40059963C,
 				CF6702F605C072FF0065267C,
 				CFA48FD30591D6D200D787ED,
 				CFA48FD10591D6D200D787ED,
