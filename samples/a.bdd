@@ -1,1 +1,16 @@
-domain d : 1..5 ;domain tt : record     x : bool ;     v : 1..2 ;   end record ;domain wxxw : record   x : d ;   y : 2..9 ;   z : bool [3] ;   t : tt ;end record ;display #F1 [v:wxxw, w:d] := {v.t.v=2} & v.t.x ;end
+domain d : 1..5 ;
+
+domain tt : record
+     x : bool ;
+     v : 1..2 ;
+   end record ;
+
+domain wxxw : record
+   x : d ;
+   y : 2..9 ;
+   z : bool [3] ;
+   t : tt ;
+end record ;
+
+display #F1 [v:wxxw, w:d] := {v.t.v=2} & v.t.x ;
+end

@@ -1,1 +1,15 @@
-dump #Test1 [a] := a ;dump #Test2 [a] := ~a ;dump #Test3 [a, b] := a ;dump #Test4 [a, b] := a & b ;dump #Test5 [a, b] := a = b ;dump #Test6 [a, b, c] := if a then b else c end ;dump #testImplique [x, y] := (x -> y) = (~x | y) ;dump #testIte [x, y, z] := (if x then y else z end) = ((x & y) | (~x & z)) ;verify #ex [x:14] := {x < 8236} ;dump #F [x0, x1, x2, x3] := x3 & x2 ;dump #G [x0, x1, x2, x3] := (~x3 & x1) | x3 ;dump #H [x0, x1, x2, x3] := x2 & x0 ;dump #ite [x0, x1, x2, x3] :=   if #F [x0, x1, x2, x3] then #G [x0, x1, x2, x3] else #H  [x0, x1, x2, x3]end ;end
+dump #Test1 [a] := a ;
+dump #Test2 [a] := ~a ;
+dump #Test3 [a, b] := a ;
+dump #Test4 [a, b] := a & b ;
+dump #Test5 [a, b] := a = b ;
+dump #Test6 [a, b, c] := if a then b else c end ;
+dump #testImplique [x, y] := (x -> y) = (~x | y) ;
+dump #testIte [x, y, z] := (if x then y else z end) = ((x & y) | (~x & z)) ;
+verify #ex [x:14] := {x < 8236} ;
+dump #F [x0, x1, x2, x3] := x3 & x2 ;
+dump #G [x0, x1, x2, x3] := (~x3 & x1) | x3 ;
+dump #H [x0, x1, x2, x3] := x2 & x0 ;
+dump #ite [x0, x1, x2, x3] :=
+   if #F [x0, x1, x2, x3] then #G [x0, x1, x2, x3] else #H  [x0, x1, x2, x3]end ;
+end

@@ -1,1 +1,61 @@
-$--- Ensemble des transitions du premier graphe#Trans16 [q3s, q2s, q1s, q0s, q3d, q2d, q1d, q0d] +=   (~q3s & ~q2s & ~q1s & ~q0s & ~q3d & ~q2d & ~q1d &  q0d) |   (~q3s & ~q2s & ~q1s &  q0s & ~q3d & ~q2d &  q1d & ~q0d) |   (~q3s & ~q2s &  q1s & ~q0s & ~q3d & ~q2d &  q1d &  q0d) |   (~q3s & ~q2s &  q1s &  q0s & ~q3d &  q2d & ~q1d & ~q0d) |   (~q3s &  q2s & ~q1s & ~q0s & ~q3d &  q2d & ~q1d &  q0d) |   (~q3s &  q2s & ~q1s & ~q0s & ~q3d & ~q2d &  q1d & ~q0d) |   (~q3s &  q2s & ~q1s &  q0s & ~q3d &  q2d &  q1d & ~q0d) |   (~q3s &  q2s &  q1s &  q0s & ~q3d &  q2d & ~q1d &  q0d) |   (~q3s &  q2s &  q1s & ~q0s &  q3d & ~q2d & ~q1d & ~q0d) |   ( q3s & ~q2s & ~q1s & ~q0s &  q3d & ~q2d & ~q1d &  q0d) |   ( q3s & ~q2s & ~q1s &  q0s &  q3d & ~q2d &  q1d & ~q0d) |   ( q3s & ~q2s & ~q1s &  q0s &  q3d & ~q2d &  q1d &  q0d) |   ( q3s & ~q2s &  q1s &  q0s & ~q3d &  q2d & ~q1d & ~q0d) |   ( q3s & ~q2s &  q1s &  q0s &  q3d &  q2d & ~q1d & ~q0d) |   ( q3s &  q2s & ~q1s & ~q0s &  q3d &  q2d & ~q1d &  q0d) |   ( q3s &  q2s & ~q1s &  q0s &  q3d &  q2d &  q1d & ~q0d) |   ( q3s &  q2s &  q1s & ~q0s &  q3d &  q2d &  q1d &  q0d) |   ( q3s &  q2s & ~q1s &  q0s & ~q3d &  q2d & ~q1d & ~q0d) ;   $--- Ensemble des transitions du second graphe#Trans8 [q2s, q1s, q0s, q2d, q1d, q0d] +=   ( ~q2s & ~q1s & ~q0s & ~q2d & ~q1d &  q0d) |   ( ~q2s & ~q1s &  q0s & ~q2d &  q1d & ~q0d) |   ( ~q2s &  q1s & ~q0s & ~q2d &  q1d &  q0d) |   ( ~q2s &  q1s &  q0s &  q2d & ~q1d & ~q0d) |   (  q2s & ~q1s & ~q0s &  q2d & ~q1d &  q0d) |   (  q2s & ~q1s & ~q0s & ~q2d &  q1d & ~q0d) |   (  q2s & ~q1s &  q0s &  q2d &  q1d & ~q0d) |   (  q2s &  q1s &  q0s &  q2d & ~q1d &  q0d) ;$--- Produit des deux graphes#Trans [q6s, q5s, q4s, q3s, q2s, q1s, q0s, q6d, q5d, q4d, q3d, q2d, q1d, q0d] +=           #Trans16 [q6s, q4s, q2s, q0s, q6d, q4d, q2d, q0d] &           #Trans8 [q5s, q3s, q1s, q5d, q3d, q1d] ;$--- Etat initial#Initial [q6s, q5s, q4s, q3s, q2s, q1s, q0s] +=     ~q6s & ~q5s & ~q4s & ~q3s & ~q2s & ~q1s & ~q0s ;$--- Calcul des Žtats accessibles par plus petit point fixe#Acces [q6, q5, q4, q3, q2, q1, q0] += #Initial [q6, q5, q4, q3, q2, q1, q0] |     ? t6, t5, t4, t3, t2, t1, t0         (#Trans [t6, t5, t4, t3, t2, t1, t0, q6, q5, q4, q3, q2, q1, q0]                                & #Acces [t6, t5, t4, t3, t2, t1, t0]) ;$--- Ensemble des Žtats morts#NoSucc [q6, q5, q4, q3, q2, q1, q0] += #Acces [q6, q5, q4, q3, q2, q1, q0]      & ~ ? t6, t5, t4, t3, t2, t1, t0             #Trans [q6, q5, q4, q3, q2, q1, q0, t6, t5, t4, t3, t2, t1, t0] ; $--- Ensemble des Žtats ne pouvant conduire que vers un Žtat mort#DeadLock [q6, q5, q4, q3, q2, q1, q0] += #Acces [q6, q5, q4, q3, q2, q1, q0]    & !t6, t5, t4, t3, t2, t1, t0       ((#Acces [q6, q5, q4, q3, q2, q1, q0]         & #Trans [q6, q5, q4, q3, q2, q1, q0, t6, t5, t4, t3, t2, t1, t0])          -> #DeadLock [t6, t5, t4, t3, t2, t1, t0]       ) ;end
+$--- Ensemble des transitions du premier graphe
+#Trans16 [q3s, q2s, q1s, q0s, q3d, q2d, q1d, q0d] +=
+   (~q3s & ~q2s & ~q1s & ~q0s & ~q3d & ~q2d & ~q1d &  q0d) |
+   (~q3s & ~q2s & ~q1s &  q0s & ~q3d & ~q2d &  q1d & ~q0d) |
+   (~q3s & ~q2s &  q1s & ~q0s & ~q3d & ~q2d &  q1d &  q0d) |
+   (~q3s & ~q2s &  q1s &  q0s & ~q3d &  q2d & ~q1d & ~q0d) |
+   (~q3s &  q2s & ~q1s & ~q0s & ~q3d &  q2d & ~q1d &  q0d) |
+   (~q3s &  q2s & ~q1s & ~q0s & ~q3d & ~q2d &  q1d & ~q0d) |
+   (~q3s &  q2s & ~q1s &  q0s & ~q3d &  q2d &  q1d & ~q0d) |
+   (~q3s &  q2s &  q1s &  q0s & ~q3d &  q2d & ~q1d &  q0d) |
+   (~q3s &  q2s &  q1s & ~q0s &  q3d & ~q2d & ~q1d & ~q0d) |
+   ( q3s & ~q2s & ~q1s & ~q0s &  q3d & ~q2d & ~q1d &  q0d) |
+   ( q3s & ~q2s & ~q1s &  q0s &  q3d & ~q2d &  q1d & ~q0d) |
+   ( q3s & ~q2s & ~q1s &  q0s &  q3d & ~q2d &  q1d &  q0d) |
+   ( q3s & ~q2s &  q1s &  q0s & ~q3d &  q2d & ~q1d & ~q0d) |
+   ( q3s & ~q2s &  q1s &  q0s &  q3d &  q2d & ~q1d & ~q0d) |
+   ( q3s &  q2s & ~q1s & ~q0s &  q3d &  q2d & ~q1d &  q0d) |
+   ( q3s &  q2s & ~q1s &  q0s &  q3d &  q2d &  q1d & ~q0d) |
+   ( q3s &  q2s &  q1s & ~q0s &  q3d &  q2d &  q1d &  q0d) |
+   ( q3s &  q2s & ~q1s &  q0s & ~q3d &  q2d & ~q1d & ~q0d) ;
+   
+$--- Ensemble des transitions du second graphe
+#Trans8 [q2s, q1s, q0s, q2d, q1d, q0d] +=
+   ( ~q2s & ~q1s & ~q0s & ~q2d & ~q1d &  q0d) |
+   ( ~q2s & ~q1s &  q0s & ~q2d &  q1d & ~q0d) |
+   ( ~q2s &  q1s & ~q0s & ~q2d &  q1d &  q0d) |
+   ( ~q2s &  q1s &  q0s &  q2d & ~q1d & ~q0d) |
+   (  q2s & ~q1s & ~q0s &  q2d & ~q1d &  q0d) |
+   (  q2s & ~q1s & ~q0s & ~q2d &  q1d & ~q0d) |
+   (  q2s & ~q1s &  q0s &  q2d &  q1d & ~q0d) |
+   (  q2s &  q1s &  q0s &  q2d & ~q1d &  q0d) ;
+
+$--- Produit des deux graphes
+#Trans [q6s, q5s, q4s, q3s, q2s, q1s, q0s, q6d, q5d, q4d, q3d, q2d, q1d, q0d] +=
+           #Trans16 [q6s, q4s, q2s, q0s, q6d, q4d, q2d, q0d] &
+           #Trans8 [q5s, q3s, q1s, q5d, q3d, q1d] ;
+
+$--- Etat initial
+#Initial [q6s, q5s, q4s, q3s, q2s, q1s, q0s] +=
+     ~q6s & ~q5s & ~q4s & ~q3s & ~q2s & ~q1s & ~q0s ;
+
+$--- Calcul des Žtats accessibles par plus petit point fixe
+#Acces [q6, q5, q4, q3, q2, q1, q0] += #Initial [q6, q5, q4, q3, q2, q1, q0] |
+     ? t6, t5, t4, t3, t2, t1, t0
+         (#Trans [t6, t5, t4, t3, t2, t1, t0, q6, q5, q4, q3, q2, q1, q0]
+                                & #Acces [t6, t5, t4, t3, t2, t1, t0]) ;
+
+$--- Ensemble des Žtats morts
+#NoSucc [q6, q5, q4, q3, q2, q1, q0] += #Acces [q6, q5, q4, q3, q2, q1, q0]
+      & ~ ? t6, t5, t4, t3, t2, t1, t0
+             #Trans [q6, q5, q4, q3, q2, q1, q0, t6, t5, t4, t3, t2, t1, t0] ; 
+
+$--- Ensemble des Žtats ne pouvant conduire que vers un Žtat mort
+#DeadLock [q6, q5, q4, q3, q2, q1, q0] += #Acces [q6, q5, q4, q3, q2, q1, q0]
+    & !t6, t5, t4, t3, t2, t1, t0
+       ((#Acces [q6, q5, q4, q3, q2, q1, q0]
+         & #Trans [q6, q5, q4, q3, q2, q1, q0, t6, t5, t4, t3, t2, t1, t0])
+          -> #DeadLock [t6, t5, t4, t3, t2, t1, t0]
+       ) ;
+
+end

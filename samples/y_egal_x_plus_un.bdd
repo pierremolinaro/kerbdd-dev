@@ -1,1 +1,5 @@
-domain N : bool [2] ;$--- Ensemble des (x, y) tels que y = x + 1dump #diff1 [x:N, y:N] := ?u:N ({x<u} & {u<=y} & !v:N (({x<v} & {v<=y}) -> {u=v})) ;end
+domain N : bool [2] ;
+$--- Ensemble des (x, y) tels que y = x + 1
+dump #diff1 [x:N, y:N] := ?u:N ({x<u} & {u<=y} & !v:N (({x<v} & {v<=y}) -> {u=v})) ;
+
+end

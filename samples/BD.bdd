@@ -1,1 +1,173 @@
-$ place : p 1 -> P 1$ place : p 2 -> P 2$ place : p 3 -> P 3$ place : p 4 -> P 4$ transition : tr 0 -> T 1$ transition : tr 1 -> T 2$ transition : tr 2 -> T 3cache 600 ; $ --- Ensemble des (x, y) tels que y = x + 1  #diff1 [y:1, x:1] := ?u:1 ({x<u} & {u<=y} & !v:1 (({x<v} & {v<=y}) -> {u=v})) ;   #diff1bis [x:3, y:3]  := ?u:3 ({x<u} & {u<=y} & !v:3 (({x<v} & {v<=y}) -> {u=v})) ; $ --- Ensemble des (x, y, z) tels que z = x + y  #somme[x:3, y:3, z:3]  += ( {x=0} & {y=z} ) | ({x=1} & #diff1bis [y,z]) |  ?a:3 , b:3, c:3   (#somme[a,c,x] & #somme [y,c,b] & #somme [a,b,z] );   $ --- Ensemble des (res, x, y) tels que res = max(0, x - y)   #max0moins[res:3, x:3, y:3]  := (?z:3 (#somme[z,y,x] & {res=z} )) | (~?z:3 (#somme[z,y,x] ) & {res=0} ) ;  $ --- inf de deux valeurs z = inf2(a1:3 , a2:3)    #inf2 [a1:3, a2 :3, z:3] :=  if {a1>a2} then {z=a2} else {z=a1} end ; $ --- inf de trois valeurs z = inf3(a1:3, a2:3, a3:3)   #inf3 [a1:3, a2:3,  a3:3, z:3] := ?u:3 (#inf2 [a1, a2, u] & #inf2 [a3, u, z] ) ; display #placeTransition [ p4 , p3 , p2 , p1 , tr: 2 ] :=     (   p1 & ~p2 & ~p3 & ~p4 & { tr= 0 } ) |     (   p1 & ~p2 & ~p3 & ~p4 & { tr= 1 } ) |     (  ~p1 & ~p2 & ~p3 &  p4 & { tr= 2 } ) |     false ; display #transitionPlace [ tr: 2 , p4 , p3 , p2 , p1 ] :=     ( { tr= 0 } & ~p1 &  p2 & ~p3 & ~p4 ) |     ( { tr= 1 } & ~p1 & ~p2 &  p3 & ~p4 ) |     ( { tr= 2 } & ~p1 & ~p2 &  p3 & ~p4 ) |     false ; display #M0 [ p4s:1 , p3s:1 , p2s:1 , p1s:1 ] := { p1s = 1 }  & { p2s = 0 }  & { p3s = 0 }  & { p4s = 1 }  ;   #graphe [ tr:2, p4s: 1 , p3s: 1 , p2s: 1 , p1s: 1  , p4d: 1 , p3d: 1 , p2d: 1 , p1d: 1 ] :=    ? p4 , p3 , p2 , p1  , p4dd , p3dd , p2dd , p1dd   , p4i : 1 , p3i : 1 , p2i : 1 , p1i : 1      (#placeTransition [ p4 , p3 , p2 , p1 , tr ]    & #transitionPlace [ tr, p4dd , p3dd , p2dd , p1dd ]    & (if p4 then  #diff1 [ p4s ,  p4i  ]  else { p4s =  p4i } end)    & (if p3 then  #diff1 [ p3s ,  p3i  ]  else { p3s =  p3i } end)    & (if p2 then  #diff1 [ p2s ,  p2i  ]  else { p2s =  p2i } end)    & (if p1 then  #diff1 [ p1s ,  p1i  ]  else { p1s =  p1i } end)    & (if p4dd then  #diff1 [ p4d , p4i  ]  else { p4d =  p4i } end)    & (if p3dd then  #diff1 [ p3d , p3i  ]  else { p3d =  p3i } end)    & (if p2dd then  #diff1 [ p2d , p2i  ]  else { p2d =  p2i } end)    & (if p1dd then  #diff1 [ p1d , p1i  ]  else { p1d =  p1i } end) ) ; display #marques [  p4s: 1 , p3s: 1 , p2s: 1 , p1s: 1 ] +=   #M0 [ p4s , p3s , p2s , p1s ] |   ?tr: 2,  p4 : 1 , p3 : 1 , p2 : 1 , p1 : 1   (#marques [ p4 , p3 , p2 , p1 ]   & #graphe [tr, p4 , p3 , p2 , p1 ,   p4s , p3s , p2s , p1s ] ) ;  display #grapheMarquage [ tr: 2 ,  p4s: 1 , p3s: 1 , p2s: 1 , p1s: 1 ,  p4d: 1 , p3d: 1 , p2d: 1 , p1d: 1 ] :=   #marques [ p4s , p3s , p2s , p1s ]   & #graphe [tr, p4s , p3s , p2s , p1s ,   p4d , p3d , p2d , p1d ] ;  display #temps [ tr:2, tmin:3, tmax:3 ] := ({tr=0}&{tmin=3}&{tmax=5}) |({tr=1}&{tmin=2}&{tmax=4}) |({tr=2}&{tmin=0}&{tmax=1}) |({tr=3}&{tmin=6}&{tmax=6}) |false ; display #domaine0 [ s4:1 , s3:1 , s2:1 , s1:1 ,  tr2max:3 , tr1max:3 , tr0max:3 ,  tr2min:3 , tr1min:3 , tr0min:3 ] :=   #M0 [ s4 , s3 , s2 , s1 ] &   (! trans:2 ( ? trmin:3 , trmax:3 (      #temps [trans, trmin, trmax ]     &( (? des4:1 , des3:1 , des2:1 , des1:1 (       #grapheMarquage [trans, s4 , s3 , s2 , s1, des4 , des3 , des2 , des1 ] ))    & ({trans= 0} -> { tr0min = trmin} & {tr0max = trmax})   & ({trans= 1} -> { tr1min = trmin} & {tr1max = trmax})   & ({trans= 2} -> { tr2min = trmin} & {tr2max = trmax}) | (~? des4:1 , des3:1 , des2:1 , des1:1 (      #grapheMarquage [trans, s4 , s3 , s2 , s1, des4 , des3 , des2 , des1 ] ))     & ({trans= 0} -> { tr0min = 6} & {tr0max = 6})    & ({trans= 1} -> { tr1min = 6} & {tr1max = 6})    & ({trans= 2} -> { tr2min = 6} & {tr2max = 6}))))) ; display #firstdomaine [ tr:2,   s4:1 , s3:1 , s2:1 , s1:1 ,  d4:1 , d3:1 , d2:1 , d1:1 ,  tr2sma:3 , tr2smi:3 , tr2dma:3 , tr2dmi:3 ,  tr1sma:3 , tr1smi:3 , tr1dma:3 , tr1dmi:3 ,   tr0sma:3 , tr0smi:3 , tr0dma:3 , tr0dmi:3  ] :=  #domaine0 [ s4 , s3 , s2 , s1 ,  tr2sma , tr1sma , tr0sma, tr2smi , tr1smi , tr0smi ] &   #grapheMarquage [ tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ] &?trmaximum:3, trminimum:3 (    #inf3 [ tr2sma , tr1sma , tr0sma ,trmaximum ]    & ({tr= 0} -> { tr0smi <= trmaximum} & {trminimum =tr0smi})   & ({tr= 1} -> { tr1smi <= trmaximum} & {trminimum =tr1smi})   & ({tr= 2} -> { tr2smi <= trmaximum} & {trminimum =tr2smi})   & ! trans:2 (     ( ( ?  des4:1 , des3:1 , des2:1 , des1:1         (  #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] ))       & ( ? trmin : 3, trmax:3 (                                         #temps [trans, trmin, trmax]         & (( {trans= 0}&{tr0smi < 6} ) ->  (  #max0moins[tr0dmi, tr0smi,trmaximum]  &  #max0moins[tr0dma, tr0sma,trminimum] ) )         & (( {trans= 0}&{tr0smi = 6} ) ->  { tr0dmi = trmin } & {tr0dma = trmax }  )         & (( {trans= 1}&{tr1smi < 6} ) ->  (  #max0moins[tr1dmi, tr1smi,trmaximum]  &  #max0moins[tr1dma, tr1sma,trminimum] ) )         & (( {trans= 1}&{tr1smi = 6} ) ->  { tr1dmi = trmin } & {tr1dma = trmax }  )         & (( {trans= 2}&{tr2smi < 6} ) ->  (  #max0moins[tr2dmi, tr2smi,trmaximum]  &  #max0moins[tr2dma, tr2sma,trminimum] ) )         & (( {trans= 2}&{tr2smi = 6} ) ->  { tr2dmi = trmin } & {tr2dma = trmax }  )           ))     | (~? des4:1 , des3:1 , des2:1 , des1:1 (      #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] ))      & ({trans= 0} -> { tr0dmi = 6} & {tr0dma = 6})         & ({trans= 1} -> { tr1dmi = 6} & {tr1dma = 6})         & ({trans= 2} -> { tr2dmi = 6} & {tr2dma = 6})       ) )  ) ;   display #grapheClasse [ tr:2,       s4:1 , s3:1 , s2:1 , s1:1 ,      d4:1 , d3:1 , d2:1 , d1:1 ,      tr2sma:3 , tr2smi:3 , tr2dma:3 , tr2dmi:3 ,      tr1sma:3 , tr1smi:3 , tr1dma:3 , tr1dmi:3 ,       tr0sma:3 , tr0smi:3 , tr0dma:3 , tr0dmi:3 ] +=    #firstdomaine [tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ,  tr2sma , tr1sma , tr0sma ,  tr2smi , tr1smi , tr0smi,  tr2dma , tr1dma , tr0dma ,  tr2dmi , tr1dmi , tr0dmi ]  |   #grapheMarquage [tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ] &  ( ?trmaximum:3, trminimum:3 (    #inf3 [ tr2sma , tr1sma , tr0sma ,trmaximum ]    & ({tr= 0} -> { tr0smi <= trmaximum} & {trminimum =tr0smi})   & ({tr= 1} -> { tr1smi <= trmaximum} & {trminimum =tr1smi})   & ({tr= 2} -> { tr2smi <= trmaximum} & {trminimum =tr2smi})   & ! trans:2 (     ( ( ?  des4:1 , des3:1 , des2:1 , des1:1         (  #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] ))       & ( ? trmin : 3, trmax:3 (                                         #temps [trans, trmin, trmax]         & (( {trans= 0}&{tr0smi < 6} ) ->  (  #max0moins[tr0dmi, tr0smi,trmaximum]  &  #max0moins[tr0dma, tr0sma,trminimum] ) )         & (( {trans= 0}&{tr0smi = 6} ) ->  { tr0dmi = trmin } & {tr0dma = trmax }  )         & (( {trans= 1}&{tr1smi < 6} ) ->  (  #max0moins[tr1dmi, tr1smi,trmaximum]  &  #max0moins[tr1dma, tr1sma,trminimum] ) )         & (( {trans= 1}&{tr1smi = 6} ) ->  { tr1dmi = trmin } & {tr1dma = trmax }  )         & (( {trans= 2}&{tr2smi < 6} ) ->  (  #max0moins[tr2dmi, tr2smi,trmaximum]  &  #max0moins[tr2dma, tr2sma,trminimum] ) )         & (( {trans= 2}&{tr2smi = 6} ) ->  { tr2dmi = trmin } & {tr2dma = trmax }  )           ))     | (~? des4:1 , des3:1 , des2:1 , des1:1 (      #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] ))      & ({trans= 0} -> { tr0dmi = 6} & {tr0dma = 6})         & ({trans= 1} -> { tr1dmi = 6} & {tr1dma = 6})         & ({trans= 2} -> { tr2dmi = 6} & {tr2dma = 6})       ) )  ) )   & ( ? trplus:2, dd4:1 , dd3:1 , dd2:1 , dd1:1 ,   tr2ddma:3 , tr1ddma:3 , tr0ddma:3 ,  tr2ddmi:3 , tr1ddmi:3 , tr0ddmi:3   (#grapheClasse [trplus, dd4 , dd3 , dd2 , dd1 ,  s4 , s3 , s2 , s1 ,                  tr2ddma ,tr2ddmi ,tr2sma , tr2smi ,                   tr1ddma ,tr1ddmi ,tr1sma , tr1smi ,                   tr0ddma ,tr0ddmi ,tr0sma , tr0smi ] ));  display #grapheClasseReduit[ tr:2,    s4:1 , s3:1 , s2:1 , s1:1 ,  d4:1 , d3:1 , d2:1 , d1:1 ]  := ? tr2sma:3 , tr2smi:3 , tr2dma:3 , tr2dmi:3 ,      tr1sma:3 , tr1smi:3 , tr1dma:3 , tr1dmi:3 ,       tr0sma:3 , tr0smi:3 , tr0dma:3 , tr0dmi:3  ( #grapheClasse [tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ,      tr2sma , tr2smi , tr2dma , tr2dmi ,      tr1sma , tr1smi, tr1dma , tr1dmi ,       tr0sma , tr0smi , tr0dma , tr0dmi ] ); end 
+$ place : p 1 -> P 1
+$ place : p 2 -> P 2
+$ place : p 3 -> P 3
+$ place : p 4 -> P 4
+$ transition : tr 0 -> T 1
+$ transition : tr 1 -> T 2
+$ transition : tr 2 -> T 3
+cache 600 ;
+
+ $ --- Ensemble des (x, y) tels que y = x + 1 
+ #diff1 [y:1, x:1] := ?u:1 ({x<u} & {u<=y} & !v:1 (({x<v} & {v<=y}) -> {u=v})) ; 
+ 
+ #diff1bis [x:3, y:3]  := ?u:3 ({x<u} & {u<=y} & !v:3 (({x<v} & {v<=y}) -> {u=v})) ;
+
+ $ --- Ensemble des (x, y, z) tels que z = x + y 
+ #somme[x:3, y:3, z:3]  += ( {x=0} & {y=z} ) | ({x=1} & #diff1bis [y,z]) | 
+ ?a:3 , b:3, c:3   (#somme[a,c,x] & #somme [y,c,b] & #somme [a,b,z] ); 
+ 
+
+ $ --- Ensemble des (res, x, y) tels que res = max(0, x - y) 
+  #max0moins[res:3, x:3, y:3]  := (?z:3 (#somme[z,y,x] & {res=z} )) | (~?z:3 (#somme[z,y,x] ) & {res=0} ) ; 
+
+
+ $ --- inf de deux valeurs z = inf2(a1:3 , a2:3) 
+   #inf2 [a1:3, a2 :3, z:3] :=  if {a1>a2} then {z=a2} else {z=a1} end ;
+
+ $ --- inf de trois valeurs z = inf3(a1:3, a2:3, a3:3) 
+  #inf3 [a1:3, a2:3,  a3:3, z:3] := ?u:3 (#inf2 [a1, a2, u] & #inf2 [a3, u, z] ) ;
+
+ display #placeTransition [ p4 , p3 , p2 , p1 , tr: 2 ] := 
+    (   p1 & ~p2 & ~p3 & ~p4 & { tr= 0 } ) | 
+    (   p1 & ~p2 & ~p3 & ~p4 & { tr= 1 } ) | 
+    (  ~p1 & ~p2 & ~p3 &  p4 & { tr= 2 } ) | 
+    false ; 
+
+display #transitionPlace [ tr: 2 , p4 , p3 , p2 , p1 ] := 
+    ( { tr= 0 } & ~p1 &  p2 & ~p3 & ~p4 ) | 
+    ( { tr= 1 } & ~p1 & ~p2 &  p3 & ~p4 ) | 
+    ( { tr= 2 } & ~p1 & ~p2 &  p3 & ~p4 ) | 
+    false ; 
+
+display #M0 [ p4s:1 , p3s:1 , p2s:1 , p1s:1 ] := { p1s = 1 }  & { p2s = 0 }  & { p3s = 0 }  & { p4s = 1 }  ;  
+ 
+#graphe [ tr:2, p4s: 1 , p3s: 1 , p2s: 1 , p1s: 1  , p4d: 1 , p3d: 1 , p2d: 1 , p1d: 1 ] := 
+   ? p4 , p3 , p2 , p1  , p4dd , p3dd , p2dd , p1dd   , p4i : 1 , p3i : 1 , p2i : 1 , p1i : 1 
+     (#placeTransition [ p4 , p3 , p2 , p1 , tr ]
+    & #transitionPlace [ tr, p4dd , p3dd , p2dd , p1dd ]
+    & (if p4 then  #diff1 [ p4s ,  p4i  ]  else { p4s =  p4i } end)
+    & (if p3 then  #diff1 [ p3s ,  p3i  ]  else { p3s =  p3i } end)
+    & (if p2 then  #diff1 [ p2s ,  p2i  ]  else { p2s =  p2i } end)
+    & (if p1 then  #diff1 [ p1s ,  p1i  ]  else { p1s =  p1i } end)
+    & (if p4dd then  #diff1 [ p4d , p4i  ]  else { p4d =  p4i } end)
+    & (if p3dd then  #diff1 [ p3d , p3i  ]  else { p3d =  p3i } end)
+    & (if p2dd then  #diff1 [ p2d , p2i  ]  else { p2d =  p2i } end)
+    & (if p1dd then  #diff1 [ p1d , p1i  ]  else { p1d =  p1i } end)
+ ) ; 
+
+display #marques [  p4s: 1 , p3s: 1 , p2s: 1 , p1s: 1 ] += 
+  #M0 [ p4s , p3s , p2s , p1s ] | 
+  ?tr: 2,  p4 : 1 , p3 : 1 , p2 : 1 , p1 : 1 
+  (#marques [ p4 , p3 , p2 , p1 ] 
+  & #graphe [tr, p4 , p3 , p2 , p1 ,   p4s , p3s , p2s , p1s ] ) ; 
+ 
+display #grapheMarquage [ tr: 2 ,  p4s: 1 , p3s: 1 , p2s: 1 , p1s: 1 ,  p4d: 1 , p3d: 1 , p2d: 1 , p1d: 1 ] := 
+  #marques [ p4s , p3s , p2s , p1s ] 
+  & #graphe [tr, p4s , p3s , p2s , p1s ,   p4d , p3d , p2d , p1d ] ; 
+ 
+display #temps [ tr:2, tmin:3, tmax:3 ] := 
+({tr=0}&{tmin=3}&{tmax=5}) |
+({tr=1}&{tmin=2}&{tmax=4}) |
+({tr=2}&{tmin=0}&{tmax=1}) |
+({tr=3}&{tmin=6}&{tmax=6}) |
+false ; 
+
+display #domaine0 [ s4:1 , s3:1 , s2:1 , s1:1 ,  tr2max:3 , tr1max:3 , tr0max:3 ,  tr2min:3 , tr1min:3 , tr0min:3 ] := 
+  #M0 [ s4 , s3 , s2 , s1 ] & 
+  (! trans:2 ( ? trmin:3 , trmax:3 ( 
+     #temps [trans, trmin, trmax ] 
+    &( (? des4:1 , des3:1 , des2:1 , des1:1 (  
+     #grapheMarquage [trans, s4 , s3 , s2 , s1, des4 , des3 , des2 , des1 ] )) 
+   & ({trans= 0} -> { tr0min = trmin} & {tr0max = trmax})
+   & ({trans= 1} -> { tr1min = trmin} & {tr1max = trmax})
+   & ({trans= 2} -> { tr2min = trmin} & {tr2max = trmax})
+ | (~? des4:1 , des3:1 , des2:1 , des1:1 (  
+    #grapheMarquage [trans, s4 , s3 , s2 , s1, des4 , des3 , des2 , des1 ] )) 
+    & ({trans= 0} -> { tr0min = 6} & {tr0max = 6})
+    & ({trans= 1} -> { tr1min = 6} & {tr1max = 6})
+    & ({trans= 2} -> { tr2min = 6} & {tr2max = 6})
+)))) ; 
+
+display #firstdomaine [ tr:2,
+   s4:1 , s3:1 , s2:1 , s1:1 ,  d4:1 , d3:1 , d2:1 , d1:1 ,
+  tr2sma:3 , tr2smi:3 , tr2dma:3 , tr2dmi:3 ,
+  tr1sma:3 , tr1smi:3 , tr1dma:3 , tr1dmi:3 , 
+  tr0sma:3 , tr0smi:3 , tr0dma:3 , tr0dmi:3  ] := 
+ #domaine0 [ s4 , s3 , s2 , s1 ,  tr2sma , tr1sma , tr0sma, tr2smi , tr1smi , tr0smi ] & 
+  #grapheMarquage [ tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ] &
+?trmaximum:3, trminimum:3 ( 
+   #inf3 [ tr2sma , tr1sma , tr0sma ,trmaximum ] 
+   & ({tr= 0} -> { tr0smi <= trmaximum} & {trminimum =tr0smi}) 
+  & ({tr= 1} -> { tr1smi <= trmaximum} & {trminimum =tr1smi}) 
+  & ({tr= 2} -> { tr2smi <= trmaximum} & {trminimum =tr2smi}) 
+  & ! trans:2 ( 
+    ( ( ?  des4:1 , des3:1 , des2:1 , des1:1 
+        (  #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] )) 
+      & ( ? trmin : 3, trmax:3 ( 
+                               
+         #temps [trans, trmin, trmax] 
+        & (( {trans= 0}&{tr0smi < 6} ) ->  (  #max0moins[tr0dmi, tr0smi,trmaximum]  &  #max0moins[tr0dma, tr0sma,trminimum] ) ) 
+        & (( {trans= 0}&{tr0smi = 6} ) ->  { tr0dmi = trmin } & {tr0dma = trmax }  ) 
+        & (( {trans= 1}&{tr1smi < 6} ) ->  (  #max0moins[tr1dmi, tr1smi,trmaximum]  &  #max0moins[tr1dma, tr1sma,trminimum] ) ) 
+        & (( {trans= 1}&{tr1smi = 6} ) ->  { tr1dmi = trmin } & {tr1dma = trmax }  ) 
+        & (( {trans= 2}&{tr2smi < 6} ) ->  (  #max0moins[tr2dmi, tr2smi,trmaximum]  &  #max0moins[tr2dma, tr2sma,trminimum] ) ) 
+        & (( {trans= 2}&{tr2smi = 6} ) ->  { tr2dmi = trmin } & {tr2dma = trmax }  ) 
+          )) 
+    | (~? des4:1 , des3:1 , des2:1 , des1:1 (  
+    #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] )) 
+     & ({trans= 0} -> { tr0dmi = 6} & {tr0dma = 6}) 
+        & ({trans= 1} -> { tr1dmi = 6} & {tr1dma = 6}) 
+        & ({trans= 2} -> { tr2dmi = 6} & {tr2dma = 6}) 
+      ) )  ) ; 
+ 
+ display #grapheClasse [ tr:2,
+       s4:1 , s3:1 , s2:1 , s1:1 ,
+      d4:1 , d3:1 , d2:1 , d1:1 ,
+      tr2sma:3 , tr2smi:3 , tr2dma:3 , tr2dmi:3 ,
+      tr1sma:3 , tr1smi:3 , tr1dma:3 , tr1dmi:3 , 
+      tr0sma:3 , tr0smi:3 , tr0dma:3 , tr0dmi:3 ] += 
+   #firstdomaine [tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ,  tr2sma , tr1sma , tr0sma ,  tr2smi , tr1smi , tr0smi,  tr2dma , tr1dma , tr0dma ,  tr2dmi , tr1dmi , tr0dmi ]  | 
+  #grapheMarquage [tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ] & 
+ ( ?trmaximum:3, trminimum:3 ( 
+   #inf3 [ tr2sma , tr1sma , tr0sma ,trmaximum ] 
+   & ({tr= 0} -> { tr0smi <= trmaximum} & {trminimum =tr0smi}) 
+  & ({tr= 1} -> { tr1smi <= trmaximum} & {trminimum =tr1smi}) 
+  & ({tr= 2} -> { tr2smi <= trmaximum} & {trminimum =tr2smi}) 
+  & ! trans:2 ( 
+    ( ( ?  des4:1 , des3:1 , des2:1 , des1:1 
+        (  #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] )) 
+      & ( ? trmin : 3, trmax:3 ( 
+                               
+         #temps [trans, trmin, trmax] 
+        & (( {trans= 0}&{tr0smi < 6} ) ->  (  #max0moins[tr0dmi, tr0smi,trmaximum]  &  #max0moins[tr0dma, tr0sma,trminimum] ) ) 
+        & (( {trans= 0}&{tr0smi = 6} ) ->  { tr0dmi = trmin } & {tr0dma = trmax }  ) 
+        & (( {trans= 1}&{tr1smi < 6} ) ->  (  #max0moins[tr1dmi, tr1smi,trmaximum]  &  #max0moins[tr1dma, tr1sma,trminimum] ) ) 
+        & (( {trans= 1}&{tr1smi = 6} ) ->  { tr1dmi = trmin } & {tr1dma = trmax }  ) 
+        & (( {trans= 2}&{tr2smi < 6} ) ->  (  #max0moins[tr2dmi, tr2smi,trmaximum]  &  #max0moins[tr2dma, tr2sma,trminimum] ) ) 
+        & (( {trans= 2}&{tr2smi = 6} ) ->  { tr2dmi = trmin } & {tr2dma = trmax }  ) 
+          )) 
+    | (~? des4:1 , des3:1 , des2:1 , des1:1 (  
+    #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] )) 
+     & ({trans= 0} -> { tr0dmi = 6} & {tr0dma = 6}) 
+        & ({trans= 1} -> { tr1dmi = 6} & {tr1dma = 6}) 
+        & ({trans= 2} -> { tr2dmi = 6} & {tr2dma = 6}) 
+      ) )  ) ) 
+  & ( ? trplus:2, dd4:1 , dd3:1 , dd2:1 , dd1:1 ,   tr2ddma:3 , tr1ddma:3 , tr0ddma:3 ,  tr2ddmi:3 , tr1ddmi:3 , tr0ddmi:3 
+  (#grapheClasse [trplus, dd4 , dd3 , dd2 , dd1 ,  s4 , s3 , s2 , s1 ,
+                  tr2ddma ,tr2ddmi ,tr2sma , tr2smi , 
+                  tr1ddma ,tr1ddmi ,tr1sma , tr1smi , 
+                  tr0ddma ,tr0ddmi ,tr0sma , tr0smi ] )); 
+ 
+
+
+display #grapheClasseReduit[ tr:2,    s4:1 , s3:1 , s2:1 , s1:1 ,  d4:1 , d3:1 , d2:1 , d1:1 ] 
+ := ? tr2sma:3 , tr2smi:3 , tr2dma:3 , tr2dmi:3 ,
+      tr1sma:3 , tr1smi:3 , tr1dma:3 , tr1dmi:3 , 
+      tr0sma:3 , tr0smi:3 , tr0dma:3 , tr0dmi:3
+  ( #grapheClasse [tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ,
+      tr2sma , tr2smi , tr2dma , tr2dmi ,
+      tr1sma , tr1smi, tr1dma , tr1dmi , 
+      tr0sma , tr0smi , tr0dma , tr0dmi ] ); 
+
+
+end 
