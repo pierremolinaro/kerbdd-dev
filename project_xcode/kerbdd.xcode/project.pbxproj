@@ -137,8 +137,8 @@
 		};
 		2A37F4B8FDCFA73011CA2CEA = {
 			children = (
-				CF103D8407AFE6B30093400D,
-				CF103D8507AFE6B30093400D,
+				CFA5CB9207CF8EBC00E460DB,
+				CFA5CB9307CF8EBC00E460DB,
 				2A37F4B9FDCFA73011CA2CEA,
 				CFC30F92058A225E003D0386,
 				089C165FFE840EACC02AAC07,
@@ -295,11 +295,11 @@
 				CFA48FD60591D6D200D787ED,
 				CF8C5EA105A9AC2A00070938,
 				CF45190205FCAEC7008D4817,
-				CF103D8607AFE6B30093400D,
-				CF103D8707AFE6B30093400D,
 				CF103D8907AFE6C80093400D,
 				CF505BB907BF77D40059963C,
 				CFA5CB7907CF893000E460DB,
+				CFA5CB9407CF8EBC00E460DB,
+				CFA5CB9507CF8EBC00E460DB,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1145,32 +1145,6 @@
 		};
 		CF103D7507AFDCD50093400D = {
 			fileRef = CFF538D7057A55C000854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF103D8407AFE6B30093400D = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.icns;
-			path = kerbdd_application.icns;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CF103D8507AFE6B30093400D = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.icns;
-			path = kerbdd_document.icns;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CF103D8607AFE6B30093400D = {
-			fileRef = CF103D8407AFE6B30093400D;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF103D8707AFE6B30093400D = {
-			fileRef = CF103D8507AFE6B30093400D;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2883,6 +2857,34 @@
 		};
 		CFA5CB7907CF893000E460DB = {
 			fileRef = CFA5CB7807CF893000E460DB;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CFA5CB9207CF8EBC00E460DB = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.icns;
+			name = kerbdd_application.icns;
+			path = icones/kerbdd_application.icns;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CFA5CB9307CF8EBC00E460DB = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.icns;
+			name = kerbdd_document.icns;
+			path = icones/kerbdd_document.icns;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CFA5CB9407CF8EBC00E460DB = {
+			fileRef = CFA5CB9207CF8EBC00E460DB;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CFA5CB9507CF8EBC00E460DB = {
+			fileRef = CFA5CB9307CF8EBC00E460DB;
 			isa = PBXBuildFile;
 			settings = {
 			};
