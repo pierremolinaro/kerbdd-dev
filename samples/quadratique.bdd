@@ -1,1 +1,23 @@
-$--- Ensemble des transitions du graphe#Trans [qs:4, qd:4] :=   ({qs= 0} & {qd= 1}) | ({qs= 1} & {qd= 2}) | ({qs= 2} & {qd= 3}) |   ({qs= 3} & {qd= 4}) | ({qs= 4} & {qd= 5}) | ({qs= 5} & {qd= 6}) |   ({qs= 6} & {qd= 7}) | ({qs= 7} & {qd= 8}) | ({qs= 8} & {qd= 9}) |   ({qs= 9} & {qd=10}) | ({qs=10} & {qd=11}) | ({qs=11} & {qd=12}) |   ({qs=12} & {qd=13}) | ({qs=13} & {qd=14}) | ({qs=14} & {qd=15}) ;$--- Etat initial#Initial [q:4] := {q=0} ;$--- Calcul des états accessibles par plus petit point fixe#Acces [q:4] += #Initial [q] | ? t:4 (#Acces [t] & #Trans [t, q]) ;$--- Calcul par itération quadratique#Zero [qs:4, qd:4] := #Trans [qs, qd] | {qs = qd} ;#Quad [qs:4, qd:4] += #Zero [qs, qd] | ? t:4 (#Quad [qs, t] & #Quad [t, qd]) ;#Acc [q:4] := ?t:4 (#Initial [t] & #Quad [t, q]) ;end
+$--- Ensemble des transitions du graphe
+#Trans [qs:4, qd:4] :=
+   ({qs= 0} & {qd= 1}) | ({qs= 1} & {qd= 2}) | ({qs= 2} & {qd= 3}) |
+   ({qs= 3} & {qd= 4}) | ({qs= 4} & {qd= 5}) | ({qs= 5} & {qd= 6}) |
+   ({qs= 6} & {qd= 7}) | ({qs= 7} & {qd= 8}) | ({qs= 8} & {qd= 9}) |
+   ({qs= 9} & {qd=10}) | ({qs=10} & {qd=11}) | ({qs=11} & {qd=12}) |
+   ({qs=12} & {qd=13}) | ({qs=13} & {qd=14}) | ({qs=14} & {qd=15}) ;
+
+
+$--- Etat initial
+#Initial [q:4] := {q=0} ;
+
+$--- Calcul des états accessibles par plus petit point fixe
+#Acces [q:4] += #Initial [q] | ? t:4 (#Acces [t] & #Trans [t, q]) ;
+
+$--- Calcul par itération quadratique
+#Zero [qs:4, qd:4] := #Trans [qs, qd] | {qs = qd} ;
+
+#Quad [qs:4, qd:4] += #Zero [qs, qd] | ? t:4 (#Quad [qs, t] & #Quad [t, qd]) ;
+
+#Acc [q:4] := ?t:4 (#Initial [t] & #Quad [t, q]) ;
+
+end

@@ -1,1 +1,57 @@
-$--- Ensemble des transitions du graphe#Trans [q2s, q1s, q0s, q2d, q1d, q0d] :=   ( ~q2s & ~q1s & ~q0s & ~q2d & ~q1d &  q0d) |   ( ~q2s & ~q1s &  q0s & ~q2d &  q1d & ~q0d) |   ( ~q2s &  q1s & ~q0s & ~q2d &  q1d &  q0d) |   ( ~q2s &  q1s &  q0s &  q2d & ~q1d & ~q0d) |   (  q2s & ~q1s & ~q0s &  q2d & ~q1d &  q0d) |   (  q2s & ~q1s & ~q0s & ~q2d &  q1d & ~q0d) |   (  q2s & ~q1s &  q0s &  q2d &  q1d & ~q0d) |   (  q2s &  q1s &  q0s &  q2d & ~q1d &  q0d) ;$--- Etat initial#Initial [q2s, q1s, q0s] := ~q2s & ~q1s & ~q0s ;display ;$--- Calcul des états accessibles#Acc0 [q2, q1, q0] := #Initial [q2, q1, q0] |   ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Initial [q2s, q1s, q0s]) ;#Acc1 [q2, q1, q0] := #Initial [q2, q1, q0] |     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc0 [q2s, q1s, q0s]) ;#Acc2 [q2, q1, q0] := #Initial [q2, q1, q0] |     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc1 [q2s, q1s, q0s]) ;#Acc3 [q2, q1, q0] := #Initial [q2, q1, q0] |     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc2 [q2s, q1s, q0s]) ;#Acc4 [q2, q1, q0] := #Initial [q2, q1, q0] |     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc3 [q2s, q1s, q0s]) ;#Acc5 [q2, q1, q0] := #Initial [q2, q1, q0] |     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc4 [q2s, q1s, q0s]) ;#Acc6 [q2, q1, q0] := #Initial [q2, q1, q0] |     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc5 [q2s, q1s, q0s]) ;$--- Calcul des états accessibles par plus petit point fixe#Acces [q2, q1, q0] += #Initial [q2, q1, q0] |     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acces [q2s, q1s, q0s]) ;$--- Calcul par itération quadratique#Zero [q2s, q1s, q0s, q2d, q1d, q0d] := #Trans [q2s, q1s, q0s, q2d, q1d, q0d] |            ( ~q2s & ~q1s & ~q0s & ~q2d & ~q1d & ~q0d) |           ( ~q2s & ~q1s &  q0s & ~q2d & ~q1d &  q0d) |           ( ~q2s &  q1s & ~q0s & ~q2d &  q1d & ~q0d) |           ( ~q2s &  q1s &  q0s & ~q2d &  q1d &  q0d) |           (  q2s & ~q1s & ~q0s &  q2d & ~q1d & ~q0d) |           (  q2s & ~q1s &  q0s &  q2d & ~q1d &  q0d) |           (  q2s &  q1s & ~q0s &  q2d &  q1d & ~q0d) |           (  q2s &  q1s &  q0s &  q2d &  q1d &  q0d) ;#Quad [q2s, q1s, q0s, q2d, q1d, q0d] += #Zero [q2s, q1s, q0s, q2d, q1d, q0d] |     ? t2, t1, t0       (#Quad [q2s, q1s, q0s, t2, t1, t0] & #Quad [t2, t1, t0, q2d, q1d, q0d]) ;#Acc [q2, q1, q0] += ?t2, t1, t0 (#Initial [t2, t1, t0] &                                  #Quad [t2, t1, t0, q2, q1, q0]) ;$--- Ensemble des états morts#NoSucc [q2, q1, q0] := #Acces [q2, q1, q0]                          & ~ ? t2, t1, t0 #Trans [q2, q1, q0, t2, t1, t0] ; end
+$--- Ensemble des transitions du graphe
+#Trans [q2s, q1s, q0s, q2d, q1d, q0d] :=
+   ( ~q2s & ~q1s & ~q0s & ~q2d & ~q1d &  q0d) |
+   ( ~q2s & ~q1s &  q0s & ~q2d &  q1d & ~q0d) |
+   ( ~q2s &  q1s & ~q0s & ~q2d &  q1d &  q0d) |
+   ( ~q2s &  q1s &  q0s &  q2d & ~q1d & ~q0d) |
+   (  q2s & ~q1s & ~q0s &  q2d & ~q1d &  q0d) |
+   (  q2s & ~q1s & ~q0s & ~q2d &  q1d & ~q0d) |
+   (  q2s & ~q1s &  q0s &  q2d &  q1d & ~q0d) |
+   (  q2s &  q1s &  q0s &  q2d & ~q1d &  q0d) ;
+
+$--- Etat initial
+#Initial [q2s, q1s, q0s] := ~q2s & ~q1s & ~q0s ;
+display ;
+
+$--- Calcul des etats accessibles
+#Acc0 [q2, q1, q0] := #Initial [q2, q1, q0] |
+   ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Initial [q2s, q1s, q0s]) ;
+#Acc1 [q2, q1, q0] := #Initial [q2, q1, q0] |
+     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc0 [q2s, q1s, q0s]) ;
+#Acc2 [q2, q1, q0] := #Initial [q2, q1, q0] |
+     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc1 [q2s, q1s, q0s]) ;
+#Acc3 [q2, q1, q0] := #Initial [q2, q1, q0] |
+     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc2 [q2s, q1s, q0s]) ;
+#Acc4 [q2, q1, q0] := #Initial [q2, q1, q0] |
+     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc3 [q2s, q1s, q0s]) ;
+#Acc5 [q2, q1, q0] := #Initial [q2, q1, q0] |
+     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc4 [q2s, q1s, q0s]) ;
+#Acc6 [q2, q1, q0] := #Initial [q2, q1, q0] |
+     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acc5 [q2s, q1s, q0s]) ;
+
+$--- Calcul des etats accessibles par plus petit point fixe
+#Acces [q2, q1, q0] += #Initial [q2, q1, q0] |
+     ? q0s, q1s, q2s (#Trans [q2s, q1s, q0s, q2, q1, q0] & #Acces [q2s, q1s, q0s]) ;
+
+$--- Calcul par iteration quadratique
+#Zero [q2s, q1s, q0s, q2d, q1d, q0d] := #Trans [q2s, q1s, q0s, q2d, q1d, q0d] | 
+           ( ~q2s & ~q1s & ~q0s & ~q2d & ~q1d & ~q0d) |
+           ( ~q2s & ~q1s &  q0s & ~q2d & ~q1d &  q0d) |
+           ( ~q2s &  q1s & ~q0s & ~q2d &  q1d & ~q0d) |
+           ( ~q2s &  q1s &  q0s & ~q2d &  q1d &  q0d) |
+           (  q2s & ~q1s & ~q0s &  q2d & ~q1d & ~q0d) |
+           (  q2s & ~q1s &  q0s &  q2d & ~q1d &  q0d) |
+           (  q2s &  q1s & ~q0s &  q2d &  q1d & ~q0d) |
+           (  q2s &  q1s &  q0s &  q2d &  q1d &  q0d) ;
+#Quad [q2s, q1s, q0s, q2d, q1d, q0d] += #Zero [q2s, q1s, q0s, q2d, q1d, q0d] | 
+    ? t2, t1, t0
+       (#Quad [q2s, q1s, q0s, t2, t1, t0] & #Quad [t2, t1, t0, q2d, q1d, q0d]) ;
+
+#Acc [q2, q1, q0] += ?t2, t1, t0 (#Initial [t2, t1, t0] &
+                                  #Quad [t2, t1, t0, q2, q1, q0]) ;
+
+$--- Ensemble des etats morts
+#NoSucc [q2, q1, q0] := #Acces [q2, q1, q0]
+                          & ~ ? t2, t1, t0 #Trans [q2, q1, q0, t2, t1, t0] ; 
+
+end

@@ -49,15 +49,16 @@ list delimiteursKerBDD error message "the '" . * . "' delimiter" style delimitor
 #-----------------------------------------------------------------*
 
 list motsReservesKerBDD error message "the '" . * . "' keyword" style keyWords :
- "cache",         "map",
- "bdd",           "domain",
- "bool",          "record",
- "true",          "false",
- "display",       "include",
- "dump",          "verify",
- "end",           "if",
- "then",          "else",
- "dimension" ;
+ "ite_cache", "and_cache",
+ "use_and", "use_ite", "use_and_ite",
+ "map",      "dimension",
+ "bdd",      "domain",
+ "bool",     "record",
+ "true",     "false",
+ "display",  "include",
+ "dump",     "verify",
+ "end",      "if",
+ "then",     "else" ;
 
 #-----------------------------------------------------------------*
 

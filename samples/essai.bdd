@@ -1,1 +1,7 @@
-#X [x, f, g] := (((~x) & f) | (x & g)) = (f <> (x & (f <> g))) ;#X [x, f0, f1, g0, g1, h0, h1] :=   if (~x & f0 | x & f1) then ~x & g0 | x & g1 else ~x & h0 | x & h1 end  =  if end
+#X [x, f, g] := (((~x) & f) | (x & g)) = (f <> (x & (f <> g))) ;
+#X [x, f0, f1, g0, g1, h0, h1] := 
+  if (~x & f0 | x & f1) then ~x & g0 | x & g1 else ~x & h0 | x & h1 end 
+ =
+  if 
+
+end

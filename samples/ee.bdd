@@ -1,1 +1,23 @@
-domain d1 : int 3..14 ;domain d2 : int 9..18 ;display #X [%a:d1] := {%a = 8} | {%a = 10} ;display #Y [b, %a:d1, %b:d2] := (b & {%a > 8} & {%a < 34}) & {%b = 14} ;display #Z [%a:d1, %b:d2] := {%b = %a} ;display #T [%a:d1, %b:d2] := {%b <> %a} ;display #U [%a:d1, %b:d2] := {%b > %a} ;display #V [%a:d1, %b:d2] := {%b >= %a} ;display #W [%a:d1, %b:d2] := {%b < %a} ;display #R [%a:d1, %b:d2] := {%b <= %a} ;display #qq [%a:d1, %b:d1] := ?%c:d1 ({%a > %c} & {%c > %b}) ;end
+domain d1 : int 3..14 ;
+
+domain d2 : int 9..18 ;
+
+display #X [%a:d1] := {%a = 8} | {%a = 10} ;
+
+display #Y [b, %a:d1, %b:d2] := (b & {%a > 8} & {%a < 34}) & {%b = 14} ;
+
+display #Z [%a:d1, %b:d2] := {%b = %a} ;
+
+display #T [%a:d1, %b:d2] := {%b <> %a} ;
+
+display #U [%a:d1, %b:d2] := {%b > %a} ;
+
+display #V [%a:d1, %b:d2] := {%b >= %a} ;
+
+display #W [%a:d1, %b:d2] := {%b < %a} ;
+
+display #R [%a:d1, %b:d2] := {%b <= %a} ;
+
+display #qq [%a:d1, %b:d1] := ?%c:d1 ({%a > %c} & {%c > %b}) ;
+
+end

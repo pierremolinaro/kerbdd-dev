@@ -1,1 +1,53 @@
-cache 80 ; map 500 ;domain n1 : bool [4] ;domain n2 : bool [3] ;$--- Ensemble des transitions du premier graphe#Trans16 [qs:n1, qd:n1] :=   ({qs= 0} & {qd= 1}) | ({qs= 1} & {qd= 2}) | ({qs= 2} & {qd= 3}) |   ({qs= 3} & {qd= 4}) | ({qs= 4} & {qd= 5}) | ({qs= 4} & {qd= 2}) |   ({qs= 5} & {qd= 6}) | ({qs= 7} & {qd= 5}) | ({qs= 6} & {qd= 8}) |   ({qs= 8} & {qd= 9}) | ({qs= 9} & {qd=10}) | ({qs= 9} & {qd=11}) |   ({qs=11} & {qd= 4}) | ({qs=11} & {qd=12}) | ({qs=12} & {qd=13}) |   ({qs=13} & {qd=14}) | ({qs=14} & {qd=15}) | ({qs=13} & {qd= 4}) ;   $--- Ensemble des transitions du second graphe#Trans8 [qs:n2, qd:n2] :=   ({qs=0} & {qd=1}) | ({qs=1} & {qd=2}) | ({qs=2} & {qd=3}) |   ({qs=3} & {qd=4}) | ({qs=4} & {qd=5}) | ({qs=4} & {qd=2}) |   ({qs=5} & {qd=6}) | ({qs=7} & {qd=5}) ;domain n : record  x : n2 ;  y : n1 ;  z : n1 ;  t : n1 ;end record ;$--- Produit de quatre graphes : Trans16 * Trans16 * Trans16 * Trans8#Trans [qs:n, qd:n] :=   #Trans16 [qs.t, qd.t] &   #Trans16 [qs.z, qd.z] &   #Trans16 [qs.y, qd.y] &   #Trans8  [qs.x, qd.x] ;$--- Etat initial#Initial [q:n] := {q.x=0} & {q.y=0} & {q.z=0} & {q.t=0} ;$--- Autre Žcriture#Initial2 [q:n] := #Initial [q.x, q.y, q.z, q.t] ;$--- Calcul des Žtats accessibles par plus petit point fixe#Acces [q:n] += #Initial [q] | ? t:n (#Acces [t] & #Trans [t, q]) ;$--- Ensemble des Žtats morts#NoSucc [q:n] := #Acces [q] & ~ ? t:n #Trans [q, t] ; $--- Ensemble des Žtats ne pouvant conduire que vers un Žtat mort#DeadLock [q:n] += #Acces [q] &             !t:n ((#Acces [q] & #Trans [q, t]) -> #DeadLock [t]) ;#DeadLock2 [q:n] += #Acces [q] & ~?t:n (#Trans [q, t] & ~#DeadLock2 [t]) ;end
+cache 80 ; map 500 ;
+
+domain n1 : bool [4] ;
+domain n2 : bool [3] ;
+
+$--- Ensemble des transitions du premier graphe
+#Trans16 [qs:n1, qd:n1] :=
+   ({qs= 0} & {qd= 1}) | ({qs= 1} & {qd= 2}) | ({qs= 2} & {qd= 3}) |
+   ({qs= 3} & {qd= 4}) | ({qs= 4} & {qd= 5}) | ({qs= 4} & {qd= 2}) |
+   ({qs= 5} & {qd= 6}) | ({qs= 7} & {qd= 5}) | ({qs= 6} & {qd= 8}) |
+   ({qs= 8} & {qd= 9}) | ({qs= 9} & {qd=10}) | ({qs= 9} & {qd=11}) |
+   ({qs=11} & {qd= 4}) | ({qs=11} & {qd=12}) | ({qs=12} & {qd=13}) |
+   ({qs=13} & {qd=14}) | ({qs=14} & {qd=15}) | ({qs=13} & {qd= 4}) ;
+   
+$--- Ensemble des transitions du second graphe
+#Trans8 [qs:n2, qd:n2] :=
+   ({qs=0} & {qd=1}) | ({qs=1} & {qd=2}) | ({qs=2} & {qd=3}) |
+   ({qs=3} & {qd=4}) | ({qs=4} & {qd=5}) | ({qs=4} & {qd=2}) |
+   ({qs=5} & {qd=6}) | ({qs=7} & {qd=5}) ;
+
+domain n : record
+  x : n2 ;
+  y : n1 ;
+  z : n1 ;
+  t : n1 ;
+end record ;
+
+$--- Produit de quatre graphes : Trans16 * Trans16 * Trans16 * Trans8
+#Trans [qs:n, qd:n] :=
+   #Trans16 [qs.t, qd.t] &
+   #Trans16 [qs.z, qd.z] &
+   #Trans16 [qs.y, qd.y] &
+   #Trans8  [qs.x, qd.x] ;
+
+$--- Etat initial
+#Initial [q:n] := {q.x=0} & {q.y=0} & {q.z=0} & {q.t=0} ;
+
+$--- Autre Žcriture
+#Initial2 [q:n] := #Initial [q.x, q.y, q.z, q.t] ;
+
+$--- Calcul des Žtats accessibles par plus petit point fixe
+#Acces [q:n] += #Initial [q] | ? t:n (#Acces [t] & #Trans [t, q]) ;
+
+$--- Ensemble des Žtats morts
+#NoSucc [q:n] := #Acces [q] & ~ ? t:n #Trans [q, t] ; 
+
+$--- Ensemble des Žtats ne pouvant conduire que vers un Žtat mort
+#DeadLock [q:n] += #Acces [q] &
+             !t:n ((#Acces [q] & #Trans [q, t]) -> #DeadLock [t]) ;
+
+#DeadLock2 [q:n] += #Acces [q] & ~?t:n (#Trans [q, t] & ~#DeadLock2 [t]) ;
+
+end

@@ -1,4 +1,4 @@
-program programmeBDD "version 3.0.0" . "bdd" :
+program programmeBDD "version 3.0.2" . "bdd" :
   import grammar grammaireBDD in "grammaireBDD.ggs" ;
   include header ;
 #--- Start symbol arguments
@@ -8,5 +8,4 @@ program programmeBDD "version 3.0.0" . "bdd" :
 #--- max error and warning count
   error 100 ;
   warning 100 ;
-#  action "C_bdd::markAndSweepUnusedNodes" ;
 end program ;
