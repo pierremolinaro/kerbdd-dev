@@ -1,0 +1,10 @@
+#---------------------------------------------------------------------------*#                                                                           *#   C O C O A                                                               *#                                                                           *#---------------------------------------------------------------------------*
+
+cocoa cocoaKerBDD :
+
+program "kerbdd" ;
+
+import grammar grammaireBDD in "grammaireBDD.ggs" ;
+
+end cocoa ;
+
