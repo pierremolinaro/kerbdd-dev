@@ -1,0 +1,20 @@
+$ 27 janvier 2004
+
+$---- L'ensemble des configurations des e/s
+display #configurations [eav1:bool, eav2:bool, r1:bool, r2:bool] := 
+  (~eav1 & ~eav2 & ~r1 & ~r2) |
+  (~eav1 &  eav2) |
+  ( eav1 & ~eav2 &  r1 & ~r2) |
+  ( eav1 &  eav2 &  r1 &  r2) ;
+
+display #implique [a:bool, b:bool] := a -> b ;
+
+display #expr_assertion [eav1:bool, eav2:bool, r1:bool, r2:bool] := 
+   (~(~eav1 & eav2)) -> ~(~r1 & r2) ;
+
+display #assertion [eav1:bool, eav2:bool, r1:bool, r2:bool] := 
+  #configurations [eav1, eav2, r1, r2] -> #expr_assertion [eav1, eav2, r1, r2] ;
+
+display #ne_verifie_pas_assertion [eav1:bool, eav2:bool, r1:bool, r2:bool] := 
+  #configurations [eav1, eav2, r1, r2] & ~ #expr_assertion [eav1, eav2, r1, r2] ;
+end
