@@ -1,0 +1,149 @@
+lexique lexiqueBDD :
+
+#-----------------------------------------------------------------*
+
+header "opComp.h" ;
+header "galgas/lexical_actions.h" ;
+
+#-----------------------------------------------------------------*
+
+@lstring att_idf ;
+@lstring att_token ;
+@luint  att_valeur ;
+
+$nombre$ ! att_valeur error message "a decimal integer" ;
+$id$ ! att_token error message "an identifier" ;
+$string$ ! att_token error message "a character string (between \" and \")" ;
+$comp$ ! att_valeur error message "the '=', '<>', '<=', '<', '>' or '>' delimitor" ;
+
+list delimiteursKerBDD error message "the '" . * . "' delimiter" :
+  "(",
+  ")",
+  "{",
+  "}",
+  "[",
+  "]",
+  ":=",
+  ":",
+  "." ,
+  "..",
+  "::",
+  "+=",
+  "-=",
+  "->",
+  "&",
+  "|",
+  "~",
+  ",",
+  "?",
+  "!",
+  ";",
+  "#" ;
+
+#-----------------------------------------------------------------*
+
+list motsReservesKerBDD error message "the '" . * . "' keyword" :
+ "cache",         "map",
+ "bdd",           "domain",
+ "bool",          "record",
+ "true",          "false",
+ "display",       "include",
+ "dump",          "verify",
+ "end",           "if",
+ "then",          "else",
+ "dimension" ;
+
+#-----------------------------------------------------------------*
+
+message fin_commentaire_incorrect  :"incorrect commend ending" ;
+message nombre_dec_trop_grand : "number too large" ;
+message car_non_chiffre : "the character is not a decimal digit" ;
+message fin_chaine_incorrecte : "the character string does not end with \"" ;
+
+# -------------------------- identificateur or mot reserve --------------------
+# les mots reserves peuvent etre ecrits en majuscules or minuscules
+# pour les identificateurs, majuscules et minuscules sont distinguees
+rule 'a'->'z' | 'A'->'Z' :
+  repeat
+    enterCharacterIntoString (att_idf, toLower (*)) ;
+    enterCharacterIntoString (att_token, *) ;
+  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+  end repeat ;
+  send search att_idf in motsReservesKerBDD default $id$ ;
+end rule ;
+
+# ------------------------------- Chaine de caracteres -------------------------------
+rule '"' :
+  repeat
+  while ' ' | '!' | '#'-> '\255' :
+    enterCharacterIntoString (att_token, *) ;
+  end repeat ;
+  select
+  when '"' :
+    send $string$ ;
+  default
+    error fin_chaine_incorrecte ;
+  end select ;
+end rule ;
+
+# ------------------------------- nombre decimal -------------------------------
+rule '0'->'9' :
+  enterDigitIntoUlong (att_valeur, *) error nombre_dec_trop_grand, car_non_chiffre ;
+  repeat
+  while '0'->'9' :
+    enterDigitIntoUlong (att_valeur, *) error nombre_dec_trop_grand, car_non_chiffre ;
+  while '_' :
+  end repeat ;
+  send $nombre$ ;
+end rule ;
+
+# ----------------------------- delimiteurs ---------------------------------------
+rule list delimiteursKerBDD ;
+
+rule '=' :
+  formerCompEgal (att_valeur) ;
+  send $comp$ ;
+end rule ;
+
+rule '<' :
+  select
+  when '>' :
+    formerCompNonEgal (att_valeur) ;
+    send $comp$ ;
+  when '=' :
+    formerCompInfEgal (att_valeur) ;
+    send $comp$ ;
+  default
+    formerCompInf (att_valeur) ;
+    send $comp$ ;
+  end select ;
+end rule ;
+
+rule '>' :
+  select
+  when '=' :
+    formerCompSupEgal (att_valeur) ;
+    send $comp$ ;
+  default
+    formerCompSup (att_valeur) ;
+    send $comp$ ;
+  end select ;
+end rule ;
+
+# ------------------------------------ commentaire ----------------------------
+rule '$' :
+  repeat
+  while '\1' ->'\9' | '\11' | '\12' | '\14'-> '\255' :
+  end repeat ;
+  select
+  when '\10' | '\13' | '\0' : # New Line, Carriage Return
+  default
+    error fin_commentaire_incorrect ;
+  end select ;
+end rule ;
+
+  # --------------------- separateurs (ignores) ---------------------------------
+rule '\1' -> ' ' :
+end rule ;
+
+end lexique ;

@@ -1,0 +1,85 @@
+$ place : p 1 -> Place numero 1
+$ place : p 2 -> P 2
+$ place : p 3 -> P 3
+$ place : p 4 -> P 4
+$ place : p 5 -> P 5
+$ place : p 6 -> P 6
+$ place : p 7 -> P 7
+$ place : p 8 -> P 8
+$ place : p 9 -> P 9
+$ place : p 10 -> P 10
+$ place : p 11 -> P 11
+$ transition : tr 0 -> T 1
+$ transition : tr 1 -> T 2
+$ transition : tr 2 -> T 3
+$ transition : tr 3 -> T 4
+$ transition : tr 4 -> T 5
+$ transition : tr 5 -> T 6
+$ transition : tr 6 -> T 7
+
+$ --- Ensemble des (x, y) tels que y = x + 1
+#diff1 [y:1, x:1] := ?u:1 ({x<u} & {u<=y} & !v:1 (({x<v} & {v<=y}) -> {u=v})) ; 
+
+#diff1bis [x:1, y:1] := ?u:1 ({x<u} & {u<=y} & !v:1 (({x<v} & {v<=y}) -> {u=v})) ; 
+
+$ --- Ensemble des (x, y, z) tels que z = x + y
+#somme[x:1, y:1, z:1] += ( {x=0} & {y=z} ) | ({x=1} & #diff1bis [y,z]) | ?a:1 , b:1, c:1 (#somme[a,c,x] & #somme [y,c,b] & #somme [a,b,z] ); 
+
+
+$ --- Ensemble des (res, x, y) tels que res = max(0, x - y) 
+#max0moins[res:1, x:1, y:1] := (?z:1 (#somme[z,y,x] & {res=z} )) | (~?z:1 (#somme[z,y,x] ) & {res=0} ) ; 
+
+
+$ --- inf de deux valeurs z = inf2(a1:1 , a2:1) 
+#inf2 [a1:1, a2 :1, z:1] := if {a1>a2} then {z=a2} else {z=a1} end ; 
+
+$ --- inf de trois valeurs z = inf3(a1:1, a2:1, a3:1) 
+#inf3 [a1:1, a2:1, a3:1, z:1] := ?u:1 (#inf2 [a1, a2, u] & #inf2 [a3, u, z] ) ; 
+
+$ ------ inf de 4 valeurs z = inf4 ( a4 , a3 , a2 , a1 ) -----------
+#inf4 [ a4:1 , a3:1 , a2:1 , a1:1 , z:1 ] := ?u:1 
+(#inf3 [ a3 , a2 , a1 ,u ] & #inf2 [a4, u, z] ); 
+
+$ ------ inf de 5 valeurs z = inf5 ( a5 , a4 , a3 , a2 , a1 ) -----------
+#inf5 [ a5:1 , a4:1 , a3:1 , a2:1 , a1:1 , z:1 ] := ?u:1 
+(#inf4 [ a4 , a3 , a2 , a1 ,u ] & #inf2 [a5, u, z] ); 
+
+$ ------ inf de 6 valeurs z = inf6 ( a6 , a5 , a4 , a3 , a2 , a1 ) -----------
+#inf6 [ a6:1 , a5:1 , a4:1 , a3:1 , a2:1 , a1:1 , z:1 ] := ?u:1 
+(#inf5 [ a5 , a4 , a3 , a2 , a1 ,u ] & #inf2 [a6, u, z] ); 
+
+$ ------ inf de 7 valeurs z = inf7 ( a7 , a6 , a5 , a4 , a3 , a2 , a1 ) -----------
+#inf7 [ a7:1 , a6:1 , a5:1 , a4:1 , a3:1 , a2:1 , a1:1 , z:1 ] := ?u:1 
+(#inf6 [ a6 , a5 , a4 , a3 , a2 , a1 ,u ] & #inf2 [a7, u, z] ); 
+
+display #placeTransition [ p11 , p10 , p9 , p8 , p7 , p6 , p5 , p4 , p3 , p2 , p1 , tr: 3 ] := 
+( p1 & ~p2 & ~p3 & ~p4 & ~p5 & ~p6 & ~p7 & ~p8 & ~p9 & ~p10 & ~p11 & { tr= 0 } ) | ( ~p1 & p2 & ~p3 & ~p4 & ~p5 & ~p6 & ~p7 & ~p8 & ~p9 & ~p10 & ~p11 & { tr= 1 } ) | ( ~p1 & ~p2 & p3 & ~p4 & ~p5 & ~p6 & ~p7 & ~p8 & ~p9 & ~p10 & ~p11 & { tr= 2 } ) | ( ~p1 & ~p2 & ~p3 & p4 & ~p5 & ~p6 & ~p7 & ~p8 & ~p9 & ~p10 & ~p11 & { tr= 3 } ) | ( ~p1 & ~p2 & ~p3 & ~p4 & p5 & ~p6 & ~p7 & ~p8 & ~p9 & ~p10 & ~p11 & { tr= 4 } ) | ( ~p1 & ~p2 & ~p3 & ~p4 & ~p5 & p6 & ~p7 & ~p8 & ~p9 & ~p10 & ~p11 & { tr= 5 } ) | ( ~p1 & ~p2 & ~p3 & ~p4 & ~p5 & ~p6 & p7 & ~p8 & ~p9 & ~p10 & ~p11 & { tr= 6 } ) | false ;
+
+display #transitionPlace [ tr: 3 , p11 , p10 , p9 , p8 , p7 , p6 , p5 , p4 , p3 , p2 , p1 ] := 
+( { tr= 0 } & ~p1 & ~p2 & ~p3 & p4 & ~p5 & ~p6 & ~p7 & ~p8 & ~p9 & ~p10 & ~p11 ) | ( { tr= 1 } & ~p1 & ~p2 & ~p3 & ~p4 & p5 & ~p6 & ~p7 & ~p8 & ~p9 & ~p10 & ~p11 ) | ( { tr= 2 } & ~p1 & ~p2 & ~p3 & ~p4 & ~p5 & p6 & ~p7 & ~p8 & ~p9 & ~p10 & ~p11 ) | ( { tr= 3 } & ~p1 & ~p2 & ~p3 & ~p4 & ~p5 & ~p6 & ~p7 & ~p8 & p9 & ~p10 & ~p11 ) | ( { tr= 4 } & ~p1 & ~p2 & ~p3 & ~p4 & ~p5 & ~p6 & ~p7 & ~p8 & ~p9 & p10 & ~p11 ) | ( { tr= 5 } & ~p1 & ~p2 & ~p3 & ~p4 & ~p5 & ~p6 & ~p7 & ~p8 & ~p9 & ~p10 & p11 ) | ( { tr= 6 } & ~p1 & ~p2 & ~p3 & ~p4 & ~p5 & ~p6 & ~p7 & p8 & ~p9 & ~p10 & ~p11 ) | false ;
+
+displayarray #M0 [ p11s:1 , p10s:1 , p9s:1 , p8s:1 , p7s:1 , p6s:1 , p5s:1 , p4s:1 , p3s:1 , p2s:1 , p1s:1 ] := { p1s = 1 } & { p2s = 1 } & { p3s = 1 } & { p4s = 0 } & { p5s = 0 } & { p6s = 0 } & { p7s = 1 } & { p8s = 0 } & { p9s = 0 } & { p10s = 0 } & { p11s = 0 } ; 
+
+#graphe [ tr:3,
+          p11s: 1 , p10s: 1 , p9s: 1 , p8s: 1 , p7s: 1 , p6s: 1 , p5s: 1 , p4s: 1 , p3s: 1 , p2s: 1 , p1s: 1 ,
+          p11d: 1 , p10d: 1 , p9d: 1 , p8d: 1 , p7d: 1 , p6d: 1 , p5d: 1 , p4d: 1 , p3d: 1 , p2d: 1 , p1d: 1 ] := 
+? p11 , p11dd, p11i : 1 ,
+  p10 , p10dd ,p10i : 1 ,
+  p9 ,  p9dd ,p9i : 1 ,
+  p8 ,p8dd ,p8i : 1 ,
+  p7 ,p7dd ,p7i : 1 ,
+  p6 ,p6dd ,p6i : 1 ,
+  p5 ,p5dd ,p5i : 1 ,
+  p4 ,p4dd , p4i : 1 ,
+  p3 ,p3dd ,p3i : 1 ,
+  p2 ,p2dd ,p2i : 1 ,
+  p1 ,p1dd ,p1i : 1 
+(#placeTransition [ p11 , p10 , p9 , p8 , p7 , p6 , p5 , p4 , p3 , p2 , p1 , tr ] & #transitionPlace [ tr, p11dd , p10dd , p9dd , p8dd , p7dd , p6dd , p5dd , p4dd , p3dd , p2dd , p1dd ] & (if p11 then #diff1 [ p11s , p11i ] else { p11s = p11i } end) & (if p10 then #diff1 [ p10s , p10i ] else { p10s = p10i } end) & (if p9 then #diff1 [ p9s , p9i ] else { p9s = p9i } end) & (if p8 then #diff1 [ p8s , p8i ] else { p8s = p8i } end) & (if p7 then #diff1 [ p7s , p7i ] else { p7s = p7i } end) & (if p6 then #diff1 [ p6s , p6i ] else { p6s = p6i } end) & (if p5 then #diff1 [ p5s , p5i ] else { p5s = p5i } end) & (if p4 then #diff1 [ p4s , p4i ] else { p4s = p4i } end) & (if p3 then #diff1 [ p3s , p3i ] else { p3s = p3i } end) & (if p2 then #diff1 [ p2s , p2i ] else { p2s = p2i } end) & (if p1 then #diff1 [ p1s , p1i ] else { p1s = p1i } end) & (if p11dd then #diff1 [ p11d , p11i ] else { p11d = p11i } end) & (if p10dd then #diff1 [ p10d , p10i ] else { p10d = p10i } end) & (if p9dd then #diff1 [ p9d , p9i ] else { p9d = p9i } end) & (if p8dd then #diff1 [ p8d , p8i ] else { p8d = p8i } end) & (if p7dd then #diff1 [ p7d , p7i ] else { p7d = p7i } end) & (if p6dd then #diff1 [ p6d , p6i ] else { p6d = p6i } end) & (if p5dd then #diff1 [ p5d , p5i ] else { p5d = p5i } end) & (if p4dd then #diff1 [ p4d , p4i ] else { p4d = p4i } end) & (if p3dd then #diff1 [ p3d , p3i ] else { p3d = p3i } end) & (if p2dd then #diff1 [ p2d , p2i ] else { p2d = p2i } end) & (if p1dd then #diff1 [ p1d , p1i ] else { p1d = p1i } end) ) ;
+
+display #marques [ p11s: 1 , p10s: 1 , p9s: 1 , p8s: 1 , p7s: 1 , p6s: 1 , p5s: 1 , p4s: 1 , p3s: 1 , p2s: 1 , p1s: 1 ] += 
+#M0 [ p11s , p10s , p9s , p8s , p7s , p6s , p5s , p4s , p3s , p2s , p1s ] | ?tr: 3, p11 : 1 , p10 : 1 , p9 : 1 , p8 : 1 , p7 : 1 , p6 : 1 , p5 : 1 , p4 : 1 , p3 : 1 , p2 : 1 , p1 : 1 (#marques [ p11 , p10 , p9 , p8 , p7 , p6 , p5 , p4 , p3 , p2 , p1 ] & #graphe [tr, p11 , p10 , p9 , p8 , p7 , p6 , p5 , p4 , p3 , p2 , p1 , p11s , p10s , p9s , p8s , p7s , p6s , p5s , p4s , p3s , p2s , p1s ] ) ; 
+
+display #grapheMarquage [ tr: 3 , p11s: 1 , p10s: 1 , p9s: 1 , p8s: 1 , p7s: 1 , p6s: 1 , p5s: 1 , p4s: 1 , p3s: 1 , p2s: 1 , p1s: 1 , p11d: 1 , p10d: 1 , p9d: 1 , p8d: 1 , p7d: 1 , p6d: 1 , p5d: 1 , p4d: 1 , p3d: 1 , p2d: 1 , p1d: 1 ] := 
+#marques [ p11s , p10s , p9s , p8s , p7s , p6s , p5s , p4s , p3s , p2s , p1s ] & #graphe [tr, p11s , p10s , p9s , p8s , p7s , p6s , p5s , p4s , p3s , p2s , p1s , p11d , p10d , p9d , p8d , p7d , p6d , p5d , p4d , p3d , p2d , p1d ] ; 
+
+end

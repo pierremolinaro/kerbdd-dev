@@ -1,0 +1,12 @@
+program programmeBDD "version 3.0.0" . "bdd" :
+  import grammar grammaireBDD in "grammaireBDD.ggs" ;
+  include "" ;
+#--- max error and warning count
+  error 100 ;
+  warning 100 ;
+#--- Start symbol arguments
+  aTableFormules ;
+  aListeFormules ;
+  mDomainMap ;
+#  action "C_bdd::markAndSweepUnusedNodes" ;
+end program ;
