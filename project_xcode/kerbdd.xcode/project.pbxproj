@@ -137,6 +137,7 @@
 		};
 		2A37F4B8FDCFA73011CA2CEA = {
 			children = (
+				CF94331C07CF7FBA00ED08CC,
 				CF103D8407AFE6B30093400D,
 				CF103D8507AFE6B30093400D,
 				2A37F4B9FDCFA73011CA2CEA,
@@ -299,6 +300,7 @@
 				CF103D8707AFE6B30093400D,
 				CF103D8907AFE6C80093400D,
 				CF505BB907BF77D40059963C,
+				CF94331D07CF7FBA00ED08CC,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2675,6 +2677,20 @@
 			path = galgas/C_galgas_cocoa_io.cpp;
 			refType = 4;
 			sourceTree = "<group>";
+		};
+		CF94331C07CF7FBA00ED08CC = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
+			name = stop_aqua.tiff;
+			path = /Volumes/raid/developpements/mes_prgms/libpm/cocoa_galgas/stop_aqua.tiff;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		CF94331D07CF7FBA00ED08CC = {
+			fileRef = CF94331C07CF7FBA00ED08CC;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		CF9C702F079BFFFA00797E14 = {
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA;
