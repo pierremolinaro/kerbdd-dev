@@ -7,16 +7,22 @@ header "galgas/lexical_actions.h" ;
 
 #-----------------------------------------------------------------*
 
+style identifier -> "Identifiers" ;
+style keyWords -> "Key words" ;
+style stringStyle -> "String constants" ;
+style delimitors -> "Delimitors" ;
+style integer_csts -> "Integer constants" ;
+
 @lstring att_idf ;
 @lstring att_token ;
 @luint  att_valeur ;
 
-$nombre$ ! att_valeur error message "a decimal integer" ;
-$id$ ! att_token error message "an identifier" ;
-$string$ ! att_token error message "a character string (between \" and \")" ;
-$comp$ ! att_valeur error message "the '=', '<>', '<=', '<', '>' or '>' delimitor" ;
+$nombre$ ! att_valeur error message "a decimal integer" style integer_csts ;
+$id$ ! att_token error message "an identifier" style identifier ;
+$string$ ! att_token error message "a character string (between \" and \")" style stringStyle ;
+$comp$ ! att_valeur error message "the '=', '<>', '<=', '<', '>' or '>' delimitor" style delimitors  ;
 
-list delimiteursKerBDD error message "the '" . * . "' delimiter" :
+list delimiteursKerBDD error message "the '" . * . "' delimiter" style delimitors :
   "(",
   ")",
   "{",
@@ -42,7 +48,7 @@ list delimiteursKerBDD error message "the '" . * . "' delimiter" :
 
 #-----------------------------------------------------------------*
 
-list motsReservesKerBDD error message "the '" . * . "' keyword" :
+list motsReservesKerBDD error message "the '" . * . "' keyword" style keyWords :
  "cache",         "map",
  "bdd",           "domain",
  "bool",          "record",
