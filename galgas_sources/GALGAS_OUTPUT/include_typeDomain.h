@@ -32,7 +32,7 @@
 #define macro_typeDomain
 #define macroInheritFrom_typeDomain
 
-class cPtr_typeDomain : public C_reference_count {
+class cPtr_typeDomain : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

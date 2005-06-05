@@ -31,7 +31,7 @@
 
 #include "typeCalcul.h"
 
-class cPtr_typeCalcul : public C_reference_count {
+class cPtr_typeCalcul : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

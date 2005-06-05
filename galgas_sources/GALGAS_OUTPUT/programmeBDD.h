@@ -37,14 +37,14 @@
 class programmeBDD : public C_defaultUserSemanticActions {
   protected : lexiqueBDD mScanner_ ;
   protected : C_galgas_terminal_io mTerminalIO ;
-  protected : C_string mSourceFileExtension_ ;
+  protected : C_String mSourceFileExtension_ ;
 
 //--- Command line options
 
 //--- Constructor
   public : programmeBDD (const C_galgas_io_parameters & inIOparameters) ;
 
-  public : void doCompilation (const C_string & inSourceFileName_,
+  public : void doCompilation (const C_String & inSourceFileName_,
                                sint16 & returnCode) ;
   protected : GGS_typeTableFormules aTableFormules ; // start symbol attribute #1
   protected : GGS_typeListeCalculs aListeFormules ; // start symbol attribute #2

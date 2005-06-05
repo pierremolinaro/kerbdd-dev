@@ -3,7 +3,7 @@ lexique lexiqueBDD :
 #-----------------------------------------------------------------*
 
 header "opComp.h" ;
-header "galgas/lexical_actions.h" ;
+header "galgas/F_LexicalActions.h" ;
 
 #-----------------------------------------------------------------*
 
