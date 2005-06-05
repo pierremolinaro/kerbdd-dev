@@ -31,7 +31,7 @@
 
 #include "typeVariableDescriptor.h"
 
-class cPtr_typeVariableDescriptor : public C_reference_count {
+class cPtr_typeVariableDescriptor : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

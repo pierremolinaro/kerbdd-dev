@@ -20,8 +20,8 @@
 
 //--- END OF USER ZONE 1
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
 #include "semantiqueBDD.h"
 
 //---------------------------------------------------------------------------*
@@ -127,7 +127,7 @@ cPtr_typeDomain * GGS_typeDomain
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_typeDomain::reader_messageDomainType (void) const {
-  return GGS_string (mPointer != NULL, C_string ((mPointer == NULL) ? "" : mPointer->message_messageDomainType ())) ;
+  return GGS_string (mPointer != NULL, C_String ((mPointer == NULL) ? "" : mPointer->message_messageDomainType ())) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -206,8 +206,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_typeDomainMap::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_typeDomainMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_typeDomainMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeDomainMap * info = (e_typeDomainMap *) inInfo ;
@@ -218,15 +218,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_typeDomainMap::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_typeDomainMap::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_typeDomainMap::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -248,7 +248,7 @@ GGS_bool GGS_typeDomainMap::reader_hasKey (const GGS_lstring & inKey) const {
 //---------------------------------------------------------------------------*
 
 void GGS_typeDomainMap::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -258,7 +258,7 @@ void GGS_typeDomainMap::internalInsertForDuplication (AC_galgas_map_element * in
 //---------------------------------------------------------------------------*
 
 void GGS_typeDomainMap::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_typeDomain &  inParameter0,
@@ -272,7 +272,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -285,7 +285,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_typeDomainMap::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_typeDomain   * outParameter0,
@@ -293,10 +293,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -320,7 +320,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeDomainMap (C_lexique & inLexique,
+void searchKey_typeDomainMap (C_Lexique & inLexique,
                                 GGS_typeDomainMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_typeDomain   * outParameter0,
@@ -336,7 +336,7 @@ void searchKey_typeDomainMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeDomainMap (C_lexique & lexique_var_,
+void insertKey_typeDomainMap (C_Lexique & lexique_var_,
                                 GGS_typeDomainMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_typeDomain & inParameter0,
@@ -862,7 +862,7 @@ cPtr_typeVariableDescriptor * GGS_typeVariableDescriptor
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_typeVariableDescriptor::reader_variableDescriptorErrorMessage (void) const {
-  return GGS_string (mPointer != NULL, C_string ((mPointer == NULL) ? "" : mPointer->message_variableDescriptorErrorMessage ())) ;
+  return GGS_string (mPointer != NULL, C_String ((mPointer == NULL) ? "" : mPointer->message_variableDescriptorErrorMessage ())) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -947,7 +947,7 @@ bool e_typeTableVariablesBool::isBuilt (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableVariablesBool (C_lexique & inLexique,
+void searchKey_typeTableVariablesBool (C_Lexique & inLexique,
                                 GGS_typeTableVariablesBool & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_typeVariableDescriptor   * outParameter0,
@@ -973,7 +973,7 @@ void searchKey_typeTableVariablesBool (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableVariablesBool (C_lexique & lexique_var_,
+void insertKey_typeTableVariablesBool (C_Lexique & lexique_var_,
                                 GGS_typeTableVariablesBool & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_typeVariableDescriptor &  inParameter0,
@@ -1046,8 +1046,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_typeTableFormules::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_typeTableFormules *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_typeTableFormules *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeTableFormules * info = (e_typeTableFormules *) inInfo ;
@@ -1058,15 +1058,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_typeTableFormules::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_typeTableFormules::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_typeTableFormules::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -1088,7 +1088,7 @@ GGS_bool GGS_typeTableFormules::reader_hasKey (const GGS_lstring & inKey) const 
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableFormules::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -1098,7 +1098,7 @@ void GGS_typeTableFormules::internalInsertForDuplication (AC_galgas_map_element 
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableFormules::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_typeFormalArgumentsList &  inParameter0,
@@ -1115,7 +1115,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -1128,7 +1128,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableFormules::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_typeFormalArgumentsList   * outParameter0,
@@ -1137,10 +1137,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -1170,7 +1170,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableFormules (C_lexique & inLexique,
+void searchKey_typeTableFormules (C_Lexique & inLexique,
                                 GGS_typeTableFormules & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_typeFormalArgumentsList   * outParameter0,
@@ -1190,7 +1190,7 @@ void searchKey_typeTableFormules (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableFormules (C_lexique & lexique_var_,
+void insertKey_typeTableFormules (C_Lexique & lexique_var_,
                                 GGS_typeTableFormules & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_typeFormalArgumentsList & inParameter0,
@@ -2370,7 +2370,7 @@ void GGS_typeListeCalculs
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_verifierNombreArgumentsBool (C_lexique & lexique_var_,
+void routine_verifierNombreArgumentsBool (C_Lexique & lexique_var_,
                                 const GGS_typeFormalArgumentsList  & var_cas_t1,
                                 const GGS_typeActualArgumentsList  & var_cas_t2,
                                 const GGS_location  & var_cas_positionFinListe) {

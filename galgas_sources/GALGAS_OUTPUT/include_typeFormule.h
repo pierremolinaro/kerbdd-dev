@@ -31,7 +31,7 @@
 
 #include "typeFormule.h"
 
-class cPtr_typeFormule : public C_reference_count {
+class cPtr_typeFormule : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

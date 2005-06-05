@@ -20,8 +20,8 @@
 
 //--- END OF USER ZONE 1
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
 #include "syntaxeBDD.h"
 
 //---------------------------------------------------------------------------*
@@ -99,7 +99,7 @@ pr_axiomeBDD_syntaxeBDD_129_17_ (lexiqueBDD & lexique_var_,
           lexique_var_.acceptTerminal (lexiqueBDD::lexiqueBDD_1__3B) ;
           { lexiqueBDD scanner_ (lexique_var_.getGalgasIOptr ()) ;
             grammaireBDD grammar_ ;
-            C_string sourceFileName ;
+            C_String sourceFileName ;
             if ((var_cas_nomFichierInclusion.getLength () > 0) && (var_cas_nomFichierInclusion (0 COMMA_HERE) != '/')) {
               sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
             }
@@ -367,7 +367,7 @@ pr_argsFormelsFormule_syntaxeBDD_321_26_ (lexiqueBDD & lexique_var_,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_exploreRecordDomain (C_lexique & lexique_var_,
+void routine_exploreRecordDomain (C_Lexique & lexique_var_,
                                 const GGS_typeDomainMap  & var_cas_inRecordMap,
                                 GGS_typeTableVariablesBool  & var_cas_outMap,
                                 const GGS_location  & var_cas_inErrorLocation) {
@@ -414,7 +414,7 @@ void routine_exploreRecordDomain (C_lexique & lexique_var_,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildFormalArgsList (C_lexique & lexique_var_,
+void routine_buildFormalArgsList (C_Lexique & lexique_var_,
                                 const GGS_typeVariableDescriptor  & var_cas_inVariableDescriptor,
                                 GGS_typeFormalArgumentsList  & var_cas_ioFormalArgsList,
                                 const GGS_location  & var_cas_inErrorLocation) {
@@ -480,8 +480,8 @@ pr_declarations_syntaxeBDD_386_20_ (lexiqueBDD & lexique_var_,
               if (ptrExtraire_ == NULL) {
                 var_cas_num.drop_operation () ;
                 if (var_cas_v.getPtr () != NULL) {
-                  TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-                  C_string message2_ ;
+                  TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+                  C_String message2_ ;
                   message1_ (0 COMMA_HERE) << cPtr_typeDirectVariable::static_string_message_variableDescriptorErrorMessage () ;
                   message2_ << var_cas_v ()->message_variableDescriptorErrorMessage () ;
                   var_cas_nom.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -1069,7 +1069,7 @@ pr_facteur_formule_syntaxeBDD_785_23_ (lexiqueBDD & lexique_var_,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildActualArgsList (C_lexique & lexique_var_,
+void routine_buildActualArgsList (C_Lexique & lexique_var_,
                                 const GGS_typeTableVariablesBool  & var_cas_inDomainMap,
                                 GGS_typeActualArgumentsList  & var_cas_ioActualArgsList,
                                 const GGS_location  & var_cas_inErrorLocation) {
@@ -1161,8 +1161,8 @@ pr_facteur_formule_syntaxeBDD_825_23_ (lexiqueBDD & lexique_var_,
                 var_cas_lowBound.drop_operation () ;
                 var_cas_highBound.drop_operation () ;
                 if (var_cas_varDescriptor.getPtr () != NULL) {
-                  TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-                  C_string message2_ ;
+                  TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+                  C_String message2_ ;
                   message1_ (0 COMMA_HERE) << cPtr_typeDirectVariable::static_string_message_variableDescriptorErrorMessage () ;
                   message2_ << var_cas_varDescriptor ()->message_variableDescriptorErrorMessage () ;
                   var_cas_errorLocation.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -1239,8 +1239,8 @@ pr_parse_argument_syntaxeBDD_883_22_ (lexiqueBDD & lexique_var_,
             if (ptrExtraire_ == NULL) {
               var_cas_fieldMap.drop_operation () ;
               if (var_cas_outVarDescriptor.getPtr () != NULL) {
-                TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-                C_string message2_ ;
+                TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+                C_String message2_ ;
                 message1_ (0 COMMA_HERE) << cPtr_typeRecordVariable::static_string_message_variableDescriptorErrorMessage () ;
                 message2_ << var_cas_outVarDescriptor ()->message_variableDescriptorErrorMessage () ;
                 var_cas_errorLoc.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -1293,8 +1293,8 @@ pr_parse_scalar_argument_syntaxeBDD_908_29_ (lexiqueBDD & lexique_var_,
       var_cas_outLowBound.drop_operation () ;
       var_cas_outHighBound.drop_operation () ;
       if (var_cas_v.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeDirectVariable::static_string_message_variableDescriptorErrorMessage () ;
         message2_ << var_cas_v ()->message_variableDescriptorErrorMessage () ;
         var_cas_outErrorLocation.signalExtractError (lexique_var_, message1_, message2_) ;

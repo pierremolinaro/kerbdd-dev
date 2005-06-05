@@ -22,7 +22,7 @@
 
 #ifndef lexiqueBDD_0_DEFINED
 #define lexiqueBDD_0_DEFINED
-#include "galgas/C_lexique.h"
+#include "galgas/C_Lexique.h"
 
 //--- START OF USER ZONE 2
 
@@ -35,7 +35,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class lexiqueBDD : public C_lexique {
+class lexiqueBDD : public C_Lexique {
 // Terminal symbols enumeration
   public : enum {lexiqueBDD_1_,
   lexiqueBDD_1_nombre,
@@ -89,21 +89,21 @@ class lexiqueBDD : public C_lexique {
 //--- Key words table 'delimiteursKerBDD'
   public : static const sint16 lexiqueBDD_table_size_delimiteursKerBDD ;
   private : static const C_lexique_table_entry lexiqueBDD_table_for_delimiteursKerBDD [22] ;
-  public : static sint16 search_into_delimiteursKerBDD (const C_string & inSearchedString) ;
+  public : static sint16 search_into_delimiteursKerBDD (const C_String & inSearchedString) ;
 
 //--- Key words table 'motsReservesKerBDD'
   public : static const sint16 lexiqueBDD_table_size_motsReservesKerBDD ;
   private : static const C_lexique_table_entry lexiqueBDD_table_for_motsReservesKerBDD [21] ;
-  public : static sint16 search_into_motsReservesKerBDD (const C_string & inSearchedString) ;
+  public : static sint16 search_into_motsReservesKerBDD (const C_String & inSearchedString) ;
 
   protected : virtual void parseLexicalToken (const bool inPropagateLexicaleErrorException) ;
   protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,
-                                                              C_string & messageErreur) ;
+                                                              C_String & messageErreur) ;
 
 //--- Constructor
   public : lexiqueBDD (AC_galgas_io * inGalgasInputOutput) ;
-  public : C_string att_idf ; // user defined attribute
-  public : C_string att_token ; // user defined attribute
+  public : C_String att_idf ; // user defined attribute
+  public : C_String att_token ; // user defined attribute
   public : uint32 att_valeur ; // user defined attribute
   public : virtual sint16 getTerminalVocabularyCount_ (void) const { return 47 ; }
 

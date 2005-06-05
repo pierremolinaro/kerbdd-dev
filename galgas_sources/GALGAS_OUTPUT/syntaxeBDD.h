@@ -26,7 +26,7 @@
 #include <string.h>
 
 // Include predefined semantics types definition *
-#include "memory/C_reference_count.h"
+#include "galgas/C_GGS_Object.h"
 #include "galgas/AC_galgas_io.h"
 #include "galgas/GGS_location.h"
 #include "galgas/GGS_lbool.h"
@@ -47,44 +47,44 @@
 
 //--- END OF USER ZONE 2
 
-void getHighBound (C_lexique &,
+void getHighBound (C_Lexique &,
                                 const GGS_luint  &,
                                 GGS_luint  &) ;
 
-void verifyBoundsAndComputeDimension (C_lexique &,
+void verifyBoundsAndComputeDimension (C_Lexique &,
                                 const GGS_luint  &,
                                 const GGS_luint  &,
                                 GGS_luint  &) ;
 
-void verifierDimensionValeurCorrecte (C_lexique &,
+void verifierDimensionValeurCorrecte (C_Lexique &,
                                 GGS_luint  ,
                                 GGS_luint  ) ;
 
-void verifierMemesDimensions (C_lexique &,
+void verifierMemesDimensions (C_Lexique &,
                                 GGS_luint  ,
                                 GGS_luint  ) ;
 
-void verifierDimensionUn (C_lexique &,
+void verifierDimensionUn (C_Lexique &,
                                 GGS_luint  ,
                                 GGS_location  ) ;
 
-void verifierDimensionExpliciteCorrecte (C_lexique &,
+void verifierDimensionExpliciteCorrecte (C_Lexique &,
                                 GGS_luint  ,
                                 GGS_luint  ,
                                 GGS_luint  &,
                                 GGS_luint  ) ;
 
-void routine_exploreRecordDomain (C_lexique &,
+void routine_exploreRecordDomain (C_Lexique &,
                                 const GGS_typeDomainMap  &,
                                 GGS_typeTableVariablesBool  &,
                                 const GGS_location  &) ;
 
-void routine_buildFormalArgsList (C_lexique &,
+void routine_buildFormalArgsList (C_Lexique &,
                                 const GGS_typeVariableDescriptor  &,
                                 GGS_typeFormalArgumentsList  &,
                                 const GGS_location  &) ;
 
-void routine_buildActualArgsList (C_lexique &,
+void routine_buildActualArgsList (C_Lexique &,
                                 const GGS_typeTableVariablesBool  &,
                                 GGS_typeActualArgumentsList  &,
                                 const GGS_location  &) ;
