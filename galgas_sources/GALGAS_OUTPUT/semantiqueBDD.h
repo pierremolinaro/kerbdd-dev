@@ -110,19 +110,19 @@ class GGS_typeDomainMap : public AC_galgas_map {
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
   //--- Method for getting key as C_String
-    public : virtual C_String getStringForKey (void) const ;
+    public : virtual C_String stringForKey (void) const ;
   //--- Get pointers
-    public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
-    public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
-    public : inline element_type * getSupPtr (void) const { return (element_type *) mSupPtr ; }
+    public : inline element_type * nextObject (void) const { return (element_type *) mNextItem ; }
+    public : inline element_type * infObject (void) const { return (element_type *) mInfPtr ; }
+    public : inline element_type * supObject (void) const { return (element_type *) mSupPtr ; }
   //--- Data members
     public : const GGS_lstring mKey ;
     public : e_typeDomainMap mInfo ;
   } ;
 //--- Get pointers
-  public : inline element_type * getRoot (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * getFirstItem (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * getLastItem (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (void * inKey, void * inInfo) ;
 //--- 'empty' constructor
@@ -179,7 +179,7 @@ class GGS_typeFormalArgumentsList {
                                 const GGS_luint & ,
                                 const GGS_luint & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -204,7 +204,7 @@ class GGS_typeFormalArgumentsList {
 //--- Constructor 'new'
   public : static GGS_typeFormalArgumentsList constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
                                 const GGS_luint & argument_2,
@@ -244,7 +244,7 @@ class GGS_typeActualArgumentsList {
                                 const GGS_luint & ,
                                 const GGS_location & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -269,7 +269,7 @@ class GGS_typeActualArgumentsList {
 //--- Constructor 'new'
   public : static GGS_typeActualArgumentsList constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
                                 const GGS_luint & argument_2,
@@ -373,19 +373,19 @@ class GGS_typeTableFormules : public AC_galgas_map {
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
   //--- Method for getting key as C_String
-    public : virtual C_String getStringForKey (void) const ;
+    public : virtual C_String stringForKey (void) const ;
   //--- Get pointers
-    public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
-    public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
-    public : inline element_type * getSupPtr (void) const { return (element_type *) mSupPtr ; }
+    public : inline element_type * nextObject (void) const { return (element_type *) mNextItem ; }
+    public : inline element_type * infObject (void) const { return (element_type *) mInfPtr ; }
+    public : inline element_type * supObject (void) const { return (element_type *) mSupPtr ; }
   //--- Data members
     public : const GGS_lstring mKey ;
     public : e_typeTableFormules mInfo ;
   } ;
 //--- Get pointers
-  public : inline element_type * getRoot (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * getFirstItem (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * getLastItem (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (void * inKey, void * inInfo) ;
 //--- 'empty' constructor
@@ -494,7 +494,7 @@ class GGS_typeListeCalculs {
     public : GGS_typeCalcul  aCalcul ;
     public : element_type (const GGS_typeCalcul & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -519,7 +519,7 @@ class GGS_typeListeCalculs {
 //--- Constructor 'new'
   public : static GGS_typeListeCalculs constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_typeCalcul & argument_0) ;
   protected : void internalAppendItem (const GGS_typeCalcul & argument_0) ;
   public : void insulateList (void) ;

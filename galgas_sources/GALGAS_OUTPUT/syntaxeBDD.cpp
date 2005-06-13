@@ -97,11 +97,11 @@ pr_axiomeBDD_syntaxeBDD_129_17_ (lexiqueBDD & lexique_var_,
           lexique_var_.acceptTerminal (lexiqueBDD::lexiqueBDD_1_string) ;
           var_cas_nomFichierInclusion.defineAttribute (lexique_var_.att_token, lexique_var_) ;
           lexique_var_.acceptTerminal (lexiqueBDD::lexiqueBDD_1__3B) ;
-          { lexiqueBDD scanner_ (lexique_var_.getGalgasIOptr ()) ;
+          { lexiqueBDD scanner_ (lexique_var_.galgas_IO_Ptr ()) ;
             grammaireBDD grammar_ ;
             C_String sourceFileName ;
-            if ((var_cas_nomFichierInclusion.getLength () > 0) && (var_cas_nomFichierInclusion (0 COMMA_HERE) != '/')) {
-              sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
+            if ((var_cas_nomFichierInclusion.length () > 0) && (var_cas_nomFichierInclusion (0 COMMA_HERE) != '/')) {
+              sourceFileName << lexique_var_.sourceFileName ().stringByDeletingLastPathComponent () << '/' ;
             }
             sourceFileName << var_cas_nomFichierInclusion ;
             try{
@@ -372,7 +372,7 @@ void routine_exploreRecordDomain (C_Lexique & lexique_var_,
                                 GGS_typeTableVariablesBool  & var_cas_outMap,
                                 const GGS_location  & var_cas_inErrorLocation) {
   var_cas_outMap = GGS_typeTableVariablesBool::constructor_empty () ;
-  GGS_typeDomainMap::element_type * operand_9416 = var_cas_inRecordMap.getFirstItem () ;
+  GGS_typeDomainMap::element_type * operand_9416 = var_cas_inRecordMap.firstObject () ;
   while (operand_9416 != NULL) {
     macroValidPointer (operand_9416) ;
     if (operand_9416->mInfo.mDomain.isBuilt ()) {
@@ -404,7 +404,7 @@ void routine_exploreRecordDomain (C_Lexique & lexique_var_,
           var_cas_inErrorLocation.reader_location ().signalGGSSemanticError (lexique_var_, ((GGS_string (true, "a domain was expected here ; I found ")) + (operand_9416->mInfo.mDomain.reader_messageDomainType ()))) ;
       }
     }
-    operand_9416 = operand_9416->getNextItem () ;
+    operand_9416 = operand_9416->nextObject () ;
   }
 }
 
@@ -426,11 +426,11 @@ void routine_buildFormalArgsList (C_Lexique & lexique_var_,
     }else if (dynamic_cast <cPtr_typeRecordVariable *> (var_cas_inVariableDescriptor.getPtr ()) != NULL) {
       cPtr_typeRecordVariable * operand_10930 = dynamic_cast <cPtr_typeRecordVariable *> (var_cas_inVariableDescriptor.getPtr ()) ;
       macroValidPointer (operand_10930) ; 
-      GGS_typeTableVariablesBool::element_type * operand_11034 = operand_10930->mMap.getFirstItem () ;
+      GGS_typeTableVariablesBool::element_type * operand_11034 = operand_10930->mMap.firstObject () ;
       while (operand_11034 != NULL) {
         macroValidPointer (operand_11034) ;
         ::routine_buildFormalArgsList (lexique_var_,  operand_11034->mInfo.mVariableDescriptor,  var_cas_ioFormalArgsList,  var_cas_inErrorLocation) ;
-        operand_11034 = operand_11034->getNextItem () ;
+        operand_11034 = operand_11034->nextObject () ;
       }
     }else{ // Else part
         var_cas_inErrorLocation.reader_location ().signalGGSSemanticError (lexique_var_, ((GGS_string (true, "a variable was expected here ; I found ")) + (var_cas_inVariableDescriptor.reader_variableDescriptorErrorMessage ()))) ;
@@ -1073,7 +1073,7 @@ void routine_buildActualArgsList (C_Lexique & lexique_var_,
                                 const GGS_typeTableVariablesBool  & var_cas_inDomainMap,
                                 GGS_typeActualArgumentsList  & var_cas_ioActualArgsList,
                                 const GGS_location  & var_cas_inErrorLocation) {
-  GGS_typeTableVariablesBool::element_type * operand_25750 = var_cas_inDomainMap.getFirstItem () ;
+  GGS_typeTableVariablesBool::element_type * operand_25750 = var_cas_inDomainMap.firstObject () ;
   while (operand_25750 != NULL) {
     macroValidPointer (operand_25750) ;
     if (operand_25750->mInfo.mVariableDescriptor.isBuilt ()) {
@@ -1089,7 +1089,7 @@ void routine_buildActualArgsList (C_Lexique & lexique_var_,
           var_cas_inErrorLocation.reader_location ().signalGGSSemanticError (lexique_var_, ((GGS_string (true, "a variable was expected here ; I found ")) + (operand_25750->mInfo.mVariableDescriptor.reader_variableDescriptorErrorMessage ()))) ;
       }
     }
-    operand_25750 = operand_25750->getNextItem () ;
+    operand_25750 = operand_25750->nextObject () ;
   }
 }
 

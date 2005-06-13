@@ -105,12 +105,12 @@ class lexiqueBDD : public C_Lexique {
   public : C_String att_idf ; // user defined attribute
   public : C_String att_token ; // user defined attribute
   public : uint32 att_valeur ; // user defined attribute
-  public : virtual sint16 getTerminalVocabularyCount_ (void) const { return 47 ; }
+  public : virtual sint16 terminalVocabularyCount (void) const { return 47 ; }
 
   public : static sint32 getStylesCount (void) ;
   public : static const char * getStyleName (const sint32 inIndex) ;
 //--- Virtual method called getting terminal style index
-  public : virtual uint8 getTerminalStyleIndex (const sint32 inTerminal) ;
+  public : virtual uint8 terminalStyleIndex (const sint32 inTerminal) ;
 } ;
 
 //---------------------------------------------------------------------------*
