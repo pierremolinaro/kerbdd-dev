@@ -80,7 +80,7 @@ void programmeBDD
   C_Timer timer ;
   try{
     if (mTerminalIO.versionModeOn ()) {
-      ::printf ("Reading '%s'\n", inSourceFileName_.getStringPtr ()) ;
+      ::printf ("Reading '%s'\n", inSourceFileName_.cString ()) ;
     }
     mScanner_.resetAndLoadSourceFromFile (inSourceFileName_) ;
     beforeParsing_ () ;
@@ -89,21 +89,21 @@ void programmeBDD
       message << "the '"
                  "aTableFormules"
                  "' program parameter has not been initialized" ;
-      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
     if (! aListeFormules.isBuilt ()) {
       C_String message ;
       message << "the '"
                  "aListeFormules"
                  "' program parameter has not been initialized" ;
-      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
     if (! mDomainMap.isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mDomainMap"
                  "' program parameter has not been initialized" ;
-      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
     grammaireBDD grammar_ ;
     grammar_.startParsing_ (mScanner_,
@@ -113,7 +113,7 @@ void programmeBDD
     if (mTerminalIO.getErrorTotalCount () == 0) {
       afterParsing_ () ;
     }
-    ::printf ("Analysis of '%s' completed. ", mScanner_.getSourceFile ().getFileNameWithSuffix ().getStringPtr ()) ;
+    ::printf ("Analysis of '%s' completed. ", mScanner_.sourceFileName ().lastPathComponent ().cString ()) ;
     switch (mTerminalIO.getErrorTotalCount ()) {
     case 0 :
       ::printf ("No error, ") ;
@@ -158,10 +158,10 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   IOparameters.mMaxWarningsCount = 100 ;
   TC_UniqueArray <C_String> sourceFilesArray ;
   #ifdef TARGET_API_MAC_CARBON
-    printf ("%s\n", IOparameters.mCompilerVersion.getStringPtr ()) ;
+    printf ("%s\n", IOparameters.mCompilerVersion.cString ()) ;
   #endif
   #ifdef COMPILE_FOR_WIN32
-    printf ("%s\n", IOparameters.mCompilerVersion.getStringPtr ()) ;
+    printf ("%s\n", IOparameters.mCompilerVersion.cString ()) ;
   #endif
   F_Analyze_CLI_Options (argc, argv,
                                "version 3.0.2",

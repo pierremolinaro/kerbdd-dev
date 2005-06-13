@@ -225,7 +225,7 @@ sint32 GGS_typeDomainMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeDomainMap::element_type::getStringForKey (void) const {
+C_String GGS_typeDomainMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -1065,7 +1065,7 @@ sint32 GGS_typeTableFormules::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableFormules::element_type::getStringForKey (void) const {
+C_String GGS_typeTableFormules::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -2379,8 +2379,8 @@ void routine_verifierNombreArgumentsBool (C_Lexique & lexique_var_,
   }else if (((var_cas_t1.reader_length ()) > (var_cas_t2.reader_length ())).isBuiltAndTrue ()) {
       var_cas_positionFinListe.reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "one or more actual arguments missing")) ;
   }
-  GGS_typeFormalArgumentsList::element_type * operand_8253 = var_cas_t1.getFirstItem () ;
-  GGS_typeActualArgumentsList::element_type * operand_8333 = var_cas_t2.getFirstItem () ;
+  GGS_typeFormalArgumentsList::element_type * operand_8253 = var_cas_t1.firstObject () ;
+  GGS_typeActualArgumentsList::element_type * operand_8333 = var_cas_t2.firstObject () ;
   while ((operand_8253 != NULL) && (operand_8333 != NULL)) {
     macroValidPointer (operand_8253) ;
     macroValidPointer (operand_8333) ;
@@ -2396,8 +2396,8 @@ void routine_verifierNombreArgumentsBool (C_Lexique & lexique_var_,
     }else{
         operand_8333->mErrorLocation.reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "the actual dimension is different from the formal one")) ;
     }
-    operand_8253 = operand_8253->getNextItem () ;
-    operand_8333 = operand_8333->getNextItem () ;
+    operand_8253 = operand_8253->nextObject () ;
+    operand_8333 = operand_8333->nextObject () ;
   }
 }
 

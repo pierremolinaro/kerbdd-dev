@@ -767,7 +767,7 @@ void grammaireBDD::nt_type_formule_ (lexiqueBDD & lexique_var_,
                                 GGS_typeFormalArgumentsList parameter_5,
                                 GGS_luint parameter_6,
                                 GGS_typeCalcul & parameter_7) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_type_formule_syntaxeBDD_473_20_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5, parameter_6, parameter_7) ;
@@ -813,7 +813,7 @@ void grammaireBDD::nt_facteur_formule_ (lexiqueBDD & lexique_var_,
                                 GGS_typeDomainMap & parameter_2,
                                 GGS_typeTableFormules & parameter_3,
                                 GGS_typeFormule & parameter_4) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_facteur_formule_syntaxeBDD_611_23_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4) ;
@@ -903,7 +903,7 @@ void grammaireBDD::nt_comparaisonVariable_ (lexiqueBDD & lexique_var_,
                                 GGS_luint parameter_5,
                                 GGS_luint parameter_6,
                                 GGS_typeFormule & parameter_7) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_comparaisonVariable_syntaxeBDD_657_27_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5, parameter_6, parameter_7) ;
@@ -1001,7 +1001,7 @@ void grammaireBDD::nt_parse_argument_ (lexiqueBDD & lexique_var_,
 
 
 sint16 grammaireBDD::select_repeat_syntaxeBDD_0 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1012,7 +1012,7 @@ sint16 grammaireBDD::select_repeat_syntaxeBDD_0 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_syntaxeBDD_1 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1023,7 +1023,7 @@ sint16 grammaireBDD::select_syntaxeBDD_1 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_syntaxeBDD_2 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1034,7 +1034,7 @@ sint16 grammaireBDD::select_syntaxeBDD_2 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_syntaxeBDD_3 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1045,7 +1045,7 @@ sint16 grammaireBDD::select_syntaxeBDD_3 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_repeat_syntaxeBDD_4 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1056,7 +1056,7 @@ sint16 grammaireBDD::select_repeat_syntaxeBDD_4 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_syntaxeBDD_5 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1067,7 +1067,7 @@ sint16 grammaireBDD::select_syntaxeBDD_5 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_repeat_syntaxeBDD_6 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1078,7 +1078,7 @@ sint16 grammaireBDD::select_repeat_syntaxeBDD_6 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_syntaxeBDD_7 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1089,7 +1089,7 @@ sint16 grammaireBDD::select_syntaxeBDD_7 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_syntaxeBDD_8 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1100,7 +1100,7 @@ sint16 grammaireBDD::select_syntaxeBDD_8 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_syntaxeBDD_9 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1111,7 +1111,7 @@ sint16 grammaireBDD::select_syntaxeBDD_9 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_repeat_syntaxeBDD_10 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1122,7 +1122,7 @@ sint16 grammaireBDD::select_repeat_syntaxeBDD_10 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_repeat_syntaxeBDD_11 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1133,7 +1133,7 @@ sint16 grammaireBDD::select_repeat_syntaxeBDD_11 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_repeat_syntaxeBDD_12 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1144,7 +1144,7 @@ sint16 grammaireBDD::select_repeat_syntaxeBDD_12 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_repeat_syntaxeBDD_13 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1155,7 +1155,7 @@ sint16 grammaireBDD::select_repeat_syntaxeBDD_13 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_syntaxeBDD_14 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1166,7 +1166,7 @@ sint16 grammaireBDD::select_syntaxeBDD_14 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_repeat_syntaxeBDD_15 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1177,7 +1177,7 @@ sint16 grammaireBDD::select_repeat_syntaxeBDD_15 (lexiqueBDD & lexique_var_) {
 
 
 sint16 grammaireBDD::select_syntaxeBDD_16 (lexiqueBDD & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*

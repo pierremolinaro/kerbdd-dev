@@ -42,8 +42,8 @@
 lexiqueBDD::
 lexiqueBDD (AC_galgas_io * inGalgasInputOutput)
 : C_Lexique (inGalgasInputOutput) {
-  att_idf.clearString () ;
-  att_token.clearString () ;
+  att_idf.clear () ;
+  att_token.clear () ;
   att_valeur = 0 ;
 }
 
@@ -301,17 +301,17 @@ void lexiqueBDD::
 parseLexicalToken (const bool inPropagateLexicaleErrorException) {
   bool loop_ = true ;
   mCurrentTokenCode = -1 ;
-  att_idf.clearString () ;
-  att_token.clearString () ;
+  att_idf.clear () ;
+  att_token.clear () ;
   att_valeur = 0 ;
   while (mCurrentTokenCode < 0) {
-    mCurrentTokenStartLocation = getCurrentLocation () ;
+    mCurrentTokenStartLocation = currentLocation () ;
     try{
       if (testForInputChar ('a', 'z') ||
           testForInputChar ('A', 'Z')) {
         do {
-          enterCharacterIntoString (att_idf, toLower (getPreviousChar ()), * this) ;
-          enterCharacterIntoString (att_token, getPreviousChar (), * this) ;
+          enterCharacterIntoString (att_idf, toLower (previousChar ()), * this) ;
+          enterCharacterIntoString (att_token, previousChar (), * this) ;
           if (testForInputChar ('a', 'z') ||
               testForInputChar ('A', 'Z') ||
               testForInputChar ('_') ||
@@ -330,7 +330,7 @@ parseLexicalToken (const bool inPropagateLexicaleErrorException) {
           if (testForInputChar (' ') ||
               testForInputChar ('!') ||
               testForInputChar ('#', '\xFF')) {
-            enterCharacterIntoString (att_token, getPreviousChar (), * this) ;
+            enterCharacterIntoString (att_token, previousChar (), * this) ;
           }else{
             loop_ = false ;
           }
@@ -342,10 +342,10 @@ parseLexicalToken (const bool inPropagateLexicaleErrorException) {
           lexicalError (gErrorMessage_3) ;
         }
       }else if (testForInputChar ('0', '9')) {
-        enterDigitIntoUlong (att_valeur, getPreviousChar (), gErrorMessage_1, gErrorMessage_2, * this) ;
+        enterDigitIntoUlong (att_valeur, previousChar (), gErrorMessage_1, gErrorMessage_2, * this) ;
         do {
           if (testForInputChar ('0', '9')) {
-            enterDigitIntoUlong (att_valeur, getPreviousChar (), gErrorMessage_1, gErrorMessage_2, * this) ;
+            enterDigitIntoUlong (att_valeur, previousChar (), gErrorMessage_1, gErrorMessage_2, * this) ;
           }else if (testForInputChar ('_')) {
           }else{
             loop_ = false ;
@@ -472,7 +472,7 @@ const char * lexiqueBDD::getStyleName (const sint32 inIndex) {
 //---------------------------------------------------------------------------*
 
 uint8 lexiqueBDD::
-getTerminalStyleIndex (const sint32 inTerminal) {
+terminalStyleIndex (const sint32 inTerminal) {
   static const uint8 kTerminalSymbolStyles [48] = {0,
     5 /* lexiqueBDD_1_nombre */,
     1 /* lexiqueBDD_1_id */,
