@@ -24,7 +24,7 @@
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
-			<string>cocoaGalgasDocument</string>
+			<string>OC_GGS_Document</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
