@@ -13,10 +13,10 @@
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-cElementTableVariablesBDD <INFO, CLEF>::
+template <class INFO>
+cElementTableVariablesBDD <INFO>::
 cElementTableVariablesBDD (const INFO & info,
-                           const CLEF & clef,
+                           const GGS_lstring & clef,
                            const sint32 numeroElement) {
   mEntryIndex = numeroElement ;
   mNextItem = NULL ;
@@ -28,7 +28,7 @@ cElementTableVariablesBDD (const INFO & info,
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF> cElementTableVariablesBDD <INFO, CLEF>::
+template <class INFO> cElementTableVariablesBDD <INFO>::
 ~cElementTableVariablesBDD (void) {
   macroMyDelete (champPtrVersInf, element_type) ;
   macroMyDelete (champPtrVersSup, element_type) ;
@@ -36,8 +36,8 @@ template <class INFO, class CLEF> cElementTableVariablesBDD <INFO, CLEF>::
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-cTableVariablesBDD <INFO, CLEF>::cTableVariablesBDD (void) {
+template <class INFO>
+cTableVariablesBDD <INFO>::cTableVariablesBDD (void) {
   mRoot = NULL ;
   mFirstItem = NULL ;
   mLastItem = NULL ;
@@ -48,8 +48,8 @@ cTableVariablesBDD <INFO, CLEF>::cTableVariablesBDD (void) {
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-cTableVariablesBDD <INFO, CLEF>::~cTableVariablesBDD (void) {
+template <class INFO>
+cTableVariablesBDD <INFO>::~cTableVariablesBDD (void) {
   destroy () ;
 }
 
@@ -59,10 +59,10 @@ cTableVariablesBDD <INFO, CLEF>::~cTableVariablesBDD (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <class INFO, class KEY>
-cTableVariablesBDD <INFO, KEY> cTableVariablesBDD <INFO, KEY>::
+template <class INFO>
+cTableVariablesBDD <INFO> cTableVariablesBDD <INFO>::
 constructor_empty (void) {
-  cTableVariablesBDD <INFO, KEY> bdd ;
+  cTableVariablesBDD <INFO> bdd ;
   bdd.mRoot = (element_type *) NULL ;
   bdd.mFirstItem = (element_type *) NULL ;
   bdd.mLastItem = (element_type *) NULL ;
@@ -74,8 +74,16 @@ constructor_empty (void) {
 
 //---------------------------------------------------------------------------*
 
-template <class INFO, class KEY>
-void cTableVariablesBDD <INFO, KEY>::drop_operation (void) {
+template <class INFO>
+void cTableVariablesBDD <INFO>::build (void) {
+  drop_operation () ;
+  macroMyNew (mReferenceCountPtr, sint32 (1)) ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <class INFO>
+void cTableVariablesBDD <INFO>::drop_operation (void) {
   mFirstItem = (element_type *) NULL ;
   mLastItem = (element_type *) NULL ;
   mListLength = 0 ;
@@ -94,9 +102,9 @@ void cTableVariablesBDD <INFO, KEY>::drop_operation (void) {
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-cTableVariablesBDD <INFO, CLEF>::
-cTableVariablesBDD (const cTableVariablesBDD <INFO, CLEF> & inSource) {
+template <class INFO>
+cTableVariablesBDD <INFO>::
+cTableVariablesBDD (const cTableVariablesBDD <INFO> & inSource) {
   mRoot = NULL ;
   mFirstItem = NULL ;
   mLastItem = NULL ;
@@ -108,9 +116,9 @@ cTableVariablesBDD (const cTableVariablesBDD <INFO, CLEF> & inSource) {
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-void cTableVariablesBDD <INFO, CLEF>::
-operator = (const cTableVariablesBDD <INFO, CLEF> & inSource) {
+template <class INFO>
+void cTableVariablesBDD <INFO>::
+operator = (const cTableVariablesBDD <INFO> & inSource) {
   if (this != & inSource) {
     destroy () ;
     mRoot = inSource.mRoot ;
@@ -128,8 +136,8 @@ operator = (const cTableVariablesBDD <INFO, CLEF> & inSource) {
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-void cTableVariablesBDD <INFO, CLEF>::destroy (void) {
+template <class INFO>
+void cTableVariablesBDD <INFO>::destroy (void) {
   mFirstItem = NULL ;
   mLastItem = NULL ;
   mListLength = 0 ;
@@ -149,8 +157,8 @@ void cTableVariablesBDD <INFO, CLEF>::destroy (void) {
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-void cTableVariablesBDD <INFO, CLEF>::insulateMap (void) {
+template <class INFO>
+void cTableVariablesBDD <INFO>::insulateMap (void) {
 //--- Si la table est référencée plusieurs fois, la dupliquer
   if (mReferenceCountPtr != NULL) {
     macroValidPointer (mReferenceCountPtr) ;
@@ -175,11 +183,11 @@ void cTableVariablesBDD <INFO, CLEF>::insulateMap (void) {
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-sint32 cTableVariablesBDD <INFO, CLEF>::
+template <class INFO>
+sint32 cTableVariablesBDD <INFO>::
 insertKey (C_Lexique & inLexique,
         const INFO & info,
-        const CLEF & clef,
+        const GGS_lstring & clef,
         const GGS_location & positionErreur,
         const char * messageErreurInsertion) {
   sint32 indiceAllocationBDD = -1 ;
@@ -198,10 +206,10 @@ insertKey (C_Lexique & inLexique,
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-sint32 cTableVariablesBDD <INFO, CLEF>::
+template <class INFO>
+sint32 cTableVariablesBDD <INFO>::
 insererInterne (const INFO & info,
-                const CLEF & clef,
+                const GGS_lstring & clef,
                 element_type * & racine) {
   sint32 indiceAllocationBDD = -1 ;
   if (racine == NULL) {
@@ -232,14 +240,14 @@ insererInterne (const INFO & info,
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-GGS_bool cTableVariablesBDD <INFO, CLEF>::reader_hasKey (const CLEF & clef) {
+template <class INFO>
+GGS_bool cTableVariablesBDD <INFO>::reader_hasKey (const GGS_string & clef) {
   bool trouve = false ;
   if (isBuilt () && clef.isBuilt ()) {
     element_type * element = mRoot ;
     while ((element != NULL) && ! trouve) {
       macroValidPointer (element) ;
-      const sint32 comparaison = element->mKey.compare (clef) ;
+      const sint32 comparaison = element->mKey.compare (clef.string ()) ;
       if (comparaison > 0) {
         element = element->champPtrVersInf ;
       }else if (comparaison < 0) {
@@ -254,10 +262,10 @@ GGS_bool cTableVariablesBDD <INFO, CLEF>::reader_hasKey (const CLEF & clef) {
 
 //----------------------------------------------------------------------------*
 
-template <class INFO, class CLEF>
-cElementTableVariablesBDD <INFO, CLEF> * cTableVariablesBDD <INFO, CLEF>::
+template <class INFO>
+cElementTableVariablesBDD <INFO> * cTableVariablesBDD <INFO>::
 searchKey (C_Lexique & inLexique,
-           const CLEF & clef,
+           const GGS_lstring & clef,
            const GGS_location & positionErreur,
            const char * messageErreurRecherche) {
   element_type * resultat = (element_type *) NULL ;
