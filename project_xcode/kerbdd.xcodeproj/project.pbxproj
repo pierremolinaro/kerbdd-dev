@@ -12,10 +12,6 @@
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		CF103D2707AFDB880093400D /* grammaireBDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D1907AFDB880093400D /* grammaireBDD.cpp */; };
 		CF103D2807AFDB880093400D /* grammaireBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1A07AFDB880093400D /* grammaireBDD.h */; };
-		CF103D2907AFDB880093400D /* include_typeCalcul.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1B07AFDB880093400D /* include_typeCalcul.h */; };
-		CF103D2A07AFDB880093400D /* include_typeDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1C07AFDB880093400D /* include_typeDomain.h */; };
-		CF103D2B07AFDB880093400D /* include_typeFormule.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1D07AFDB880093400D /* include_typeFormule.h */; };
-		CF103D2C07AFDB880093400D /* include_typeVariableDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1E07AFDB880093400D /* include_typeVariableDescriptor.h */; };
 		CF103D2D07AFDB880093400D /* lexiqueBDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D1F07AFDB880093400D /* lexiqueBDD.cpp */; };
 		CF103D2E07AFDB880093400D /* lexiqueBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D2007AFDB880093400D /* lexiqueBDD.h */; };
 		CF103D2F07AFDB880093400D /* programmeBDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D2107AFDB880093400D /* programmeBDD.cpp */; };
@@ -26,10 +22,6 @@
 		CF103D3407AFDB880093400D /* syntaxeBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D2607AFDB880093400D /* syntaxeBDD.h */; };
 		CF103D3507AFDB880093400D /* grammaireBDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D1907AFDB880093400D /* grammaireBDD.cpp */; };
 		CF103D3607AFDB880093400D /* grammaireBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1A07AFDB880093400D /* grammaireBDD.h */; };
-		CF103D3707AFDB880093400D /* include_typeCalcul.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1B07AFDB880093400D /* include_typeCalcul.h */; };
-		CF103D3807AFDB880093400D /* include_typeDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1C07AFDB880093400D /* include_typeDomain.h */; };
-		CF103D3907AFDB880093400D /* include_typeFormule.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1D07AFDB880093400D /* include_typeFormule.h */; };
-		CF103D3A07AFDB880093400D /* include_typeVariableDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1E07AFDB880093400D /* include_typeVariableDescriptor.h */; };
 		CF103D3B07AFDB880093400D /* lexiqueBDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D1F07AFDB880093400D /* lexiqueBDD.cpp */; };
 		CF103D3C07AFDB880093400D /* lexiqueBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D2007AFDB880093400D /* lexiqueBDD.h */; };
 		CF103D3D07AFDB880093400D /* programmeBDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D2107AFDB880093400D /* programmeBDD.cpp */; };
@@ -42,17 +34,11 @@
 		CF103D4E07AFDBAD0093400D /* cTableVariablesBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4407AFDBAD0093400D /* cTableVariablesBDD.h */; };
 		CF103D5007AFDBAD0093400D /* opComp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4607AFDBAD0093400D /* opComp.cpp */; };
 		CF103D5107AFDBAD0093400D /* opComp.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4707AFDBAD0093400D /* opComp.h */; };
-		CF103D5307AFDBAD0093400D /* typeCalcul.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4907AFDBAD0093400D /* typeCalcul.h */; };
-		CF103D5407AFDBAD0093400D /* typeFormule.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4A07AFDBAD0093400D /* typeFormule.h */; };
-		CF103D5507AFDBAD0093400D /* typeVariableDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4B07AFDBAD0093400D /* typeVariableDescriptor.h */; };
 		CF103D5607AFDBAD0093400D /* verifExternes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4C07AFDBAD0093400D /* verifExternes.cpp */; };
 		CF103D5707AFDBD10093400D /* calculsLogiques.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4307AFDBAD0093400D /* calculsLogiques.cpp */; };
 		CF103D5807AFDBD20093400D /* cTableVariablesBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4407AFDBAD0093400D /* cTableVariablesBDD.h */; };
 		CF103D5907AFDBD20093400D /* opComp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4607AFDBAD0093400D /* opComp.cpp */; };
 		CF103D5A07AFDBD30093400D /* opComp.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4707AFDBAD0093400D /* opComp.h */; };
-		CF103D5B07AFDBD30093400D /* typeCalcul.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4907AFDBAD0093400D /* typeCalcul.h */; };
-		CF103D5C07AFDBD40093400D /* typeFormule.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4A07AFDBAD0093400D /* typeFormule.h */; };
-		CF103D5D07AFDBD50093400D /* typeVariableDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4B07AFDBAD0093400D /* typeVariableDescriptor.h */; };
 		CF103D5E07AFDBD50093400D /* verifExternes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4C07AFDBAD0093400D /* verifExternes.cpp */; };
 		CF103D6207AFDC7B0093400D /* C_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D6007AFDC7B0093400D /* C_bdd.cpp */; };
 		CF103D6307AFDC7B0093400D /* C_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D6107AFDC7B0093400D /* C_bdd.h */; };
@@ -253,6 +239,68 @@
 		CFAC5157062158B500AF7FE3 /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC5156062158B500AF7FE3 /* AC_galgas_map.cpp */; };
 		CFAC5158062158B500AF7FE3 /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC5156062158B500AF7FE3 /* AC_galgas_map.cpp */; };
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
+		CFD21C480913D85E0011F11E /* include_typeAfficherBilan.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2A0913D85E0011F11E /* include_typeAfficherBilan.h */; };
+		CFD21C490913D85E0011F11E /* include_typeCalcul.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2B0913D85E0011F11E /* include_typeCalcul.h */; };
+		CFD21C4A0913D85E0011F11E /* include_typeCalculIteratif.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2C0913D85E0011F11E /* include_typeCalculIteratif.h */; };
+		CFD21C4B0913D85E0011F11E /* include_typeCalculSimple.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2D0913D85E0011F11E /* include_typeCalculSimple.h */; };
+		CFD21C4C0913D85E0011F11E /* include_typeComparaisonFormules.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2E0913D85E0011F11E /* include_typeComparaisonFormules.h */; };
+		CFD21C4D0913D85E0011F11E /* include_typeDimensionnerANDCache.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2F0913D85E0011F11E /* include_typeDimensionnerANDCache.h */; };
+		CFD21C4E0913D85E0011F11E /* include_typeDimensionnerITECache.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C300913D85E0011F11E /* include_typeDimensionnerITECache.h */; };
+		CFD21C4F0913D85E0011F11E /* include_typeDimensionnerTable.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C310913D85E0011F11E /* include_typeDimensionnerTable.h */; };
+		CFD21C500913D85E0011F11E /* include_typeDirectDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C320913D85E0011F11E /* include_typeDirectDomain.h */; };
+		CFD21C510913D85E0011F11E /* include_typeDirectVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C330913D85E0011F11E /* include_typeDirectVariable.h */; };
+		CFD21C520913D85E0011F11E /* include_typeDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C340913D85E0011F11E /* include_typeDomain.h */; };
+		CFD21C530913D85E0011F11E /* include_typeFormule.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C350913D85E0011F11E /* include_typeFormule.h */; };
+		CFD21C540913D85E0011F11E /* include_typeFormuleComparaisonValeur.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C360913D85E0011F11E /* include_typeFormuleComparaisonValeur.h */; };
+		CFD21C550913D85E0011F11E /* include_typeFormuleComparaisonVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C370913D85E0011F11E /* include_typeFormuleComparaisonVariable.h */; };
+		CFD21C560913D85E0011F11E /* include_typeFormuleEt.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C380913D85E0011F11E /* include_typeFormuleEt.h */; };
+		CFD21C570913D85E0011F11E /* include_typeFormuleExist.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C390913D85E0011F11E /* include_typeFormuleExist.h */; };
+		CFD21C580913D85E0011F11E /* include_typeFormuleFalse.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3A0913D85E0011F11E /* include_typeFormuleFalse.h */; };
+		CFD21C590913D85E0011F11E /* include_typeFormuleFor.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3B0913D85E0011F11E /* include_typeFormuleFor.h */; };
+		CFD21C5A0913D85E0011F11E /* include_typeFormuleImplique.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3C0913D85E0011F11E /* include_typeFormuleImplique.h */; };
+		CFD21C5B0913D85E0011F11E /* include_typeFormuleIte.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3D0913D85E0011F11E /* include_typeFormuleIte.h */; };
+		CFD21C5C0913D85E0011F11E /* include_typeFormuleNon.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3E0913D85E0011F11E /* include_typeFormuleNon.h */; };
+		CFD21C5D0913D85E0011F11E /* include_typeFormuleOu.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3F0913D85E0011F11E /* include_typeFormuleOu.h */; };
+		CFD21C5E0913D85E0011F11E /* include_typeFormuleTrue.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C400913D85E0011F11E /* include_typeFormuleTrue.h */; };
+		CFD21C5F0913D85E0011F11E /* include_typeFormuleVar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C410913D85E0011F11E /* include_typeFormuleVar.h */; };
+		CFD21C600913D85E0011F11E /* include_typeRecordDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C420913D85E0011F11E /* include_typeRecordDomain.h */; };
+		CFD21C610913D85E0011F11E /* include_typeRecordVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C430913D85E0011F11E /* include_typeRecordVariable.h */; };
+		CFD21C620913D85E0011F11E /* include_typeUse_AND_ITE.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C440913D85E0011F11E /* include_typeUse_AND_ITE.h */; };
+		CFD21C630913D85E0011F11E /* include_typeUse_AND.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C450913D85E0011F11E /* include_typeUse_AND.h */; };
+		CFD21C640913D85E0011F11E /* include_typeUse_ITE.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C460913D85E0011F11E /* include_typeUse_ITE.h */; };
+		CFD21C650913D85E0011F11E /* include_typeVariableDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C470913D85E0011F11E /* include_typeVariableDescriptor.h */; };
+		CFD21C660913D85E0011F11E /* include_typeAfficherBilan.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2A0913D85E0011F11E /* include_typeAfficherBilan.h */; };
+		CFD21C670913D85E0011F11E /* include_typeCalcul.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2B0913D85E0011F11E /* include_typeCalcul.h */; };
+		CFD21C680913D85E0011F11E /* include_typeCalculIteratif.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2C0913D85E0011F11E /* include_typeCalculIteratif.h */; };
+		CFD21C690913D85E0011F11E /* include_typeCalculSimple.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2D0913D85E0011F11E /* include_typeCalculSimple.h */; };
+		CFD21C6A0913D85E0011F11E /* include_typeComparaisonFormules.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2E0913D85E0011F11E /* include_typeComparaisonFormules.h */; };
+		CFD21C6B0913D85E0011F11E /* include_typeDimensionnerANDCache.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C2F0913D85E0011F11E /* include_typeDimensionnerANDCache.h */; };
+		CFD21C6C0913D85E0011F11E /* include_typeDimensionnerITECache.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C300913D85E0011F11E /* include_typeDimensionnerITECache.h */; };
+		CFD21C6D0913D85E0011F11E /* include_typeDimensionnerTable.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C310913D85E0011F11E /* include_typeDimensionnerTable.h */; };
+		CFD21C6E0913D85E0011F11E /* include_typeDirectDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C320913D85E0011F11E /* include_typeDirectDomain.h */; };
+		CFD21C6F0913D85E0011F11E /* include_typeDirectVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C330913D85E0011F11E /* include_typeDirectVariable.h */; };
+		CFD21C700913D85E0011F11E /* include_typeDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C340913D85E0011F11E /* include_typeDomain.h */; };
+		CFD21C710913D85E0011F11E /* include_typeFormule.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C350913D85E0011F11E /* include_typeFormule.h */; };
+		CFD21C720913D85E0011F11E /* include_typeFormuleComparaisonValeur.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C360913D85E0011F11E /* include_typeFormuleComparaisonValeur.h */; };
+		CFD21C730913D85E0011F11E /* include_typeFormuleComparaisonVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C370913D85E0011F11E /* include_typeFormuleComparaisonVariable.h */; };
+		CFD21C740913D85E0011F11E /* include_typeFormuleEt.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C380913D85E0011F11E /* include_typeFormuleEt.h */; };
+		CFD21C750913D85E0011F11E /* include_typeFormuleExist.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C390913D85E0011F11E /* include_typeFormuleExist.h */; };
+		CFD21C760913D85E0011F11E /* include_typeFormuleFalse.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3A0913D85E0011F11E /* include_typeFormuleFalse.h */; };
+		CFD21C770913D85E0011F11E /* include_typeFormuleFor.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3B0913D85E0011F11E /* include_typeFormuleFor.h */; };
+		CFD21C780913D85E0011F11E /* include_typeFormuleImplique.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3C0913D85E0011F11E /* include_typeFormuleImplique.h */; };
+		CFD21C790913D85E0011F11E /* include_typeFormuleIte.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3D0913D85E0011F11E /* include_typeFormuleIte.h */; };
+		CFD21C7A0913D85E0011F11E /* include_typeFormuleNon.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3E0913D85E0011F11E /* include_typeFormuleNon.h */; };
+		CFD21C7B0913D85E0011F11E /* include_typeFormuleOu.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C3F0913D85E0011F11E /* include_typeFormuleOu.h */; };
+		CFD21C7C0913D85E0011F11E /* include_typeFormuleTrue.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C400913D85E0011F11E /* include_typeFormuleTrue.h */; };
+		CFD21C7D0913D85E0011F11E /* include_typeFormuleVar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C410913D85E0011F11E /* include_typeFormuleVar.h */; };
+		CFD21C7E0913D85E0011F11E /* include_typeRecordDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C420913D85E0011F11E /* include_typeRecordDomain.h */; };
+		CFD21C7F0913D85E0011F11E /* include_typeRecordVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C430913D85E0011F11E /* include_typeRecordVariable.h */; };
+		CFD21C800913D85E0011F11E /* include_typeUse_AND_ITE.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C440913D85E0011F11E /* include_typeUse_AND_ITE.h */; };
+		CFD21C810913D85E0011F11E /* include_typeUse_AND.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C450913D85E0011F11E /* include_typeUse_AND.h */; };
+		CFD21C820913D85E0011F11E /* include_typeUse_ITE.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C460913D85E0011F11E /* include_typeUse_ITE.h */; };
+		CFD21C830913D85E0011F11E /* include_typeVariableDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21C470913D85E0011F11E /* include_typeVariableDescriptor.h */; };
+		CFD2202A0913EC5E0011F11E /* grammar_programmeBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD220290913EC5E0011F11E /* grammar_programmeBDD.h */; };
+		CFD2202B0913EC5E0011F11E /* grammar_programmeBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD220290913EC5E0011F11E /* grammar_programmeBDD.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -346,10 +394,6 @@
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		CF103D1907AFDB880093400D /* grammaireBDD.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = grammaireBDD.cpp; sourceTree = "<group>"; };
 		CF103D1A07AFDB880093400D /* grammaireBDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammaireBDD.h; sourceTree = "<group>"; };
-		CF103D1B07AFDB880093400D /* include_typeCalcul.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCalcul.h; sourceTree = "<group>"; };
-		CF103D1C07AFDB880093400D /* include_typeDomain.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDomain.h; sourceTree = "<group>"; };
-		CF103D1D07AFDB880093400D /* include_typeFormule.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormule.h; sourceTree = "<group>"; };
-		CF103D1E07AFDB880093400D /* include_typeVariableDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeVariableDescriptor.h; sourceTree = "<group>"; };
 		CF103D1F07AFDB880093400D /* lexiqueBDD.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueBDD.cpp; sourceTree = "<group>"; };
 		CF103D2007AFDB880093400D /* lexiqueBDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueBDD.h; sourceTree = "<group>"; };
 		CF103D2107AFDB880093400D /* programmeBDD.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = programmeBDD.cpp; sourceTree = "<group>"; };
@@ -362,9 +406,6 @@
 		CF103D4407AFDBAD0093400D /* cTableVariablesBDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cTableVariablesBDD.h; sourceTree = "<group>"; };
 		CF103D4607AFDBAD0093400D /* opComp.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = opComp.cpp; sourceTree = "<group>"; };
 		CF103D4707AFDBAD0093400D /* opComp.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = opComp.h; sourceTree = "<group>"; };
-		CF103D4907AFDBAD0093400D /* typeCalcul.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = typeCalcul.h; sourceTree = "<group>"; };
-		CF103D4A07AFDBAD0093400D /* typeFormule.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = typeFormule.h; sourceTree = "<group>"; };
-		CF103D4B07AFDBAD0093400D /* typeVariableDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = typeVariableDescriptor.h; sourceTree = "<group>"; };
 		CF103D4C07AFDBAD0093400D /* verifExternes.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = verifExternes.cpp; sourceTree = "<group>"; };
 		CF103D6007AFDC7B0093400D /* C_bdd.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_bdd.cpp; sourceTree = "<group>"; };
 		CF103D6107AFDC7B0093400D /* C_bdd.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_bdd.h; sourceTree = "<group>"; };
@@ -464,6 +505,37 @@
 		CFA8C6A30622A9D9005F7F63 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		CFAC5156062158B500AF7FE3 /* AC_galgas_map.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_map.cpp; sourceTree = "<group>"; };
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CFD21C2A0913D85E0011F11E /* include_typeAfficherBilan.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAfficherBilan.h; sourceTree = "<group>"; };
+		CFD21C2B0913D85E0011F11E /* include_typeCalcul.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCalcul.h; sourceTree = "<group>"; };
+		CFD21C2C0913D85E0011F11E /* include_typeCalculIteratif.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCalculIteratif.h; sourceTree = "<group>"; };
+		CFD21C2D0913D85E0011F11E /* include_typeCalculSimple.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCalculSimple.h; sourceTree = "<group>"; };
+		CFD21C2E0913D85E0011F11E /* include_typeComparaisonFormules.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeComparaisonFormules.h; sourceTree = "<group>"; };
+		CFD21C2F0913D85E0011F11E /* include_typeDimensionnerANDCache.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDimensionnerANDCache.h; sourceTree = "<group>"; };
+		CFD21C300913D85E0011F11E /* include_typeDimensionnerITECache.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDimensionnerITECache.h; sourceTree = "<group>"; };
+		CFD21C310913D85E0011F11E /* include_typeDimensionnerTable.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDimensionnerTable.h; sourceTree = "<group>"; };
+		CFD21C320913D85E0011F11E /* include_typeDirectDomain.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDirectDomain.h; sourceTree = "<group>"; };
+		CFD21C330913D85E0011F11E /* include_typeDirectVariable.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDirectVariable.h; sourceTree = "<group>"; };
+		CFD21C340913D85E0011F11E /* include_typeDomain.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDomain.h; sourceTree = "<group>"; };
+		CFD21C350913D85E0011F11E /* include_typeFormule.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormule.h; sourceTree = "<group>"; };
+		CFD21C360913D85E0011F11E /* include_typeFormuleComparaisonValeur.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleComparaisonValeur.h; sourceTree = "<group>"; };
+		CFD21C370913D85E0011F11E /* include_typeFormuleComparaisonVariable.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleComparaisonVariable.h; sourceTree = "<group>"; };
+		CFD21C380913D85E0011F11E /* include_typeFormuleEt.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleEt.h; sourceTree = "<group>"; };
+		CFD21C390913D85E0011F11E /* include_typeFormuleExist.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleExist.h; sourceTree = "<group>"; };
+		CFD21C3A0913D85E0011F11E /* include_typeFormuleFalse.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleFalse.h; sourceTree = "<group>"; };
+		CFD21C3B0913D85E0011F11E /* include_typeFormuleFor.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleFor.h; sourceTree = "<group>"; };
+		CFD21C3C0913D85E0011F11E /* include_typeFormuleImplique.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleImplique.h; sourceTree = "<group>"; };
+		CFD21C3D0913D85E0011F11E /* include_typeFormuleIte.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleIte.h; sourceTree = "<group>"; };
+		CFD21C3E0913D85E0011F11E /* include_typeFormuleNon.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleNon.h; sourceTree = "<group>"; };
+		CFD21C3F0913D85E0011F11E /* include_typeFormuleOu.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleOu.h; sourceTree = "<group>"; };
+		CFD21C400913D85E0011F11E /* include_typeFormuleTrue.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleTrue.h; sourceTree = "<group>"; };
+		CFD21C410913D85E0011F11E /* include_typeFormuleVar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeFormuleVar.h; sourceTree = "<group>"; };
+		CFD21C420913D85E0011F11E /* include_typeRecordDomain.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRecordDomain.h; sourceTree = "<group>"; };
+		CFD21C430913D85E0011F11E /* include_typeRecordVariable.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRecordVariable.h; sourceTree = "<group>"; };
+		CFD21C440913D85E0011F11E /* include_typeUse_AND_ITE.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUse_AND_ITE.h; sourceTree = "<group>"; };
+		CFD21C450913D85E0011F11E /* include_typeUse_AND.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUse_AND.h; sourceTree = "<group>"; };
+		CFD21C460913D85E0011F11E /* include_typeUse_ITE.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUse_ITE.h; sourceTree = "<group>"; };
+		CFD21C470913D85E0011F11E /* include_typeVariableDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeVariableDescriptor.h; sourceTree = "<group>"; };
+		CFD220290913EC5E0011F11E /* grammar_programmeBDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_programmeBDD.h; sourceTree = "<group>"; };
 		CFF53872057A558F00854C83 /* AC_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_io.cpp; sourceTree = "<group>"; };
 		CFF53881057A558F00854C83 /* GGS_bool.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_bool.cpp; sourceTree = "<group>"; };
 		CFF53883057A558F00854C83 /* GGS_char.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_char.cpp; sourceTree = "<group>"; };
@@ -630,16 +702,12 @@
 			path = cocoa_galgas;
 			sourceTree = "<group>";
 		};
-		CFF53732057A4E5000854C83 /* GALGAS_OUTPUT */ = {
+		CFD21C280913D8310011F11E /* Implementation Files */ = {
 			isa = PBXGroup;
 			children = (
 				CF103D8C07AFE8340093400D /* cocoaKerBDD.mm */,
 				CF103D1907AFDB880093400D /* grammaireBDD.cpp */,
 				CF103D1A07AFDB880093400D /* grammaireBDD.h */,
-				CF103D1B07AFDB880093400D /* include_typeCalcul.h */,
-				CF103D1C07AFDB880093400D /* include_typeDomain.h */,
-				CF103D1D07AFDB880093400D /* include_typeFormule.h */,
-				CF103D1E07AFDB880093400D /* include_typeVariableDescriptor.h */,
 				CF103D1F07AFDB880093400D /* lexiqueBDD.cpp */,
 				CF103D2007AFDB880093400D /* lexiqueBDD.h */,
 				CF103D2107AFDB880093400D /* programmeBDD.cpp */,
@@ -648,6 +716,53 @@
 				CF103D2407AFDB880093400D /* semantiqueBDD.h */,
 				CF103D2507AFDB880093400D /* syntaxeBDD.cpp */,
 				CF103D2607AFDB880093400D /* syntaxeBDD.h */,
+			);
+			name = "Implementation Files";
+			sourceTree = "<group>";
+		};
+		CFD21C290913D8460011F11E /* Include Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFD220290913EC5E0011F11E /* grammar_programmeBDD.h */,
+				CFD21C2A0913D85E0011F11E /* include_typeAfficherBilan.h */,
+				CFD21C2B0913D85E0011F11E /* include_typeCalcul.h */,
+				CFD21C2C0913D85E0011F11E /* include_typeCalculIteratif.h */,
+				CFD21C2D0913D85E0011F11E /* include_typeCalculSimple.h */,
+				CFD21C2E0913D85E0011F11E /* include_typeComparaisonFormules.h */,
+				CFD21C2F0913D85E0011F11E /* include_typeDimensionnerANDCache.h */,
+				CFD21C300913D85E0011F11E /* include_typeDimensionnerITECache.h */,
+				CFD21C310913D85E0011F11E /* include_typeDimensionnerTable.h */,
+				CFD21C320913D85E0011F11E /* include_typeDirectDomain.h */,
+				CFD21C330913D85E0011F11E /* include_typeDirectVariable.h */,
+				CFD21C340913D85E0011F11E /* include_typeDomain.h */,
+				CFD21C350913D85E0011F11E /* include_typeFormule.h */,
+				CFD21C360913D85E0011F11E /* include_typeFormuleComparaisonValeur.h */,
+				CFD21C370913D85E0011F11E /* include_typeFormuleComparaisonVariable.h */,
+				CFD21C380913D85E0011F11E /* include_typeFormuleEt.h */,
+				CFD21C390913D85E0011F11E /* include_typeFormuleExist.h */,
+				CFD21C3A0913D85E0011F11E /* include_typeFormuleFalse.h */,
+				CFD21C3B0913D85E0011F11E /* include_typeFormuleFor.h */,
+				CFD21C3C0913D85E0011F11E /* include_typeFormuleImplique.h */,
+				CFD21C3D0913D85E0011F11E /* include_typeFormuleIte.h */,
+				CFD21C3E0913D85E0011F11E /* include_typeFormuleNon.h */,
+				CFD21C3F0913D85E0011F11E /* include_typeFormuleOu.h */,
+				CFD21C400913D85E0011F11E /* include_typeFormuleTrue.h */,
+				CFD21C410913D85E0011F11E /* include_typeFormuleVar.h */,
+				CFD21C420913D85E0011F11E /* include_typeRecordDomain.h */,
+				CFD21C430913D85E0011F11E /* include_typeRecordVariable.h */,
+				CFD21C440913D85E0011F11E /* include_typeUse_AND_ITE.h */,
+				CFD21C450913D85E0011F11E /* include_typeUse_AND.h */,
+				CFD21C460913D85E0011F11E /* include_typeUse_ITE.h */,
+				CFD21C470913D85E0011F11E /* include_typeVariableDescriptor.h */,
+			);
+			name = "Include Files";
+			sourceTree = "<group>";
+		};
+		CFF53732057A4E5000854C83 /* GALGAS_OUTPUT */ = {
+			isa = PBXGroup;
+			children = (
+				CFD21C290913D8460011F11E /* Include Files */,
+				CFD21C280913D8310011F11E /* Implementation Files */,
 			);
 			name = GALGAS_OUTPUT;
 			path = ../galgas_sources/GALGAS_OUTPUT;
@@ -660,9 +775,6 @@
 				CF103D4407AFDBAD0093400D /* cTableVariablesBDD.h */,
 				CF103D4607AFDBAD0093400D /* opComp.cpp */,
 				CF103D4707AFDBAD0093400D /* opComp.h */,
-				CF103D4907AFDBAD0093400D /* typeCalcul.h */,
-				CF103D4A07AFDBAD0093400D /* typeFormule.h */,
-				CF103D4B07AFDBAD0093400D /* typeVariableDescriptor.h */,
 				CF103D4C07AFDBAD0093400D /* verifExternes.cpp */,
 			);
 			name = "Hand Coded Sources";
@@ -823,19 +935,12 @@
 				CF2A8857058CCF57003EF2F4 /* GGS_uint.h in Headers */,
 				CF3B8A80058CD05C00D682D2 /* AC_galgas_io.h in Headers */,
 				CF103D2807AFDB880093400D /* grammaireBDD.h in Headers */,
-				CF103D2907AFDB880093400D /* include_typeCalcul.h in Headers */,
-				CF103D2A07AFDB880093400D /* include_typeDomain.h in Headers */,
-				CF103D2B07AFDB880093400D /* include_typeFormule.h in Headers */,
-				CF103D2C07AFDB880093400D /* include_typeVariableDescriptor.h in Headers */,
 				CF103D2E07AFDB880093400D /* lexiqueBDD.h in Headers */,
 				CF103D3007AFDB880093400D /* programmeBDD.h in Headers */,
 				CF103D3207AFDB880093400D /* semantiqueBDD.h in Headers */,
 				CF103D3407AFDB880093400D /* syntaxeBDD.h in Headers */,
 				CF103D4E07AFDBAD0093400D /* cTableVariablesBDD.h in Headers */,
 				CF103D5107AFDBAD0093400D /* opComp.h in Headers */,
-				CF103D5307AFDBAD0093400D /* typeCalcul.h in Headers */,
-				CF103D5407AFDBAD0093400D /* typeFormule.h in Headers */,
-				CF103D5507AFDBAD0093400D /* typeVariableDescriptor.h in Headers */,
 				CF103D6307AFDC7B0093400D /* C_bdd.h in Headers */,
 				CF103D6907AFDCAD0093400D /* C_display_bdd.h in Headers */,
 				CF103D6F07AFDCCD0093400D /* AC_galgas_map.h in Headers */,
@@ -865,6 +970,37 @@
 				CF825B98085371910077AEAF /* M_SourceLocation.h in Headers */,
 				CF825B9A085371910077AEAF /* MF_Assert.h in Headers */,
 				CF825B9C085371910077AEAF /* MF_MemoryControl.h in Headers */,
+				CFD21C480913D85E0011F11E /* include_typeAfficherBilan.h in Headers */,
+				CFD21C490913D85E0011F11E /* include_typeCalcul.h in Headers */,
+				CFD21C4A0913D85E0011F11E /* include_typeCalculIteratif.h in Headers */,
+				CFD21C4B0913D85E0011F11E /* include_typeCalculSimple.h in Headers */,
+				CFD21C4C0913D85E0011F11E /* include_typeComparaisonFormules.h in Headers */,
+				CFD21C4D0913D85E0011F11E /* include_typeDimensionnerANDCache.h in Headers */,
+				CFD21C4E0913D85E0011F11E /* include_typeDimensionnerITECache.h in Headers */,
+				CFD21C4F0913D85E0011F11E /* include_typeDimensionnerTable.h in Headers */,
+				CFD21C500913D85E0011F11E /* include_typeDirectDomain.h in Headers */,
+				CFD21C510913D85E0011F11E /* include_typeDirectVariable.h in Headers */,
+				CFD21C520913D85E0011F11E /* include_typeDomain.h in Headers */,
+				CFD21C530913D85E0011F11E /* include_typeFormule.h in Headers */,
+				CFD21C540913D85E0011F11E /* include_typeFormuleComparaisonValeur.h in Headers */,
+				CFD21C550913D85E0011F11E /* include_typeFormuleComparaisonVariable.h in Headers */,
+				CFD21C560913D85E0011F11E /* include_typeFormuleEt.h in Headers */,
+				CFD21C570913D85E0011F11E /* include_typeFormuleExist.h in Headers */,
+				CFD21C580913D85E0011F11E /* include_typeFormuleFalse.h in Headers */,
+				CFD21C590913D85E0011F11E /* include_typeFormuleFor.h in Headers */,
+				CFD21C5A0913D85E0011F11E /* include_typeFormuleImplique.h in Headers */,
+				CFD21C5B0913D85E0011F11E /* include_typeFormuleIte.h in Headers */,
+				CFD21C5C0913D85E0011F11E /* include_typeFormuleNon.h in Headers */,
+				CFD21C5D0913D85E0011F11E /* include_typeFormuleOu.h in Headers */,
+				CFD21C5E0913D85E0011F11E /* include_typeFormuleTrue.h in Headers */,
+				CFD21C5F0913D85E0011F11E /* include_typeFormuleVar.h in Headers */,
+				CFD21C600913D85E0011F11E /* include_typeRecordDomain.h in Headers */,
+				CFD21C610913D85E0011F11E /* include_typeRecordVariable.h in Headers */,
+				CFD21C620913D85E0011F11E /* include_typeUse_AND_ITE.h in Headers */,
+				CFD21C630913D85E0011F11E /* include_typeUse_AND.h in Headers */,
+				CFD21C640913D85E0011F11E /* include_typeUse_ITE.h in Headers */,
+				CFD21C650913D85E0011F11E /* include_typeVariableDescriptor.h in Headers */,
+				CFD2202A0913EC5E0011F11E /* grammar_programmeBDD.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -886,19 +1022,12 @@
 				CF7A14A1058D0122007126C1 /* GGS_string.h in Headers */,
 				CF7A14A3058D0124007126C1 /* GGS_uint.h in Headers */,
 				CF103D3607AFDB880093400D /* grammaireBDD.h in Headers */,
-				CF103D3707AFDB880093400D /* include_typeCalcul.h in Headers */,
-				CF103D3807AFDB880093400D /* include_typeDomain.h in Headers */,
-				CF103D3907AFDB880093400D /* include_typeFormule.h in Headers */,
-				CF103D3A07AFDB880093400D /* include_typeVariableDescriptor.h in Headers */,
 				CF103D3C07AFDB880093400D /* lexiqueBDD.h in Headers */,
 				CF103D3E07AFDB880093400D /* programmeBDD.h in Headers */,
 				CF103D4007AFDB880093400D /* semantiqueBDD.h in Headers */,
 				CF103D4207AFDB880093400D /* syntaxeBDD.h in Headers */,
 				CF103D5807AFDBD20093400D /* cTableVariablesBDD.h in Headers */,
 				CF103D5A07AFDBD30093400D /* opComp.h in Headers */,
-				CF103D5B07AFDBD30093400D /* typeCalcul.h in Headers */,
-				CF103D5C07AFDBD40093400D /* typeFormule.h in Headers */,
-				CF103D5D07AFDBD50093400D /* typeVariableDescriptor.h in Headers */,
 				CF103D6507AFDC7B0093400D /* C_bdd.h in Headers */,
 				CF103D6B07AFDCAD0093400D /* C_display_bdd.h in Headers */,
 				CF103D7207AFDCCD0093400D /* AC_galgas_map.h in Headers */,
@@ -928,6 +1057,37 @@
 				CF825BA6085371910077AEAF /* M_SourceLocation.h in Headers */,
 				CF825BA8085371910077AEAF /* MF_Assert.h in Headers */,
 				CF825BAA085371910077AEAF /* MF_MemoryControl.h in Headers */,
+				CFD21C660913D85E0011F11E /* include_typeAfficherBilan.h in Headers */,
+				CFD21C670913D85E0011F11E /* include_typeCalcul.h in Headers */,
+				CFD21C680913D85E0011F11E /* include_typeCalculIteratif.h in Headers */,
+				CFD21C690913D85E0011F11E /* include_typeCalculSimple.h in Headers */,
+				CFD21C6A0913D85E0011F11E /* include_typeComparaisonFormules.h in Headers */,
+				CFD21C6B0913D85E0011F11E /* include_typeDimensionnerANDCache.h in Headers */,
+				CFD21C6C0913D85E0011F11E /* include_typeDimensionnerITECache.h in Headers */,
+				CFD21C6D0913D85E0011F11E /* include_typeDimensionnerTable.h in Headers */,
+				CFD21C6E0913D85E0011F11E /* include_typeDirectDomain.h in Headers */,
+				CFD21C6F0913D85E0011F11E /* include_typeDirectVariable.h in Headers */,
+				CFD21C700913D85E0011F11E /* include_typeDomain.h in Headers */,
+				CFD21C710913D85E0011F11E /* include_typeFormule.h in Headers */,
+				CFD21C720913D85E0011F11E /* include_typeFormuleComparaisonValeur.h in Headers */,
+				CFD21C730913D85E0011F11E /* include_typeFormuleComparaisonVariable.h in Headers */,
+				CFD21C740913D85E0011F11E /* include_typeFormuleEt.h in Headers */,
+				CFD21C750913D85E0011F11E /* include_typeFormuleExist.h in Headers */,
+				CFD21C760913D85E0011F11E /* include_typeFormuleFalse.h in Headers */,
+				CFD21C770913D85E0011F11E /* include_typeFormuleFor.h in Headers */,
+				CFD21C780913D85E0011F11E /* include_typeFormuleImplique.h in Headers */,
+				CFD21C790913D85E0011F11E /* include_typeFormuleIte.h in Headers */,
+				CFD21C7A0913D85E0011F11E /* include_typeFormuleNon.h in Headers */,
+				CFD21C7B0913D85E0011F11E /* include_typeFormuleOu.h in Headers */,
+				CFD21C7C0913D85E0011F11E /* include_typeFormuleTrue.h in Headers */,
+				CFD21C7D0913D85E0011F11E /* include_typeFormuleVar.h in Headers */,
+				CFD21C7E0913D85E0011F11E /* include_typeRecordDomain.h in Headers */,
+				CFD21C7F0913D85E0011F11E /* include_typeRecordVariable.h in Headers */,
+				CFD21C800913D85E0011F11E /* include_typeUse_AND_ITE.h in Headers */,
+				CFD21C810913D85E0011F11E /* include_typeUse_AND.h in Headers */,
+				CFD21C820913D85E0011F11E /* include_typeUse_ITE.h in Headers */,
+				CFD21C830913D85E0011F11E /* include_typeVariableDescriptor.h in Headers */,
+				CFD2202B0913EC5E0011F11E /* grammar_programmeBDD.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1601,16 +1761,12 @@
 		CF0DA73E08563BF900F38E67 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				SDKROOT = /Developer/SDKs/MacOSX10.3.9.sdk;
 			};
 			name = Deployment;
 		};
 		CF0DA73F08563BF900F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				SDKROOT = /Developer/SDKs/MacOSX10.3.9.sdk;
 			};
 			name = Default;
 		};
