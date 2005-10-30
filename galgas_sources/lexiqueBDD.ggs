@@ -2,11 +2,6 @@ lexique lexiqueBDD :
 
 #-----------------------------------------------------------------*
 
-header "opComp.h" ;
-header "galgas/F_LexicalActions.h" ;
-
-#-----------------------------------------------------------------*
-
 style identifier -> "Identifiers" ;
 style keyWords -> "Key words" ;
 style stringStyle -> "String constants" ;
