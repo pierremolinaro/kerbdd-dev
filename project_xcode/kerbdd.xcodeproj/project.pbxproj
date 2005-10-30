@@ -32,13 +32,9 @@
 		CF103D4207AFDB880093400D /* syntaxeBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D2607AFDB880093400D /* syntaxeBDD.h */; };
 		CF103D4D07AFDBAD0093400D /* calculsLogiques.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4307AFDBAD0093400D /* calculsLogiques.cpp */; };
 		CF103D4E07AFDBAD0093400D /* cTableVariablesBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4407AFDBAD0093400D /* cTableVariablesBDD.h */; };
-		CF103D5007AFDBAD0093400D /* opComp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4607AFDBAD0093400D /* opComp.cpp */; };
-		CF103D5107AFDBAD0093400D /* opComp.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4707AFDBAD0093400D /* opComp.h */; };
 		CF103D5607AFDBAD0093400D /* verifExternes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4C07AFDBAD0093400D /* verifExternes.cpp */; };
 		CF103D5707AFDBD10093400D /* calculsLogiques.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4307AFDBAD0093400D /* calculsLogiques.cpp */; };
 		CF103D5807AFDBD20093400D /* cTableVariablesBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4407AFDBAD0093400D /* cTableVariablesBDD.h */; };
-		CF103D5907AFDBD20093400D /* opComp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4607AFDBAD0093400D /* opComp.cpp */; };
-		CF103D5A07AFDBD30093400D /* opComp.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D4707AFDBAD0093400D /* opComp.h */; };
 		CF103D5E07AFDBD50093400D /* verifExternes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4C07AFDBAD0093400D /* verifExternes.cpp */; };
 		CF103D6207AFDC7B0093400D /* C_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D6007AFDC7B0093400D /* C_bdd.cpp */; };
 		CF103D6307AFDC7B0093400D /* C_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D6107AFDC7B0093400D /* C_bdd.h */; };
@@ -57,7 +53,6 @@
 		CF103D8907AFE6C80093400D /* kerbdd.1 in Resources */ = {isa = PBXBuildFile; fileRef = CF103D8807AFE6C80093400D /* kerbdd.1 */; };
 		CF103D8A07AFE8230093400D /* lexiqueBDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D1F07AFDB880093400D /* lexiqueBDD.cpp */; };
 		CF103D8D07AFE8340093400D /* cocoaKerBDD.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF103D8C07AFE8340093400D /* cocoaKerBDD.mm */; };
-		CF103D8E07AFE8FA0093400D /* opComp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4607AFDBAD0093400D /* opComp.cpp */; };
 		CF2A8827058CCF12003EF2F4 /* C_galgas_null_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF86361A0586289600B23462 /* C_galgas_null_io.cpp */; };
 		CF2A8828058CCF2B003EF2F4 /* C_galgas_null_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CF86361B0586289600B23462 /* C_galgas_null_io.h */; };
 		CF2A882D058CCF2F003EF2F4 /* C_galgas_terminal_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF86365005862B0600B23462 /* C_galgas_terminal_io.cpp */; };
@@ -157,14 +152,10 @@
 		CF825B58085371090077AEAF /* C_GGS_Object.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825B52085371090077AEAF /* C_GGS_Object.h */; };
 		CF825B59085371090077AEAF /* C_Lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B53085371090077AEAF /* C_Lexique.cpp */; };
 		CF825B5A085371090077AEAF /* C_Lexique.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825B54085371090077AEAF /* C_Lexique.h */; };
-		CF825B5B085371090077AEAF /* F_LexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B55085371090077AEAF /* F_LexicalActions.cpp */; };
-		CF825B5C085371090077AEAF /* F_LexicalActions.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825B56085371090077AEAF /* F_LexicalActions.h */; };
 		CF825B5D085371090077AEAF /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B51085371090077AEAF /* C_GGS_Object.cpp */; };
 		CF825B5E085371090077AEAF /* C_GGS_Object.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825B52085371090077AEAF /* C_GGS_Object.h */; };
 		CF825B5F085371090077AEAF /* C_Lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B53085371090077AEAF /* C_Lexique.cpp */; };
 		CF825B60085371090077AEAF /* C_Lexique.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825B54085371090077AEAF /* C_Lexique.h */; };
-		CF825B61085371090077AEAF /* F_LexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B55085371090077AEAF /* F_LexicalActions.cpp */; };
-		CF825B62085371090077AEAF /* F_LexicalActions.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825B56085371090077AEAF /* F_LexicalActions.h */; };
 		CF825B65085371390077AEAF /* TC_UniqueArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825B63085371390077AEAF /* TC_UniqueArray.h */; };
 		CF825B66085371390077AEAF /* TC_UniqueFixedSizeArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825B64085371390077AEAF /* TC_UniqueFixedSizeArray.h */; };
 		CF825B67085371390077AEAF /* TC_UniqueArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825B63085371390077AEAF /* TC_UniqueArray.h */; };
@@ -220,7 +211,6 @@
 		CF825BAF08537E250077AEAF /* C_Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B81085371910077AEAF /* C_Exception.cpp */; };
 		CF825BB008537E260077AEAF /* C_String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B83085371910077AEAF /* C_String.cpp */; };
 		CF825BB108537E280077AEAF /* F_GetPrime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B87085371910077AEAF /* F_GetPrime.cpp */; };
-		CF825BB208537E2D0077AEAF /* F_LexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B55085371090077AEAF /* F_LexicalActions.cpp */; };
 		CF825BB308537E2E0077AEAF /* C_Lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B53085371090077AEAF /* C_Lexique.cpp */; };
 		CF825BB408537E2F0077AEAF /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B51085371090077AEAF /* C_GGS_Object.cpp */; };
 		CF825BB508537E400077AEAF /* C_TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825B4B085370DC0077AEAF /* C_TextFileWrite.cpp */; };
@@ -404,8 +394,6 @@
 		CF103D2607AFDB880093400D /* syntaxeBDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = syntaxeBDD.h; sourceTree = "<group>"; };
 		CF103D4307AFDBAD0093400D /* calculsLogiques.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = calculsLogiques.cpp; sourceTree = "<group>"; };
 		CF103D4407AFDBAD0093400D /* cTableVariablesBDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cTableVariablesBDD.h; sourceTree = "<group>"; };
-		CF103D4607AFDBAD0093400D /* opComp.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = opComp.cpp; sourceTree = "<group>"; };
-		CF103D4707AFDBAD0093400D /* opComp.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = opComp.h; sourceTree = "<group>"; };
 		CF103D4C07AFDBAD0093400D /* verifExternes.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = verifExternes.cpp; sourceTree = "<group>"; };
 		CF103D6007AFDC7B0093400D /* C_bdd.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_bdd.cpp; sourceTree = "<group>"; };
 		CF103D6107AFDC7B0093400D /* C_bdd.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_bdd.h; sourceTree = "<group>"; };
@@ -468,8 +456,6 @@
 		CF825B52085371090077AEAF /* C_GGS_Object.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_Object.h; sourceTree = "<group>"; };
 		CF825B53085371090077AEAF /* C_Lexique.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_Lexique.cpp; sourceTree = "<group>"; };
 		CF825B54085371090077AEAF /* C_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_Lexique.h; sourceTree = "<group>"; };
-		CF825B55085371090077AEAF /* F_LexicalActions.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = F_LexicalActions.cpp; sourceTree = "<group>"; };
-		CF825B56085371090077AEAF /* F_LexicalActions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = F_LexicalActions.h; sourceTree = "<group>"; };
 		CF825B63085371390077AEAF /* TC_UniqueArray.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray.h; sourceTree = "<group>"; };
 		CF825B64085371390077AEAF /* TC_UniqueFixedSizeArray.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = TC_UniqueFixedSizeArray.h; sourceTree = "<group>"; };
 		CF825B69085371570077AEAF /* AC_OutputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_OutputStream.cpp; sourceTree = "<group>"; };
@@ -773,8 +759,6 @@
 			children = (
 				CF103D4307AFDBAD0093400D /* calculsLogiques.cpp */,
 				CF103D4407AFDBAD0093400D /* cTableVariablesBDD.h */,
-				CF103D4607AFDBAD0093400D /* opComp.cpp */,
-				CF103D4707AFDBAD0093400D /* opComp.h */,
 				CF103D4C07AFDBAD0093400D /* verifExternes.cpp */,
 			);
 			name = "Hand Coded Sources";
@@ -849,8 +833,6 @@
 				CF825B52085371090077AEAF /* C_GGS_Object.h */,
 				CF825B53085371090077AEAF /* C_Lexique.cpp */,
 				CF825B54085371090077AEAF /* C_Lexique.h */,
-				CF825B55085371090077AEAF /* F_LexicalActions.cpp */,
-				CF825B56085371090077AEAF /* F_LexicalActions.h */,
 				CF103D6C07AFDCCD0093400D /* AC_galgas_map.h */,
 				CF103D6D07AFDCCD0093400D /* C_galgas_bdd.cpp */,
 				CF103D6E07AFDCCD0093400D /* C_galgas_bdd.h */,
@@ -940,7 +922,6 @@
 				CF103D3207AFDB880093400D /* semantiqueBDD.h in Headers */,
 				CF103D3407AFDB880093400D /* syntaxeBDD.h in Headers */,
 				CF103D4E07AFDBAD0093400D /* cTableVariablesBDD.h in Headers */,
-				CF103D5107AFDBAD0093400D /* opComp.h in Headers */,
 				CF103D6307AFDC7B0093400D /* C_bdd.h in Headers */,
 				CF103D6907AFDCAD0093400D /* C_display_bdd.h in Headers */,
 				CF103D6F07AFDCCD0093400D /* AC_galgas_map.h in Headers */,
@@ -955,7 +936,6 @@
 				CF825B4E085370DC0077AEAF /* C_TextFileWrite.h in Headers */,
 				CF825B58085371090077AEAF /* C_GGS_Object.h in Headers */,
 				CF825B5A085371090077AEAF /* C_Lexique.h in Headers */,
-				CF825B5C085371090077AEAF /* F_LexicalActions.h in Headers */,
 				CF825B65085371390077AEAF /* TC_UniqueArray.h in Headers */,
 				CF825B66085371390077AEAF /* TC_UniqueFixedSizeArray.h in Headers */,
 				CF825B6E085371570077AEAF /* AC_OutputStream.h in Headers */,
@@ -1027,7 +1007,6 @@
 				CF103D4007AFDB880093400D /* semantiqueBDD.h in Headers */,
 				CF103D4207AFDB880093400D /* syntaxeBDD.h in Headers */,
 				CF103D5807AFDBD20093400D /* cTableVariablesBDD.h in Headers */,
-				CF103D5A07AFDBD30093400D /* opComp.h in Headers */,
 				CF103D6507AFDC7B0093400D /* C_bdd.h in Headers */,
 				CF103D6B07AFDCAD0093400D /* C_display_bdd.h in Headers */,
 				CF103D7207AFDCCD0093400D /* AC_galgas_map.h in Headers */,
@@ -1042,7 +1021,6 @@
 				CF825B50085370DC0077AEAF /* C_TextFileWrite.h in Headers */,
 				CF825B5E085371090077AEAF /* C_GGS_Object.h in Headers */,
 				CF825B60085371090077AEAF /* C_Lexique.h in Headers */,
-				CF825B62085371090077AEAF /* F_LexicalActions.h in Headers */,
 				CF825B67085371390077AEAF /* TC_UniqueArray.h in Headers */,
 				CF825B68085371390077AEAF /* TC_UniqueFixedSizeArray.h in Headers */,
 				CF825B72085371570077AEAF /* AC_OutputStream.h in Headers */,
@@ -1325,7 +1303,6 @@
 				CFA8C6A40622A9D9005F7F63 /* main.mm in Sources */,
 				CF103D8A07AFE8230093400D /* lexiqueBDD.cpp in Sources */,
 				CF103D8D07AFE8340093400D /* cocoaKerBDD.mm in Sources */,
-				CF103D8E07AFE8FA0093400D /* opComp.cpp in Sources */,
 				CF825B1D085370910077AEAF /* OC_GGS_BuildWindowController.mm in Sources */,
 				CF825B1F085370910077AEAF /* OC_GGS_Document.mm in Sources */,
 				CF825B21085370910077AEAF /* OC_GGS_PreferencesController.mm in Sources */,
@@ -1338,7 +1315,6 @@
 				CF825BAF08537E250077AEAF /* C_Exception.cpp in Sources */,
 				CF825BB008537E260077AEAF /* C_String.cpp in Sources */,
 				CF825BB108537E280077AEAF /* F_GetPrime.cpp in Sources */,
-				CF825BB208537E2D0077AEAF /* F_LexicalActions.cpp in Sources */,
 				CF825BB308537E2E0077AEAF /* C_Lexique.cpp in Sources */,
 				CF825BB408537E2F0077AEAF /* C_GGS_Object.cpp in Sources */,
 				CF825BB508537E400077AEAF /* C_TextFileWrite.cpp in Sources */,
@@ -1371,7 +1347,6 @@
 				CF103D3107AFDB880093400D /* semantiqueBDD.cpp in Sources */,
 				CF103D3307AFDB880093400D /* syntaxeBDD.cpp in Sources */,
 				CF103D4D07AFDBAD0093400D /* calculsLogiques.cpp in Sources */,
-				CF103D5007AFDBAD0093400D /* opComp.cpp in Sources */,
 				CF103D5607AFDBAD0093400D /* verifExternes.cpp in Sources */,
 				CF103D6207AFDC7B0093400D /* C_bdd.cpp in Sources */,
 				CF103D6807AFDCAD0093400D /* C_display_bdd.cpp in Sources */,
@@ -1386,7 +1361,6 @@
 				CF825B4D085370DC0077AEAF /* C_TextFileWrite.cpp in Sources */,
 				CF825B57085371090077AEAF /* C_GGS_Object.cpp in Sources */,
 				CF825B59085371090077AEAF /* C_Lexique.cpp in Sources */,
-				CF825B5B085371090077AEAF /* F_LexicalActions.cpp in Sources */,
 				CF825B6D085371570077AEAF /* AC_OutputStream.cpp in Sources */,
 				CF825B6F085371570077AEAF /* C_ConsoleOut.cpp in Sources */,
 				CF825B790853716F0077AEAF /* C_DateTime.cpp in Sources */,
@@ -1423,7 +1397,6 @@
 				CF103D3F07AFDB880093400D /* semantiqueBDD.cpp in Sources */,
 				CF103D4107AFDB880093400D /* syntaxeBDD.cpp in Sources */,
 				CF103D5707AFDBD10093400D /* calculsLogiques.cpp in Sources */,
-				CF103D5907AFDBD20093400D /* opComp.cpp in Sources */,
 				CF103D5E07AFDBD50093400D /* verifExternes.cpp in Sources */,
 				CF103D6407AFDC7B0093400D /* C_bdd.cpp in Sources */,
 				CF103D6A07AFDCAD0093400D /* C_display_bdd.cpp in Sources */,
@@ -1438,7 +1411,6 @@
 				CF825B4F085370DC0077AEAF /* C_TextFileWrite.cpp in Sources */,
 				CF825B5D085371090077AEAF /* C_GGS_Object.cpp in Sources */,
 				CF825B5F085371090077AEAF /* C_Lexique.cpp in Sources */,
-				CF825B61085371090077AEAF /* F_LexicalActions.cpp in Sources */,
 				CF825B71085371570077AEAF /* AC_OutputStream.cpp in Sources */,
 				CF825B73085371570077AEAF /* C_ConsoleOut.cpp in Sources */,
 				CF825B7D0853716F0077AEAF /* C_DateTime.cpp in Sources */,
