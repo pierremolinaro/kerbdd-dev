@@ -221,7 +221,7 @@ insererInterne (const INFO & info,
       mLastItem->mNextItem = racine ;
     }
     mLastItem = racine ;
-    racine->mInfo.mVariableDescriptor ()->allocateBDDvariables (mBDDbitsCount) ;
+    racine->mInfo.mVariableDescriptor (HERE)->allocateBDDvariables (mBDDbitsCount) ;
     indiceAllocationBDD = mListLength ;
     mListLength ++ ;
   }else{
