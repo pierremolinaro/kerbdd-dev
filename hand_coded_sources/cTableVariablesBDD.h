@@ -22,7 +22,7 @@ template <class INFO> class cTableVariablesBDD ;
 
 //----------------------------------------------------------------------------*
 //                                                                            *
-//        classe élément table 'cElementTableVariablesBDD'                    *
+//        classe element table 'cElementTableVariablesBDD'                    *
 //                                                                            *
 //----------------------------------------------------------------------------*
 
@@ -74,15 +74,15 @@ template <class INFO> class cTableVariablesBDD {
   public : unsigned short mBDDbitsCount ;
   private : sint32 * mReferenceCountPtr ;
 
-  public : cTableVariablesBDD (void) ; // Constructeur par défaut
+  public : cTableVariablesBDD (void) ; // Constructeur par defaut
   public : virtual ~cTableVariablesBDD (void) ;
 
 //--- First item
   public : inline element_type * firstObject (void) const { return mFirstItem ; }
  
-//--- Gérer la duplication
+//--- Gerer la duplication
   public : cTableVariablesBDD (const cTableVariablesBDD <INFO> &) ; // Constructeur de recopie
-  public : void operator = (const cTableVariablesBDD <INFO> &) ; // Opérateur d'affectation
+  public : void operator = (const cTableVariablesBDD <INFO> &) ; // Operateur d'affectation
 
   public : void build (void) ;
   public : void drop_operation (void) ;
@@ -92,28 +92,28 @@ template <class INFO> class cTableVariablesBDD {
 //--- 'empty' constructor
   public : static cTableVariablesBDD constructor_empty (void) ;
 
-//--- Méthode 'isBuilt'
+//--- Methode 'isBuilt'
   public : inline bool isBuilt (void) const {
     return mReferenceCountPtr != NULL ;
   }
 
-//--- Méthode recherche
+//--- Methode recherche
   public : element_type * searchKey (C_Lexique & inLexique,
                                   const GGS_lstring & clef,
                                   const GGS_location & positionErreur,
                                   const char * messageErreurRecherche) ;
 
-//--- Méthode d'insertion
+//--- Methode d'insertion
   public : sint32 insertKey (C_Lexique & inLexique,
                           const INFO & info,
                           const GGS_lstring & clef,
                           const GGS_location & positionErreur,
                           const char * messageErreurInsertion) ;
 
-//--- Méthode test
+//--- Methode test
   public : GGS_bool reader_hasKey (const GGS_string & clef) ;
 
-//--- Méthodes internes privées ( renvoie -1 si erreur)
+//--- Methodes internes privees ( renvoie -1 si erreur)
   private : sint32 insererInterne (const INFO & info,
                                    const GGS_lstring & clef,
                                    element_type * & racine) ;

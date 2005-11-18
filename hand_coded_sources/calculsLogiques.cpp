@@ -28,7 +28,7 @@ void programmeBDD::beforeParsing_ (void) {
 
 void programmeBDD::afterParsing_ (void) {
 //--- Initial cache and map sizes
-  printf ("Initial size of BDD àunique table: %lu; initial size of ITE àcache: %lu; initial size of AND àcache: %lu.\n",
+  printf ("Initial size of BDD unique table: %lu; initial size of ITE cache: %lu; initial size of AND cache: %lu.\n",
           C_BDD::getHashMapEntriesCount (), C_BDD::getITEcacheEntriesCount (), C_BDD::getANDcacheEntriesCount ()) ;
   switch (C_BDD::getComputingMode ()) {
   case C_BDD::ITE_COMPUTED_FROM_AND :
@@ -44,7 +44,7 @@ void programmeBDD::afterParsing_ (void) {
   fflush (stdout) ;
 //--- Tableau des valeurs des formules
   TC_UniqueArray <C_BDD> tabValeurFormules (aListeFormules.count (), C_BDD () COMMA_HERE) ;
-//--- Boucler sur les formules à calculer
+//--- Boucler sur les formules a calculer
   GGS_typeListeCalculs::element_type * courant = aListeFormules.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
@@ -174,11 +174,11 @@ static C_BDD evaluerContraintesIntervalles (GGS_typeTableVariablesBool & tableVa
 void cPtr_typeCalculSimple::executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFormules) {
   C_Timer duree ;
   const sint32 numeroFormule = (long) aNumeroFormule.uintValue () ;
-//--- Effectuer les éventuels changements de variable
+//--- Effectuer les eventuels changements de variable
   aFormule(HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormule) ;
-//--- Évaluer les contraintes d'intervalle des variables
+//--- Evaluer les contraintes d'intervalle des variables
   const C_BDD contrainte = evaluerContraintesIntervalles (aTableVariablesBool) ;
-//--- Évaluation
+//--- Evaluation
   const C_BDD resultat = contrainte & aFormule (HERE)->evaluerFormule (tabValeurFormules (numeroFormule COMMA_HERE)) ;
   tabValeurFormules (numeroFormule COMMA_HERE) = resultat ;
   duree.stopTimer () ;
@@ -238,14 +238,14 @@ void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeur
   }else{
     tabValeurFormules (numeroFormule COMMA_HERE) = ~ C_BDD () ; // plein
   }
-//--- Effectuer les éventuels changements de variable
+//--- Effectuer les eventuels changements de variable
   aFormule(HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormule) ;
-//--- Évaluer les contraintes d'intervalle des variables
+//--- Evaluer les contraintes d'intervalle des variables
   const C_BDD contrainte = evaluerContraintesIntervalles (aTableVariablesBool) ;
-//--- Évaluation initiale
+//--- Evaluation initiale
   C_BDD resultat = contrainte & aFormule (HERE)->evaluerFormule (tabValeurFormules (numeroFormule COMMA_HERE)) ;
   long nIterations = 1 ;
-//--- Itérer
+//--- Iterer
   do{
     tabValeurFormules (numeroFormule COMMA_HERE) = resultat ;
     resultat = contrainte & aFormule(HERE)->evaluerFormule (resultat) ;
@@ -278,7 +278,7 @@ void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeur
     if (affichage > 1) { 
       resultat.printBDDnodes (stdout, tableauDesNomsVariablesBooleennes) ;
     }
-  //--- Vérifier le BDD ?  
+  //--- Verifier le BDD ?  
     if (affichage > 2) { 
       long nErreurs = 0 ;
       for (uint64 i=0 ; i<nValeurs ; i++) {
@@ -349,7 +349,7 @@ construireTableauChangementVariables (GGS_typeActualArgumentsList & listeArgumen
     nombreVariablesBool += (uint16) p->mVariableBitSize.uintValue () ;
     p = p->nextObject () ;
   }
-//--- Construire le tableau des changements de variables booléennes
+//--- Construire le tableau des changements de variables booleennes
   tabChgtBool = new uint16 [nombreVariablesBool] ;
   p = listeArgumentsBooleens.firstObject () ;
   size_t i = 0 ;

@@ -159,7 +159,7 @@ void cTableVariablesBDD <INFO>::destroy (void) {
 
 template <class INFO>
 void cTableVariablesBDD <INFO>::insulateMap (void) {
-//--- Si la table est référencée plusieurs fois, la dupliquer
+//--- Si la table est referencee plusieurs fois, la dupliquer
   if (mReferenceCountPtr != NULL) {
     macroValidPointer (mReferenceCountPtr) ;
     if ((*mReferenceCountPtr) > 1) {
@@ -192,11 +192,11 @@ insertKey (C_Lexique & inLexique,
         const char * messageErreurInsertion) {
   sint32 indiceAllocationBDD = -1 ;
   if (isBuilt ()) {
-  //--- Si la table est référencée plusieurs fois, la dupliquer
+  //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
-  //--- Réaliser l'insertion
+  //--- Realiser l'insertion
     indiceAllocationBDD = insererInterne (info, clef, mRoot) ;
-  //--- Erreur d'insertion : la clef existe déjà
+  //--- Erreur d'insertion : la clef existe deja
     if (indiceAllocationBDD < 0) {
       positionErreur.semanticError (inLexique, messageErreurInsertion) ;
     }
