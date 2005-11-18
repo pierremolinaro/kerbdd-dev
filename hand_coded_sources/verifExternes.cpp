@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------*
 //                                                                     *
-//        Vérification sémantiques complémentaires                     *
+//        Verification semantiques complementaires                     *
 //                                                                     *
 //---------------------------------------------------------------------*
 //                                                                     *
@@ -11,12 +11,12 @@
 //         À propos de l'auteur...                                     *
 //                                                                     *
 //     Pierre Molinaro                                                 *
-//     IRCyN (Institut de Recherche en Cybernétique de Nantes)         *
-//     École Centrale de Nantes                                        *
+//     IRCyN (Institut de Recherche en Cybernetique de Nantes)         *
+//     Ecole Centrale de Nantes                                        *
 //     BP 92101                                                        *
 //     44321 Nantes Cedex 3                                            *
 //                                                                     *
-// Adresse électronique : molinaro@ircyn.ec-nantes.fr                  *
+// Adresse electronique : molinaro@ircyn.ec-nantes.fr                  *
 //                                                                     *
 //---------------------------------------------------------------------*
 
@@ -92,11 +92,11 @@ void
 verifierDimensionExpliciteCorrecte (C_Lexique & inLexique, 
                                     GGS_luint numeroVar, // indice BDD de la variable
                                     GGS_luint dim, // dimension de la variable
-                                    GGS_luint & indiceBDD, // décalage appel
+                                    GGS_luint & indiceBDD, // decalage appel
                                     GGS_luint dimension) { // dimension appel
   if (numeroVar.isBuilt () && dim.isBuilt () &&
       indiceBDD.isBuilt () && dimension.isBuilt ()){
-  //--- Il faut vérifier :
+  //--- Il faut verifier :
   //       indiceBDD < dim
   //       dimension >= 1 ;
   //       (indiceBDD + dimension - 1) < dim
@@ -105,12 +105,12 @@ verifierDimensionExpliciteCorrecte (C_Lexique & inLexique,
     const unsigned long valeurIndiceBDD = indiceBDD.uintValue () ;
     const unsigned long valeurDimension = dimension.uintValue () ;
     if (valeurIndiceBDD >= valeurDim) {
-      indiceBDD.signalSemanticError (inLexique, "l'indice est >= à la dimension de la variable") ;
+      indiceBDD.signalSemanticError (inLexique, "l'indice est >= a la dimension de la variable") ;
     }else if (valeurDimension < 1) {
-      dimension.signalSemanticError (inLexique, "la dimension doit être >= 0") ;
+      dimension.signalSemanticError (inLexique, "la dimension doit etre >= 0") ;
     }else if ((valeurIndiceBDD + valeurDimension - 1) >= valeurDim) {
       C_String erreur ;
-      erreur << "l'indice doit être <= " ;
+      erreur << "l'indice doit etre <= " ;
       erreur << (valeurDim - valeurDimension) ;
       indiceBDD.signalSemanticError (inLexique, erreur) ;    
     }
