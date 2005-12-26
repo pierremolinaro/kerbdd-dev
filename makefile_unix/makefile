@@ -1,11 +1,10 @@
 #---------------------------------------------------------------*
 #                                                               *
-# MAKEFILE for building KERBDD command line tools               *
-#  For Linux, compiled on Linux                                 *
+# MAKEFILE for building KERBDD command line tools for Unix      *
 #                                                               *
 #---------------------------------------------------------------*
 
-#--- Release and debug versions of NPRT
+#--- Release and debug versions of KERBDD
 EXECUTABLE := kerbdd
 EXECUTABLE_DEBUG := kerbdd_debug
 
@@ -27,11 +26,11 @@ include ../common_files_for_make/common_sources_makefile.mke
 
 #---------------------------------------------------------------*
 #                                                               *
-#     Include gcc tools for Linux                               *
+#     Include gcc tools for Unix                                *
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/linux_gcc_tools.mke
+include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools.mke
 
 #---------------------------------------------------------------*
 #                                                               *
