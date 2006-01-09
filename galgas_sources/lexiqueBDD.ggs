@@ -17,7 +17,7 @@ $id$ ! att_token error message "an identifier" style identifier ;
 $string$ ! att_token error message "a character string (between \" and \")" style stringStyle ;
 $comp$ ! att_valeur error message "the '=', '<>', '<=', '<', '>' or '>' delimitor" style delimitors  ;
 
-list delimiteursKerBDD error message "the '" . * . "' delimiter" style delimitors :
+list delimiteursKerBDD error message "the '%K' delimiter" style delimitors :
   "(",
   ")",
   "{",
@@ -43,7 +43,7 @@ list delimiteursKerBDD error message "the '" . * . "' delimiter" style delimitor
 
 #-----------------------------------------------------------------*
 
-list motsReservesKerBDD error message "the '" . * . "' keyword" style keyWords :
+list motsReservesKerBDD error message "the '%K' keyword" style keyWords :
  "ite_cache", "and_cache",
  "use_and", "use_ite", "use_and_ite",
  "map",      "dimension",
