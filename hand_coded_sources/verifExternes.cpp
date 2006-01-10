@@ -25,9 +25,9 @@
 //---------------------------------------------------------------------*
 
 void
-getHighBound (C_Lexique & inLexique,
-              const GGS_luint & inPowerOfTwo,
-              GGS_luint & outResult) {
+routine_getHighBound (C_Lexique & inLexique,
+                      const GGS_luint & inPowerOfTwo,
+                      GGS_luint & outResult) {
   if (inPowerOfTwo.uintValue () == 0) {
     inPowerOfTwo.signalSemanticError (inLexique, "the dimension must be >0") ;
   }
@@ -37,10 +37,10 @@ getHighBound (C_Lexique & inLexique,
 //---------------------------------------------------------------------*
 
 void
-verifyBoundsAndComputeDimension (C_Lexique & inLexique,
-                                 const GGS_luint & inLowBound,
-                                 const GGS_luint & inHighBound,
-                                 GGS_luint & outDimension) {
+routine_verifyBoundsAndComputeDimension (C_Lexique & inLexique,
+                                         const GGS_luint & inLowBound,
+                                         const GGS_luint & inHighBound,
+                                         GGS_luint & outDimension) {
   if (inLowBound.uintValue () >= inHighBound.uintValue ()) {
     inHighBound.signalSemanticError (inLexique, "the high bound is lower or equal to the low bound") ;
   }
@@ -56,9 +56,9 @@ verifyBoundsAndComputeDimension (C_Lexique & inLexique,
 //---------------------------------------------------------------------*
 
 void
-verifierDimensionUn (C_Lexique & inLexique,
-                     GGS_luint valeur,
-                     GGS_location inErrorLocation) {
+routine_verifierDimensionUn (C_Lexique & inLexique,
+                             GGS_luint valeur,
+                             GGS_location inErrorLocation) {
   if (valeur.isBuilt () && inErrorLocation.isBuilt () && (valeur.uintValue () != 1)) {
     inErrorLocation.signalSemanticError (inLexique, "This variable is not a boolean") ;
   }
@@ -67,9 +67,9 @@ verifierDimensionUn (C_Lexique & inLexique,
 //---------------------------------------------------------------------*
 
 void
-verifierDimensionValeurCorrecte (C_Lexique & inLexique,
-                                 GGS_luint dimension,
-                                 GGS_luint valeur) {
+routine_verifierDimensionValeurCorrecte (C_Lexique & inLexique,
+                                         GGS_luint dimension,
+                                         GGS_luint valeur) {
   if (valeur.isBuilt () && dimension.isBuilt ()) {
   //--- Valeur max
     const unsigned long dim = dimension.uintValue () ;
@@ -89,11 +89,11 @@ verifierDimensionValeurCorrecte (C_Lexique & inLexique,
 //---------------------------------------------------------------------*
 
 void
-verifierDimensionExpliciteCorrecte (C_Lexique & inLexique, 
-                                    GGS_luint numeroVar, // indice BDD de la variable
-                                    GGS_luint dim, // dimension de la variable
-                                    GGS_luint & indiceBDD, // decalage appel
-                                    GGS_luint dimension) { // dimension appel
+routine_verifierDimensionExpliciteCorrecte (C_Lexique & inLexique, 
+                                            GGS_luint numeroVar, // indice BDD de la variable
+                                            GGS_luint dim, // dimension de la variable
+                                            GGS_luint & indiceBDD, // decalage appel
+                                            GGS_luint dimension) { // dimension appel
   if (numeroVar.isBuilt () && dim.isBuilt () &&
       indiceBDD.isBuilt () && dimension.isBuilt ()){
   //--- Il faut verifier :
@@ -123,9 +123,9 @@ verifierDimensionExpliciteCorrecte (C_Lexique & inLexique,
 //---------------------------------------------------------------------*
 
 void
-verifierMemesDimensions (C_Lexique & inLexique, 
-                         GGS_luint dimensionGauche,
-                         GGS_luint dimensionDroite) {
+routine_verifierMemesDimensions (C_Lexique & inLexique, 
+                                 GGS_luint dimensionGauche,
+                                 GGS_luint dimensionDroite) {
   if (dimensionGauche.isBuilt () && dimensionDroite.isBuilt ()) {
     if (dimensionGauche.uintValue () != dimensionDroite.uintValue ()) {
       C_String erreur ;
