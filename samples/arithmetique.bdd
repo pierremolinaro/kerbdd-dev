@@ -1,77 +1,79 @@
+
 $--- Ensemble des (x, y) tels que y = x + 1
-#diff1 [x:4, y:4] := ?u:4 ({x<u} & {u<=y} & !v:4 (({x<v} & {v<=y})-> {u=v})) ;
+#diff1 [x:bool[4], y:bool[4]] := ?u:bool[4] ({x<u} & {u<=y} & !v:bool[4] (({x<v} & {v<=y})-> {u=v})) ;
 
 $--- Ensemble des (x, y) tels que y = x + 2
-#diff2 [x:4, y:4] := ?u:4 (#diff1 [x, u] & #diff1 [u, y]) ;
+#diff2 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff1 [x, u] & #diff1 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 3
-#diff3 [x:4, y:4] := ?u:4 (#diff1 [x, u] & #diff2 [u, y]) ;
+#diff3 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff1 [x, u] & #diff2 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 4
-#diff4 [x:4, y:4] := ?u:4 (#diff2 [x, u] & #diff2 [u, y]) ;
+#diff4 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff2 [x, u] & #diff2 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 5
-#diff5 [x:4, y:4] := ?u:4 (#diff3 [x, u] & #diff2 [u, y]) ;
+#diff5 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff3 [x, u] & #diff2 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 6
-#diff6 [x:4, y:4] := ?u:4 (#diff3 [x, u] & #diff3 [u, y]) ;
+#diff6 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff3 [x, u] & #diff3 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 7
-#diff7 [x:4, y:4] := ?u:4 (#diff4 [x, u] & #diff3 [u, y]) ;
+#diff7 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff4 [x, u] & #diff3 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 8
-#diff8 [x:4, y:4] := ?u:4 (#diff4 [x, u] & #diff4 [u, y]) ;
+#diff8 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff4 [x, u] & #diff4 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 9
-#diff9 [x:4, y:4] := ?u:4 (#diff5 [x, u] & #diff4 [u, y]) ;
+#diff9 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff5 [x, u] & #diff4 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 10
-#diff10 [x:4, y:4] := ?u:4 (#diff5 [x, u] & #diff5 [u, y]) ;
+#diff10 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff5 [x, u] & #diff5 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 11
-#diff11 [x:4, y:4] := ?u:4 (#diff6 [x, u] & #diff5 [u, y]) ;
+#diff11 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff6 [x, u] & #diff5 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 12
-#diff12 [x:4, y:4] := ?u:4 (#diff6 [x, u] & #diff6 [u, y]) ;
+#diff12 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff6 [x, u] & #diff6 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 13
-#diff13 [x:4, y:4] := ?u:4 (#diff7 [x, u] & #diff6 [u, y]) ;
+#diff13 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff7 [x, u] & #diff6 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 14
-#diff14 [x:4, y:4] := ?u:4 (#diff7 [x, u] & #diff7 [u, y]) ;
+#diff14 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff7 [x, u] & #diff7 [u, y]) ;
 
 $--- Ensemble des (x, y) tels que y = x + 15
-#diff15 [x:4, y:4] := ?u:4 (#diff8 [x, u] & #diff7 [u, y]) ;
+#diff15 [x:bool[4], y:bool[4]] := ?u:bool[4] (#diff8 [x, u] & #diff7 [u, y]) ;
 
 $--- Ensemble des (x, y, z) tels que z = x + y
-#somme [x:4, y:4, z:4] :=
+#somme [x:bool[4], y:bool[4], z:bool[4]] :=
            ({y=0} & {x=z}) |
-      ?u:4 ({y=1} & #diff1 [x, z]) |
-      ?u:4 ({y=2} & #diff2 [x, z]) |
-      ?u:4 ({y=3} & #diff3 [x, z]) |
-      ?u:4 ({y=4} & #diff4 [x, z]) |
-      ?u:4 ({y=5} & #diff5 [x, z]) |
-      ?u:4 ({y=6} & #diff6 [x, z]) |
-      ?u:4 ({y=7} & #diff7 [x, z]) |
-      ?u:4 ({y=8} & #diff8 [x, z]) |
-      ?u:4 ({y=9} & #diff9 [x, z]) |
-      ?u:4 ({y=10} & #diff10 [x, z]) |
-      ?u:4 ({y=11} & #diff11 [x, z]) |
-      ?u:4 ({y=12} & #diff12 [x, z]) |
-      ?u:4 ({y=13} & #diff13 [x, z]) |
-      ?u:4 ({y=14} & #diff14 [x, z]) |
-      ?u:4 ({y=15} & #diff15 [x, z]) ;
+      ?u:bool[4] ({y=1} & #diff1 [x, z]) |
+      ?u:bool[4] ({y=2} & #diff2 [x, z]) |
+      ?u:bool[4] ({y=3} & #diff3 [x, z]) |
+      ?u:bool[4] ({y=4} & #diff4 [x, z]) |
+      ?u:bool[4] ({y=5} & #diff5 [x, z]) |
+      ?u:bool[4] ({y=6} & #diff6 [x, z]) |
+      ?u:bool[4] ({y=7} & #diff7 [x, z]) |
+      ?u:bool[4] ({y=8} & #diff8 [x, z]) |
+      ?u:bool[4] ({y=9} & #diff9 [x, z]) |
+      ?u:bool[4] ({y=10} & #diff10 [x, z]) |
+      ?u:bool[4] ({y=11} & #diff11 [x, z]) |
+      ?u:bool[4] ({y=12} & #diff12 [x, z]) |
+      ?u:bool[4] ({y=13} & #diff13 [x, z]) |
+      ?u:bool[4] ({y=14} & #diff14 [x, z]) |
+      ?u:bool[4] ({y=15} & #diff15 [x, z]) ;
 
-#somme2 [x:4, y:4, z:4] += ({x=0} & {y=z}) |
-  ?a:4, b:4 (#diff1 [a, x] & #diff1 [y, b] & #somme2 [a, b, z]) ;
+#somme2 [x:bool[4], y:bool[4], z:bool[4]] += ({x=0} & {y=z}) |
+  ?a:bool[4], b:bool[4] (#diff1 [a, x] & #diff1 [y, b] & #somme2 [a, b, z]) ;
 
-#somme3 [x:4, y:4, z:4] += ({x=0} & {y=z}) |
-  ?a:4, b:4 (((#diff1 [a, x] & #diff1 [y, b]) |
+#somme3 [x:bool[4], y:bool[4], z:bool[4]] += ({x=0} & {y=z}) |
+  ?a:bool[4], b:bool[4] (((#diff1 [a, x] & #diff1 [y, b]) |
               (#diff2 [a, x] & #diff2 [y, b])
              ) &
                #somme3 [a, b, z]
             ) ;
-#somme4+ [x:4, y:4, z:4] += ({x=0} & {y=z}) | ({x=1} & #diff1 [y ,z]) |
-  ?a:4, b:4, c:4 (#somme4+ [a, c, x] & #somme4+ [y, c, b] & #somme4+ [a, b, z]) ;
+#somme4 [x:bool[4], y:bool[4], z:bool[4]] += ({x=0} & {y=z}) | ({x=1} & #diff1 [y ,z]) |
+  ?a:bool[4], b:bool[4], c:bool[4] (#somme4 [a, c, x] & #somme4 [y, c, b] & #somme4 [a, b, z]) ;
 
 end
+

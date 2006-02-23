@@ -42,8 +42,8 @@ class programmeBDD : public C_defaultUserSemanticActions {
   protected : GGS_typeDomainMap mDomainMap ; // start symbol attribute #3
 //--- START OF USER ZONE 2
 
-  protected : virtual void afterParsing_ (void) ;
-  protected : virtual void beforeParsing_ (void) ;
+  protected : virtual void _afterParsing (void) ;
+  protected : virtual void _beforeParsing (void) ;
 
 //--- END OF USER ZONE 2
 

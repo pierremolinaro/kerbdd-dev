@@ -1,8 +1,6 @@
 dimension T:5;
 dimension N:5;
 
-table 1000 ; cache 1000 ;
-
 #ArcT[t1:T,t2:T,nt:T]:=
 {t1=0} &  {t2=1} & {nt=0} |
 {t1=0} &  {t2=2} & {nt=0} |
