@@ -1,6 +1,6 @@
 program programmeBDD "version 3.0.2" . "bdd" :
   import grammar grammaireBDD in "grammaireBDD.ggs" ;
-#--- Start symbol arguments
+w#--- Start symbol arguments
   aTableFormules ;
   aListeFormules ;
   mDomainMap ;

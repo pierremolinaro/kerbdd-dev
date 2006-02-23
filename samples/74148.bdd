@@ -1,3 +1,4 @@
+
 #DefE0 [ei:bool, i0:bool, i1:bool, i2:bool, i3:bool,
         i4:bool, i5:bool, i6:bool, i7:bool, e0:bool] 
              := ~(~ei & i0 & i1 & i2 & i3 & i4 & i5 & i6 & i7) = e0 ;

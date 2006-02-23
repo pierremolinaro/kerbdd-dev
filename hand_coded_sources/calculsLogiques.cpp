@@ -18,7 +18,7 @@
 
 //----------------------------------------------------------------------------*
 
-void programmeBDD::beforeParsing_ (void) {
+void programmeBDD::_beforeParsing (void) {
   aTableFormules = GGS_typeTableFormules::constructor_empty () ;
   aListeFormules = GGS_typeListeCalculs::constructor_empty () ;
   mDomainMap = GGS_typeDomainMap::constructor_empty () ;
@@ -26,7 +26,7 @@ void programmeBDD::beforeParsing_ (void) {
 
 //----------------------------------------------------------------------------*
 
-void programmeBDD::afterParsing_ (void) {
+void programmeBDD::_afterParsing (void) {
 //--- Initial cache and map sizes
   printf ("Initial size of BDD unique table: %lu; initial size of ITE cache: %lu; initial size of AND cache: %lu.\n",
           C_BDD::getHashMapEntriesCount (), C_BDD::getITEcacheEntriesCount (), C_BDD::getANDcacheEntriesCount ()) ;

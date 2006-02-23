@@ -15,24 +15,24 @@ $------------------ Produit des deux automates ------------------------
  #Trans1 [qs:2::0, tu:2::0, qd:2::0] & 
  #Trans2 [qs:2::2, tu:2::2, qd:2::2] ;
 
-$--- L'ensemble des états interdits (état (2,2))
+$--- L'ensemble des etats interdits (Ètat (2,2))
 #EtatInterdit [qs:4] := {qs:2::0 = 2} & {qs:2::2 = 2} ;
 
 $--- L'ensemble des actions non commandables (1, 3) et (3, 1)
 #NonCommandable [tu:4] :=
           ({tu:2::0 = 1} & {tu:2::2 = 3}) | ({tu:2::0 = 3} & {tu:2::2 = 1}) ;
 
-$--- Calcul par plus petit point fixe de l'ensemble des états à supprimer
+$--- Calcul par plus petit point fixe de l'ensemble des etats a supprimer
 #Supprimer [q:4] += #EtatInterdit [q] |
    ?ab:4, qd:4 (#Trans [q, ab, qd] & #NonCommandable [ab] & #Supprimer [qd]) ;
 
-$--- Système final
+$--- Systeme final
 display #TransFinal [qs:4, tu:4, qd:4] :=
             #Trans [qs, tu, qd] & ~#Supprimer [qs] & ~#Supprimer [qd] ;
 
 #Initial [q:4] := {q=0} ;
 
-$--- Calcul de la partie accessible du système final
+$--- Calcul de la partie accessible du systeme final
 display #Acces [q:4] += ~#Supprimer [q] &
               (#Initial [q] | ? qt:4,tu:4 (#Acces [qt] & #Trans [qt, tu, q])) ;
 
