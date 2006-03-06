@@ -104,6 +104,7 @@ routine_verifierDimensionExpliciteCorrecte (C_Lexique & inLexique,
     const unsigned long valeurDim = dim.uintValue () ;
     const unsigned long valeurIndiceBDD = indiceBDD.uintValue () ;
     const unsigned long valeurDimension = dimension.uintValue () ;
+//    printf ("%lu %lu %lu %lu\n", valeurNumeroVar
     if (valeurIndiceBDD >= valeurDim) {
       indiceBDD.signalSemanticError (inLexique, "l'indice est >= a la dimension de la variable") ;
     }else if (valeurDimension < 1) {
