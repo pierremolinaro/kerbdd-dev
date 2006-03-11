@@ -29,7 +29,7 @@
 
 cPtr_typeDomain::
 cPtr_typeDomain (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -703,7 +703,7 @@ void GGS_typeActualArgumentsList
 
 cPtr_typeVariableDescriptor::
 cPtr_typeVariableDescriptor (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1118,7 +1118,7 @@ void GGS_typeTableFormules::methode_insertKeyGetIndex (C_Lexique & lexique_var_,
 
 cPtr_typeFormule::
 cPtr_typeFormule (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1634,7 +1634,7 @@ mRightHighBound (argument_7) {
 
 cPtr_typeCalcul::
 cPtr_typeCalcul (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*

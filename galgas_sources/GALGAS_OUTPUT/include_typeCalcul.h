@@ -22,7 +22,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_typeCalcul : public C_GGS_Object {
+class cPtr_typeCalcul : public GGS_class {
 //--- START OF USER ZONE 2
 
 public : virtual void executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFormules) = 0 ;
