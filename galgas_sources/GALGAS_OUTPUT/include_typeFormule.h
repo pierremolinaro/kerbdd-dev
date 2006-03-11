@@ -22,7 +22,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_typeFormule : public C_GGS_Object {
+class cPtr_typeFormule : public GGS_class {
 //--- START OF USER ZONE 2
 
 public : virtual C_BDD evaluerFormule (const C_BDD & valeurFormuleCourante) = 0 ;
