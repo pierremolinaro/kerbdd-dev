@@ -290,6 +290,7 @@
 		CFDC51150961B544006A0AFD /* GGS_stringset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC51130961B544006A0AFD /* GGS_stringset.h */; };
 		CFDC51160961B544006A0AFD /* GGS_stringset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC51120961B544006A0AFD /* GGS_stringset.cpp */; };
 		CFDC51170961B544006A0AFD /* GGS_stringset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC51130961B544006A0AFD /* GGS_stringset.h */; };
+		CFE20B4809C8BCB000E10499 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
 		CFF8616E09C0DA1F00F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8616C09C0DA1F00F90D05 /* C_GGS_Object.cpp */; };
 		CFF8616F09C0DA1F00F90D05 /* C_GGS_Object.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF8616D09C0DA1F00F90D05 /* C_GGS_Object.h */; };
 		CFF8617009C0DA1F00F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8616C09C0DA1F00F90D05 /* C_GGS_Object.cpp */; };
@@ -1331,6 +1332,7 @@
 				CF825BB808537E4B0077AEAF /* C_ConsoleOut.cpp in Sources */,
 				CF512E0B092B3379008F7E87 /* C_builtin_CLI_Options.cpp in Sources */,
 				CFF8617209C0DA1F00F90D05 /* C_GGS_Object.cpp in Sources */,
+				CFE20B4809C8BCB000E10499 /* GGS_string.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
