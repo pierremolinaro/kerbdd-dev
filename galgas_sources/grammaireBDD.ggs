@@ -1,1 +1,1 @@
-grammar grammaireBDD "LL1" :  import lexique lexiqueBDD in "lexiqueBDD.ggs" ;  import syntax syntaxeBDD in "syntaxeBDD.ggs" ;  start <axiomeBDD>    ?!@typeTableFormules tableFormules    ?!@typeListeCalculs listeCalculs    ?!@typeDomainMap ioDomainMap  ;end grammar ;
+grammar grammaireBDD "LL1" :  import lexique lexiqueBDD in "lexiqueBDD.ggs" ;  import syntax syntaxeBDD in "syntaxeBDD.ggs" ;  root <axiomeBDD>    ?!@typeTableFormules tableFormules    ?!@typeListeCalculs listeCalculs    ?!@typeDomainMap ioDomainMap  ;end grammar ;
