@@ -77,6 +77,9 @@ template <class INFO> class cTableVariablesBDD {
   public : cTableVariablesBDD (void) ; // Constructeur par defaut
   public : virtual ~cTableVariablesBDD (void) ;
 
+//--- Count
+  public : inline sint32 count (void) const { return mListLength ; }
+
 //--- First item
   public : inline element_type * firstObject (void) const { return mFirstItem ; }
  

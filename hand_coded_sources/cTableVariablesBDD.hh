@@ -247,7 +247,7 @@ GGS_bool cTableVariablesBDD <INFO>::reader_hasKey (const GGS_string & clef) {
     element_type * element = mRoot ;
     while ((element != NULL) && ! trouve) {
       macroValidPointer (element) ;
-      const sint32 comparaison = element->mKey.compare (clef.string ()) ;
+      const sint32 comparaison = element->mKey.compare (clef) ;
       if (comparaison > 0) {
         element = element->champPtrVersInf ;
       }else if (comparaison < 0) {
