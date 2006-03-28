@@ -189,7 +189,8 @@ insertKey (C_Lexique & inLexique,
         const INFO & info,
         const GGS_lstring & clef,
         const GGS_location & positionErreur,
-        const char * messageErreurInsertion) {
+        const char * messageErreurInsertion
+        COMMA_LOCATION_ARGS) {
   sint32 indiceAllocationBDD = -1 ;
   if (isBuilt ()) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
@@ -198,7 +199,7 @@ insertKey (C_Lexique & inLexique,
     indiceAllocationBDD = insererInterne (info, clef, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (indiceAllocationBDD < 0) {
-      positionErreur.semanticError (inLexique, messageErreurInsertion) ;
+      positionErreur.semanticError (inLexique, messageErreurInsertion COMMA_THERE) ;
     }
   }
   return indiceAllocationBDD ;
@@ -267,7 +268,8 @@ cElementTableVariablesBDD <INFO> * cTableVariablesBDD <INFO>::
 searchKey (C_Lexique & inLexique,
            const GGS_lstring & clef,
            const GGS_location & positionErreur,
-           const char * messageErreurRecherche) {
+           const char * messageErreurRecherche
+           COMMA_LOCATION_ARGS) {
   element_type * resultat = (element_type *) NULL ;
   if (isBuilt () && clef.isBuilt ()) {
     resultat = mRoot ;
@@ -284,7 +286,7 @@ searchKey (C_Lexique & inLexique,
       }
     }
     if (resultat == NULL) {
-      positionErreur.semanticError (inLexique, messageErreurRecherche) ;
+      positionErreur.semanticError (inLexique, messageErreurRecherche COMMA_THERE) ;
     }else{
       macroValidPointer (resultat) ;
     }
