@@ -104,14 +104,16 @@ template <class INFO> class cTableVariablesBDD {
   public : element_type * searchKey (C_Lexique & inLexique,
                                   const GGS_lstring & clef,
                                   const GGS_location & positionErreur,
-                                  const char * messageErreurRecherche) ;
+                                  const char * messageErreurRecherche
+                                  COMMA_LOCATION_ARGS) ;
 
 //--- Methode d'insertion
   public : sint32 insertKey (C_Lexique & inLexique,
                           const INFO & info,
                           const GGS_lstring & clef,
                           const GGS_location & positionErreur,
-                          const char * messageErreurInsertion) ;
+                          const char * messageErreurInsertion
+                          COMMA_LOCATION_ARGS) ;
 
 //--- Methode test
   public : GGS_bool reader_hasKey (const GGS_string & clef) ;

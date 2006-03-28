@@ -27,9 +27,10 @@
 void
 routine_getHighBound (C_Lexique & inLexique,
                       const GGS_luint & inPowerOfTwo,
-                      GGS_luint & outResult) {
+                      GGS_luint & outResult
+                      COMMA_LOCATION_ARGS) {
   if (inPowerOfTwo.uintValue () == 0) {
-    inPowerOfTwo.signalSemanticError (inLexique, "the dimension must be >0") ;
+    inPowerOfTwo.signalSemanticError (inLexique, "the dimension must be >0" COMMA_THERE) ;
   }
   outResult.defineAttribute ((1UL << inPowerOfTwo.uintValue ()) - 1UL, inLexique) ;
 }
@@ -40,9 +41,10 @@ void
 routine_verifyBoundsAndComputeDimension (C_Lexique & inLexique,
                                          const GGS_luint & inLowBound,
                                          const GGS_luint & inHighBound,
-                                         GGS_luint & outDimension) {
+                                         GGS_luint & outDimension
+                                         COMMA_LOCATION_ARGS) {
   if (inLowBound.uintValue () >= inHighBound.uintValue ()) {
-    inHighBound.signalSemanticError (inLexique, "the high bound is lower or equal to the low bound") ;
+    inHighBound.signalSemanticError (inLexique, "the high bound is lower or equal to the low bound" COMMA_THERE) ;
   }
   unsigned long bitCount = 0 ;
   unsigned long high = inHighBound.uintValue () ;
@@ -58,9 +60,10 @@ routine_verifyBoundsAndComputeDimension (C_Lexique & inLexique,
 void
 routine_verifierDimensionUn (C_Lexique & inLexique,
                              GGS_luint valeur,
-                             GGS_location inErrorLocation) {
+                             GGS_location inErrorLocation
+                             COMMA_LOCATION_ARGS) {
   if (valeur.isBuilt () && inErrorLocation.isBuilt () && (valeur.uintValue () != 1)) {
-    inErrorLocation.signalSemanticError (inLexique, "This variable is not a boolean") ;
+    inErrorLocation.signalSemanticError (inLexique, "This variable is not a boolean" COMMA_THERE) ;
   }
 }
 
@@ -69,7 +72,8 @@ routine_verifierDimensionUn (C_Lexique & inLexique,
 void
 routine_verifierDimensionValeurCorrecte (C_Lexique & inLexique,
                                          GGS_luint dimension,
-                                         GGS_luint valeur) {
+                                         GGS_luint valeur
+                                         COMMA_LOCATION_ARGS) {
   if (valeur.isBuilt () && dimension.isBuilt ()) {
   //--- Valeur max
     const unsigned long dim = dimension.uintValue () ;
@@ -81,7 +85,7 @@ routine_verifierDimensionValeurCorrecte (C_Lexique & inLexique,
       C_String erreur ;
       erreur << "la valeur maximum est " ;
       erreur << (valeurMax - 1) ;
-      valeur.signalSemanticError (inLexique, erreur) ;
+      valeur.signalSemanticError (inLexique, erreur COMMA_THERE) ;
     }
   }
 }
@@ -93,7 +97,8 @@ routine_verifierDimensionExpliciteCorrecte (C_Lexique & inLexique,
                                             GGS_luint numeroVar, // indice BDD de la variable
                                             GGS_luint dim, // dimension de la variable
                                             GGS_luint & indiceBDD, // decalage appel
-                                            GGS_luint dimension) { // dimension appel
+                                            GGS_luint dimension
+                                            COMMA_LOCATION_ARGS) { // dimension appel
   if (numeroVar.isBuilt () && dim.isBuilt () &&
       indiceBDD.isBuilt () && dimension.isBuilt ()){
   //--- Il faut verifier :
@@ -106,14 +111,14 @@ routine_verifierDimensionExpliciteCorrecte (C_Lexique & inLexique,
     const unsigned long valeurDimension = dimension.uintValue () ;
 //    printf ("%lu %lu %lu %lu\n", valeurNumeroVar
     if (valeurIndiceBDD >= valeurDim) {
-      indiceBDD.signalSemanticError (inLexique, "l'indice est >= a la dimension de la variable") ;
+      indiceBDD.signalSemanticError (inLexique, "l'indice est >= a la dimension de la variable" COMMA_THERE) ;
     }else if (valeurDimension < 1) {
-      dimension.signalSemanticError (inLexique, "la dimension doit etre >= 0") ;
+      dimension.signalSemanticError (inLexique, "la dimension doit etre >= 0" COMMA_THERE) ;
     }else if ((valeurIndiceBDD + valeurDimension - 1) >= valeurDim) {
       C_String erreur ;
       erreur << "l'indice doit etre <= " ;
       erreur << (valeurDim - valeurDimension) ;
-      indiceBDD.signalSemanticError (inLexique, erreur) ;    
+      indiceBDD.signalSemanticError (inLexique, erreur COMMA_THERE) ;    
     }
   //--- Il faut recalculer
   //        indiceBDD += numeroVar ;
@@ -126,7 +131,8 @@ routine_verifierDimensionExpliciteCorrecte (C_Lexique & inLexique,
 void
 routine_verifierMemesDimensions (C_Lexique & inLexique, 
                                  GGS_luint dimensionGauche,
-                                 GGS_luint dimensionDroite) {
+                                 GGS_luint dimensionDroite
+                                 COMMA_LOCATION_ARGS) {
   if (dimensionGauche.isBuilt () && dimensionDroite.isBuilt ()) {
     if (dimensionGauche.uintValue () != dimensionDroite.uintValue ()) {
       C_String erreur ;
@@ -135,7 +141,7 @@ routine_verifierMemesDimensions (C_Lexique & inLexique,
              << ") est differente de celle de la variable gauche ("
              << dimensionGauche.uintValue ()
              << ")" ;
-      dimensionDroite.signalSemanticError (inLexique, erreur) ;
+      dimensionDroite.signalSemanticError (inLexique, erreur COMMA_THERE) ;
     }  
   }
 }
