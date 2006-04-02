@@ -106,7 +106,7 @@ class GGS_typeDomain {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_typeDomain * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_typeDomain * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -180,7 +180,7 @@ class GGS_typeFormalArgumentsList {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeFormalArgumentsList (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeFormalArgumentsList (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeFormalArgumentsList (const GGS_typeFormalArgumentsList &) ; // Copy constructor
@@ -231,7 +231,7 @@ class GGS_typeActualArgumentsList {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeActualArgumentsList (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeActualArgumentsList (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeActualArgumentsList (const GGS_typeActualArgumentsList &) ; // Copy constructor
@@ -291,7 +291,7 @@ class GGS_typeVariableDescriptor {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_typeVariableDescriptor * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_typeVariableDescriptor * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -430,7 +430,7 @@ class GGS_typeFormule {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_typeFormule * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_typeFormule * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -462,7 +462,7 @@ class GGS_typeCalcul {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_typeCalcul * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_typeCalcul * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -487,7 +487,7 @@ class GGS_typeListeCalculs {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeListeCalculs (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeListeCalculs (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeListeCalculs (const GGS_typeListeCalculs &) ; // Copy constructor
@@ -540,7 +540,7 @@ void routine_verifierNombreArgumentsBool (C_Lexique &,
 //---------------------------------------------------------------------------*
 
 class GGS_typeDirectDomain {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeDirectDomain * constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
                                 const GGS_luint & argument_2 COMMA_LOCATION_ARGS) ;
@@ -598,7 +598,7 @@ class elementOf_GGS_typeDomainMap : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_typeRecordDomain {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeRecordDomain * constructor_new (const GGS_typeDomainMap & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeRecordDomain * constructor_new (const GGS_typeDomainMap & argument_0 COMMA_LOCATION_ARGS) {
@@ -680,7 +680,7 @@ class elementOf_GGS_typeActualArgumentsList {
 //---------------------------------------------------------------------------*
 
 class GGS_typeDirectVariable {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeDirectVariable * constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
                                 const GGS_luint & argument_2,
@@ -714,7 +714,7 @@ class GGS_typeDirectVariable {
 //---------------------------------------------------------------------------*
 
 class GGS_typeRecordVariable {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeRecordVariable * constructor_new (const GGS_typeTableVariablesBool & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeRecordVariable * constructor_new (const GGS_typeTableVariablesBool & argument_0 COMMA_LOCATION_ARGS) {
@@ -772,7 +772,7 @@ class elementOf_GGS_typeTableFormules : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleTrue {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleTrue * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeFormuleTrue * constructor_new (LOCATION_ARGS) {
@@ -797,7 +797,7 @@ class GGS_typeFormuleTrue {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleFalse {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleFalse * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeFormuleFalse * constructor_new (LOCATION_ARGS) {
@@ -822,7 +822,7 @@ class GGS_typeFormuleFalse {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleVar {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleVar * constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
                                 const GGS_luint & argument_2 COMMA_LOCATION_ARGS) ;
@@ -853,7 +853,7 @@ class GGS_typeFormuleVar {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleFor {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleFor * constructor_new (const GGS_luint & argument_0,
                                 const GGS_typeActualArgumentsList & argument_1,
                                 const GGS_bdd& argument_2,
@@ -887,7 +887,7 @@ class GGS_typeFormuleFor {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleNon {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleNon * constructor_new (const GGS_typeFormule & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeFormuleNon * constructor_new (const GGS_typeFormule & argument_0 COMMA_LOCATION_ARGS) {
@@ -912,7 +912,7 @@ class GGS_typeFormuleNon {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleEt {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleEt * constructor_new (const GGS_typeFormule & argument_0,
                                 const GGS_typeFormule & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -940,7 +940,7 @@ class GGS_typeFormuleEt {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleIte {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleIte * constructor_new (const GGS_typeFormule & argument_0,
                                 const GGS_typeFormule & argument_1,
                                 const GGS_typeFormule & argument_2 COMMA_LOCATION_ARGS) ;
@@ -971,7 +971,7 @@ class GGS_typeFormuleIte {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleOu {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleOu * constructor_new (const GGS_typeFormule & argument_0,
                                 const GGS_typeFormule & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -999,7 +999,7 @@ class GGS_typeFormuleOu {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleImplique {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleImplique * constructor_new (const GGS_typeFormule & argument_0,
                                 const GGS_typeFormule & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -1027,7 +1027,7 @@ class GGS_typeFormuleImplique {
 //---------------------------------------------------------------------------*
 
 class GGS_typeComparaisonFormules {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeComparaisonFormules * constructor_new (const GGS_luint & argument_0,
                                 const GGS_typeFormule & argument_1,
                                 const GGS_typeFormule & argument_2 COMMA_LOCATION_ARGS) ;
@@ -1058,7 +1058,7 @@ class GGS_typeComparaisonFormules {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleExist {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleExist * constructor_new (const GGS_typeFormalArgumentsList & argument_0,
                                 const GGS_typeFormule & argument_1,
                                 const GGS_bdd& argument_2 COMMA_LOCATION_ARGS) ;
@@ -1089,7 +1089,7 @@ class GGS_typeFormuleExist {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleComparaisonValeur {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleComparaisonValeur * constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
                                 const GGS_luint & argument_2,
@@ -1129,7 +1129,7 @@ class GGS_typeFormuleComparaisonValeur {
 //---------------------------------------------------------------------------*
 
 class GGS_typeFormuleComparaisonVariable {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeFormuleComparaisonVariable * constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
                                 const GGS_luint & argument_2,
@@ -1180,7 +1180,7 @@ class GGS_typeFormuleComparaisonVariable {
 //---------------------------------------------------------------------------*
 
 class GGS_typeCalculSimple {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeCalculSimple * constructor_new (const GGS_luint & argument_0,
                                 const GGS_typeFormule & argument_1,
                                 const GGS_lstring & argument_2,
@@ -1217,7 +1217,7 @@ class GGS_typeCalculSimple {
 //---------------------------------------------------------------------------*
 
 class GGS_typeUse_AND {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeUse_AND * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeUse_AND * constructor_new (LOCATION_ARGS) {
@@ -1242,7 +1242,7 @@ class GGS_typeUse_AND {
 //---------------------------------------------------------------------------*
 
 class GGS_typeUse_ITE {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeUse_ITE * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeUse_ITE * constructor_new (LOCATION_ARGS) {
@@ -1267,7 +1267,7 @@ class GGS_typeUse_ITE {
 //---------------------------------------------------------------------------*
 
 class GGS_typeUse_AND_ITE {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeUse_AND_ITE * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeUse_AND_ITE * constructor_new (LOCATION_ARGS) {
@@ -1292,7 +1292,7 @@ class GGS_typeUse_AND_ITE {
 //---------------------------------------------------------------------------*
 
 class GGS_typeDimensionnerANDCache {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeDimensionnerANDCache * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeDimensionnerANDCache * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
@@ -1317,7 +1317,7 @@ class GGS_typeDimensionnerANDCache {
 //---------------------------------------------------------------------------*
 
 class GGS_typeDimensionnerITECache {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeDimensionnerITECache * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeDimensionnerITECache * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
@@ -1342,7 +1342,7 @@ class GGS_typeDimensionnerITECache {
 //---------------------------------------------------------------------------*
 
 class GGS_typeDimensionnerTable {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeDimensionnerTable * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeDimensionnerTable * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
@@ -1367,7 +1367,7 @@ class GGS_typeDimensionnerTable {
 //---------------------------------------------------------------------------*
 
 class GGS_typeAfficherBilan {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeAfficherBilan * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeAfficherBilan * constructor_new (LOCATION_ARGS) {
@@ -1392,7 +1392,7 @@ class GGS_typeAfficherBilan {
 //---------------------------------------------------------------------------*
 
 class GGS_typeCalculIteratif {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeCalculIteratif * constructor_new (const GGS_luint & argument_0,
                                 const GGS_typeFormule & argument_1,
                                 const GGS_lstring & argument_2,

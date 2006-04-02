@@ -17,7 +17,7 @@
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   static const char gGGSsourceFile [] = "semantiqueBDD.ggs" ;
   #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line
 #else
@@ -105,7 +105,7 @@ GGS_typeDomain (cPtr_typeDomain * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeDomain * GGS_typeDomain
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -179,7 +179,7 @@ mBitsCount.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeDirectDomain * GGS_typeDirectDomain::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
@@ -384,7 +384,7 @@ mRecordMap.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeRecordDomain * GGS_typeRecordDomain::
     constructor_new (const GGS_typeDomainMap & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeRecordDomain * ptr_ = (cPtr_typeRecordDomain *) NULL ;
@@ -439,7 +439,7 @@ GGS_typeFormalArgumentsList
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_typeFormalArgumentsList
 ::GGS_typeFormalArgumentsList (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -657,7 +657,7 @@ GGS_typeActualArgumentsList
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_typeActualArgumentsList
 ::GGS_typeActualArgumentsList (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -906,7 +906,7 @@ GGS_typeVariableDescriptor (cPtr_typeVariableDescriptor * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeVariableDescriptor * GGS_typeVariableDescriptor
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -983,7 +983,7 @@ mHighBound.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeDirectVariable * GGS_typeDirectVariable::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
@@ -1120,7 +1120,7 @@ mMap.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeRecordVariable * GGS_typeRecordVariable::
     constructor_new (const GGS_typeTableVariablesBool & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeRecordVariable * ptr_ = (cPtr_typeRecordVariable *) NULL ;
@@ -1392,7 +1392,7 @@ GGS_typeFormule (cPtr_typeFormule * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormule * GGS_typeFormule
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -1443,7 +1443,7 @@ void cPtr_typeFormuleTrue::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleTrue * GGS_typeFormuleTrue::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeFormuleTrue * ptr_ = (cPtr_typeFormuleTrue *) NULL ;
@@ -1474,7 +1474,7 @@ void cPtr_typeFormuleFalse::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleFalse * GGS_typeFormuleFalse::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeFormuleFalse * ptr_ = (cPtr_typeFormuleFalse *) NULL ;
@@ -1513,7 +1513,7 @@ mHighBound.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleVar * GGS_typeFormuleVar::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
@@ -1559,7 +1559,7 @@ aEstFormuleCourante.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleFor * GGS_typeFormuleFor::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_typeActualArgumentsList & argument_1,
@@ -1598,7 +1598,7 @@ aOperande.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleNon * GGS_typeFormuleNon::
     constructor_new (const GGS_typeFormule & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeFormuleNon * ptr_ = (cPtr_typeFormuleNon *) NULL ;
@@ -1634,7 +1634,7 @@ aOperande2.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleEt * GGS_typeFormuleEt::
     constructor_new (const GGS_typeFormule & argument_0,
                                 const GGS_typeFormule & argument_1 COMMA_LOCATION_ARGS) {
@@ -1675,7 +1675,7 @@ aOperande3.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleIte * GGS_typeFormuleIte::
     constructor_new (const GGS_typeFormule & argument_0,
                                 const GGS_typeFormule & argument_1,
@@ -1715,7 +1715,7 @@ aOperande2.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleOu * GGS_typeFormuleOu::
     constructor_new (const GGS_typeFormule & argument_0,
                                 const GGS_typeFormule & argument_1 COMMA_LOCATION_ARGS) {
@@ -1753,7 +1753,7 @@ aOperande2.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleImplique * GGS_typeFormuleImplique::
     constructor_new (const GGS_typeFormule & argument_0,
                                 const GGS_typeFormule & argument_1 COMMA_LOCATION_ARGS) {
@@ -1794,7 +1794,7 @@ aOperande2.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeComparaisonFormules * GGS_typeComparaisonFormules::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_typeFormule & argument_1,
@@ -1837,7 +1837,7 @@ aContraintes.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleExist * GGS_typeFormuleExist::
     constructor_new (const GGS_typeFormalArgumentsList & argument_0,
                                 const GGS_typeFormule & argument_1,
@@ -1889,7 +1889,7 @@ aValeur.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleComparaisonValeur * GGS_typeFormuleComparaisonValeur::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
@@ -1953,7 +1953,7 @@ mRightHighBound.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeFormuleComparaisonVariable * GGS_typeFormuleComparaisonVariable::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1,
@@ -2037,7 +2037,7 @@ GGS_typeCalcul (cPtr_typeCalcul * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeCalcul * GGS_typeCalcul
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -2102,7 +2102,7 @@ aAfficher.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeCalculSimple * GGS_typeCalculSimple::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_typeFormule & argument_1,
@@ -2141,7 +2141,7 @@ void cPtr_typeUse_AND::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeUse_AND * GGS_typeUse_AND::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeUse_AND * ptr_ = (cPtr_typeUse_AND *) NULL ;
@@ -2172,7 +2172,7 @@ void cPtr_typeUse_ITE::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeUse_ITE * GGS_typeUse_ITE::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeUse_ITE * ptr_ = (cPtr_typeUse_ITE *) NULL ;
@@ -2203,7 +2203,7 @@ void cPtr_typeUse_AND_ITE::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeUse_AND_ITE * GGS_typeUse_AND_ITE::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeUse_AND_ITE * ptr_ = (cPtr_typeUse_AND_ITE *) NULL ;
@@ -2236,7 +2236,7 @@ aDimensionCache.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeDimensionnerANDCache * GGS_typeDimensionnerANDCache::
     constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeDimensionnerANDCache * ptr_ = (cPtr_typeDimensionnerANDCache *) NULL ;
@@ -2269,7 +2269,7 @@ aDimensionCache.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeDimensionnerITECache * GGS_typeDimensionnerITECache::
     constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeDimensionnerITECache * ptr_ = (cPtr_typeDimensionnerITECache *) NULL ;
@@ -2302,7 +2302,7 @@ aDimensionTable.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeDimensionnerTable * GGS_typeDimensionnerTable::
     constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeDimensionnerTable * ptr_ = (cPtr_typeDimensionnerTable *) NULL ;
@@ -2333,7 +2333,7 @@ void cPtr_typeAfficherBilan::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeAfficherBilan * GGS_typeAfficherBilan::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeAfficherBilan * ptr_ = (cPtr_typeAfficherBilan *) NULL ;
@@ -2381,7 +2381,7 @@ aAfficher.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeCalculIteratif * GGS_typeCalculIteratif::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_typeFormule & argument_1,
@@ -2437,7 +2437,7 @@ GGS_typeListeCalculs
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_typeListeCalculs
 ::GGS_typeListeCalculs (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
