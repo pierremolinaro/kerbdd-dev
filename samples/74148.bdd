@@ -1,0 +1,36 @@
+
+#DefE0 [ei:bool, i0:bool, i1:bool, i2:bool, i3:bool,
+        i4:bool, i5:bool, i6:bool, i7:bool, e0:bool] 
+             := ~(~ei & i0 & i1 & i2 & i3 & i4 & i5 & i6 & i7) = e0 ;
+
+#DefGS [ei:bool, gs:bool, e0:bool] := ~(e0 & ~ei) = gs ;
+
+display #DefA0 [ei:bool, i1:bool, i2:bool, i3:bool, i4:bool,
+                i5:bool, i6:bool, i7:bool, a0:bool, e0:bool] 
+             := ~((~i1 & i2 & i4 & i6 & ~ei) |
+                  (~i3 & i4 & i6 & ~ei) |
+                  (~i5 & i6 & ~ei) |
+                  (~i7 & ~ei) ) = a0 ;
+
+#DefA1 [ei:bool, i2:bool, i3:bool, i4:bool, i5:bool,
+        i6:bool, i7:bool, a1:bool, e0:bool]
+             := ~((~i2 & i4 & i5 & ~ei) |
+                  (~i3 & i4 & i5 & ~ei) |
+                  (~i6 & ~ei) |
+                  (~i7 & ~ei) ) = a1 ;
+
+#DefA2 [ei:bool, i4:bool, i5:bool,
+        i6:bool, i7:bool, a2:bool] := ~((~i4 & ~ei) |
+                  (~i5 & ~ei) |
+                  (~i6 & ~ei) |
+                  (~i7 & ~ei) ) = a2 ;
+
+#SN74148 [ei:bool, i0:bool, i1:bool, i2:bool, i3:bool, i4:bool, i5:bool,
+          i6:bool, i7:bool, a2:bool, a1:bool, a0:bool, gs:bool, e0:bool] :=
+          #DefE0 [ei, i0, i1, i2, i3, i4, i5, i6, i7, e0] &
+          #DefGS [ei, gs, e0] &
+          #DefA0 [ei, i1, i2, i3, i4, i5, i6, i7, a0, e0] &
+          #DefA1 [ei, i2, i3, i4, i5, i6, i7, a1, e0] &
+          #DefA2 [ei, i4, i5, i6, i7, a2] ;
+
+end

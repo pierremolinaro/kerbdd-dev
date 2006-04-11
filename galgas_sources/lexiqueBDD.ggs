@@ -57,7 +57,6 @@ list motsReservesKerBDD error message "the '%K' keyword" style keyWords :
 
 #-----------------------------------------------------------------*
 
-message fin_commentaire_incorrect  :"incorrect commend ending" ;
 message nombre_dec_trop_grand : "number too large" ;
 message car_non_chiffre : "the character is not a decimal digit" ;
 message fin_chaine_incorrecte : "the character string does not end with \"" ;
@@ -135,13 +134,8 @@ end rule ;
 # ------------------------------------ commentaire ----------------------------
 rule '$' :
   repeat
-  while '\x1' ->'\x9' | '\xB' -> '\xFF' :
+  while '\x1' ->'\x9' | '\xB' | '\xC' | '\xE' -> '\xFF' :
   end repeat ;
-  select
-  when '\n' | '\0' : # New Line, Carriage Return
-  default
-    error fin_commentaire_incorrect ;
-  end select ;
 end rule ;
 
   # --------------------- separateurs (ignores) ---------------------------------

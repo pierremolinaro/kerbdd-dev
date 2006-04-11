@@ -1,0 +1,14 @@
+map 21 ;
+ite_cache 21 ;
+
+domain T : bool [12] ;
+
+#inf [x:T, y:T] := {x <= y} ;
+
+#antisymetrique := !x:T, y:T ((#inf [x, y] & #inf [y, x]) -> {x=y}) ;
+
+#total := !x:T, y:T (#inf [x, y] | #inf [y, x]) ;
+
+#transitive := !x:T, y:T, z:T ((#inf [x, y] & #inf [y, z]) -> #inf [x, z]) ;
+
+end
