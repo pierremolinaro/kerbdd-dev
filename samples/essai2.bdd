@@ -1,6 +1,0 @@
-dump #S1 [f : bool, g : bool, h : bool] := f & g & h ;
-dump #S2 [f : bool, g : bool, h : bool] := ~ ((~f) | (~g) | (~h)) ;
-dump #S3 [f : bool, g : bool, h : bool] := #S1 [f, g, h] = #S2 [f, g, h] ;
-dump #S4 [f : bool, g : bool, h : bool] := #S1 [f, g, h] <> #S2 [f, g, h] ;
-dump #S5 [f : bool, g : bool] := ?h : bool #S1 [f, g, h] ;
-end

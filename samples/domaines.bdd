@@ -1,4 +1,0 @@
-domain azert : "zer", "rez" ;
-domain treza : "ret", "ghtyu", "fgth" ;
-record qsdf : a:azert, b:treza, c:azert ;
-end

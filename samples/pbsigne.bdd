@@ -1,5 +1,0 @@
-#Initial [q:15] := {q=0} ;
-display ;
-#Acces2 [q:15] := #Initial [~q] ;
-
-end
