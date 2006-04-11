@@ -1,0 +1,56 @@
+domain etat : bool [3] ;
+domain action : bool [2] ;
+
+$--- Ensemble des transitions de l'automate
+#Trans [qs:etat, a:action, qd:etat] :=
+ ({qs=0} & {a=0} & {qd=1}) | ({qs=1} & {a=1} & {qd=2}) |
+ ({qs=2} & {a=0} & {qd=3}) | ({qs=3} & {a=0} & {qd=4}) |
+ ({qs=4} & {a=0} & {qd=2}) | ({qs=4} & {a=2} & {qd=5}) |
+ ({qs=5} & {a=3} & {qd=6}) | ({qs=6} & {a=0} & {qd=7}) ;
+
+#accessible [qs:etat] := true ;
+#initial [qs:etat] := {qs=0} ;
+#terminal [qs:etat] := {qs=7} ;
+
+$--- Mmes propriŽtŽs
+#memesProprietes [qs:etat, qd:etat] := #accessible [qs] & #accessible [qd] &
+    (#initial [qs] = #initial [qd]) & (#terminal [qs] = #terminal [qd]) ;
+
+$--- tau-saturation de l'automate
+display #transSat [qs:etat, a:action, qd:etat] += #Trans [qs, a, qd] |
+   ({qs=qd} & {a=0}) |
+   ?q:etat, tau:action (#transSat [qs, a, q] & #transSat [q, tau, qd] & {tau = 0} & #memesProprietes [q, qd]) |
+   ?q:etat, tau:action (#transSat [qs, tau, q] & #transSat [q, a, qd] & {tau = 0} & #memesProprietes [qs, q]) ;
+
+$--- Calcul de la plus grande auto-bisimulation
+display #bisimul [q1:etat, q2:etat] -=
+  #memesProprietes [q1, q2] &
+  ! q1d:etat, a:action (#transSat [q1, a, q1d] ->
+                ?q2d:etat (#transSat [q2, a, q2d] & #bisimul [q1d, q2d])
+               ) &
+  ! q2d:etat, a:action (#Trans [q2, a, q2d] ->
+                ?q1d:etat (#transSat [q1, a, q1d] & #bisimul [q1d, q2d])
+               ) ;
+
+$--- Calcul de l'ensemble rŽduit des Žtats
+display #Qreduit [q1:etat] := !q2:etat (#bisimul [q1, q2] -> {q1 <= q2}) ;
+
+$--- Calcul de l'ensemble rŽduit des transitions (conserve les boucles tau)
+display #TransReduit [qs:etat, a:action, qd:etat] :=
+   #transSat [qs, a, qd] & #Qreduit [qs] & #Qreduit [qd] ;
+
+$--- Calcul de l'ensemble rŽduit des transitions (sans les boucles tau)
+display #TransReduit2 [qs:etat, a:action, qd:etat] :=
+   #transSat [qs, a, qd] & #Qreduit [qs] & #Qreduit [qd] & ~({qs=qd} & {a=0}) ;
+
+$--- Calcul de l'ensemble rŽduit des transitions (en conservant les boucles tau
+$ de l'automate d'origine)
+display #boucleTau [qs:etat] -= $ Ensemble des Žtats appartenant ˆ une boucle tau
+  #accessible [qs] &
+  ?qd:etat, a:action ((#Trans [qs, a, qd] & {a=0}) & #boucleTau [qd]) ;
+
+display #TransReduit3 [qs:etat, a:action, qd:etat] :=
+   #transSat [qs, a, qd] & #Qreduit [qs] & #Qreduit [qd] & 
+     (({qs=qd} & {a=0}) -> #boucleTau [qs]) ;
+
+end

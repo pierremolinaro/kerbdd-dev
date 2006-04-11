@@ -1,0 +1,14 @@
+display #S1 [f:bool, g:bool, h:bool] := (if f then g else h end) = (if ~f then h else g end) ;
+display #S2 [f:bool, g:bool, h:bool] := (if f then g else h end) = ~(if f then ~g else ~h end) ;
+display #T1 [g:bool, h:bool] := (if false then g else h end) = h ;
+display #S3 [f:bool, h:bool] := (if f then f else h end) = ~(if f then false else ~h end) ;
+display #T2 [f:bool] := (if f then false else f end) = false ;
+display #T3 [f:bool] := (if f then false else ~f end) = ~f ;
+display #S4 [f:bool, g:bool] := (if f then g else f end) = (if f then g else false end) ;
+display #S5 [f:bool, g:bool] := (if f then g else ~f end) = (if f then g else true end) ;
+display #T4 [f:bool] := (if f then false else true end) = ~f ;
+display #T5 [f:bool, g:bool] := (if f then g else g end) = g ;
+display #S6 [f:bool, h:bool] := (if f then false else h end) = (if ~h then false else ~f end);
+display #S7 [f:bool, h:bool] := (if f then false else h end) = (if h then ~f else false end);
+
+end

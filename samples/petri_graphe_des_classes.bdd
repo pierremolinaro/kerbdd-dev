@@ -1,0 +1,172 @@
+$ place : p 1 -> P 1
+$ place : p 2 -> P 2
+$ place : p 3 -> P 3
+$ place : p 4 -> P 4
+$ transition : tr 0 -> T 1
+$ transition : tr 1 -> T 2
+$ transition : tr 2 -> T 3
+
+ $ --- Ensemble des (x, y) tels que y = x + 1 
+ #diff1 [y:bool, x:bool] := ?u:bool ({x<u} & {u<=y} & !v:bool (({x<v} & {v<=y}) -> {u=v})) ; 
+ 
+ #diff1bis [x:bool[3], y:bool[3]]  := ?u:bool[3] ({x<u} & {u<=y} & !v:bool[3] (({x<v} & {v<=y}) -> {u=v})) ;
+
+ $ --- Ensemble des (x, y, z) tels que z = x + y 
+ #somme[x:bool[3], y:bool[3], z:bool[3]]  += ( {x=0} & {y=z} ) | ({x=1} & #diff1bis [y,z]) | 
+ ?a:bool[3] , b:bool[3], c:bool[3]   (#somme[a,c,x] & #somme [y,c,b] & #somme [a,b,z] ); 
+ 
+
+ $ --- Ensemble des (res, x, y) tels que res = max(0, x - y) 
+  #max0moins[res:bool[3], x:bool[3], y:bool[3]]  := (?z:bool[3] (#somme[z,y,x] & {res=z} )) | (~?z:bool[3] (#somme[z,y,x] ) & {res=0} ) ; 
+
+
+ $ --- inf de deux valeurs z = inf2(a1:bool[3] , a2:bool[3]) 
+   #inf2 [a1:bool[3], a2 :bool[3], z:bool[3]] :=  if {a1>a2} then {z=a2} else {z=a1} end ;
+
+ $ --- inf de trois valeurs z = inf3(a1:bool[3], a2:bool[3], a3:bool[3]) 
+  #inf3 [a1:bool[3], a2:bool[3],  a3:bool[3], z:bool[3]] := ?u:bool[3] (#inf2 [a1, a2, u] & #inf2 [a3, u, z] ) ;
+
+ display #placeTransition [ p4:bool , p3:bool , p2:bool , p1:bool , tr:bool[2]] := 
+    (   p1 & ~p2 & ~p3 & ~p4 & { tr= 0 } ) | 
+    (   p1 & ~p2 & ~p3 & ~p4 & { tr= 1 } ) | 
+    (  ~p1 & ~p2 & ~p3 &  p4 & { tr= 2 } ) | 
+    false ; 
+
+display #transitionPlace [ tr:bool[2] , p4:bool , p3:bool , p2:bool , p1:bool ] := 
+    ( { tr= 0 } & ~p1 &  p2 & ~p3 & ~p4 ) | 
+    ( { tr= 1 } & ~p1 & ~p2 &  p3 & ~p4 ) | 
+    ( { tr= 2 } & ~p1 & ~p2 &  p3 & ~p4 ) | 
+    false ; 
+
+display #M0 [ p4s:bool , p3s:bool , p2s:bool , p1s:bool ] := { p1s = 1 }  & { p2s = 0 }  & { p3s = 0 }  & { p4s = 1 }  ;  
+ 
+#graphe [ tr:bool[2], p4s:bool[1] , p3s:bool[1] , p2s:bool[1] , p1s:bool[1]  , p4d:bool[1] , p3d:bool[1] , p2d:bool[1] , p1d:bool[1] ] := 
+   ? p4:bool , p3:bool , p2:bool , p1:bool  , p4dd:bool , p3dd:bool , p2dd:bool , p1dd:bool   , p4i :bool[1] , p3i :bool[1] , p2i :bool[1] , p1i :bool[1] 
+     (#placeTransition [ p4 , p3 , p2 , p1 , tr ]
+    & #transitionPlace [ tr, p4dd , p3dd , p2dd , p1dd ]
+    & (if p4 then  #diff1 [ p4s ,  p4i  ]  else { p4s =  p4i } end)
+    & (if p3 then  #diff1 [ p3s ,  p3i  ]  else { p3s =  p3i } end)
+    & (if p2 then  #diff1 [ p2s ,  p2i  ]  else { p2s =  p2i } end)
+    & (if p1 then  #diff1 [ p1s ,  p1i  ]  else { p1s =  p1i } end)
+    & (if p4dd then  #diff1 [ p4d , p4i  ]  else { p4d =  p4i } end)
+    & (if p3dd then  #diff1 [ p3d , p3i  ]  else { p3d =  p3i } end)
+    & (if p2dd then  #diff1 [ p2d , p2i  ]  else { p2d =  p2i } end)
+    & (if p1dd then  #diff1 [ p1d , p1i  ]  else { p1d =  p1i } end)
+ ) ; 
+
+display #marques [  p4s:bool[1] , p3s:bool[1] , p2s:bool[1] , p1s:bool[1] ] += 
+  #M0 [ p4s , p3s , p2s , p1s ] | 
+  ?tr:bool[2],  p4 :bool[1] , p3 :bool[1] , p2 :bool[1] , p1 :bool[1] 
+  (#marques [ p4 , p3 , p2 , p1 ] 
+  & #graphe [tr, p4 , p3 , p2 , p1 ,   p4s , p3s , p2s , p1s ] ) ; 
+ 
+display #grapheMarquage [ tr:bool[2] ,  p4s:bool[1] , p3s:bool[1] , p2s:bool[1] , p1s:bool[1] ,  p4d:bool[1] , p3d:bool[1] , p2d:bool[1] , p1d:bool[1] ] := 
+  #marques [ p4s , p3s , p2s , p1s ] 
+  & #graphe [tr, p4s , p3s , p2s , p1s ,   p4d , p3d , p2d , p1d ] ; 
+ 
+display #temps [ tr:bool[2], tmin:bool[3], tmax:bool[3] ] := 
+({tr=0}&{tmin=3}&{tmax=5}) |
+({tr=1}&{tmin=2}&{tmax=4}) |
+({tr=2}&{tmin=0}&{tmax=1}) |
+({tr=3}&{tmin=6}&{tmax=6}) |
+false ; 
+
+display #domaine0 [ s4:bool , s3:bool , s2:bool , s1:bool ,  tr2max:bool[3] , tr1max:bool[3] , tr0max:bool[3] ,  tr2min:bool[3] , tr1min:bool[3] , tr0min:bool[3] ] := 
+  #M0 [ s4 , s3 , s2 , s1 ] & 
+  (! trans:bool[2] ( ? trmin:bool[3] , trmax:bool[3] ( 
+     #temps [trans, trmin, trmax ] 
+    &( (? des4:bool , des3:bool , des2:bool , des1:bool (  
+     #grapheMarquage [trans, s4 , s3 , s2 , s1, des4 , des3 , des2 , des1 ] )) 
+   & ({trans= 0} -> { tr0min = trmin} & {tr0max = trmax})
+   & ({trans= 1} -> { tr1min = trmin} & {tr1max = trmax})
+   & ({trans= 2} -> { tr2min = trmin} & {tr2max = trmax})
+ | (~? des4:bool , des3:bool , des2:bool , des1:bool (  
+    #grapheMarquage [trans, s4 , s3 , s2 , s1, des4 , des3 , des2 , des1 ] )) 
+    & ({trans= 0} -> { tr0min = 6} & {tr0max = 6})
+    & ({trans= 1} -> { tr1min = 6} & {tr1max = 6})
+    & ({trans= 2} -> { tr2min = 6} & {tr2max = 6})
+)))) ; 
+
+display #firstdomaine [ tr:bool[2],
+   s4:bool , s3:bool , s2:bool , s1:bool ,  d4:bool , d3:bool , d2:bool , d1:bool ,
+  tr2sma:bool[3] , tr2smi:bool[3] , tr2dma:bool[3] , tr2dmi:bool[3] ,
+  tr1sma:bool[3] , tr1smi:bool[3] , tr1dma:bool[3] , tr1dmi:bool[3] , 
+  tr0sma:bool[3] , tr0smi:bool[3] , tr0dma:bool[3] , tr0dmi:bool[3]  ] := 
+ #domaine0 [ s4 , s3 , s2 , s1 ,  tr2sma , tr1sma , tr0sma, tr2smi , tr1smi , tr0smi ] & 
+  #grapheMarquage [ tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ] &
+?trmaximum:bool[3], trminimum:bool[3] ( 
+   #inf3 [ tr2sma , tr1sma , tr0sma ,trmaximum ] 
+   & ({tr= 0} -> { tr0smi <= trmaximum} & {trminimum =tr0smi}) 
+  & ({tr= 1} -> { tr1smi <= trmaximum} & {trminimum =tr1smi}) 
+  & ({tr= 2} -> { tr2smi <= trmaximum} & {trminimum =tr2smi}) 
+  & ! trans:bool[2] ( 
+    ( ( ?  des4:bool , des3:bool , des2:bool , des1:bool 
+        (  #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] )) 
+      & ( ? trmin :bool[3], trmax:bool[3] ( 
+                               
+         #temps [trans, trmin, trmax] 
+        & (( {trans= 0}&{tr0smi < 6} ) ->  (  #max0moins[tr0dmi, tr0smi,trmaximum]  &  #max0moins[tr0dma, tr0sma,trminimum] ) ) 
+        & (( {trans= 0}&{tr0smi = 6} ) ->  { tr0dmi = trmin } & {tr0dma = trmax }  ) 
+        & (( {trans= 1}&{tr1smi < 6} ) ->  (  #max0moins[tr1dmi, tr1smi,trmaximum]  &  #max0moins[tr1dma, tr1sma,trminimum] ) ) 
+        & (( {trans= 1}&{tr1smi = 6} ) ->  { tr1dmi = trmin } & {tr1dma = trmax }  ) 
+        & (( {trans= 2}&{tr2smi < 6} ) ->  (  #max0moins[tr2dmi, tr2smi,trmaximum]  &  #max0moins[tr2dma, tr2sma,trminimum] ) ) 
+        & (( {trans= 2}&{tr2smi = 6} ) ->  { tr2dmi = trmin } & {tr2dma = trmax }  ) 
+          )) 
+    | (~? des4:bool , des3:bool , des2:bool , des1:bool (  
+    #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] )) 
+     & ({trans= 0} -> { tr0dmi = 6} & {tr0dma = 6}) 
+        & ({trans= 1} -> { tr1dmi = 6} & {tr1dma = 6}) 
+        & ({trans= 2} -> { tr2dmi = 6} & {tr2dma = 6}) 
+      ) )  ) ; 
+ 
+ display #grapheClasse [ tr:bool[2],
+       s4:bool , s3:bool , s2:bool , s1:bool ,
+      d4:bool , d3:bool , d2:bool , d1:bool ,
+      tr2sma:bool[3] , tr2smi:bool[3] , tr2dma:bool[3] , tr2dmi:bool[3] ,
+      tr1sma:bool[3] , tr1smi:bool[3] , tr1dma:bool[3] , tr1dmi:bool[3] , 
+      tr0sma:bool[3] , tr0smi:bool[3] , tr0dma:bool[3] , tr0dmi:bool[3] ] += 
+   #firstdomaine [tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ,  tr2sma , tr1sma , tr0sma ,  tr2smi , tr1smi , tr0smi,  tr2dma , tr1dma , tr0dma ,  tr2dmi , tr1dmi , tr0dmi ]  | 
+  #grapheMarquage [tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ] & 
+ ( ?trmaximum:bool[3], trminimum:bool[3] ( 
+   #inf3 [ tr2sma , tr1sma , tr0sma ,trmaximum ] 
+   & ({tr= 0} -> { tr0smi <= trmaximum} & {trminimum =tr0smi}) 
+  & ({tr= 1} -> { tr1smi <= trmaximum} & {trminimum =tr1smi}) 
+  & ({tr= 2} -> { tr2smi <= trmaximum} & {trminimum =tr2smi}) 
+  & ! trans:bool[2] ( 
+    ( ( ?  des4:bool , des3:bool , des2:bool , des1:bool 
+        (  #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] )) 
+      & ( ? trmin:bool[3], trmax:bool[3] ( 
+                               
+         #temps [trans, trmin, trmax] 
+        & (( {trans= 0}&{tr0smi < 6} ) ->  (  #max0moins[tr0dmi, tr0smi,trmaximum]  &  #max0moins[tr0dma, tr0sma,trminimum] ) ) 
+        & (( {trans= 0}&{tr0smi = 6} ) ->  { tr0dmi = trmin } & {tr0dma = trmax }  ) 
+        & (( {trans= 1}&{tr1smi < 6} ) ->  (  #max0moins[tr1dmi, tr1smi,trmaximum]  &  #max0moins[tr1dma, tr1sma,trminimum] ) ) 
+        & (( {trans= 1}&{tr1smi = 6} ) ->  { tr1dmi = trmin } & {tr1dma = trmax }  ) 
+        & (( {trans= 2}&{tr2smi < 6} ) ->  (  #max0moins[tr2dmi, tr2smi,trmaximum]  &  #max0moins[tr2dma, tr2sma,trminimum] ) ) 
+        & (( {trans= 2}&{tr2smi = 6} ) ->  { tr2dmi = trmin } & {tr2dma = trmax }  ) 
+          )) 
+    | (~? des4:bool , des3:bool , des2:bool , des1:bool (  
+    #grapheMarquage [trans, d4 , d3 , d2 , d1, des4 , des3 , des2 , des1 ] )) 
+     & ({trans= 0} -> { tr0dmi = 6} & {tr0dma = 6}) 
+        & ({trans= 1} -> { tr1dmi = 6} & {tr1dma = 6}) 
+        & ({trans= 2} -> { tr2dmi = 6} & {tr2dma = 6}) 
+      ) )  ) ) 
+  & ( ? trplus:bool[2], dd4:bool , dd3:bool , dd2:bool , dd1:bool ,   tr2ddma:bool[3] , tr1ddma:bool[3] , tr0ddma:bool[3] ,  tr2ddmi:bool[3] , tr1ddmi:bool[3] , tr0ddmi:bool[3] 
+  (#grapheClasse [trplus, dd4 , dd3 , dd2 , dd1 ,  s4 , s3 , s2 , s1 ,
+                  tr2ddma ,tr2ddmi ,tr2sma , tr2smi , 
+                  tr1ddma ,tr1ddmi ,tr1sma , tr1smi , 
+                  tr0ddma ,tr0ddmi ,tr0sma , tr0smi ] )); 
+ 
+
+
+display #grapheClasseReduit[ tr:bool[2],    s4:bool , s3:bool , s2:bool , s1:bool ,  d4:bool , d3:bool , d2:bool , d1:bool ] 
+ := ? tr2sma:bool[3] , tr2smi:bool[3] , tr2dma:bool[3] , tr2dmi:bool[3] ,
+      tr1sma:bool[3] , tr1smi:bool[3] , tr1dma:bool[3] , tr1dmi:bool[3] , 
+      tr0sma:bool[3] , tr0smi:bool[3] , tr0dma:bool[3] , tr0dmi:bool[3]
+  ( #grapheClasse [tr, s4 , s3 , s2 , s1 ,  d4 , d3 , d2 , d1 ,
+      tr2sma , tr2smi , tr2dma , tr2dmi ,
+      tr1sma , tr1smi, tr1dma , tr1dmi , 
+      tr0sma , tr0smi , tr0dma , tr0dmi ] ); 
+
+
+end 

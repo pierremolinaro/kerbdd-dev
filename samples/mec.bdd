@@ -1,0 +1,33 @@
+domain etat : bool [2] ;
+domain action : bool [2] ;
+
+$--- Ensemble des transitions du premier automate
+display #Trans1 [qs:etat, t:action, qd:etat] :=
+ ({qs=0} & {t=0} & {qd=1}) | ({qs=1} & {t=1} & {qd=2}) | ({qs=qd} & {t=3}) ;
+
+$--- Ensemble des transitions du second automate
+#Trans2 [qs:etat, t:action, qd:etat] := #Trans1 [qs, t, qd] ;
+
+$---- Vecteur de synchronisation
+display #vecteurSynchro [t:action, u:action] :=
+         ({t=3} & {u=0}) | ({t=0} & {u=0}) | ({t=1} & {u=1}) |
+         ({t=0} & {u=3}) | ({t=1} & {u=3})  ;
+
+$------------------ Produit des deux automates ------------------------
+domain etatProduit : record
+  e1 : etat ;
+  e2 : etat ;
+end record ;
+
+domain actionProduit : record
+  a1 : action ;
+  a2 : action ;
+end record ;
+
+
+display #Trans [qs:etatProduit, tu:actionProduit, qd:etatProduit] :=
+ #vecteurSynchro [tu.a1, tu.a2] &
+ #Trans1 [qs.e1, tu.a1, qd.e1] & 
+ #Trans2 [qs.e2, tu.a2, qd.e2] ;
+
+end

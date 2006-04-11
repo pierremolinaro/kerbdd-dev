@@ -1,0 +1,30 @@
+domain etat : bool [6] ;
+$--- Ensemble des transitions du graphe
+#Trans [qs:etat, qd:etat] :=
+   ({qs= 0} & {qd= 1}) | ({qs= 1} & {qd= 2}) | ({qs= 2} & {qd= 3}) |
+   ({qs= 3} & {qd= 4}) | ({qs= 4} & {qd= 5}) | ({qs= 5} & {qd= 6}) |
+   ({qs= 6} & {qd= 7}) | ({qs= 7} & {qd= 8}) | ({qs= 8} & {qd= 9}) |
+   ({qs= 9} & {qd=10}) | ({qs=10} & {qd=11}) | ({qs=11} & {qd=12}) |
+   ({qs=12} & {qd=13}) | ({qs=13} & {qd=14}) | ({qs=14} & {qd=15}) |
+   ({qs=15} & {qd=16}) | ({qs=16} & {qd=17}) | ({qs=17} & {qd=18}) |
+   ({qs=18} & {qd=19}) | ({qs=19} & {qd=20}) | ({qs=20} & {qd=21}) |
+   ({qs=21} & {qd=22}) | ({qs=22} & {qd=23}) | ({qs=23} & {qd=24}) |
+   ({qs=24} & {qd=25}) | ({qs=25} & {qd=26}) | ({qs=26} & {qd=27}) |
+   ({qs=27} & {qd=28}) | ({qs=28} & {qd=29}) | ({qs=29} & {qd=30}) |
+   ({qs=30} & {qd=31}) ;
+
+
+$--- Etat initial
+#Initial [q:etat] := {q=0} ;
+
+$--- Calcul des états accessibles par plus petit point fixe
+#Acces [q:etat] += #Initial [q] | ? t:etat (#Acces [t] & #Trans [t, q]) ;
+
+$--- Calcul par itération quadratique
+#Zero [qs:etat, qd:etat] := #Trans [qs, qd] | {qs = qd} ;
+
+#Quad [qs:etat, qd:etat] += #Zero [qs, qd] | ? t:etat (#Quad [qs, t] & #Quad [t, qd]) ;
+
+#Acc [q:etat] := ?t:etat (#Initial [t] & #Quad [t, q]) ;
+
+end

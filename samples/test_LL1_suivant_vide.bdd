@@ -1,0 +1,108 @@
+$--------------------------------------------------------------*
+$                                                              *
+$    Vérification de la propriété LL (1) sur une grammaire     *
+$                                                              *
+$  Cette grammaire présente un non terminal <toto> ayant un    *
+$  suivant vide.                                               *
+$                                                              *
+$--------------------------------------------------------------*
+
+domain vocabulary : bool [4] ;
+
+$--- Productions vides
+#ProductionVide [nt:vocabulary] := {nt=1} | {nt=3} | {nt=5} | {nt=7} ;
+
+$--- Codage des productions de la forme <ntg> = "t" <ntd> :
+#Acces1 [ntg:vocabulary, t:vocabulary, ntd:vocabulary] := 
+	({ntg=1} & {t=0} & {ntd=9}) | $ <suiteTerme> = "+" <suiteTerme1>
+	({ntg=1} & {t=1} & {ntd=9}) | $ <suiteTerme> = "-" <suiteTerme1>
+	({ntg=3} & {t=2} & {ntd=8}) | $ <suiteFacteur> = "*" <suiteFacteur1>
+	({ntg=3} & {t=3} & {ntd=8}) | $ <suiteFacteur> = "/" <suiteFacteur1>
+	({ntg=5} & {t=1} & {ntd=7}) | $ <opUnaire> = "-" <productionVide>
+	({ntg=5} & {t=0} & {ntd=7}) | $ <opUnaire> = "+" <productionVide>
+	({ntg=6} & {t=6} & {ntd=7}) | $ <primaire> = "id" <productionVide>
+	({ntg=6} & {t=7} & {ntd=7}) | $ <primaire> = "cst" <productionVide>
+	({ntg=6} & {t=4} & {ntd=10}) | $ <primaire> = "(" <suitePrimaire1>
+	({ntg=11} & {t=5} & {ntd=7}) ; $ <suitePrimaire2> = ")" <productionVide>
+
+$--- Codage des productions de la forme <ntg> = <nt1> <nt2> :
+#Acces2 [ntg:vocabulary, nt1:vocabulary, nt2:vocabulary] := 
+({ntg=0} & {nt1=2} & {nt2=1}) | $ <expression> = <terme> <suiteTerme>
+({ntg=9} & {nt1=2} & {nt2=1}) | $ <suiteTerme1> = <terme> <suiteTerme>
+({ntg=2} & {nt1=4} & {nt2=3}) | $ <terme> = <facteur> <suiteFacteur>
+({ntg=8} & {nt1=4} & {nt2=3}) | $ <suiteFacteur1> = <facteur> <suiteFacteur>
+({ntg=4} & {nt1=5} & {nt2=6}) | $ <facteur> = <opUnaire> <primaire>
+({ntg=10} & {nt1=0} & {nt2=11}) | $ <suitePrimaire1> = <expression> <suitePrimaire2>
+({ntg=12} & {nt1=4} & {nt2=12}) ; $ <toto> = <terme> <toto>
+
+$--- Axiome de la grammaire
+#Axiome [nt:vocabulary] := {nt=0} ;
+
+$--- Calcul de l'ensemble des terminaux utiles
+display #Utile [nt:vocabulary] += #Axiome [nt] |
+	?ntg:vocabulary,t:vocabulary (
+		#Utile [ntg] & (
+			#Acces1 [ntg, t, nt] | 
+			?nt2:vocabulary (#Acces2 [ntg, nt, nt2] | #Acces2 [ntg, nt2, nt])
+		)
+	) ;
+
+$--- Recherche des terminaux inutiles
+display #Inutile [nt:vocabulary] := {nt <= 12} & ~ #Utile [nt] ;
+
+$--- Ensemble des non-terminaux pouvant engendrer le vide
+display #Vide [nt:vocabulary] -= #ProductionVide [nt] &
+              !ntg:vocabulary,nt2:vocabulary (#Acces2 [ntg, nt, nt2] -> #Vide [nt2]) ;
+
+$--- Calcul de l'ensemble des premiers
+display #Premiers [nt:vocabulary, t:vocabulary] += 
+	(#ProductionVide [nt] & {t=8}) |
+	?ntd:vocabulary #Acces1 [nt, t, ntd] |
+	?nt1:vocabulary, nt2:vocabulary (#Acces2 [nt, nt1, nt2] & #Premiers [nt1, t]) |
+	?nt1:vocabulary, nt2:vocabulary (#Acces2 [nt, nt1, nt2] & #ProductionVide [nt1]
+	                                     & #Premiers [nt2, t]) ;
+
+
+$--- Calcul et affichage des non-terminaux dont le premier est vide
+display #ErreurPremiers [nt:vocabulary] := {nt <= 12} & ~ ?t:vocabulary #Premiers [nt, t] ;
+
+$--- Calcul des suivants
+#Suivants [nt:vocabulary,t:vocabulary] +=
+  (#Axiome [nt] & {t=8}) |
+  ?t1:vocabulary, ntg:vocabulary (#Acces1 [ntg, t1, nt] & #Suivants [ntg, t]) |
+  ?ntg:vocabulary, nt1:vocabulary (#Acces2 [ntg, nt1, nt] & #Suivants [ntg, t]) |
+  ?ntg:vocabulary, nt2:vocabulary (#Acces2 [ntg, nt, nt2] & #Premiers [nt2, t]) |
+  ?ntg:vocabulary, nt2:vocabulary (#Acces2 [ntg, nt, nt2] & #ProductionVide [nt2] &
+                 #Suivants [ntg, t]) ;
+
+$--- Calcul et affichage des non-terminaux dont le suivant est vide
+display #ErreurSuivants [nt:vocabulary] := {nt <= 12} & ~ ?t:vocabulary #Suivants [nt, t] ;
+
+$------------------------------ TestLL1 ------------------------
+
+$--- Conflit entre une production vide et une production de type 1
+#Conflit1 [nt:vocabulary, t:vocabulary] :=
+    ?ntd:vocabulary (#ProductionVide [nt] & #Acces1 [nt, t, ntd] & #Suivants [nt, t]) ;
+
+$--- Conflit entre une production vide et une production de type 2
+#Conflit2 [nt:vocabulary, t:vocabulary] :=
+    ?nt1:vocabulary, ntd:vocabulary (#ProductionVide [nt] & #Acces2 [nt, nt1, ntd]
+                   & #Premiers [nt1, t] & #Suivants [nt, t]) ;
+
+$--- Conflit entre deux productions de type 1
+#Conflit3 [nt:vocabulary, t:vocabulary] :=
+    ?nt1:vocabulary, nt2:vocabulary (#Acces1 [nt, t, nt1] & #Acces1 [nt, t, nt2] & {nt1 <> nt2}) ;
+
+$--- Conflit entre une production de type 1 et une production de type 2
+#Conflit4 [nt:vocabulary, t:vocabulary] :=
+  ?nt1:vocabulary, nt2:vocabulary, nt3:vocabulary (#Acces1 [nt, t, nt1] & #Acces2 [nt, nt2, nt3] &
+       (#Premiers [nt2, t] | (#ProductionVide [nt2] & #Suivants [nt2, t]))) ;
+
+$--- Conflit entre deux productions de type 2
+#Conflit5 [nt:vocabulary, t:vocabulary] :=
+  ?nt1:vocabulary, nt2:vocabulary, nt3:vocabulary, nt4:vocabulary (#Acces2 [nt, nt1, nt2] & 
+        #Acces2 [nt, nt3, nt4] & {nt1 <> nt3} &
+       (#Premiers [nt1, t] | (#ProductionVide [nt1] & #Suivants [nt1, t])) &
+       (#Premiers [nt3, t] | (#ProductionVide [nt3] & #Suivants [nt3, t]))) ;
+
+end

@@ -1,0 +1,41 @@
+domain action : bool ;
+
+$--- Ensemble des transitions du premier automate
+domain etat1 : bool [2] ;
+
+#Trans1 [qs:etat1, t:action, qd:etat1] :=
+ ({qs=0} & {t=0} & {qd=1}) | ({qs=1} & {t=1} & {qd>=2}) ;
+
+#accessible1 [qs:etat1] := true ;
+
+#initial1 [qs:etat1] := {qs=0} ;
+
+#terminal1 [qs:etat1] := {qs=3} ;
+
+$--- Ensemble des transitions du second automate
+domain etat2 : bool [3] ;
+
+#Trans2 [qs:etat2, t:action, qd:etat2] := 
+ ({qs=0} & {t=0} & {qd=1}) | ({qs=0} & {t=0} & {qd=2}) |
+ ({qs=1} & {t=1} & {qd=3}) | ({qs=2} & {t=1} & {qd=4}) ;
+
+#accessible2 [qs:etat2] := {qs <= 4} ;
+
+#initial2 [qs:etat2] := {qs=0} ;
+
+#terminal2 [qs:etat2] := {qs=4} ;
+
+$--- Calcul de la plus grande bisimulation
+display #bisimul [q1:etat1, q2:etat2] -=
+  #accessible1 [q1] & #accessible2 [q2] &
+  (#initial1 [q1] = #initial2 [q2]) &
+  (#terminal1 [q1] = #terminal2 [q2]) &
+  ! q1d:etat1, a:action (#Trans1 [q1, a, q1d] -> ?q2d:etat2 (#Trans2 [q2, a, q2d] & #bisimul [q1d, q2d])) &
+  ! q2d:etat2, a:action (#Trans2 [q2, a, q2d] -> ?q1d:etat1 (#Trans1 [q1, a, q1d] & #bisimul [q1d, q2d])) ;
+
+$---- Equivalence forte
+#eqForte :=
+   !q1:etat1 (#accessible1 [q1] -> ?q2:etat2 (#accessible2 [q2] & #bisimul [q1, q2])) &
+   !q2:etat2 (#accessible2 [q2] -> ?q1:etat1 (#accessible1 [q1] & #bisimul [q1, q2])) ;
+
+end

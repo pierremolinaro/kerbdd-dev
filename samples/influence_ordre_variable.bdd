@@ -1,0 +1,5 @@
+dump #S1 [a:bool, b:bool, c:bool, d:bool] := (a & b) | (c & d) ;
+
+dump #S2 [a:bool, c:bool, b:bool, d:bool] := (a & b) | (c & d) ;
+
+end
