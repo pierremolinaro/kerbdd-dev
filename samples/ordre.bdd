@@ -1,9 +1,0 @@
-#inf [x:7, y:7] := {x < y} ;
-
-#antisymetrique := !x:7, y:7 ((#inf [x, y] & #inf [y, x]) -> {x=y}) ;
-
-#total := !x:7, y:7 (#inf [x, y] | #inf [y, x]) ;
-
-#transitive := !x:7, y:7, z:7 ((#inf [x, y] & #inf [y, z]) -> #inf [x, z]) ;
-
-end
