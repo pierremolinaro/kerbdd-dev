@@ -286,7 +286,17 @@ searchKey (C_Lexique & inLexique,
       }
     }
     if (resultat == NULL) {
-      positionErreur.semanticError (inLexique, messageErreurRecherche COMMA_THERE) ;
+      C_String errorMessage ;
+      sint32 index = 0 ;
+      while (messageErreurRecherche [index] != '\0') {
+        if (messageErreurRecherche [index] == '%') {
+          errorMessage << clef ;
+        }else{
+          errorMessage << messageErreurRecherche [index] ;
+        }
+        index ++ ;
+      }
+      positionErreur.semanticError (inLexique, errorMessage.cString () COMMA_THERE) ;
     }else{
       macroValidPointer (resultat) ;
     }
