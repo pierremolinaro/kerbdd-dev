@@ -1,8 +1,8 @@
 $--------------------------------------------------------------*
 $                                                              *
-$    Vérification de la propriété LL (1) sur une grammaire     *
+$    Verification de la propriete LL (1) sur une grammaire     *
 $                                                              *
-$  Cette grammaire présente un non terminal <toto> ayant un    *
+$  Cette grammaire presente un non terminal <toto> ayant un    *
 $  suivant vide.                                               *
 $                                                              *
 $--------------------------------------------------------------*
