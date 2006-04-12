@@ -1,5 +1,3 @@
-
-
 domain etat : bool [3] ;
 domain action : bool [2] ;
 $--- Ensemble des transitions du premier automate

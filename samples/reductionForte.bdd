@@ -20,10 +20,10 @@ display #bisimul [q1:etat, q2:etat] -=
                 ?q1d:etat (#Trans [q1, a, q1d] & #bisimul [q1d, q2d])
                ) ;
 
-$--- Calcul de l'ensemble rŽduit des Žtats
+$--- Calcul de l'ensemble reduit des etats
 display #Qreduit [q1:etat] := !q2:etat (#bisimul [q1, q2] -> {q1 <= q2}) ;
 
-$--- Calcul de l'ensemble rŽduit des transitions
+$--- Calcul de l'ensemble reduit des transitions
 display #TransReduit [qs:etat, a:action, qd:etat] := 
      #Qreduit [qs] & #Qreduit [qd] &
      ?qss:etat, qdd:etat (#Trans [qss, a, qdd] & #bisimul [qs,qss] & #bisimul [qd,qdd]) ;

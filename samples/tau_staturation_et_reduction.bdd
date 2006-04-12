@@ -12,7 +12,7 @@ $--- Ensemble des transitions de l'automate
 #initial [qs:etat] := {qs=0} ;
 #terminal [qs:etat] := {qs=7} ;
 
-$--- Mmes propriŽtŽs
+$--- Memes proprietes
 #memesProprietes [qs:etat, qd:etat] := #accessible [qs] & #accessible [qd] &
     (#initial [qs] = #initial [qd]) & (#terminal [qs] = #terminal [qd]) ;
 
@@ -32,20 +32,20 @@ display #bisimul [q1:etat, q2:etat] -=
                 ?q1d:etat (#transSat [q1, a, q1d] & #bisimul [q1d, q2d])
                ) ;
 
-$--- Calcul de l'ensemble rŽduit des Žtats
+$--- Calcul de l'ensemble reduit des etats
 display #Qreduit [q1:etat] := !q2:etat (#bisimul [q1, q2] -> {q1 <= q2}) ;
 
-$--- Calcul de l'ensemble rŽduit des transitions (conserve les boucles tau)
+$--- Calcul de l'ensemble reduit des transitions (conserve les boucles tau)
 display #TransReduit [qs:etat, a:action, qd:etat] :=
    #transSat [qs, a, qd] & #Qreduit [qs] & #Qreduit [qd] ;
 
-$--- Calcul de l'ensemble rŽduit des transitions (sans les boucles tau)
+$--- Calcul de l'ensemble reduit des transitions (sans les boucles tau)
 display #TransReduit2 [qs:etat, a:action, qd:etat] :=
    #transSat [qs, a, qd] & #Qreduit [qs] & #Qreduit [qd] & ~({qs=qd} & {a=0}) ;
 
-$--- Calcul de l'ensemble rŽduit des transitions (en conservant les boucles tau
+$--- Calcul de l'ensemble reduit des transitions (en conservant les boucles tau
 $ de l'automate d'origine)
-display #boucleTau [qs:etat] -= $ Ensemble des Žtats appartenant ˆ une boucle tau
+display #boucleTau [qs:etat] -= $ Ensemble des etats appartenant a une boucle tau
   #accessible [qs] &
   ?qd:etat, a:action ((#Trans [qs, a, qd] & {a=0}) & #boucleTau [qd]) ;
 

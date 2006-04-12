@@ -38,16 +38,16 @@ $--- Produit de cinq graphes : Trans16 * Trans16 * Trans16 * Trans16 * Trans8
 $--- Etat initial
 #Initial [q:n] := {q.x=0} & {q.y=0} & {q.z=0} & {q.t=0} & {q.u=0} ;
 
-$--- Autre Žcriture
+$--- Autre ecriture
 #Initial2 [q:n] := #Initial [q.x, q.y, q.z, q.t, q.u] ;
 
-$--- Calcul des Žtats accessibles par plus petit point fixe
+$--- Calcul des etats accessibles par plus petit point fixe
 #Acces [q:n] += #Initial [q] | ? t:n (#Acces [t] & #Trans [t, q]) ;
 
-$--- Ensemble des Žtats morts
+$--- Ensemble des etats morts
 #NoSucc [q:n] := #Acces [q] & ~ ? t:n #Trans [q, t] ; 
 
-$--- Ensemble des Žtats ne pouvant conduire que vers un Žtat mort
+$--- Ensemble des etats ne pouvant conduire que vers un etat mort
 #DeadLock [q:n] += #Acces [q] &
              !t:n ((#Acces [q] & #Trans [q, t]) -> #DeadLock [t]) ;
 

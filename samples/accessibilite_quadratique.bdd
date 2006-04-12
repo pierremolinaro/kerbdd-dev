@@ -17,10 +17,10 @@ $--- Ensemble des transitions du graphe
 $--- Etat initial
 #Initial [q:etat] := {q=0} ;
 
-$--- Calcul des états accessibles par plus petit point fixe
+$--- Calcul des etats accessibles par plus petit point fixe
 #Acces [q:etat] += #Initial [q] | ? t:etat (#Acces [t] & #Trans [t, q]) ;
 
-$--- Calcul par itération quadratique
+$--- Calcul par iteration quadratique
 #Zero [qs:etat, qd:etat] := #Trans [qs, qd] | {qs = qd} ;
 
 #Quad [qs:etat, qd:etat] += #Zero [qs, qd] | ? t:etat (#Quad [qs, t] & #Quad [t, qd]) ;
