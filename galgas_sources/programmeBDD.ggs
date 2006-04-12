@@ -1,4 +1,4 @@
-program programmeBDD "version 3.0.2" . "bdd" :
+program programmeBDD "version 3.0.3" . "bdd" :
   import grammar grammaireBDD in "grammaireBDD.ggs" ;
 #--- Start symbol arguments
   aTableFormules ;
