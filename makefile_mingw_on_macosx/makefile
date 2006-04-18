@@ -6,8 +6,8 @@
 #---------------------------------------------------------------*
 
 #--- Release and debug versions of markg
-EXECUTABLE := kerbdd-console.exe
-EXECUTABLE_DEBUG := kerbdd-console-debug.exe
+EXECUTABLE := kerbdd.exe
+EXECUTABLE_DEBUG := kerbdd-debug.exe
 
 #---------------------------------------------------------------*
 
