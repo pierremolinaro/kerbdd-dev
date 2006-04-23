@@ -93,42 +93,6 @@ routine_verifierDimensionValeurCorrecte (C_Lexique & inLexique,
 //---------------------------------------------------------------------*
 
 void
-routine_verifierDimensionExpliciteCorrecte (C_Lexique & inLexique, 
-                                            GGS_luint numeroVar, // indice BDD de la variable
-                                            GGS_luint dim, // dimension de la variable
-                                            GGS_luint & indiceBDD, // decalage appel
-                                            GGS_luint dimension
-                                            COMMA_LOCATION_ARGS) { // dimension appel
-  if (numeroVar.isBuilt () && dim.isBuilt () &&
-      indiceBDD.isBuilt () && dimension.isBuilt ()){
-  //--- Il faut verifier :
-  //       indiceBDD < dim
-  //       dimension >= 1 ;
-  //       (indiceBDD + dimension - 1) < dim
-    const unsigned long valeurNumeroVar = numeroVar.uintValue () ;
-    const unsigned long valeurDim = dim.uintValue () ;
-    const unsigned long valeurIndiceBDD = indiceBDD.uintValue () ;
-    const unsigned long valeurDimension = dimension.uintValue () ;
-//    printf ("%lu %lu %lu %lu\n", valeurNumeroVar
-    if (valeurIndiceBDD >= valeurDim) {
-      indiceBDD.signalSemanticError (inLexique, "l'indice est >= a la dimension de la variable" COMMA_THERE) ;
-    }else if (valeurDimension < 1) {
-      dimension.signalSemanticError (inLexique, "la dimension doit etre >= 0" COMMA_THERE) ;
-    }else if ((valeurIndiceBDD + valeurDimension - 1) >= valeurDim) {
-      C_String erreur ;
-      erreur << "l'indice doit etre <= " ;
-      erreur << (valeurDim - valeurDimension) ;
-      indiceBDD.signalSemanticError (inLexique, erreur COMMA_THERE) ;    
-    }
-  //--- Il faut recalculer
-  //        indiceBDD += numeroVar ;
-    indiceBDD.setUlongValue (indiceBDD.uintValue () + valeurNumeroVar) ;
-  }
-}
-
-//---------------------------------------------------------------------*
-
-void
 routine_verifierMemesDimensions (C_Lexique & inLexique, 
                                  GGS_luint dimensionGauche,
                                  GGS_luint dimensionDroite

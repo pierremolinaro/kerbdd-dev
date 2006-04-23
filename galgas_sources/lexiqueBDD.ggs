@@ -46,7 +46,7 @@ list delimiteursKerBDD error message "the '%K' delimiter" style delimitors :
 list motsReservesKerBDD error message "the '%K' keyword" style keyWords :
  "ite_cache", "and_cache",
  "use_and", "use_ite", "use_and_ite",
- "map",      "dimension",
+ "map",
  "bdd",      "domain",
  "bool",     "record",
  "true",     "false",

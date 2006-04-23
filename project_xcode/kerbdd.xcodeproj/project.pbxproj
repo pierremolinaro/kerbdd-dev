@@ -111,6 +111,8 @@
 		CF7A14A1058D0122007126C1 /* GGS_string.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0CA05877B62000D2F8C /* GGS_string.h */; };
 		CF7A14A2058D0123007126C1 /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
 		CF7A14A3058D0124007126C1 /* GGS_uint.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0CB05877B62000D2F8C /* GGS_uint.h */; };
+		CF7ADCFE09FBF15B00946113 /* cTableVariablesBDD.hh in Headers */ = {isa = PBXBuildFile; fileRef = CF7ADCFD09FBF15B00946113 /* cTableVariablesBDD.hh */; };
+		CF7ADCFF09FBF15B00946113 /* cTableVariablesBDD.hh in Headers */ = {isa = PBXBuildFile; fileRef = CF7ADCFD09FBF15B00946113 /* cTableVariablesBDD.hh */; };
 		CF825B01085370680077AEAF /* C_PrimeCache2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825AFD085370680077AEAF /* C_PrimeCache2.cpp */; };
 		CF825B02085370680077AEAF /* C_PrimeCache2.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825AFE085370680077AEAF /* C_PrimeCache2.h */; };
 		CF825B03085370680077AEAF /* C_PrimeCache3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825AFF085370680077AEAF /* C_PrimeCache3.cpp */; };
@@ -403,6 +405,7 @@
 		CF512DFC092B3321008F7E87 /* C_Display_BDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_Display_BDD.h; sourceTree = "<group>"; };
 		CF512E05092B3378008F7E87 /* C_builtin_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_builtin_CLI_Options.cpp; sourceTree = "<group>"; };
 		CF512E06092B3378008F7E87 /* C_builtin_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_builtin_CLI_Options.h; sourceTree = "<group>"; };
+		CF7ADCFD09FBF15B00946113 /* cTableVariablesBDD.hh */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.h; path = cTableVariablesBDD.hh; sourceTree = "<group>"; };
 		CF825AFD085370680077AEAF /* C_PrimeCache2.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_PrimeCache2.cpp; sourceTree = "<group>"; };
 		CF825AFE085370680077AEAF /* C_PrimeCache2.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_PrimeCache2.h; sourceTree = "<group>"; };
 		CF825AFF085370680077AEAF /* C_PrimeCache3.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_PrimeCache3.cpp; sourceTree = "<group>"; };
@@ -746,6 +749,7 @@
 			children = (
 				CF103D4307AFDBAD0093400D /* calculsLogiques.cpp */,
 				CF103D4407AFDBAD0093400D /* cTableVariablesBDD.h */,
+				CF7ADCFD09FBF15B00946113 /* cTableVariablesBDD.hh */,
 				CF103D4C07AFDBAD0093400D /* verifExternes.cpp */,
 			);
 			name = "Hand Coded Sources";
@@ -971,6 +975,7 @@
 				CF512E08092B3379008F7E87 /* C_builtin_CLI_Options.h in Headers */,
 				CFDC51150961B544006A0AFD /* GGS_stringset.h in Headers */,
 				CFF8616F09C0DA1F00F90D05 /* C_GGS_Object.h in Headers */,
+				CF7ADCFE09FBF15B00946113 /* cTableVariablesBDD.hh in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,6 +1062,7 @@
 				CF512E0A092B3379008F7E87 /* C_builtin_CLI_Options.h in Headers */,
 				CFDC51170961B544006A0AFD /* GGS_stringset.h in Headers */,
 				CFF8617109C0DA1F00F90D05 /* C_GGS_Object.h in Headers */,
+				CF7ADCFF09FBF15B00946113 /* cTableVariablesBDD.hh in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
