@@ -24,12 +24,11 @@ class cPtr_typeRecordVariable : public cPtr_typeVariableDescriptor {
   private : typedef cPtr_typeVariableDescriptor inherited ;
 //--- START OF USER ZONE 2
 
-  public : virtual void allocateBDDvariables (unsigned short & ioBDDindex) ;
   public : virtual void computeBoundsConstraint (C_BDD & ioConstraint) const ;
-  public : virtual long getBDDvariablesCount (void) const ;
+  public : virtual sint32 getBDDvariablesCount (void) const ;
   public : virtual void defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
                                                 const C_String & inVariableName,
-                                                unsigned long & ioIndex) ;
+                                                uint32 & ioIndex) const ;
 
 //--- END OF USER ZONE 2
 

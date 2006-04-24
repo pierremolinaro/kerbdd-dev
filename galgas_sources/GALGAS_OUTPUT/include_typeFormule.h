@@ -27,7 +27,7 @@ class cPtr_typeFormule : public C_GGS_Object {
 
 public : virtual C_BDD evaluerFormule (const C_BDD & valeurFormuleCourante) = 0 ;
 public : virtual void executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
-                                                        const long /* numeroFormuleCourante */) = 0 ;
+                                                        const sint32 /* numeroFormuleCourante */) = 0 ;
 
 
 //--- END OF USER ZONE 2

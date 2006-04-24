@@ -28,7 +28,7 @@ list delimiteursKerBDD error message "the '%K' delimiter" style delimitors :
   ":",
   "." ,
   "..",
-  "::",
+#  "::",
   "+=",
   "-=",
   "->",

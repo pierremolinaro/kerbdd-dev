@@ -25,12 +25,11 @@
 class cPtr_typeVariableDescriptor : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
-  public : virtual void allocateBDDvariables (unsigned short & ioBDDindex) = 0 ;
   public : virtual void computeBoundsConstraint (C_BDD & ioConstraint) const = 0 ;
-  public : virtual long getBDDvariablesCount (void) const = 0 ;
+  public : virtual sint32 getBDDvariablesCount (void) const = 0 ;
   public : virtual void defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
                                                 const C_String & inVariableName,
-                                                unsigned long & ioIndex) = 0 ;
+                                                uint32 & ioIndex) const = 0 ;
 
 //--- END OF USER ZONE 2
 
