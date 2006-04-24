@@ -46,8 +46,8 @@ routine_verifyBoundsAndComputeDimension (C_Lexique & inLexique,
   if (inLowBound.uintValue () >= inHighBound.uintValue ()) {
     inHighBound.signalSemanticError (inLexique, "the high bound is lower or equal to the low bound" COMMA_THERE) ;
   }
-  unsigned long bitCount = 0 ;
-  unsigned long high = inHighBound.uintValue () ;
+  uint32 bitCount = 0 ;
+  uint32 high = inHighBound.uintValue () ;
   while (high != 0) {
     high >>= 1 ;
     bitCount ++ ;
@@ -76,8 +76,8 @@ routine_verifierDimensionValeurCorrecte (C_Lexique & inLexique,
                                          COMMA_LOCATION_ARGS) {
   if (valeur.isBuilt () && dimension.isBuilt ()) {
   //--- Valeur max
-    const unsigned long dim = dimension.uintValue () ;
-    unsigned long valeurMax = 1 ;
+    const uint32 dim = dimension.uintValue () ;
+    uint32 valeurMax = 1 ;
     for (unsigned short i=1 ; i <= dim ; i++) {
       valeurMax <<= 1 ;
     }

@@ -26,7 +26,7 @@ class cPtr_typeFormuleVar : public cPtr_typeFormule {
 
 public : virtual C_BDD evaluerFormule (const C_BDD & valeurFormuleCourante) ;
 public : virtual void executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
-                                                        const long /* numeroFormuleCourante */) ;
+                                                        const sint32 /* numeroFormuleCourante */) ;
 
 //--- END OF USER ZONE 2
 
