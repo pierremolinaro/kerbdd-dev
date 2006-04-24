@@ -22,7 +22,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-uint16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
+static uint16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
   uint16 result = 0 ;
   GGS_typeTableVariablesBool::element_type * current = inMap.firstObject () ;
   while (current != NULL) {
