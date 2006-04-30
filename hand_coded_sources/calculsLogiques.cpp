@@ -52,9 +52,9 @@ static void printfUINT64 (const uint64 inValue) {
 //----------------------------------------------------------------------------*
 
 void programmeBDD::_beforeParsing (void) {
-  aTableFormules = GGS_typeTableFormules::constructor_empty (HERE) ;
-  aListeFormules = GGS_typeListeCalculs::constructor_empty (HERE) ;
-  mDomainMap = GGS_typeDomainMap::constructor_empty (HERE) ;
+  aTableFormules = GGS_typeTableFormules::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
+  aListeFormules = GGS_typeListeCalculs::constructor_emptyList (*mScannerPtr_ COMMA_HERE) ;
+  mDomainMap = GGS_typeDomainMap::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
 }
 
 //----------------------------------------------------------------------------*
