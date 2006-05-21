@@ -27,6 +27,7 @@ class cPtr_typeVariableDescriptor : public C_GGS_Object {
 
   public : virtual void computeBoundsConstraint (C_BDD & ioConstraint) const = 0 ;
   public : virtual sint32 getBDDvariablesCount (void) const = 0 ;
+  public : virtual sint32 getBDDslotCount (void) const = 0 ;
   public : virtual void defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
                                                 const C_String & inVariableName,
                                                 uint32 & ioIndex) const = 0 ;
