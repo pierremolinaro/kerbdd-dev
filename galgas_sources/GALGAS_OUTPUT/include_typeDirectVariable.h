@@ -26,6 +26,7 @@ class cPtr_typeDirectVariable : public cPtr_typeVariableDescriptor {
 
   public : virtual void computeBoundsConstraint (C_BDD & ioConstraint) const ;
   public : virtual sint32 getBDDvariablesCount (void) const ;
+  public : virtual sint32 getBDDslotCount (void) const ;
   public : virtual void defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
                                                 const C_String & inVariableName,
                                                 uint32 & ioIndex) const ;

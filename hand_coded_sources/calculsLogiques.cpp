@@ -173,7 +173,7 @@ static void construireTableauDesNoms (GGS_typeTableVariablesBool & tableDesVaria
   GGS_typeTableVariablesBool::element_type * pb = tableDesVariablesBooleennes.firstObject () ;
   while (pb != NULL) {
     macroValidPointer (pb) ;
-    BDDvariablesCount += pb->mInfo.mVariableDescriptor (HERE)->getBDDvariablesCount () ;
+    BDDvariablesCount += pb->mInfo.mVariableDescriptor (HERE)->getBDDslotCount () ;
     pb = pb->nextObject () ;
   }
   tableauDesNomsVariablesBooleennes.allouer ((uint16) BDDvariablesCount) ;
@@ -682,6 +682,13 @@ getBDDvariablesCount (void) const {
 
 //----------------------------------------------------------------------------*
 
+sint32 cPtr_typeDirectVariable::
+getBDDslotCount (void) const {
+  return 1 ;
+}
+
+//----------------------------------------------------------------------------*
+
 void cPtr_typeDirectVariable::
 defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
                         const C_String & inVariableName,
@@ -723,6 +730,20 @@ getBDDvariablesCount (void) const {
     p = p->nextObject () ;
   }
   return variableCount ;
+}
+
+//----------------------------------------------------------------------------*
+
+sint32 cPtr_typeRecordVariable::
+getBDDslotCount (void) const {
+  sint32 slotCount = 0 ;
+  GGS_typeTableVariablesBool::element_type * p = mMap.firstObject () ;
+  while (p != NULL) {
+    macroValidPointer (p) ;
+    slotCount += p->mInfo.mVariableDescriptor (HERE)->getBDDslotCount () ;
+    p = p->nextObject () ;
+  }
+  return slotCount ;
 }
 
 //----------------------------------------------------------------------------*
