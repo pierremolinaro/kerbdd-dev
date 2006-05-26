@@ -82,6 +82,11 @@
 		CF512E09092B3379008F7E87 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF512E05092B3378008F7E87 /* C_builtin_CLI_Options.cpp */; };
 		CF512E0A092B3379008F7E87 /* C_builtin_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF512E06092B3378008F7E87 /* C_builtin_CLI_Options.h */; };
 		CF512E0B092B3379008F7E87 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF512E05092B3378008F7E87 /* C_builtin_CLI_Options.cpp */; };
+		CF6557830A25EAEE00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6557810A25EAEE00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6557840A25EAEE00979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6557820A25EAEE00979050 /* C_galgas_CLI_Options.h */; };
+		CF6557850A25EAEE00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6557810A25EAEE00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6557860A25EAEE00979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6557820A25EAEE00979050 /* C_galgas_CLI_Options.h */; };
+		CF6557870A25EAEE00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6557810A25EAEE00979050 /* C_galgas_CLI_Options.cpp */; };
 		CF7A1470058D00B1007126C1 /* C_galgas_null_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF86361A0586289600B23462 /* C_galgas_null_io.cpp */; };
 		CF7A1471058D00B2007126C1 /* C_galgas_null_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CF86361B0586289600B23462 /* C_galgas_null_io.h */; };
 		CF7A1476058D00B6007126C1 /* C_galgas_terminal_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF86365005862B0600B23462 /* C_galgas_terminal_io.cpp */; };
@@ -297,33 +302,6 @@
 		CFF8617209C0DA1F00F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8616C09C0DA1F00F90D05 /* C_GGS_Object.cpp */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildStyle section */
-		CFA7AB90058DAD29009AC1FE /* Deployment */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MISSING_PARENTHESES = YES;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_SHADOW = YES;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = NO;
-				GCC_WARN_UNUSED_VALUE = YES;
-				GCC_WARN_UNUSED_VARIABLE = NO;
-			};
-			name = Deployment;
-		};
-/* End PBXBuildStyle section */
-
 /* Begin PBXContainerItemProxy section */
 		CF825BC408537EFF0077AEAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -399,6 +377,8 @@
 		CF512DFC092B3321008F7E87 /* C_Display_BDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_Display_BDD.h; sourceTree = "<group>"; };
 		CF512E05092B3378008F7E87 /* C_builtin_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_builtin_CLI_Options.cpp; sourceTree = "<group>"; };
 		CF512E06092B3378008F7E87 /* C_builtin_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_builtin_CLI_Options.h; sourceTree = "<group>"; };
+		CF6557810A25EAEE00979050 /* C_galgas_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_CLI_Options.cpp; sourceTree = "<group>"; };
+		CF6557820A25EAEE00979050 /* C_galgas_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_galgas_CLI_Options.h; sourceTree = "<group>"; };
 		CF825AFD085370680077AEAF /* C_PrimeCache2.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_PrimeCache2.cpp; sourceTree = "<group>"; };
 		CF825AFE085370680077AEAF /* C_PrimeCache2.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_PrimeCache2.h; sourceTree = "<group>"; };
 		CF825AFF085370680077AEAF /* C_PrimeCache3.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_PrimeCache3.cpp; sourceTree = "<group>"; };
@@ -814,6 +794,8 @@
 		CFF53871057A555E00854C83 /* galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CF6557810A25EAEE00979050 /* C_galgas_CLI_Options.cpp */,
+				CF6557820A25EAEE00979050 /* C_galgas_CLI_Options.h */,
 				CFF8616C09C0DA1F00F90D05 /* C_GGS_Object.cpp */,
 				CFF8616D09C0DA1F00F90D05 /* C_GGS_Object.h */,
 				CFDC51120961B544006A0AFD /* GGS_stringset.cpp */,
@@ -966,6 +948,7 @@
 				CF512E08092B3379008F7E87 /* C_builtin_CLI_Options.h in Headers */,
 				CFDC51150961B544006A0AFD /* GGS_stringset.h in Headers */,
 				CFF8616F09C0DA1F00F90D05 /* C_GGS_Object.h in Headers */,
+				CF6557840A25EAEE00979050 /* C_galgas_CLI_Options.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1051,6 +1034,7 @@
 				CF512E0A092B3379008F7E87 /* C_builtin_CLI_Options.h in Headers */,
 				CFDC51170961B544006A0AFD /* GGS_stringset.h in Headers */,
 				CFF8617109C0DA1F00F90D05 /* C_GGS_Object.h in Headers */,
+				CF6557860A25EAEE00979050 /* C_galgas_CLI_Options.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1067,58 +1051,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
-				GCC_SHORT_ENUMS = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = NO;
-				GCC_WARN_MISSING_PARENTHESES = NO;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = NO;
-				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_SHADOW = NO;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = NO;
-				GCC_WARN_UNUSED_LABEL = NO;
-				GCC_WARN_UNUSED_PARAMETER = NO;
-				GCC_WARN_UNUSED_VALUE = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_generated_sources,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = (
-					"-Wall",
-					"-DDO_NOT_GENERATE_MEMORY_CHECK_CODE",
-				);
-				OTHER_LDFLAGS = "";
-				PREBINDING = YES;
-				PRODUCT_NAME = CocoaKerBDD;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = app;
-			};
 			dependencies = (
 				CF9C7030079BFFFA00797E14 /* PBXTargetDependency */,
 				CF825BC508537EFF0077AEAF /* PBXTargetDependency */,
@@ -1141,32 +1073,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_generated_sources,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = kerbdd;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = NO;
-			};
 			dependencies = (
 			);
 			name = "Kerbdd tool";
@@ -1184,29 +1090,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_generated_sources,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = kerbdd_debug;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-			};
 			dependencies = (
 			);
 			name = "Kerbdd tool debug";
@@ -1220,13 +1103,6 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = CF0DA73D08563BF900F38E67 /* Build configuration list for PBXProject "kerbdd" */;
-			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				SDKROOT = /Developer/SDKs/MacOSX10.3.9.sdk;
-			};
-			buildStyles = (
-				CFA7AB90058DAD29009AC1FE /* Deployment */,
-			);
 			hasScannedForEncodings = 1;
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* essai_cocoa */;
 			projectDirPath = "";
@@ -1305,6 +1181,7 @@
 				CFF8617209C0DA1F00F90D05 /* C_GGS_Object.cpp in Sources */,
 				CFE20B4809C8BCB000E10499 /* GGS_string.cpp in Sources */,
 				CF3379F309EFAE8000EC41F6 /* C_SourceTextForCoca.mm in Sources */,
+				CF6557870A25EAEE00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1356,6 +1233,7 @@
 				CFDC51140961B544006A0AFD /* GGS_stringset.cpp in Sources */,
 				CFF8616E09C0DA1F00F90D05 /* C_GGS_Object.cpp in Sources */,
 				CFE58D090A20649C002C334D /* C_galgas_bdd.cpp in Sources */,
+				CF6557830A25EAEE00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1407,6 +1285,7 @@
 				CFDC51160961B544006A0AFD /* GGS_stringset.cpp in Sources */,
 				CFF8617009C0DA1F00F90D05 /* C_GGS_Object.cpp in Sources */,
 				CFE58D0A0A20649C002C334D /* C_galgas_bdd.cpp in Sources */,
+				CF6557850A25EAEE00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
