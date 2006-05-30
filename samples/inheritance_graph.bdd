@@ -1,0 +1,61 @@
+domain class : bool [6] ;
+
+$--- Definition de la relation d'heritage
+#h [c:class, super:class] :=
+  ({c =  4} & {super = 34}) |
+  ({c = 12} & {super = 23}) |
+  ({c =  2} & {super = 14}) |
+  ({c = 14} & {super = 18}) |
+  ({c = 23} & {super = 35}) |
+  ({c = 54} & {super = 17}) |
+  ({c = 18} & {super = 19}) |
+  ({c = 25} & {super = 32}) |
+  ({c = 25} & {super = 32}) |
+  ({c = 43} & {super = 29}) |
+  ({c = 31} & {super =  4}) |
+  ({c = 28} & {super = 12}) |
+  ({c = 12} & {super = 13}) |
+  ({c = 56} & {super = 62}) |
+  ({c = 27} & {super = 33}) |
+  ({c = 43} & {super = 53}) |
+  ({c = 11} & {super = 17}) |
+  ({c = 25} & {super =  3}) |
+  ({c =  0} & {super = 43}) |
+  ({c = 28} & {super = 22}) |
+  ({c = 44} & {super = 22}) |
+  ({c = 15} & {super =  6}) |
+  ({c =  7} & {super = 11}) |
+  ({c = 55} & {super = 22}) |
+  ({c = 56} & {super = 21}) |
+  ({c = 21} & {super = 26}) |
+  ({c = 61} & {super = 48}) |
+  ({c = 24} & {super = 35}) |
+  ({c = 54} & {super = 18}) |
+  ({c = 11} & {super = 17}) |
+  ({c =  8} & {super = 60}) |
+  ({c = 11} & {super = 12}) |
+  ({c = 14} & {super = 52}) |
+  ({c = 33} & {super = 19}) |
+  false
+;
+
+$--- Definition de la relation d'heritage
+#heriteDe [c:class, super:class] :=
+  #h [c, super] |
+  ({c =  0} & {super =  1}) | $ C0 herite de C1
+  ({c =  1} & {super =  2}) | $ C1 herite de C2
+$  ({c =  2} & {super =  0}) | $ C2 herite de C0
+  false
+;
+
+$--- Calcul de la fermeture transitive
+display
+#heritage [c:class, super:class] +=
+  #heriteDe [c, super] |
+  ?x:class (#heriteDe [c, x] & #heritage [x, super])
+;
+
+$--- Detection de circularite
+display
+#circularite [c : class] := ? x : class (#heritage [c, x] & {c = x}) ;
+end
