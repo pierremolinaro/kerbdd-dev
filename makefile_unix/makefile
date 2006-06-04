@@ -8,6 +8,15 @@
 EXECUTABLE := kerbdd
 EXECUTABLE_DEBUG := kerbdd_debug
 
+#---------------------------------------------------------------*
+#                                                               *
+#     Object files directory                                    *
+#                                                               *
+#---------------------------------------------------------------*
+
+OBJECTS_DIR := objects
+DEBUG_OBJECTS_DIR := debug_objects
+
 #--- Install directory (for "install" goal)
 INSTALL_DIR := /usr/bin
 
@@ -26,7 +35,7 @@ include ../common_files_for_make/common_sources_makefile.mke
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools.mke
+include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools_32.mke
 
 #---------------------------------------------------------------*
 #                                                               *
