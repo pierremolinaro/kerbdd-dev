@@ -6,8 +6,8 @@
 #---------------------------------------------------------------*
 
 #--- Release and debug versions of markg
-EXECUTABLE := kerbdd
-EXECUTABLE_DEBUG := kerbdd_debug
+EXECUTABLE := kerbdd64
+EXECUTABLE_DEBUG := kerbdd64_debug
 
 #---------------------------------------------------------------*
 #                                                               *
@@ -15,8 +15,8 @@ EXECUTABLE_DEBUG := kerbdd_debug
 #                                                               *
 #---------------------------------------------------------------*
 
-OBJECTS_DIR := objects
-DEBUG_OBJECTS_DIR := debug_objects
+OBJECTS_DIR := objects64
+DEBUG_OBJECTS_DIR := debug_objects64
 
 #--- Install directory (for "install" goal)
 INSTALL_DIR := /usr/local/bin
@@ -36,7 +36,7 @@ include ../common_files_for_make/common_sources_makefile.mke
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_32.mke
+include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_64.mke
 
 #---------------------------------------------------------------*
 #                                                               *
