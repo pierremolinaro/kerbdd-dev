@@ -59,7 +59,7 @@ GGS_string C_galgas_bdd
                       COMMA_UNUSED_LOCATION_ARGS) const {
   C_String s ;
   s << "<C_galgas_bdd " ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     s << "built" ;
   }else{
     s << "not built" ;
@@ -70,7 +70,7 @@ GGS_string C_galgas_bdd
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_bdd::drop_operation (void) {
+void C_galgas_bdd::_drop_operation (void) {
   mBuilt = false ;
 }
 

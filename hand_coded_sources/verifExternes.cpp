@@ -62,7 +62,7 @@ routine_verifierDimensionUn (C_Lexique & inLexique,
                              GGS_luint valeur,
                              GGS_location inErrorLocation
                              COMMA_LOCATION_ARGS) {
-  if (valeur.isBuilt () && inErrorLocation.isBuilt () && (valeur.uintValue () != 1)) {
+  if (valeur._isBuilt () && inErrorLocation._isBuilt () && (valeur.uintValue () != 1)) {
     inErrorLocation.signalSemanticError (inLexique, "This variable is not a boolean" COMMA_THERE) ;
   }
 }
@@ -74,7 +74,7 @@ routine_verifierDimensionValeurCorrecte (C_Lexique & inLexique,
                                          GGS_luint dimension,
                                          GGS_luint valeur
                                          COMMA_LOCATION_ARGS) {
-  if (valeur.isBuilt () && dimension.isBuilt ()) {
+  if (valeur._isBuilt () && dimension._isBuilt ()) {
   //--- Valeur max
     const uint32 dim = dimension.uintValue () ;
     uint32 valeurMax = 1 ;
@@ -97,7 +97,7 @@ routine_verifierMemesDimensions (C_Lexique & inLexique,
                                  GGS_luint dimensionGauche,
                                  GGS_luint dimensionDroite
                                  COMMA_LOCATION_ARGS) {
-  if (dimensionGauche.isBuilt () && dimensionDroite.isBuilt ()) {
+  if (dimensionGauche._isBuilt () && dimensionDroite._isBuilt ()) {
     if (dimensionGauche.uintValue () != dimensionDroite.uintValue ()) {
       C_String erreur ;
       erreur << "la dimension de la variable droite ("
