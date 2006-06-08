@@ -52,10 +52,10 @@ class C_galgas_bdd {
                                           COMMA_LOCATION_ARGS) const ;
 
 //--- Handle 'drop' instruction
-  public : void drop_operation (void) ;
+  public : void _drop_operation (void) ;
 
-//--- Method 'isBuilt'
-  public : inline bool isBuilt (void) const { return mBuilt ; }
+//--- Method '_isBuilt'
+  public : inline bool _isBuilt (void) const { return mBuilt ; }
 
 //--- Handle 'init' method
   public : void methode_init (C_Lexique & /* inLexique */,
