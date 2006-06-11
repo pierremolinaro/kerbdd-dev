@@ -32,7 +32,7 @@ routine_getHighBound (C_Lexique & inLexique,
   if (inPowerOfTwo.uintValue () == 0) {
     inPowerOfTwo.signalSemanticError (inLexique, "the dimension must be >0" COMMA_THERE) ;
   }
-  outResult.defineAttribute ((1UL << inPowerOfTwo.uintValue ()) - 1UL, inLexique) ;
+  outResult.defineAttributeFromScanner ((1UL << inPowerOfTwo.uintValue ()) - 1UL, inLexique) ;
 }
 
 //---------------------------------------------------------------------*
@@ -52,7 +52,7 @@ routine_verifyBoundsAndComputeDimension (C_Lexique & inLexique,
     high >>= 1 ;
     bitCount ++ ;
   }
-  outDimension.defineAttribute (bitCount, inLexique) ;
+  outDimension.defineAttributeFromScanner (bitCount, inLexique) ;
 }
 
 //---------------------------------------------------------------------*
