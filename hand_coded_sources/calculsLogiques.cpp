@@ -43,7 +43,7 @@ void programmeBDD::_beforeParsing (void) {
 
 //----------------------------------------------------------------------------*
 
-void programmeBDD::_afterParsing (void) {
+void programmeBDD::_afterParsing (const bool /* inVerboseOptionOn */) {
 //--- Initial cache and map sizes
   co << "Initial size of BDD unique table: "
      << C_BDD::getHashMapEntriesCount ()
