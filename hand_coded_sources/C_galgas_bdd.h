@@ -49,7 +49,8 @@ class C_galgas_bdd {
                                                   COMMA_LOCATION_ARGS) ;
 
   public : GGS_string reader_description (C_Lexique & _inLexique
-                                          COMMA_LOCATION_ARGS) const ;
+                                          COMMA_LOCATION_ARGS,
+                                          const sint32 inIndentation = 0) const ;
 
 //--- Handle 'drop' instruction
   public : void _drop_operation (void) ;

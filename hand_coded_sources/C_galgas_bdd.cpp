@@ -54,9 +54,10 @@ constructor_empty (C_Lexique & /* _inLexique */
 
 //---------------------------------------------------------------------------*
 
-GGS_string C_galgas_bdd
-::reader_description (C_Lexique & /* _inLexique */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_string C_galgas_bdd::
+reader_description (C_Lexique & /* _inLexique */
+                    COMMA_UNUSED_LOCATION_ARGS,
+                    const sint32 /* inIndentation */) const {
   C_String s ;
   s << "<C_galgas_bdd " ;
   if (_isBuilt ()) {
