@@ -35,15 +35,15 @@ static uint16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
 
 //----------------------------------------------------------------------------*
 
-void programmeBDD::_beforeParsing (void) {
-  aTableFormules = GGS_typeTableFormules::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
-  aListeFormules = GGS_typeListeCalculs::constructor_emptyList (*mScannerPtr_ COMMA_HERE) ;
-  mDomainMap = GGS_typeDomainMap::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
+void grammar_programmeBDD::_beforeParsing (void) {
+  aTableFormules = GGS_typeTableFormules::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
+  aListeFormules = GGS_typeListeCalculs::constructor_emptyList (*_mScannerPtr COMMA_HERE) ;
+  mDomainMap = GGS_typeDomainMap::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
 }
 
 //----------------------------------------------------------------------------*
 
-void programmeBDD::_afterParsing (const bool /* inVerboseOptionOn */) {
+void grammar_programmeBDD::_afterParsing (const bool /* inVerboseOptionOn */) {
 //--- Initial cache and map sizes
   co << "Initial size of BDD unique table: "
      << C_BDD::getHashMapEntriesCount ()
