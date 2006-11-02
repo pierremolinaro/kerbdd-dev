@@ -52,6 +52,10 @@ class C_galgas_bdd {
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
 
+//--- Comparison
+  public : GGS_bool operator == (const C_galgas_bdd & inOperand) const ;
+  public : GGS_bool operator != (const C_galgas_bdd & inOperand) const ;
+
 //--- Handle 'drop' instruction
   public : void _drop_operation (void) ;
 
