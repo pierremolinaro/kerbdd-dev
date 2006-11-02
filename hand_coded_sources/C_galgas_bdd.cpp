@@ -54,6 +54,22 @@ constructor_empty (C_Lexique & /* _inLexique */
 
 //---------------------------------------------------------------------------*
 
+GGS_bool C_galgas_bdd::
+operator == (const C_galgas_bdd & inOperand) const {
+  return GGS_bool (_isBuilt () && inOperand._isBuilt (),
+                    mBDD.getIntegerValue () == inOperand.mBDD.getIntegerValue ()) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GGS_bool C_galgas_bdd::
+operator != (const C_galgas_bdd & inOperand) const {
+  return GGS_bool (_isBuilt () && inOperand._isBuilt (),
+                    mBDD.getIntegerValue () != inOperand.mBDD.getIntegerValue ()) ;
+}
+
+//---------------------------------------------------------------------------*
+
 GGS_string C_galgas_bdd::
 reader_description (C_Lexique & /* _inLexique */
                     COMMA_UNUSED_LOCATION_ARGS,
