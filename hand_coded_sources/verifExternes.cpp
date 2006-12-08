@@ -32,7 +32,7 @@ routine_getHighBound (C_Lexique & inLexique,
   if (inPowerOfTwo.uintValue () == 0) {
     inPowerOfTwo.signalSemanticError (inLexique, "the dimension must be >0" COMMA_THERE) ;
   }
-  outResult.defineAttributeFromScanner ((1UL << inPowerOfTwo.uintValue ()) - 1UL, inLexique) ;
+  outResult = GGS_luint (inLexique, (1UL << inPowerOfTwo.uintValue ()) - 1UL) ;
 }
 
 //---------------------------------------------------------------------*
@@ -52,7 +52,7 @@ routine_verifyBoundsAndComputeDimension (C_Lexique & inLexique,
     high >>= 1 ;
     bitCount ++ ;
   }
-  outDimension.defineAttributeFromScanner (bitCount, inLexique) ;
+  outDimension = GGS_luint (inLexique, bitCount) ;
 }
 
 //---------------------------------------------------------------------*
