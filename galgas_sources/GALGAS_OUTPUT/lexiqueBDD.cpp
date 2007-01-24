@@ -1044,7 +1044,7 @@ scanner_action_formerCompEgal (uint32 & ioValue) {
 
 void lexiqueBDD::
 scanner_action_formerCompNonEgal (uint32 & ioValue) {
-  ioValue = C_BDD::kNonEqual ;
+  ioValue = C_BDD::kNotEqual ;
 }
 
 //---------------------------------------------------------------------*
