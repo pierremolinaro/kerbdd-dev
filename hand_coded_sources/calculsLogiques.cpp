@@ -551,7 +551,7 @@ C_BDD cPtr_typeComparaisonFormules::evaluerFormule (const C_BDD & valeurFormuleC
   C_BDD::compareEnum comp = C_BDD::kEqual ;
   switch (mComparaison.uintValue ()) {
   case 1 :
-    comp = C_BDD::kNonEqual ;
+    comp = C_BDD::kNotEqual ;
     break ;
   case 2 :
     comp = C_BDD::kLowerOrEqual ;
@@ -626,7 +626,7 @@ C_BDD cPtr_typeFormuleComparaisonValeur::evaluerFormule (const C_BDD & /* valeur
   C_BDD::compareEnum comp = C_BDD::kEqual ;
   switch (mComparaison.uintValue ()) {
   case 1 :
-    comp = C_BDD::kNonEqual ;
+    comp = C_BDD::kNotEqual ;
     break ;
   case 2 :
     comp = C_BDD::kLowerOrEqual ;
@@ -661,7 +661,7 @@ C_BDD cPtr_typeFormuleComparaisonVariable::evaluerFormule (const C_BDD & /* vale
   C_BDD::compareEnum comp = C_BDD::kEqual ;
   switch (mComparaison.uintValue ()) {
   case 1 :
-    comp = C_BDD::kNonEqual ;
+    comp = C_BDD::kNotEqual ;
     break ;
   case 2 :
     comp = C_BDD::kLowerOrEqual ;
