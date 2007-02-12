@@ -222,7 +222,7 @@ void cPtr_typeCalculSimple::executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFo
     co.flush () ;
   }else{
   //--- Print Result
-    const uint64 nValeurs = resultat.getBDDvaluesCount (bddCountForMap (mTableVariablesBool)) ;
+    const uint64 nValeurs = resultat.valueCount (bddCountForMap (mTableVariablesBool)) ;
     const uint32 nElements = resultat.getBDDnodesCount () ;
     co << "Formula '"
        << mNomFormule
@@ -308,7 +308,7 @@ void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeur
        << (resultat.isFalse () ? "false" : "true")
        << "\n" ;
   }else{
-    const uint64 nValeurs = resultat.getBDDvaluesCount (bddCountForMap (mTableVariablesBool)) ;
+    const uint64 nValeurs = resultat.valueCount (bddCountForMap (mTableVariablesBool)) ;
     const uint32 nElements = resultat.getBDDnodesCount () ;
     co << "Formula '"
        << mNomFormule
