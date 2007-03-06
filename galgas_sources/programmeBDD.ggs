@@ -1,14 +1,12 @@
 program programmeBDD "version 3.0.3" :
-  import grammar grammaireBDD in "grammaireBDD.ggs" ;
-#--- Start symbol arguments
-#--- max error and warning count
+  import semantics semantiqueBDD in "semantiqueBDD.ggs" ;  import grammar grammaireBDD in "grammaireBDD.ggs" ;
+
   error 100 ;
   warning 100 ;
-  when  . "bdd":
-    grammar grammaireBDD (
-      aTableFormules,
-      aListeFormules,
-      mDomainMap
-    )
-  ;
+
+  when . "bdd" message "an '.bdd' source file" ??@lstring inSourceFile {
+    @typeTableFormules tableFormules [emptyMap] ;    @typeListeCalculs listeCalculs [emptyList] ;    @typeDomainMap domainMap [emptyMap] ;    grammar grammaireBDD in inSourceFile
+      !?tableFormules      !?listeCalculs      !?domainMap
+    ;  }
+
 end program ;
