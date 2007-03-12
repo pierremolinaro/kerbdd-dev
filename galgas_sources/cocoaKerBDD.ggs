@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*#                                                                           *#   C O C O A                                                               *#                                                                           *#---------------------------------------------------------------------------*
 
-gui cocoaKerBDD "cocoa" (grammaireBDD) :
+gui cocoaKerBDD "cocoa" :
 import semantics semantiqueBDD in "semantiqueBDD.ggs" ;import grammar grammaireBDD in "grammaireBDD.ggs" ;
 end gui ;
 

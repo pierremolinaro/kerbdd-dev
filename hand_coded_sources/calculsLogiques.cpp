@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------*
 
-#include "programmeBDD.h"
+#include "semantiqueBDD.h"
 #include "generic_arraies/TC_UniqueArray.h"
 #include "utilities/MF_MemoryControl.h"
 #include "time/C_Timer.h"
@@ -35,15 +35,11 @@ static uint16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
 
 //----------------------------------------------------------------------------*
 
-void grammar_programmeBDD::_beforeParsing (void) {
-  aTableFormules = GGS_typeTableFormules::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
-  aListeFormules = GGS_typeListeCalculs::constructor_emptyList (*_mScannerPtr COMMA_HERE) ;
-  mDomainMap = GGS_typeDomainMap::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
-}
-
-//----------------------------------------------------------------------------*
-
-void grammar_programmeBDD::_afterParsing (const bool /* inVerboseOptionOn */) {
+void routine_generate_code (C_Lexique & /* inLexique */,
+                            const GGS_typeTableFormules & /* inTableFormules */,
+                            const GGS_typeListeCalculs & inListeCalculs,
+                            const GGS_typeDomainMap & /* inDomainMap */
+                            COMMA_UNUSED_LOCATION_ARGS) {
 //--- Initial cache and map sizes
   co << "Initial size of BDD unique table: "
      << C_BDD::getHashMapEntriesCount ()
@@ -65,9 +61,9 @@ void grammar_programmeBDD::_afterParsing (const bool /* inVerboseOptionOn */) {
   }  
   co.flush () ;
 //--- Tableau des valeurs des formules
-  TC_UniqueArray <C_BDD> tabValeurFormules (aListeFormules.count (), C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> tabValeurFormules (inListeCalculs.count (), C_BDD () COMMA_HERE) ;
 //--- Boucler sur les formules a calculer
-  GGS_typeListeCalculs::element_type * courant = aListeFormules.firstObject () ;
+  GGS_typeListeCalculs::element_type * courant = inListeCalculs.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     cPtr_typeCalcul * calcul = courant->mCalcul (HERE) ;
