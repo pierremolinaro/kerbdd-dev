@@ -1,6 +1,8 @@
 domain etat : bool [3] ;
 domain action : bool [2] ;
 
+#actionTau [a:action] := {a = 0} ;
+
 $--- Ensemble des transitions de l'automate
 #Trans [qs:etat, a:action, qd:etat] :=
  ({qs=0} & {a=0} & {qd=1}) | ({qs=1} & {a=1} & {qd=2}) |
@@ -19,8 +21,8 @@ $--- Memes proprietes
 $--- tau-saturation de l'automate
 display #transSat [qs:etat, a:action, qd:etat] += #Trans [qs, a, qd] |
    ({qs=qd} & {a=0}) |
-   ?q:etat, tau:action (#transSat [qs, a, q] & #transSat [q, tau, qd] & {tau = 0} & #memesProprietes [q, qd]) |
-   ?q:etat, tau:action (#transSat [qs, tau, q] & #transSat [q, a, qd] & {tau = 0} & #memesProprietes [qs, q]) ;
+   ?q:etat, tau:action (#transSat [qs, a, q] & #transSat [q, tau, qd] & #actionTau [tau] & #memesProprietes [q, qd]) |
+   ?q:etat, tau:action (#transSat [qs, tau, q] & #transSat [q, a, qd] & #actionTau [tau] & #memesProprietes [qs, q]) ;
 
 $--- Calcul de la plus grande auto-bisimulation
 display #bisimul [q1:etat, q2:etat] -=

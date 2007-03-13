@@ -3,7 +3,7 @@ domain action : bool [2] ;
 
 $--- Ensemble des transitions de l'automate
 #Trans [qs:etat, a:action, qd:etat] :=
- ({qs=0} & {a=0} & {qd=1}) | ({qs=0} & {a=0} & {qd=1}) |
+ ({qs=0} & {a=0} & {qd=1}) | ({qs=0} & {a=0} & {qd=2}) |
  ({qs=1} & {a=1} & {qd=4}) | ({qs=2} & {a=1} & {qd=3}) |
  ({qs=3} & {a=2} & {qd=5}) | ({qs=4} & {a=2} & {qd=5}) |
  ({qs=5} & {a=3} & {qd=6}) | ({qs=5} & {a=3} & {qd=7}) ;

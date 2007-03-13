@@ -1,0 +1,21 @@
+domain etat : bool [3] ;
+
+$--- Ensemble des transitions du graphe
+#Trans [qs:etat, qd:etat] :=
+ ({qs=0} & {qd=1}) | ({qs=0} & {qd=2}) |
+ ({qs=1} & {qd=4}) | ({qs=2} & {qd=3}) |
+ ({qs=3} & {qd=5}) | ({qs=4} & {qd=5}) |
+ ({qs=5} & {qd=6}) | ({qs=5} & {qd=7}) |
+ ({qs=4} & {qd=2}) | ({qs=2} & {qd=0}) ;
+
+#accessible [qs:etat] := true ;
+
+$--- Ensemble des etats morts
+display #NoSucc [q: etat] := #accessible [q] & ~ ? t: etat #Trans [q, t] ; 
+
+$--- Ensemble des etats ne pouvant conduire que vers un etat mort
+display #DeadLock [q: etat] += #accessible [q] &
+             !t: etat ((#accessible [q] & #Trans [q, t]) -> #DeadLock [t]) ;
+
+display #DeadLock2 [q: etat] += #accessible [q] & ~?t: etat (#Trans [q, t] & ~#DeadLock2 [t]) ;
+end

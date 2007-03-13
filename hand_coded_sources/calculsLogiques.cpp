@@ -88,10 +88,11 @@ executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
   C_BDD::setHashMapSize ((uint16) mDimensionTable.uintValue ()) ;
   duree.stopTimer () ;
   co << "map " << mDimensionTable.uintValue ()
-      << ": BDD unique table resized to "
-      << C_BDD::getHashMapEntriesCount ()
-      << "(done in "
-      << ").\n\n" ; 
+     << ": BDD unique table resized to "
+     << C_BDD::getHashMapEntriesCount ()
+     << " (done in "
+     << duree
+     << ").\n\n" ; 
   co.flush () ; 
 }
 
