@@ -8,7 +8,7 @@
 //                                                                     *
 //---------------------------------------------------------------------*
 //                                                                     *
-//         Ë propos de l'auteur...                                     *
+//         A propos de l'auteur...                                     *
 //                                                                     *
 //     Pierre Molinaro                                                 *
 //     IRCyN (Institut de Recherche en Cybernetique de Nantes)         *
