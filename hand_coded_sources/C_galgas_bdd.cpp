@@ -44,7 +44,7 @@ C_galgas_bdd::~C_galgas_bdd (void) {
 //---------------------------------------------------------------------------*
 
 C_galgas_bdd C_galgas_bdd::
-constructor_empty (C_Lexique & /* _inLexique */
+constructor_empty (C_Compiler & /* _inLexique */
                    COMMA_UNUSED_LOCATION_ARGS) {
   C_galgas_bdd bdd ;
   bdd.mBuilt = true ;
@@ -71,7 +71,7 @@ operator != (const C_galgas_bdd & inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_string C_galgas_bdd::
-reader_description (C_Lexique & /* _inLexique */
+reader_description (C_Compiler & /* _inLexique */
                     COMMA_UNUSED_LOCATION_ARGS,
                     const sint32 /* inIndentation */) const {
   C_String s ;
@@ -93,7 +93,7 @@ void C_galgas_bdd::_drop_operation (void) {
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_bdd::methode_init (C_Lexique & /* inLexique */,
+void C_galgas_bdd::methode_init (C_Compiler & /* inLexique */,
                                  AC_galgas_io & /* ioGalgasOutputStream */) {
   mBuilt = true ;
 }

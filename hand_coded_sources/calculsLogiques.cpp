@@ -35,7 +35,7 @@ static uint16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
 
 //----------------------------------------------------------------------------*
 
-void routine_generate_code (C_Lexique & /* inLexique */,
+void routine_generate_code (C_Compiler & /* inLexique */,
                             const GGS_typeTableFormules & /* inTableFormules */,
                             const GGS_typeListeCalculs & inListeCalculs,
                             const GGS_typeDomainMap & /* inDomainMap */

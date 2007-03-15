@@ -30,7 +30,7 @@
 //---------------------------------------------------------------------------*
 
 class AC_OutputStream ;
-class C_Lexique ;
+class C_Compiler ;
 class AC_galgas_io ;
 
 //---------------------------------------------------------------------------*
@@ -45,10 +45,10 @@ class C_galgas_bdd {
   public : virtual ~C_galgas_bdd (void) ;
 
 //--- 'empty' constructor
-  public : static C_galgas_bdd constructor_empty (C_Lexique & _inLexique
+  public : static C_galgas_bdd constructor_empty (C_Compiler & _inLexique
                                                   COMMA_LOCATION_ARGS) ;
 
-  public : GGS_string reader_description (C_Lexique & _inLexique
+  public : GGS_string reader_description (C_Compiler & _inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
 
@@ -63,7 +63,7 @@ class C_galgas_bdd {
   public : inline bool _isBuilt (void) const { return mBuilt ; }
 
 //--- Handle 'init' method
-  public : void methode_init (C_Lexique & /* inLexique */,
+  public : void methode_init (C_Compiler & /* inLexique */,
                               AC_galgas_io & /* ioGalgasOutputStream */) ;
 
 //--- Support for method call handling in GALGAS
