@@ -38,4 +38,4 @@ display #nac [q : etat] -= ~(#initial [q] | ? x : etat (~#nac [x] & #trans [x, q
 
 display #nac2 [q : etat] -= ~#initial [q] & ! x : etat (#nac2 [x] | ~ #trans [x, q]) ;
 
-dump #et_ou_1 [a:bool, b:bool, c:bool, d:bool] := (a | b) & (c | d) ;dump #et_ou_2 [a:bool, c:bool, b:bool, d:bool] := (a | b) & (c | d) ;end
+dump #et_ou_1 [a:bool, b:bool, c:bool, d:bool] := (a & b) | (c & d) ;dump #et_ou_2 [a:bool, c:bool, b:bool, d:bool] := (a & b) | (c & d) ;end
