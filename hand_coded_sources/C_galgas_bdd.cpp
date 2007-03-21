@@ -55,7 +55,7 @@ constructor_empty (C_Compiler & /* _inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_bool C_galgas_bdd::
-operator == (const C_galgas_bdd & inOperand) const {
+_operator_isEqual (const C_galgas_bdd & inOperand) const {
   return GGS_bool (_isBuilt () && inOperand._isBuilt (),
                     mBDD.getIntegerValue () == inOperand.mBDD.getIntegerValue ()) ;
 }
@@ -63,7 +63,7 @@ operator == (const C_galgas_bdd & inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool C_galgas_bdd::
-operator != (const C_galgas_bdd & inOperand) const {
+_operator_isNotEqual (const C_galgas_bdd & inOperand) const {
   return GGS_bool (_isBuilt () && inOperand._isBuilt (),
                     mBDD.getIntegerValue () != inOperand.mBDD.getIntegerValue ()) ;
 }

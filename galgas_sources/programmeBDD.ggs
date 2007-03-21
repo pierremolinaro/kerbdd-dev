@@ -9,7 +9,7 @@ program programmeBDD "version 3.0.3" :
   ??@lstring inSourceFile {
     @typeTableFormules tableFormules [emptyMap] ;    @typeListeCalculs listeCalculs [emptyList] ;    @typeDomainMap domainMap [emptyMap] ;    grammar grammaireBDD in inSourceFile
       !?tableFormules      !?listeCalculs      !?domainMap
-    ;    action generate_code
+    ;    generate_code
       !tableFormules      !listeCalculs      !domainMap
     ;
   }
