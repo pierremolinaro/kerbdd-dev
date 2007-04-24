@@ -26,7 +26,7 @@
 
 void
 routine_getHighBound (C_Compiler & inLexique,
-                      const GGS_luint & inPowerOfTwo,
+                      const GGS_luint inPowerOfTwo,
                       GGS_luint & outResult
                       COMMA_LOCATION_ARGS) {
   if (inPowerOfTwo.uintValue () == 0) {
@@ -39,8 +39,8 @@ routine_getHighBound (C_Compiler & inLexique,
 
 void
 routine_verifyBoundsAndComputeDimension (C_Compiler & inLexique,
-                                         const GGS_luint & inLowBound,
-                                         const GGS_luint & inHighBound,
+                                         const GGS_luint inLowBound,
+                                         const GGS_luint inHighBound,
                                          GGS_luint & outDimension
                                          COMMA_LOCATION_ARGS) {
   if (inLowBound.uintValue () >= inHighBound.uintValue ()) {

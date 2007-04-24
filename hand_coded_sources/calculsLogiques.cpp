@@ -36,9 +36,9 @@ static uint16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
 //----------------------------------------------------------------------------*
 
 void routine_generate_code (C_Compiler & /* inLexique */,
-                            const GGS_typeTableFormules & /* inTableFormules */,
-                            const GGS_typeListeCalculs & inListeCalculs,
-                            const GGS_typeDomainMap & /* inDomainMap */
+                            const GGS_typeTableFormules /* inTableFormules */,
+                            const GGS_typeListeCalculs inListeCalculs,
+                            const GGS_typeDomainMap /* inDomainMap */
                             COMMA_UNUSED_LOCATION_ARGS) {
 //--- Initial cache and map sizes
   co << "Initial size of BDD unique table: "
