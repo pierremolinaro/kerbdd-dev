@@ -1,1 +1,2 @@
-compile "lexiqueBDD.ggs" ;compile "semantiqueBDD.ggs" ;compile "syntaxeBDD.ggs" ;compile "grammaireBDD.ggs" ;compile "programmeBDD.ggs" ;compile "cocoaKerBDD.ggs" ;
+compile "lexiqueBDD.ggs" ;compile "semantiqueBDD.ggs" ;compile "syntaxeBDD.ggs" ;compile "grammaireBDD.ggs" ;compile "cocoaKerBDD.ggs" ;
+compile "programmeBDD.ggs" ;

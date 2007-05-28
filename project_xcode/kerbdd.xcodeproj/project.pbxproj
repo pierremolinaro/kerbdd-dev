@@ -323,11 +323,12 @@
 		CFDC51170961B544006A0AFD /* GGS_stringset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC51130961B544006A0AFD /* GGS_stringset.h */; };
 		CFE58D090A20649C002C334D /* C_galgas_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE58D080A20649C002C334D /* C_galgas_bdd.cpp */; };
 		CFE58D0A0A20649C002C334D /* C_galgas_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE58D080A20649C002C334D /* C_galgas_bdd.cpp */; };
+		CFE675A60C0AFF28007C1E98 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEA394E0B6E93130059CEDF /* C_galgas_io.cpp */; };
+		CFE675A70C0AFF2A007C1E98 /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3272DE0BC50C5500F06FDF /* AC_galgas_class.cpp */; };
 		CFEA39500B6E93130059CEDF /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEA394E0B6E93130059CEDF /* C_galgas_io.cpp */; };
 		CFEA39510B6E93130059CEDF /* C_galgas_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA394F0B6E93130059CEDF /* C_galgas_io.h */; };
 		CFEA39520B6E93130059CEDF /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEA394E0B6E93130059CEDF /* C_galgas_io.cpp */; };
 		CFEA39530B6E93130059CEDF /* C_galgas_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA394F0B6E93130059CEDF /* C_galgas_io.h */; };
-		CFEA39540B6E93130059CEDF /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEA394E0B6E93130059CEDF /* C_galgas_io.cpp */; };
 		CFEA39D70B6E97020059CEDF /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCD1E220A321A0D0088BE39 /* C_ErrorOut.cpp */; };
 		CFF16C5F0BA6986500F1B337 /* NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF16C5C0BA6986500F1B337 /* NSSplitViewExtensions.m */; };
 		CFF16C600BA6986500F1B337 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFF16C5E0BA6986500F1B337 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
@@ -1280,7 +1281,6 @@
 				CFABC39A0B2D9E4D000157E0 /* GGS_lstring.cpp in Sources */,
 				CFABC39B0B2D9E53000157E0 /* GGS_string.cpp in Sources */,
 				CFABC39D0B2D9E5E000157E0 /* F_main-fake.cpp in Sources */,
-				CFEA39540B6E93130059CEDF /* C_galgas_io.cpp in Sources */,
 				CFEA39D70B6E97020059CEDF /* C_ErrorOut.cpp in Sources */,
 				CFF16C5F0BA6986500F1B337 /* NSSplitViewExtensions.m in Sources */,
 				CFF16C600BA6986500F1B337 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
@@ -1288,6 +1288,8 @@
 				CF3272FD0BC50C8800F06FDF /* AC_galgas_list.cpp in Sources */,
 				CF3272FE0BC50C8B00F06FDF /* predefined_types.cpp in Sources */,
 				CF3273000BC50C9F00F06FDF /* GGS_uint64.cpp in Sources */,
+				CFE675A60C0AFF28007C1E98 /* C_galgas_io.cpp in Sources */,
+				CFE675A70C0AFF2A007C1E98 /* AC_galgas_class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
