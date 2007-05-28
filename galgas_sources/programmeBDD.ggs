@@ -1,17 +1,31 @@
 program programmeBDD "version 3.0.3" :
-  import semantics semantiqueBDD in "semantiqueBDD.ggs" ;  import grammar grammaireBDD in "grammaireBDD.ggs" ;
+import semantics semantiqueBDD in "semantiqueBDD.ggs" ;import grammar grammaireBDD in "grammaireBDD.ggs" ;
 
-  error 100 ;
-  warning 100 ;
+error 100 ;
+warning 100 ;
 
-  when . "bdd"
-  message "an '.bdd' source file"
-  ??@lstring inSourceFile {
-    @typeTableFormules tableFormules [emptyMap] ;    @typeListeCalculs listeCalculs [emptyList] ;    @typeDomainMap domainMap [emptyMap] ;    grammar grammaireBDD in inSourceFile
-      !?tableFormules      !?listeCalculs      !?domainMap
-    ;    generate_code
-      !tableFormules      !listeCalculs      !domainMap
-    ;
-  }
+when . "bdd"
+message "an '.bdd' source file"
+??@lstring inSourceFile {
+  @typeTableFormules tableFormules [emptyMap] ;  @typeListeCalculs listeCalculs [emptyList] ;  @typeDomainMap domainMap [emptyMap] ;  grammar grammaireBDD in inSourceFile
+    !?tableFormules    !?listeCalculs    !?domainMap
+  ;  generate_code
+    !tableFormules    !listeCalculs    !domainMap
+  ;
+  @A a := [@B new] ;
+  cast a :
+  when == @A do message "A\n" ;
+  when == @B do message "B\n" ;
+  when == @C do message "C\n" ;
+  else message "?\n" ;
+  end cast ;
+  @A c := [@C new] ;
+  cast c :
+  when == @A do message "A\n" ;
+  when >= @B do message "B\n" ;
+  else message "?\n" ;
+  end cast ;
+  @B bb := (cast [@A new] if >= @B else error here) ;
+}
 
 end program ;
