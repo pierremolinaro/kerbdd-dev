@@ -9,8 +9,4 @@ action generate_code
 
 #-------------------------------------------------------------------*
 
-class @A {message "a @A instance" ;}
-class @B extends @A {message "a @B instance" ;}
-class @C extends @B {message "a @C instance" ;}
-class @D extends @C {message "a @D instance" ;}
-end semantics ;
+end semantics ;
