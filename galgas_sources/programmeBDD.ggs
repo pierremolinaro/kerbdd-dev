@@ -26,6 +26,10 @@ message "an '.bdd' source file"
   else message "?\n" ;
   end cast ;
   @B bb := (cast [@A new] if >= @B else error here) ;
+  cast [@B new] :
+  when >= @C do
+  default error here
+  end cast ;
 }
 
 end program ;
