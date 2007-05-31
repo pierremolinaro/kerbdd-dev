@@ -12,24 +12,6 @@ message "an '.bdd' source file"
   ;  generate_code
     !tableFormules    !listeCalculs    !domainMap
   ;
-  @A a := [@B new] ;
-  cast a :
-  when == @A do message "A\n" ;
-  when == @B do message "B\n" ;
-  when == @C do message "C\n" ;
-  else message "?\n" ;
-  end cast ;
-  @A c := [@C new] ;
-  cast c :
-  when == @A do message "A\n" ;
-  when >= @B do message "B\n" ;
-  else message "?\n" ;
-  end cast ;
-  @B bb := (cast [@A new] if >= @B else error here) ;
-  cast [@B new] :
-  when >= @C do
-  default error here
-  end cast ;
 }
 
 end program ;
