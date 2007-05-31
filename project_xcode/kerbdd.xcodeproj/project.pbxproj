@@ -324,7 +324,6 @@
 		CFE58D090A20649C002C334D /* C_galgas_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE58D080A20649C002C334D /* C_galgas_bdd.cpp */; };
 		CFE58D0A0A20649C002C334D /* C_galgas_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE58D080A20649C002C334D /* C_galgas_bdd.cpp */; };
 		CFE675A60C0AFF28007C1E98 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEA394E0B6E93130059CEDF /* C_galgas_io.cpp */; };
-		CFE675A70C0AFF2A007C1E98 /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3272DE0BC50C5500F06FDF /* AC_galgas_class.cpp */; };
 		CFEA39500B6E93130059CEDF /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEA394E0B6E93130059CEDF /* C_galgas_io.cpp */; };
 		CFEA39510B6E93130059CEDF /* C_galgas_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA394F0B6E93130059CEDF /* C_galgas_io.h */; };
 		CFEA39520B6E93130059CEDF /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEA394E0B6E93130059CEDF /* C_galgas_io.cpp */; };
@@ -1289,7 +1288,6 @@
 				CF3272FE0BC50C8B00F06FDF /* predefined_types.cpp in Sources */,
 				CF3273000BC50C9F00F06FDF /* GGS_uint64.cpp in Sources */,
 				CFE675A60C0AFF28007C1E98 /* C_galgas_io.cpp in Sources */,
-				CFE675A70C0AFF2A007C1E98 /* AC_galgas_class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
