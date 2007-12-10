@@ -10,6 +10,7 @@
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		CF0BAA840CE0BBA1001D7657 /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
 		CF103D2707AFDB880093400D /* grammaireBDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D1907AFDB880093400D /* grammaireBDD.cpp */; };
 		CF103D2807AFDB880093400D /* grammaireBDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D1A07AFDB880093400D /* grammaireBDD.h */; };
 		CF103D2D07AFDB880093400D /* lexiqueBDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D1F07AFDB880093400D /* lexiqueBDD.cpp */; };
@@ -1240,6 +1241,7 @@
 				CF3272FE0BC50C8B00F06FDF /* predefined_types.cpp in Sources */,
 				CF3273000BC50C9F00F06FDF /* GGS_uint64.cpp in Sources */,
 				CFE675A60C0AFF28007C1E98 /* C_galgas_io.cpp in Sources */,
+				CF0BAA840CE0BBA1001D7657 /* GGS_uint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
