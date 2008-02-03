@@ -43,9 +43,9 @@ void routine_generate_code (C_Compiler & /* inLexique */,
 //--- Initial cache and map sizes
   co << "Initial size of BDD unique table: "
      << C_BDD::getHashMapEntriesCount ()
-     << "; initial size of ITE cache: "
+     << ";\ninitial size of ITE cache: "
      << C_BDD::getITEcacheEntriesCount ()
-     << "; initial size of AND cache: "
+     << ";\ninitial size of AND cache: "
      << C_BDD::getANDcacheEntriesCount ()
      << ".\n" ;
   switch (C_BDD::getComputingMode ()) {
