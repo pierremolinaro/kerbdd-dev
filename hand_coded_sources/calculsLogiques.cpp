@@ -24,7 +24,7 @@
 
 static uint16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
   uint16 result = 0 ;
-  GGS_typeTableVariablesBool::element_type * current = inMap.firstObject () ;
+  GGS_typeTableVariablesBool::cElement * current = inMap.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     result += (uint16) current->mInfo.mVariableDescriptor (HERE)->getBDDvariablesCount () ;
@@ -63,7 +63,7 @@ void routine_generate_code (C_Compiler & /* inLexique */,
 //--- Tableau des valeurs des formules
   TC_UniqueArray <C_BDD> tabValeurFormules (inListeCalculs.count (), C_BDD () COMMA_HERE) ;
 //--- Boucler sur les formules a calculer
-  GGS_typeListeCalculs::element_type * courant = inListeCalculs.firstObject () ;
+  GGS_typeListeCalculs::cElement * courant = inListeCalculs.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     cPtr_typeCalcul * calcul = courant->mCalcul (HERE) ;
@@ -163,7 +163,7 @@ static void construireTableauDesNoms (GGS_typeTableVariablesBool & tableDesVaria
                                       C_Display_BDD & tableauDesNomsVariablesBooleennes) {
 //--- Compute variables count
   sint32 BDDvariablesCount = 0 ;
-  GGS_typeTableVariablesBool::element_type * pb = tableDesVariablesBooleennes.firstObject () ;
+  GGS_typeTableVariablesBool::cElement * pb = tableDesVariablesBooleennes.firstObject () ;
   while (pb != NULL) {
     macroValidPointer (pb) ;
     BDDvariablesCount += pb->mInfo.mVariableDescriptor (HERE)->getBDDslotCount () ;
@@ -185,7 +185,7 @@ static void construireTableauDesNoms (GGS_typeTableVariablesBool & tableDesVaria
 static C_BDD evaluerContraintesIntervalles (GGS_typeTableVariablesBool & tableVariablesBool) {
 
   C_BDD contrainte ; contrainte.setToTrue () ;
-  GGS_typeTableVariablesBool::element_type * ptr = tableVariablesBool.firstObject () ;
+  GGS_typeTableVariablesBool::cElement * ptr = tableVariablesBool.firstObject () ;
   while (ptr != NULL) {
     macroValidPointer (ptr) ;
     ptr->mInfo.mVariableDescriptor (HERE)->computeBoundsConstraint (contrainte) ;
@@ -406,7 +406,7 @@ construireTableauChangementVariables (GGS_typeActualArgumentsList & listeArgumen
                                       uint16 & nombreVariablesBool) {
 //--- Calculer la taille du tableau des changements de variables
   nombreVariablesBool = 0 ;
-  GGS_typeActualArgumentsList::element_type * p = listeArgumentsBooleens.firstObject () ;
+  GGS_typeActualArgumentsList::cElement * p = listeArgumentsBooleens.firstObject () ;
   while (p != NULL) {
     nombreVariablesBool += (uint16) p->mVariableBitSize.uintValue () ;
     p = p->nextObject () ;
@@ -596,7 +596,7 @@ executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
   mOperand (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
 //--- Constraint evaluation
   C_BDD constraint = ~ C_BDD () ; // Initially true
-  GGS_typeFormalArgumentsList::element_type * current = mListeArgsBooleens.firstObject () ;
+  GGS_typeFormalArgumentsList::cElement * current = mListeArgsBooleens.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     const uint16 variableIndex = (uint16) current->mVariableIndex.uintValue () ;
@@ -738,7 +738,7 @@ computeBoundsConstraint (C_BDD & ioConstraint) const {
 sint32 cPtr_typeRecordVariable::
 getBDDvariablesCount (void) const {
   sint32 variableCount = 0 ;
-  GGS_typeTableVariablesBool::element_type * p = mMap.firstObject () ;
+  GGS_typeTableVariablesBool::cElement * p = mMap.firstObject () ;
   while (p != NULL) {
     macroValidPointer (p) ;
     variableCount += p->mInfo.mVariableDescriptor (HERE)->getBDDvariablesCount () ;
@@ -752,7 +752,7 @@ getBDDvariablesCount (void) const {
 sint32 cPtr_typeRecordVariable::
 getBDDslotCount (void) const {
   sint32 slotCount = 0 ;
-  GGS_typeTableVariablesBool::element_type * p = mMap.firstObject () ;
+  GGS_typeTableVariablesBool::cElement * p = mMap.firstObject () ;
   while (p != NULL) {
     macroValidPointer (p) ;
     slotCount += p->mInfo.mVariableDescriptor (HERE)->getBDDslotCount () ;
@@ -767,7 +767,7 @@ void cPtr_typeRecordVariable::
 defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
                         const C_String & inVariableName,
                         uint32 & ioIndex) const {
-  GGS_typeTableVariablesBool::element_type * p = mMap.firstObject () ;
+  GGS_typeTableVariablesBool::cElement * p = mMap.firstObject () ;
   while (p != NULL) {
     macroValidPointer (p) ;
     C_String variableName ;
@@ -781,7 +781,7 @@ defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
 
 void cPtr_typeRecordVariable::
 computeBoundsConstraint (C_BDD & ioConstraint) const {
-  GGS_typeTableVariablesBool::element_type * p = mMap.firstObject () ;
+  GGS_typeTableVariablesBool::cElement * p = mMap.firstObject () ;
   while (p != NULL) {
     macroValidPointer (p) ;
     p->mInfo.mVariableDescriptor (HERE)->computeBoundsConstraint (ioConstraint) ;
