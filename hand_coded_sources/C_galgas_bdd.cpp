@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  C_galgas_bdd : this class implements the GALGAS BDD extern type          *
+//  GGS_extern_bdd : this class implements the GALGAS BDD extern type        *
 //                                                                           *
-//  Copyright (C) 2002, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 2002, ..., 2008 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -19,7 +19,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "C_galgas_bdd.h"
+#include "semantiqueBDD.h"
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -27,13 +27,13 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-C_galgas_bdd::C_galgas_bdd (void) {
+GGS_extern_bdd::GGS_extern_bdd (void) {
   mBuilt = false ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_galgas_bdd::~C_galgas_bdd (void) {
+GGS_extern_bdd::~GGS_extern_bdd (void) {
   mBuilt = false ;
 }
 
@@ -43,10 +43,10 @@ C_galgas_bdd::~C_galgas_bdd (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-C_galgas_bdd C_galgas_bdd::
+GGS_extern_bdd GGS_extern_bdd::
 constructor_empty (C_Compiler & /* _inLexique */
                    COMMA_UNUSED_LOCATION_ARGS) {
-  C_galgas_bdd bdd ;
+  GGS_extern_bdd bdd ;
   bdd.mBuilt = true ;
   bdd.mBDD.setToFalse () ;
   return bdd ;
@@ -54,28 +54,28 @@ constructor_empty (C_Compiler & /* _inLexique */
 
 //---------------------------------------------------------------------------*
 
-GGS_bool C_galgas_bdd::
-_operator_isEqual (const C_galgas_bdd & inOperand) const {
+GGS_bool GGS_extern_bdd::
+_operator_isEqual (const GGS_extern_bdd & inOperand) const {
   return GGS_bool (_isBuilt () && inOperand._isBuilt (),
                     mBDD.getIntegerValue () == inOperand.mBDD.getIntegerValue ()) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_bool C_galgas_bdd::
-_operator_isNotEqual (const C_galgas_bdd & inOperand) const {
+GGS_bool GGS_extern_bdd::
+_operator_isNotEqual (const GGS_extern_bdd & inOperand) const {
   return GGS_bool (_isBuilt () && inOperand._isBuilt (),
                     mBDD.getIntegerValue () != inOperand.mBDD.getIntegerValue ()) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_string C_galgas_bdd::
+GGS_string GGS_extern_bdd::
 reader_description (C_Compiler & /* _inLexique */
                     COMMA_UNUSED_LOCATION_ARGS,
                     const sint32 /* inIndentation */) const {
   C_String s ;
-  s << "<C_galgas_bdd " ;
+  s << "<GGS_extern_bdd " ;
   if (_isBuilt ()) {
     s << "built" ;
   }else{
@@ -87,15 +87,14 @@ reader_description (C_Compiler & /* _inLexique */
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_bdd::_drop_operation (void) {
+void GGS_extern_bdd::_drop_operation (void) {
   mBuilt = false ;
 }
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_bdd::methode_init (C_Compiler & /* inLexique */,
-                                 AC_galgas_io & /* ioGalgasOutputStream */) {
-  mBuilt = true ;
+bool GGS_extern_bdd::_isBuilt (void) const {
+  return mBuilt ;
 }
 
 //---------------------------------------------------------------------------*

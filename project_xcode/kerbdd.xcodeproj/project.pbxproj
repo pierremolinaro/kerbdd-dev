@@ -35,9 +35,7 @@
 		CF103D5607AFDBAD0093400D /* verifExternes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4C07AFDBAD0093400D /* verifExternes.cpp */; };
 		CF103D5707AFDBD10093400D /* calculsLogiques.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4307AFDBAD0093400D /* calculsLogiques.cpp */; };
 		CF103D5E07AFDBD50093400D /* verifExternes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D4C07AFDBAD0093400D /* verifExternes.cpp */; };
-		CF103D7107AFDCCD0093400D /* C_galgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D6E07AFDCCD0093400D /* C_galgas_bdd.h */; };
 		CF103D7207AFDCCD0093400D /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D6C07AFDCCD0093400D /* AC_galgas_map.h */; };
-		CF103D7407AFDCCD0093400D /* C_galgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CF103D6E07AFDCCD0093400D /* C_galgas_bdd.h */; };
 		CF103D8907AFE6C80093400D /* kerbdd.1 in Resources */ = {isa = PBXBuildFile; fileRef = CF103D8807AFE6C80093400D /* kerbdd.1 */; };
 		CF103D8A07AFE8230093400D /* lexiqueBDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF103D1F07AFDB880093400D /* lexiqueBDD.cpp */; };
 		CF103D8D07AFE8340093400D /* cocoaKerBDD.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF103D8C07AFE8340093400D /* cocoaKerBDD.mm */; };
@@ -366,7 +364,6 @@
 		CF103D4307AFDBAD0093400D /* calculsLogiques.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = calculsLogiques.cpp; sourceTree = "<group>"; };
 		CF103D4C07AFDBAD0093400D /* verifExternes.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = verifExternes.cpp; sourceTree = "<group>"; };
 		CF103D6C07AFDCCD0093400D /* AC_galgas_map.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_map.h; sourceTree = "<group>"; };
-		CF103D6E07AFDCCD0093400D /* C_galgas_bdd.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_galgas_bdd.h; sourceTree = "<group>"; };
 		CF103D8807AFE6C80093400D /* kerbdd.1 */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text.man; path = kerbdd.1; sourceTree = "<group>"; };
 		CF103D8C07AFE8340093400D /* cocoaKerBDD.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = cocoaKerBDD.mm; sourceTree = "<group>"; };
 		CF3272DE0BC50C5500F06FDF /* AC_galgas_class.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_class.cpp; sourceTree = "<group>"; };
@@ -768,7 +765,6 @@
 				CF103D4307AFDBAD0093400D /* calculsLogiques.cpp */,
 				CF103D4C07AFDBAD0093400D /* verifExternes.cpp */,
 				CFE58D080A20649C002C334D /* C_galgas_bdd.cpp */,
-				CF103D6E07AFDCCD0093400D /* C_galgas_bdd.h */,
 			);
 			name = "Hand Coded Sources";
 			path = ../hand_coded_sources;
@@ -933,7 +929,6 @@
 				CF103D3007AFDB880093400D /* programmeBDD.h in Headers */,
 				CF103D3207AFDB880093400D /* semantiqueBDD.h in Headers */,
 				CF103D3407AFDB880093400D /* syntaxeBDD.h in Headers */,
-				CF103D7107AFDCCD0093400D /* C_galgas_bdd.h in Headers */,
 				CF825B02085370680077AEAF /* C_PrimeCache2.h in Headers */,
 				CF825B04085370680077AEAF /* C_PrimeCache3.h in Headers */,
 				CF825B38085370C50077AEAF /* AC_CLI_Options.h in Headers */,
@@ -1013,7 +1008,6 @@
 				CF103D4007AFDB880093400D /* semantiqueBDD.h in Headers */,
 				CF103D4207AFDB880093400D /* syntaxeBDD.h in Headers */,
 				CF103D7207AFDCCD0093400D /* AC_galgas_map.h in Headers */,
-				CF103D7407AFDCCD0093400D /* C_galgas_bdd.h in Headers */,
 				CF825B06085370680077AEAF /* C_PrimeCache2.h in Headers */,
 				CF825B08085370680077AEAF /* C_PrimeCache3.h in Headers */,
 				CF825B42085370C50077AEAF /* AC_CLI_Options.h in Headers */,
