@@ -1,8 +1,8 @@
 program programmeBDD "version 3.0.3" :
 import semantics semantiqueBDD in "semantiqueBDD.ggs" ;import grammar grammaireBDD in "grammaireBDD.ggs" ;
 
-error 100 ;
-warning 100 ;
+  routine {
+  }
 
 when . "bdd"
 message "an '.bdd' source file"
@@ -13,5 +13,8 @@ message "an '.bdd' source file"
     !tableFormules    !listeCalculs    !domainMap
   ;
 }
+
+  routine {
+  }
 
 end program ;
