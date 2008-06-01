@@ -1,7 +1,7 @@
 //----------------------------------------------------------------------------*
 
 #include "semantiqueBDD.h"
-#include "generic_arraies/TC_UniqueArray.h"
+#include "collections/TC_UniqueArray.h"
 #include "utilities/MF_MemoryControl.h"
 #include "time/C_Timer.h"
 #include "bdd/C_Display_BDD.h"
