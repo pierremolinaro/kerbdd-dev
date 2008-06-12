@@ -1,7 +1,7 @@
 program programmeBDD "version 3.0.3" :
 import semantics semantiqueBDD in "semantiqueBDD.ggs" ;import grammar grammaireBDD in "grammaireBDD.ggs" ;
 
-  routine {
+  before {
   }
 
 when . "bdd"
@@ -14,7 +14,7 @@ message "an '.bdd' source file"
   ;
 }
 
-  routine {
+  after {
   }
 
 end program ;
