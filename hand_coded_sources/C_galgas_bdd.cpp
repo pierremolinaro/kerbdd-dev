@@ -87,7 +87,7 @@ reader_description (C_Compiler & /* _inLexique */
 
 //---------------------------------------------------------------------------*
 
-void GGS_extern_bdd::_drop_operation (void) {
+void GGS_extern_bdd::_drop (void) {
   mBuilt = false ;
 }
 
