@@ -217,7 +217,6 @@
 		CFABC3980B2D9E34000157E0 /* GGS_location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5388F057A558F00854C83 /* GGS_location.cpp */; };
 		CFABC39A0B2D9E4D000157E0 /* GGS_lstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53891057A558F00854C83 /* GGS_lstring.cpp */; };
 		CFABC39B0B2D9E53000157E0 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
-		CFABC39D0B2D9E5E000157E0 /* F_main-fake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFABC39C0B2D9E5E000157E0 /* F_main-fake.cpp */; };
 		CFAC5157062158B500AF7FE3 /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC5156062158B500AF7FE3 /* AC_galgas_map.cpp */; };
 		CFAC5158062158B500AF7FE3 /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC5156062158B500AF7FE3 /* AC_galgas_map.cpp */; };
 		CFB9E5B90DF28EF900885084 /* TC_AVL_TreeForCollision.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB9E5AD0DF28EF900885084 /* TC_AVL_TreeForCollision.h */; };
@@ -527,7 +526,6 @@
 		CFA5CB9207CF8EBC00E460DB /* kerbdd_application.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = kerbdd_application.icns; path = icones/kerbdd_application.icns; sourceTree = "<group>"; };
 		CFA5CB9307CF8EBC00E460DB /* kerbdd_document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = kerbdd_document.icns; path = icones/kerbdd_document.icns; sourceTree = "<group>"; };
 		CFA8C6A30622A9D9005F7F63 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
-		CFABC39C0B2D9E5E000157E0 /* F_main-fake.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = "F_main-fake.cpp"; sourceTree = "<group>"; };
 		CFAC5156062158B500AF7FE3 /* AC_galgas_map.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_map.cpp; sourceTree = "<group>"; };
 		CFB9E5AD0DF28EF900885084 /* TC_AVL_TreeForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_AVL_TreeForCollision.h; sourceTree = "<group>"; };
 		CFB9E5AE0DF28EF900885084 /* TC_Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_Array.h; sourceTree = "<group>"; };
@@ -732,7 +730,6 @@
 		CF31E0ED0598DF5400814123 /* command_line_interface */ = {
 			isa = PBXGroup;
 			children = (
-				CFABC39C0B2D9E5E000157E0 /* F_main-fake.cpp */,
 				CF512E05092B3378008F7E87 /* C_builtin_CLI_Options.cpp */,
 				CF512E06092B3378008F7E87 /* C_builtin_CLI_Options.h */,
 				CF825B2D085370C50077AEAF /* AC_CLI_Options.cpp */,
@@ -1396,7 +1393,6 @@
 				CFABC3980B2D9E34000157E0 /* GGS_location.cpp in Sources */,
 				CFABC39A0B2D9E4D000157E0 /* GGS_lstring.cpp in Sources */,
 				CFABC39B0B2D9E53000157E0 /* GGS_string.cpp in Sources */,
-				CFABC39D0B2D9E5E000157E0 /* F_main-fake.cpp in Sources */,
 				CFEA39D70B6E97020059CEDF /* C_ErrorOut.cpp in Sources */,
 				CFF16C5F0BA6986500F1B337 /* NSSplitViewExtensions.m in Sources */,
 				CFF16C600BA6986500F1B337 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
