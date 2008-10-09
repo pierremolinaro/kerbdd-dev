@@ -1,4 +1,5 @@
 project
-  compile "lexiqueBDD.ggs" ;  compile "semantiqueBDD.ggs" ;  compile "syntaxeBDD.ggs" ;  compile "grammaireBDD.ggs" ;  compile "programmeBDD.ggs" ;end project ;
+  lexique "lexiqueBDD.ggs" : makefile, xcode ;  semantics "semantiqueBDD.ggs" : makefile, xcode ;  syntax "syntaxeBDD.ggs" : makefile, xcode ;  grammar "grammaireBDD.ggs" : makefile, xcode ;  gui "cocoaKerBDD.ggs" : xcode ;
+  program "programmeBDD.ggs" : makefile, xcode ;
 
-compile "cocoaKerBDD.ggs" ;
+  extern "C_galgas_bdd.cpp" : makefile, xcode ;  extern "calculsLogiques.cpp" : makefile, xcode ;  extern "verifExternes.cpp" : makefile, xcode ;end project ;

@@ -52,7 +52,4 @@ SOURCES += grammaireBDD.cpp
 SOURCES += programmeBDD.cpp
 
 
-#--- Extern files ---------------------
-
-
 #---------------------------------------------------------------*
