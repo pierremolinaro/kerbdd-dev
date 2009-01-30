@@ -11,7 +11,7 @@ $--- Ensemble des transitions du graphe
 #accessible [qs:etat] := true ;
 
 $--- Ensemble des etats morts
-display #NoSucc [q: etat] := #accessible [q] & ~ ? t: etat #Trans [q, t] ; 
+dump #NoSucc [q: etat] := #accessible [q] & ~ ? t: etat #Trans [q, t] ; 
 
 $--- Ensemble des etats ne pouvant conduire que vers un etat mort
 display #DeadLock [q: etat] += #accessible [q] &
