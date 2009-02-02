@@ -1,0 +1,7 @@
+0::
+lexiqueBDD.ggs
+syntaxeBDD.ggs
+semantiqueBDD.ggs
+grammaireBDD.ggs::
+GALGAS_OUTPUT/grammaireBDD.cpp
+GALGAS_OUTPUT/grammaireBDD.h

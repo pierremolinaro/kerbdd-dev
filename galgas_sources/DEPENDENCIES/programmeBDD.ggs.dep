@@ -1,0 +1,5 @@
+0::
+semantiqueBDD.ggs
+grammaireBDD.ggs::
+GALGAS_OUTPUT/programmeBDD.h
+GALGAS_OUTPUT/programmeBDD.cpp
