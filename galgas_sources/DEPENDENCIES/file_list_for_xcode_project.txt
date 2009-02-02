@@ -8,3 +8,6 @@ programmeBDD
 C_galgas_bdd
 calculsLogiques
 verifExternes
+::
+lexiqueBDD
+cocoaKerBDD
