@@ -1,6 +1,0 @@
-0::
-lexiqueBDD.ggs
-semantiqueBDD.ggs
-grammaireBDD.ggs::
-GALGAS_OUTPUT/syntaxeBDD.h
-GALGAS_OUTPUT/syntaxeBDD.cpp
