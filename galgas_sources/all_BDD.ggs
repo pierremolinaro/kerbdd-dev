@@ -2,4 +2,4 @@ project all_BDD :
   lexique "lexiqueBDD.ggs" : makefile, xcode_tool, xcode_app ;  semantics "semantiqueBDD.ggs" : makefile, xcode_tool ;  syntax "syntaxeBDD.ggs" : makefile, xcode_tool ;  grammar "grammaireBDD.ggs" : makefile, xcode_tool ;  gui "cocoaKerBDD.ggs" : xcode_tool, xcode_app ;
   program "programmeBDD.ggs" : makefile, xcode_tool ;
 
-  extern "C_galgas_bdd.cpp" : makefile, xcode_tool ;  extern "calculsLogiques.cpp" : makefile, xcode_tool ;  extern "verifExternes.cpp" : makefile, xcode_tool ;end project ;
+  extern "../hand_coded_sources/C_galgas_bdd.cpp" : makefile, xcode_tool ;  extern "../hand_coded_sources/calculsLogiques.cpp" : makefile, xcode_tool ;  extern "../hand_coded_sources/verifExternes.cpp" : makefile, xcode_tool ;end project ;
