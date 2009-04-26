@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB7C962AA0D22AC97D69B793 /* C_galgas_bdd.cpp */ = {isa = PBXBuildFile; fileRef = 95D565EF66E7DFF9F98764DA ; settings = {ATTRIBUTES = (); }; };
-		1BE80AB57E1A2ECABB7DA330 /* calculsLogiques.cpp */ = {isa = PBXBuildFile; fileRef = A0B923820DCC509A6F75849B ; settings = {ATTRIBUTES = (); }; };
-		AC1C7093BD25041881277658 /* verifExternes.cpp */ = {isa = PBXBuildFile; fileRef = 9D4C2F636F067F89CC14862C ; settings = {ATTRIBUTES = (); }; };
+		DB7C962AA0D22AC97D69B793 /* ../hand_coded_sources/C_galgas_bdd.cpp */ = {isa = PBXBuildFile; fileRef = 95D565EF66E7DFF9F98764DA ; settings = {ATTRIBUTES = (); }; };
+		1BE80AB57E1A2ECABB7DA330 /* ../hand_coded_sources/calculsLogiques.cpp */ = {isa = PBXBuildFile; fileRef = A0B923820DCC509A6F75849B ; settings = {ATTRIBUTES = (); }; };
+		AC1C7093BD25041881277658 /* ../hand_coded_sources/verifExternes.cpp */ = {isa = PBXBuildFile; fileRef = 9D4C2F636F067F89CC14862C ; settings = {ATTRIBUTES = (); }; };
 		8F1455B3FA09A282E0D496F4 /* grammaireBDD.cpp */ = {isa = PBXBuildFile; fileRef = A2F3E71D9181A67B7542122C ; settings = {ATTRIBUTES = (); }; };
 		52C750899BB03D998E631860 /* lexiqueBDD.cpp */ = {isa = PBXBuildFile; fileRef = 5A880FAF6FB5E6087EB1B2DC ; settings = {ATTRIBUTES = (); }; };
 		1CE41366A4BBE8A49B02A028 /* programmeBDD.cpp */ = {isa = PBXBuildFile; fileRef = FB98AB9159F51FD0297E236D ; settings = {ATTRIBUTES = (); }; };
@@ -86,9 +86,9 @@
 		65C712C49D51A18A32B39F0C /* C_String.cpp */ = {isa = PBXBuildFile; fileRef = 917CBBA1EEA208541A643E74 ; settings = {ATTRIBUTES = (); }; };
 		927D466D6EC9A21B9AC34FFA /* unicode_character.cpp */ = {isa = PBXBuildFile; fileRef = 84804B9F647BC185A877A8B5 ; settings = {ATTRIBUTES = (); }; };
 		FDA6E89AEC274A3657558A27 /* unicode_string_routines.cpp */ = {isa = PBXBuildFile; fileRef = 26A953A8CD9526FCA6FE9BA5 ; settings = {ATTRIBUTES = (); }; };
-		B9528732C23CC7352950E880 /* C_galgas_bdd.cpp */ = {isa = PBXBuildFile; fileRef = 95D565EF66E7DFF9F98764DA ; settings = {ATTRIBUTES = (); }; };
-		3BFE59267D5ECFAC5310286C /* calculsLogiques.cpp */ = {isa = PBXBuildFile; fileRef = A0B923820DCC509A6F75849B ; settings = {ATTRIBUTES = (); }; };
-		DA20EF399B63A72D0E4AB575 /* verifExternes.cpp */ = {isa = PBXBuildFile; fileRef = 9D4C2F636F067F89CC14862C ; settings = {ATTRIBUTES = (); }; };
+		B9528732C23CC7352950E880 /* ../hand_coded_sources/C_galgas_bdd.cpp */ = {isa = PBXBuildFile; fileRef = 95D565EF66E7DFF9F98764DA ; settings = {ATTRIBUTES = (); }; };
+		3BFE59267D5ECFAC5310286C /* ../hand_coded_sources/calculsLogiques.cpp */ = {isa = PBXBuildFile; fileRef = A0B923820DCC509A6F75849B ; settings = {ATTRIBUTES = (); }; };
+		DA20EF399B63A72D0E4AB575 /* ../hand_coded_sources/verifExternes.cpp */ = {isa = PBXBuildFile; fileRef = 9D4C2F636F067F89CC14862C ; settings = {ATTRIBUTES = (); }; };
 		E5BC5280214E0486B273A5F9 /* grammaireBDD.cpp */ = {isa = PBXBuildFile; fileRef = A2F3E71D9181A67B7542122C ; settings = {ATTRIBUTES = (); }; };
 		139AA4D9AA55B8D237EC5D4A /* lexiqueBDD.cpp */ = {isa = PBXBuildFile; fileRef = 5A880FAF6FB5E6087EB1B2DC ; settings = {ATTRIBUTES = (); }; };
 		68F23406C6CECF84A7EBB0FE /* programmeBDD.cpp */ = {isa = PBXBuildFile; fileRef = FB98AB9159F51FD0297E236D ; settings = {ATTRIBUTES = (); }; };
@@ -233,6 +233,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		95D565EF66E7DFF9F98764DA /* C_galgas_bdd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = C_galgas_bdd.cpp; path = ../hand_coded_sources/C_galgas_bdd.cpp; sourceTree = "<group>"; };
+		A0B923820DCC509A6F75849B /* calculsLogiques.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = calculsLogiques.cpp; path = ../hand_coded_sources/calculsLogiques.cpp; sourceTree = "<group>"; };
+		9D4C2F636F067F89CC14862C /* verifExternes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = verifExternes.cpp; path = ../hand_coded_sources/verifExternes.cpp; sourceTree = "<group>"; };
 		C3FF0AF142B6D3BEAD98A923 /* AC_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AC_CLI_Options.cpp; path = AC_CLI_Options.cpp; sourceTree = "<group>"; };
 		94728BC39AA24BE94B319D21 /* AC_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AC_CLI_Options.h; path = AC_CLI_Options.h; sourceTree = "<group>"; };
 		07F7F7D035D7BAF04342E1CA /* AC_CoreString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AC_CoreString.cpp; path = AC_CoreString.cpp; sourceTree = "<group>"; };
@@ -302,7 +305,6 @@
 		19C5080B9A6A17BEF029331C /* C_builtin_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = C_builtin_CLI_Options.h; path = C_builtin_CLI_Options.h; sourceTree = "<group>"; };
 		CA89A1678042477183B7AC3F /* C_galgas_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = C_galgas_CLI_Options.cpp; path = C_galgas_CLI_Options.cpp; sourceTree = "<group>"; };
 		E93E74D3DF8527599FA62642 /* C_galgas_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = C_galgas_CLI_Options.h; path = C_galgas_CLI_Options.h; sourceTree = "<group>"; };
-		95D565EF66E7DFF9F98764DA /* C_galgas_bdd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = C_galgas_bdd.cpp; path = C_galgas_bdd.cpp; sourceTree = "<group>"; };
 		D8F4755FF269862EA77393DD /* C_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = C_galgas_io.cpp; path = C_galgas_io.cpp; sourceTree = "<group>"; };
 		EF840F0C74A814EC9237B6EC /* C_galgas_io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = C_galgas_io.h; path = C_galgas_io.h; sourceTree = "<group>"; };
 		743B65F4C0CCD295CC484E57 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Cocoa.framework; sourceTree = "<group>"; };
@@ -412,7 +414,6 @@
 		560D78C5E599C2A9C9D0BBD2 /* TF_inf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TF_inf.h; path = TF_inf.h; sourceTree = "<group>"; };
 		6C3ABCA69FA097B85867D9A4 /* TF_sup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TF_sup.h; path = TF_sup.h; sourceTree = "<group>"; };
 		010D3C3B8269FAF0BA7491D4 /* cUnicodeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cUnicodeData.h; path = cUnicodeData.h; sourceTree = "<group>"; };
-		A0B923820DCC509A6F75849B /* calculsLogiques.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = calculsLogiques.cpp; path = calculsLogiques.cpp; sourceTree = "<group>"; };
 		22BCC25A6F606EB525FFDC56 /* cocoaKerBDD.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = cocoaKerBDD.mm; path = cocoaKerBDD.mm; sourceTree = "<group>"; };
 		17772E42B59D74CFF571FBB3 /* galgas_header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = galgas_header.h; path = galgas_header.h; sourceTree = "<group>"; };
 		A2F3E71D9181A67B7542122C /* grammaireBDD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = grammaireBDD.cpp; path = grammaireBDD.cpp; sourceTree = "<group>"; };
@@ -445,7 +446,6 @@
 		512A7A8315FA3C5A946E8265 /* unicode_character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unicode_character.h; path = unicode_character.h; sourceTree = "<group>"; };
 		26A953A8CD9526FCA6FE9BA5 /* unicode_string_routines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = unicode_string_routines.cpp; path = unicode_string_routines.cpp; sourceTree = "<group>"; };
 		E05EBD93369CE542E8F2322D /* unicode_string_routines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unicode_string_routines.h; path = unicode_string_routines.h; sourceTree = "<group>"; };
-		9D4C2F636F067F89CC14862C /* verifExternes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = verifExternes.cpp; path = verifExternes.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 /* Begin PBXFrameworksBuildPhase section */
 		F65B6DF5B5E3F94D95B11DAF /* Frameworks */ = {
@@ -462,12 +462,12 @@
 		4B5CE2FE28308FD9F2A7BAF3 /* Hand Coded Sources */ = {
 			isa = PBXGroup;
 			children = (
-				95D565EF66E7DFF9F98764DA /* C_galgas_bdd.cpp */,
-				A0B923820DCC509A6F75849B /* calculsLogiques.cpp */,
-				9D4C2F636F067F89CC14862C /* verifExternes.cpp */,
+				95D565EF66E7DFF9F98764DA /* ../hand_coded_sources/C_galgas_bdd.cpp */,
+				A0B923820DCC509A6F75849B /* ../hand_coded_sources/calculsLogiques.cpp */,
+				9D4C2F636F067F89CC14862C /* ../hand_coded_sources/verifExternes.cpp */,
 			);
 			name = "Hand Coded Sources";
-			path = "../hand_coded_sources";
+			path = "../galgas_sources";
 			sourceTree = "<group>";
 		};
 		F062936A96D3C8BD1F8F2FF3 /* Generated by GALGAS */ = {
