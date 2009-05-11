@@ -57,7 +57,7 @@ constructor_empty (C_Compiler & /* _inLexique */
 
 GGS_bool GGS_extern_bdd::
 _operator_isEqual (const GGS_extern_bdd & inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (),
+  return GGS_bool (isBuilt () && inOperand.isBuilt (),
                     mBDD.getIntegerValue () == inOperand.mBDD.getIntegerValue ()) ;
 }
 
@@ -65,7 +65,7 @@ _operator_isEqual (const GGS_extern_bdd & inOperand) const {
 
 GGS_bool GGS_extern_bdd::
 _operator_isNotEqual (const GGS_extern_bdd & inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (),
+  return GGS_bool (isBuilt () && inOperand.isBuilt (),
                     mBDD.getIntegerValue () != inOperand.mBDD.getIntegerValue ()) ;
 }
 
@@ -77,7 +77,7 @@ reader_description (C_Compiler & /* _inLexique */
                     const sint32 /* inIndentation */) const {
   C_String s ;
   s << "<GGS_extern_bdd " ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     s << "built" ;
   }else{
     s << "not built" ;
@@ -88,13 +88,13 @@ reader_description (C_Compiler & /* _inLexique */
 
 //---------------------------------------------------------------------------*
 
-void GGS_extern_bdd::_drop (void) {
+void GGS_extern_bdd::drop (void) {
   mBuilt = false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool GGS_extern_bdd::_isBuilt (void) const {
+bool GGS_extern_bdd::isBuilt (void) const {
   return mBuilt ;
 }
 
