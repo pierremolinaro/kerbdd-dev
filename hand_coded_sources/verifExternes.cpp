@@ -62,7 +62,7 @@ routine_verifierDimensionUn (C_Compiler & inLexique,
                              GGS_luint valeur,
                              GGS_location inErrorLocation
                              COMMA_LOCATION_ARGS) {
-  if (valeur._isBuilt () && inErrorLocation._isBuilt () && (valeur.uintValue () != 1)) {
+  if (valeur.isBuilt () && inErrorLocation.isBuilt () && (valeur.uintValue () != 1)) {
     inErrorLocation.signalSemanticError (inLexique, "This variable is not a boolean" COMMA_THERE) ;
   }
 }
@@ -74,7 +74,7 @@ routine_verifierDimensionValeurCorrecte (C_Compiler & inLexique,
                                          GGS_luint dimension,
                                          GGS_luint valeur
                                          COMMA_LOCATION_ARGS) {
-  if (valeur._isBuilt () && dimension._isBuilt ()) {
+  if (valeur.isBuilt () && dimension.isBuilt ()) {
   //--- Valeur max
     const uint32 dim = dimension.uintValue () ;
     uint32 valeurMax = 1 ;
@@ -84,7 +84,7 @@ routine_verifierDimensionValeurCorrecte (C_Compiler & inLexique,
     if (valeur.uintValue () >= valeurMax) {
       C_String erreur ;
       erreur << "la valeur maximum est " ;
-      erreur << (valeurMax - 1) ;
+      erreur << cStringWithUnsigned (valeurMax - 1) ;
       valeur.signalSemanticError (inLexique, erreur COMMA_THERE) ;
     }
   }
@@ -97,13 +97,13 @@ routine_verifierMemesDimensions (C_Compiler & inLexique,
                                  GGS_luint dimensionGauche,
                                  GGS_luint dimensionDroite
                                  COMMA_LOCATION_ARGS) {
-  if (dimensionGauche._isBuilt () && dimensionDroite._isBuilt ()) {
+  if (dimensionGauche.isBuilt () && dimensionDroite.isBuilt ()) {
     if (dimensionGauche.uintValue () != dimensionDroite.uintValue ()) {
       C_String erreur ;
       erreur << "la dimension de la variable droite ("
-             << dimensionDroite.uintValue ()
+             << cStringWithUnsigned (dimensionDroite.uintValue ())
              << ") est differente de celle de la variable gauche ("
-             << dimensionGauche.uintValue ()
+             << cStringWithUnsigned (dimensionGauche.uintValue ())
              << ")" ;
       dimensionDroite.signalSemanticError (inLexique, erreur COMMA_THERE) ;
     }  

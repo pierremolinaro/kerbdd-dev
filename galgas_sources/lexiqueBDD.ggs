@@ -75,7 +75,7 @@ end rule ;
 # ------------------------------- Chaine de caracteres -------------------------------
 rule '"' :
   repeat
-  while ' ' | '!' | '#'-> '\xFF' :
+  while ' ' | '!' | '#'-> '\u007E' :
     enterCharacterIntoString (att_token, *) ;
   end repeat ;
   select
@@ -133,12 +133,12 @@ end rule ;
 # ------------------------------------ commentaire ----------------------------
 rule '$' :
   repeat
-  while '\x1' ->'\x9' | '\xB' | '\xC' | '\xE' -> '\xFF' :
+  while '\u0001' ->'\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
   end repeat ;
 end rule ;
 
   # --------------------- separateurs (ignores) ---------------------------------
-rule '\x1' -> ' ' :
+rule '\u0001' -> ' ' :
 end rule ;
 
 end lexique ;

@@ -42,11 +42,11 @@ void routine_generate_code (C_Compiler & /* inLexique */,
                             COMMA_UNUSED_LOCATION_ARGS) {
 //--- Initial cache and map sizes
   co << "Initial size of BDD unique table: "
-     << C_BDD::getHashMapEntriesCount ()
+     << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
      << ";\ninitial size of ITE cache: "
-     << C_BDD::getITEcacheEntriesCount ()
+     << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
      << ";\ninitial size of AND cache: "
-     << C_BDD::getANDcacheEntriesCount ()
+     << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
      << ".\n" ;
   switch (C_BDD::getComputingMode ()) {
   case C_BDD::ITE_COMPUTED_FROM_AND :
@@ -87,9 +87,9 @@ executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
   C_Timer duree ;
   C_BDD::setHashMapSize ((uint16) mDimensionTable.uintValue ()) ;
   duree.stopTimer () ;
-  co << "map " << mDimensionTable.uintValue ()
+  co << "map " << cStringWithUnsigned (mDimensionTable.uintValue ())
      << ": BDD unique table resized to "
-     << C_BDD::getHashMapEntriesCount ()
+     << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
      << " (done in "
      << duree
      << ").\n\n" ; 
@@ -104,9 +104,9 @@ executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
   C_BDD::setANDcacheSize ((sint32) mDimensionCache.uintValue ()) ;
   duree.stopTimer () ;
   co << "and_cache "
-     << mDimensionCache.uintValue ()
+     << cStringWithUnsigned (mDimensionCache.uintValue ())
      << ": AND cache resized to "
-     << C_BDD::getANDcacheEntriesCount ()
+     << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
      << " (done in "
      << duree
      << ").\n\n" ;  
@@ -121,9 +121,9 @@ executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
   C_BDD::setITEcacheSize ((sint32) mDimensionCache.uintValue ()) ;
   duree.stopTimer () ;
   co << "ite_cache "
-     << mDimensionCache.uintValue ()
+     << cStringWithUnsigned (mDimensionCache.uintValue ())
      << ": ITE cache resized to "
-     << C_BDD::getITEcacheEntriesCount ()
+     << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
      << " (done in "
      << duree
      << ").\n\n" ;  
@@ -226,11 +226,11 @@ void cPtr_typeCalculSimple::executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFo
        << "', computed in "
        << duree
        << ", has "
-       << nValeurs 
+       << cStringWithUnsigned64 (nValeurs)
        << " value"
        << ((nValeurs < 2ULL) ? "" : "s")
        << " coded by "
-       << nElements
+       << cStringWithUnsigned64 (nElements)
        << " node"
        << ((nElements < 2) ? "" : "s")
        << "\n"  ;
@@ -256,9 +256,9 @@ void cPtr_typeCalculSimple::executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFo
         const uint64 rang = resultat.getBDDrange (v, bddCountForMap (mTableVariablesBool)) ;
         if (rang != i) {
           co << " *** BDD RANGE ERROR "
-             << i
+             << cStringWithUnsigned64 (i)
              << " (RECOMPUTED VALUE: "
-             << rang
+             << cStringWithUnsigned64 (rang)
              << ") ***\n" ;
           nErreurs ++ ;
         }
@@ -312,13 +312,13 @@ void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeur
        << "', computed in "
        << duree
        << " with "
-       << nIterations
+       << cStringWithSigned (nIterations)
        << " iterations, has "
-       << nValeurs
+       << cStringWithUnsigned64 (nValeurs)
        << " value"
        << ((nValeurs < 2ULL) ? "" : "s")
        << " coded by "
-       << nElements
+       << cStringWithUnsigned (nElements)
        << " node"
        << ((nElements < 2) ? "" : "s")
        << "\n" ;
@@ -344,9 +344,9 @@ void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeur
         const uint64 rang = resultat.getBDDrange (v, bddCountForMap (mTableVariablesBool)) ;
         if (rang != i) {
           co << " *** BDD RANGE ERROR "
-             << i
+             << cStringWithUnsigned64 (i)
              << " (RECOMPUTED VALUE: "
-             << rang
+             << cStringWithUnsigned64 (rang)
              << ") ***\n" ;
           nErreurs ++ ;
         }
@@ -709,7 +709,7 @@ defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
                         const C_String & inVariableName,
                         uint32 & ioIndex) const {
   const uint32 dimension = mBitSize.uintValue () ;
-  ioBDDvariableNameArray.definir (ioIndex, inVariableName.cString (), (uint16) dimension) ;
+  ioBDDvariableNameArray.definir (ioIndex, inVariableName.cString (HERE), (uint16) dimension) ;
   ioIndex ++ ;
 }
 
@@ -771,7 +771,7 @@ defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
   while (p != NULL) {
     macroValidPointer (p) ;
     C_String variableName ;
-    variableName << inVariableName << '.' << p->mKey ;
+    variableName << inVariableName << "." << p->mKey ;
     p->mInfo.mVariableDescriptor (HERE)->defineBDDvariableNames (ioBDDvariableNameArray, variableName, ioIndex) ;
     p = p->nextObject () ;
   }
