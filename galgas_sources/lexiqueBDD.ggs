@@ -8,9 +8,9 @@ style stringStyle -> "String constants" ;
 style delimitors -> "Delimitors" ;
 style integer_csts -> "Integer constants" ;
 
-@lstring att_idf ;
-@lstring att_token ;
-@luint  att_valeur ;
+@string att_idf ;
+@string att_token ;
+@uint  att_valeur ;
 
 $nombre$ ! att_valeur error message "a decimal integer" style integer_csts ;
 $id$ ! att_token error message "an identifier" style identifier ;
@@ -65,8 +65,8 @@ message fin_chaine_incorrecte : "the character string does not end with \"" ;
 # pour les identificateurs, majuscules et minuscules sont distinguees
 rule 'a'->'z' | 'A'->'Z' :
   repeat
-    enterCharacterIntoString (att_idf, toLower (*)) ;
-    enterCharacterIntoString (att_token, *) ;
+    enterCharacterIntoString !?att_idf !toLower (!*) ;
+    enterCharacterIntoString !?att_token !* ;
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
   end repeat ;
   send search att_idf in motsReservesKerBDD default $id$ ;
@@ -76,7 +76,7 @@ end rule ;
 rule '"' :
   repeat
   while ' ' | '!' | '#'-> '\u007E' :
-    enterCharacterIntoString (att_token, *) ;
+    enterCharacterIntoString !?att_token !* ;
   end repeat ;
   select
   when '"' :
@@ -88,10 +88,10 @@ end rule ;
 
 # ------------------------------- nombre decimal -------------------------------
 rule '0'->'9' :
-  enterDigitIntoUlong (att_valeur, *) error nombre_dec_trop_grand, car_non_chiffre ;
+  enterDigitIntoUInt !* !?att_valeur error nombre_dec_trop_grand, car_non_chiffre ;
   repeat
   while '0'->'9' :
-    enterDigitIntoUlong (att_valeur, *) error nombre_dec_trop_grand, car_non_chiffre ;
+    enterDigitIntoUInt !* !?att_valeur error nombre_dec_trop_grand, car_non_chiffre ;
   while '_' :
   end repeat ;
   send $nombre$ ;
@@ -101,20 +101,20 @@ end rule ;
 rule list delimiteursKerBDD ;
 
 rule '=' :
-  formerCompEgal (att_valeur) ;
+  formerCompEgal !?att_valeur ;
   send $comp$ ;
 end rule ;
 
 rule '<' :
   select
   when '>' :
-    formerCompNonEgal (att_valeur) ;
+    formerCompNonEgal !?att_valeur ;
     send $comp$ ;
   when '=' :
-    formerCompInfEgal (att_valeur) ;
+    formerCompInfEgal !?att_valeur ;
     send $comp$ ;
   default
-    formerCompInf (att_valeur) ;
+    formerCompInf !?att_valeur ;
     send $comp$ ;
   end select ;
 end rule ;
@@ -122,10 +122,10 @@ end rule ;
 rule '>' :
   select
   when '=' :
-    formerCompSupEgal (att_valeur) ;
+    formerCompSupEgal !?att_valeur ;
     send $comp$ ;
   default
-    formerCompSup (att_valeur) ;
+    formerCompSup !?att_valeur ;
     send $comp$ ;
   end select ;
 end rule ;

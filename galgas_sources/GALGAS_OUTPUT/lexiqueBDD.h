@@ -73,18 +73,6 @@ class lexiqueBDD : public C_Lexique {
 
 //--- START OF USER ZONE 2
 
-public : void scanner_action_formerCompEgal (uint32 & ioValue) ;
-
-public : void scanner_action_formerCompNonEgal (uint32 & ioValue) ;
-
-public : void scanner_action_formerCompInfEgal (uint32 & ioValue) ;
-
-public : void scanner_action_formerCompInf (uint32 & ioValue) ;
-
-public : void scanner_action_formerCompSupEgal (uint32 & ioValue) ;
-
-public : void scanner_action_formerCompSup (uint32 & ioValue) ;
-
 //--- END OF USER ZONE 2
 
 //--- Terminal symbols enumeration
