@@ -2,6 +2,15 @@ lexique lexiqueBDD :
 
 #-----------------------------------------------------------------*
 
+extern routine formerCompSup ?!@uint ioArgument ;
+extern routine formerCompInf ?!@uint ioArgument ;
+extern routine formerCompSupEgal ?!@uint ioArgument ;
+extern routine formerCompInfEgal ?!@uint ioArgument ;
+extern routine formerCompEgal ?!@uint ioArgument ;
+extern routine formerCompNonEgal ?!@uint ioArgument ;
+
+#-----------------------------------------------------------------*
+
 style identifier -> "Identifiers" ;
 style keyWords -> "Key words" ;
 style stringStyle -> "String constants" ;
