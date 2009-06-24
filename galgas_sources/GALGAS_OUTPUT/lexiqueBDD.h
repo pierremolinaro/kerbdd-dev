@@ -8,6 +8,25 @@
 
 //--- START OF USER ZONE 1
 
+#include "galgas/C_Lexique.h"
+
+void scanner_routine_formerCompEgal (C_Lexique & inLexique,
+                uint32 & ioArgument) ;
+
+void scanner_routine_formerCompInf (C_Lexique & inLexique,
+                uint32 & ioArgument) ;
+
+void scanner_routine_formerCompInfEgal (C_Lexique & inLexique,
+                uint32 & ioArgument) ;
+
+void scanner_routine_formerCompNonEgal (C_Lexique & inLexique,
+                uint32 & ioArgument) ;
+
+void scanner_routine_formerCompSup (C_Lexique & inLexique,
+                uint32 & ioArgument) ;
+
+void scanner_routine_formerCompSupEgal (C_Lexique & inLexique,
+                uint32 & ioArgument) ;
 
 //--- END OF USER ZONE 1
 
