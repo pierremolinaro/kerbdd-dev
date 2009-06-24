@@ -40,6 +40,7 @@ SOURCES :=
 include $(LIB_PM_PATH)/galgas/galgas_sources_for_makefile.mke
 
 #--- Hand-coded files ---------------------
+SOURCES += scannerRoutines.cpp
 SOURCES += C_galgas_bdd.cpp
 SOURCES += calculsLogiques.cpp
 SOURCES += verifExternes.cpp
