@@ -3,10 +3,11 @@ project all_BDD :
   semantics "semantiqueBDD.ggs" : makefile, xcode_tool ;
   syntax "syntaxeBDD.ggs" : makefile, xcode_tool ;
   grammar "grammaireBDD.ggs" : makefile, xcode_tool ;
-  gui "cocoaKerBDD.ggs" : xcode_tool, xcode_app ;
+  gui "cocoaKerBDD.gGui" : xcode_tool, xcode_app ;
   program "programmeBDD.ggs" : makefile, xcode_tool ;
 
-  extern "../hand_coded_sources/scannerRoutines.cpp" : makefile, xcode_tool, xcode_app ;
+  extern "../hand_coded_sources/scannerRoutines.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/cocoaScannerRoutines.m" : xcode_app ;
   extern "../hand_coded_sources/C_galgas_bdd.cpp" : makefile, xcode_tool ;
   extern "../hand_coded_sources/calculsLogiques.cpp" : makefile, xcode_tool ;
   extern "../hand_coded_sources/verifExternes.cpp" : makefile, xcode_tool ;

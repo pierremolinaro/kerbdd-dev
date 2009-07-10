@@ -5,7 +5,9 @@
 #---------------------------------------------------------------------------*
 
 gui cocoaKerBDD "cocoa" :
-import semantics semantiqueBDD in "semantiqueBDD.ggs" ;
-import grammar grammaireBDD in "grammaireBDD.ggs" ;
+with lexique "lexiqueBDD.gLexique" {
+  fileExtension: "bdd" ;
+  title: "Source" ;
+}
 end gui ;
 
