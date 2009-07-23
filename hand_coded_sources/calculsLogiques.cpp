@@ -27,7 +27,7 @@ static uint16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
   GGS_typeTableVariablesBool::cElement * current = inMap.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    result += (uint16) current->mInfo.mVariableDescriptor (HERE)->getBDDvariablesCount () ;
+    result = (uint16) (result + current->mInfo.mVariableDescriptor (HERE)->getBDDvariablesCount ()) ;
     current = current->nextObject () ;
   }
   return result ;
@@ -408,7 +408,7 @@ construireTableauChangementVariables (GGS_typeActualArgumentsList & listeArgumen
   nombreVariablesBool = 0 ;
   GGS_typeActualArgumentsList::cElement * p = listeArgumentsBooleens.firstObject () ;
   while (p != NULL) {
-    nombreVariablesBool += (uint16) p->mVariableBitSize.uintValue () ;
+    nombreVariablesBool = (uint16) (nombreVariablesBool + p->mVariableBitSize.uintValue ()) ;
     p = p->nextObject () ;
   }
 //--- Construire le tableau des changements de variables booleennes
