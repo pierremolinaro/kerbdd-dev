@@ -274,7 +274,7 @@
 		052A8CE66358EB576B8912C8 /* C_galgas_io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = C_galgas_io.h; path = C_galgas_io.h; sourceTree = "<group>"; };
 		DB5B34375400904F03D8E6A5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Cocoa.framework; sourceTree = "<group>"; };
 		AC1C7093BD25041881277658 = {isa = PBXFileReference; explicitFileType = "compiled.wrapper.application"; includeInIndex = 0; path = CocoaKerbdd; sourceTree = BUILT_PRODUCTS_DIR; };
-		669D7A23DE0EF88D2F7129E7 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
+		669D7A23DE0EF88D2F7129E7 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xib; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		5B3F9FC8EA15D152ADD07294 /* F_Analyze_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = F_Analyze_CLI_Options.cpp; path = F_Analyze_CLI_Options.cpp; sourceTree = "<group>"; };
 		E1CC6BB9F0CD2A47751A186F /* F_Analyze_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = F_Analyze_CLI_Options.h; path = F_Analyze_CLI_Options.h; sourceTree = "<group>"; };
 		65E6E1EDC05F3D8AB658C551 /* F_CocoaWrapperForGalgas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = F_CocoaWrapperForGalgas.h; path = F_CocoaWrapperForGalgas.h; sourceTree = "<group>"; };
@@ -333,13 +333,13 @@
 		3223EFBC24C7D2583BE69251 /* I_Stop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = I_Stop.tiff; path = I_Stop.tiff; sourceTree = "<group>"; };
 		44A3365A46C9077EBB5E35C3 /* I_Window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = I_Window.png; path = I_Window.png; sourceTree = "<group>"; };
 		C950ECB729A966504AF0A635 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = Info.plist; path = Info.plist; sourceTree = "<group>"; };
-		0B6D1345DD8FE4E481144D84 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0B6D1345DD8FE4E481144D84 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84804B9F647BC185A877A8B5 /* MF_Assert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MF_Assert.cpp; path = MF_Assert.cpp; sourceTree = "<group>"; };
 		512A7A8315FA3C5A946E8265 /* MF_Assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MF_Assert.h; path = MF_Assert.h; sourceTree = "<group>"; };
 		26A953A8CD9526FCA6FE9BA5 /* MF_MemoryControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MF_MemoryControl.cpp; path = MF_MemoryControl.cpp; sourceTree = "<group>"; };
 		E05EBD93369CE542E8F2322D /* MF_MemoryControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MF_MemoryControl.h; path = MF_MemoryControl.h; sourceTree = "<group>"; };
 		010D3C3B8269FAF0BA7491D4 /* M_SourceLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = M_SourceLocation.h; path = M_SourceLocation.h; sourceTree = "<group>"; };
-		395FEDAD7BBBED0ECA3FE2E0 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		395FEDAD7BBBED0ECA3FE2E0 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C833DFF4B38FC8D2872F1EC6 /* NSSplitViewExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSSplitViewExtensions.h; path = NSSplitViewExtensions.h; sourceTree = "<group>"; };
 		FC8586DFA4D1BC0E1742C08B /* NSSplitViewExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = NSSplitViewExtensions.m; path = NSSplitViewExtensions.m; sourceTree = "<group>"; };
 		E76FC522773286A895BC8436 /* OC_GGS_BuildResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OC_GGS_BuildResult.h; path = OC_GGS_BuildResult.h; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 		568125ED6C3F678819B6E058 /* OC_GGS_DelegateForSyntaxColoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = OC_GGS_DelegateForSyntaxColoring.m; path = OC_GGS_DelegateForSyntaxColoring.m; sourceTree = "<group>"; };
 		A126B2F4B2374F342BE9ED44 /* OC_GGS_Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OC_GGS_Document.h; path = OC_GGS_Document.h; sourceTree = "<group>"; };
 		80A295F8076B1C5722A46AA2 /* OC_GGS_Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = OC_GGS_Document.m; path = OC_GGS_Document.m; sourceTree = "<group>"; };
-		3F027327D8461063F4AC58A6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/OC_GGS_Document.nib; sourceTree = "<group>"; };
+		3F027327D8461063F4AC58A6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xib; name = English; path = English.lproj/OC_GGS_Document.xib; sourceTree = "<group>"; };
 		4163B3523AFE57C2E008BC8C /* OC_GGS_PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OC_GGS_PreferencesController.h; path = OC_GGS_PreferencesController.h; sourceTree = "<group>"; };
 		7FBDB1988EF4C628EBA02591 /* OC_GGS_PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = OC_GGS_PreferencesController.m; path = OC_GGS_PreferencesController.m; sourceTree = "<group>"; };
 		4608232E07D3AA3D998E5135 /* OC_GGS_RulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OC_GGS_RulerView.h; path = OC_GGS_RulerView.h; sourceTree = "<group>"; };
@@ -509,8 +509,8 @@
 		C30201F73F142449D037028D /* Cocoa GALGAS */ = {
 			isa = PBXGroup;
 			children = (
-				F4C10BF22AA353E27879133C /* MainMenu.nib */,
-				4CEA9109507CACD8E2F2AEFC /* OC_GGS_Document.nib */,
+				F4C10BF22AA353E27879133C /* MainMenu.xib */,
+				4CEA9109507CACD8E2F2AEFC /* OC_GGS_Document.xib */,
 				FC8586DFA4D1BC0E1742C08B /* NSSplitViewExtensions.m */,
 				C833DFF4B38FC8D2872F1EC6 /* NSSplitViewExtensions.h */,
 				7260AE62E3B1396831A8398F /* PMFontButton.m */,
@@ -1135,20 +1135,20 @@
 		};
 /* End PBXTargetDependency section */
 /* Begin PBXVariantGroup section */
-		F4C10BF22AA353E27879133C /* MainMenu.nib */ = {
+		F4C10BF22AA353E27879133C /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				395FEDAD7BBBED0ECA3FE2E0 ,
 			);
-			name = MainMenu.nib;
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		4CEA9109507CACD8E2F2AEFC /* OC_GGS_Document.nib */ = {
+		4CEA9109507CACD8E2F2AEFC /* OC_GGS_Document.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3F027327D8461063F4AC58A6 ,
 			);
-			name = OC_GGS_Document.nib;
+			name = OC_GGS_Document.xib;
 			sourceTree = "<group>";
 		};
 		10BA03099A1C0393373C5B43 /* Credits.rtf */ = {
@@ -1248,7 +1248,7 @@
 					"../hand_coded_sources/**",
 				);
 				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Default;
 		};
