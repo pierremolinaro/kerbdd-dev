@@ -22,12 +22,12 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-static uint16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
-  uint16 result = 0 ;
+static PMUInt16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
+  PMUInt16 result = 0 ;
   GGS_typeTableVariablesBool::cElement * current = inMap.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    result = (uint16) (result + current->mInfo.mVariableDescriptor (HERE)->getBDDvariablesCount ()) ;
+    result = (PMUInt16) (result + current->mInfo.mVariableDescriptor (HERE)->getBDDvariablesCount ()) ;
     current = current->nextObject () ;
   }
   return result ;
@@ -85,7 +85,7 @@ void cPtr_typeAfficherBilan::executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeu
 void cPtr_typeDimensionnerTable::
 executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
   C_Timer duree ;
-  C_BDD::setHashMapSize ((uint16) mDimensionTable.uintValue ()) ;
+  C_BDD::setHashMapSize ((PMUInt16) mDimensionTable.uintValue ()) ;
   duree.stopTimer () ;
   co << "map " << cStringWithUnsigned (mDimensionTable.uintValue ())
      << ": BDD unique table resized to "
@@ -101,7 +101,7 @@ executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
 void cPtr_typeDimensionnerANDCache::
 executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
   C_Timer duree ;
-  C_BDD::setANDcacheSize ((sint32) mDimensionCache.uintValue ()) ;
+  C_BDD::setANDcacheSize ((PMSInt32) mDimensionCache.uintValue ()) ;
   duree.stopTimer () ;
   co << "and_cache "
      << cStringWithUnsigned (mDimensionCache.uintValue ())
@@ -118,7 +118,7 @@ executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
 void cPtr_typeDimensionnerITECache::
 executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
   C_Timer duree ;
-  C_BDD::setITEcacheSize ((sint32) mDimensionCache.uintValue ()) ;
+  C_BDD::setITEcacheSize ((PMSInt32) mDimensionCache.uintValue ()) ;
   duree.stopTimer () ;
   co << "ite_cache "
      << cStringWithUnsigned (mDimensionCache.uintValue ())
@@ -162,16 +162,16 @@ executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
 static void construireTableauDesNoms (GGS_typeTableVariablesBool & tableDesVariablesBooleennes,
                                       C_Display_BDD & tableauDesNomsVariablesBooleennes) {
 //--- Compute variables count
-  sint32 BDDvariablesCount = 0 ;
+  PMSInt32 BDDvariablesCount = 0 ;
   GGS_typeTableVariablesBool::cElement * pb = tableDesVariablesBooleennes.firstObject () ;
   while (pb != NULL) {
     macroValidPointer (pb) ;
     BDDvariablesCount += pb->mInfo.mVariableDescriptor (HERE)->getBDDslotCount () ;
     pb = pb->nextObject () ;
   }
-  tableauDesNomsVariablesBooleennes.allouer ((uint16) BDDvariablesCount) ;
+  tableauDesNomsVariablesBooleennes.allouer ((PMUInt16) BDDvariablesCount) ;
   pb = tableDesVariablesBooleennes.firstObject () ;
-  uint32 index = 0 ;
+  PMUInt32 index = 0 ;
   while (pb != NULL) {
     macroValidPointer (pb) ;
     pb->mInfo.mVariableDescriptor (HERE)->defineBDDvariableNames (tableauDesNomsVariablesBooleennes,
@@ -199,7 +199,7 @@ static C_BDD evaluerContraintesIntervalles (GGS_typeTableVariablesBool & tableVa
 
 void cPtr_typeCalculSimple::executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFormules) {
   C_Timer duree ;
-  const sint32 numeroFormule = (sint32) mNumeroFormule.uintValue () ;
+  const PMSInt32 numeroFormule = (PMSInt32) mNumeroFormule.uintValue () ;
 //--- Effectuer les eventuels changements de variable
   mFormule(HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormule) ;
 //--- Evaluer les contraintes d'intervalle des variables
@@ -219,8 +219,8 @@ void cPtr_typeCalculSimple::executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFo
     co.flush () ;
   }else{
   //--- Print Result
-    const uint64 nValeurs = resultat.valueCount (bddCountForMap (mTableVariablesBool)) ;
-    const uint32 nElements = resultat.getBDDnodesCount () ;
+    const PMUInt64 nValeurs = resultat.valueCount (bddCountForMap (mTableVariablesBool)) ;
+    const PMUInt32 nElements = resultat.getBDDnodesCount () ;
     co << "Formula '"
        << mNomFormule
        << "', computed in "
@@ -236,7 +236,7 @@ void cPtr_typeCalculSimple::executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFo
        << "\n"  ;
   //--- Print values ?
     C_Display_BDD tableauDesNomsVariablesBooleennes (0) ;
-    const uint32 affichage = mAfficher.uintValue () ;
+    const PMUInt32 affichage = mAfficher.uintValue () ;
     if (affichage > 0) { //--- Construire le tableau des noms
       construireTableauDesNoms (mTableVariablesBool, tableauDesNomsVariablesBooleennes) ;
     }
@@ -250,10 +250,10 @@ void cPtr_typeCalculSimple::executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFo
     }
   //--- Check BDD ?  
     if (affichage > 2) { 
-      sint32 nErreurs = 0 ;
-      for (uint64 i=0 ; i<nValeurs ; i++) {
+      PMSInt32 nErreurs = 0 ;
+      for (PMUInt64 i=0 ; i<nValeurs ; i++) {
         C_BDD v = resultat.getNthBDD (i, bddCountForMap (mTableVariablesBool)) ;
-        const uint64 rang = resultat.getBDDrange (v, bddCountForMap (mTableVariablesBool)) ;
+        const PMUInt64 rang = resultat.getBDDrange (v, bddCountForMap (mTableVariablesBool)) ;
         if (rang != i) {
           co << " *** BDD RANGE ERROR "
              << cStringWithUnsigned64 (i)
@@ -275,7 +275,7 @@ void cPtr_typeCalculSimple::executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFo
 
 void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeurFormules) {
   C_Timer duree ;
-  const sint32 numeroFormule = (sint32) mNumeroFormule.uintValue () ;
+  const PMSInt32 numeroFormule = (PMSInt32) mNumeroFormule.uintValue () ;
 //--- Valeur initiale
   if (mSigne.boolValue ()) {
     tabValeurFormules (numeroFormule COMMA_HERE) = C_BDD () ; // vide
@@ -288,7 +288,7 @@ void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeur
   const C_BDD contrainte = evaluerContraintesIntervalles (mTableVariablesBool) ;
 //--- Evaluation initiale
   C_BDD resultat = contrainte & mFormule (HERE)->evaluerFormule (tabValeurFormules (numeroFormule COMMA_HERE)) ;
-  sint32 nIterations = 1 ;
+  PMSInt32 nIterations = 1 ;
 //--- Iterer
   do{
     tabValeurFormules (numeroFormule COMMA_HERE) = resultat ;
@@ -305,8 +305,8 @@ void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeur
        << (resultat.isFalse () ? "false" : "true")
        << "\n" ;
   }else{
-    const uint64 nValeurs = resultat.valueCount (bddCountForMap (mTableVariablesBool)) ;
-    const uint32 nElements = resultat.getBDDnodesCount () ;
+    const PMUInt64 nValeurs = resultat.valueCount (bddCountForMap (mTableVariablesBool)) ;
+    const PMUInt32 nElements = resultat.getBDDnodesCount () ;
     co << "Formula '"
        << mNomFormule
        << "', computed in "
@@ -324,7 +324,7 @@ void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeur
        << "\n" ;
   //--- Imprimer la composition du resultat
     C_Display_BDD tableauDesNomsVariablesBooleennes (0) ;
-    const uint32 affichage = mAfficher.uintValue () ;
+    const PMUInt32 affichage = mAfficher.uintValue () ;
     if (affichage > 0) { //--- Construire le tableau des noms
       construireTableauDesNoms (mTableVariablesBool, tableauDesNomsVariablesBooleennes) ;
     }
@@ -338,10 +338,10 @@ void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeur
     }
   //--- Verifier le BDD ?  
     if (affichage > 2) { 
-      sint32 nErreurs = 0 ;
-      for (uint64 i=0 ; i<nValeurs ; i++) {
+      PMSInt32 nErreurs = 0 ;
+      for (PMUInt64 i=0 ; i<nValeurs ; i++) {
         C_BDD v = resultat.getNthBDD (i, bddCountForMap (mTableVariablesBool)) ;
-        const uint64 rang = resultat.getBDDrange (v, bddCountForMap (mTableVariablesBool)) ;
+        const PMUInt64 rang = resultat.getBDDrange (v, bddCountForMap (mTableVariablesBool)) ;
         if (rang != i) {
           co << " *** BDD RANGE ERROR "
              << cStringWithUnsigned64 (i)
@@ -362,14 +362,14 @@ void cPtr_typeCalculIteratif::executerCalcul (TC_UniqueArray <C_BDD> & tabValeur
 //---------------------------------------------------------------------*
 
 C_BDD cPtr_typeFormuleVar::evaluerFormule (const C_BDD & /* valeurFormuleCourante */) {
-  return C_BDD ((uint16) mNumeroVariable.uintValue (), true) ;
+  return C_BDD ((PMUInt16) mNumeroVariable.uintValue (), true) ;
 }
 
 //---------------------------------------------------------------------*
 
 void cPtr_typeFormuleVar::
 executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & /* tabValeurFormules */,
-                                  const sint32 /* numeroFormuleCourante */) {
+                                  const PMSInt32 /* numeroFormuleCourante */) {
 }
 
 //---------------------------------------------------------------------*
@@ -382,7 +382,7 @@ C_BDD cPtr_typeFormuleTrue::evaluerFormule (const C_BDD & /* valeurFormuleCouran
 
 void cPtr_typeFormuleTrue::
 executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & /* tabValeurFormules */,
-                                  const sint32 /* numeroFormuleCourante */) {
+                                  const PMSInt32 /* numeroFormuleCourante */) {
 }
 
 //---------------------------------------------------------------------*
@@ -395,30 +395,30 @@ C_BDD cPtr_typeFormuleFalse::evaluerFormule (const C_BDD & /* valeurFormuleCoura
 
 void cPtr_typeFormuleFalse::
 executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & /* tabValeurFormules */,
-                                  const sint32 /* numeroFormuleCourante */) {
+                                  const PMSInt32 /* numeroFormuleCourante */) {
 }
 
 //---------------------------------------------------------------------*
 
 static void
 construireTableauChangementVariables (GGS_typeActualArgumentsList & listeArgumentsBooleens,
-                                      uint16 * & tabChgtBool,
-                                      uint16 & nombreVariablesBool) {
+                                      PMUInt16 * & tabChgtBool,
+                                      PMUInt16 & nombreVariablesBool) {
 //--- Calculer la taille du tableau des changements de variables
   nombreVariablesBool = 0 ;
   GGS_typeActualArgumentsList::cElement * p = listeArgumentsBooleens.firstObject () ;
   while (p != NULL) {
-    nombreVariablesBool = (uint16) (nombreVariablesBool + p->mVariableBitSize.uintValue ()) ;
+    nombreVariablesBool = (PMUInt16) (nombreVariablesBool + p->mVariableBitSize.uintValue ()) ;
     p = p->nextObject () ;
   }
 //--- Construire le tableau des changements de variables booleennes
-  tabChgtBool = new uint16 [nombreVariablesBool] ;
+  tabChgtBool = new PMUInt16 [nombreVariablesBool] ;
   p = listeArgumentsBooleens.firstObject () ;
   size_t i = 0 ;
   while (p != NULL) {
     macroValidPointer (p) ;
-    for (uint16 j=0 ; j < p->mVariableBitSize.uintValue () ; j++) {
-      tabChgtBool [i] = (uint16) (p->mVariableIndex.uintValue () + j) ;
+    for (PMUInt16 j=0 ; j < p->mVariableBitSize.uintValue () ; j++) {
+      tabChgtBool [i] = (PMUInt16) (p->mVariableIndex.uintValue () + j) ;
       i ++ ;
     }
     p = p->nextObject () ;
@@ -432,8 +432,8 @@ C_BDD cPtr_typeFormuleFor::evaluerFormule (const C_BDD & valeurFormuleCourante) 
   C_BDD resultat = mFormuleTraduite.mBDD ;
   if (mEstFormuleCourante.boolValue ()) {
   //--- Construire le tableau des changements de variables
-    uint16 * tabChgtBool = NULL ;
-    uint16 nombreVariablesBool = 0 ;
+    PMUInt16 * tabChgtBool = NULL ;
+    PMUInt16 nombreVariablesBool = 0 ;
     construireTableauChangementVariables (mListeArgsBool, tabChgtBool, nombreVariablesBool) ;
   //--- Traduire le BDD
     resultat = valeurFormuleCourante.substitution (tabChgtBool, nombreVariablesBool) ;
@@ -446,15 +446,15 @@ C_BDD cPtr_typeFormuleFor::evaluerFormule (const C_BDD & valeurFormuleCourante) 
 
 void cPtr_typeFormuleFor::
 executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
-                                  const sint32 numeroFormuleCourante) {
-  mEstFormuleCourante.setValue (mNumeroFormule.uintValue () == (uint32) numeroFormuleCourante) ;
+                                  const PMSInt32 numeroFormuleCourante) {
+  mEstFormuleCourante.setValue (mNumeroFormule.uintValue () == (PMUInt32) numeroFormuleCourante) ;
   if (! mEstFormuleCourante.boolValue ()) {
   //--- Construire le tableau des changements de variables
-    uint16 * tabChgtBool = NULL ;
-    uint16 nombreVariablesBool = 0 ;
+    PMUInt16 * tabChgtBool = NULL ;
+    PMUInt16 nombreVariablesBool = 0 ;
     construireTableauChangementVariables (mListeArgsBool, tabChgtBool, nombreVariablesBool) ;
   //--- Traduire le BDD
-    mFormuleTraduite.mBDD = tabValeurFormules ((uint16) mNumeroFormule.uintValue () COMMA_HERE).substitution (tabChgtBool, nombreVariablesBool) ;
+    mFormuleTraduite.mBDD = tabValeurFormules ((PMUInt16) mNumeroFormule.uintValue () COMMA_HERE).substitution (tabChgtBool, nombreVariablesBool) ;
     delete [] tabChgtBool ; tabChgtBool = NULL ;
   }
 }
@@ -470,7 +470,7 @@ C_BDD cPtr_typeFormuleNon::evaluerFormule (const C_BDD & valeurFormuleCourante) 
 
 void cPtr_typeFormuleNon::
 executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
-                                  const sint32 numeroFormuleCourante) {
+                                  const PMSInt32 numeroFormuleCourante) {
   mOperand (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
 }
 
@@ -486,7 +486,7 @@ C_BDD cPtr_typeFormuleEt::evaluerFormule (const C_BDD & valeurFormuleCourante) {
 
 void cPtr_typeFormuleEt::
 executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
-                                  const sint32 numeroFormuleCourante) {
+                                  const PMSInt32 numeroFormuleCourante) {
   mOperand1 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
   mOperand2 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
 }
@@ -502,7 +502,7 @@ C_BDD cPtr_typeFormuleIte::evaluerFormule (const C_BDD & valeurFormuleCourante) 
 //---------------------------------------------------------------------*
 
 void cPtr_typeFormuleIte::executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
-                                                      const sint32 numeroFormuleCourante) {
+                                                      const PMSInt32 numeroFormuleCourante) {
   mOperand1 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
   mOperand2 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
   mOperand3 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
@@ -520,7 +520,7 @@ C_BDD cPtr_typeFormuleOu::evaluerFormule (const C_BDD & valeurFormuleCourante) {
 //---------------------------------------------------------------------*
 
 void cPtr_typeFormuleOu::executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
-                                                      const sint32 numeroFormuleCourante) {
+                                                      const PMSInt32 numeroFormuleCourante) {
   mOperand1 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
   mOperand2 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
 }
@@ -536,7 +536,7 @@ C_BDD cPtr_typeFormuleImplique::evaluerFormule (const C_BDD & valeurFormuleCoura
 
 void cPtr_typeFormuleImplique::
 executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
-                                  const sint32 numeroFormuleCourante) {
+                                  const PMSInt32 numeroFormuleCourante) {
   mOperand1 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
   mOperand2 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
 }
@@ -574,7 +574,7 @@ C_BDD cPtr_typeComparaisonFormules::evaluerFormule (const C_BDD & valeurFormuleC
 
 void cPtr_typeComparaisonFormules::
 executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
-                                  const sint32 numeroFormuleCourante) {
+                                  const PMSInt32 numeroFormuleCourante) {
   mOperand1 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
   mOperand2 (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
 }
@@ -584,7 +584,7 @@ executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
 
 C_BDD cPtr_typeFormuleExist::evaluerFormule (const C_BDD & valeurFormuleCourante) {
   C_BDD resultat = mOperand (HERE)->evaluerFormule (valeurFormuleCourante) & mContraints.mBDD ;
-  resultat = resultat.existsOnBitsAfterNumber ((uint16) mListeArgsBooleens.firstObject ()->mVariableIndex.uintValue ()) ;
+  resultat = resultat.existsOnBitsAfterNumber ((PMUInt16) mListeArgsBooleens.firstObject ()->mVariableIndex.uintValue ()) ;
   return resultat ;
 }
 
@@ -592,17 +592,17 @@ C_BDD cPtr_typeFormuleExist::evaluerFormule (const C_BDD & valeurFormuleCourante
 
 void cPtr_typeFormuleExist::
 executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
-                                  const sint32 numeroFormuleCourante) {
+                                  const PMSInt32 numeroFormuleCourante) {
   mOperand (HERE)->executerLesChangementsDeVariable (tabValeurFormules, numeroFormuleCourante) ;
 //--- Constraint evaluation
   C_BDD constraint = ~ C_BDD () ; // Initially true
   GGS_typeFormalArgumentsList::cElement * current = mListeArgsBooleens.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    const uint16 variableIndex = (uint16) current->mVariableIndex.uintValue () ;
-    const uint16 variableBitSize = (uint16) current->mVariableBitSize.uintValue () ;
-    const uint32 lowBound = current->mLowBound.uintValue () ;
-    const uint32 highBound = current->mHighBound.uintValue () ;
+    const PMUInt16 variableIndex = (PMUInt16) current->mVariableIndex.uintValue () ;
+    const PMUInt16 variableBitSize = (PMUInt16) current->mVariableBitSize.uintValue () ;
+    const PMUInt32 lowBound = current->mLowBound.uintValue () ;
+    const PMUInt32 highBound = current->mHighBound.uintValue () ;
     const bool hasConstraint = (lowBound != 0) || ((highBound + 1) < (1UL << variableBitSize)) ;
     if (hasConstraint) {
       constraint &= C_BDD::varCompareConst (variableIndex, variableBitSize, C_BDD::kGreaterOrEqual, lowBound)
@@ -617,9 +617,9 @@ executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
 //---------------------------------------------------------------------*
 
 C_BDD cPtr_typeFormuleComparaisonValeur::evaluerFormule (const C_BDD & /* valeurFormuleCourante */) {
-  const uint16 premierIndice = (uint16) mIndiceBDD.uintValue () ;
-  const uint16 dimension = (uint16)  mDimension.uintValue () ;
-  const uint32 valeur = mValeur.uintValue () ;
+  const PMUInt16 premierIndice = (PMUInt16) mIndiceBDD.uintValue () ;
+  const PMUInt16 dimension = (PMUInt16)  mDimension.uintValue () ;
+  const PMUInt32 valeur = mValeur.uintValue () ;
   C_BDD::compareEnum comp = C_BDD::kEqual ;
   switch (mComparaison.uintValue ()) {
   case 1 :
@@ -646,15 +646,15 @@ C_BDD cPtr_typeFormuleComparaisonValeur::evaluerFormule (const C_BDD & /* valeur
 //---------------------------------------------------------------------*
 
 void cPtr_typeFormuleComparaisonValeur::executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & /* tabValeurFormules */,
-                                                         const sint32 /* numeroFormuleCourante */) {
+                                                         const PMSInt32 /* numeroFormuleCourante */) {
 }
 
 //---------------------------------------------------------------------*
 
 C_BDD cPtr_typeFormuleComparaisonVariable::evaluerFormule (const C_BDD & /* valeurFormuleCourante */) {
-  const uint16 premierIndiceGauche = (uint16) mIndiceBDDgauche.uintValue () ;
-  const uint16 dimension = (uint16) mDimension.uintValue () ;
-  const uint16 premierIndiceDroite = (uint16) mIndiceBDDdroite.uintValue () ;
+  const PMUInt16 premierIndiceGauche = (PMUInt16) mIndiceBDDgauche.uintValue () ;
+  const PMUInt16 dimension = (PMUInt16) mDimension.uintValue () ;
+  const PMUInt16 premierIndiceDroite = (PMUInt16) mIndiceBDDdroite.uintValue () ;
   C_BDD::compareEnum comp = C_BDD::kEqual ;
   switch (mComparaison.uintValue ()) {
   case 1 :
@@ -681,7 +681,7 @@ C_BDD cPtr_typeFormuleComparaisonVariable::evaluerFormule (const C_BDD & /* vale
 //---------------------------------------------------------------------*
 
 void cPtr_typeFormuleComparaisonVariable::executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & /* tabValeurFormules */,
-                                                         const sint32 /* numeroFormuleCourante */) {
+                                                         const PMSInt32 /* numeroFormuleCourante */) {
 }
 
 //----------------------------------------------------------------------------*
@@ -690,14 +690,14 @@ void cPtr_typeFormuleComparaisonVariable::executerLesChangementsDeVariable (TC_U
 //                                                                            *
 //----------------------------------------------------------------------------*
 
-sint32 cPtr_typeDirectVariable::
+PMSInt32 cPtr_typeDirectVariable::
 getBDDvariablesCount (void) const {
-  return (sint32) mBitSize.uintValue () ;
+  return (PMSInt32) mBitSize.uintValue () ;
 }
 
 //----------------------------------------------------------------------------*
 
-sint32 cPtr_typeDirectVariable::
+PMSInt32 cPtr_typeDirectVariable::
 getBDDslotCount (void) const {
   return 1 ;
 }
@@ -707,9 +707,9 @@ getBDDslotCount (void) const {
 void cPtr_typeDirectVariable::
 defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
                         const C_String & inVariableName,
-                        uint32 & ioIndex) const {
-  const uint32 dimension = mBitSize.uintValue () ;
-  ioBDDvariableNameArray.definir (ioIndex, inVariableName.cString (HERE), (uint16) dimension) ;
+                        PMUInt32 & ioIndex) const {
+  const PMUInt32 dimension = mBitSize.uintValue () ;
+  ioBDDvariableNameArray.definir (ioIndex, inVariableName.cString (HERE), (PMUInt16) dimension) ;
   ioIndex ++ ;
 }
 
@@ -717,10 +717,10 @@ defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
 
 void cPtr_typeDirectVariable::
 computeBoundsConstraint (C_BDD & ioConstraint) const {
-  const uint32 borneInf = mLowBound.uintValue () ;
-  const uint32 borneSup = mHighBound.uintValue () ;
-  const uint16 varIndex = (uint16) mIndex.uintValue () ;
-  const uint16 bitSize = (uint16) mBitSize.uintValue () ;
+  const PMUInt32 borneInf = mLowBound.uintValue () ;
+  const PMUInt32 borneSup = mHighBound.uintValue () ;
+  const PMUInt16 varIndex = (PMUInt16) mIndex.uintValue () ;
+  const PMUInt16 bitSize = (PMUInt16) mBitSize.uintValue () ;
   if (borneInf > 0) {
     ioConstraint &= C_BDD::varCompareConst (varIndex, bitSize, C_BDD::kGreaterOrEqual, borneInf) ;
   }
@@ -735,9 +735,9 @@ computeBoundsConstraint (C_BDD & ioConstraint) const {
 //                                                                            *
 //----------------------------------------------------------------------------*
 
-sint32 cPtr_typeRecordVariable::
+PMSInt32 cPtr_typeRecordVariable::
 getBDDvariablesCount (void) const {
-  sint32 variableCount = 0 ;
+  PMSInt32 variableCount = 0 ;
   GGS_typeTableVariablesBool::cElement * p = mMap.firstObject () ;
   while (p != NULL) {
     macroValidPointer (p) ;
@@ -749,9 +749,9 @@ getBDDvariablesCount (void) const {
 
 //----------------------------------------------------------------------------*
 
-sint32 cPtr_typeRecordVariable::
+PMSInt32 cPtr_typeRecordVariable::
 getBDDslotCount (void) const {
-  sint32 slotCount = 0 ;
+  PMSInt32 slotCount = 0 ;
   GGS_typeTableVariablesBool::cElement * p = mMap.firstObject () ;
   while (p != NULL) {
     macroValidPointer (p) ;
@@ -766,7 +766,7 @@ getBDDslotCount (void) const {
 void cPtr_typeRecordVariable::
 defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
                         const C_String & inVariableName,
-                        uint32 & ioIndex) const {
+                        PMUInt32 & ioIndex) const {
   GGS_typeTableVariablesBool::cElement * p = mMap.firstObject () ;
   while (p != NULL) {
     macroValidPointer (p) ;
