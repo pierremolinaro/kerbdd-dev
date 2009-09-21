@@ -74,7 +74,7 @@ operator_isNotEqual (const GGS_extern_bdd & inOperand) const {
 GGS_string GGS_extern_bdd::
 reader_description (C_Compiler & /* _inLexique */
                     COMMA_UNUSED_LOCATION_ARGS,
-                    const sint32 /* inIndentation */) const {
+                    const PMSInt32 /* inIndentation */) const {
   C_String s ;
   s << "<GGS_extern_bdd " ;
   if (isBuilt ()) {
