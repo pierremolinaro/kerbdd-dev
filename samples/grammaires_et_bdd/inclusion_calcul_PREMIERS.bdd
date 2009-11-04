@@ -1,1 +1,32 @@
-$--------------------------------------------------------------*$                                                              *$    Calcul des PREMIERS sur une grammaire                     *$                                                              *$--------------------------------------------------------------*$-------------------------- Calcul de l'ensemble des PREMIERS#SIMPLE_PREMIER [g:NTT, d:NTT] :=  ?y:NTT #PRODUCTION [g, d, y] |  ?y:NTT (#PRODUCTION [g, y, d] & #DERIVE_EN_VIDE [y]) ;$--------------------------------------------------------------*$--- Calcul de la fermeture transitive#PREMIERS [g:NTT, d:NTT] += #SIMPLE_PREMIER [g, d] |                            ?x:NTT (#PREMIERS [g, x] & #PREMIERS [x, d]) ;$--------------------------------------------------------------*$--- Calcul de fermeture transitive reflexive#PREMIERS_REFLEXIFS [g:NTT, d:NTT] := #PREMIERS [g, d] | {g=d} ;$--------------------------------------------------------------*$--- Calcul et affichage des non-terminaux dont le premier est vide (doit etre vide)#ErreurPremiers [nt:NTT] := #estNonTerminal [nt] &                          ~ ?t:NTT #PREMIERS [nt, t] & ~ #DERIVE_EN_VIDE [nt] ;$--------------------------------------------------------------*end
+$--------------------------------------------------------------*
+$                                                              *
+$    Calcul des PREMIERS sur une grammaire                     *
+$                                                              *
+$--------------------------------------------------------------*
+
+$-------------------------- Calcul de l'ensemble des PREMIERS
+#SIMPLE_PREMIER [g:NTT, d:NTT] :=
+  ?y:NTT #PRODUCTION [g, d, y] |
+  ?y:NTT (#PRODUCTION [g, y, d] & #DERIVE_EN_VIDE [y]) ;
+
+$--------------------------------------------------------------*
+$--- Calcul de la fermeture transitive
+
+#PREMIERS [g:NTT, d:NTT] += #SIMPLE_PREMIER [g, d] |
+                            ?x:NTT (#PREMIERS [g, x] & #PREMIERS [x, d]) ;
+
+$--------------------------------------------------------------*
+$--- Calcul de fermeture transitive reflexive
+
+#PREMIERS_REFLEXIFS [g:NTT, d:NTT] := #PREMIERS [g, d] | {g=d} ;
+
+$--------------------------------------------------------------*
+$--- Calcul et affichage des non-terminaux dont le premier est vide (doit etre vide)
+
+#ErreurPremiers [nt:NTT] := #estNonTerminal [nt] &
+                          ~ ?t:NTT #PREMIERS [nt, t] & ~ #DERIVE_EN_VIDE [nt] ;
+
+$--------------------------------------------------------------*
+
+end
+
