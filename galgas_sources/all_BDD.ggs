@@ -2,7 +2,7 @@ project all_BDD :
   lexique "lexiqueBDD.gLexique" : makefile, xcode_tool, xcode_app ;
   semantics "semantiqueBDD.ggs" : makefile, xcode_tool ;
   syntax "syntaxeBDD.ggs" : makefile, xcode_tool ;
-  grammar "grammaireBDD.ggs" : makefile, xcode_tool ;
+  grammar "grammaireBDD.gGrammar" : makefile, xcode_tool ;
   gui "cocoaKerBDD.gGui" : xcode_tool, xcode_app ;
   program "programmeBDD.ggs" : makefile, xcode_tool ;
 

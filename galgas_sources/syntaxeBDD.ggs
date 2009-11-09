@@ -2,9 +2,11 @@ syntax syntaxeBDD :
 
 #-------------------------------------------------------------------*
 
+  with "lexiqueBDD.gLexique" ;
+
 import lexique lexiqueBDD in "lexiqueBDD.gLexique" ;
 import semantics semantiqueBDD in "semantiqueBDD.ggs" ;
-import grammar grammaireBDD in "grammaireBDD.ggs" ;
+import grammar grammaireBDD in "grammaireBDD.gGrammar" ;
 
 #-------------------------------------------------------------------*
 
