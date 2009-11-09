@@ -11,16 +11,16 @@ $--- Productions vides
 
 $--- Codage des productions de la forme <ntg> = "t" <ntd> :
 #Acces1 [ntg:vocabulary, t:vocabulary, ntd:vocabulary] := 
-	({ntg=1} & {t=0} & {ntd=9}) | $ <suiteTerme> = "+" <suiteTerme1>
-	({ntg=1} & {t=1} & {ntd=9}) | $ <suiteTerme> = "-" <suiteTerme1>
-	({ntg=3} & {t=2} & {ntd=8}) | $ <suiteFacteur> = "*" <suiteFacteur1>
-	({ntg=3} & {t=3} & {ntd=8}) | $ <suiteFacteur> = "/" <suiteFacteur1>
-	({ntg=5} & {t=1} & {ntd=7}) | $ <opUnaire> = "-" <productionVide>
-	({ntg=5} & {t=0} & {ntd=7}) | $ <opUnaire> = "+" <productionVide>
-	({ntg=6} & {t=6} & {ntd=7}) | $ <primaire> = "id" <productionVide>
-	({ntg=6} & {t=7} & {ntd=7}) | $ <primaire> = "cst" <productionVide>
-	({ntg=6} & {t=4} & {ntd=10}) | $ <primaire> = "(" <suitePrimaire1>
-	({ntg=11} & {t=5} & {ntd=7}) ; $ <suitePrimaire2> = ")" <productionVide>
+ ({ntg=1} & {t=0} & {ntd=9}) | $ <suiteTerme> = "+" <suiteTerme1>
+ ({ntg=1} & {t=1} & {ntd=9}) | $ <suiteTerme> = "-" <suiteTerme1>
+ ({ntg=3} & {t=2} & {ntd=8}) | $ <suiteFacteur> = "*" <suiteFacteur1>
+ ({ntg=3} & {t=3} & {ntd=8}) | $ <suiteFacteur> = "/" <suiteFacteur1>
+ ({ntg=5} & {t=1} & {ntd=7}) | $ <opUnaire> = "-" <productionVide>
+ ({ntg=5} & {t=0} & {ntd=7}) | $ <opUnaire> = "+" <productionVide>
+ ({ntg=6} & {t=6} & {ntd=7}) | $ <primaire> = "id" <productionVide>
+ ({ntg=6} & {t=7} & {ntd=7}) | $ <primaire> = "cst" <productionVide>
+ ({ntg=6} & {t=4} & {ntd=10}) | $ <primaire> = "(" <suitePrimaire1>
+ ({ntg=11} & {t=5} & {ntd=7}) ; $ <suitePrimaire2> = ")" <productionVide>
 
 $--- Codage des productions de la forme <ntg> = <nt1> <nt2> :
 #Acces2 [ntg:vocabulary, nt1:vocabulary, nt2:vocabulary] := 
@@ -36,12 +36,12 @@ $--- Axiome de la grammaire
 
 $--- Calcul de l'ensemble des terminaux utiles
 display #Utile [nt:vocabulary] += #Axiome [nt] |
-	?ntg:vocabulary,t:vocabulary (
-		#Utile [ntg] & (
-			#Acces1 [ntg, t, nt] | 
-			?nt2:vocabulary (#Acces2 [ntg, nt, nt2] | #Acces2 [ntg, nt2, nt])
-		)
-	) ;
+ ?ntg:vocabulary,t:vocabulary (
+  #Utile [ntg] & (
+   #Acces1 [ntg, t, nt] | 
+   ?nt2:vocabulary (#Acces2 [ntg, nt, nt2] | #Acces2 [ntg, nt2, nt])
+  )
+ ) ;
 
 $--- Recherche des terminaux inutiles
 display #Inutile [nt:vocabulary] := {nt <= 11} & ~ #Utile [nt] ;
@@ -52,11 +52,11 @@ display #Vide [nt:vocabulary] -= #ProductionVide [nt] &
 
 $--- Calcul de l'ensemble des premiers
 display #Premiers [nt:vocabulary, t:vocabulary] += 
-	(#ProductionVide [nt] & {t=8}) |
-	?ntd:vocabulary #Acces1 [nt, t, ntd] |
-	?nt1:vocabulary, nt2:vocabulary (#Acces2 [nt, nt1, nt2] & #Premiers [nt1, t]) |
-	?nt1:vocabulary, nt2:vocabulary (#Acces2 [nt, nt1, nt2] & #ProductionVide [nt1]
-	                                     & #Premiers [nt2, t]) ;
+ (#ProductionVide [nt] & {t=8}) |
+ ?ntd:vocabulary #Acces1 [nt, t, ntd] |
+ ?nt1:vocabulary, nt2:vocabulary (#Acces2 [nt, nt1, nt2] & #Premiers [nt1, t]) |
+ ?nt1:vocabulary, nt2:vocabulary (#Acces2 [nt, nt1, nt2] & #ProductionVide [nt1]
+                                      & #Premiers [nt2, t]) ;
 
 
 $--- Calcul et affichage des non-terminaux dont le premier est vide

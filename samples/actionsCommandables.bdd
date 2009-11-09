@@ -27,7 +27,7 @@ end record ;
  #Trans1 [qs.e1, tu.a1, qd.e1] &
  #Trans2 [qs.e2, tu.a2, qd.e2] ;
 
-$--- L'ensemble des etats interdits (état (2,2))
+$--- L'ensemble des etats interdits (ï¿½tat (2,2))
 #EtatInterdit [qs:etatProduit] := {qs.e1 = 2} & {qs.e2 = 2} ;
 
 $--- L'ensemble des actions non commandables (1, 3) et (3, 1)

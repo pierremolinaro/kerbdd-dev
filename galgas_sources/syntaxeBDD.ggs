@@ -340,20 +340,20 @@ routine exploreRecordDomain
   ??@location inErrorLocation
 :
   outMap := [@typeTableVariablesBool emptyMap] ;
-  foreach inRecordMap (@lstring inKey @typeDomain inDomain) do
-    cast inDomain :
+  foreach inRecordMap do
+    cast mDomain :
     when >= @typeDirectDomain dd do # § (@luint inLowBound @luint inHighBound @luint inBitSize) ->
       @luint slot := [@luint new !ioBDDslot !here] ;
       @typeVariableDescriptor v := [@typeDirectVariable new !slot ![dd mBitsCount] ![dd mLowBound] ![dd mHighBound]] ;
-      [!?outMap insertKey !inKey !v] ;
+      [!?outMap insertKey !key !v] ;
       ioBDDslot := ioBDDslot + [[dd mBitsCount] uint] ;
     when >= @typeRecordDomain rd do # §(@typeDomainMap inLocalRecordMap) ->
       @typeTableVariablesBool localMap ;
       exploreRecordDomain ![rd mRecordMap] ?localMap !?ioBDDslot !inErrorLocation ;
       @typeVariableDescriptor v := [@typeRecordVariable new !localMap] ;
-      [!?outMap insertKey !inKey !v] ;
+      [!?outMap insertKey !key !v] ;
     else
-       error inErrorLocation : "a aDomain was expected here ; I found " . [inDomain messageDomainType] ;
+       error inErrorLocation : "a aDomain was expected here ; I found " . [mDomain messageDomainType] ;
      end cast ;
   end foreach ;
 end routine ;

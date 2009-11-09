@@ -262,19 +262,18 @@ routine verifierNombreArgumentsBool ??@typeFormalArgumentsList t1
   elsif [t1 length] > [t2 length] then
     error positionFinListe : "one or more actual arguments missing" ;
   end if ;
-  foreach t1 (@luint attNum1 @luint attDim1 @luint lowBound1 @luint highBound1),
-          t2 (@luint attNum2 @luint attDim2 @luint lowBound2 @luint highBound2 @location errorLocation) do
-    if [attDim1 uint] == [attDim2 uint] then
-      if [lowBound1 uint] == [lowBound2 uint] then
-        if [highBound1 uint] == [highBound2 uint] then
+  foreach t1, t2 prefixedby t2_ do
+    if [mVariableBitSize uint] == [t2_mVariableBitSize uint] then
+      if [mLowBound uint] == [t2_mLowBound uint] then
+        if [mHighBound uint] == [t2_mHighBound uint] then
         else
-          error errorLocation : "the actual high bound is different the formal one" ;
+          error t2_mErrorLocation : "the actual high bound is different the formal one" ;
         end if ;
       else
-        error errorLocation : "the actual low bound is different the formal one" ;
+        error t2_mErrorLocation : "the actual low bound is different the formal one" ;
       end if ;
     else
-      error errorLocation : "the actual dimension is different from the formal one" ;
+      error t2_mErrorLocation : "the actual dimension is different from the formal one" ;
     end if ;
   end foreach ;
 end routine ;
@@ -290,8 +289,8 @@ routine buildFormalArgsList
   when >= @typeDirectVariable v do # ¤(@luint inIndexVar @luint inBitSize @luint inLowBound @luint inHighBound) ->
     ioFormalArgsList += ![v mIndex] ![v mBitSize] ![v mLowBound] ![v mHighBound] ;
   when >= @typeRecordVariable r do # ¤ (@typeTableVariablesBool inLocalRecordMap) ->
-    foreach [r mMap] (* @typeVariableDescriptor inLocalVariableDescriptor) do
-      buildFormalArgsList !inLocalVariableDescriptor !?ioFormalArgsList !inErrorLocation ;
+    foreach [r mMap] do
+      buildFormalArgsList !mVariableDescriptor !?ioFormalArgsList !inErrorLocation ;
     end foreach ;
   default error inErrorLocation
   end cast ;
@@ -304,8 +303,8 @@ routine buildActualArgsList
   ?!@typeActualArgumentsList ioActualArgsList
   ??@location inErrorLocation
 :
-  foreach inDomainMap (* @typeVariableDescriptor inLocalVariableDescriptor) do
-    cast inLocalVariableDescriptor :
+  foreach inDomainMap do
+    cast mVariableDescriptor :
     when >= @typeDirectVariable v do
       ioActualArgsList += ![v mIndex] ![v mBitSize] ![v mLowBound] ![v mHighBound] !inErrorLocation ;
     when >= @typeRecordVariable r do
