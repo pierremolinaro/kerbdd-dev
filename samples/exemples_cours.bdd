@@ -5,18 +5,45 @@ display #pb1 [a : bool, b : bool] := (a | b) = (a | ((~a) & b)) ;
 #pb1_2 := ! a : bool, b : bool ((a | b) = (a | ((~a) & b))) ;
 
 $---- Probleme 2
-display #int_1_5 [x2 : bool, x1 : bool, x0 : bool]   := (~x2 & ~x1 & x0) | (~x2 & x1) | (x2 & ~x1) ;
+display #int_1_5 [x2 : bool, x1 : bool, x0 : bool]
+   := (~x2 & ~x1 & x0) | (~x2 & x1) | (x2 & ~x1) ;
 
-display #inf [x2 : bool, x1 : bool, x0 : bool,              y2 : bool, y1 : bool, y0 : bool] :=  (~x2 & y2) |  ((x2 = y2) & (~x1 & y1)) |  ((x2 = y2) & (x1 = y1) & (~x0 & y0)) ;
+display #inf [x2 : bool, x1 : bool, x0 : bool,
+              y2 : bool, y1 : bool, y0 : bool] :=
+  (~x2 & y2) |
+  ((x2 = y2) & (~x1 & y1)) |
+  ((x2 = y2) & (x1 = y1) & (~x0 & y0)) ;
 
-display #pb2 [x2 : bool, x1 : bool, x0 : bool,              y2 : bool, y1 : bool, y0 : bool] :=  #int_1_5 [x2, x1, x0] &  #int_1_5 [y2, y1, y0] &  (? u2 : bool, u1 : bool, u0 : bool     (#int_1_5 [u2, u1, u0] &      #inf [x2, x1, x0, u2, u1, u0] &      #inf [u2, u1, u0, y2, y1, y0]     )  ) ;
+display #pb2 [x2 : bool, x1 : bool, x0 : bool,
+              y2 : bool, y1 : bool, y0 : bool] :=
+  #int_1_5 [x2, x1, x0] &
+  #int_1_5 [y2, y1, y0] &
+  (? u2 : bool, u1 : bool, u0 : bool
+     (#int_1_5 [u2, u1, u0] &
+      #inf [x2, x1, x0, u2, u1, u0] &
+      #inf [u2, u1, u0, y2, y1, y0]
+     )
+  ) ;
 
-domain d : 1 .. 5 ;display #pb2_2 [x : d, y : d] := ? u : d ({x < u} & {u < y}) ;
+domain d : 1 .. 5 ;
+display #pb2_2 [x : d, y : d] := ? u : d ({x < u} & {u < y}) ;
 
-domain T : 1 .. 10 ;#E1 [x : T] := {x > 2} ;#E2 [x : T] := {x < 9} ;display #F [x : T] := #E1 [x] & #E2 [x] ;
+domain T : 1 .. 10 ;
+#E1 [x : T] := {x > 2} ;
+#E2 [x : T] := {x < 9} ;
+
+display #F [x : T] := #E1 [x] & #E2 [x] ;
 
 $--- Probleme 3
-domain etat : 0 .. 6 ;#initial [q : etat] := {q = 0} ;display #trans [s : etat, d : etat] :=        ({s = 0} & {d = 1}) | ({s = 1} & {d = 2}) |       ({s = 2} & {d = 1}) | ({s = 2} & {d = 3}) |       ({s = 3} & {d = 4}) | ({s = 5} & {d = 4}) |       ({s = 5} & {d = 6}) | ({s = 6} & {d = 6}) ;
+domain etat : 0 .. 6 ;
+
+#initial [q : etat] := {q = 0} ;
+
+display #trans [s : etat, d : etat] := 
+       ({s = 0} & {d = 1}) | ({s = 1} & {d = 2}) |
+       ({s = 2} & {d = 1}) | ({s = 2} & {d = 3}) |
+       ({s = 3} & {d = 4}) | ({s = 5} & {d = 4}) |
+       ({s = 5} & {d = 6}) | ({s = 6} & {d = 6}) ;
 
 #acc0 [q : etat] := #initial [q] ;
 
@@ -38,4 +65,7 @@ display #nac [q : etat] -= ~(#initial [q] | ? x : etat (~#nac [x] & #trans [x, q
 
 display #nac2 [q : etat] -= ~#initial [q] & ! x : etat (#nac2 [x] | ~ #trans [x, q]) ;
 
-dump #et_ou_1 [a:bool, b:bool, c:bool, d:bool] := (a & b) | (c & d) ;dump #et_ou_2 [a:bool, c:bool, b:bool, d:bool] := (a & b) | (c & d) ;end
+dump #et_ou_1 [a:bool, b:bool, c:bool, d:bool] := (a & b) | (c & d) ;
+dump #et_ou_2 [a:bool, c:bool, b:bool, d:bool] := (a & b) | (c & d) ;
+
+end
