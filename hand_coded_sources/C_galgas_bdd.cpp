@@ -2,7 +2,7 @@
 //                                                                           *
 //  GGS_extern_bdd : this class implements the GALGAS BDD extern type        *
 //                                                                           *
-//  Copyright (C) 2002, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 2002, ..., 2009 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -20,6 +20,10 @@
 //---------------------------------------------------------------------------*
 
 #include "semantiqueBDD.h"
+
+//---------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor kTypeDescriptor_GGS_extern_bdd ("extern_bdd", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -72,9 +76,7 @@ operator_isNotEqual (const GGS_extern_bdd & inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_extern_bdd::
-reader_description (C_Compiler & /* _inLexique */
-                    COMMA_UNUSED_LOCATION_ARGS,
-                    const PMSInt32 /* inIndentation */) const {
+reader_description (const PMSInt32 /* inIndentation */) const {
   C_String s ;
   s << "<GGS_extern_bdd " ;
   if (isBuilt ()) {
@@ -96,6 +98,49 @@ void GGS_extern_bdd::drop (void) {
 
 bool GGS_extern_bdd::isBuilt (void) const {
   return mBuilt ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark ========= Introspection
+#endif
+
+//---------------------------------------------------------------------------*
+
+GGS_object GGS_extern_bdd::reader_object (void) const {
+  GGS_object result ;
+  if (isBuilt ()) {
+    GGS_extern_bdd * p = NULL ;
+    macroMyNew (p, GGS_extern_bdd (*this)) ;
+    result = GGS_object (p) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GGS_extern_bdd GGS_extern_bdd::castFromObject (C_Compiler & inLexique,
+                                         const GGS_object & inObject,
+                                         const GGS_location & inErrorLocation
+                                         COMMA_LOCATION_ARGS) {
+  GGS_extern_bdd result ;
+  const GGS__root * embeddedObject = inObject.embeddedObject () ;
+  if (NULL != embeddedObject) {
+    const GGS_extern_bdd * p = dynamic_cast <const GGS_extern_bdd *> (embeddedObject) ;
+    if (NULL != p) {
+      result = * p ;
+    }else{
+      castFromObjectErrorSignaling (inLexique, inErrorLocation, & kTypeDescriptor_GGS_extern_bdd, embeddedObject COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GGS_extern_bdd::typeDescriptor (void) const {
+  return & kTypeDescriptor_GGS_extern_bdd ;
 }
 
 //---------------------------------------------------------------------------*
