@@ -104,10 +104,11 @@ class @typeRecordVariable extends @typeVariableDescriptor {
 #------------------------------------------------------------------*
 
 map @typeTableFormules {
+  @uint mIndex ;
   @typeFormalArgumentsList aListeArgsFormelsBool ;
   @extern_bdd aBDD ;
-  insert insertKey, insertKeyGetIndex error message "the '#%K' formula is already defined" ;
-  search searchKey, searchKeyGetIndex error message "the '#%K' formula is not defined" ;
+  insert insertKey error message "the '#%K' formula is already defined" ;
+  search searchKey error message "the '#%K' formula is not defined" ;
 }
 
 #------------------------------------------------------------------*
@@ -130,7 +131,7 @@ class @typeFormuleVar extends @typeFormule {
 }
 
 class @typeFormuleFor extends @typeFormule {
-  @luint mNumeroFormule ;
+  @uint mNumeroFormule ;
   @typeActualArgumentsList mListeArgsBool ;
   @extern_bdd mFormuleTraduite ;
   @lbool mEstFormuleCourante ;
@@ -200,7 +201,7 @@ abstract class @typeCalcul feature generatedInSeparateFile {
 }
 
 class @typeCalculSimple extends @typeCalcul {
-  @luint mNumeroFormule ;
+  @uint mNumeroFormule ;
   @typeFormule mFormule ;
   @lstring mNomFormule ;
   @typeTableVariablesBool mTableVariablesBool ;
@@ -232,7 +233,7 @@ class @typeAfficherBilan extends @typeCalcul {
 }
 
 class @typeCalculIteratif extends @typeCalcul {
-  @luint mNumeroFormule ;
+  @uint mNumeroFormule ;
   @typeFormule mFormule ;
   @lstring mNomFormule ;
   @typeTableVariablesBool mTableVariablesBool ;
