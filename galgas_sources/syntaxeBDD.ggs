@@ -462,7 +462,6 @@ rule <type_formule>
   !@typeCalcul calcul
 :
   $:=$ ;
-  @luint numero ;
   @typeFormule f ;
   @typeTableVariablesBool tableVariablesLocales := tableVariables ;
   <formule>
@@ -473,7 +472,8 @@ rule <type_formule>
     ?f
   ;
   @extern_bdd unusedBDD [empty] ;
-  [!?tableFormules insertKeyGetIndex !nomFormule ?numero !listeArgFormelsBool !unusedBDD] ;
+  const @uint numero := [tableFormules count] ;
+  [!?tableFormules insertKey !nomFormule !numero !listeArgFormelsBool !unusedBDD] ;
   calcul := [@typeCalculSimple new !numero !f !nomFormule !tableVariables !afficherBDD] ;
 end rule ;
 
@@ -491,9 +491,9 @@ rule <type_formule>
 :
   $+=$ ;
   @lbool signe := [@lbool new !true !here] ;
-  @luint numero ;
   @extern_bdd unusedBDD [empty] ;
-  [!?tableFormules insertKeyGetIndex !nomFormule ?numero !listeArgFormelsBool !unusedBDD] ;
+  const @uint numero := [tableFormules count] ;
+  [!?tableFormules insertKey !nomFormule !numero !listeArgFormelsBool !unusedBDD] ;
   @typeFormule f ;
   @typeTableVariablesBool tableVariablesLocales := tableVariables ;
   <formule>
@@ -520,9 +520,9 @@ rule <type_formule>
 :
   $-=$ ;
   @lbool signe := [@lbool new !false !here] ;
-  @luint numero ;
   @extern_bdd unusedBDD [empty] ;
-  [!?tableFormules insertKeyGetIndex !nomFormule ?numero !listeArgFormelsBool !unusedBDD] ;
+  const @uint numero := [tableFormules count] ;
+  [!?tableFormules insertKey !nomFormule !numero !listeArgFormelsBool !unusedBDD] ;
   @typeFormule f ;
   @typeTableVariablesBool tableVariablesLocales ;
   tableVariablesLocales := tableVariables ;
@@ -920,10 +920,10 @@ rule <facteur_formule>
 :
   $#$ ;
   @lstring nom ;
-  @luint numero ;
+  @uint numero ;
   $id$ ? nom ;
   @typeFormalArgumentsList listeArgsFormelsBool ;
-  [tableFormules searchKeyGetIndex !nom ?numero ?listeArgsFormelsBool ?*] ;
+  [tableFormules searchKey !nom ?numero ?listeArgsFormelsBool ?*] ;
   $[$ ;
   @typeActualArgumentsList listeArgsEffectifsBool [emptyList] ;
   repeat
