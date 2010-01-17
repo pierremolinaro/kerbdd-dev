@@ -23,7 +23,7 @@
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor kTypeDescriptor_GGS_extern_bdd ("extern_bdd", false, NULL) ;
+const C_galgas_type_descriptorEX kTypeDescriptor_GGS_extern_bdd ("extern_bdd", false, NULL) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -139,7 +139,7 @@ GGS_extern_bdd GGS_extern_bdd::castFromObject (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GGS_extern_bdd::typeDescriptor (void) const {
+const C_galgas_type_descriptorEX * GGS_extern_bdd::typeDescriptor (void) const {
   return & kTypeDescriptor_GGS_extern_bdd ;
 }
 
