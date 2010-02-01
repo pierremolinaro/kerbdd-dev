@@ -709,7 +709,7 @@ defineBDDvariableNames (C_Display_BDD & ioBDDvariableNameArray,
                         const C_String & inVariableName,
                         PMUInt32 & ioIndex) const {
   const PMUInt32 dimension = mBitSize.uintValue () ;
-  ioBDDvariableNameArray.definir (ioIndex, inVariableName.cString (HERE), (PMUInt16) dimension) ;
+  ioBDDvariableNameArray.defineVariableName (ioIndex, inVariableName.cString (HERE), (PMUInt16) dimension) ;
   ioIndex ++ ;
 }
 
