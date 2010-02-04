@@ -62,7 +62,7 @@ constructor_empty (C_Compiler & /* _inLexique */
 GGS_bool GGS_extern_bdd::
 operator_isEqual (const GGS_extern_bdd & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
-                    mBDD.getIntegerValue () == inOperand.mBDD.getIntegerValue ()) ;
+                    mBDD.integerValue () == inOperand.mBDD.integerValue ()) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -70,7 +70,7 @@ operator_isEqual (const GGS_extern_bdd & inOperand) const {
 GGS_bool GGS_extern_bdd::
 operator_isNotEqual (const GGS_extern_bdd & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
-                    mBDD.getIntegerValue () != inOperand.mBDD.getIntegerValue ()) ;
+                    mBDD.integerValue () != inOperand.mBDD.integerValue ()) ;
 }
 
 //---------------------------------------------------------------------------*
