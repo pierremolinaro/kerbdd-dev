@@ -1,5 +1,5 @@
 program programmeBDD "version 3.0.3" :
-import semantics semantiqueBDD in "semantiqueBDD.ggs" ;
+import semantics semantiqueBDD in "semantiqueBDD.gSemantics" ;
 import grammar grammaireBDD in "grammaireBDD.gGrammar" ;
 
   before {
