@@ -1,5 +1,5 @@
 grammar grammaireBDD "LL1" :
-  with "syntaxeBDD.ggs" ;
+  with "syntaxeBDD.gSyntax" ;
   import lexique lexiqueBDD in "lexiqueBDD.gLexique" ;
   import syntax syntaxeBDD in "syntaxeBDD.ggs" ;
   root <axiomeBDD>

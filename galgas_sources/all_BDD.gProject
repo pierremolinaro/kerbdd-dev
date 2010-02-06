@@ -1,10 +1,10 @@
 project all_BDD :
   lexique "lexiqueBDD.gLexique" : makefile, xcode_tool, xcode_app ;
-  semantics "semantiqueBDD.ggs" : makefile, xcode_tool ;
-  syntax "syntaxeBDD.ggs" : makefile, xcode_tool ;
+  semantics "semantiqueBDD.gSemantics" : makefile, xcode_tool ;
+  syntax "syntaxeBDD.gSyntax" : makefile, xcode_tool ;
   grammar "grammaireBDD.gGrammar" : makefile, xcode_tool ;
   gui "cocoaKerBDD.gGui" : xcode_tool, xcode_app ;
-  program "programmeBDD.ggs" : makefile, xcode_tool ;
+  program "programmeBDD.gProgram" : makefile, xcode_tool ;
 
   extern "../hand_coded_sources/scannerRoutines.cpp" : makefile, xcode_tool ;
   extern "../hand_coded_sources/cocoaScannerRoutines.m" : xcode_app ;
