@@ -8,7 +8,7 @@ $--- Ensemble des transitions de l'automate
  ({qs=3} & {a=2} & {qd=5}) | ({qs=4} & {a=2} & {qd=5}) |
  ({qs=5} & {a=3} & {qd=6}) | ({qs=5} & {a=3} & {qd=7}) ;
 
-#accessible [qs:etat] := true ;
+#accessible [qs:etat] := {qs <= 7} ;
 
 $--- Calcul de la plus grande auto-bisimulation
 display #bisimul [q1:etat, q2:etat] -=
