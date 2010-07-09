@@ -32,7 +32,7 @@ routine_getHighBound (C_Compiler & inLexique,
   if (inPowerOfTwo.uintValue () == 0) {
     inPowerOfTwo.signalSemanticError (inLexique, "the dimension must be >0" COMMA_THERE) ;
   }
-  outResult = GGS_luint (inLexique, (1UL << inPowerOfTwo.uintValue ()) - 1UL) ;
+  outResult = GGS_luint (inLexique, (1 << inPowerOfTwo.uintValue ()) - 1) ;
 }
 
 //---------------------------------------------------------------------*

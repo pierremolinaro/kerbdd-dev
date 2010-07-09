@@ -43,22 +43,22 @@ void routine_generate_code (C_Compiler & /* inLexique */,
 //--- Initial cache and map sizes
   co << "Initial size of BDD unique table: "
      << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
-     << ";\ninitial size of ITE cache: "
-     << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
+//     << ";\ninitial size of ITE cache: "
+//     << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
      << ";\ninitial size of AND cache: "
      << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
      << ".\n" ;
-  switch (C_BDD::getComputingMode ()) {
-  case C_BDD::ITE_COMPUTED_FROM_AND :
-    co << "ITE is computed from AND.\n\n" ;
-    break ;
-  case C_BDD::AND_COMPUTED_FROM_ITE :
-    co << "AND is computed from ITE.\n\n" ;
-    break ;
-  case C_BDD::ITE_and_AND_ARE_INDEPENDANT :
-    co << "AND and ITE are computed independantly.\n\n" ;
-    break ;
-  }  
+  /* switch (C_BDD::getComputingMode ()) {
+    case C_BDD::ITE_COMPUTED_FROM_AND :
+      co << "ITE is computed from AND.\n\n" ;
+      break ;
+    case C_BDD::AND_COMPUTED_FROM_ITE :
+      co << "AND is computed from ITE.\n\n" ;
+      break ;
+    case C_BDD::ITE_and_AND_ARE_INDEPENDANT :
+      co << "AND and ITE are computed independantly.\n\n" ;
+      break ;
+    } */  
   co.flush () ;
 //--- Tableau des valeurs des formules
   TC_UniqueArray <C_BDD> tabValeurFormules (inListeCalculs.count (), C_BDD () COMMA_HERE) ;
@@ -117,44 +117,44 @@ executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
 
 void cPtr_typeDimensionnerITECache::
 executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
-  C_Timer duree ;
-  C_BDD::setITEcacheSize ((PMSInt32) mDimensionCache.uintValue ()) ;
-  duree.stopTimer () ;
-  co << "ite_cache "
-     << cStringWithUnsigned (mDimensionCache.uintValue ())
-     << ": ITE cache resized to "
-     << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
-     << " (done in "
-     << duree
-     << ").\n\n" ;  
-  co.flush () ; 
+  /* C_Timer duree ;
+    C_BDD::setITEcacheSize ((PMSInt32) mDimensionCache.uintValue ()) ;
+    duree.stopTimer () ;
+    co << "ite_cache "
+       << cStringWithUnsigned (mDimensionCache.uintValue ())
+       << ": ITE cache resized to "
+       << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
+       << " (done in "
+       << duree
+       << ").\n\n" ;  
+    co.flush () ; */ 
 }
 
 //----------------------------------------------------------------------------*
 
 void cPtr_typeUse_AND::
 executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
-  C_BDD::setComputingMode (C_BDD::ITE_COMPUTED_FROM_AND) ;
-  co << "use_and: ITE is now computed from AND.\n\n" ;
-  co.flush () ; 
+  /* C_BDD::setComputingMode (C_BDD::ITE_COMPUTED_FROM_AND) ;
+    co << "use_and: ITE is now computed from AND.\n\n" ;
+    co.flush () ; */ 
 }
 
 //----------------------------------------------------------------------------*
 
 void cPtr_typeUse_ITE::
 executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
-  C_BDD::setComputingMode (C_BDD::AND_COMPUTED_FROM_ITE) ;
-  co << "use_ite: AND is now computed from ITE.\n\n" ;
-  co.flush () ; 
+  /* C_BDD::setComputingMode (C_BDD::AND_COMPUTED_FROM_ITE) ;
+    co << "use_ite: AND is now computed from ITE.\n\n" ;
+    co.flush () ;  */
 }
 
 //----------------------------------------------------------------------------*
 
 void cPtr_typeUse_AND_ITE::
 executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
-  C_BDD::setComputingMode (C_BDD::ITE_and_AND_ARE_INDEPENDANT) ;
+  /* C_BDD::setComputingMode (C_BDD::ITE_and_AND_ARE_INDEPENDANT) ;
   co << "use_and_ite: AND and ITE are now computed independantly.\n\n" ;
-  co.flush () ; 
+  co.flush () ;  */
 }
 
 //----------------------------------------------------------------------------*
