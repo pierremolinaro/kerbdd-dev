@@ -40,26 +40,6 @@ void routine_generate_code (C_Compiler & /* inLexique */,
                             const GGS_typeListeCalculs inListeCalculs,
                             const GGS_typeDomainMap /* inDomainMap */
                             COMMA_UNUSED_LOCATION_ARGS) {
-//--- Initial cache and map sizes
-  co << "Initial size of BDD unique table: "
-     << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
-//     << ";\ninitial size of ITE cache: "
-//     << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
-     << ";\ninitial size of AND cache: "
-     << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
-     << ".\n" ;
-  /* switch (C_BDD::getComputingMode ()) {
-    case C_BDD::ITE_COMPUTED_FROM_AND :
-      co << "ITE is computed from AND.\n\n" ;
-      break ;
-    case C_BDD::AND_COMPUTED_FROM_ITE :
-      co << "AND is computed from ITE.\n\n" ;
-      break ;
-    case C_BDD::ITE_and_AND_ARE_INDEPENDANT :
-      co << "AND and ITE are computed independantly.\n\n" ;
-      break ;
-    } */  
-  co.flush () ;
 //--- Tableau des valeurs des formules
   TC_UniqueArray <C_BDD> tabValeurFormules (inListeCalculs.count (), C_BDD () COMMA_HERE) ;
 //--- Boucler sur les formules a calculer
@@ -84,33 +64,33 @@ void cPtr_typeAfficherBilan::executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeu
 
 void cPtr_typeDimensionnerTable::
 executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
-  C_Timer duree ;
-  C_BDD::setHashMapSize ((PMUInt16) mDimensionTable.uintValue ()) ;
-  duree.stopTimer () ;
-  co << "map " << cStringWithUnsigned (mDimensionTable.uintValue ())
-     << ": BDD unique table resized to "
-     << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
-     << " (done in "
-     << duree
-     << ").\n\n" ; 
-  co.flush () ; 
+  /* C_Timer duree ;
+   C_BDD::setHashMapSize ((PMUInt16) mDimensionTable.uintValue ()) ;
+   duree.stopTimer () ;
+   co << "map " << cStringWithUnsigned (mDimensionTable.uintValue ())
+      << ": BDD unique table resized to "
+      << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
+      << " (done in "
+      << duree
+      << ").\n\n" ; 
+   co.flush () ;  */
 }
 
 //----------------------------------------------------------------------------*
 
 void cPtr_typeDimensionnerANDCache::
 executerCalcul (TC_UniqueArray <C_BDD> & /*tabValeurFormules */) {
-  C_Timer duree ;
-  C_BDD::setANDcacheSize ((PMSInt32) mDimensionCache.uintValue ()) ;
-  duree.stopTimer () ;
-  co << "and_cache "
-     << cStringWithUnsigned (mDimensionCache.uintValue ())
-     << ": AND cache resized to "
-     << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
-     << " (done in "
-     << duree
-     << ").\n\n" ;  
-  co.flush () ; 
+  /* C_Timer duree ;
+    C_BDD::setANDcacheSize ((PMSInt32) mDimensionCache.uintValue ()) ;
+    duree.stopTimer () ;
+    co << "and_cache "
+       << cStringWithUnsigned (mDimensionCache.uintValue ())
+       << ": AND cache resized to "
+       << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
+       << " (done in "
+       << duree
+       << ").\n\n" ;  
+    co.flush () ;  */
 }
 
 //----------------------------------------------------------------------------*
