@@ -25,7 +25,7 @@
 //---------------------------------------------------------------------*
 
 void
-routine_getHighBound (C_Compiler & inLexique,
+routine_getHighBound (C_CompilerEx & inLexique,
                       const GGS_luint inPowerOfTwo,
                       GGS_luint & outResult
                       COMMA_LOCATION_ARGS) {
@@ -38,7 +38,7 @@ routine_getHighBound (C_Compiler & inLexique,
 //---------------------------------------------------------------------*
 
 void
-routine_verifyBoundsAndComputeDimension (C_Compiler & inLexique,
+routine_verifyBoundsAndComputeDimension (C_CompilerEx & inLexique,
                                          const GGS_luint inLowBound,
                                          const GGS_luint inHighBound,
                                          GGS_luint & outDimension
@@ -58,7 +58,7 @@ routine_verifyBoundsAndComputeDimension (C_Compiler & inLexique,
 //---------------------------------------------------------------------*
 
 void
-routine_verifierDimensionUn (C_Compiler & inLexique,
+routine_verifierDimensionUn (C_CompilerEx & inLexique,
                              GGS_luint valeur,
                              GGS_location inErrorLocation
                              COMMA_LOCATION_ARGS) {
@@ -70,7 +70,7 @@ routine_verifierDimensionUn (C_Compiler & inLexique,
 //---------------------------------------------------------------------*
 
 void
-routine_verifierDimensionValeurCorrecte (C_Compiler & inLexique,
+routine_verifierDimensionValeurCorrecte (C_CompilerEx & inLexique,
                                          GGS_luint dimension,
                                          GGS_luint valeur
                                          COMMA_LOCATION_ARGS) {
@@ -93,7 +93,7 @@ routine_verifierDimensionValeurCorrecte (C_Compiler & inLexique,
 //---------------------------------------------------------------------*
 
 void
-routine_verifierMemesDimensions (C_Compiler & inLexique, 
+routine_verifierMemesDimensions (C_CompilerEx & inLexique, 
                                  GGS_luint dimensionGauche,
                                  GGS_luint dimensionDroite
                                  COMMA_LOCATION_ARGS) {

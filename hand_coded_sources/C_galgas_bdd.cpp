@@ -49,7 +49,7 @@ GGS_extern_bdd::~GGS_extern_bdd (void) {
 //---------------------------------------------------------------------------*
 
 GGS_extern_bdd GGS_extern_bdd::
-constructor_empty (C_Compiler & /* _inLexique */
+constructor_empty (C_CompilerEx & /* _inLexique */
                    COMMA_UNUSED_LOCATION_ARGS) {
   GGS_extern_bdd bdd ;
   bdd.mBuilt = true ;
@@ -120,7 +120,7 @@ GGS_object GGS_extern_bdd::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_extern_bdd GGS_extern_bdd::castFromObject (C_Compiler & inLexique,
+GGS_extern_bdd GGS_extern_bdd::castFromObject (C_CompilerEx & inLexique,
                                          const GGS_object & inObject,
                                          const GGS_location & inErrorLocation
                                          COMMA_LOCATION_ARGS) {
