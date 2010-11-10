@@ -35,7 +35,7 @@ static PMUInt16 bddCountForMap (const GGS_typeTableVariablesBool & inMap) {
 
 //----------------------------------------------------------------------------*
 
-void routine_generate_code (C_Compiler & /* inLexique */,
+void routine_generate_code (C_CompilerEx & /* inLexique */,
                             const GGS_typeTableFormules /* inTableFormules */,
                             const GGS_typeListeCalculs inListeCalculs,
                             const GGS_typeDomainMap /* inDomainMap */
@@ -416,7 +416,7 @@ C_BDD cPtr_typeFormuleFor::evaluerFormule (const C_BDD & valeurFormuleCourante) 
     PMUInt16 nombreVariablesBool = 0 ;
     construireTableauChangementVariables (mListeArgsBool, tabChgtBool, nombreVariablesBool) ;
   //--- Traduire le BDD
-    resultat = valeurFormuleCourante.substitution (tabChgtBool, nombreVariablesBool) ;
+    resultat = valeurFormuleCourante.substitution (tabChgtBool, nombreVariablesBool COMMA_HERE) ;
     delete [] tabChgtBool ; tabChgtBool = NULL ;
   }
   return resultat ;
@@ -434,7 +434,7 @@ executerLesChangementsDeVariable (TC_UniqueArray <C_BDD> & tabValeurFormules,
     PMUInt16 nombreVariablesBool = 0 ;
     construireTableauChangementVariables (mListeArgsBool, tabChgtBool, nombreVariablesBool) ;
   //--- Traduire le BDD
-    mFormuleTraduite.mBDD = tabValeurFormules ((PMUInt16) mNumeroFormule.uintValue () COMMA_HERE).substitution (tabChgtBool, nombreVariablesBool) ;
+    mFormuleTraduite.mBDD = tabValeurFormules ((PMUInt16) mNumeroFormule.uintValue () COMMA_HERE).substitution (tabChgtBool, nombreVariablesBool COMMA_HERE) ;
     delete [] tabChgtBool ; tabChgtBool = NULL ;
   }
 }
