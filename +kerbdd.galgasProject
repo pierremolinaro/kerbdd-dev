@@ -1,0 +1,23 @@
+project (2:0:0) -> "kerbdd" {
+#--- Targets
+  %makefile-macosx
+  %makefile-unix
+  %makefile-x86linux32-on-macosx
+  %makefile-x86linux64-on-macosx
+  %makefile-win32-on-macosx
+  %makefile-msys32-on-windows
+  %ElCapitanYosemite
+  %applicationBundleBase : "fr.irccyn.molinaro"
+  %codeblocks-windows
+  %codeblocks-linux-mac
+
+#--- Source files
+  "galgas-sources/kerbdd-lexique.galgas"
+  "galgas-sources/kerbdd-options.galgas"
+  "galgas-sources/kerbdd-semantics.galgas"
+  "galgas-sources/kerbdd-syntax.galgas"
+  "galgas-sources/kerbdd-grammar.galgas"
+  "galgas-sources/kerbdd-cocoa.galgas"
+  "galgas-sources/kerbdd-program.galgas"
+}
+
