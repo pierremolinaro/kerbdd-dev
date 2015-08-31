@@ -1,0 +1,10 @@
+gui cocoa {
+  with option kerbdd_options
+
+  with lexique kerbdd_lexique {
+    fileExtension: "kerbdd"
+    title: "Source"
+    blockComment : "#"
+  }
+
+}
