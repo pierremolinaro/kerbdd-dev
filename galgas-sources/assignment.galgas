@@ -1,0 +1,70 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    AST                                                                                                                
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @formulaArgumentList {
+  @lstring mVarName
+}
+
+#·······················································································································
+
+list @formulaList {
+  @lstring mFormulaName
+  @formulaArgumentList mFormulaArgumentList
+  @expression mExpression
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    SYNTAX                                                                                                             
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension kerbdd_syntax {
+
+#·······················································································································
+
+rule <topLevelDeClaration> ?!@ast ioAST {
+  $formula$ ?let formulaName
+  @formulaArgumentList formulaArgumentList = {}
+  $($
+  repeat
+    $identifier$ ?let varName
+    $:$
+    $bool$
+    formulaArgumentList += !varName
+  while
+    $,$
+  end
+  $)$
+  $:=$
+  <expression> ?let @expression expression
+  $;$
+  ioAST.mFormulaList += !formulaName !formulaArgumentList !expression
+}
+
+#·······················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    ANALYZE FORMULA                                                                                                    
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @varMap {
+  @uint mIndex
+  insert insertKey error message "the '%K' variable is already declared in %L"
+  search searchKey error message "there is no '%K' variable"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+proc analyzeFormula ?let @formulaList-element inFormula {
+#--- Build variable map
+  @varMap varMap = {}
+  for > (idf) in inFormula.mFormulaArgumentList do
+    [!?varMap insertKey !idf ![varMap count]]
+  end
+#--- Compute expression
+  @binaryset result = [inFormula.mExpression computeExpression !varMap]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
