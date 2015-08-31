@@ -1,5 +1,0 @@
-grammar kerbdd_grammar "LL1" {
-  syntax kerbdd_syntax
-  <start_symbol>
-}
-

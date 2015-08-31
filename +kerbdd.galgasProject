@@ -12,12 +12,13 @@ project (2:0:0) -> "kerbdd" {
   %codeblocks-linux-mac
 
 #--- Source files
-  "galgas-sources/kerbdd-lexique.galgas"
+  "galgas-sources/lexique.galgas"
   "galgas-sources/kerbdd-options.galgas"
   "galgas-sources/kerbdd-semantics.galgas"
-  "galgas-sources/kerbdd-syntax.galgas"
-  "galgas-sources/kerbdd-grammar.galgas"
+  "galgas-sources/assignment.galgas"
+  "galgas-sources/expression.galgas"
+  "galgas-sources/grammar.galgas"
   "galgas-sources/kerbdd-cocoa.galgas"
-  "galgas-sources/kerbdd-program.galgas"
+  "galgas-sources/program.galgas"
 }
 

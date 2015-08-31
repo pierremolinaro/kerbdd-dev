@@ -1,0 +1,17 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    MAIN                                                                                                               
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+case . "kerbdd"
+message "a source text file with the .kerbdd extension"
+grammar kerbdd_grammar
+?sourceFilePath:@lstring inSourceFile {
+  grammar kerbdd_grammar in inSourceFile ?let @ast ast
+
+#--- Analyze formulas
+  for formula in ast.mFormulaList do
+    analyzeFormula (!formula)
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
