@@ -8,7 +8,7 @@ list @formulaArgumentList {
 
 #·······················································································································
 
-list @formulaList {
+class @assignmentFormula : @abstractFormula {
   @lstring mFormulaName
   @formulaArgumentList mFormulaArgumentList
   @expression mExpression
@@ -38,7 +38,7 @@ rule <topLevelDeClaration> ?!@ast ioAST {
   $:=$
   <expression> ?let @expression expression
   $;$
-  ioAST.mFormulaList += !formulaName !formulaArgumentList !expression
+  ioAST.mFormulaList += !@assignmentFormula.new {!formulaName !formulaArgumentList !expression}
 }
 
 #·······················································································································
@@ -57,14 +57,30 @@ map @varMap {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc analyzeFormula ?let @formulaList-element inFormula {
+map @computedFormulaMap {
+  @varMap mVarMap
+  @uint mBitCount
+  @binaryset mValue
+  insert insertKey error message "the '%K' formula is already declared in %L"
+  search searchKey error message "there is no '%K' formula"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @assignmentFormula analyzeFormula ?!@computedFormulaMap ioComputedFormulaMap {
 #--- Build variable map
+  @uint bitCount = 0
   @varMap varMap = {}
-  for > (idf) in inFormula.mFormulaArgumentList do
-    [!?varMap insertKey !idf ![varMap count]]
+  for > (idf) in mFormulaArgumentList do
+    [!?varMap insertKey !idf !bitCount]
+    bitCount ++
   end
 #--- Compute expression
-  @binaryset result = [inFormula.mExpression computeExpression !varMap]
+  message "Computing $" + mFormulaName + "..."
+  @binaryset result = [mExpression computeExpression !varMap]
+  message "\n"
+#---
+  [!?ioComputedFormulaMap insertKey !mFormulaName !varMap !bitCount !result]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
