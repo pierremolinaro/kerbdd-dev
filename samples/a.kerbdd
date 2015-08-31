@@ -15,3 +15,5 @@
 #display $F1 [v:wxxw, w:d] := {v.t.v=2} & v.t.x ;
 
 $A (a : bool, b : bool, c:bool) := b ;
+
+display $A ;
