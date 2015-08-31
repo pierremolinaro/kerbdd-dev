@@ -14,6 +14,9 @@
 
 #display $F1 [v:wxxw, w:d] := {v.t.v=2} & v.t.x ;
 
-$A (a : bool, b : bool, c:bool) := b ;
+$A (aa : bool, b : bool, c:bool) := (~aa & (c ^ b)) & false ;
 
 display $A ;
+
+dump $A ;
+

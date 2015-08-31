@@ -2,16 +2,8 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @formulaArgumentList {
-  @lstring mVarName
-}
-
-#·······················································································································
-
-class @assignmentFormula : @abstractFormula {
+class @dumpFormula : @abstractFormula {
   @lstring mFormulaName
-  @formulaArgumentList mFormulaArgumentList
-  @expression mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -22,24 +14,12 @@ syntax extension kerbdd_syntax {
 
 #·······················································································································
 
-rule <topLevelDeClaration> ?!@ast ioAST {
-  $formula$ ?let formulaName
-  @formulaArgumentList formulaArgumentList = {}
-  $($
-  repeat
-    $identifier$ ?let varName
-    $:$
-    $bool$
-    formulaArgumentList += !varName
-  while
-    $,$
-  end
-  $)$
-  $:=$
-  <expression> ?let @expression expression
-  $;$
-  ioAST.mFormulaList += !@assignmentFormula.new {!formulaName !formulaArgumentList !expression}
-}
+  rule <topLevelDeClaration> ?!@ast ioAST {
+    $dump$
+    $formula$ ?let formulaName
+    $;$
+    ioAST.mFormulaList += !@dumpFormula.new {!formulaName}
+  }
 
 #·······················································································································
 
@@ -49,48 +29,17 @@ rule <topLevelDeClaration> ?!@ast ioAST {
 #    ANALYZE FORMULA                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-map @varMap {
-  @uint mIndex
-  insert insertKey error message "the '%K' variable is already declared in %L"
-  search searchKey error message "there is no '%K' variable"
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @varList {
-  @string mVarName
-  @uint mBitIndex
-  @uint mBitCount
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-map @computedFormulaMap {
-  @varList mVarList
-  @uint mBitCount
-  @binaryset mValue
-  insert insertKey error message "the '%K' formula is already declared in %L"
-  search searchKey error message "there is no '%K' formula"
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @assignmentFormula analyzeFormula ?!@computedFormulaMap ioComputedFormulaMap {
-#--- Build variable map
-  @uint bitCount = 0
-  @varList varList = {}
-  @varMap varMap = {}
-  for > (idf) in mFormulaArgumentList do
-    [!?varMap insertKey !idf !bitCount]
-    [!?varList insertAtIndex !idf.string !bitCount !1 !0]
-    bitCount ++
+override method @dumpFormula analyzeFormula ?!@computedFormulaMap ioComputedFormulaMap {
+  [ioComputedFormulaMap searchKey !mFormulaName ?let @varList varList ?let bitCount ?let result]
+  let @uint64 valueCount = [result valueCount !bitCount]
+  var s = "Dump $" + mFormulaName + " (" + valueCount + " value" + if valueCount > 1L then "s" else "" end + ")\n"
+  @stringlist nameList = {}
+  @uintlist bitCountList = {}
+  for () in varList do
+    nameList += !mVarName
+    bitCountList += !mBitCount
   end
-#--- Compute expression
-  message "Computing $" + mFormulaName + "..."
-  @binaryset result = [mExpression computeExpression !varMap]
-  message "\n"
-#---
-  [!?ioComputedFormulaMap insertKey !mFormulaName !varList !bitCount !result]
+  message [result print !nameList !bitCountList]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
