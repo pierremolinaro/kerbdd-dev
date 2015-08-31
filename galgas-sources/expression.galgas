@@ -11,6 +11,24 @@ class @varInExpression : @expression {
   @lstring mVarName
 }
 
+#·······················································································································
+
+class @andExpression, @orExpression, @xorExpression : @expression {
+  @expression mLeftExpression
+  @expression mRightExpression
+}
+
+#·······················································································································
+
+class @complementExpression : @expression {
+  @expression mExpression
+}
+
+#·······················································································································
+
+class @trueExpression, @falseExpression : @expression {
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #    SYNTAX                                                                                                             
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -20,8 +38,66 @@ syntax extension kerbdd_syntax {
 #·······················································································································
 
 rule <expression> !@expression outExpression {
+  <term> ?outExpression
+  repeat
+  while
+    $|$
+    <term> ?let @expression rightExpression
+    outExpression = @orExpression.new {!outExpression !rightExpression}
+  while
+    $^$
+    <term> ?let @expression rightExpression
+    outExpression = @xorExpression.new {!outExpression !rightExpression}
+  end
+}
+
+#·······················································································································
+
+rule <term> !@expression outExpression {
+  <factor> ?outExpression
+  repeat
+  while
+    $&$
+    <factor> ?let @expression rightExpression
+    outExpression = @andExpression.new {!outExpression !rightExpression}
+  end
+}
+
+#·······················································································································
+
+rule <factor> !@expression outExpression {
   $identifier$ ?let varName
   outExpression = @varInExpression.new {!varName}
+}
+
+#·······················································································································
+
+rule <factor> !@expression outExpression {
+  $($
+  <expression> ?outExpression
+  $)$
+}
+
+#·······················································································································
+
+rule <factor> !@expression outExpression {
+  $~$
+  <factor> ?let expression
+  outExpression = @complementExpression.new {!expression}
+}
+
+#·······················································································································
+
+rule <factor> !@expression outExpression {
+  $true$
+  outExpression = @trueExpression.new
+}
+
+#·······················································································································
+
+rule <factor> !@expression outExpression {
+  $false$
+  outExpression = @falseExpression.new
 }
 
 #·······················································································································
@@ -39,6 +115,48 @@ abstract getter @expression computeExpression ?let @varMap inVarMap -> @binaryse
 override getter @varInExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
   [inVarMap searchKey !mVarName ?let idx]
   outResult = @binaryset.binarySetWithBit {!idx}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @andExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
+  let left  = [mLeftExpression  computeExpression !inVarMap]
+  let right = [mRightExpression computeExpression !inVarMap]
+  outResult = left & right
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @orExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
+  let left  = [mLeftExpression  computeExpression !inVarMap]
+  let right = [mRightExpression computeExpression !inVarMap]
+  outResult = left | right
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @xorExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
+  let left  = [mLeftExpression  computeExpression !inVarMap]
+  let right = [mRightExpression computeExpression !inVarMap]
+  outResult = left ^ right
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @complementExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
+  outResult = ~ [mExpression  computeExpression !inVarMap]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @trueExpression computeExpression ?let @varMap unused inVarMap -> @binaryset outResult {
+  outResult = @binaryset.fullBinarySet
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @falseExpression computeExpression ?let @varMap unused inVarMap -> @binaryset outResult {
+  outResult = @binaryset.emptyBinarySet
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
