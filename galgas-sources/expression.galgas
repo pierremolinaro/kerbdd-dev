@@ -20,7 +20,7 @@ class @varBitInExpression : @expression {
 
 #·······················································································································
 
-class @andExpression, @orExpression, @xorExpression, @equalExpression, @notEqualExpression : @expression {
+class @andExpression, @orExpression, @xorExpression, @equalExpression, @notEqualExpression, @impliesExpression : @expression {
   @expression mLeftExpression
   @expression mRightExpression
 }
@@ -120,6 +120,10 @@ rule <term> !@expression outExpression {
     $&$
     <factor> ?let @expression rightExpression
     outExpression = @andExpression.new {!outExpression !rightExpression}
+  while
+    $->$
+    <factor> ?let @expression rightExpression
+    outExpression = @impliesExpression.new {!outExpression !rightExpression}
   end
 }
 
@@ -317,6 +321,20 @@ override getter @xorExpression computeExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override getter @impliesExpression computeExpression
+  ?let @domainMap inDomainMap
+  ?let @varMap inVarMap
+  ?let @uint inTotalBitCount
+  ?let @computedFormulaMap inComputedFormulaMap
+  -> @binaryset outResult
+{
+  let left  = [mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  outResult = [left implies !right]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 override getter @equalExpression computeExpression
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
@@ -457,7 +475,7 @@ override getter @comparisonWithConstantInExpression computeExpression
   -> @binaryset outResult
 {
   [inVarMap searchKey !mVarName ?let idx ?let bitCount]
-  if [mConstant.uint significantBitCount] >= bitCount then
+  if [mConstant.uint significantBitCount] > bitCount then
     error mConstant : "Constant too large (should be < 2**" + bitCount : outResult
   else
     switch mComparison
