@@ -93,7 +93,7 @@ map @domainMap {
 
 method @domainDeclarationList analyze !@domainMap outDomainMap {
   outDomainMap = {}
-  for (name type) in self do
+  for (name type) in self while @uint.errorCount == 0 do
     switch type
     case bool :
       [!?outDomainMap insertKey !name !1]

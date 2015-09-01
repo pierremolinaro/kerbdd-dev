@@ -19,7 +19,7 @@ grammar kerbdd_grammar
   [ast.mDomainList analyze ?let @domainMap domainMap]
 #--- Analyze formulas
   @computedFormulaMap computedFormulaMap = {}
-  for (formula) in ast.mFormulaList do
+  for (formula) in ast.mFormulaList while @uint.errorCount == 0 do
     [formula analyzeFormula !inSourceFile.string !domainMap !?computedFormulaMap]
   end
 }
