@@ -14,7 +14,7 @@
 
 #display $F1 [v:wxxw, w:d] := {v.t.v=2} & v.t.x ;
 
-$A (aa : bool, b : bool, c:bool) := (~aa & (c ^ b)) & false ;
+$A (aa : bool, b : bool[2], c:bool) := (~aa & (c ^ b.1)) ;
 
 display $A ;
 
