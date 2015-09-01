@@ -287,10 +287,34 @@ override getter @falseExpression computeExpression
 
 override getter @formulaInExpression computeExpression
   ?let @varMap inVarMap
-  ?let @computedFormulaMap unused inComputedFormulaMap
+  ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  outResult = @binaryset.emptyBinarySet
+#--- Read formula
+  [inComputedFormulaMap searchKey !mFormulaName ?let varList ?let unused totalBitCount ?let formulaValue]
+#--- Check parameter list
+  if [mParameterList length] != [varList length] then
+    error mFormulaName : "the $" + mFormulaName + " names "
+      + [varList length] + " variable" + if [varList length] > 1 then "s" else "" end
+      + ", but this call names "
+      + [mParameterList length] + " variable" + if [mParameterList length] > 1 then "s" else "" end
+    : outResult
+  else
+    @uintlist transformationList = {}
+    for (formalName formalBitIndex formalBitCount) in varList, > (parameterName) in mParameterList do
+      [inVarMap searchKey !parameterName ?let parameterIndex ?let parameterBitCount]
+      if formalBitCount != parameterBitCount then
+        error parameterName : "this parameter is declared with a size of "
+          + parameterBitCount + " bit" + if parameterBitCount > 1 then "s" else "" end
+          + ", but corresponding formal argument '" + formalName + "' is declared with a size of "
+          + formalBitCount + " bit" + if formalBitCount > 1 then "s" else "" end
+      end
+      for i in 0 ..< parameterBitCount do
+        transformationList += !parameterIndex + i
+      end
+    end
+    outResult = [formulaValue transformedBy !transformationList]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -15,10 +15,20 @@
 #display $F1 [v:wxxw, w:d] := {v.t.v=2} & v.t.x ;
 
 $A (aa : bool, b : bool[2], c:bool) := (aa ^ b.0 ^ b.1) & c ;
-
-display $A ;
-
 dump $A ;
 
+$E (aa : bool, b : bool[2], c:bool) := $A (c, b, aa) ;
+dump $E ;
+
 graphviz $A ;
+
+$B (a:bool, b:bool, c:bool) := a ;
+dump $B ;
+
+$C (a:bool, b:bool, c:bool) := $B (a, c, b) ;
+dump $C ;
+
+
+$D (a:bool, b:bool, c:bool) := $B (c, b, a) ;
+dump $D ;
 
