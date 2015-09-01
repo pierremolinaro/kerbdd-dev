@@ -104,9 +104,13 @@ override method @assignmentFormula analyzeFormula
 #--- Compute expression
   message "Computing $" + mFormulaName + "..."
   let timer = @timer.start
-  let result = [mExpression computeExpression !varMap !ioComputedFormulaMap]
+  let result = [mExpression computeExpression !varMap !totalBitCount !ioComputedFormulaMap]
   let @uint64 valueCount = [result valueCount !totalBitCount]
-  message " " + valueCount + " value" + if valueCount > 1L then "s" else "" end + " (" + timer + ")\n"
+  let @uint64 nodeCount = [result nodeCount]
+  message " "
+    + valueCount + " value" + if valueCount > 1L then "s" else "" end
+    + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
+    + " (" + timer + ")\n"
 #---
   [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
 }
