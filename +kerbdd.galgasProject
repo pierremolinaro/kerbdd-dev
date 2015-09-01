@@ -18,6 +18,7 @@ project (2:0:0) -> "kerbdd" {
   "galgas-sources/formula-assignment.galgas"
   "galgas-sources/formula-display.galgas"
   "galgas-sources/formula-dump.galgas"
+  "galgas-sources/formula-graphviz.galgas"
   "galgas-sources/expression.galgas"
   "galgas-sources/grammar.galgas"
   "galgas-sources/kerbdd-cocoa.galgas"

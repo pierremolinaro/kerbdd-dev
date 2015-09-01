@@ -2,7 +2,7 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @displayFormula : @abstractFormula {
+class @graphvizFormula : @abstractFormula {
   @lstring mFormulaName
 }
 
@@ -15,10 +15,10 @@ syntax extension kerbdd_syntax {
 #·······················································································································
 
   rule <topLevelDeClaration> ?!@ast ioAST {
-    $display$
+    $graphviz$
     $formula$ ?let formulaName
     $;$
-    ioAST.mFormulaList += !@displayFormula.new {!formulaName}
+    ioAST.mFormulaList += !@graphvizFormula.new {!formulaName}
   }
 
 #·······················································································································
@@ -29,14 +29,25 @@ syntax extension kerbdd_syntax {
 #    ANALYZE FORMULA                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @displayFormula analyzeFormula 
-  ?let @string unused inSourceFilePath
+override method @graphvizFormula analyzeFormula
+  ?let @string inSourceFilePath
   ?!@computedFormulaMap ioComputedFormulaMap
 {
-  [ioComputedFormulaMap searchKey !mFormulaName ?* ?let bitCount ?let result]
-  let @uint64 valueCount = [result valueCount !bitCount]
-  var s = "Display $" + mFormulaName + ": " + valueCount + " value" + if valueCount > 1L then "s" else "" end + "\n"
-  message s
+  [ioComputedFormulaMap searchKey !mFormulaName ?let @varList varList ?* ?let result]
+  let filePath = [inSourceFilePath stringByDeletingPathExtension] + "." + mFormulaName + ".dot"
+  message "Graphviz $" + mFormulaName + " -> " + filePath + "\n"
+  @stringlist bitNameList = {}
+  for > () in varList do
+    if mBitCount == 1 then
+      bitNameList += !mVarName
+    else
+      for i in 0 ..< mBitCount do
+        bitNameList += !mVarName + "." + i
+      end
+    end
+  end
+  let s = [result graphviz !bitNameList]
+  [s writeToFileWhenDifferentContents !filePath ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
