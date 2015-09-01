@@ -1,6 +1,6 @@
 domain etat : bool [6] ;
-$--- Ensemble des transitions du graphe
-#Trans [qs:etat, qd:etat] :=
+#--- Ensemble des transitions du graphe
+$Trans (qs:etat, qd:etat) :=
    ({qs= 0} & {qd= 1}) | ({qs= 1} & {qd= 2}) | ({qs= 2} & {qd= 3}) |
    ({qs= 3} & {qd= 4}) | ({qs= 4} & {qd= 5}) | ({qs= 5} & {qd= 6}) |
    ({qs= 6} & {qd= 7}) | ({qs= 7} & {qd= 8}) | ({qs= 8} & {qd= 9}) |
@@ -14,17 +14,16 @@ $--- Ensemble des transitions du graphe
    ({qs=30} & {qd=31}) ;
 
 
-$--- Etat initial
-#Initial [q:etat] := {q=0} ;
+#--- Etat initial
+$Initial (q:etat) := {q=0} ;
 
-$--- Calcul des etats accessibles par plus petit point fixe
-#Acces [q:etat] += #Initial [q] | ? t:etat (#Acces [t] & #Trans [t, q]) ;
+#--- Calcul des etats accessibles par plus petit point fixe
+$Acces (q:etat) += $Initial (q) | ? t:etat ($Acces (t) & $Trans (t, q)) ;
 
-$--- Calcul par iteration quadratique
-#Zero [qs:etat, qd:etat] := #Trans [qs, qd] | {qs = qd} ;
+#--- Calcul par iteration quadratique
+$Zero (qs:etat, qd:etat) := $Trans (qs, qd) | {qs = qd} ;
 
-#Quad [qs:etat, qd:etat] += #Zero [qs, qd] | ? t:etat (#Quad [qs, t] & #Quad [t, qd]) ;
+$Quad (qs:etat, qd:etat) += $Zero (qs, qd) | ? t:etat ($Quad (qs, t) & $Quad (t, qd)) ;
 
-#Acc [q:etat] := ?t:etat (#Initial [t] & #Quad [t, q]) ;
+$Acc (q:etat) := ?t:etat ($Initial (t) & $Quad (t, q)) ;
 
-end

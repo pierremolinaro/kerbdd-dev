@@ -2,6 +2,7 @@
 
 abstract method @abstractFormula analyzeFormula
   ?let @string inSourceFilePath
+  ?let @domainMap inDomainMap
   ?!@computedFormulaMap ioComputedFormulaMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -12,12 +13,14 @@ case . "kerbdd"
 message "a source text file with the .kerbdd extension"
 grammar kerbdd_grammar
 ?sourceFilePath:@lstring inSourceFile {
+#--- Parse
   grammar kerbdd_grammar in inSourceFile ?let @ast ast
-
+#--- Analyze domaines
+  [ast.mDomainList analyze ?let @domainMap domainMap]
 #--- Analyze formulas
   @computedFormulaMap computedFormulaMap = {}
   for (formula) in ast.mFormulaList do
-    [formula analyzeFormula !inSourceFile.string !?computedFormulaMap]
+    [formula analyzeFormula !inSourceFile.string !domainMap !?computedFormulaMap]
   end
 }
 

@@ -31,6 +31,7 @@ syntax extension kerbdd_syntax {
 
 override method @graphvizFormula analyzeFormula
   ?let @string inSourceFilePath
+  ?let @domainMap unused inDomainMap
   ?!@computedFormulaMap ioComputedFormulaMap
 {
   [ioComputedFormulaMap searchKey !mFormulaName ?let @varList varList ?* ?let result]
