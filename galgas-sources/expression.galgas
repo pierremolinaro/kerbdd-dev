@@ -43,17 +43,10 @@ class @formulaInExpression : @expression {
   @lstringlist mParameterList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @existArgumentList {
-  @lstring mVarName
-  @luint mBitCount
-}
-
 #·······················································································································
 
-class @existInExpression : @expression {
-  @existArgumentList mArgumentList
+class @existInExpression, @forAllInExpression : @expression {
+  @argumentList mArgumentList
   @expression mExpression
 }
 
@@ -170,30 +163,22 @@ rule <factor> !@expression outExpression {
 
 rule <factor> !@expression outExpression {
   $?$
-  @existArgumentList argumentList = {}
-  repeat
-    $identifier$ ?let varName
-    $:$
-    $bool$
-    @luint bitCount
-    select
-      bitCount = @luint.new {!1 !.here}
-    or
-      $[$
-      $integer$ ?bitCount
-      $]$
-      if bitCount.uint == 0 then
-        error bitCount : "size should be > 0"
-      end
-    end
-    argumentList += !varName !bitCount
-  while
-    $,$
-  end
+  <formalArguments> ?let @argumentList argumentList
   $($
   <expression> ?let expression
   $)$
   outExpression = @existInExpression.new {!argumentList !expression}
+}
+
+#·······················································································································
+
+rule <factor> !@expression outExpression {
+  $!$
+  <formalArguments> ?let @argumentList argumentList
+  $($
+  <expression> ?let expression
+  $)$
+  outExpression = @forAllInExpression.new {!argumentList !expression}
 }
 
 #·······················································································································
@@ -389,6 +374,24 @@ override getter @existInExpression computeExpression
   end
   let r = [mExpression computeExpression !varMap !totalBitCount !inComputedFormulaMap]
   outResult = [r existOnBitIndexAndBeyond !inTotalBitCount]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @forAllInExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @uint inTotalBitCount
+  ?let @computedFormulaMap inComputedFormulaMap
+  -> @binaryset outResult
+{
+  @varMap varMap = inVarMap
+  @uint totalBitCount = inTotalBitCount 
+  for > (idf bitCount) in mArgumentList do
+    [!?varMap insertKey !idf !totalBitCount !bitCount.uint]
+    totalBitCount = totalBitCount + bitCount.uint
+  end
+  let r = [mExpression computeExpression !varMap !totalBitCount !inComputedFormulaMap]
+  outResult = [r forAllOnBitIndexAndBeyond !inTotalBitCount]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
