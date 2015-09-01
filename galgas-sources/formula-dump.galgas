@@ -31,6 +31,7 @@ syntax extension kerbdd_syntax {
 
 override method @dumpFormula analyzeFormula 
   ?let @string unused inSourceFilePath
+  ?let @domainMap unused inDomainMap
   ?!@computedFormulaMap ioComputedFormulaMap
 {
   [ioComputedFormulaMap searchKey !mFormulaName ?let @varList varList ?let bitCount ?let result]

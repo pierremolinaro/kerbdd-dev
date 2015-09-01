@@ -2,24 +2,24 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @domainFieldType {
+enum @BDDtype {
   case bool
   case boolArray (@uint size)
+  case namedType (@lstring typeName)
 }
 
 #·······················································································································
 
-
 list @domainFieldList {
   @lstring mVarName
-  @domainFieldType mType
+  @BDDtype mType
 }
 
 #·······················································································································
 
 list @domainDeclarationList {
   @lstring mDomainName
-  @domainFieldList mFormulaArgumentList
+  @BDDtype mType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -34,9 +34,9 @@ rule <topLevelDeClaration> ?!@ast ioAST {
   $domain$
   $identifier$ ?let domainName
   $:$
-  <recordFields> ?let @domainFieldList domainFieldList
+  <type> ?let @BDDtype type
   $;$
-  ioAST.mDomainList += !domainName !domainFieldList
+  ioAST.mDomainList += !domainName !type
 }
 
 #·······················································································································
@@ -46,19 +46,7 @@ rule <recordFields> !@domainFieldList outFormulaArgumentList {
   repeat
     $identifier$ ?let varName
     $:$
-    $bool$
-    @domainFieldType type
-    select
-      type = .bool
-    or
-      $[$
-      $integer$ ?let bitCount
-      $]$
-      if bitCount.uint == 0 then
-        error bitCount : "size should be > 0"
-      end
-      type = .boolArray {!size:bitCount.uint}
-    end
+    <type> ?let @BDDtype type
     outFormulaArgumentList += !varName !type
   while
     $,$
@@ -67,10 +55,59 @@ rule <recordFields> !@domainFieldList outFormulaArgumentList {
 
 #·······················································································································
 
+rule <type> !@BDDtype outType {
+  select
+    $identifier$ ?let typeName
+    outType = .namedType {!typeName:typeName}
+  or
+    $bool$
+    select
+      outType = .bool
+    or
+      $[$
+      $integer$ ?let bitCount
+      $]$
+      if bitCount.uint == 0 then
+        error bitCount : "size should be > 0"
+      end
+      outType = .boolArray {!size:bitCount.uint}
+    end
+  end
+}
+
+#·······················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#    ANALYZE FORMULA                                                                                                    
+#    ANALYZE DOMAIN                                                                                                    
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @domainMap {
+  @uint mBitCount
+  insert insertKey error message "the '%K' domain is already declared in %L"
+  search searchKey error message "there is no '%K' domain"
+}
+
+#·······················································································································
+
+method @domainDeclarationList analyze !@domainMap outDomainMap {
+  outDomainMap = {}
+  for (name type) in self do
+    switch type
+    case bool :
+      [!?outDomainMap insertKey !name !1]
+    case boolArray (@uint size) :
+      [!?outDomainMap insertKey !name !size]
+    case namedType (@lstring typeName) :
+      [outDomainMap searchKey !typeName ?let size] ;
+      [!?outDomainMap insertKey !name !size]
+    end
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    ANALYZE DOMAIN FIELDS                                                                                              
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @varList {
@@ -90,7 +127,8 @@ map @varMap {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @domainFieldList analyze 
+method @domainFieldList analyze
+  ?let @domainMap inDomainMap
   ?!@varMap ioVarMap
   ?!@varList ioVarList
   ?!@uint ioTotalBitCount
@@ -106,73 +144,13 @@ method @domainFieldList analyze
       [!?ioVarMap insertKey !idf !ioTotalBitCount !size]
       [!?ioVarList insertAtIndex !idf.string !ioTotalBitCount !size !0]
       ioTotalBitCount = ioTotalBitCount + size
+    case namedType (@lstring typeName) :
+      [inDomainMap searchKey !typeName ?let size] ;
+      [!?ioVarMap insertKey !idf !ioTotalBitCount !size]
+      [!?ioVarList insertAtIndex !idf.string !ioTotalBitCount !size !0]
+      ioTotalBitCount = ioTotalBitCount + size
     end
   end
 }
-
-##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#map @computedFormulaMap {
-#  @varList mVarList
-#  @uint mBitCount
-#  @binaryset mValue
-#  insert insertKey error message "the '%K' formula is already declared in %L"
-#  search searchKey error message "there is no '%K' formula"
-#}
-#
-##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#override method @assignmentFormula analyzeFormula 
-#  ?let @string unused inSourceFilePath
-#  ?!@computedFormulaMap ioComputedFormulaMap
-#{
-##--- Build variable map
-#  @uint totalBitCount = 0
-#  @varList varList = {}
-#  @varMap varMap = {}
-#  for > (idf bitCount) in mFormulaArgumentList do
-#    [!?varMap insertKey !idf !totalBitCount !bitCount.uint]
-#    [!?varList insertAtIndex !idf.string !totalBitCount !bitCount.uint !0]
-#    totalBitCount = totalBitCount + bitCount.uint
-#  end
-##--- Compute expression
-#  switch mKind
-#  case assignment :
-#    message "Computing $" + mFormulaName + "..."
-#    let timer = @timer.start
-#    let result = [mExpression computeExpression !varMap !totalBitCount !ioComputedFormulaMap]
-#    [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
-#    let @uint64 valueCount = [result valueCount !totalBitCount]
-#    let @uint64 nodeCount = [result nodeCount]
-#    message " "
-#      + valueCount + " value" + if valueCount > 1L then "s" else "" end
-#      + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
-#      + " (" + timer + ")\n"
-#  case fixedPoint (@binaryset startValue) :
-#    message "Computing $" + mFormulaName + "..."
-#    let timer = @timer.start
-#    @binaryset result = startValue
-#    [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
-#    var iterate = true ;
-#    var iterationCount = 0
-#    loop (@uint.max) while iterate do
-#      iterationCount ++
-#      let r = [mExpression computeExpression !varMap !totalBitCount !ioComputedFormulaMap]
-#      if result == r then
-#        iterate = false
-#      else
-#        result = r
-#        [!?ioComputedFormulaMap setMValueForKey !result !mFormulaName.string]
-#      end
-#    end
-#    let @uint64 valueCount = [result valueCount !totalBitCount]
-#    let @uint64 nodeCount = [result nodeCount]
-#    message " "
-#      + iterationCount + " iteration" + if iterationCount > 1 then "s" else "" end
-#      + ", " + valueCount + " value" + if valueCount > 1L then "s" else "" end
-#      + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
-#      + " (" + timer + ")\n"
-#  end
-#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

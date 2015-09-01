@@ -65,6 +65,14 @@ class @comparisonWithConstantInExpression : @expression {
   @luint mConstant
 }
 
+#·······················································································································
+
+class @variableComparisonInExpression : @expression {
+  @lstring mLeftVarName
+  @comparison mComparison
+  @lstring mRightVarName
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #    SYNTAX                                                                                                             
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -208,9 +216,14 @@ rule <factor> !@expression outExpression {
     $!=$
     comparison = .notEqual
   end
-  $integer$ ?let constant
+  select
+    $integer$ ?let constant
+    outExpression = @comparisonWithConstantInExpression.new {!varName !comparison !constant}
+  or
+    $identifier$ ?let rightVarName
+    outExpression = @variableComparisonInExpression.new {!varName !comparison !rightVarName}
+  end
   $}$
-  outExpression = @comparisonWithConstantInExpression.new {!varName !comparison !constant}
 }
 
 #·······················································································································
@@ -222,6 +235,7 @@ rule <factor> !@expression outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @expression computeExpression
+  ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
@@ -230,6 +244,7 @@ abstract getter @expression computeExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @varInExpression computeExpression
+  ?let @domainMap unused inDomainMap
   ?let @varMap inVarMap
   ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap unused inComputedFormulaMap
@@ -245,6 +260,7 @@ override getter @varInExpression computeExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @varBitInExpression computeExpression
+  ?let @domainMap unused inDomainMap
   ?let @varMap inVarMap
   ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap unused inComputedFormulaMap
@@ -260,82 +276,89 @@ override getter @varBitInExpression computeExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @andExpression computeExpression
+  ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  let left  = [mLeftExpression  computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [mRightExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let left  = [mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
   outResult = left & right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @orExpression computeExpression
+  ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  let left  = [mLeftExpression  computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [mRightExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let left  = [mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
   outResult = left | right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @xorExpression computeExpression
+  ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  let left  = [mLeftExpression  computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [mRightExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let left  = [mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
   outResult = left ^ right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @equalExpression computeExpression
+  ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  let left  = [mLeftExpression  computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [mRightExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let left  = [mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
   outResult = ~(left ^ right)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @notEqualExpression computeExpression
+  ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  let left  = [mLeftExpression  computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [mRightExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let left  = [mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
   outResult = left ^ right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @complementExpression computeExpression
+  ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  outResult = ~ [mExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  outResult = ~ [mExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @trueExpression computeExpression
+  ?let @domainMap unused inDomainMap
   ?let @varMap unused inVarMap
   ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap unused inComputedFormulaMap
@@ -347,6 +370,7 @@ override getter @trueExpression computeExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @falseExpression computeExpression
+  ?let @domainMap unused inDomainMap
   ?let @varMap unused inVarMap
   ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap unused inComputedFormulaMap
@@ -358,6 +382,7 @@ override getter @falseExpression computeExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @formulaInExpression computeExpression
+  ?let @domainMap unused inDomainMap
   ?let @varMap inVarMap
   ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
@@ -393,6 +418,7 @@ override getter @formulaInExpression computeExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @existInExpression computeExpression
+  ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
@@ -400,14 +426,15 @@ override getter @existInExpression computeExpression
 {
   @varMap varMap = inVarMap
   @uint totalBitCount = inTotalBitCount 
-  [mArgumentList analyze !?varMap !?* !?totalBitCount]
-  let r = [mExpression computeExpression !varMap !totalBitCount !inComputedFormulaMap]
+  [mArgumentList analyze !inDomainMap !?varMap !?* !?totalBitCount]
+  let r = [mExpression computeExpression !inDomainMap !varMap !totalBitCount !inComputedFormulaMap]
   outResult = [r existOnBitIndexAndBeyond !inTotalBitCount]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @forAllInExpression computeExpression
+  ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
@@ -415,14 +442,15 @@ override getter @forAllInExpression computeExpression
 {
   @varMap varMap = inVarMap
   @uint totalBitCount = inTotalBitCount 
-  [mArgumentList analyze !?varMap !?* !?totalBitCount]
-  let r = [mExpression computeExpression !varMap !totalBitCount !inComputedFormulaMap]
+  [mArgumentList analyze !inDomainMap !?varMap !?* !?totalBitCount]
+  let r = [mExpression computeExpression !inDomainMap !varMap !totalBitCount !inComputedFormulaMap]
   outResult = [r forAllOnBitIndexAndBeyond !inTotalBitCount]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @comparisonWithConstantInExpression computeExpression
+  ?let @domainMap unused inDomainMap
   ?let @varMap inVarMap
   ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap unused inComputedFormulaMap
@@ -437,6 +465,33 @@ override getter @comparisonWithConstantInExpression computeExpression
       outResult = @binaryset.binarySetWithEqualToConstant {!idx !bitCount ![mConstant.uint uint64]}
     case notEqual :
       outResult = @binaryset.binarySetWithNotEqualToConstant {!idx !bitCount ![mConstant.uint uint64]}
+    end
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @variableComparisonInExpression computeExpression
+  ?let @domainMap unused inDomainMap
+  ?let @varMap inVarMap
+  ?let @uint unused inTotalBitCount
+  ?let @computedFormulaMap unused inComputedFormulaMap
+  -> @binaryset outResult
+{
+  [inVarMap searchKey !mLeftVarName  ?let  leftIdx ?let  leftBitCount]
+  [inVarMap searchKey !mRightVarName ?let rightIdx ?let rightBitCount]
+  if leftBitCount != rightBitCount then
+    error mRightVarName : "'" + mLeftVarName + "' variable uses "
+      + leftBitCount + " bit" + if leftBitCount > 1 then "s" else "" end
+      + ", but this variable uses "
+      + rightBitCount + " bit" + if rightBitCount > 1 then "s" else "" end
+    : outResult
+  else
+    switch mComparison
+    case equal :
+      outResult = @binaryset.binarySetWithEqualComparison {!leftIdx !leftBitCount !rightIdx}
+    case notEqual :
+      outResult = @binaryset.binarySetWithNotEqualComparison {!leftIdx !leftBitCount !rightIdx}
     end
   end
 }

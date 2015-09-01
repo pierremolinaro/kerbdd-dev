@@ -65,19 +65,20 @@ map @computedFormulaMap {
 
 override method @assignmentFormula analyzeFormula 
   ?let @string unused inSourceFilePath
+  ?let @domainMap inDomainMap
   ?!@computedFormulaMap ioComputedFormulaMap
 {
 #--- Build variable map
   @uint totalBitCount = 0
   @varList varList = {}
   @varMap varMap = {}
-  [mFormulaArgumentList analyze !?varMap !?varList !?totalBitCount]
+  [mFormulaArgumentList analyze !inDomainMap !?varMap !?varList !?totalBitCount]
 #--- Compute expression
   switch mKind
   case assignment :
     message "Computing $" + mFormulaName + "..."
     let timer = @timer.start
-    let result = [mExpression computeExpression !varMap !totalBitCount !ioComputedFormulaMap]
+    let result = [mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
     [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
     let @uint64 valueCount = [result valueCount !totalBitCount]
     let @uint64 nodeCount = [result nodeCount]
@@ -94,7 +95,7 @@ override method @assignmentFormula analyzeFormula
     var iterationCount = 0
     loop (@uint.max) while iterate do
       iterationCount ++
-      let r = [mExpression computeExpression !varMap !totalBitCount !ioComputedFormulaMap]
+      let r = [mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
       if result == r then
         iterate = false
       else
