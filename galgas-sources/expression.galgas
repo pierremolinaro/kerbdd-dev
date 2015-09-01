@@ -46,8 +46,23 @@ class @formulaInExpression : @expression {
 #·······················································································································
 
 class @existInExpression, @forAllInExpression : @expression {
-  @argumentList mArgumentList
+  @domainFieldList mArgumentList
   @expression mExpression
+}
+
+#·······················································································································
+
+enum @comparison {
+  case equal
+  case notEqual
+}
+
+#·······················································································································
+
+class @comparisonWithConstantInExpression : @expression {
+  @lstring mVarName
+  @comparison mComparison
+  @luint mConstant
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -62,7 +77,7 @@ rule <expression> !@expression outExpression {
   <comparison> ?outExpression
   select
   or
-    $==$
+    $=$
     <comparison> ?let @expression rightExpression
     outExpression = @equalExpression.new {!outExpression !rightExpression}
   or
@@ -163,22 +178,39 @@ rule <factor> !@expression outExpression {
 
 rule <factor> !@expression outExpression {
   $?$
-  <formalArguments> ?let @argumentList argumentList
+  <recordFields> ?let @domainFieldList domainFieldList
   $($
   <expression> ?let expression
   $)$
-  outExpression = @existInExpression.new {!argumentList !expression}
+  outExpression = @existInExpression.new {!domainFieldList !expression}
 }
 
 #·······················································································································
 
 rule <factor> !@expression outExpression {
   $!$
-  <formalArguments> ?let @argumentList argumentList
+  <recordFields> ?let @domainFieldList domainFieldList
   $($
   <expression> ?let expression
   $)$
-  outExpression = @forAllInExpression.new {!argumentList !expression}
+  outExpression = @forAllInExpression.new {!domainFieldList !expression}
+}
+#·······················································································································
+
+rule <factor> !@expression outExpression {
+  ${$
+  $identifier$ ?let varName
+  @comparison comparison
+  select
+    $=$
+    comparison = .equal
+  or
+    $!=$
+    comparison = .notEqual
+  end
+  $integer$ ?let constant
+  $}$
+  outExpression = @comparisonWithConstantInExpression.new {!varName !comparison !constant}
 }
 
 #·······················································································································
@@ -368,10 +400,7 @@ override getter @existInExpression computeExpression
 {
   @varMap varMap = inVarMap
   @uint totalBitCount = inTotalBitCount 
-  for > (idf bitCount) in mArgumentList do
-    [!?varMap insertKey !idf !totalBitCount !bitCount.uint]
-    totalBitCount = totalBitCount + bitCount.uint
-  end
+  [mArgumentList analyze !?varMap !?* !?totalBitCount]
   let r = [mExpression computeExpression !varMap !totalBitCount !inComputedFormulaMap]
   outResult = [r existOnBitIndexAndBeyond !inTotalBitCount]
 }
@@ -386,12 +415,30 @@ override getter @forAllInExpression computeExpression
 {
   @varMap varMap = inVarMap
   @uint totalBitCount = inTotalBitCount 
-  for > (idf bitCount) in mArgumentList do
-    [!?varMap insertKey !idf !totalBitCount !bitCount.uint]
-    totalBitCount = totalBitCount + bitCount.uint
-  end
+  [mArgumentList analyze !?varMap !?* !?totalBitCount]
   let r = [mExpression computeExpression !varMap !totalBitCount !inComputedFormulaMap]
   outResult = [r forAllOnBitIndexAndBeyond !inTotalBitCount]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @comparisonWithConstantInExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @uint unused inTotalBitCount
+  ?let @computedFormulaMap unused inComputedFormulaMap
+  -> @binaryset outResult
+{
+  [inVarMap searchKey !mVarName ?let idx ?let bitCount]
+  if [mConstant.uint significantBitCount] >= bitCount then
+    error mConstant : "Constant too large (should be < 2**" + bitCount : outResult
+  else
+    switch mComparison
+    case equal :
+      outResult = @binaryset.binarySetWithEqualToConstant {!idx !bitCount ![mConstant.uint uint64]}
+    case notEqual :
+      outResult = @binaryset.binarySetWithNotEqualToConstant {!idx !bitCount ![mConstant.uint uint64]}
+    end
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

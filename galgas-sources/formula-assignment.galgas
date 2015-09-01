@@ -2,13 +2,6 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @argumentList {
-  @lstring mVarName
-  @luint mBitCount
-}
-
-#·······················································································································
-
 enum @formulaKind {
   case assignment
   case fixedPoint (@binaryset startValue)
@@ -18,7 +11,7 @@ enum @formulaKind {
 
 class @assignmentFormula : @abstractFormula {
   @lstring mFormulaName
-  @argumentList mFormulaArgumentList
+  @domainFieldList mFormulaArgumentList
   @formulaKind mKind
   @expression mExpression
 }
@@ -34,7 +27,7 @@ syntax extension kerbdd_syntax {
 rule <topLevelDeClaration> ?!@ast ioAST {
   $formula$ ?let formulaName
   $($
-  <formalArguments> ?let @argumentList formulaArgumentList
+  <recordFields> ?let @domainFieldList domainFieldList
   $)$
   @formulaKind kind
   select
@@ -49,32 +42,7 @@ rule <topLevelDeClaration> ?!@ast ioAST {
   end
   <expression> ?let @expression expression
   $;$
-  ioAST.mFormulaList += !@assignmentFormula.new {!formulaName !formulaArgumentList !kind !expression}
-}
-
-#·······················································································································
-
-rule <formalArguments> !@argumentList outFormulaArgumentList {
-  outFormulaArgumentList = {}
-  repeat
-    $identifier$ ?let varName
-    $:$
-    $bool$
-    @luint bitCount
-    select
-      bitCount = @luint.new {!1 !.here}
-    or
-      $[$
-      $integer$ ?bitCount
-      $]$
-      if bitCount.uint == 0 then
-        error bitCount : "size should be > 0"
-      end
-    end
-    outFormulaArgumentList += !varName !bitCount
-  while
-    $,$
-  end
+  ioAST.mFormulaList += !@assignmentFormula.new {!formulaName !domainFieldList !kind !expression}
 }
 
 #·······················································································································
@@ -83,23 +51,6 @@ rule <formalArguments> !@argumentList outFormulaArgumentList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #    ANALYZE FORMULA                                                                                                    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-map @varMap {
-  @uint mIndex
-  @uint mBitCount
-  insert insertKey error message "the '%K' variable is already declared in %L"
-  search searchKey error message "there is no '%K' variable"
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @varList {
-  @string mVarName
-  @uint mBitIndex
-  @uint mBitCount
-}
-
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @computedFormulaMap {
@@ -120,11 +71,7 @@ override method @assignmentFormula analyzeFormula
   @uint totalBitCount = 0
   @varList varList = {}
   @varMap varMap = {}
-  for > (idf bitCount) in mFormulaArgumentList do
-    [!?varMap insertKey !idf !totalBitCount !bitCount.uint]
-    [!?varList insertAtIndex !idf.string !totalBitCount !bitCount.uint !0]
-    totalBitCount = totalBitCount + bitCount.uint
-  end
+  [mFormulaArgumentList analyze !?varMap !?varList !?totalBitCount]
 #--- Compute expression
   switch mKind
   case assignment :

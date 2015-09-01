@@ -22,6 +22,7 @@ list @formulaList {
 #·······················································································································
 
 struct @ast {
+  @domainDeclarationList mDomainList
   @formulaList mFormulaList
 }
 

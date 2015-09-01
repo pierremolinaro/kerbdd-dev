@@ -1,0 +1,178 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    AST                                                                                                                
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @domainFieldType {
+  case bool
+  case boolArray (@uint size)
+}
+
+#·······················································································································
+
+
+list @domainFieldList {
+  @lstring mVarName
+  @domainFieldType mType
+}
+
+#·······················································································································
+
+list @domainDeclarationList {
+  @lstring mDomainName
+  @domainFieldList mFormulaArgumentList
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    SYNTAX                                                                                                             
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension kerbdd_syntax {
+
+#·······················································································································
+
+rule <topLevelDeClaration> ?!@ast ioAST {
+  $domain$
+  $identifier$ ?let domainName
+  $:$
+  <recordFields> ?let @domainFieldList domainFieldList
+  $;$
+  ioAST.mDomainList += !domainName !domainFieldList
+}
+
+#·······················································································································
+
+rule <recordFields> !@domainFieldList outFormulaArgumentList {
+  outFormulaArgumentList = {}
+  repeat
+    $identifier$ ?let varName
+    $:$
+    $bool$
+    @domainFieldType type
+    select
+      type = .bool
+    or
+      $[$
+      $integer$ ?let bitCount
+      $]$
+      if bitCount.uint == 0 then
+        error bitCount : "size should be > 0"
+      end
+      type = .boolArray {!size:bitCount.uint}
+    end
+    outFormulaArgumentList += !varName !type
+  while
+    $,$
+  end
+}
+
+#·······················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    ANALYZE FORMULA                                                                                                    
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @varList {
+  @string mVarName
+  @uint mBitIndex
+  @uint mBitCount
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @varMap {
+  @uint mIndex
+  @uint mBitCount
+  insert insertKey error message "the '%K' variable is already declared in %L"
+  search searchKey error message "there is no '%K' variable"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+method @domainFieldList analyze 
+  ?!@varMap ioVarMap
+  ?!@varList ioVarList
+  ?!@uint ioTotalBitCount
+{
+#--- Build variable map
+  for > (idf type) in self do
+    switch type
+    case bool :
+      [!?ioVarMap insertKey !idf !ioTotalBitCount !1]
+      [!?ioVarList insertAtIndex !idf.string !ioTotalBitCount !1 !0]
+      ioTotalBitCount ++
+    case boolArray (@uint size) :
+      [!?ioVarMap insertKey !idf !ioTotalBitCount !size]
+      [!?ioVarList insertAtIndex !idf.string !ioTotalBitCount !size !0]
+      ioTotalBitCount = ioTotalBitCount + size
+    end
+  end
+}
+
+##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#map @computedFormulaMap {
+#  @varList mVarList
+#  @uint mBitCount
+#  @binaryset mValue
+#  insert insertKey error message "the '%K' formula is already declared in %L"
+#  search searchKey error message "there is no '%K' formula"
+#}
+#
+##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#override method @assignmentFormula analyzeFormula 
+#  ?let @string unused inSourceFilePath
+#  ?!@computedFormulaMap ioComputedFormulaMap
+#{
+##--- Build variable map
+#  @uint totalBitCount = 0
+#  @varList varList = {}
+#  @varMap varMap = {}
+#  for > (idf bitCount) in mFormulaArgumentList do
+#    [!?varMap insertKey !idf !totalBitCount !bitCount.uint]
+#    [!?varList insertAtIndex !idf.string !totalBitCount !bitCount.uint !0]
+#    totalBitCount = totalBitCount + bitCount.uint
+#  end
+##--- Compute expression
+#  switch mKind
+#  case assignment :
+#    message "Computing $" + mFormulaName + "..."
+#    let timer = @timer.start
+#    let result = [mExpression computeExpression !varMap !totalBitCount !ioComputedFormulaMap]
+#    [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
+#    let @uint64 valueCount = [result valueCount !totalBitCount]
+#    let @uint64 nodeCount = [result nodeCount]
+#    message " "
+#      + valueCount + " value" + if valueCount > 1L then "s" else "" end
+#      + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
+#      + " (" + timer + ")\n"
+#  case fixedPoint (@binaryset startValue) :
+#    message "Computing $" + mFormulaName + "..."
+#    let timer = @timer.start
+#    @binaryset result = startValue
+#    [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
+#    var iterate = true ;
+#    var iterationCount = 0
+#    loop (@uint.max) while iterate do
+#      iterationCount ++
+#      let r = [mExpression computeExpression !varMap !totalBitCount !ioComputedFormulaMap]
+#      if result == r then
+#        iterate = false
+#      else
+#        result = r
+#        [!?ioComputedFormulaMap setMValueForKey !result !mFormulaName.string]
+#      end
+#    end
+#    let @uint64 valueCount = [result valueCount !totalBitCount]
+#    let @uint64 nodeCount = [result nodeCount]
+#    message " "
+#      + iterationCount + " iteration" + if iterationCount > 1 then "s" else "" end
+#      + ", " + valueCount + " value" + if valueCount > 1L then "s" else "" end
+#      + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
+#      + " (" + timer + ")\n"
+#  end
+#}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
