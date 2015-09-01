@@ -1,0 +1,50 @@
+domain etat : bool [3] ;
+domain action : bool [2] ;
+#--- Ensemble des transitions du premier automate
+$Trans1 (qs: etat, a: action, qd: etat) :=
+ ({qs=0} & {a=0} & {qd=1}) | ({qs=1} & {a=1} & {qd=2}) |
+ ({qs=2} & {a=2} & {qd=3}) | ({qs=qd} & {a=3}) ;
+
+#--- Ensemble des transitions du second automate
+$Trans2 (qs:etat, u:action, qd:etat) := $Trans1 (qs, u, qd) ;
+
+#---- Vecteur de synchronisation
+$vecteurSynchro (t:action, u:action) := ({t=3} | {u=3}) & {t != u} ;
+
+#------------------ Produit des deux automates ------------------------
+domain etatProduit : record
+  e1 : etat ;
+  e2 : etat ;
+end record ;
+
+domain actionProduit : record
+  a1 : action ;
+  a2 : action ;
+end record ;
+
+$Trans (qs: etatProduit, tu: actionProduit, qd: etatProduit) :=
+ $vecteurSynchro (tu.a1, tu.a2) &
+ $Trans1 (qs.e1, tu.a1, qd.e1) &
+ $Trans2 (qs.e2, tu.a2, qd.e2) ;
+
+#--- L'ensemble des etats interdits (�tat (2,2))
+$EtatInterdit (qs:etatProduit) := {qs.e1 = 2} & {qs.e2 = 2} ;
+
+#--- L'ensemble des actions non commandables (1, 3) et (3, 1)
+$NonCommandable (tu:actionProduit) :=
+          ({tu.a1 = 1} & {tu.a2 = 3}) | ({tu.a1 = 3} & {tu.a2 = 1}) ;
+
+#--- Calcul par plus petit point fixe de l'ensemble des etats a supprimer
+$Supprimer (q:etatProduit) += $EtatInterdit (q) |
+   ?ab:actionProduit, qd:etatProduit ($Trans (q, ab, qd) & $NonCommandable (ab) & $Supprimer (qd)) ;
+
+#--- Systeme final
+$TransFinal (qs:etatProduit, tu:actionProduit, qd:etatProduit) :=
+            $Trans (qs, tu, qd) & ~$Supprimer (qs) & ~$Supprimer (qd) ;
+
+$Initial (q:etatProduit) := {q.e1=0} & {q.e2=0} ;
+
+#--- Calcul de la partie accessible du systeme final
+$Acces (q:etatProduit) += ~$Supprimer (q) &
+              ($Initial (q) | ? qt:etatProduit,tu:actionProduit ($Acces (qt) & $Trans (qt, tu, q))) ;
+

@@ -2,7 +2,7 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @BDDtype {
+enum @bddType {
   case bool
   case boolArray (@uint size)
   case namedType (@lstring typeName)
@@ -12,14 +12,21 @@ enum @BDDtype {
 
 list @domainFieldList {
   @lstring mVarName
-  @BDDtype mType
+  @bddType mType
+}
+
+#·······················································································································
+
+enum @domainDeclarationType {
+  case type (@bddType type)
+  case record (@domainFieldList fieldList)
 }
 
 #·······················································································································
 
 list @domainDeclarationList {
   @lstring mDomainName
-  @BDDtype mType
+  @domainDeclarationType mType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -34,9 +41,18 @@ rule <topLevelDeClaration> ?!@ast ioAST {
   $domain$
   $identifier$ ?let domainName
   $:$
-  <type> ?let @BDDtype type
+  @domainDeclarationType domainDeclarationType
+  select
+    <type> ?let @bddType type
+    domainDeclarationType = .type {!type:type}
+  or
+    $($
+    <recordFields> ?let @domainFieldList fieldList
+    domainDeclarationType = .record {!fieldList:fieldList}
+    $)$
+  end
   $;$
-  ioAST.mDomainList += !domainName !type
+  ioAST.mDomainList += !domainName !domainDeclarationType
 }
 
 #·······················································································································
@@ -46,7 +62,7 @@ rule <recordFields> !@domainFieldList outFormulaArgumentList {
   repeat
     $identifier$ ?let varName
     $:$
-    <type> ?let @BDDtype type
+    <type> ?let @bddType type
     outFormulaArgumentList += !varName !type
   while
     $,$
@@ -55,7 +71,7 @@ rule <recordFields> !@domainFieldList outFormulaArgumentList {
 
 #·······················································································································
 
-rule <type> !@BDDtype outType {
+rule <type> !@bddType outType {
   select
     $identifier$ ?let typeName
     outType = .namedType {!typeName:typeName}
@@ -93,15 +109,22 @@ map @domainMap {
 
 method @domainDeclarationList analyze !@domainMap outDomainMap {
   outDomainMap = {}
-  for (name type) in self while @uint.errorCount == 0 do
-    switch type
-    case bool :
-      [!?outDomainMap insertKey !name !1]
-    case boolArray (@uint size) :
-      [!?outDomainMap insertKey !name !size]
-    case namedType (@lstring typeName) :
-      [outDomainMap searchKey !typeName ?let size] ;
-      [!?outDomainMap insertKey !name !size]
+  for (name typeDefinition) in self while @uint.errorCount == 0 do
+    switch typeDefinition
+    case type (@bddType type) :
+      switch type
+      case bool :
+        [!?outDomainMap insertKey !name !1]
+      case boolArray (@uint size) :
+        [!?outDomainMap insertKey !name !size]
+      case namedType (@lstring typeName) :
+        [outDomainMap searchKey !typeName ?let size] ;
+        [!?outDomainMap insertKey !name !size]
+      end
+    case record (@domainFieldList fieldList) :
+      for > () in fieldList while @uint.errorCount == 0 do
+      
+      end
     end
   end
 }
