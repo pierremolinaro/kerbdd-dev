@@ -2,7 +2,7 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @formulaArgumentList {
+list @argumentList {
   @lstring mVarName
   @luint mBitCount
 }
@@ -11,7 +11,7 @@ list @formulaArgumentList {
 
 class @assignmentFormula : @abstractFormula {
   @lstring mFormulaName
-  @formulaArgumentList mFormulaArgumentList
+  @argumentList mFormulaArgumentList
   @expression mExpression
 }
 
@@ -25,8 +25,19 @@ syntax extension kerbdd_syntax {
 
 rule <topLevelDeClaration> ?!@ast ioAST {
   $formula$ ?let formulaName
-  @formulaArgumentList formulaArgumentList = {}
   $($
+  <formalArguments> ?let @argumentList formulaArgumentList
+  $)$
+  $:=$
+  <expression> ?let @expression expression
+  $;$
+  ioAST.mFormulaList += !@assignmentFormula.new {!formulaName !formulaArgumentList !expression}
+}
+
+#·······················································································································
+
+rule <formalArguments> !@argumentList outFormulaArgumentList {
+  outFormulaArgumentList = {}
   repeat
     $identifier$ ?let varName
     $:$
@@ -42,15 +53,10 @@ rule <topLevelDeClaration> ?!@ast ioAST {
         error bitCount : "size should be > 0"
       end
     end
-    formulaArgumentList += !varName !bitCount
+    outFormulaArgumentList += !varName !bitCount
   while
     $,$
   end
-  $)$
-  $:=$
-  <expression> ?let @expression expression
-  $;$
-  ioAST.mFormulaList += !@assignmentFormula.new {!formulaName !formulaArgumentList !expression}
 }
 
 #·······················································································································
