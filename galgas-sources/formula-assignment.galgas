@@ -9,9 +9,17 @@ list @argumentList {
 
 #·······················································································································
 
+enum @formulaKind {
+  case assignment
+  case fixedPoint (@binaryset startValue)
+}
+
+#·······················································································································
+
 class @assignmentFormula : @abstractFormula {
   @lstring mFormulaName
   @argumentList mFormulaArgumentList
+  @formulaKind mKind
   @expression mExpression
 }
 
@@ -28,10 +36,20 @@ rule <topLevelDeClaration> ?!@ast ioAST {
   $($
   <formalArguments> ?let @argumentList formulaArgumentList
   $)$
-  $:=$
+  @formulaKind kind
+  select
+    $:=$
+    kind = .assignment
+  or
+    $+=$
+    kind = .fixedPoint {!startValue:.emptyBinarySet}
+  or
+    $-=$
+    kind = .fixedPoint {!startValue:.fullBinarySet}
+  end
   <expression> ?let @expression expression
   $;$
-  ioAST.mFormulaList += !@assignmentFormula.new {!formulaName !formulaArgumentList !expression}
+  ioAST.mFormulaList += !@assignmentFormula.new {!formulaName !formulaArgumentList !kind !expression}
 }
 
 #·······················································································································
@@ -108,17 +126,43 @@ override method @assignmentFormula analyzeFormula
     totalBitCount = totalBitCount + bitCount.uint
   end
 #--- Compute expression
-  message "Computing $" + mFormulaName + "..."
-  let timer = @timer.start
-  let result = [mExpression computeExpression !varMap !totalBitCount !ioComputedFormulaMap]
-  let @uint64 valueCount = [result valueCount !totalBitCount]
-  let @uint64 nodeCount = [result nodeCount]
-  message " "
-    + valueCount + " value" + if valueCount > 1L then "s" else "" end
-    + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
-    + " (" + timer + ")\n"
-#---
-  [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
+  switch mKind
+  case assignment :
+    message "Computing $" + mFormulaName + "..."
+    let timer = @timer.start
+    let result = [mExpression computeExpression !varMap !totalBitCount !ioComputedFormulaMap]
+    [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
+    let @uint64 valueCount = [result valueCount !totalBitCount]
+    let @uint64 nodeCount = [result nodeCount]
+    message " "
+      + valueCount + " value" + if valueCount > 1L then "s" else "" end
+      + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
+      + " (" + timer + ")\n"
+  case fixedPoint (@binaryset startValue) :
+    message "Computing $" + mFormulaName + "..."
+    let timer = @timer.start
+    @binaryset result = startValue
+    [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
+    var iterate = true ;
+    var iterationCount = 0
+    loop (@uint.max) while iterate do
+      iterationCount ++
+      let r = [mExpression computeExpression !varMap !totalBitCount !ioComputedFormulaMap]
+      if result == r then
+        iterate = false
+      else
+        result = r
+        [!?ioComputedFormulaMap setMValueForKey !result !mFormulaName.string]
+      end
+    end
+    let @uint64 valueCount = [result valueCount !totalBitCount]
+    let @uint64 nodeCount = [result nodeCount]
+    message " "
+      + iterationCount + " iteration" + if iterationCount > 1 then "s" else "" end
+      + ", " + valueCount + " value" + if valueCount > 1L then "s" else "" end
+      + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
+      + " (" + timer + ")\n"
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
