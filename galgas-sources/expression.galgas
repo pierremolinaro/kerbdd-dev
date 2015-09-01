@@ -36,6 +36,13 @@ class @complementExpression : @expression {
 class @trueExpression, @falseExpression : @expression {
 }
 
+#·······················································································································
+
+class @formulaInExpression : @expression {
+  @lstring mFormulaName
+  @lstringlist mParameterList
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #    SYNTAX                                                                                                             
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -131,17 +138,40 @@ rule <factor> !@expression outExpression {
 
 #·······················································································································
 
+rule <factor> !@expression outExpression {
+  $formula$ ?let formulaName
+  @lstringlist parameterList = {}
+  $($
+  repeat
+    $identifier$ ?let parameterName
+    parameterList += !parameterName
+  while
+    $,$
+  end
+  $)$
+  outExpression = @formulaInExpression.new {!formulaName !parameterList}
+}
+
+#·······················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #    ANALYZE EXPRESSION                                                                                                 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @expression computeExpression ?let @varMap inVarMap -> @binaryset outResult
+abstract getter @expression computeExpression
+  ?let @varMap inVarMap
+  ?let @computedFormulaMap inComputedFormulaMap
+  -> @binaryset outResult
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @varInExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
+override getter @varInExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @computedFormulaMap unused inComputedFormulaMap
+  -> @binaryset outResult
+{
   [inVarMap searchKey !mVarName ?let idx ?let bitCount]
   if bitCount != 1 then
     error mVarName : "variable is not boolean; use {...} or dot notation"
@@ -151,7 +181,11 @@ override getter @varInExpression computeExpression ?let @varMap inVarMap -> @bin
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @varBitInExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
+override getter @varBitInExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @computedFormulaMap unused inComputedFormulaMap
+  -> @binaryset outResult
+{
   [inVarMap searchKey !mVarName ?let idx ?let bitCount]
   if bitCount <= mVarBit.uint then
     error mVarBit : "bit index should be < " + bitCount
@@ -161,59 +195,101 @@ override getter @varBitInExpression computeExpression ?let @varMap inVarMap -> @
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @andExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
-  let left  = [mLeftExpression  computeExpression !inVarMap]
-  let right = [mRightExpression computeExpression !inVarMap]
+override getter @andExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @computedFormulaMap inComputedFormulaMap
+  -> @binaryset outResult
+{
+  let left  = [mLeftExpression  computeExpression !inVarMap !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inVarMap !inComputedFormulaMap]
   outResult = left & right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @orExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
-  let left  = [mLeftExpression  computeExpression !inVarMap]
-  let right = [mRightExpression computeExpression !inVarMap]
+override getter @orExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @computedFormulaMap inComputedFormulaMap
+  -> @binaryset outResult
+{
+  let left  = [mLeftExpression  computeExpression !inVarMap !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inVarMap !inComputedFormulaMap]
   outResult = left | right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @xorExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
-  let left  = [mLeftExpression  computeExpression !inVarMap]
-  let right = [mRightExpression computeExpression !inVarMap]
+override getter @xorExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @computedFormulaMap inComputedFormulaMap
+  -> @binaryset outResult
+{
+  let left  = [mLeftExpression  computeExpression !inVarMap !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inVarMap !inComputedFormulaMap]
   outResult = left ^ right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @equalExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
-  let left  = [mLeftExpression  computeExpression !inVarMap]
-  let right = [mRightExpression computeExpression !inVarMap]
+override getter @equalExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @computedFormulaMap inComputedFormulaMap
+  -> @binaryset outResult
+{
+  let left  = [mLeftExpression  computeExpression !inVarMap !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inVarMap !inComputedFormulaMap]
   outResult = ~(left ^ right)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @notEqualExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
-  let left  = [mLeftExpression  computeExpression !inVarMap]
-  let right = [mRightExpression computeExpression !inVarMap]
+override getter @notEqualExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @computedFormulaMap inComputedFormulaMap
+  -> @binaryset outResult
+{
+  let left  = [mLeftExpression  computeExpression !inVarMap !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inVarMap !inComputedFormulaMap]
   outResult = left ^ right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @complementExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
-  outResult = ~ [mExpression  computeExpression !inVarMap]
+override getter @complementExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @computedFormulaMap inComputedFormulaMap
+  -> @binaryset outResult
+{
+  outResult = ~ [mExpression  computeExpression !inVarMap !inComputedFormulaMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @trueExpression computeExpression ?let @varMap unused inVarMap -> @binaryset outResult {
+override getter @trueExpression computeExpression
+  ?let @varMap unused inVarMap
+  ?let @computedFormulaMap unused inComputedFormulaMap
+  -> @binaryset outResult
+{
   outResult = @binaryset.fullBinarySet
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @falseExpression computeExpression ?let @varMap unused inVarMap -> @binaryset outResult {
+override getter @falseExpression computeExpression
+  ?let @varMap unused inVarMap
+  ?let @computedFormulaMap unused inComputedFormulaMap
+  -> @binaryset outResult
+{
+  outResult = @binaryset.emptyBinarySet
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @formulaInExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @computedFormulaMap unused inComputedFormulaMap
+  -> @binaryset outResult
+{
   outResult = @binaryset.emptyBinarySet
 }
 
