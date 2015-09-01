@@ -44,6 +44,20 @@ class @formulaInExpression : @expression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @existArgumentList {
+  @lstring mVarName
+  @luint mBitCount
+}
+
+#·······················································································································
+
+class @existInExpression : @expression {
+  @existArgumentList mArgumentList
+  @expression mExpression
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #    SYNTAX                                                                                                             
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -154,6 +168,36 @@ rule <factor> !@expression outExpression {
 
 #·······················································································································
 
+rule <factor> !@expression outExpression {
+  $?$
+  @existArgumentList argumentList = {}
+  repeat
+    $identifier$ ?let varName
+    $:$
+    $bool$
+    @luint bitCount
+    select
+      bitCount = @luint.new {!1 !.here}
+    or
+      $[$
+      $integer$ ?bitCount
+      $]$
+      if bitCount.uint == 0 then
+        error bitCount : "size should be > 0"
+      end
+    end
+    argumentList += !varName !bitCount
+  while
+    $,$
+  end
+  $($
+  <expression> ?let expression
+  $)$
+  outExpression = @existInExpression.new {!argumentList !expression}
+}
+
+#·······················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -162,6 +206,7 @@ rule <factor> !@expression outExpression {
 
 abstract getter @expression computeExpression
   ?let @varMap inVarMap
+  ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 
@@ -169,6 +214,7 @@ abstract getter @expression computeExpression
 
 override getter @varInExpression computeExpression
   ?let @varMap inVarMap
+  ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap unused inComputedFormulaMap
   -> @binaryset outResult
 {
@@ -183,6 +229,7 @@ override getter @varInExpression computeExpression
 
 override getter @varBitInExpression computeExpression
   ?let @varMap inVarMap
+  ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap unused inComputedFormulaMap
   -> @binaryset outResult
 {
@@ -197,11 +244,12 @@ override getter @varBitInExpression computeExpression
 
 override getter @andExpression computeExpression
   ?let @varMap inVarMap
+  ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  let left  = [mLeftExpression  computeExpression !inVarMap !inComputedFormulaMap]
-  let right = [mRightExpression computeExpression !inVarMap !inComputedFormulaMap]
+  let left  = [mLeftExpression  computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
   outResult = left & right
 }
 
@@ -209,11 +257,12 @@ override getter @andExpression computeExpression
 
 override getter @orExpression computeExpression
   ?let @varMap inVarMap
+  ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  let left  = [mLeftExpression  computeExpression !inVarMap !inComputedFormulaMap]
-  let right = [mRightExpression computeExpression !inVarMap !inComputedFormulaMap]
+  let left  = [mLeftExpression  computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
   outResult = left | right
 }
 
@@ -221,11 +270,12 @@ override getter @orExpression computeExpression
 
 override getter @xorExpression computeExpression
   ?let @varMap inVarMap
+  ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  let left  = [mLeftExpression  computeExpression !inVarMap !inComputedFormulaMap]
-  let right = [mRightExpression computeExpression !inVarMap !inComputedFormulaMap]
+  let left  = [mLeftExpression  computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
   outResult = left ^ right
 }
 
@@ -233,11 +283,12 @@ override getter @xorExpression computeExpression
 
 override getter @equalExpression computeExpression
   ?let @varMap inVarMap
+  ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  let left  = [mLeftExpression  computeExpression !inVarMap !inComputedFormulaMap]
-  let right = [mRightExpression computeExpression !inVarMap !inComputedFormulaMap]
+  let left  = [mLeftExpression  computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
   outResult = ~(left ^ right)
 }
 
@@ -245,11 +296,12 @@ override getter @equalExpression computeExpression
 
 override getter @notEqualExpression computeExpression
   ?let @varMap inVarMap
+  ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  let left  = [mLeftExpression  computeExpression !inVarMap !inComputedFormulaMap]
-  let right = [mRightExpression computeExpression !inVarMap !inComputedFormulaMap]
+  let left  = [mLeftExpression  computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let right = [mRightExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
   outResult = left ^ right
 }
 
@@ -257,16 +309,18 @@ override getter @notEqualExpression computeExpression
 
 override getter @complementExpression computeExpression
   ?let @varMap inVarMap
+  ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  outResult = ~ [mExpression  computeExpression !inVarMap !inComputedFormulaMap]
+  outResult = ~ [mExpression computeExpression !inVarMap !inTotalBitCount !inComputedFormulaMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @trueExpression computeExpression
   ?let @varMap unused inVarMap
+  ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap unused inComputedFormulaMap
   -> @binaryset outResult
 {
@@ -277,6 +331,7 @@ override getter @trueExpression computeExpression
 
 override getter @falseExpression computeExpression
   ?let @varMap unused inVarMap
+  ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap unused inComputedFormulaMap
   -> @binaryset outResult
 {
@@ -287,6 +342,7 @@ override getter @falseExpression computeExpression
 
 override getter @formulaInExpression computeExpression
   ?let @varMap inVarMap
+  ?let @uint unused inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
@@ -315,6 +371,24 @@ override getter @formulaInExpression computeExpression
     end
     outResult = [formulaValue transformedBy !transformationList]
   end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @existInExpression computeExpression
+  ?let @varMap inVarMap
+  ?let @uint inTotalBitCount
+  ?let @computedFormulaMap inComputedFormulaMap
+  -> @binaryset outResult
+{
+  @varMap varMap = inVarMap
+  @uint totalBitCount = inTotalBitCount 
+  for > (idf bitCount) in mArgumentList do
+    [!?varMap insertKey !idf !totalBitCount !bitCount.uint]
+    totalBitCount = totalBitCount + bitCount.uint
+  end
+  let r = [mExpression computeExpression !varMap !totalBitCount !inComputedFormulaMap]
+  outResult = [r existOnBitIndexAndBeyond !inTotalBitCount]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
