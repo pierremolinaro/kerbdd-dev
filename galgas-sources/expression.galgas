@@ -20,7 +20,7 @@ class @varBitInExpression : @expression {
 
 #·······················································································································
 
-class @andExpression, @orExpression, @xorExpression : @expression {
+class @andExpression, @orExpression, @xorExpression, @equalExpression, @notEqualExpression : @expression {
   @expression mLeftExpression
   @expression mRightExpression
 }
@@ -45,6 +45,22 @@ syntax extension kerbdd_syntax {
 #·······················································································································
 
 rule <expression> !@expression outExpression {
+  <comparison> ?outExpression
+  select
+  or
+    $==$
+    <comparison> ?let @expression rightExpression
+    outExpression = @equalExpression.new {!outExpression !rightExpression}
+  or
+    $!=$
+    <comparison> ?let @expression rightExpression
+    outExpression = @notEqualExpression.new {!outExpression !rightExpression}
+  end
+}
+
+#·······················································································································
+
+rule <comparison> !@expression outExpression {
   <term> ?outExpression
   repeat
   while
@@ -162,6 +178,22 @@ override getter @orExpression computeExpression ?let @varMap inVarMap -> @binary
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @xorExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
+  let left  = [mLeftExpression  computeExpression !inVarMap]
+  let right = [mRightExpression computeExpression !inVarMap]
+  outResult = left ^ right
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @equalExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
+  let left  = [mLeftExpression  computeExpression !inVarMap]
+  let right = [mRightExpression computeExpression !inVarMap]
+  outResult = ~(left ^ right)
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @notEqualExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
   let left  = [mLeftExpression  computeExpression !inVarMap]
   let right = [mRightExpression computeExpression !inVarMap]
   outResult = left ^ right

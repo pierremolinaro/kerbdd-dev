@@ -18,7 +18,7 @@ list keyWordList style keywordsStyle error message "the '%K' keyword" {
    "bdd",      "domain",
    "bool",     "record",
    "true",     "false",
-   "display",  "include",
+   "display",  "include", "graphviz",
    "dump",     "verify",
    "end",      "if",
    "then",     "else"
@@ -124,7 +124,8 @@ list delimitorsList style delimitersStyle error message "the '%K' delimitor" {
   ",",
   "?",
   "!",
-  ";"
+  ";",
+  "==", "!="
 }
 
 rule list delimitorsList

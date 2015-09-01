@@ -1,6 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract method @abstractFormula analyzeFormula ?!@computedFormulaMap ioComputedFormulaMap
+abstract method @abstractFormula analyzeFormula
+  ?let @string inSourceFilePath
+  ?!@computedFormulaMap ioComputedFormulaMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #    MAIN                                                                                                               
@@ -15,7 +17,7 @@ grammar kerbdd_grammar
 #--- Analyze formulas
   @computedFormulaMap computedFormulaMap = {}
   for (formula) in ast.mFormulaList do
-    [formula analyzeFormula !?computedFormulaMap]
+    [formula analyzeFormula !inSourceFile.string !?computedFormulaMap]
   end
 }
 

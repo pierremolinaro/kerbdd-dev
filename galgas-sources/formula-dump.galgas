@@ -29,7 +29,10 @@ syntax extension kerbdd_syntax {
 #    ANALYZE FORMULA                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @dumpFormula analyzeFormula ?!@computedFormulaMap ioComputedFormulaMap {
+override method @dumpFormula analyzeFormula 
+  ?let @string unused inSourceFilePath
+  ?!@computedFormulaMap ioComputedFormulaMap
+{
   [ioComputedFormulaMap searchKey !mFormulaName ?let @varList varList ?let bitCount ?let result]
   let @uint64 valueCount = [result valueCount !bitCount]
   message "Dump $" + mFormulaName + " (" + valueCount + " value" + if valueCount > 1L then "s" else "" end + ")\n"

@@ -88,7 +88,10 @@ map @computedFormulaMap {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @assignmentFormula analyzeFormula ?!@computedFormulaMap ioComputedFormulaMap {
+override method @assignmentFormula analyzeFormula 
+  ?let @string unused inSourceFilePath
+  ?!@computedFormulaMap ioComputedFormulaMap
+{
 #--- Build variable map
   @uint totalBitCount = 0
   @varList varList = {}
