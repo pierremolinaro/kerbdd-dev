@@ -103,8 +103,9 @@ override method @assignmentFormula analyzeFormula
   end
 #--- Compute expression
   message "Computing $" + mFormulaName + "..."
-  @binaryset result = [mExpression computeExpression !varMap]
-  message "\n"
+  let timer = @timer.start
+  let result = [mExpression computeExpression !varMap]
+  message " " + timer + "\n"
 #---
   [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
 }
