@@ -4,6 +4,7 @@
 
 list @formulaArgumentList {
   @lstring mVarName
+  @luint mBitCount
 }
 
 #·······················································································································
@@ -30,7 +31,18 @@ rule <topLevelDeClaration> ?!@ast ioAST {
     $identifier$ ?let varName
     $:$
     $bool$
-    formulaArgumentList += !varName
+    @luint bitCount
+    select
+      bitCount = @luint.new {!1 !.here}
+    or
+      $[$
+      $integer$ ?bitCount
+      $]$
+      if bitCount.uint == 0 then
+        error bitCount : "size should be > 0"
+      end
+    end
+    formulaArgumentList += !varName !bitCount
   while
     $,$
   end
@@ -51,6 +63,7 @@ rule <topLevelDeClaration> ?!@ast ioAST {
 
 map @varMap {
   @uint mIndex
+  @uint mBitCount
   insert insertKey error message "the '%K' variable is already declared in %L"
   search searchKey error message "there is no '%K' variable"
 }
@@ -77,20 +90,20 @@ map @computedFormulaMap {
 
 override method @assignmentFormula analyzeFormula ?!@computedFormulaMap ioComputedFormulaMap {
 #--- Build variable map
-  @uint bitCount = 0
+  @uint totalBitCount = 0
   @varList varList = {}
   @varMap varMap = {}
-  for > (idf) in mFormulaArgumentList do
-    [!?varMap insertKey !idf !bitCount]
-    [!?varList insertAtIndex !idf.string !bitCount !1 !0]
-    bitCount ++
+  for > (idf bitCount) in mFormulaArgumentList do
+    [!?varMap insertKey !idf !totalBitCount !bitCount.uint]
+    [!?varList insertAtIndex !idf.string !totalBitCount !bitCount.uint !0]
+    totalBitCount = totalBitCount + bitCount.uint
   end
 #--- Compute expression
   message "Computing $" + mFormulaName + "..."
   @binaryset result = [mExpression computeExpression !varMap]
   message "\n"
 #---
-  [!?ioComputedFormulaMap insertKey !mFormulaName !varList !bitCount !result]
+  [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

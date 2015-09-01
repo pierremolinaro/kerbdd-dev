@@ -13,6 +13,13 @@ class @varInExpression : @expression {
 
 #·······················································································································
 
+class @varBitInExpression : @expression {
+  @lstring mVarName
+  @luint mVarBit
+}
+
+#·······················································································································
+
 class @andExpression, @orExpression, @xorExpression : @expression {
   @expression mLeftExpression
   @expression mRightExpression
@@ -67,7 +74,13 @@ rule <term> !@expression outExpression {
 
 rule <factor> !@expression outExpression {
   $identifier$ ?let varName
-  outExpression = @varInExpression.new {!varName}
+  select
+    outExpression = @varInExpression.new {!varName}
+  or
+    $.$
+    $integer$ ?let varBit
+    outExpression = @varBitInExpression.new {!varName !varBit}
+  end
 }
 
 #·······················································································································
@@ -113,8 +126,21 @@ abstract getter @expression computeExpression ?let @varMap inVarMap -> @binaryse
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @varInExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
-  [inVarMap searchKey !mVarName ?let idx]
+  [inVarMap searchKey !mVarName ?let idx ?let bitCount]
+  if bitCount != 1 then
+    error mVarName : "variable is not boolean; use {...} or dot notation"
+  end
   outResult = @binaryset.binarySetWithBit {!idx}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @varBitInExpression computeExpression ?let @varMap inVarMap -> @binaryset outResult {
+  [inVarMap searchKey !mVarName ?let idx ?let bitCount]
+  if bitCount <= mVarBit.uint then
+    error mVarBit : "bit index should be < " + bitCount
+  end
+  outResult = @binaryset.binarySetWithBit {!idx + mVarBit.uint}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
