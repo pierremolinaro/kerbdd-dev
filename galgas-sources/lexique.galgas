@@ -14,7 +14,8 @@ $identifier$ ! tokenString error message "an identifier"
 list keyWordList style keywordsStyle error message "the '%K' keyword" {
 #   "ite_cache", "and_cache",
 #   "use_and", "use_ite", "use_and_ite",
-#   "map",
+   "nodeHashMapSize",
+   "andCacheMapSize",
    "domain",
    "bool",
    "true",     "false",

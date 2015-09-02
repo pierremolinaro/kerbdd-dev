@@ -17,7 +17,7 @@ project (2:0:0) -> "kerbdd" {
   "galgas-sources/kerbdd-semantics.galgas"
   "galgas-sources/domain.galgas"
   "galgas-sources/formula-assignment.galgas"
-  "galgas-sources/formula-display.galgas"
+  "galgas-sources/setting-map.galgas"
   "galgas-sources/formula-dump.galgas"
   "galgas-sources/formula-graphviz.galgas"
   "galgas-sources/expression.galgas"
