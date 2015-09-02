@@ -2,8 +2,8 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @displayFormula : @abstractFormula {
-  @lstring mFormulaName
+class @setting_nodeHashMapSize, @setting_andCacheMapSize : @abstractFormula {
+  @luint mSetting
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -15,10 +15,19 @@ syntax extension kerbdd_syntax {
 #·······················································································································
 
   rule <topLevelDeClaration> ?!@ast ioAST {
-    $display$
-    $identifier$ ?let formulaName
+    $nodeHashMapSize$
+    $integer$ ?let setting
     $;$
-    ioAST.mFormulaList += !@displayFormula.new {!formulaName}
+    ioAST.mFormulaList += !@setting_nodeHashMapSize.new {!setting}
+  }
+
+#·······················································································································
+
+  rule <topLevelDeClaration> ?!@ast ioAST {
+    $andCacheMapSize$
+    $integer$ ?let setting
+    $;$
+    ioAST.mFormulaList += !@setting_andCacheMapSize.new {!setting}
   }
 
 #·······················································································································
@@ -29,15 +38,22 @@ syntax extension kerbdd_syntax {
 #    ANALYZE FORMULA                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @displayFormula analyzeFormula 
+override method @setting_nodeHashMapSize analyzeFormula 
   ?let @string unused inSourceFilePath
   ?let @domainMap unused inDomainMap
-  ?!@computedFormulaMap ioComputedFormulaMap
+  ?!@computedFormulaMap unused ioComputedFormulaMap
 {
-  [ioComputedFormulaMap searchKey !mFormulaName ?* ?let bitCount ?let result]
-  let @uint64 valueCount = [result valueCount !bitCount]
-  var s = "Display $" + mFormulaName + ": " + valueCount + " value" + if valueCount > 1L then "s" else "" end + "\n"
-  message s
+  [@binaryset setNodeTableSize !mSetting.uint]
+}
+
+#·······················································································································
+
+override method @setting_andCacheMapSize analyzeFormula 
+  ?let @string unused inSourceFilePath
+  ?let @domainMap unused inDomainMap
+  ?!@computedFormulaMap unused ioComputedFormulaMap
+{
+  [@binaryset setAndTableSize !mSetting.uint]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
