@@ -62,6 +62,10 @@ class @existInExpression, @forAllInExpression : @expression {
 enum @comparison {
   case equal
   case notEqual
+  case lowerOrEqual
+  case lowerThan
+  case greaterOrEqual
+  case greaterThan
 }
 
 #·······················································································································
@@ -186,18 +190,21 @@ rule <factor> !@expression outExpression {
   $formula$ ?let formulaName
   @formulaParameterListInExpression parameterList = {}
   $($
-  repeat
-    $identifier$ ?let parameterName
-    @lstringlist fieldNames = {}
+  select
+  or
     repeat
+      $identifier$ ?let parameterName
+      @lstringlist fieldNames = {}
+      repeat
+      while
+        $.$
+        $identifier$ ?let fieldName
+        fieldNames += !fieldName
+      end
+      parameterList += !parameterName !fieldNames
     while
-      $.$
-      $identifier$ ?let fieldName
-      fieldNames += !fieldName
+      $,$
     end
-    parameterList += !parameterName !fieldNames
-  while
-    $,$
   end
   $)$
   outExpression = @formulaInExpression.new {!formulaName !parameterList}
@@ -243,6 +250,18 @@ rule <factor> !@expression outExpression {
   or
     $!=$
     comparison = .notEqual
+  or
+    $<=$
+    comparison = .lowerOrEqual
+  or
+    $<$
+    comparison = .lowerThan
+  or
+    $>=$
+    comparison = .greaterOrEqual
+  or
+    $>$
+    comparison = .greaterThan
   end
   select
     $integer$ ?let constant
@@ -530,6 +549,14 @@ override getter @comparisonWithConstantInExpression computeExpression
       outResult = @binaryset.binarySetWithEqualToConstant {!idx !bitCount ![mConstant.uint uint64]}
     case notEqual :
       outResult = @binaryset.binarySetWithNotEqualToConstant {!idx !bitCount ![mConstant.uint uint64]}
+    case lowerOrEqual :
+      outResult = @binaryset.binarySetWithLowerOrEqualToConstant {!idx !bitCount ![mConstant.uint uint64]}
+    case lowerThan :
+      outResult = @binaryset.binarySetWithStrictLowerThanConstant {!idx !bitCount ![mConstant.uint uint64]}
+    case greaterOrEqual :
+      outResult = @binaryset.binarySetWithGreaterOrEqualToConstant {!idx !bitCount ![mConstant.uint uint64]}
+    case greaterThan :
+      outResult = @binaryset.binarySetWithStrictGreaterThanConstant {!idx !bitCount ![mConstant.uint uint64]}
     end
   end
 }
@@ -571,6 +598,14 @@ override getter @variableComparisonInExpression computeExpression
       outResult = @binaryset.binarySetWithEqualComparison {!leftIdx !leftBitCount !rightIdx}
     case notEqual :
       outResult = @binaryset.binarySetWithNotEqualComparison {!leftIdx !leftBitCount !rightIdx}
+    case lowerOrEqual :
+      outResult = @binaryset.binarySetWithLowerOrEqualComparison {!leftIdx !leftBitCount !rightIdx}
+    case lowerThan :
+      outResult = @binaryset.binarySetWithStrictLowerComparison {!leftIdx !leftBitCount !rightIdx}
+    case greaterOrEqual :
+      outResult = @binaryset.binarySetWithGreaterOrEqualComparison {!leftIdx !leftBitCount !rightIdx}
+    case greaterThan :
+      outResult = @binaryset.binarySetWithStrictGreaterComparison {!leftIdx !leftBitCount !rightIdx}
     end
   end
 }
