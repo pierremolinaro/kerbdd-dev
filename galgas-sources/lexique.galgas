@@ -12,16 +12,15 @@ $identifier$ ! tokenString error message "an identifier"
 
 #--- This is the keyword list
 list keyWordList style keywordsStyle error message "the '%K' keyword" {
-   "ite_cache", "and_cache",
-   "use_and", "use_ite", "use_and_ite",
-   "map",
-   "bdd",      "domain",
-   "bool",     "record",
+#   "ite_cache", "and_cache",
+#   "use_and", "use_ite", "use_and_ite",
+#   "map",
+   "domain",
+   "bool",
    "true",     "false",
    "display",  "include", "graphviz",
-   "dump",     "verify",
-   "end",      "if",
-   "then",     "else"
+   "dump" #     "verify",
+#    "if", "then",     "else"
 }
 
 rule 'a'->'z' |  'A'->'Z' {
