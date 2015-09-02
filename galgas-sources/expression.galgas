@@ -471,7 +471,7 @@ override getter @formulaInExpression computeExpression
     : outResult
   else
     @uintlist transformationList = {}
-    for (formalName formalBitIndex formalBitCount) in varList, > (parameterName fieldNameList) in mParameterList do
+    for > (formalName formalBitIndex formalBitCount) in varList, > (parameterName fieldNameList) in mParameterList do
       [inVarMap searchKey !parameterName ?@uint parameterIndex ?@uint parameterBitCount ?@recordDomainMap subdomainMap]
       for (fieldName) in fieldNameList do
         [subdomainMap searchKey !fieldName ?let fieldRelativeBitIndex ?parameterBitCount ?let fieldSubdomainMap]
