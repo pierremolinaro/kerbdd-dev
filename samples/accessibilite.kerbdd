@@ -1,30 +1,30 @@
 #--- Ensemble des transitions du graphe
-$Trans (qs:bool[3], qd:bool[3]) :=
+Trans (qs:bool[3], qd:bool[3]) :=
    ({qs=0} & {qd=1}) | ({qs=1} & {qd=2}) | ({qs=2} & {qd=3}) |
    ({qs=3} & {qd=4}) | ({qs=2} & {qd=1}) | ({qs=5} & {qd=6}) |
    ({qs=7} & {qd=5}) ;
-dump $Trans ;
+dump Trans ;
 
 #--- Etat initial
-$Initial (q:bool[3]) := {q=0} ;
+Initial (q:bool[3]) := {q=0} ;
 
 #--- Calcul des etats accessibles par plus petit point fixe
-$Acces (q:bool[3]) += $Initial (q) | ? t:bool[3] ($Acces (t) & $Trans (t, q)) ;
+Acces (q:bool[3]) += Initial (q) | ? t:bool[3] (Acces (t) & Trans (t, q)) ;
 
 #--- Meme formule, calcul du plus grand point fixe
-$Acces2 (q:bool[3]) -= $Initial (q) | ? t:bool[3] ($Acces2 (t) & $Trans (t, q)) ;
+Acces2 (q:bool[3]) -= Initial (q) | ? t:bool[3] (Acces2 (t) & Trans (t, q)) ;
 
 #--- Calcul des etats non-accessibles par plus grand point fixe
-$NonAccessibles (q:bool[3]) -= ~($Initial (q) | ? t:bool[3] (~$NonAccessibles (t) & $Trans (t, q))) ;
+NonAccessibles (q:bool[3]) -= ~(Initial (q) | ? t:bool[3] (~NonAccessibles (t) & Trans (t, q))) ;
 
-$NonAccessibles2 (q:bool[3]) -= ~$Initial (q) & !t:bool[3] ($Trans (t, q) -> $NonAccessibles2 (t)) ;
+NonAccessibles2 (q:bool[3]) -= ~Initial (q) & !t:bool[3] (Trans (t, q) -> NonAccessibles2 (t)) ;
 
 #--- Ensemble des etats morts
-$NoSucc (q:bool[3]) := $Acces (q) & ~ ? t:bool[3] ($Trans (q, t)) ; 
+NoSucc (q:bool[3]) := Acces (q) & ~ ? t:bool[3] (Trans (q, t)) ; 
 
 #--- Ensemble des etats ne pouvant conduire que vers un etat mort
-$DeadLock (q:bool[3]) += $Acces (q) &
-             !t:bool[3] (($Acces (q) & $Trans (q, t)) -> $DeadLock (t)) ;
+DeadLock (q:bool[3]) += Acces (q) &
+             !t:bool[3] ((Acces (q) & Trans (q, t)) -> DeadLock (t)) ;
 
-$DeadLock2 (q:bool[3]) += $Acces (q) & ~?t:bool[3] ($Trans (q, t) & ~$DeadLock2 (t)) ;
-dump $DeadLock2 ;
+DeadLock2 (q:bool[3]) += Acces (q) & ~?t:bool[3] (Trans (q, t) & ~DeadLock2 (t)) ;
+dump DeadLock2 ;

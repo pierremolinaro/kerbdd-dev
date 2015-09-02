@@ -13,9 +13,9 @@ domain etat : bool[4] ; #0..12 ;
 #11 BC
 #12 CB
 
-$d (q:etat) := {q <= 12} ;
+d (q:etat) := {q <= 12} ;
 
-$trans (qs:etat, qd:etat) :=
+trans (qs:etat, qd:etat) :=
  ({qs =  0} & {qd =  3}) | ({qs =  0} & {qd =  4}) | ({qs =  0} & {qd =  5}) |
  ({qs =  1} & {qd =  6}) | ({qs =  1} & {qd =  9}) |
  ({qs =  2} & {qd =  8}) | ({qs =  2} & {qd = 12}) |
@@ -37,20 +37,20 @@ domain etatProduit : (
   s3 : etat
 ) ;
 
-$transProduit (s:etatProduit, q:etatProduit) :=
-  ($trans (s.s1, q.s1) & {s.s2 = q.s2} & {s.s3 = q.s3}) |
-  ({s.s1 = q.s1} & $trans (s.s2, q.s2) & {s.s3 = q.s3}) |
-  ({s.s1 = q.s1} & {s.s2 = q.s2} & $trans (s.s3, q.s3)) ;
+transProduit (s:etatProduit, q:etatProduit) :=
+  (trans (s.s1, q.s1) & {s.s2 = q.s2} & {s.s3 = q.s3}) |
+  ({s.s1 = q.s1} & trans (s.s2, q.s2) & {s.s3 = q.s3}) |
+  ({s.s1 = q.s1} & {s.s2 = q.s2} & trans (s.s3, q.s3)) ;
 
-$etatsProduitsDepart (q:etatProduit) := ?s:etatProduit ($transProduit (q, s)) ;
-#graphviz $etatsProduitsDepart ;
-#graphviz $transProduit ;
+etatsProduitsDepart (q:etatProduit) := ?s:etatProduit (transProduit (q, s)) ;
+#graphviz etatsProduitsDepart ;
+#graphviz transProduit ;
 
-$etatsProduitsArrivee (q:etatProduit) := ?s:etatProduit ($transProduit (s, q)) ;
+etatsProduitsArrivee (q:etatProduit) := ?s:etatProduit (transProduit (s, q)) ;
 
 #--- Definition des etats interdits
 
-$pairesInterditesElementaires (qa:etat, qb:etat) :=
+pairesInterditesElementaires (qa:etat, qb:etat) :=
   ({qa =  5} & {qb =  8}) |
   ({qa = 11} & {qb = 12}) |
   ({qa =  4} & {qb =  7}) |
@@ -59,56 +59,56 @@ $pairesInterditesElementaires (qa:etat, qb:etat) :=
   ({qa =  1} & {qb =  1}) |
   ({qa =  2} & {qb =  2}) ;
 
-$pairesInterditesSymetriques (qa:etat, qb:etat) :=
-  $pairesInterditesElementaires (qa, qb) | $pairesInterditesElementaires (qb, qa) ;
+pairesInterditesSymetriques (qa:etat, qb:etat) :=
+  pairesInterditesElementaires (qa, qb) | pairesInterditesElementaires (qb, qa) ;
 
 
-$etatsInterditsProduit (q:etatProduit) :=
-  $pairesInterditesSymetriques (q.s1, q.s2) |
-  $pairesInterditesSymetriques (q.s2, q.s3) |
-  $pairesInterditesSymetriques (q.s3, q.s1) ;
+etatsInterditsProduit (q:etatProduit) :=
+  pairesInterditesSymetriques (q.s1, q.s2) |
+  pairesInterditesSymetriques (q.s2, q.s3) |
+  pairesInterditesSymetriques (q.s3, q.s1) ;
 
 #--- Supression etats interdits
-$transitionsProduitsAutorises (s:etatProduit, q:etatProduit) :=
-  $transProduit (s, q) &
-  (~ $etatsInterditsProduit (s)) &
-  (~ $etatsInterditsProduit (q)) ;
+transitionsProduitsAutorises (s:etatProduit, q:etatProduit) :=
+  transProduit (s, q) &
+  (~ etatsInterditsProduit (s)) &
+  (~ etatsInterditsProduit (q)) ;
 
 #--- Calcul accessibilite
-$etatInitial (q:etatProduit) := {q.s1=0} & {q.s2=0} & {q.s3=0} ;
+etatInitial (q:etatProduit) := {q.s1=0} & {q.s2=0} & {q.s3=0} ;
 
-$etatsAccessibles (q:etatProduit) +=
-  $etatInitial (q) | (?s:etatProduit ($etatsAccessibles (s) & $transitionsProduitsAutorises (s, q))) ;
+etatsAccessibles (q:etatProduit) +=
+  etatInitial (q) | (?s:etatProduit (etatsAccessibles (s) & transitionsProduitsAutorises (s, q))) ;
 
-$transitionsAccessibles (s:etatProduit, q:etatProduit) :=
-  $transitionsProduitsAutorises (s, q) & $etatsAccessibles (s) ;
+transitionsAccessibles (s:etatProduit, q:etatProduit) :=
+  transitionsProduitsAutorises (s, q) & etatsAccessibles (s) ;
 
 #--- Calcul reinitiabilite
-$etatFinal (q:etatProduit) := {q.s1=0} & {q.s2=0} & {q.s3=0} ;
+etatFinal (q:etatProduit) := {q.s1=0} & {q.s2=0} & {q.s3=0} ;
 
-$etatsReinitialisables (q:etatProduit) +=
-  $etatFinal (q) | (?s:etatProduit ($etatsReinitialisables (s) & $transitionsAccessibles (q, s))) ;
+etatsReinitialisables (q:etatProduit) +=
+  etatFinal (q) | (?s:etatProduit (etatsReinitialisables (s) & transitionsAccessibles (q, s))) ;
 
-$transitionsReinitialisables (s:etatProduit, q:etatProduit) :=
-  $transitionsAccessibles (s, q) & $etatsReinitialisables (q) ;
+transitionsReinitialisables (s:etatProduit, q:etatProduit) :=
+  transitionsAccessibles (s, q) & etatsReinitialisables (q) ;
 
 #--- Accessibilite a partir de w1
-$etatW1 (q:etatProduit) := {q.s1=1} & $etatsReinitialisables (q) ;
+etatW1 (q:etatProduit) := {q.s1=1} & etatsReinitialisables (q) ;
 
-$etatsAccessiblesAPartirDeW1 (q:etatProduit) +=
-  $etatW1 (q) | (?s:etatProduit ($etatsAccessiblesAPartirDeW1 (s) & $transitionsReinitialisables (s, q))) ;
+etatsAccessiblesAPartirDeW1 (q:etatProduit) +=
+  etatW1 (q) | (?s:etatProduit (etatsAccessiblesAPartirDeW1 (s) & transitionsReinitialisables (s, q))) ;
 
-$egaliteEtatsAccessiblesAPartirDeW1 () :=
-    ! q:etatProduit ($etatsAccessiblesAPartirDeW1 (q) = $etatsReinitialisables (q)) ;
+egaliteEtatsAccessiblesAPartirDeW1 () :=
+    ! q:etatProduit (etatsAccessiblesAPartirDeW1 (q) = etatsReinitialisables (q)) ;
 
 #--- Accessibilite � partir de w2
-$etatW2 (q:etatProduit) := {q.s1=2} & $etatsReinitialisables (q) ;
+etatW2 (q:etatProduit) := {q.s1=2} & etatsReinitialisables (q) ;
 
-$etatsAccessiblesAPartirDeW2 (q:etatProduit) +=
-  $etatW2 (q) | (?s:etatProduit ($etatsAccessiblesAPartirDeW2 (s) & $transitionsReinitialisables (s, q))) ;
+etatsAccessiblesAPartirDeW2 (q:etatProduit) +=
+  etatW2 (q) | (?s:etatProduit (etatsAccessiblesAPartirDeW2 (s) & transitionsReinitialisables (s, q))) ;
 
-$egaliteEtatsAccessiblesAPartirDeW2 () :=
-    ! q:etatProduit ($etatsAccessiblesAPartirDeW2 (q) = $etatsReinitialisables (q)) ;
+egaliteEtatsAccessiblesAPartirDeW2 () :=
+    ! q:etatProduit (etatsAccessiblesAPartirDeW2 (q) = etatsReinitialisables (q)) ;
 
 
 

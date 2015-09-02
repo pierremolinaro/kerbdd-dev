@@ -25,7 +25,7 @@ syntax extension kerbdd_syntax {
 #·······················································································································
 
 rule <topLevelDeClaration> ?!@ast ioAST {
-  $formula$ ?let formulaName
+  $identifier$ ?let formulaName
   @domainFieldList domainFieldList
   $($
   select
@@ -81,7 +81,7 @@ override method @assignmentFormula analyzeFormula
 #--- Compute expression
   switch mKind
   case assignment :
-    message "$" + mFormulaName + "..."
+    message mFormulaName.string + "..."
     let timer = @timer.start
     let result = [mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
     [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
@@ -92,7 +92,7 @@ override method @assignmentFormula analyzeFormula
       + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
       + " (" + timer + ")\n"
   case fixedPoint (@binaryset startValue) :
-    message "$" + mFormulaName + "..."
+    message mFormulaName.string + "..."
     let timer = @timer.start
     @binaryset result = startValue
     [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]

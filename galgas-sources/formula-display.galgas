@@ -16,7 +16,7 @@ syntax extension kerbdd_syntax {
 
   rule <topLevelDeClaration> ?!@ast ioAST {
     $display$
-    $formula$ ?let formulaName
+    $identifier$ ?let formulaName
     $;$
     ioAST.mFormulaList += !@displayFormula.new {!formulaName}
   }
