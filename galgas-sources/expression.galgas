@@ -38,9 +38,16 @@ class @trueExpression, @falseExpression : @expression {
 
 #·······················································································································
 
+list @formulaParameterListInExpression {
+  @lstring mParameterName
+  @lstringlist mFieldNames
+}
+
+#·······················································································································
+
 class @formulaInExpression : @expression {
   @lstring mFormulaName
-  @lstringlist mParameterList
+  @formulaParameterListInExpression mParameterList
 }
 
 #·······················································································································
@@ -61,6 +68,7 @@ enum @comparison {
 
 class @comparisonWithConstantInExpression : @expression {
   @lstring mVarName
+  @lstringlist mFieldNames
   @comparison mComparison
   @luint mConstant
 }
@@ -69,8 +77,10 @@ class @comparisonWithConstantInExpression : @expression {
 
 class @variableComparisonInExpression : @expression {
   @lstring mLeftVarName
+  @lstringlist mLeftFieldNames
   @comparison mComparison
   @lstring mRightVarName
+  @lstringlist mRightFieldNames
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -174,11 +184,18 @@ rule <factor> !@expression outExpression {
 
 rule <factor> !@expression outExpression {
   $formula$ ?let formulaName
-  @lstringlist parameterList = {}
+  @formulaParameterListInExpression parameterList = {}
   $($
   repeat
     $identifier$ ?let parameterName
-    parameterList += !parameterName
+    @lstringlist fieldNames = {}
+    repeat
+    while
+      $.$
+      $identifier$ ?let fieldName
+      fieldNames += !fieldName
+    end
+    parameterList += !parameterName !fieldNames
   while
     $,$
   end
@@ -212,6 +229,13 @@ rule <factor> !@expression outExpression {
 rule <factor> !@expression outExpression {
   ${$
   $identifier$ ?let varName
+  @lstringlist leftFieldNames = {}
+  repeat
+  while
+    $.$
+    $identifier$ ?let fieldName
+    leftFieldNames += !fieldName
+  end
   @comparison comparison
   select
     $=$
@@ -222,10 +246,17 @@ rule <factor> !@expression outExpression {
   end
   select
     $integer$ ?let constant
-    outExpression = @comparisonWithConstantInExpression.new {!varName !comparison !constant}
+    outExpression = @comparisonWithConstantInExpression.new {!varName !leftFieldNames !comparison !constant}
   or
     $identifier$ ?let rightVarName
-    outExpression = @variableComparisonInExpression.new {!varName !comparison !rightVarName}
+    @lstringlist rightFieldNames = {}
+    repeat
+    while
+      $.$
+      $identifier$ ?let fieldName
+      rightFieldNames += !fieldName
+    end
+    outExpression = @variableComparisonInExpression.new {!varName !leftFieldNames !comparison !rightVarName !rightFieldNames}
   end
   $}$
 }
@@ -254,8 +285,10 @@ override getter @varInExpression computeExpression
   ?let @computedFormulaMap unused inComputedFormulaMap
   -> @binaryset outResult
 {
-  [inVarMap searchKey !mVarName ?let idx ?let bitCount]
-  if bitCount != 1 then
+  [inVarMap searchKey !mVarName ?let idx ?let bitCount ?let subdomainMap]
+  if [subdomainMap count] > 0 then
+    error mVarName : "variable is a record; use dot notation"
+  elsif bitCount != 1 then
     error mVarName : "variable is not boolean; use {...} or dot notation"
   end
   outResult = @binaryset.binarySetWithBit {!idx}
@@ -270,8 +303,10 @@ override getter @varBitInExpression computeExpression
   ?let @computedFormulaMap unused inComputedFormulaMap
   -> @binaryset outResult
 {
-  [inVarMap searchKey !mVarName ?let idx ?let bitCount]
-  if bitCount <= mVarBit.uint then
+  [inVarMap searchKey !mVarName ?let idx ?let bitCount ?let subdomainMap]
+  if [subdomainMap count] > 0 then
+    error mVarName : "variable is a record; use dot notation"
+  elsif bitCount <= mVarBit.uint then
     error mVarBit : "bit index should be < " + bitCount
   end
   outResult = @binaryset.binarySetWithBit {!idx + mVarBit.uint}
@@ -417,8 +452,13 @@ override getter @formulaInExpression computeExpression
     : outResult
   else
     @uintlist transformationList = {}
-    for (formalName formalBitIndex formalBitCount) in varList, > (parameterName) in mParameterList do
-      [inVarMap searchKey !parameterName ?let parameterIndex ?let parameterBitCount]
+    for (formalName formalBitIndex formalBitCount) in varList, > (parameterName fieldNameList) in mParameterList do
+      [inVarMap searchKey !parameterName ?@uint parameterIndex ?@uint parameterBitCount ?@recordDomainMap subdomainMap]
+      for (fieldName) in fieldNameList do
+        [subdomainMap searchKey !fieldName ?let fieldRelativeBitIndex ?parameterBitCount ?let fieldSubdomainMap]
+        parameterIndex = parameterIndex + fieldRelativeBitIndex
+        subdomainMap = fieldSubdomainMap
+      end
       if formalBitCount != parameterBitCount then
         error parameterName : "this parameter is declared with a size of "
           + parameterBitCount + " bit" + if parameterBitCount > 1 then "s" else "" end
@@ -474,8 +514,15 @@ override getter @comparisonWithConstantInExpression computeExpression
   ?let @computedFormulaMap unused inComputedFormulaMap
   -> @binaryset outResult
 {
-  [inVarMap searchKey !mVarName ?let idx ?let bitCount]
-  if [mConstant.uint significantBitCount] > bitCount then
+  [inVarMap searchKey !mVarName ?@uint idx ?@uint bitCount ?@recordDomainMap subDomainMap]
+  for (fieldName) in mFieldNames do
+    [subDomainMap searchKey !fieldName ?let fieldRelativeBitIndex ?bitCount ?let fieldSubdomainMap]
+    idx = idx + fieldRelativeBitIndex
+    subDomainMap = fieldSubdomainMap
+  end
+  if [subDomainMap count] > 0 then
+    error mVarName : "variable is a record; use dot notation" : outResult
+  elsif [mConstant.uint significantBitCount] > bitCount then
     error mConstant : "Constant too large (should be < 2**" + bitCount : outResult
   else
     switch mComparison
@@ -496,9 +543,23 @@ override getter @variableComparisonInExpression computeExpression
   ?let @computedFormulaMap unused inComputedFormulaMap
   -> @binaryset outResult
 {
-  [inVarMap searchKey !mLeftVarName  ?let  leftIdx ?let  leftBitCount]
-  [inVarMap searchKey !mRightVarName ?let rightIdx ?let rightBitCount]
-  if leftBitCount != rightBitCount then
+  [inVarMap searchKey !mLeftVarName  ?@uint  leftIdx ?@uint  leftBitCount ?@recordDomainMap  leftSubDomainMap]
+  for (fieldName) in mLeftFieldNames do
+    [leftSubDomainMap searchKey !fieldName ?let fieldRelativeBitIndex ?leftBitCount ?let fieldSubdomainMap]
+    leftIdx = leftIdx + fieldRelativeBitIndex
+    leftSubDomainMap = fieldSubdomainMap
+  end
+  [inVarMap searchKey !mRightVarName ?@uint rightIdx ?@uint rightBitCount ?@recordDomainMap rightSubDomainMap]
+  for (fieldName) in mRightFieldNames do
+    [rightSubDomainMap searchKey !fieldName ?let fieldRelativeBitIndex ?rightBitCount ?let fieldSubdomainMap]
+    rightIdx = rightIdx + fieldRelativeBitIndex
+    rightSubDomainMap = fieldSubdomainMap
+  end
+  if [leftSubDomainMap count] > 0 then
+    error mLeftVarName : "variable is a record; use dot notation" : outResult
+  elsif [rightSubDomainMap count] > 0 then
+    error mRightVarName : "variable is a record; use dot notation" : outResult
+  elsif leftBitCount != rightBitCount then
     error mRightVarName : "'" + mLeftVarName + "' variable uses "
       + leftBitCount + " bit" + if leftBitCount > 1 then "s" else "" end
       + ", but this variable uses "

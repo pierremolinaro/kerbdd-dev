@@ -12,15 +12,15 @@ $Trans2 (qs:etat, u:action, qd:etat) := $Trans1 (qs, u, qd) ;
 $vecteurSynchro (t:action, u:action) := ({t=3} | {u=3}) & {t != u} ;
 
 #------------------ Produit des deux automates ------------------------
-domain etatProduit : record
-  e1 : etat ;
-  e2 : etat ;
-end record ;
+domain etatProduit : (
+  e1 : etat,
+  e2 : etat
+) ;
 
-domain actionProduit : record
-  a1 : action ;
-  a2 : action ;
-end record ;
+domain actionProduit : (
+  a1 : action,
+  a2 : action
+) ;
 
 $Trans (qs: etatProduit, tu: actionProduit, qd: etatProduit) :=
  $vecteurSynchro (tu.a1, tu.a2) &

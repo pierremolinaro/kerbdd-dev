@@ -99,8 +99,19 @@ rule <type> !@bddType outType {
 #    ANALYZE DOMAIN                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+map @recordDomainMap {
+  @uint mIndex
+  @uint mBitCount
+  @recordDomainMap mSubDomain
+  insert insertKey error message "the '%K' field is already declared in %L"
+  search searchKey error message "there is no '%K' field"
+}
+
+#·······················································································································
+
 map @domainMap {
   @uint mBitCount
+  @recordDomainMap mRecordMap
   insert insertKey error message "the '%K' domain is already declared in %L"
   search searchKey error message "there is no '%K' domain"
 }
@@ -114,17 +125,31 @@ method @domainDeclarationList analyze !@domainMap outDomainMap {
     case type (@bddType type) :
       switch type
       case bool :
-        [!?outDomainMap insertKey !name !1]
+        [!?outDomainMap insertKey !name !1 !{}]
       case boolArray (@uint size) :
-        [!?outDomainMap insertKey !name !size]
+        [!?outDomainMap insertKey !name !size !{}]
       case namedType (@lstring typeName) :
-        [outDomainMap searchKey !typeName ?let size] ;
-        [!?outDomainMap insertKey !name !size]
+        [outDomainMap searchKey !typeName ?let size ?let subdomain] ;
+        [!?outDomainMap insertKey !name !size !subdomain]
       end
     case record (@domainFieldList fieldList) :
-      for > () in fieldList while @uint.errorCount == 0 do
-      
+      var bitIndex = 0
+      @recordDomainMap recordMap = {}
+      for > (name typeDefinition) in fieldList while @uint.errorCount == 0 do
+        switch typeDefinition
+        case bool :
+          [!?recordMap insertKey !name !bitIndex !1 !{}]
+          bitIndex ++
+        case boolArray (@uint size) :
+          [!?recordMap insertKey !name !bitIndex !size !{}]
+          bitIndex = bitIndex + size
+        case namedType (@lstring typeName) :
+          [outDomainMap searchKey !typeName ?let size ?let subdomain] ;
+          [!?recordMap insertKey !name !bitIndex !size !subdomain]
+          bitIndex = bitIndex + size
+        end
       end
+      [!?outDomainMap insertKey !name !bitIndex !recordMap]      
     end
   end
 }
@@ -144,6 +169,7 @@ list @varList {
 map @varMap {
   @uint mIndex
   @uint mBitCount
+  @recordDomainMap mRecordDomainMap
   insert insertKey error message "the '%K' variable is already declared in %L"
   search searchKey error message "there is no '%K' variable"
 }
@@ -160,16 +186,16 @@ method @domainFieldList analyze
   for > (idf type) in self do
     switch type
     case bool :
-      [!?ioVarMap insertKey !idf !ioTotalBitCount !1]
+      [!?ioVarMap insertKey !idf !ioTotalBitCount !1 !{}]
       [!?ioVarList insertAtIndex !idf.string !ioTotalBitCount !1 !0]
       ioTotalBitCount ++
     case boolArray (@uint size) :
-      [!?ioVarMap insertKey !idf !ioTotalBitCount !size]
+      [!?ioVarMap insertKey !idf !ioTotalBitCount !size !{}]
       [!?ioVarList insertAtIndex !idf.string !ioTotalBitCount !size !0]
       ioTotalBitCount = ioTotalBitCount + size
     case namedType (@lstring typeName) :
-      [inDomainMap searchKey !typeName ?let size] ;
-      [!?ioVarMap insertKey !idf !ioTotalBitCount !size]
+      [inDomainMap searchKey !typeName ?let size ?let subDomainMap] ;
+      [!?ioVarMap insertKey !idf !ioTotalBitCount !size !subDomainMap]
       [!?ioVarList insertAtIndex !idf.string !ioTotalBitCount !size !0]
       ioTotalBitCount = ioTotalBitCount + size
     end
