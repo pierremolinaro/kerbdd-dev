@@ -1,18 +1,18 @@
-$A (aa : bool, b : bool[2], c:bool) := (aa ^ b.0 ^ b.1) & c ;
-dump $A ;
+A (aa : bool, b : bool[2], c:bool) := (aa ^ b.0 ^ b.1) & c ;
+dump A ;
 
-$E (aa : bool, b : bool[2], c:bool) := $A (c, b, aa) ;
-dump $E ;
+E (aa : bool, b : bool[2], c:bool) := A (c, b, aa) ;
+dump E ;
 
-graphviz $A ;
+graphviz A ;
 
-$B (a:bool, b:bool, c:bool) := a ;
-dump $B ;
+B (a:bool, b:bool, c:bool) := a ;
+dump B ;
 
-$C (a:bool, b:bool, c:bool) := $B (a, c, b) ;
-dump $C ;
+C (a:bool, b:bool, c:bool) := B (a, c, b) ;
+dump C ;
 
 
-$D (a:bool, b:bool, c:bool) := $B (c, b, a) ;
-dump $D ;
+D (a:bool, b:bool, c:bool) := B (c, b, a) ;
+dump D ;
 

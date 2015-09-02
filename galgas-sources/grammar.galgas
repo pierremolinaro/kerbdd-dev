@@ -2,7 +2,7 @@
 #    GRAMMAR                                                                                                            
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-grammar kerbdd_grammar "LL1" {
+grammar kerbdd_grammar "SLR" {
   syntax kerbdd_syntax
   <start_symbol> !@ast outAST
 }

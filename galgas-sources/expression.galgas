@@ -187,7 +187,7 @@ rule <factor> !@expression outExpression {
 #·······················································································································
 
 rule <factor> !@expression outExpression {
-  $formula$ ?let formulaName
+  $identifier$ ?let formulaName
   @formulaParameterListInExpression parameterList = {}
   $($
   select

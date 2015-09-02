@@ -35,24 +35,24 @@ rule 'a'->'z' |  'A'->'Z' {
 #   Formulas                                                                                                           *
 #----------------------------------------------------------------------------------------------------------------------*
 
-style formulaStyle -> "Formula"
-
-$formula$ ! tokenString  style formulaStyle error message "a formula $..."
-
-message formulaError : "in an attribute name, a letter or a digit should follow the '$' character"
-
-rule '$' {
-  select
-  case 'a'->'z' | 'A'->'Z' | '0'->'9' :
-    repeat
-      enterCharacterIntoString (!?tokenString !*)
-    while 'a'->'z' | 'A'->'Z'| '0'->'9' :
-    end
-  default
-    error formulaError
-  end
-  send $formula$ 
-}
+#style formulaStyle -> "Formula"
+#
+#$formula$ ! tokenString  style formulaStyle error message "a formula $..."
+#
+#message formulaError : "in an attribute name, a letter or a digit should follow the '$' character"
+#
+#rule '$' {
+#  select
+#  case 'a'->'z' | 'A'->'Z' | '0'->'9' :
+#    repeat
+#      enterCharacterIntoString (!?tokenString !*)
+#    while 'a'->'z' | 'A'->'Z'| '0'->'9' :
+#    end
+#  default
+#    error formulaError
+#  end
+#  send $formula$ 
+#}
 
 #----------------------------------------------------------------------------------------------------------------------*
 #   Literal decimal integers                                                                                           *
