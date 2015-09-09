@@ -7,6 +7,7 @@
   <Option compiler="gcc" />
   <Build>
    <Target title="Release">
+    <Option platforms="Windows;" />
     <Option output="kerbdd.exe" prefix_auto="0" extension_auto="0" />
     <Option object_output="objects" />
     <Option type="1" />
@@ -28,9 +29,11 @@
      <Add option="-Wall" />
      <Add option="-W" />
      <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
+     <Add option="-D_WIN32_WINNT=0x0501" />
     </Compiler>
    </Target>
    <Target title="Debug">
+    <Option platforms="Windows;" />
     <Option output="kerbdd-debug.exe" prefix_auto="0" extension_auto="0" />
     <Option object_output="objects_debug" />
     <Option deps_output=".deps_debug" />
@@ -52,6 +55,7 @@
      <Add option="-std=c++98" />
      <Add option="-Wall" />
      <Add option="-W" />
+     <Add option="-D_WIN32_WINNT=0x0501" />
     </Compiler>
    </Target>
   </Build>
@@ -64,7 +68,8 @@
    <Add directory="../build/output" />
   </Compiler>
   <Linker>
-   <Add library="comdlg32" />
+   <Add library="comdlg32" /><Add library="Ws2_32" />
+    <Add library="../libpm/gmp/libgmp-win32.a" />
   </Linker>
   <Unit filename="../build/libpm/all-libpm.cpp" />
   <Unit filename="../build/libpm/galgas2/all-galgas.cpp" />
