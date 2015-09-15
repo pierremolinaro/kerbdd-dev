@@ -14922,7 +14922,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
       ioArgument_ioComputedFormulaMap.modifier_insertKey (object->mAttribute_mFormulaName, var_varList, var_totalBitCount, var_result, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 87)) ;
       }
       GALGAS_uint_36__34_ var_valueCount = var_result.reader_valueCount (var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 88)) ;
-      GALGAS_uint_36__34_ var_nodeCount = var_result.reader_nodeCount (SOURCE_FILE ("formula-assignment.galgas", 89)) ;
+      GALGAS_uint_36__34_ var_nodeCount = var_result.reader_nodeCount (SOURCE_FILE ("formula-assignment.galgas", 90)) ;
       GALGAS_string temp_0 ;
       const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, var_valueCount.objectCompare (GALGAS_uint_36__34_ ((uint64_t) 1ULL))).boolEnum () ;
       if (kBoolTrue == test_1) {
@@ -14937,51 +14937,51 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
       }else if (kBoolFalse == test_3) {
         temp_2 = GALGAS_string::makeEmptyString () ;
       }
-      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 90)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 90)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 91)).add_operation (temp_0, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 91)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 91)).add_operation (var_nodeCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 92)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (var_timer.reader_string (SOURCE_FILE ("formula-assignment.galgas", 93)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 90)) ;
+      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 91)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 91)).add_operation (GALGAS_string ("("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 92)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (GALGAS_string (") value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (temp_0, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (var_nodeCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 93)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (var_timer.reader_string (SOURCE_FILE ("formula-assignment.galgas", 94)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 94)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 94))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 91)) ;
     }
     break ;
   case GALGAS_formulaKind::kEnum_fixedPoint:
     {
-      const cEnumAssociatedValues_formulaKind_fixedPoint * extractPtr_4624 = (const cEnumAssociatedValues_formulaKind_fixedPoint *) (object->mAttribute_mKind.unsafePointer ()) ;
-      const GALGAS_binaryset extractedValue_startValue = extractPtr_4624->mAssociatedValue0 ;
-      inCompiler->printMessage (object->mAttribute_mFormulaName.mAttribute_string.add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 95))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 95)) ;
-      GALGAS_timer var_timer = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.galgas", 96)) ;
+      const cEnumAssociatedValues_formulaKind_fixedPoint * extractPtr_4806 = (const cEnumAssociatedValues_formulaKind_fixedPoint *) (object->mAttribute_mKind.unsafePointer ()) ;
+      const GALGAS_binaryset extractedValue_startValue = extractPtr_4806->mAssociatedValue0 ;
+      inCompiler->printMessage (object->mAttribute_mFormulaName.mAttribute_string.add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 96))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 96)) ;
+      GALGAS_timer var_timer = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.galgas", 97)) ;
       GALGAS_binaryset var_result = extractedValue_startValue ;
       {
-      ioArgument_ioComputedFormulaMap.modifier_insertKey (object->mAttribute_mFormulaName, var_varList, var_totalBitCount, var_result, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 98)) ;
+      ioArgument_ioComputedFormulaMap.modifier_insertKey (object->mAttribute_mFormulaName, var_varList, var_totalBitCount, var_result, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 99)) ;
       }
       GALGAS_bool var_iterate = GALGAS_bool (true) ;
       GALGAS_uint var_iterationCount = GALGAS_uint ((uint32_t) 0U) ;
-      if (GALGAS_uint::constructor_max (SOURCE_FILE ("formula-assignment.galgas", 101)).isValid ()) {
-        uint32_t variant_3897 = GALGAS_uint::constructor_max (SOURCE_FILE ("formula-assignment.galgas", 101)).uintValue () ;
-        bool loop_3897 = true ;
-        while (loop_3897) {
-          loop_3897 = var_iterate.isValid () ;
-          if (loop_3897) {
-            loop_3897 = var_iterate.boolValue () ;
+      if (GALGAS_uint::constructor_max (SOURCE_FILE ("formula-assignment.galgas", 102)).isValid ()) {
+        uint32_t variant_3988 = GALGAS_uint::constructor_max (SOURCE_FILE ("formula-assignment.galgas", 102)).uintValue () ;
+        bool loop_3988 = true ;
+        while (loop_3988) {
+          loop_3988 = var_iterate.isValid () ;
+          if (loop_3988) {
+            loop_3988 = var_iterate.boolValue () ;
           }
-          if (loop_3897 && (0 == variant_3897)) {
-            loop_3897 = false ;
-            inCompiler->loopRunTimeVariantError (SOURCE_FILE ("formula-assignment.galgas", 101)) ;
+          if (loop_3988 && (0 == variant_3988)) {
+            loop_3988 = false ;
+            inCompiler->loopRunTimeVariantError (SOURCE_FILE ("formula-assignment.galgas", 102)) ;
           }
-          if (loop_3897) {
-            variant_3897 -- ;
-            var_iterationCount.increment_operation (inCompiler  COMMA_SOURCE_FILE ("formula-assignment.galgas", 102)) ;
-            GALGAS_binaryset var_r = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 103)) ;
+          if (loop_3988) {
+            variant_3988 -- ;
+            var_iterationCount.increment_operation (inCompiler  COMMA_SOURCE_FILE ("formula-assignment.galgas", 103)) ;
+            GALGAS_binaryset var_r = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 104)) ;
             const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, var_result.objectCompare (var_r)).boolEnum () ;
             if (kBoolTrue == test_4) {
               var_iterate = GALGAS_bool (false) ;
             }else if (kBoolFalse == test_4) {
               var_result = var_r ;
               {
-              ioArgument_ioComputedFormulaMap.modifier_setMValueForKey (var_result, object->mAttribute_mFormulaName.mAttribute_string, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 108)) ;
+              ioArgument_ioComputedFormulaMap.modifier_setMValueForKey (var_result, object->mAttribute_mFormulaName.mAttribute_string, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 109)) ;
               }
             }
           }
         }
       }
-      GALGAS_uint_36__34_ var_valueCount = var_result.reader_valueCount (var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 111)) ;
-      GALGAS_uint_36__34_ var_nodeCount = var_result.reader_nodeCount (SOURCE_FILE ("formula-assignment.galgas", 112)) ;
+      GALGAS_uint_36__34_ var_valueCount = var_result.reader_valueCount (var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 112)) ;
+      GALGAS_uint_36__34_ var_nodeCount = var_result.reader_nodeCount (SOURCE_FILE ("formula-assignment.galgas", 114)) ;
       GALGAS_string temp_5 ;
       const enumGalgasBool test_6 = GALGAS_bool (kIsStrictSup, var_iterationCount.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
       if (kBoolTrue == test_6) {
@@ -15003,7 +15003,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
       }else if (kBoolFalse == test_10) {
         temp_9 = GALGAS_string::makeEmptyString () ;
       }
-      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_iterationCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 113)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 113)).add_operation (GALGAS_string (" iteration"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 114)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 114)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 114)).add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 115)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 115)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 115)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 115)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 115)).add_operation (var_nodeCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 116)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (var_timer.reader_string (SOURCE_FILE ("formula-assignment.galgas", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 113)) ;
+      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_iterationCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 115)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 115)).add_operation (GALGAS_string (" iteration"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (GALGAS_string ("("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (GALGAS_string (") value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (var_nodeCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 118)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (var_timer.reader_string (SOURCE_FILE ("formula-assignment.galgas", 119)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 119)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 119))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 115)) ;
     }
     break ;
   }
