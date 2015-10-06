@@ -4863,6 +4863,7 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 
   public : static void _performSourceStringParsing_ (C_Compiler * inCompiler,
                                                      GALGAS_string inSourceString,
+                                                     GALGAS_string inNameString,
                                                      GALGAS_ast & outArgument0
                                                      COMMA_LOCATION_ARGS) ;
 
