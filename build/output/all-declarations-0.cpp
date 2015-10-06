@@ -8099,20 +8099,25 @@ void cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (C_Compiler * inComp
 
 void cGrammar_kerbdd_5F_grammar::_performSourceStringParsing_ (C_Compiler * inCompiler,
                                 GALGAS_string inSourceString,
+                                GALGAS_string inNameString,
                                 GALGAS_ast &  parameter_1
                                 COMMA_UNUSED_LOCATION_ARGS) {
-  C_Lexique_kerbdd_5F_lexique * scanner = NULL ;
-  macroMyNew (scanner, C_Lexique_kerbdd_5F_lexique (inCompiler, inSourceString.stringValue (), "" COMMA_HERE)) ;
-  if (scanner->sourceText () != NULL) {
-    const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
-                                                     gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
-                                                     gProductionsTable_kerbdd_grammar) ;
-    if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
-      cGrammar_kerbdd_5F_grammar grammar ;
-      grammar.nt_start_5F_symbol_ (parameter_1, scanner) ;
+  if (inSourceString.isValid () && inNameString.isValid ()) {
+    const C_String sourceString = inSourceString.stringValue () ;
+    const C_String nameString = inNameString.stringValue () ;
+    C_Lexique_kerbdd_5F_lexique * scanner = NULL ;
+    macroMyNew (scanner, C_Lexique_kerbdd_5F_lexique (inCompiler, sourceString, nameString COMMA_HERE)) ;
+    if (scanner->sourceText () != NULL) {
+      const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
+                                                       gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
+                                                       gProductionsTable_kerbdd_grammar) ;
+      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
+        cGrammar_kerbdd_5F_grammar grammar ;
+        grammar.nt_start_5F_symbol_ (parameter_1, scanner) ;
       }
+    }
+    macroDetachSharedObject (scanner) ;
   }
-  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
