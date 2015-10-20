@@ -2396,7 +2396,7 @@ GALGAS_domainFieldList GALGAS_domainFieldList::add_operation (const GALGAS_domai
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainFieldList GALGAS_domainFieldList::reader_subListWithRange (const GALGAS_range & inRange,
+GALGAS_domainFieldList GALGAS_domainFieldList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_domainFieldList result = GALGAS_domainFieldList::constructor_emptyList (THERE) ;
@@ -2406,7 +2406,7 @@ GALGAS_domainFieldList GALGAS_domainFieldList::reader_subListWithRange (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainFieldList GALGAS_domainFieldList::reader_subListFromIndex (const GALGAS_uint & inIndex,
+GALGAS_domainFieldList GALGAS_domainFieldList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_domainFieldList result = GALGAS_domainFieldList::constructor_emptyList (THERE) ;
@@ -2423,7 +2423,7 @@ void GALGAS_domainFieldList::dotAssign_operation (const GALGAS_domainFieldList i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_domainFieldList::reader_mVarNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_lstring GALGAS_domainFieldList::getter_mVarNameAtIndex (const GALGAS_uint & inIndex,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2438,7 +2438,7 @@ GALGAS_lstring GALGAS_domainFieldList::reader_mVarNameAtIndex (const GALGAS_uint
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bddType GALGAS_domainFieldList::reader_mTypeAtIndex (const GALGAS_uint & inIndex,
+GALGAS_bddType GALGAS_domainFieldList::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2811,7 +2811,7 @@ GALGAS_domainDeclarationList GALGAS_domainDeclarationList::add_operation (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainDeclarationList GALGAS_domainDeclarationList::reader_subListWithRange (const GALGAS_range & inRange,
+GALGAS_domainDeclarationList GALGAS_domainDeclarationList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_domainDeclarationList result = GALGAS_domainDeclarationList::constructor_emptyList (THERE) ;
@@ -2821,7 +2821,7 @@ GALGAS_domainDeclarationList GALGAS_domainDeclarationList::reader_subListWithRan
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainDeclarationList GALGAS_domainDeclarationList::reader_subListFromIndex (const GALGAS_uint & inIndex,
+GALGAS_domainDeclarationList GALGAS_domainDeclarationList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_domainDeclarationList result = GALGAS_domainDeclarationList::constructor_emptyList (THERE) ;
@@ -2838,7 +2838,7 @@ void GALGAS_domainDeclarationList::dotAssign_operation (const GALGAS_domainDecla
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_domainDeclarationList::reader_mDomainNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_lstring GALGAS_domainDeclarationList::getter_mDomainNameAtIndex (const GALGAS_uint & inIndex,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2853,7 +2853,7 @@ GALGAS_lstring GALGAS_domainDeclarationList::reader_mDomainNameAtIndex (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainDeclarationType GALGAS_domainDeclarationList::reader_mTypeAtIndex (const GALGAS_uint & inIndex,
+GALGAS_domainDeclarationType GALGAS_domainDeclarationList::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3046,7 +3046,7 @@ GALGAS_recordDomainMap GALGAS_recordDomainMap::constructor_mapWithMapToOverride 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_recordDomainMap GALGAS_recordDomainMap::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_recordDomainMap GALGAS_recordDomainMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
   GALGAS_recordDomainMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
@@ -3119,7 +3119,7 @@ void GALGAS_recordDomainMap::method_searchKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_recordDomainMap::reader_mIndexForKey (const GALGAS_string & inKey,
+GALGAS_uint GALGAS_recordDomainMap::getter_mIndexForKey (const GALGAS_string & inKey,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -3134,7 +3134,7 @@ GALGAS_uint GALGAS_recordDomainMap::reader_mIndexForKey (const GALGAS_string & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_recordDomainMap::reader_mBitCountForKey (const GALGAS_string & inKey,
+GALGAS_uint GALGAS_recordDomainMap::getter_mBitCountForKey (const GALGAS_string & inKey,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -3149,7 +3149,7 @@ GALGAS_uint GALGAS_recordDomainMap::reader_mBitCountForKey (const GALGAS_string 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_recordDomainMap GALGAS_recordDomainMap::reader_mSubDomainForKey (const GALGAS_string & inKey,
+GALGAS_recordDomainMap GALGAS_recordDomainMap::getter_mSubDomainForKey (const GALGAS_string & inKey,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -3397,7 +3397,7 @@ GALGAS_domainMap GALGAS_domainMap::constructor_mapWithMapToOverride (const GALGA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainMap GALGAS_domainMap::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_domainMap GALGAS_domainMap::getter_overriddenMap (C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_domainMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
@@ -3465,7 +3465,7 @@ void GALGAS_domainMap::method_searchKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_domainMap::reader_mBitCountForKey (const GALGAS_string & inKey,
+GALGAS_uint GALGAS_domainMap::getter_mBitCountForKey (const GALGAS_string & inKey,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -3480,7 +3480,7 @@ GALGAS_uint GALGAS_domainMap::reader_mBitCountForKey (const GALGAS_string & inKe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_recordDomainMap GALGAS_domainMap::reader_mRecordMapForKey (const GALGAS_string & inKey,
+GALGAS_recordDomainMap GALGAS_domainMap::getter_mRecordMapForKey (const GALGAS_string & inKey,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -3921,7 +3921,7 @@ GALGAS_varList GALGAS_varList::add_operation (const GALGAS_varList & inOperand,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_varList GALGAS_varList::reader_subListWithRange (const GALGAS_range & inRange,
+GALGAS_varList GALGAS_varList::getter_subListWithRange (const GALGAS_range & inRange,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_varList result = GALGAS_varList::constructor_emptyList (THERE) ;
@@ -3931,7 +3931,7 @@ GALGAS_varList GALGAS_varList::reader_subListWithRange (const GALGAS_range & inR
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_varList GALGAS_varList::reader_subListFromIndex (const GALGAS_uint & inIndex,
+GALGAS_varList GALGAS_varList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_varList result = GALGAS_varList::constructor_emptyList (THERE) ;
@@ -3948,7 +3948,7 @@ void GALGAS_varList::dotAssign_operation (const GALGAS_varList inOperand
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_varList::reader_mVarNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_varList::getter_mVarNameAtIndex (const GALGAS_uint & inIndex,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3963,7 +3963,7 @@ GALGAS_string GALGAS_varList::reader_mVarNameAtIndex (const GALGAS_uint & inInde
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_varList::reader_mBitIndexAtIndex (const GALGAS_uint & inIndex,
+GALGAS_uint GALGAS_varList::getter_mBitIndexAtIndex (const GALGAS_uint & inIndex,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3978,7 +3978,7 @@ GALGAS_uint GALGAS_varList::reader_mBitIndexAtIndex (const GALGAS_uint & inIndex
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_varList::reader_mBitCountAtIndex (const GALGAS_uint & inIndex,
+GALGAS_uint GALGAS_varList::getter_mBitCountAtIndex (const GALGAS_uint & inIndex,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -4179,7 +4179,7 @@ GALGAS_varMap GALGAS_varMap::constructor_mapWithMapToOverride (const GALGAS_varM
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_varMap GALGAS_varMap::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_varMap GALGAS_varMap::getter_overriddenMap (C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
   GALGAS_varMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
@@ -4252,7 +4252,7 @@ void GALGAS_varMap::method_searchKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_varMap::reader_mIndexForKey (const GALGAS_string & inKey,
+GALGAS_uint GALGAS_varMap::getter_mIndexForKey (const GALGAS_string & inKey,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -4267,7 +4267,7 @@ GALGAS_uint GALGAS_varMap::reader_mIndexForKey (const GALGAS_string & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_varMap::reader_mBitCountForKey (const GALGAS_string & inKey,
+GALGAS_uint GALGAS_varMap::getter_mBitCountForKey (const GALGAS_string & inKey,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -4282,7 +4282,7 @@ GALGAS_uint GALGAS_varMap::reader_mBitCountForKey (const GALGAS_string & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_recordDomainMap GALGAS_varMap::reader_mRecordDomainMapForKey (const GALGAS_string & inKey,
+GALGAS_recordDomainMap GALGAS_varMap::getter_mRecordDomainMapForKey (const GALGAS_string & inKey,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -4539,7 +4539,7 @@ GALGAS_computedFormulaMap GALGAS_computedFormulaMap::constructor_mapWithMapToOve
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_computedFormulaMap GALGAS_computedFormulaMap::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_computedFormulaMap GALGAS_computedFormulaMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
   GALGAS_computedFormulaMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
@@ -4612,7 +4612,7 @@ void GALGAS_computedFormulaMap::method_searchKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_varList GALGAS_computedFormulaMap::reader_mVarListForKey (const GALGAS_string & inKey,
+GALGAS_varList GALGAS_computedFormulaMap::getter_mVarListForKey (const GALGAS_string & inKey,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -4627,7 +4627,7 @@ GALGAS_varList GALGAS_computedFormulaMap::reader_mVarListForKey (const GALGAS_st
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_computedFormulaMap::reader_mBitCountForKey (const GALGAS_string & inKey,
+GALGAS_uint GALGAS_computedFormulaMap::getter_mBitCountForKey (const GALGAS_string & inKey,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -4642,7 +4642,7 @@ GALGAS_uint GALGAS_computedFormulaMap::reader_mBitCountForKey (const GALGAS_stri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_binaryset GALGAS_computedFormulaMap::reader_mValueForKey (const GALGAS_string & inKey,
+GALGAS_binaryset GALGAS_computedFormulaMap::getter_mValueForKey (const GALGAS_string & inKey,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -5079,7 +5079,7 @@ GALGAS_formulaParameterListInExpression GALGAS_formulaParameterListInExpression:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formulaParameterListInExpression GALGAS_formulaParameterListInExpression::reader_subListWithRange (const GALGAS_range & inRange,
+GALGAS_formulaParameterListInExpression GALGAS_formulaParameterListInExpression::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                           C_Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_formulaParameterListInExpression result = GALGAS_formulaParameterListInExpression::constructor_emptyList (THERE) ;
@@ -5089,7 +5089,7 @@ GALGAS_formulaParameterListInExpression GALGAS_formulaParameterListInExpression:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formulaParameterListInExpression GALGAS_formulaParameterListInExpression::reader_subListFromIndex (const GALGAS_uint & inIndex,
+GALGAS_formulaParameterListInExpression GALGAS_formulaParameterListInExpression::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                           C_Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_formulaParameterListInExpression result = GALGAS_formulaParameterListInExpression::constructor_emptyList (THERE) ;
@@ -5106,7 +5106,7 @@ void GALGAS_formulaParameterListInExpression::dotAssign_operation (const GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formulaParameterListInExpression::reader_mParameterNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_lstring GALGAS_formulaParameterListInExpression::getter_mParameterNameAtIndex (const GALGAS_uint & inIndex,
                                                                                       C_Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -5121,7 +5121,7 @@ GALGAS_lstring GALGAS_formulaParameterListInExpression::reader_mParameterNameAtI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_formulaParameterListInExpression::reader_mFieldNamesAtIndex (const GALGAS_uint & inIndex,
+GALGAS_lstringlist GALGAS_formulaParameterListInExpression::getter_mFieldNamesAtIndex (const GALGAS_uint & inIndex,
                                                                                        C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -5283,37 +5283,37 @@ static const char * gEnumNameArrayFor_comparison [7] = {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_comparison::reader_isEqual (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_comparison::getter_isEqual (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_equal == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_comparison::reader_isNotEqual (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_comparison::getter_isNotEqual (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_notEqual == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_comparison::reader_isLowerOrEqual (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_comparison::getter_isLowerOrEqual (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lowerOrEqual == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_comparison::reader_isLowerThan (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_comparison::getter_isLowerThan (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lowerThan == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_comparison::reader_isGreaterOrEqual (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_comparison::getter_isGreaterOrEqual (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_greaterOrEqual == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_comparison::reader_isGreaterThan (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_comparison::getter_isGreaterThan (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_greaterThan == mEnum) ;
 }
 
@@ -5542,7 +5542,7 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i3_ (GALGAS_bddType & 
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_kerbdd_5F_lexique::kToken__5D_) COMMA_SOURCE_FILE ("domain.galgas", 85)) ;
       const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_bitCount.mAttribute_uint.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        GALGAS_location location_1 (var_bitCount.reader_location (HERE)) ; // Implicit use of 'location' reader
+        GALGAS_location location_1 (var_bitCount.getter_location (HERE)) ; // Implicit use of 'location' getter
         inCompiler->emitSemanticError (location_1, GALGAS_string ("size should be > 0")  COMMA_SOURCE_FILE ("domain.galgas", 87)) ;
       }
       outArgument_outType = GALGAS_bddType::constructor_boolArray (var_bitCount.mAttribute_uint  COMMA_SOURCE_FILE ("domain.galgas", 89)) ;
@@ -6541,7 +6541,7 @@ GALGAS_formulaList GALGAS_formulaList::add_operation (const GALGAS_formulaList &
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formulaList GALGAS_formulaList::reader_subListWithRange (const GALGAS_range & inRange,
+GALGAS_formulaList GALGAS_formulaList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                 C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_formulaList result = GALGAS_formulaList::constructor_emptyList (THERE) ;
@@ -6551,7 +6551,7 @@ GALGAS_formulaList GALGAS_formulaList::reader_subListWithRange (const GALGAS_ran
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formulaList GALGAS_formulaList::reader_subListFromIndex (const GALGAS_uint & inIndex,
+GALGAS_formulaList GALGAS_formulaList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                 C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_formulaList result = GALGAS_formulaList::constructor_emptyList (THERE) ;
@@ -6568,7 +6568,7 @@ void GALGAS_formulaList::dotAssign_operation (const GALGAS_formulaList inOperand
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractFormula GALGAS_formulaList::reader_mFormulaAtIndex (const GALGAS_uint & inIndex,
+GALGAS_abstractFormula GALGAS_formulaList::getter_mFormulaAtIndex (const GALGAS_uint & inIndex,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -6739,13 +6739,13 @@ static const char * gEnumNameArrayFor_formulaKind [3] = {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_formulaKind::reader_isAssignment (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_formulaKind::getter_isAssignment (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_assignment == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_formulaKind::reader_isFixedPoint (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_formulaKind::getter_isFixedPoint (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_fixedPoint == mEnum) ;
 }
 
@@ -8063,7 +8063,7 @@ void cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (C_Compiler * inComp
                                 GALGAS_ast &  parameter_1
                                 COMMA_LOCATION_ARGS) {
   if (inFilePath.isValid ()) {
-    const GALGAS_string filePathAsString = inFilePath.reader_string (HERE) ;
+    const GALGAS_string filePathAsString = inFilePath.getter_string (HERE) ;
     C_String filePath = filePathAsString.stringValue () ;
     if (! C_FileManager::isAbsolutePath (filePath)) {
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
@@ -8082,14 +8082,14 @@ void cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (C_Compiler * inComp
       }else{
         C_String message ;
         message << "the '" << filePath << "' file exists, but cannot be read" ;
-        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;
+        const GALGAS_location errorLocation (inFilePath.getter_location (THERE)) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       C_String message ;
       message << "the '" << filePath << "' file does not exist" ;
-      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;
+      const GALGAS_location errorLocation (inFilePath.getter_location (THERE)) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;
     }
   }
@@ -8740,19 +8740,19 @@ static const char * gEnumNameArrayFor_bddType [4] = {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bddType::reader_isBool (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bddType::getter_isBool (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_bool == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bddType::reader_isBoolArray (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bddType::getter_isBoolArray (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_boolArray == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bddType::reader_isNamedType (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bddType::getter_isNamedType (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_namedType == mEnum) ;
 }
 
@@ -8961,13 +8961,13 @@ static const char * gEnumNameArrayFor_domainDeclarationType [3] = {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_domainDeclarationType::reader_isType (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_domainDeclarationType::getter_isType (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_type == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_domainDeclarationType::reader_isRecord (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_domainDeclarationType::getter_isRecord (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_record == mEnum) ;
 }
 
@@ -9224,7 +9224,7 @@ GALGAS_assignmentFormula GALGAS_assignmentFormula::constructor_new (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_assignmentFormula::reader_mFormulaName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_assignmentFormula::getter_mFormulaName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_assignmentFormula * p = (const cPtr_assignmentFormula *) mObjectPtr ;
@@ -9236,13 +9236,13 @@ GALGAS_lstring GALGAS_assignmentFormula::reader_mFormulaName (UNUSED_LOCATION_AR
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_assignmentFormula::reader_mFormulaName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_assignmentFormula::getter_mFormulaName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormulaName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainFieldList GALGAS_assignmentFormula::reader_mFormulaArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_domainFieldList GALGAS_assignmentFormula::getter_mFormulaArgumentList (UNUSED_LOCATION_ARGS) const {
   GALGAS_domainFieldList result ;
   if (NULL != mObjectPtr) {
     const cPtr_assignmentFormula * p = (const cPtr_assignmentFormula *) mObjectPtr ;
@@ -9254,13 +9254,13 @@ GALGAS_domainFieldList GALGAS_assignmentFormula::reader_mFormulaArgumentList (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainFieldList cPtr_assignmentFormula::reader_mFormulaArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_domainFieldList cPtr_assignmentFormula::getter_mFormulaArgumentList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormulaArgumentList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formulaKind GALGAS_assignmentFormula::reader_mKind (UNUSED_LOCATION_ARGS) const {
+GALGAS_formulaKind GALGAS_assignmentFormula::getter_mKind (UNUSED_LOCATION_ARGS) const {
   GALGAS_formulaKind result ;
   if (NULL != mObjectPtr) {
     const cPtr_assignmentFormula * p = (const cPtr_assignmentFormula *) mObjectPtr ;
@@ -9272,13 +9272,13 @@ GALGAS_formulaKind GALGAS_assignmentFormula::reader_mKind (UNUSED_LOCATION_ARGS)
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formulaKind cPtr_assignmentFormula::reader_mKind (UNUSED_LOCATION_ARGS) const {
+GALGAS_formulaKind cPtr_assignmentFormula::getter_mKind (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_assignmentFormula::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_assignmentFormula::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_assignmentFormula * p = (const cPtr_assignmentFormula *) mObjectPtr ;
@@ -9290,7 +9290,7 @@ GALGAS_expression GALGAS_assignmentFormula::reader_mExpression (UNUSED_LOCATION_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_assignmentFormula::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_assignmentFormula::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
@@ -9447,7 +9447,7 @@ GALGAS_dumpFormula GALGAS_dumpFormula::constructor_new (const GALGAS_lstring & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_dumpFormula::reader_mFormulaName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_dumpFormula::getter_mFormulaName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_dumpFormula * p = (const cPtr_dumpFormula *) mObjectPtr ;
@@ -9459,7 +9459,7 @@ GALGAS_lstring GALGAS_dumpFormula::reader_mFormulaName (UNUSED_LOCATION_ARGS) co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_dumpFormula::reader_mFormulaName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_dumpFormula::getter_mFormulaName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormulaName ;
 }
 
@@ -9604,7 +9604,7 @@ GALGAS_graphvizFormula GALGAS_graphvizFormula::constructor_new (const GALGAS_lst
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_graphvizFormula::reader_mFormulaName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_graphvizFormula::getter_mFormulaName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_graphvizFormula * p = (const cPtr_graphvizFormula *) mObjectPtr ;
@@ -9616,7 +9616,7 @@ GALGAS_lstring GALGAS_graphvizFormula::reader_mFormulaName (UNUSED_LOCATION_ARGS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_graphvizFormula::reader_mFormulaName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_graphvizFormula::getter_mFormulaName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormulaName ;
 }
 
@@ -9761,7 +9761,7 @@ GALGAS_setting_5F_andCacheMapSize GALGAS_setting_5F_andCacheMapSize::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint GALGAS_setting_5F_andCacheMapSize::reader_mSetting (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint GALGAS_setting_5F_andCacheMapSize::getter_mSetting (UNUSED_LOCATION_ARGS) const {
   GALGAS_luint result ;
   if (NULL != mObjectPtr) {
     const cPtr_setting_5F_andCacheMapSize * p = (const cPtr_setting_5F_andCacheMapSize *) mObjectPtr ;
@@ -9773,7 +9773,7 @@ GALGAS_luint GALGAS_setting_5F_andCacheMapSize::reader_mSetting (UNUSED_LOCATION
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint cPtr_setting_5F_andCacheMapSize::reader_mSetting (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint cPtr_setting_5F_andCacheMapSize::getter_mSetting (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSetting ;
 }
 
@@ -9918,7 +9918,7 @@ GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint GALGAS_setting_5F_nodeHashMapSize::reader_mSetting (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint GALGAS_setting_5F_nodeHashMapSize::getter_mSetting (UNUSED_LOCATION_ARGS) const {
   GALGAS_luint result ;
   if (NULL != mObjectPtr) {
     const cPtr_setting_5F_nodeHashMapSize * p = (const cPtr_setting_5F_nodeHashMapSize *) mObjectPtr ;
@@ -9930,7 +9930,7 @@ GALGAS_luint GALGAS_setting_5F_nodeHashMapSize::reader_mSetting (UNUSED_LOCATION
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint cPtr_setting_5F_nodeHashMapSize::reader_mSetting (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint cPtr_setting_5F_nodeHashMapSize::getter_mSetting (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSetting ;
 }
 
@@ -10159,7 +10159,7 @@ GALGAS_andExpression GALGAS_andExpression::constructor_new (const GALGAS_express
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_andExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_andExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_andExpression * p = (const cPtr_andExpression *) mObjectPtr ;
@@ -10171,13 +10171,13 @@ GALGAS_expression GALGAS_andExpression::reader_mLeftExpression (UNUSED_LOCATION_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_andExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_andExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_andExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_andExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_andExpression * p = (const cPtr_andExpression *) mObjectPtr ;
@@ -10189,7 +10189,7 @@ GALGAS_expression GALGAS_andExpression::reader_mRightExpression (UNUSED_LOCATION
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_andExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_andExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -10343,7 +10343,7 @@ GALGAS_comparisonWithConstantInExpression GALGAS_comparisonWithConstantInExpress
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_comparisonWithConstantInExpression::reader_mVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_comparisonWithConstantInExpression::getter_mVarName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_comparisonWithConstantInExpression * p = (const cPtr_comparisonWithConstantInExpression *) mObjectPtr ;
@@ -10355,13 +10355,13 @@ GALGAS_lstring GALGAS_comparisonWithConstantInExpression::reader_mVarName (UNUSE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_comparisonWithConstantInExpression::reader_mVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_comparisonWithConstantInExpression::getter_mVarName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mVarName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_comparisonWithConstantInExpression::reader_mFieldNames (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_comparisonWithConstantInExpression::getter_mFieldNames (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (NULL != mObjectPtr) {
     const cPtr_comparisonWithConstantInExpression * p = (const cPtr_comparisonWithConstantInExpression *) mObjectPtr ;
@@ -10373,13 +10373,13 @@ GALGAS_lstringlist GALGAS_comparisonWithConstantInExpression::reader_mFieldNames
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist cPtr_comparisonWithConstantInExpression::reader_mFieldNames (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist cPtr_comparisonWithConstantInExpression::getter_mFieldNames (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFieldNames ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_comparison GALGAS_comparisonWithConstantInExpression::reader_mComparison (UNUSED_LOCATION_ARGS) const {
+GALGAS_comparison GALGAS_comparisonWithConstantInExpression::getter_mComparison (UNUSED_LOCATION_ARGS) const {
   GALGAS_comparison result ;
   if (NULL != mObjectPtr) {
     const cPtr_comparisonWithConstantInExpression * p = (const cPtr_comparisonWithConstantInExpression *) mObjectPtr ;
@@ -10391,13 +10391,13 @@ GALGAS_comparison GALGAS_comparisonWithConstantInExpression::reader_mComparison 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_comparison cPtr_comparisonWithConstantInExpression::reader_mComparison (UNUSED_LOCATION_ARGS) const {
+GALGAS_comparison cPtr_comparisonWithConstantInExpression::getter_mComparison (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mComparison ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint GALGAS_comparisonWithConstantInExpression::reader_mConstant (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint GALGAS_comparisonWithConstantInExpression::getter_mConstant (UNUSED_LOCATION_ARGS) const {
   GALGAS_luint result ;
   if (NULL != mObjectPtr) {
     const cPtr_comparisonWithConstantInExpression * p = (const cPtr_comparisonWithConstantInExpression *) mObjectPtr ;
@@ -10409,7 +10409,7 @@ GALGAS_luint GALGAS_comparisonWithConstantInExpression::reader_mConstant (UNUSED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint cPtr_comparisonWithConstantInExpression::reader_mConstant (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint cPtr_comparisonWithConstantInExpression::getter_mConstant (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mConstant ;
 }
 
@@ -10559,7 +10559,7 @@ GALGAS_complementExpression GALGAS_complementExpression::constructor_new (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_complementExpression::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_complementExpression::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_complementExpression * p = (const cPtr_complementExpression *) mObjectPtr ;
@@ -10571,7 +10571,7 @@ GALGAS_expression GALGAS_complementExpression::reader_mExpression (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_complementExpression::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_complementExpression::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
@@ -10713,7 +10713,7 @@ GALGAS_equalExpression GALGAS_equalExpression::constructor_new (const GALGAS_exp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_equalExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_equalExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_equalExpression * p = (const cPtr_equalExpression *) mObjectPtr ;
@@ -10725,13 +10725,13 @@ GALGAS_expression GALGAS_equalExpression::reader_mLeftExpression (UNUSED_LOCATIO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_equalExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_equalExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_equalExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_equalExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_equalExpression * p = (const cPtr_equalExpression *) mObjectPtr ;
@@ -10743,7 +10743,7 @@ GALGAS_expression GALGAS_equalExpression::reader_mRightExpression (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_equalExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_equalExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -10889,7 +10889,7 @@ GALGAS_existInExpression GALGAS_existInExpression::constructor_new (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainFieldList GALGAS_existInExpression::reader_mArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_domainFieldList GALGAS_existInExpression::getter_mArgumentList (UNUSED_LOCATION_ARGS) const {
   GALGAS_domainFieldList result ;
   if (NULL != mObjectPtr) {
     const cPtr_existInExpression * p = (const cPtr_existInExpression *) mObjectPtr ;
@@ -10901,13 +10901,13 @@ GALGAS_domainFieldList GALGAS_existInExpression::reader_mArgumentList (UNUSED_LO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainFieldList cPtr_existInExpression::reader_mArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_domainFieldList cPtr_existInExpression::getter_mArgumentList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mArgumentList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_existInExpression::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_existInExpression::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_existInExpression * p = (const cPtr_existInExpression *) mObjectPtr ;
@@ -10919,7 +10919,7 @@ GALGAS_expression GALGAS_existInExpression::reader_mExpression (UNUSED_LOCATION_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_existInExpression::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_existInExpression::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
@@ -11190,7 +11190,7 @@ GALGAS_forAllInExpression GALGAS_forAllInExpression::constructor_new (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainFieldList GALGAS_forAllInExpression::reader_mArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_domainFieldList GALGAS_forAllInExpression::getter_mArgumentList (UNUSED_LOCATION_ARGS) const {
   GALGAS_domainFieldList result ;
   if (NULL != mObjectPtr) {
     const cPtr_forAllInExpression * p = (const cPtr_forAllInExpression *) mObjectPtr ;
@@ -11202,13 +11202,13 @@ GALGAS_domainFieldList GALGAS_forAllInExpression::reader_mArgumentList (UNUSED_L
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainFieldList cPtr_forAllInExpression::reader_mArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_domainFieldList cPtr_forAllInExpression::getter_mArgumentList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mArgumentList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_forAllInExpression::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_forAllInExpression::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_forAllInExpression * p = (const cPtr_forAllInExpression *) mObjectPtr ;
@@ -11220,7 +11220,7 @@ GALGAS_expression GALGAS_forAllInExpression::reader_mExpression (UNUSED_LOCATION
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_forAllInExpression::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_forAllInExpression::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
@@ -11374,7 +11374,7 @@ GALGAS_formulaInExpression GALGAS_formulaInExpression::constructor_new (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formulaInExpression::reader_mFormulaName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formulaInExpression::getter_mFormulaName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_formulaInExpression * p = (const cPtr_formulaInExpression *) mObjectPtr ;
@@ -11386,13 +11386,13 @@ GALGAS_lstring GALGAS_formulaInExpression::reader_mFormulaName (UNUSED_LOCATION_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_formulaInExpression::reader_mFormulaName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_formulaInExpression::getter_mFormulaName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormulaName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formulaParameterListInExpression GALGAS_formulaInExpression::reader_mParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formulaParameterListInExpression GALGAS_formulaInExpression::getter_mParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formulaParameterListInExpression result ;
   if (NULL != mObjectPtr) {
     const cPtr_formulaInExpression * p = (const cPtr_formulaInExpression *) mObjectPtr ;
@@ -11404,7 +11404,7 @@ GALGAS_formulaParameterListInExpression GALGAS_formulaInExpression::reader_mPara
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formulaParameterListInExpression cPtr_formulaInExpression::reader_mParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formulaParameterListInExpression cPtr_formulaInExpression::getter_mParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParameterList ;
 }
 
@@ -11550,7 +11550,7 @@ GALGAS_impliesExpression GALGAS_impliesExpression::constructor_new (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_impliesExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_impliesExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_impliesExpression * p = (const cPtr_impliesExpression *) mObjectPtr ;
@@ -11562,13 +11562,13 @@ GALGAS_expression GALGAS_impliesExpression::reader_mLeftExpression (UNUSED_LOCAT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_impliesExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_impliesExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_impliesExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_impliesExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_impliesExpression * p = (const cPtr_impliesExpression *) mObjectPtr ;
@@ -11580,7 +11580,7 @@ GALGAS_expression GALGAS_impliesExpression::reader_mRightExpression (UNUSED_LOCA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_impliesExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_impliesExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -11726,7 +11726,7 @@ GALGAS_notEqualExpression GALGAS_notEqualExpression::constructor_new (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_notEqualExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_notEqualExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_notEqualExpression * p = (const cPtr_notEqualExpression *) mObjectPtr ;
@@ -11738,13 +11738,13 @@ GALGAS_expression GALGAS_notEqualExpression::reader_mLeftExpression (UNUSED_LOCA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_notEqualExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_notEqualExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_notEqualExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_notEqualExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_notEqualExpression * p = (const cPtr_notEqualExpression *) mObjectPtr ;
@@ -11756,7 +11756,7 @@ GALGAS_expression GALGAS_notEqualExpression::reader_mRightExpression (UNUSED_LOC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_notEqualExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_notEqualExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -11902,7 +11902,7 @@ GALGAS_orExpression GALGAS_orExpression::constructor_new (const GALGAS_expressio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_orExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_orExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_orExpression * p = (const cPtr_orExpression *) mObjectPtr ;
@@ -11914,13 +11914,13 @@ GALGAS_expression GALGAS_orExpression::reader_mLeftExpression (UNUSED_LOCATION_A
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_orExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_orExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_orExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_orExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_orExpression * p = (const cPtr_orExpression *) mObjectPtr ;
@@ -11932,7 +11932,7 @@ GALGAS_expression GALGAS_orExpression::reader_mRightExpression (UNUSED_LOCATION_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_orExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_orExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -12211,7 +12211,7 @@ GALGAS_varBitInExpression GALGAS_varBitInExpression::constructor_new (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_varBitInExpression::reader_mVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_varBitInExpression::getter_mVarName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_varBitInExpression * p = (const cPtr_varBitInExpression *) mObjectPtr ;
@@ -12223,13 +12223,13 @@ GALGAS_lstring GALGAS_varBitInExpression::reader_mVarName (UNUSED_LOCATION_ARGS)
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_varBitInExpression::reader_mVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_varBitInExpression::getter_mVarName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mVarName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint GALGAS_varBitInExpression::reader_mVarBit (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint GALGAS_varBitInExpression::getter_mVarBit (UNUSED_LOCATION_ARGS) const {
   GALGAS_luint result ;
   if (NULL != mObjectPtr) {
     const cPtr_varBitInExpression * p = (const cPtr_varBitInExpression *) mObjectPtr ;
@@ -12241,7 +12241,7 @@ GALGAS_luint GALGAS_varBitInExpression::reader_mVarBit (UNUSED_LOCATION_ARGS) co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint cPtr_varBitInExpression::reader_mVarBit (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint cPtr_varBitInExpression::getter_mVarBit (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mVarBit ;
 }
 
@@ -12390,7 +12390,7 @@ GALGAS_varInExpression GALGAS_varInExpression::constructor_new (const GALGAS_lst
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_varInExpression::reader_mVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_varInExpression::getter_mVarName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_varInExpression * p = (const cPtr_varInExpression *) mObjectPtr ;
@@ -12402,7 +12402,7 @@ GALGAS_lstring GALGAS_varInExpression::reader_mVarName (UNUSED_LOCATION_ARGS) co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_varInExpression::reader_mVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_varInExpression::getter_mVarName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mVarName ;
 }
 
@@ -12556,7 +12556,7 @@ GALGAS_variableComparisonInExpression GALGAS_variableComparisonInExpression::con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_variableComparisonInExpression::reader_mLeftVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_variableComparisonInExpression::getter_mLeftVarName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_variableComparisonInExpression * p = (const cPtr_variableComparisonInExpression *) mObjectPtr ;
@@ -12568,13 +12568,13 @@ GALGAS_lstring GALGAS_variableComparisonInExpression::reader_mLeftVarName (UNUSE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_variableComparisonInExpression::reader_mLeftVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_variableComparisonInExpression::getter_mLeftVarName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftVarName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_variableComparisonInExpression::reader_mLeftFieldNames (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_variableComparisonInExpression::getter_mLeftFieldNames (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (NULL != mObjectPtr) {
     const cPtr_variableComparisonInExpression * p = (const cPtr_variableComparisonInExpression *) mObjectPtr ;
@@ -12586,13 +12586,13 @@ GALGAS_lstringlist GALGAS_variableComparisonInExpression::reader_mLeftFieldNames
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist cPtr_variableComparisonInExpression::reader_mLeftFieldNames (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist cPtr_variableComparisonInExpression::getter_mLeftFieldNames (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftFieldNames ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_comparison GALGAS_variableComparisonInExpression::reader_mComparison (UNUSED_LOCATION_ARGS) const {
+GALGAS_comparison GALGAS_variableComparisonInExpression::getter_mComparison (UNUSED_LOCATION_ARGS) const {
   GALGAS_comparison result ;
   if (NULL != mObjectPtr) {
     const cPtr_variableComparisonInExpression * p = (const cPtr_variableComparisonInExpression *) mObjectPtr ;
@@ -12604,13 +12604,13 @@ GALGAS_comparison GALGAS_variableComparisonInExpression::reader_mComparison (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_comparison cPtr_variableComparisonInExpression::reader_mComparison (UNUSED_LOCATION_ARGS) const {
+GALGAS_comparison cPtr_variableComparisonInExpression::getter_mComparison (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mComparison ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_variableComparisonInExpression::reader_mRightVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_variableComparisonInExpression::getter_mRightVarName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_variableComparisonInExpression * p = (const cPtr_variableComparisonInExpression *) mObjectPtr ;
@@ -12622,13 +12622,13 @@ GALGAS_lstring GALGAS_variableComparisonInExpression::reader_mRightVarName (UNUS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_variableComparisonInExpression::reader_mRightVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_variableComparisonInExpression::getter_mRightVarName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightVarName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_variableComparisonInExpression::reader_mRightFieldNames (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_variableComparisonInExpression::getter_mRightFieldNames (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (NULL != mObjectPtr) {
     const cPtr_variableComparisonInExpression * p = (const cPtr_variableComparisonInExpression *) mObjectPtr ;
@@ -12640,7 +12640,7 @@ GALGAS_lstringlist GALGAS_variableComparisonInExpression::reader_mRightFieldName
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist cPtr_variableComparisonInExpression::reader_mRightFieldNames (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist cPtr_variableComparisonInExpression::getter_mRightFieldNames (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightFieldNames ;
 }
 
@@ -12798,7 +12798,7 @@ GALGAS_xorExpression GALGAS_xorExpression::constructor_new (const GALGAS_express
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_xorExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_xorExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_xorExpression * p = (const cPtr_xorExpression *) mObjectPtr ;
@@ -12810,13 +12810,13 @@ GALGAS_expression GALGAS_xorExpression::reader_mLeftExpression (UNUSED_LOCATION_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_xorExpression::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_xorExpression::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression GALGAS_xorExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression GALGAS_xorExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_expression result ;
   if (NULL != mObjectPtr) {
     const cPtr_xorExpression * p = (const cPtr_xorExpression *) mObjectPtr ;
@@ -12828,7 +12828,7 @@ GALGAS_expression GALGAS_xorExpression::reader_mRightExpression (UNUSED_LOCATION
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expression cPtr_xorExpression::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_expression cPtr_xorExpression::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -13304,33 +13304,33 @@ void categoryMethod_analyze (const GALGAS_domainFieldList inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Abstract category reader '@expression computeExpression'                               *
+//                              Abstract category getter '@expression computeExpression'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_expression_computeExpression> gCategoryReaderTable_expression_computeExpression ;
+static TC_UniqueArray <categoryGetterSignature_expression_computeExpression> gCategoryGetterTable_expression_computeExpression ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_computeExpression (const int32_t inClassIndex,
-                                            categoryReaderSignature_expression_computeExpression inReader) {
-  gCategoryReaderTable_expression_computeExpression.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+void enterCategoryGetter_computeExpression (const int32_t inClassIndex,
+                                            categoryGetterSignature_expression_computeExpression inGetter) {
+  gCategoryGetterTable_expression_computeExpression.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_expression_computeExpression (void) {
-  gCategoryReaderTable_expression_computeExpression.free () ;
+static void freeCategoryGetter_expression_computeExpression (void) {
+  gCategoryGetterTable_expression_computeExpression.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_expression_computeExpression (NULL,
-                                                         freeCategoryReader_expression_computeExpression) ;
+C_PrologueEpilogue gGetter_expression_computeExpression (NULL,
+                                                         freeCategoryGetter_expression_computeExpression) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_binaryset callCategoryReader_computeExpression (const cPtr_expression * inObject,
+GALGAS_binaryset callCategoryGetter_computeExpression (const cPtr_expression * inObject,
                                                        const GALGAS_domainMap & in_inDomainMap,
                                                        const GALGAS_varMap & in_inVarMap,
                                                        const GALGAS_uint & in_inTotalBitCount,
@@ -13343,19 +13343,19 @@ GALGAS_binaryset callCategoryReader_computeExpression (const cPtr_expression * i
     macroValidSharedObject (inObject, cPtr_expression) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_expression_computeExpression f = NULL ;
-    if (classIndex < gCategoryReaderTable_expression_computeExpression.count ()) {
-      f = gCategoryReaderTable_expression_computeExpression (classIndex COMMA_HERE) ;
+    categoryGetterSignature_expression_computeExpression f = NULL ;
+    if (classIndex < gCategoryGetterTable_expression_computeExpression.count ()) {
+      f = gCategoryGetterTable_expression_computeExpression (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_expression_computeExpression.count ()) {
-           f = gCategoryReaderTable_expression_computeExpression (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_expression_computeExpression.count ()) {
+           f = gCategoryGetterTable_expression_computeExpression (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_expression_computeExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_expression_computeExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -13448,13 +13448,13 @@ void GALGAS_ast::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainDeclarationList GALGAS_ast::reader_mDomainList (UNUSED_LOCATION_ARGS) const {
+GALGAS_domainDeclarationList GALGAS_ast::getter_mDomainList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDomainList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formulaList GALGAS_ast::reader_mFormulaList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formulaList GALGAS_ast::getter_mFormulaList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormulaList ;
 }
 
@@ -13658,19 +13658,19 @@ void GALGAS_varList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_varList_2D_element::reader_mVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_varList_2D_element::getter_mVarName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mVarName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_varList_2D_element::reader_mBitIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_varList_2D_element::getter_mBitIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBitIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_varList_2D_element::reader_mBitCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_varList_2D_element::getter_mBitCount (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBitCount ;
 }
 
@@ -13784,7 +13784,7 @@ void GALGAS_formulaList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractFormula GALGAS_formulaList_2D_element::reader_mFormula (UNUSED_LOCATION_ARGS) const {
+GALGAS_abstractFormula GALGAS_formulaList_2D_element::getter_mFormula (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormula ;
 }
 
@@ -13937,25 +13937,25 @@ void GALGAS_recordDomainMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_recordDomainMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_recordDomainMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_recordDomainMap_2D_element::reader_mIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_recordDomainMap_2D_element::getter_mIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_recordDomainMap_2D_element::reader_mBitCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_recordDomainMap_2D_element::getter_mBitCount (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBitCount ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_recordDomainMap GALGAS_recordDomainMap_2D_element::reader_mSubDomain (UNUSED_LOCATION_ARGS) const {
+GALGAS_recordDomainMap GALGAS_recordDomainMap_2D_element::getter_mSubDomain (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSubDomain ;
 }
 
@@ -14097,19 +14097,19 @@ void GALGAS_domainMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_domainMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_domainMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_domainMap_2D_element::reader_mBitCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_domainMap_2D_element::getter_mBitCount (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBitCount ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_recordDomainMap GALGAS_domainMap_2D_element::reader_mRecordMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_recordDomainMap GALGAS_domainMap_2D_element::getter_mRecordMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRecordMap ;
 }
 
@@ -14262,25 +14262,25 @@ void GALGAS_varMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_varMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_varMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_varMap_2D_element::reader_mIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_varMap_2D_element::getter_mIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_varMap_2D_element::reader_mBitCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_varMap_2D_element::getter_mBitCount (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBitCount ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_recordDomainMap GALGAS_varMap_2D_element::reader_mRecordDomainMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_recordDomainMap GALGAS_varMap_2D_element::getter_mRecordDomainMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRecordDomainMap ;
 }
 
@@ -14433,25 +14433,25 @@ void GALGAS_computedFormulaMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_computedFormulaMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_computedFormulaMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_varList GALGAS_computedFormulaMap_2D_element::reader_mVarList (UNUSED_LOCATION_ARGS) const {
+GALGAS_varList GALGAS_computedFormulaMap_2D_element::getter_mVarList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mVarList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_computedFormulaMap_2D_element::reader_mBitCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_computedFormulaMap_2D_element::getter_mBitCount (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBitCount ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_binaryset GALGAS_computedFormulaMap_2D_element::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_binaryset GALGAS_computedFormulaMap_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mValue ;
 }
 
@@ -14582,13 +14582,13 @@ void GALGAS_formulaParameterListInExpression_2D_element::description (C_String &
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formulaParameterListInExpression_2D_element::reader_mParameterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formulaParameterListInExpression_2D_element::getter_mParameterName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParameterName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_formulaParameterListInExpression_2D_element::reader_mFieldNames (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_formulaParameterListInExpression_2D_element::getter_mFieldNames (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFieldNames ;
 }
 
@@ -14712,13 +14712,13 @@ void GALGAS_domainFieldList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_domainFieldList_2D_element::reader_mVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_domainFieldList_2D_element::getter_mVarName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mVarName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bddType GALGAS_domainFieldList_2D_element::reader_mType (UNUSED_LOCATION_ARGS) const {
+GALGAS_bddType GALGAS_domainFieldList_2D_element::getter_mType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mType ;
 }
 
@@ -14842,13 +14842,13 @@ void GALGAS_domainDeclarationList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_domainDeclarationList_2D_element::reader_mDomainName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_domainDeclarationList_2D_element::getter_mDomainName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDomainName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_domainDeclarationType GALGAS_domainDeclarationList_2D_element::reader_mType (UNUSED_LOCATION_ARGS) const {
+GALGAS_domainDeclarationType GALGAS_domainDeclarationList_2D_element::getter_mType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mType ;
 }
 
@@ -14922,12 +14922,12 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
     {
       inCompiler->printMessage (object->mAttribute_mFormulaName.mAttribute_string.add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 84))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 84)) ;
       GALGAS_timer var_timer = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.galgas", 85)) ;
-      GALGAS_binaryset var_result = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 86)) ;
+      GALGAS_binaryset var_result = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 86)) ;
       {
       ioArgument_ioComputedFormulaMap.modifier_insertKey (object->mAttribute_mFormulaName, var_varList, var_totalBitCount, var_result, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 87)) ;
       }
-      GALGAS_uint_36__34_ var_valueCount = var_result.reader_valueCount (var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 88)) ;
-      GALGAS_uint_36__34_ var_nodeCount = var_result.reader_nodeCount (SOURCE_FILE ("formula-assignment.galgas", 90)) ;
+      GALGAS_uint_36__34_ var_valueCount = var_result.getter_valueCount (var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 88)) ;
+      GALGAS_uint_36__34_ var_nodeCount = var_result.getter_nodeCount (SOURCE_FILE ("formula-assignment.galgas", 90)) ;
       GALGAS_string temp_0 ;
       const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, var_valueCount.objectCompare (GALGAS_uint_36__34_ ((uint64_t) 1ULL))).boolEnum () ;
       if (kBoolTrue == test_1) {
@@ -14942,7 +14942,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
       }else if (kBoolFalse == test_3) {
         temp_2 = GALGAS_string::makeEmptyString () ;
       }
-      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 91)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 91)).add_operation (GALGAS_string ("("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 92)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (GALGAS_string (") value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (temp_0, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (var_nodeCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 93)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (var_timer.reader_string (SOURCE_FILE ("formula-assignment.galgas", 94)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 94)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 94))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 91)) ;
+      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_valueCount.getter_string (SOURCE_FILE ("formula-assignment.galgas", 91)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 91)).add_operation (GALGAS_string ("("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (var_valueCount.getter_string (SOURCE_FILE ("formula-assignment.galgas", 92)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (GALGAS_string (") value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (temp_0, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 92)).add_operation (var_nodeCount.getter_string (SOURCE_FILE ("formula-assignment.galgas", 93)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 93)).add_operation (var_timer.getter_string (SOURCE_FILE ("formula-assignment.galgas", 94)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 94)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 94))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 91)) ;
     }
     break ;
   case GALGAS_formulaKind::kEnum_fixedPoint:
@@ -14972,7 +14972,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
           if (loop_3988) {
             variant_3988 -- ;
             var_iterationCount.increment_operation (inCompiler  COMMA_SOURCE_FILE ("formula-assignment.galgas", 103)) ;
-            GALGAS_binaryset var_r = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 104)) ;
+            GALGAS_binaryset var_r = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 104)) ;
             const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, var_result.objectCompare (var_r)).boolEnum () ;
             if (kBoolTrue == test_4) {
               var_iterate = GALGAS_bool (false) ;
@@ -14985,8 +14985,8 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
           }
         }
       }
-      GALGAS_uint_36__34_ var_valueCount = var_result.reader_valueCount (var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 112)) ;
-      GALGAS_uint_36__34_ var_nodeCount = var_result.reader_nodeCount (SOURCE_FILE ("formula-assignment.galgas", 114)) ;
+      GALGAS_uint_36__34_ var_valueCount = var_result.getter_valueCount (var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 112)) ;
+      GALGAS_uint_36__34_ var_nodeCount = var_result.getter_nodeCount (SOURCE_FILE ("formula-assignment.galgas", 114)) ;
       GALGAS_string temp_5 ;
       const enumGalgasBool test_6 = GALGAS_bool (kIsStrictSup, var_iterationCount.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
       if (kBoolTrue == test_6) {
@@ -15008,7 +15008,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
       }else if (kBoolFalse == test_10) {
         temp_9 = GALGAS_string::makeEmptyString () ;
       }
-      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_iterationCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 115)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 115)).add_operation (GALGAS_string (" iteration"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (GALGAS_string ("("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (GALGAS_string (") value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (var_nodeCount.reader_string (SOURCE_FILE ("formula-assignment.galgas", 118)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (var_timer.reader_string (SOURCE_FILE ("formula-assignment.galgas", 119)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 119)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 119))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 115)) ;
+      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_iterationCount.getter_string (SOURCE_FILE ("formula-assignment.galgas", 115)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 115)).add_operation (GALGAS_string (" iteration"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 116)).add_operation (var_valueCount.getter_string (SOURCE_FILE ("formula-assignment.galgas", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (GALGAS_string ("("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (var_valueCount.getter_string (SOURCE_FILE ("formula-assignment.galgas", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (GALGAS_string (") value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 117)).add_operation (var_nodeCount.getter_string (SOURCE_FILE ("formula-assignment.galgas", 118)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 118)).add_operation (var_timer.getter_string (SOURCE_FILE ("formula-assignment.galgas", 119)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 119)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 119))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 115)) ;
     }
     break ;
   }
@@ -15100,7 +15100,7 @@ static void categoryMethod_dumpFormula_analyzeFormula (const cPtr_abstractFormul
   GALGAS_uint var_bitCount ;
   GALGAS_binaryset var_result ;
   ioArgument_ioComputedFormulaMap.method_searchKey (object->mAttribute_mFormulaName, var_varList, var_bitCount, var_result, inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 37)) ;
-  GALGAS_uint_36__34_ var_valueCount = var_result.reader_valueCount (var_bitCount, inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 38)) ;
+  GALGAS_uint_36__34_ var_valueCount = var_result.getter_valueCount (var_bitCount, inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 38)) ;
   GALGAS_string temp_0 ;
   const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, var_valueCount.objectCompare (GALGAS_uint_36__34_ ((uint64_t) 1ULL))).boolEnum () ;
   if (kBoolTrue == test_1) {
@@ -15108,7 +15108,7 @@ static void categoryMethod_dumpFormula_analyzeFormula (const cPtr_abstractFormul
   }else if (kBoolFalse == test_1) {
     temp_0 = GALGAS_string::makeEmptyString () ;
   }
-  inCompiler->printMessage (GALGAS_string ("Dump $").add_operation (object->mAttribute_mFormulaName.reader_string (SOURCE_FILE ("formula-dump.galgas", 39)), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39)).add_operation (var_valueCount.reader_string (SOURCE_FILE ("formula-dump.galgas", 39)), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39)).add_operation (temp_0, inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39))  COMMA_SOURCE_FILE ("formula-dump.galgas", 39)) ;
+  inCompiler->printMessage (GALGAS_string ("Dump $").add_operation (object->mAttribute_mFormulaName.getter_string (SOURCE_FILE ("formula-dump.galgas", 39)), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39)).add_operation (var_valueCount.getter_string (SOURCE_FILE ("formula-dump.galgas", 39)), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39)).add_operation (temp_0, inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas", 39))  COMMA_SOURCE_FILE ("formula-dump.galgas", 39)) ;
   GALGAS_stringlist var_nameList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("formula-dump.galgas", 40)) ;
   GALGAS_uintlist var_bitCountList = GALGAS_uintlist::constructor_emptyList (SOURCE_FILE ("formula-dump.galgas", 41)) ;
   cEnumerator_varList enumerator_2114 (var_varList, kEnumeration_up) ;
@@ -15117,7 +15117,7 @@ static void categoryMethod_dumpFormula_analyzeFormula (const cPtr_abstractFormul
     var_bitCountList.addAssign_operation (enumerator_2114.current_mBitCount (HERE)  COMMA_SOURCE_FILE ("formula-dump.galgas", 44)) ;
     enumerator_2114.gotoNextObject () ;
   }
-  inCompiler->printMessage (var_result.reader_print (var_nameList, var_bitCountList COMMA_SOURCE_FILE ("formula-dump.galgas", 46))  COMMA_SOURCE_FILE ("formula-dump.galgas", 46)) ;
+  inCompiler->printMessage (var_result.getter_print (var_nameList, var_bitCountList COMMA_SOURCE_FILE ("formula-dump.galgas", 46))  COMMA_SOURCE_FILE ("formula-dump.galgas", 46)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -15148,8 +15148,8 @@ static void categoryMethod_graphvizFormula_analyzeFormula (const cPtr_abstractFo
   GALGAS_binaryset var_result ;
   GALGAS_uint joker_1847 ; // Joker input parameter
   ioArgument_ioComputedFormulaMap.method_searchKey (object->mAttribute_mFormulaName, var_varList, joker_1847, var_result, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 37)) ;
-  GALGAS_string var_filePath = constinArgument_inSourceFilePath.reader_stringByDeletingPathExtension (SOURCE_FILE ("formula-graphviz.galgas", 38)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 38)).add_operation (object->mAttribute_mFormulaName.reader_string (SOURCE_FILE ("formula-graphviz.galgas", 38)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 38)).add_operation (GALGAS_string (".dot"), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 38)) ;
-  inCompiler->printMessage (GALGAS_string ("Graphviz $").add_operation (object->mAttribute_mFormulaName.reader_string (SOURCE_FILE ("formula-graphviz.galgas", 39)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 39)).add_operation (GALGAS_string (" -> "), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 39)).add_operation (var_filePath, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 39)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 39))  COMMA_SOURCE_FILE ("formula-graphviz.galgas", 39)) ;
+  GALGAS_string var_filePath = constinArgument_inSourceFilePath.getter_stringByDeletingPathExtension (SOURCE_FILE ("formula-graphviz.galgas", 38)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 38)).add_operation (object->mAttribute_mFormulaName.getter_string (SOURCE_FILE ("formula-graphviz.galgas", 38)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 38)).add_operation (GALGAS_string (".dot"), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 38)) ;
+  inCompiler->printMessage (GALGAS_string ("Graphviz $").add_operation (object->mAttribute_mFormulaName.getter_string (SOURCE_FILE ("formula-graphviz.galgas", 39)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 39)).add_operation (GALGAS_string (" -> "), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 39)).add_operation (var_filePath, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 39)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 39))  COMMA_SOURCE_FILE ("formula-graphviz.galgas", 39)) ;
   GALGAS_stringlist var_bitNameList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("formula-graphviz.galgas", 40)) ;
   cEnumerator_varList enumerator_2075 (var_varList, kEnumeration_down) ;
   while (enumerator_2075.hasCurrentObject ()) {
@@ -15159,13 +15159,13 @@ static void categoryMethod_graphvizFormula_analyzeFormula (const cPtr_abstractFo
     }else if (kBoolFalse == test_0) {
       cEnumerator_range enumerator_2176 (GALGAS_range (GALGAS_uint ((uint32_t) 0U), enumerator_2075.current_mBitCount (HERE).substract_operation (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 45))), kEnumeration_up) ;
       while (enumerator_2176.hasCurrentObject ()) {
-        var_bitNameList.addAssign_operation (enumerator_2075.current_mVarName (HERE).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 46)).add_operation (enumerator_2176.current (HERE).reader_string (SOURCE_FILE ("formula-graphviz.galgas", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 46))  COMMA_SOURCE_FILE ("formula-graphviz.galgas", 46)) ;
+        var_bitNameList.addAssign_operation (enumerator_2075.current_mVarName (HERE).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 46)).add_operation (enumerator_2176.current (HERE).getter_string (SOURCE_FILE ("formula-graphviz.galgas", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 46))  COMMA_SOURCE_FILE ("formula-graphviz.galgas", 46)) ;
         enumerator_2176.gotoNextObject () ;
       }
     }
     enumerator_2075.gotoNextObject () ;
   }
-  GALGAS_string var_s = var_result.reader_graphviz (var_bitNameList COMMA_SOURCE_FILE ("formula-graphviz.galgas", 50)) ;
+  GALGAS_string var_s = var_result.getter_graphviz (var_bitNameList COMMA_SOURCE_FILE ("formula-graphviz.galgas", 50)) ;
   GALGAS_bool joker_2337 ; // Joker input parameter
   var_s.method_writeToFileWhenDifferentContents (var_filePath, joker_2337, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 51)) ;
 }
@@ -15182,17 +15182,17 @@ C_PrologueEpilogue gMethod_graphvizFormula_analyzeFormula (defineCategoryMethod_
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Overriding category reader '@varInExpression computeExpression'                           *
+//                           Overriding category getter '@varInExpression computeExpression'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_varInExpression_computeExpression (const cPtr_expression * inObject,
-                                                                          const GALGAS_domainMap & /* constinArgument_inDomainMap */,
-                                                                          const GALGAS_varMap & constinArgument_inVarMap,
-                                                                          const GALGAS_uint & /* constinArgument_inTotalBitCount */,
-                                                                          const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_varInExpression_computeExpression (const cPtr_expression * inObject,
+                                                                           const GALGAS_domainMap & /* constinArgument_inDomainMap */,
+                                                                           const GALGAS_varMap & constinArgument_inVarMap,
+                                                                           const GALGAS_uint & /* constinArgument_inTotalBitCount */,
+                                                                           const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_varInExpression * object = (const cPtr_varInExpression *) inObject ;
   macroValidSharedObject (object, cPtr_varInExpression) ;
@@ -15200,14 +15200,14 @@ static GALGAS_binaryset categoryReader_varInExpression_computeExpression (const 
   GALGAS_uint var_bitCount ;
   GALGAS_recordDomainMap var_subdomainMap ;
   constinArgument_inVarMap.method_searchKey (object->mAttribute_mVarName, var_idx, var_bitCount, var_subdomainMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 307)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_subdomainMap.reader_count (SOURCE_FILE ("expression.galgas", 308)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_subdomainMap.getter_count (SOURCE_FILE ("expression.galgas", 308)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (object->mAttribute_mVarName.reader_location (HERE)) ; // Implicit use of 'location' reader
+    GALGAS_location location_1 (object->mAttribute_mVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
     inCompiler->emitSemanticError (location_1, GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 309)) ;
   }else if (kBoolFalse == test_0) {
     const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_bitCount.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (object->mAttribute_mVarName.reader_location (HERE)) ; // Implicit use of 'location' reader
+      GALGAS_location location_3 (object->mAttribute_mVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_3, GALGAS_string ("variable is not boolean; use {...} or dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 311)) ;
     }
   }
@@ -15219,28 +15219,28 @@ static GALGAS_binaryset categoryReader_varInExpression_computeExpression (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_varInExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_varInExpression.mSlotID,
-                                         categoryReader_varInExpression_computeExpression) ;
+static void defineCategoryGetter_varInExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_varInExpression.mSlotID,
+                                         extensionGetter_varInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_varInExpression_computeExpression (defineCategoryReader_varInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_varInExpression_computeExpression (defineCategoryGetter_varInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category reader '@varBitInExpression computeExpression'                          *
+//                         Overriding category getter '@varBitInExpression computeExpression'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_varBitInExpression_computeExpression (const cPtr_expression * inObject,
-                                                                             const GALGAS_domainMap & /* constinArgument_inDomainMap */,
-                                                                             const GALGAS_varMap & constinArgument_inVarMap,
-                                                                             const GALGAS_uint & /* constinArgument_inTotalBitCount */,
-                                                                             const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_varBitInExpression_computeExpression (const cPtr_expression * inObject,
+                                                                              const GALGAS_domainMap & /* constinArgument_inDomainMap */,
+                                                                              const GALGAS_varMap & constinArgument_inVarMap,
+                                                                              const GALGAS_uint & /* constinArgument_inTotalBitCount */,
+                                                                              const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_varBitInExpression * object = (const cPtr_varBitInExpression *) inObject ;
   macroValidSharedObject (object, cPtr_varBitInExpression) ;
@@ -15248,15 +15248,15 @@ static GALGAS_binaryset categoryReader_varBitInExpression_computeExpression (con
   GALGAS_uint var_bitCount ;
   GALGAS_recordDomainMap var_subdomainMap ;
   constinArgument_inVarMap.method_searchKey (object->mAttribute_mVarName, var_idx, var_bitCount, var_subdomainMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 325)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_subdomainMap.reader_count (SOURCE_FILE ("expression.galgas", 326)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_subdomainMap.getter_count (SOURCE_FILE ("expression.galgas", 326)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (object->mAttribute_mVarName.reader_location (HERE)) ; // Implicit use of 'location' reader
+    GALGAS_location location_1 (object->mAttribute_mVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
     inCompiler->emitSemanticError (location_1, GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 327)) ;
   }else if (kBoolFalse == test_0) {
     const enumGalgasBool test_2 = GALGAS_bool (kIsInfOrEqual, var_bitCount.objectCompare (object->mAttribute_mVarBit.mAttribute_uint)).boolEnum () ;
     if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (object->mAttribute_mVarBit.reader_location (HERE)) ; // Implicit use of 'location' reader
-      inCompiler->emitSemanticError (location_3, GALGAS_string ("bit index should be < ").add_operation (var_bitCount.reader_string (SOURCE_FILE ("expression.galgas", 329)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 329))  COMMA_SOURCE_FILE ("expression.galgas", 329)) ;
+      GALGAS_location location_3 (object->mAttribute_mVarBit.getter_location (HERE)) ; // Implicit use of 'location' getter
+      inCompiler->emitSemanticError (location_3, GALGAS_string ("bit index should be < ").add_operation (var_bitCount.getter_string (SOURCE_FILE ("expression.galgas", 329)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 329))  COMMA_SOURCE_FILE ("expression.galgas", 329)) ;
     }
   }
   result_outResult = GALGAS_binaryset::constructor_binarySetWithBit (var_idx.add_operation (object->mAttribute_mVarBit.mAttribute_uint, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 331)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 331)) ;
@@ -15267,33 +15267,33 @@ static GALGAS_binaryset categoryReader_varBitInExpression_computeExpression (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_varBitInExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_varBitInExpression.mSlotID,
-                                         categoryReader_varBitInExpression_computeExpression) ;
+static void defineCategoryGetter_varBitInExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_varBitInExpression.mSlotID,
+                                         extensionGetter_varBitInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_varBitInExpression_computeExpression (defineCategoryReader_varBitInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_varBitInExpression_computeExpression (defineCategoryGetter_varBitInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Overriding category reader '@andExpression computeExpression'                            *
+//                            Overriding category getter '@andExpression computeExpression'                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_andExpression_computeExpression (const cPtr_expression * inObject,
-                                                                        const GALGAS_domainMap & constinArgument_inDomainMap,
-                                                                        const GALGAS_varMap & constinArgument_inVarMap,
-                                                                        const GALGAS_uint & constinArgument_inTotalBitCount,
-                                                                        const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_andExpression_computeExpression (const cPtr_expression * inObject,
+                                                                         const GALGAS_domainMap & constinArgument_inDomainMap,
+                                                                         const GALGAS_varMap & constinArgument_inVarMap,
+                                                                         const GALGAS_uint & constinArgument_inTotalBitCount,
+                                                                         const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_andExpression * object = (const cPtr_andExpression *) inObject ;
   macroValidSharedObject (object, cPtr_andExpression) ;
-  GALGAS_binaryset var_left = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 343)) ;
-  GALGAS_binaryset var_right = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 344)) ;
+  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 343)) ;
+  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 344)) ;
   result_outResult = var_left.operator_and (var_right COMMA_SOURCE_FILE ("expression.galgas", 345)) ;
 //---
   return result_outResult ;
@@ -15302,33 +15302,33 @@ static GALGAS_binaryset categoryReader_andExpression_computeExpression (const cP
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_andExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_andExpression.mSlotID,
-                                         categoryReader_andExpression_computeExpression) ;
+static void defineCategoryGetter_andExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_andExpression.mSlotID,
+                                         extensionGetter_andExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_andExpression_computeExpression (defineCategoryReader_andExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_andExpression_computeExpression (defineCategoryGetter_andExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Overriding category reader '@orExpression computeExpression'                             *
+//                            Overriding category getter '@orExpression computeExpression'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_orExpression_computeExpression (const cPtr_expression * inObject,
-                                                                       const GALGAS_domainMap & constinArgument_inDomainMap,
-                                                                       const GALGAS_varMap & constinArgument_inVarMap,
-                                                                       const GALGAS_uint & constinArgument_inTotalBitCount,
-                                                                       const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_orExpression_computeExpression (const cPtr_expression * inObject,
+                                                                        const GALGAS_domainMap & constinArgument_inDomainMap,
+                                                                        const GALGAS_varMap & constinArgument_inVarMap,
+                                                                        const GALGAS_uint & constinArgument_inTotalBitCount,
+                                                                        const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_orExpression * object = (const cPtr_orExpression *) inObject ;
   macroValidSharedObject (object, cPtr_orExpression) ;
-  GALGAS_binaryset var_left = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 357)) ;
-  GALGAS_binaryset var_right = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 358)) ;
+  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 357)) ;
+  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 358)) ;
   result_outResult = var_left.operator_or (var_right COMMA_SOURCE_FILE ("expression.galgas", 359)) ;
 //---
   return result_outResult ;
@@ -15337,33 +15337,33 @@ static GALGAS_binaryset categoryReader_orExpression_computeExpression (const cPt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_orExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_orExpression.mSlotID,
-                                         categoryReader_orExpression_computeExpression) ;
+static void defineCategoryGetter_orExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_orExpression.mSlotID,
+                                         extensionGetter_orExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_orExpression_computeExpression (defineCategoryReader_orExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_orExpression_computeExpression (defineCategoryGetter_orExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Overriding category reader '@xorExpression computeExpression'                            *
+//                            Overriding category getter '@xorExpression computeExpression'                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_xorExpression_computeExpression (const cPtr_expression * inObject,
-                                                                        const GALGAS_domainMap & constinArgument_inDomainMap,
-                                                                        const GALGAS_varMap & constinArgument_inVarMap,
-                                                                        const GALGAS_uint & constinArgument_inTotalBitCount,
-                                                                        const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_xorExpression_computeExpression (const cPtr_expression * inObject,
+                                                                         const GALGAS_domainMap & constinArgument_inDomainMap,
+                                                                         const GALGAS_varMap & constinArgument_inVarMap,
+                                                                         const GALGAS_uint & constinArgument_inTotalBitCount,
+                                                                         const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_xorExpression * object = (const cPtr_xorExpression *) inObject ;
   macroValidSharedObject (object, cPtr_xorExpression) ;
-  GALGAS_binaryset var_left = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 371)) ;
-  GALGAS_binaryset var_right = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 372)) ;
+  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 371)) ;
+  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 372)) ;
   result_outResult = var_left.operator_xor (var_right COMMA_SOURCE_FILE ("expression.galgas", 373)) ;
 //---
   return result_outResult ;
@@ -15372,34 +15372,34 @@ static GALGAS_binaryset categoryReader_xorExpression_computeExpression (const cP
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_xorExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_xorExpression.mSlotID,
-                                         categoryReader_xorExpression_computeExpression) ;
+static void defineCategoryGetter_xorExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_xorExpression.mSlotID,
+                                         extensionGetter_xorExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_xorExpression_computeExpression (defineCategoryReader_xorExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_xorExpression_computeExpression (defineCategoryGetter_xorExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category reader '@impliesExpression computeExpression'                          *
+//                          Overriding category getter '@impliesExpression computeExpression'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_impliesExpression_computeExpression (const cPtr_expression * inObject,
-                                                                            const GALGAS_domainMap & constinArgument_inDomainMap,
-                                                                            const GALGAS_varMap & constinArgument_inVarMap,
-                                                                            const GALGAS_uint & constinArgument_inTotalBitCount,
-                                                                            const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_impliesExpression_computeExpression (const cPtr_expression * inObject,
+                                                                             const GALGAS_domainMap & constinArgument_inDomainMap,
+                                                                             const GALGAS_varMap & constinArgument_inVarMap,
+                                                                             const GALGAS_uint & constinArgument_inTotalBitCount,
+                                                                             const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_impliesExpression * object = (const cPtr_impliesExpression *) inObject ;
   macroValidSharedObject (object, cPtr_impliesExpression) ;
-  GALGAS_binaryset var_left = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 385)) ;
-  GALGAS_binaryset var_right = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 386)) ;
-  result_outResult = var_left.reader_implies (var_right COMMA_SOURCE_FILE ("expression.galgas", 387)) ;
+  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 385)) ;
+  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 386)) ;
+  result_outResult = var_left.getter_implies (var_right COMMA_SOURCE_FILE ("expression.galgas", 387)) ;
 //---
   return result_outResult ;
 }
@@ -15407,33 +15407,33 @@ static GALGAS_binaryset categoryReader_impliesExpression_computeExpression (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_impliesExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_impliesExpression.mSlotID,
-                                         categoryReader_impliesExpression_computeExpression) ;
+static void defineCategoryGetter_impliesExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_impliesExpression.mSlotID,
+                                         extensionGetter_impliesExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_impliesExpression_computeExpression (defineCategoryReader_impliesExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_impliesExpression_computeExpression (defineCategoryGetter_impliesExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Overriding category reader '@equalExpression computeExpression'                           *
+//                           Overriding category getter '@equalExpression computeExpression'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_equalExpression_computeExpression (const cPtr_expression * inObject,
-                                                                          const GALGAS_domainMap & constinArgument_inDomainMap,
-                                                                          const GALGAS_varMap & constinArgument_inVarMap,
-                                                                          const GALGAS_uint & constinArgument_inTotalBitCount,
-                                                                          const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_equalExpression_computeExpression (const cPtr_expression * inObject,
+                                                                           const GALGAS_domainMap & constinArgument_inDomainMap,
+                                                                           const GALGAS_varMap & constinArgument_inVarMap,
+                                                                           const GALGAS_uint & constinArgument_inTotalBitCount,
+                                                                           const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_equalExpression * object = (const cPtr_equalExpression *) inObject ;
   macroValidSharedObject (object, cPtr_equalExpression) ;
-  GALGAS_binaryset var_left = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 399)) ;
-  GALGAS_binaryset var_right = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 400)) ;
+  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 399)) ;
+  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 400)) ;
   result_outResult = var_left.operator_xor (var_right COMMA_SOURCE_FILE ("expression.galgas", 401)).operator_tilde (SOURCE_FILE ("expression.galgas", 401)) ;
 //---
   return result_outResult ;
@@ -15442,33 +15442,33 @@ static GALGAS_binaryset categoryReader_equalExpression_computeExpression (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_equalExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_equalExpression.mSlotID,
-                                         categoryReader_equalExpression_computeExpression) ;
+static void defineCategoryGetter_equalExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_equalExpression.mSlotID,
+                                         extensionGetter_equalExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_equalExpression_computeExpression (defineCategoryReader_equalExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_equalExpression_computeExpression (defineCategoryGetter_equalExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category reader '@notEqualExpression computeExpression'                          *
+//                         Overriding category getter '@notEqualExpression computeExpression'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_notEqualExpression_computeExpression (const cPtr_expression * inObject,
-                                                                             const GALGAS_domainMap & constinArgument_inDomainMap,
-                                                                             const GALGAS_varMap & constinArgument_inVarMap,
-                                                                             const GALGAS_uint & constinArgument_inTotalBitCount,
-                                                                             const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_notEqualExpression_computeExpression (const cPtr_expression * inObject,
+                                                                              const GALGAS_domainMap & constinArgument_inDomainMap,
+                                                                              const GALGAS_varMap & constinArgument_inVarMap,
+                                                                              const GALGAS_uint & constinArgument_inTotalBitCount,
+                                                                              const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_notEqualExpression * object = (const cPtr_notEqualExpression *) inObject ;
   macroValidSharedObject (object, cPtr_notEqualExpression) ;
-  GALGAS_binaryset var_left = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 413)) ;
-  GALGAS_binaryset var_right = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 414)) ;
+  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 413)) ;
+  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 414)) ;
   result_outResult = var_left.operator_xor (var_right COMMA_SOURCE_FILE ("expression.galgas", 415)) ;
 //---
   return result_outResult ;
@@ -15477,32 +15477,32 @@ static GALGAS_binaryset categoryReader_notEqualExpression_computeExpression (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_notEqualExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_notEqualExpression.mSlotID,
-                                         categoryReader_notEqualExpression_computeExpression) ;
+static void defineCategoryGetter_notEqualExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_notEqualExpression.mSlotID,
+                                         extensionGetter_notEqualExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_notEqualExpression_computeExpression (defineCategoryReader_notEqualExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_notEqualExpression_computeExpression (defineCategoryGetter_notEqualExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category reader '@complementExpression computeExpression'                         *
+//                        Overriding category getter '@complementExpression computeExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_complementExpression_computeExpression (const cPtr_expression * inObject,
-                                                                               const GALGAS_domainMap & constinArgument_inDomainMap,
-                                                                               const GALGAS_varMap & constinArgument_inVarMap,
-                                                                               const GALGAS_uint & constinArgument_inTotalBitCount,
-                                                                               const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_complementExpression_computeExpression (const cPtr_expression * inObject,
+                                                                                const GALGAS_domainMap & constinArgument_inDomainMap,
+                                                                                const GALGAS_varMap & constinArgument_inVarMap,
+                                                                                const GALGAS_uint & constinArgument_inTotalBitCount,
+                                                                                const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_complementExpression * object = (const cPtr_complementExpression *) inObject ;
   macroValidSharedObject (object, cPtr_complementExpression) ;
-  result_outResult = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 427)).operator_tilde (SOURCE_FILE ("expression.galgas", 427)) ;
+  result_outResult = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 427)).operator_tilde (SOURCE_FILE ("expression.galgas", 427)) ;
 //---
   return result_outResult ;
 }
@@ -15510,28 +15510,28 @@ static GALGAS_binaryset categoryReader_complementExpression_computeExpression (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_complementExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_complementExpression.mSlotID,
-                                         categoryReader_complementExpression_computeExpression) ;
+static void defineCategoryGetter_complementExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_complementExpression.mSlotID,
+                                         extensionGetter_complementExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_complementExpression_computeExpression (defineCategoryReader_complementExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_complementExpression_computeExpression (defineCategoryGetter_complementExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Overriding category reader '@trueExpression computeExpression'                            *
+//                           Overriding category getter '@trueExpression computeExpression'                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_trueExpression_computeExpression (const cPtr_expression * /* inObject */,
-                                                                         const GALGAS_domainMap & /* constinArgument_inDomainMap */,
-                                                                         const GALGAS_varMap & /* constinArgument_inVarMap */,
-                                                                         const GALGAS_uint & /* constinArgument_inTotalBitCount */,
-                                                                         const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
-                                                                         C_Compiler * /* inCompiler */
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_trueExpression_computeExpression (const cPtr_expression * /* inObject */,
+                                                                          const GALGAS_domainMap & /* constinArgument_inDomainMap */,
+                                                                          const GALGAS_varMap & /* constinArgument_inVarMap */,
+                                                                          const GALGAS_uint & /* constinArgument_inTotalBitCount */,
+                                                                          const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
+                                                                          C_Compiler * /* inCompiler */
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   result_outResult = GALGAS_binaryset::constructor_fullBinarySet (SOURCE_FILE ("expression.galgas", 439)) ;
 //---
@@ -15541,28 +15541,28 @@ static GALGAS_binaryset categoryReader_trueExpression_computeExpression (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_trueExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_trueExpression.mSlotID,
-                                         categoryReader_trueExpression_computeExpression) ;
+static void defineCategoryGetter_trueExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_trueExpression.mSlotID,
+                                         extensionGetter_trueExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_trueExpression_computeExpression (defineCategoryReader_trueExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_trueExpression_computeExpression (defineCategoryGetter_trueExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Overriding category reader '@falseExpression computeExpression'                           *
+//                           Overriding category getter '@falseExpression computeExpression'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_falseExpression_computeExpression (const cPtr_expression * /* inObject */,
-                                                                          const GALGAS_domainMap & /* constinArgument_inDomainMap */,
-                                                                          const GALGAS_varMap & /* constinArgument_inVarMap */,
-                                                                          const GALGAS_uint & /* constinArgument_inTotalBitCount */,
-                                                                          const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
-                                                                          C_Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_falseExpression_computeExpression (const cPtr_expression * /* inObject */,
+                                                                           const GALGAS_domainMap & /* constinArgument_inDomainMap */,
+                                                                           const GALGAS_varMap & /* constinArgument_inVarMap */,
+                                                                           const GALGAS_uint & /* constinArgument_inTotalBitCount */,
+                                                                           const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
+                                                                           C_Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   result_outResult = GALGAS_binaryset::constructor_emptyBinarySet (SOURCE_FILE ("expression.galgas", 451)) ;
 //---
@@ -15572,28 +15572,28 @@ static GALGAS_binaryset categoryReader_falseExpression_computeExpression (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_falseExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_falseExpression.mSlotID,
-                                         categoryReader_falseExpression_computeExpression) ;
+static void defineCategoryGetter_falseExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_falseExpression.mSlotID,
+                                         extensionGetter_falseExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_falseExpression_computeExpression (defineCategoryReader_falseExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_falseExpression_computeExpression (defineCategoryGetter_falseExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category reader '@formulaInExpression computeExpression'                         *
+//                         Overriding category getter '@formulaInExpression computeExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_formulaInExpression_computeExpression (const cPtr_expression * inObject,
-                                                                              const GALGAS_domainMap & /* constinArgument_inDomainMap */,
-                                                                              const GALGAS_varMap & constinArgument_inVarMap,
-                                                                              const GALGAS_uint & /* constinArgument_inTotalBitCount */,
-                                                                              const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_formulaInExpression_computeExpression (const cPtr_expression * inObject,
+                                                                               const GALGAS_domainMap & /* constinArgument_inDomainMap */,
+                                                                               const GALGAS_varMap & constinArgument_inVarMap,
+                                                                               const GALGAS_uint & /* constinArgument_inTotalBitCount */,
+                                                                               const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_formulaInExpression * object = (const cPtr_formulaInExpression *) inObject ;
   macroValidSharedObject (object, cPtr_formulaInExpression) ;
@@ -15601,24 +15601,24 @@ static GALGAS_binaryset categoryReader_formulaInExpression_computeExpression (co
   GALGAS_uint var_totalBitCount ;
   GALGAS_binaryset var_formulaValue ;
   constinArgument_inComputedFormulaMap.method_searchKey (object->mAttribute_mFormulaName, var_varList, var_totalBitCount, var_formulaValue, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 464)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, object->mAttribute_mParameterList.reader_length (SOURCE_FILE ("expression.galgas", 466)).objectCompare (var_varList.reader_length (SOURCE_FILE ("expression.galgas", 466)))).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, object->mAttribute_mParameterList.getter_length (SOURCE_FILE ("expression.galgas", 466)).objectCompare (var_varList.getter_length (SOURCE_FILE ("expression.galgas", 466)))).boolEnum () ;
   if (kBoolTrue == test_0) {
     GALGAS_string temp_1 ;
-    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, var_varList.reader_length (SOURCE_FILE ("expression.galgas", 468)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, var_varList.getter_length (SOURCE_FILE ("expression.galgas", 468)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_2) {
       temp_1 = GALGAS_string ("s") ;
     }else if (kBoolFalse == test_2) {
       temp_1 = GALGAS_string::makeEmptyString () ;
     }
     GALGAS_string temp_3 ;
-    const enumGalgasBool test_4 = GALGAS_bool (kIsStrictSup, object->mAttribute_mParameterList.reader_length (SOURCE_FILE ("expression.galgas", 470)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+    const enumGalgasBool test_4 = GALGAS_bool (kIsStrictSup, object->mAttribute_mParameterList.getter_length (SOURCE_FILE ("expression.galgas", 470)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_4) {
       temp_3 = GALGAS_string ("s") ;
     }else if (kBoolFalse == test_4) {
       temp_3 = GALGAS_string::makeEmptyString () ;
     }
-    GALGAS_location location_5 (object->mAttribute_mFormulaName.reader_location (HERE)) ; // Implicit use of 'location' reader
-    inCompiler->emitSemanticError (location_5, GALGAS_string ("the $").add_operation (object->mAttribute_mFormulaName.reader_string (SOURCE_FILE ("expression.galgas", 467)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (GALGAS_string (" names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (var_varList.reader_length (SOURCE_FILE ("expression.galgas", 468)).reader_string (SOURCE_FILE ("expression.galgas", 467)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (GALGAS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (temp_1, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (GALGAS_string (", but this call names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (object->mAttribute_mParameterList.reader_length (SOURCE_FILE ("expression.galgas", 470)).reader_string (SOURCE_FILE ("expression.galgas", 469)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 469)).add_operation (GALGAS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 470)).add_operation (temp_3, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 470))  COMMA_SOURCE_FILE ("expression.galgas", 467)) ;
+    GALGAS_location location_5 (object->mAttribute_mFormulaName.getter_location (HERE)) ; // Implicit use of 'location' getter
+    inCompiler->emitSemanticError (location_5, GALGAS_string ("the $").add_operation (object->mAttribute_mFormulaName.getter_string (SOURCE_FILE ("expression.galgas", 467)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (GALGAS_string (" names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (var_varList.getter_length (SOURCE_FILE ("expression.galgas", 468)).getter_string (SOURCE_FILE ("expression.galgas", 467)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (GALGAS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (temp_1, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (GALGAS_string (", but this call names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (object->mAttribute_mParameterList.getter_length (SOURCE_FILE ("expression.galgas", 470)).getter_string (SOURCE_FILE ("expression.galgas", 469)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 469)).add_operation (GALGAS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 470)).add_operation (temp_3, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 470))  COMMA_SOURCE_FILE ("expression.galgas", 467)) ;
     result_outResult.drop () ; // Release error dropped variable
   }else if (kBoolFalse == test_0) {
     GALGAS_uintlist var_transformationList = GALGAS_uintlist::constructor_emptyList (SOURCE_FILE ("expression.galgas", 473)) ;
@@ -15654,8 +15654,8 @@ static GALGAS_binaryset categoryReader_formulaInExpression_computeExpression (co
         }else if (kBoolFalse == test_10) {
           temp_9 = GALGAS_string::makeEmptyString () ;
         }
-        GALGAS_location location_11 (enumerator_16431.current_mParameterName (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
-        inCompiler->emitSemanticError (location_11, GALGAS_string ("this parameter is declared with a size of ").add_operation (var_parameterBitCount.reader_string (SOURCE_FILE ("expression.galgas", 482)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 482)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (GALGAS_string (", but corresponding formal argument '"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (enumerator_16380.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (GALGAS_string ("' is declared with a size of "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (enumerator_16380.current_mBitCount (HERE).reader_string (SOURCE_FILE ("expression.galgas", 484)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 485)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 485))  COMMA_SOURCE_FILE ("expression.galgas", 482)) ;
+        GALGAS_location location_11 (enumerator_16431.current_mParameterName (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
+        inCompiler->emitSemanticError (location_11, GALGAS_string ("this parameter is declared with a size of ").add_operation (var_parameterBitCount.getter_string (SOURCE_FILE ("expression.galgas", 482)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 482)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (GALGAS_string (", but corresponding formal argument '"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (enumerator_16380.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (GALGAS_string ("' is declared with a size of "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (enumerator_16380.current_mBitCount (HERE).getter_string (SOURCE_FILE ("expression.galgas", 484)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 485)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 485))  COMMA_SOURCE_FILE ("expression.galgas", 482)) ;
       }
       cEnumerator_range enumerator_17265 (GALGAS_range (GALGAS_uint ((uint32_t) 0U), var_parameterBitCount.substract_operation (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 487))), kEnumeration_up) ;
       while (enumerator_17265.hasCurrentObject ()) {
@@ -15665,7 +15665,7 @@ static GALGAS_binaryset categoryReader_formulaInExpression_computeExpression (co
       enumerator_16380.gotoNextObject () ;
       enumerator_16431.gotoNextObject () ;
     }
-    result_outResult = var_formulaValue.reader_transformedBy (var_transformationList COMMA_SOURCE_FILE ("expression.galgas", 491)) ;
+    result_outResult = var_formulaValue.getter_transformedBy (var_transformationList COMMA_SOURCE_FILE ("expression.galgas", 491)) ;
   }
 //---
   return result_outResult ;
@@ -15674,60 +15674,22 @@ static GALGAS_binaryset categoryReader_formulaInExpression_computeExpression (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_formulaInExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_formulaInExpression.mSlotID,
-                                         categoryReader_formulaInExpression_computeExpression) ;
+static void defineCategoryGetter_formulaInExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_formulaInExpression.mSlotID,
+                                         extensionGetter_formulaInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_formulaInExpression_computeExpression (defineCategoryReader_formulaInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_formulaInExpression_computeExpression (defineCategoryGetter_formulaInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category reader '@existInExpression computeExpression'                          *
+//                          Overriding category getter '@existInExpression computeExpression'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_existInExpression_computeExpression (const cPtr_expression * inObject,
-                                                                            const GALGAS_domainMap & constinArgument_inDomainMap,
-                                                                            const GALGAS_varMap & constinArgument_inVarMap,
-                                                                            const GALGAS_uint & constinArgument_inTotalBitCount,
-                                                                            const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_binaryset result_outResult ; // Returned variable
-  const cPtr_existInExpression * object = (const cPtr_existInExpression *) inObject ;
-  macroValidSharedObject (object, cPtr_existInExpression) ;
-  GALGAS_varMap var_varMap = constinArgument_inVarMap ;
-  GALGAS_uint var_totalBitCount = constinArgument_inTotalBitCount ;
-  GALGAS_varList joker_17863 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("expression.galgas", 506)) ;
-  categoryMethod_analyze (object->mAttribute_mArgumentList, constinArgument_inDomainMap, var_varMap, joker_17863, var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 506)) ;
-  GALGAS_binaryset var_r = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 507)) ;
-  result_outResult = var_r.reader_existOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.galgas", 508)) ;
-//---
-  return result_outResult ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_existInExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_existInExpression.mSlotID,
-                                         categoryReader_existInExpression_computeExpression) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_existInExpression_computeExpression (defineCategoryReader_existInExpression_computeExpression, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Overriding category reader '@forAllInExpression computeExpression'                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_binaryset categoryReader_forAllInExpression_computeExpression (const cPtr_expression * inObject,
+static GALGAS_binaryset extensionGetter_existInExpression_computeExpression (const cPtr_expression * inObject,
                                                                              const GALGAS_domainMap & constinArgument_inDomainMap,
                                                                              const GALGAS_varMap & constinArgument_inVarMap,
                                                                              const GALGAS_uint & constinArgument_inTotalBitCount,
@@ -15735,14 +15697,14 @@ static GALGAS_binaryset categoryReader_forAllInExpression_computeExpression (con
                                                                              C_Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
-  const cPtr_forAllInExpression * object = (const cPtr_forAllInExpression *) inObject ;
-  macroValidSharedObject (object, cPtr_forAllInExpression) ;
+  const cPtr_existInExpression * object = (const cPtr_existInExpression *) inObject ;
+  macroValidSharedObject (object, cPtr_existInExpression) ;
   GALGAS_varMap var_varMap = constinArgument_inVarMap ;
   GALGAS_uint var_totalBitCount = constinArgument_inTotalBitCount ;
-  GALGAS_varList joker_18498 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("expression.galgas", 522)) ;
-  categoryMethod_analyze (object->mAttribute_mArgumentList, constinArgument_inDomainMap, var_varMap, joker_18498, var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 522)) ;
-  GALGAS_binaryset var_r = callCategoryReader_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 523)) ;
-  result_outResult = var_r.reader_forAllOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.galgas", 524)) ;
+  GALGAS_varList joker_17863 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("expression.galgas", 506)) ;
+  categoryMethod_analyze (object->mAttribute_mArgumentList, constinArgument_inDomainMap, var_varMap, joker_17863, var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 506)) ;
+  GALGAS_binaryset var_r = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 507)) ;
+  result_outResult = var_r.getter_existOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.galgas", 508)) ;
 //---
   return result_outResult ;
 }
@@ -15750,28 +15712,66 @@ static GALGAS_binaryset categoryReader_forAllInExpression_computeExpression (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_forAllInExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_forAllInExpression.mSlotID,
-                                         categoryReader_forAllInExpression_computeExpression) ;
+static void defineCategoryGetter_existInExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_existInExpression.mSlotID,
+                                         extensionGetter_existInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_forAllInExpression_computeExpression (defineCategoryReader_forAllInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_existInExpression_computeExpression (defineCategoryGetter_existInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category reader '@comparisonWithConstantInExpression computeExpression'                  *
+//                         Overriding category getter '@forAllInExpression computeExpression'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_comparisonWithConstantInExpression_computeExpression (const cPtr_expression * inObject,
-                                                                                             const GALGAS_domainMap & /* constinArgument_inDomainMap */,
-                                                                                             const GALGAS_varMap & constinArgument_inVarMap,
-                                                                                             const GALGAS_uint & /* constinArgument_inTotalBitCount */,
-                                                                                             const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
-                                                                                             C_Compiler * inCompiler
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_forAllInExpression_computeExpression (const cPtr_expression * inObject,
+                                                                              const GALGAS_domainMap & constinArgument_inDomainMap,
+                                                                              const GALGAS_varMap & constinArgument_inVarMap,
+                                                                              const GALGAS_uint & constinArgument_inTotalBitCount,
+                                                                              const GALGAS_computedFormulaMap & constinArgument_inComputedFormulaMap,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_binaryset result_outResult ; // Returned variable
+  const cPtr_forAllInExpression * object = (const cPtr_forAllInExpression *) inObject ;
+  macroValidSharedObject (object, cPtr_forAllInExpression) ;
+  GALGAS_varMap var_varMap = constinArgument_inVarMap ;
+  GALGAS_uint var_totalBitCount = constinArgument_inTotalBitCount ;
+  GALGAS_varList joker_18498 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("expression.galgas", 522)) ;
+  categoryMethod_analyze (object->mAttribute_mArgumentList, constinArgument_inDomainMap, var_varMap, joker_18498, var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 522)) ;
+  GALGAS_binaryset var_r = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 523)) ;
+  result_outResult = var_r.getter_forAllOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.galgas", 524)) ;
+//---
+  return result_outResult ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryGetter_forAllInExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_forAllInExpression.mSlotID,
+                                         extensionGetter_forAllInExpression_computeExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gGetter_forAllInExpression_computeExpression (defineCategoryGetter_forAllInExpression_computeExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                 Overriding category getter '@comparisonWithConstantInExpression computeExpression'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_binaryset extensionGetter_comparisonWithConstantInExpression_computeExpression (const cPtr_expression * inObject,
+                                                                                              const GALGAS_domainMap & /* constinArgument_inDomainMap */,
+                                                                                              const GALGAS_varMap & constinArgument_inVarMap,
+                                                                                              const GALGAS_uint & /* constinArgument_inTotalBitCount */,
+                                                                                              const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_comparisonWithConstantInExpression * object = (const cPtr_comparisonWithConstantInExpression *) inObject ;
   macroValidSharedObject (object, cPtr_comparisonWithConstantInExpression) ;
@@ -15788,16 +15788,16 @@ static GALGAS_binaryset categoryReader_comparisonWithConstantInExpression_comput
     var_subDomainMap = var_fieldSubdomainMap ;
     enumerator_19176.gotoNextObject () ;
   }
-  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_subDomainMap.reader_count (SOURCE_FILE ("expression.galgas", 542)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_subDomainMap.getter_count (SOURCE_FILE ("expression.galgas", 542)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (object->mAttribute_mVarName.reader_location (HERE)) ; // Implicit use of 'location' reader
+    GALGAS_location location_1 (object->mAttribute_mVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
     inCompiler->emitSemanticError (location_1, GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 543)) ;
     result_outResult.drop () ; // Release error dropped variable
   }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, object->mAttribute_mConstant.mAttribute_uint.reader_significantBitCount (SOURCE_FILE ("expression.galgas", 544)).objectCompare (var_bitCount)).boolEnum () ;
+    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, object->mAttribute_mConstant.mAttribute_uint.getter_significantBitCount (SOURCE_FILE ("expression.galgas", 544)).objectCompare (var_bitCount)).boolEnum () ;
     if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (object->mAttribute_mConstant.reader_location (HERE)) ; // Implicit use of 'location' reader
-      inCompiler->emitSemanticError (location_3, GALGAS_string ("Constant too large (should be < 2**").add_operation (var_bitCount.reader_string (SOURCE_FILE ("expression.galgas", 545)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 545))  COMMA_SOURCE_FILE ("expression.galgas", 545)) ;
+      GALGAS_location location_3 (object->mAttribute_mConstant.getter_location (HERE)) ; // Implicit use of 'location' getter
+      inCompiler->emitSemanticError (location_3, GALGAS_string ("Constant too large (should be < 2**").add_operation (var_bitCount.getter_string (SOURCE_FILE ("expression.galgas", 545)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 545))  COMMA_SOURCE_FILE ("expression.galgas", 545)) ;
       result_outResult.drop () ; // Release error dropped variable
     }else if (kBoolFalse == test_2) {
       switch (object->mAttribute_mComparison.enumValue ()) {
@@ -15805,32 +15805,32 @@ static GALGAS_binaryset categoryReader_comparisonWithConstantInExpression_comput
         break ;
       case GALGAS_comparison::kEnum_equal:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithEqualToConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.reader_uint_36__34_ (SOURCE_FILE ("expression.galgas", 549)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 549)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithEqualToConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 549)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 549)) ;
         }
         break ;
       case GALGAS_comparison::kEnum_notEqual:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithNotEqualToConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.reader_uint_36__34_ (SOURCE_FILE ("expression.galgas", 551)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 551)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithNotEqualToConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 551)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 551)) ;
         }
         break ;
       case GALGAS_comparison::kEnum_lowerOrEqual:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithLowerOrEqualToConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.reader_uint_36__34_ (SOURCE_FILE ("expression.galgas", 553)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 553)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithLowerOrEqualToConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 553)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 553)) ;
         }
         break ;
       case GALGAS_comparison::kEnum_lowerThan:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithStrictLowerThanConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.reader_uint_36__34_ (SOURCE_FILE ("expression.galgas", 555)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 555)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithStrictLowerThanConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 555)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 555)) ;
         }
         break ;
       case GALGAS_comparison::kEnum_greaterOrEqual:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithGreaterOrEqualToConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.reader_uint_36__34_ (SOURCE_FILE ("expression.galgas", 557)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 557)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithGreaterOrEqualToConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 557)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 557)) ;
         }
         break ;
       case GALGAS_comparison::kEnum_greaterThan:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithStrictGreaterThanConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.reader_uint_36__34_ (SOURCE_FILE ("expression.galgas", 559)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 559)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithStrictGreaterThanConstant (var_idx, var_bitCount, object->mAttribute_mConstant.mAttribute_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 559)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 559)) ;
         }
         break ;
       }
@@ -15843,28 +15843,28 @@ static GALGAS_binaryset categoryReader_comparisonWithConstantInExpression_comput
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_comparisonWithConstantInExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_comparisonWithConstantInExpression.mSlotID,
-                                         categoryReader_comparisonWithConstantInExpression_computeExpression) ;
+static void defineCategoryGetter_comparisonWithConstantInExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_comparisonWithConstantInExpression.mSlotID,
+                                         extensionGetter_comparisonWithConstantInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_comparisonWithConstantInExpression_computeExpression (defineCategoryReader_comparisonWithConstantInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_comparisonWithConstantInExpression_computeExpression (defineCategoryGetter_comparisonWithConstantInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category reader '@variableComparisonInExpression computeExpression'                    *
+//                   Overriding category getter '@variableComparisonInExpression computeExpression'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_binaryset categoryReader_variableComparisonInExpression_computeExpression (const cPtr_expression * inObject,
-                                                                                         const GALGAS_domainMap & /* constinArgument_inDomainMap */,
-                                                                                         const GALGAS_varMap & constinArgument_inVarMap,
-                                                                                         const GALGAS_uint & /* constinArgument_inTotalBitCount */,
-                                                                                         const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
-                                                                                         C_Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_binaryset extensionGetter_variableComparisonInExpression_computeExpression (const cPtr_expression * inObject,
+                                                                                          const GALGAS_domainMap & /* constinArgument_inDomainMap */,
+                                                                                          const GALGAS_varMap & constinArgument_inVarMap,
+                                                                                          const GALGAS_uint & /* constinArgument_inTotalBitCount */,
+                                                                                          const GALGAS_computedFormulaMap & /* constinArgument_inComputedFormulaMap */,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_variableComparisonInExpression * object = (const cPtr_variableComparisonInExpression *) inObject ;
   macroValidSharedObject (object, cPtr_variableComparisonInExpression) ;
@@ -15894,15 +15894,15 @@ static GALGAS_binaryset categoryReader_variableComparisonInExpression_computeExp
     var_rightSubDomainMap = var_fieldSubdomainMap ;
     enumerator_21297.gotoNextObject () ;
   }
-  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_leftSubDomainMap.reader_count (SOURCE_FILE ("expression.galgas", 585)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_leftSubDomainMap.getter_count (SOURCE_FILE ("expression.galgas", 585)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (object->mAttribute_mLeftVarName.reader_location (HERE)) ; // Implicit use of 'location' reader
+    GALGAS_location location_1 (object->mAttribute_mLeftVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
     inCompiler->emitSemanticError (location_1, GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 586)) ;
     result_outResult.drop () ; // Release error dropped variable
   }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, var_rightSubDomainMap.reader_count (SOURCE_FILE ("expression.galgas", 587)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, var_rightSubDomainMap.getter_count (SOURCE_FILE ("expression.galgas", 587)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (object->mAttribute_mRightVarName.reader_location (HERE)) ; // Implicit use of 'location' reader
+      GALGAS_location location_3 (object->mAttribute_mRightVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_3, GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 588)) ;
       result_outResult.drop () ; // Release error dropped variable
     }else if (kBoolFalse == test_2) {
@@ -15922,8 +15922,8 @@ static GALGAS_binaryset categoryReader_variableComparisonInExpression_computeExp
         }else if (kBoolFalse == test_8) {
           temp_7 = GALGAS_string::makeEmptyString () ;
         }
-        GALGAS_location location_9 (object->mAttribute_mRightVarName.reader_location (HERE)) ; // Implicit use of 'location' reader
-        inCompiler->emitSemanticError (location_9, GALGAS_string ("'").add_operation (object->mAttribute_mLeftVarName.reader_string (SOURCE_FILE ("expression.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (GALGAS_string ("' variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (var_leftBitCount.reader_string (SOURCE_FILE ("expression.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (GALGAS_string (", but this variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (var_rightBitCount.reader_string (SOURCE_FILE ("expression.galgas", 592)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 592)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 593)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 593))  COMMA_SOURCE_FILE ("expression.galgas", 590)) ;
+        GALGAS_location location_9 (object->mAttribute_mRightVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
+        inCompiler->emitSemanticError (location_9, GALGAS_string ("'").add_operation (object->mAttribute_mLeftVarName.getter_string (SOURCE_FILE ("expression.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (GALGAS_string ("' variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (var_leftBitCount.getter_string (SOURCE_FILE ("expression.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (GALGAS_string (", but this variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (var_rightBitCount.getter_string (SOURCE_FILE ("expression.galgas", 592)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 592)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 593)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 593))  COMMA_SOURCE_FILE ("expression.galgas", 590)) ;
         result_outResult.drop () ; // Release error dropped variable
       }else if (kBoolFalse == test_4) {
         switch (object->mAttribute_mComparison.enumValue ()) {
@@ -15970,12 +15970,12 @@ static GALGAS_binaryset categoryReader_variableComparisonInExpression_computeExp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_variableComparisonInExpression_computeExpression (void) {
-  enterCategoryReader_computeExpression (kTypeDescriptor_GALGAS_variableComparisonInExpression.mSlotID,
-                                         categoryReader_variableComparisonInExpression_computeExpression) ;
+static void defineCategoryGetter_variableComparisonInExpression_computeExpression (void) {
+  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_variableComparisonInExpression.mSlotID,
+                                         extensionGetter_variableComparisonInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_variableComparisonInExpression_computeExpression (defineCategoryReader_variableComparisonInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_variableComparisonInExpression_computeExpression (defineCategoryGetter_variableComparisonInExpression_computeExpression, NULL) ;
 
