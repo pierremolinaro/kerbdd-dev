@@ -55,1068 +55,145 @@ C_String C_Lexique_kerbdd_5F_lexique::indexingDirectory (void) const {
 //                        Lexical error message list                                                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const utf32 gLexicalMessage_kerbdd_5F_lexique_decimalNumberTooLarge [] = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
+static const char * gLexicalMessage_kerbdd_5F_lexique_decimalNumberTooLarge = "decimal number too large" ;
 
-static const utf32 gLexicalMessage_kerbdd_5F_lexique_incorrectStringEnd [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('\"'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (0)
-} ;
+static const char * gLexicalMessage_kerbdd_5F_lexique_incorrectStringEnd = "string does not end with '\"'" ;
 
-static const utf32 gLexicalMessage_kerbdd_5F_lexique_internalError [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gLexicalMessage_kerbdd_5F_lexique_internalError = "internal error" ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //          Syntax error messages, for every terminal symbol                                                           *
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Syntax error message for terminal '$identifier$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_identifier [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_identifier = "an identifier" ;
 
 //--- Syntax error message for terminal '$integer$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_integer [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('3'),
-  TO_UNICODE ('2'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_integer = "a 32-bit unsigned decimal number" ;
 
 //--- Syntax error message for terminal '$literal_string$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_literal_5F_string [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\"'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('\"'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_literal_5F_string = "a character string constant \"...\"" ;
 
 //--- Syntax error message for terminal '$comment$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_comment [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_comment = "a comment" ;
 
 //--- Syntax error message for terminal '$nodeHashMapSize$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_nodeHashMapSize [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('H'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('M'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('z'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_nodeHashMapSize = "the 'nodeHashMapSize' keyword" ;
 
 //--- Syntax error message for terminal '$andCacheMapSize$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_andCacheMapSize [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('C'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('M'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('z'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_andCacheMapSize = "the 'andCacheMapSize' keyword" ;
 
 //--- Syntax error message for terminal '$domain$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_domain [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_domain = "the 'domain' keyword" ;
 
 //--- Syntax error message for terminal '$bool$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_bool [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_bool = "the 'bool' keyword" ;
 
 //--- Syntax error message for terminal '$true$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_true [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_true = "the 'true' keyword" ;
 
 //--- Syntax error message for terminal '$false$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_false [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_false = "the 'false' keyword" ;
 
 //--- Syntax error message for terminal '$display$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_display [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_display = "the 'display' keyword" ;
 
 //--- Syntax error message for terminal '$include$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_include [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_include = "the 'include' keyword" ;
 
 //--- Syntax error message for terminal '$graphviz$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_graphviz [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('z'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_graphviz = "the 'graphviz' keyword" ;
 
 //--- Syntax error message for terminal '$dump$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique_dump [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique_dump = "the 'dump' keyword" ;
 
 //--- Syntax error message for terminal '$($' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__28_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('('),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__28_ = "the '(' delimitor" ;
 
 //--- Syntax error message for terminal '$)$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__29_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (')'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__29_ = "the ')' delimitor" ;
 
 //--- Syntax error message for terminal '$[$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__5B_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('['),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__5B_ = "the '[' delimitor" ;
 
 //--- Syntax error message for terminal '$]$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__5D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (']'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__5D_ = "the ']' delimitor" ;
 
 //--- Syntax error message for terminal '${$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__7B_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('{'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__7B_ = "the '{' delimitor" ;
 
 //--- Syntax error message for terminal '$}$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__7D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('}'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__7D_ = "the '}' delimitor" ;
 
 //--- Syntax error message for terminal '$:=$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__3A__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (':'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3A__3D_ = "the ':=' delimitor" ;
 
 //--- Syntax error message for terminal '$:$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__3A_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (':'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3A_ = "the ':' delimitor" ;
 
 //--- Syntax error message for terminal '$.$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__2E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__2E_ = "the '.' delimitor" ;
 
 //--- Syntax error message for terminal '$..$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__2E__2E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__2E__2E_ = "the '..' delimitor" ;
 
 //--- Syntax error message for terminal '$+=$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__2B__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__2B__3D_ = "the '+=' delimitor" ;
 
 //--- Syntax error message for terminal '$-=$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__2D__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__2D__3D_ = "the '-=' delimitor" ;
 
 //--- Syntax error message for terminal '$->$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__2D__3E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('>'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__2D__3E_ = "the '->' delimitor" ;
 
 //--- Syntax error message for terminal '$&$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__26_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__26_ = "the '&' delimitor" ;
 
 //--- Syntax error message for terminal '$|$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__7C_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('|'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__7C_ = "the '|' delimitor" ;
 
 //--- Syntax error message for terminal '$^$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__5E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('^'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__5E_ = "the '^' delimitor" ;
 
 //--- Syntax error message for terminal '$~$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__7E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('~'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__7E_ = "the '~' delimitor" ;
 
 //--- Syntax error message for terminal '$,$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__2C_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (','),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__2C_ = "the ',' delimitor" ;
 
 //--- Syntax error message for terminal '$?$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__3F_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3F_ = "the '\?' delimitor" ;
 
 //--- Syntax error message for terminal '$!$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__21_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('!'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__21_ = "the '!' delimitor" ;
 
 //--- Syntax error message for terminal '$;$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__3B_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (';'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3B_ = "the ';' delimitor" ;
 
 //--- Syntax error message for terminal '$=$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3D_ = "the '=' delimitor" ;
 
 //--- Syntax error message for terminal '$!=$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__21__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('!'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__21__3D_ = "the '!=' delimitor" ;
 
 //--- Syntax error message for terminal '$<$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__3C_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('<'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3C_ = "the '<' delimitor" ;
 
 //--- Syntax error message for terminal '$<=$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__3C__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('<'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3C__3D_ = "the '<=' delimitor" ;
 
 //--- Syntax error message for terminal '$>$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__3E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('>'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3E_ = "the '>' delimitor" ;
 
 //--- Syntax error message for terminal '$>=$' :
-static const utf32 gSyntaxErrorMessage_kerbdd_5F_lexique__3E__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('>'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3E__3D_ = "the '>=' delimitor" ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                getMessageForTerminal                                                                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_kerbdd_5F_lexique::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const utf32 * syntaxErrorMessageArray [42] = {kEndOfSourceLexicalErrorMessage,
+  static const char * syntaxErrorMessageArray [42] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_kerbdd_5F_lexique_identifier,
     gSyntaxErrorMessage_kerbdd_5F_lexique_integer,
     gSyntaxErrorMessage_kerbdd_5F_lexique_literal_5F_string,
@@ -2256,11 +1333,11 @@ void GALGAS_domainFieldList::addAssign_operation (const GALGAS_lstring & inOpera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainFieldList::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                     const GALGAS_bddType inOperand1,
-                                                     const GALGAS_uint inInsertionIndex,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_domainFieldList::setter_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                   const GALGAS_bddType inOperand1,
+                                                   const GALGAS_uint inInsertionIndex,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_domainFieldList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -2273,11 +1350,11 @@ void GALGAS_domainFieldList::modifier_insertAtIndex (const GALGAS_lstring inOper
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainFieldList::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                     GALGAS_bddType & outOperand1,
-                                                     const GALGAS_uint inRemoveIndex,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_domainFieldList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                   GALGAS_bddType & outOperand1,
+                                                   const GALGAS_uint inRemoveIndex,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -2295,10 +1372,10 @@ void GALGAS_domainFieldList::modifier_removeAtIndex (GALGAS_lstring & outOperand
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainFieldList::modifier_popFirst (GALGAS_lstring & outOperand0,
-                                                GALGAS_bddType & outOperand1,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
+void GALGAS_domainFieldList::setter_popFirst (GALGAS_lstring & outOperand0,
+                                              GALGAS_bddType & outOperand1,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_domainFieldList * p = (cCollectionElement_domainFieldList *) attributes.ptr () ;
@@ -2314,10 +1391,10 @@ void GALGAS_domainFieldList::modifier_popFirst (GALGAS_lstring & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainFieldList::modifier_popLast (GALGAS_lstring & outOperand0,
-                                               GALGAS_bddType & outOperand1,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+void GALGAS_domainFieldList::setter_popLast (GALGAS_lstring & outOperand0,
+                                             GALGAS_bddType & outOperand1,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_domainFieldList * p = (cCollectionElement_domainFieldList *) attributes.ptr () ;
@@ -2670,11 +1747,11 @@ void GALGAS_domainDeclarationList::addAssign_operation (const GALGAS_lstring & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainDeclarationList::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                           const GALGAS_domainDeclarationType inOperand1,
-                                                           const GALGAS_uint inInsertionIndex,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_domainDeclarationList::setter_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                         const GALGAS_domainDeclarationType inOperand1,
+                                                         const GALGAS_uint inInsertionIndex,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_domainDeclarationList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -2687,11 +1764,11 @@ void GALGAS_domainDeclarationList::modifier_insertAtIndex (const GALGAS_lstring 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainDeclarationList::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                           GALGAS_domainDeclarationType & outOperand1,
-                                                           const GALGAS_uint inRemoveIndex,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_domainDeclarationList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                         GALGAS_domainDeclarationType & outOperand1,
+                                                         const GALGAS_uint inRemoveIndex,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -2709,10 +1786,10 @@ void GALGAS_domainDeclarationList::modifier_removeAtIndex (GALGAS_lstring & outO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainDeclarationList::modifier_popFirst (GALGAS_lstring & outOperand0,
-                                                      GALGAS_domainDeclarationType & outOperand1,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_domainDeclarationList::setter_popFirst (GALGAS_lstring & outOperand0,
+                                                    GALGAS_domainDeclarationType & outOperand1,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_domainDeclarationList * p = (cCollectionElement_domainDeclarationList *) attributes.ptr () ;
@@ -2728,10 +1805,10 @@ void GALGAS_domainDeclarationList::modifier_popFirst (GALGAS_lstring & outOperan
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainDeclarationList::modifier_popLast (GALGAS_lstring & outOperand0,
-                                                     GALGAS_domainDeclarationType & outOperand1,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_domainDeclarationList::setter_popLast (GALGAS_lstring & outOperand0,
+                                                   GALGAS_domainDeclarationType & outOperand1,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_domainDeclarationList * p = (cCollectionElement_domainDeclarationList *) attributes.ptr () ;
@@ -3071,12 +2148,12 @@ void GALGAS_recordDomainMap::addAssign_operation (const GALGAS_lstring & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_recordDomainMap::modifier_insertKey (GALGAS_lstring inKey,
-                                                 GALGAS_uint inArgument0,
-                                                 GALGAS_uint inArgument1,
-                                                 GALGAS_recordDomainMap inArgument2,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_recordDomainMap::setter_insertKey (GALGAS_lstring inKey,
+                                               GALGAS_uint inArgument0,
+                                               GALGAS_uint inArgument1,
+                                               GALGAS_recordDomainMap inArgument2,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
   cMapElement_recordDomainMap * p = NULL ;
   macroMyNew (p, cMapElement_recordDomainMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -3162,10 +2239,10 @@ GALGAS_recordDomainMap GALGAS_recordDomainMap::getter_mSubDomainForKey (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_recordDomainMap::modifier_setMIndexForKey (GALGAS_uint inAttributeValue,
-                                                       GALGAS_string inKey,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_recordDomainMap::setter_setMIndexForKey (GALGAS_uint inAttributeValue,
+                                                     GALGAS_string inKey,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_recordDomainMap * p = (cMapElement_recordDomainMap *) attributes ;
   if (NULL != p) {
@@ -3176,10 +2253,10 @@ void GALGAS_recordDomainMap::modifier_setMIndexForKey (GALGAS_uint inAttributeVa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_recordDomainMap::modifier_setMBitCountForKey (GALGAS_uint inAttributeValue,
-                                                          GALGAS_string inKey,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_recordDomainMap::setter_setMBitCountForKey (GALGAS_uint inAttributeValue,
+                                                        GALGAS_string inKey,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_recordDomainMap * p = (cMapElement_recordDomainMap *) attributes ;
   if (NULL != p) {
@@ -3190,10 +2267,10 @@ void GALGAS_recordDomainMap::modifier_setMBitCountForKey (GALGAS_uint inAttribut
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_recordDomainMap::modifier_setMSubDomainForKey (GALGAS_recordDomainMap inAttributeValue,
-                                                           GALGAS_string inKey,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_recordDomainMap::setter_setMSubDomainForKey (GALGAS_recordDomainMap inAttributeValue,
+                                                         GALGAS_string inKey,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_recordDomainMap * p = (cMapElement_recordDomainMap *) attributes ;
   if (NULL != p) {
@@ -3421,11 +2498,11 @@ void GALGAS_domainMap::addAssign_operation (const GALGAS_lstring & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainMap::modifier_insertKey (GALGAS_lstring inKey,
-                                           GALGAS_uint inArgument0,
-                                           GALGAS_recordDomainMap inArgument1,
-                                           C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
+void GALGAS_domainMap::setter_insertKey (GALGAS_lstring inKey,
+                                         GALGAS_uint inArgument0,
+                                         GALGAS_recordDomainMap inArgument1,
+                                         C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
   cMapElement_domainMap * p = NULL ;
   macroMyNew (p, cMapElement_domainMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -3493,10 +2570,10 @@ GALGAS_recordDomainMap GALGAS_domainMap::getter_mRecordMapForKey (const GALGAS_s
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainMap::modifier_setMBitCountForKey (GALGAS_uint inAttributeValue,
-                                                    GALGAS_string inKey,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_domainMap::setter_setMBitCountForKey (GALGAS_uint inAttributeValue,
+                                                  GALGAS_string inKey,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_domainMap * p = (cMapElement_domainMap *) attributes ;
   if (NULL != p) {
@@ -3507,10 +2584,10 @@ void GALGAS_domainMap::modifier_setMBitCountForKey (GALGAS_uint inAttributeValue
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_domainMap::modifier_setMRecordMapForKey (GALGAS_recordDomainMap inAttributeValue,
-                                                     GALGAS_string inKey,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_domainMap::setter_setMRecordMapForKey (GALGAS_recordDomainMap inAttributeValue,
+                                                   GALGAS_string inKey,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_domainMap * p = (cMapElement_domainMap *) attributes ;
   if (NULL != p) {
@@ -3763,12 +2840,12 @@ void GALGAS_varList::addAssign_operation (const GALGAS_string & inOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_varList::modifier_insertAtIndex (const GALGAS_string inOperand0,
-                                             const GALGAS_uint inOperand1,
-                                             const GALGAS_uint inOperand2,
-                                             const GALGAS_uint inInsertionIndex,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
+void GALGAS_varList::setter_insertAtIndex (const GALGAS_string inOperand0,
+                                           const GALGAS_uint inOperand1,
+                                           const GALGAS_uint inOperand2,
+                                           const GALGAS_uint inInsertionIndex,
+                                           C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_varList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -3781,12 +2858,12 @@ void GALGAS_varList::modifier_insertAtIndex (const GALGAS_string inOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_varList::modifier_removeAtIndex (GALGAS_string & outOperand0,
-                                             GALGAS_uint & outOperand1,
-                                             GALGAS_uint & outOperand2,
-                                             const GALGAS_uint inRemoveIndex,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
+void GALGAS_varList::setter_removeAtIndex (GALGAS_string & outOperand0,
+                                           GALGAS_uint & outOperand1,
+                                           GALGAS_uint & outOperand2,
+                                           const GALGAS_uint inRemoveIndex,
+                                           C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -3806,11 +2883,11 @@ void GALGAS_varList::modifier_removeAtIndex (GALGAS_string & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_varList::modifier_popFirst (GALGAS_string & outOperand0,
-                                        GALGAS_uint & outOperand1,
-                                        GALGAS_uint & outOperand2,
-                                        C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
+void GALGAS_varList::setter_popFirst (GALGAS_string & outOperand0,
+                                      GALGAS_uint & outOperand1,
+                                      GALGAS_uint & outOperand2,
+                                      C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_varList * p = (cCollectionElement_varList *) attributes.ptr () ;
@@ -3828,11 +2905,11 @@ void GALGAS_varList::modifier_popFirst (GALGAS_string & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_varList::modifier_popLast (GALGAS_string & outOperand0,
-                                       GALGAS_uint & outOperand1,
-                                       GALGAS_uint & outOperand2,
-                                       C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) {
+void GALGAS_varList::setter_popLast (GALGAS_string & outOperand0,
+                                     GALGAS_uint & outOperand1,
+                                     GALGAS_uint & outOperand2,
+                                     C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_varList * p = (cCollectionElement_varList *) attributes.ptr () ;
@@ -4203,12 +3280,12 @@ void GALGAS_varMap::addAssign_operation (const GALGAS_lstring & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_varMap::modifier_insertKey (GALGAS_lstring inKey,
-                                        GALGAS_uint inArgument0,
-                                        GALGAS_uint inArgument1,
-                                        GALGAS_recordDomainMap inArgument2,
-                                        C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
+void GALGAS_varMap::setter_insertKey (GALGAS_lstring inKey,
+                                      GALGAS_uint inArgument0,
+                                      GALGAS_uint inArgument1,
+                                      GALGAS_recordDomainMap inArgument2,
+                                      C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
   cMapElement_varMap * p = NULL ;
   macroMyNew (p, cMapElement_varMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -4294,10 +3371,10 @@ GALGAS_recordDomainMap GALGAS_varMap::getter_mRecordDomainMapForKey (const GALGA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_varMap::modifier_setMIndexForKey (GALGAS_uint inAttributeValue,
-                                              GALGAS_string inKey,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+void GALGAS_varMap::setter_setMIndexForKey (GALGAS_uint inAttributeValue,
+                                            GALGAS_string inKey,
+                                            C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_varMap * p = (cMapElement_varMap *) attributes ;
   if (NULL != p) {
@@ -4308,10 +3385,10 @@ void GALGAS_varMap::modifier_setMIndexForKey (GALGAS_uint inAttributeValue,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_varMap::modifier_setMBitCountForKey (GALGAS_uint inAttributeValue,
-                                                 GALGAS_string inKey,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_varMap::setter_setMBitCountForKey (GALGAS_uint inAttributeValue,
+                                               GALGAS_string inKey,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_varMap * p = (cMapElement_varMap *) attributes ;
   if (NULL != p) {
@@ -4322,10 +3399,10 @@ void GALGAS_varMap::modifier_setMBitCountForKey (GALGAS_uint inAttributeValue,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_varMap::modifier_setMRecordDomainMapForKey (GALGAS_recordDomainMap inAttributeValue,
-                                                        GALGAS_string inKey,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_varMap::setter_setMRecordDomainMapForKey (GALGAS_recordDomainMap inAttributeValue,
+                                                      GALGAS_string inKey,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_varMap * p = (cMapElement_varMap *) attributes ;
   if (NULL != p) {
@@ -4563,12 +3640,12 @@ void GALGAS_computedFormulaMap::addAssign_operation (const GALGAS_lstring & inKe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_computedFormulaMap::modifier_insertKey (GALGAS_lstring inKey,
-                                                    GALGAS_varList inArgument0,
-                                                    GALGAS_uint inArgument1,
-                                                    GALGAS_binaryset inArgument2,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_computedFormulaMap::setter_insertKey (GALGAS_lstring inKey,
+                                                  GALGAS_varList inArgument0,
+                                                  GALGAS_uint inArgument1,
+                                                  GALGAS_binaryset inArgument2,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   cMapElement_computedFormulaMap * p = NULL ;
   macroMyNew (p, cMapElement_computedFormulaMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -4654,10 +3731,10 @@ GALGAS_binaryset GALGAS_computedFormulaMap::getter_mValueForKey (const GALGAS_st
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_computedFormulaMap::modifier_setMVarListForKey (GALGAS_varList inAttributeValue,
-                                                            GALGAS_string inKey,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
+void GALGAS_computedFormulaMap::setter_setMVarListForKey (GALGAS_varList inAttributeValue,
+                                                          GALGAS_string inKey,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_computedFormulaMap * p = (cMapElement_computedFormulaMap *) attributes ;
   if (NULL != p) {
@@ -4668,10 +3745,10 @@ void GALGAS_computedFormulaMap::modifier_setMVarListForKey (GALGAS_varList inAtt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_computedFormulaMap::modifier_setMBitCountForKey (GALGAS_uint inAttributeValue,
-                                                             GALGAS_string inKey,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_computedFormulaMap::setter_setMBitCountForKey (GALGAS_uint inAttributeValue,
+                                                           GALGAS_string inKey,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_computedFormulaMap * p = (cMapElement_computedFormulaMap *) attributes ;
   if (NULL != p) {
@@ -4682,10 +3759,10 @@ void GALGAS_computedFormulaMap::modifier_setMBitCountForKey (GALGAS_uint inAttri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_computedFormulaMap::modifier_setMValueForKey (GALGAS_binaryset inAttributeValue,
-                                                          GALGAS_string inKey,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_computedFormulaMap::setter_setMValueForKey (GALGAS_binaryset inAttributeValue,
+                                                        GALGAS_string inKey,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_computedFormulaMap * p = (cMapElement_computedFormulaMap *) attributes ;
   if (NULL != p) {
@@ -4936,11 +4013,11 @@ void GALGAS_formulaParameterListInExpression::addAssign_operation (const GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formulaParameterListInExpression::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                                      const GALGAS_lstringlist inOperand1,
-                                                                      const GALGAS_uint inInsertionIndex,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_formulaParameterListInExpression::setter_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                    const GALGAS_lstringlist inOperand1,
+                                                                    const GALGAS_uint inInsertionIndex,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_formulaParameterListInExpression (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -4953,11 +4030,11 @@ void GALGAS_formulaParameterListInExpression::modifier_insertAtIndex (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formulaParameterListInExpression::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                                      GALGAS_lstringlist & outOperand1,
-                                                                      const GALGAS_uint inRemoveIndex,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_formulaParameterListInExpression::setter_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                    GALGAS_lstringlist & outOperand1,
+                                                                    const GALGAS_uint inRemoveIndex,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -4975,10 +4052,10 @@ void GALGAS_formulaParameterListInExpression::modifier_removeAtIndex (GALGAS_lst
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formulaParameterListInExpression::modifier_popFirst (GALGAS_lstring & outOperand0,
-                                                                 GALGAS_lstringlist & outOperand1,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_formulaParameterListInExpression::setter_popFirst (GALGAS_lstring & outOperand0,
+                                                               GALGAS_lstringlist & outOperand1,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_formulaParameterListInExpression * p = (cCollectionElement_formulaParameterListInExpression *) attributes.ptr () ;
@@ -4994,10 +4071,10 @@ void GALGAS_formulaParameterListInExpression::modifier_popFirst (GALGAS_lstring 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formulaParameterListInExpression::modifier_popLast (GALGAS_lstring & outOperand0,
-                                                                GALGAS_lstringlist & outOperand1,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_formulaParameterListInExpression::setter_popLast (GALGAS_lstring & outOperand0,
+                                                              GALGAS_lstringlist & outOperand1,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_formulaParameterListInExpression * p = (cCollectionElement_formulaParameterListInExpression *) attributes.ptr () ;
@@ -6413,10 +5490,10 @@ void GALGAS_formulaList::addAssign_operation (const GALGAS_abstractFormula & inO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formulaList::modifier_insertAtIndex (const GALGAS_abstractFormula inOperand0,
-                                                 const GALGAS_uint inInsertionIndex,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_formulaList::setter_insertAtIndex (const GALGAS_abstractFormula inOperand0,
+                                               const GALGAS_uint inInsertionIndex,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_formulaList (inOperand0 COMMA_THERE)) ;
@@ -6429,10 +5506,10 @@ void GALGAS_formulaList::modifier_insertAtIndex (const GALGAS_abstractFormula in
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formulaList::modifier_removeAtIndex (GALGAS_abstractFormula & outOperand0,
-                                                 const GALGAS_uint inRemoveIndex,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_formulaList::setter_removeAtIndex (GALGAS_abstractFormula & outOperand0,
+                                               const GALGAS_uint inRemoveIndex,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -6448,9 +5525,9 @@ void GALGAS_formulaList::modifier_removeAtIndex (GALGAS_abstractFormula & outOpe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formulaList::modifier_popFirst (GALGAS_abstractFormula & outOperand0,
-                                            C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+void GALGAS_formulaList::setter_popFirst (GALGAS_abstractFormula & outOperand0,
+                                          C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_formulaList * p = (cCollectionElement_formulaList *) attributes.ptr () ;
@@ -6464,9 +5541,9 @@ void GALGAS_formulaList::modifier_popFirst (GALGAS_abstractFormula & outOperand0
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formulaList::modifier_popLast (GALGAS_abstractFormula & outOperand0,
-                                           C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
+void GALGAS_formulaList::setter_popLast (GALGAS_abstractFormula & outOperand0,
+                                         C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_formulaList * p = (cCollectionElement_formulaList *) attributes.ptr () ;
@@ -13135,7 +12212,7 @@ void categoryMethod_analyze (const GALGAS_domainDeclarationList inObject,
           case GALGAS_bddType::kEnum_bool:
             {
               {
-              outArgument_outDomainMap.modifier_insertKey (enumerator_4171.current_mDomainName (HERE), GALGAS_uint ((uint32_t) 1U), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 128)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 128)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_4171.current_mDomainName (HERE), GALGAS_uint ((uint32_t) 1U), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 128)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 128)) ;
               }
             }
             break ;
@@ -13144,7 +12221,7 @@ void categoryMethod_analyze (const GALGAS_domainDeclarationList inObject,
               const cEnumAssociatedValues_bddType_boolArray * extractPtr_4431 = (const cEnumAssociatedValues_bddType_boolArray *) (extractedValue_type.unsafePointer ()) ;
               const GALGAS_uint extractedValue_size = extractPtr_4431->mAssociatedValue0 ;
               {
-              outArgument_outDomainMap.modifier_insertKey (enumerator_4171.current_mDomainName (HERE), extractedValue_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 130)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 130)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_4171.current_mDomainName (HERE), extractedValue_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 130)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 130)) ;
               }
             }
             break ;
@@ -13156,7 +12233,7 @@ void categoryMethod_analyze (const GALGAS_domainDeclarationList inObject,
               GALGAS_recordDomainMap var_subdomain ;
               outArgument_outDomainMap.method_searchKey (extractedValue_typeName, var_size, var_subdomain, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 132)) ;
               {
-              outArgument_outDomainMap.modifier_insertKey (enumerator_4171.current_mDomainName (HERE), var_size, var_subdomain, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 133)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_4171.current_mDomainName (HERE), var_size, var_subdomain, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 133)) ;
               }
             }
             break ;
@@ -13179,7 +12256,7 @@ void categoryMethod_analyze (const GALGAS_domainDeclarationList inObject,
               case GALGAS_bddType::kEnum_bool:
                 {
                   {
-                  var_recordMap.modifier_insertKey (enumerator_4767.current_mVarName (HERE), var_bitIndex, GALGAS_uint ((uint32_t) 1U), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 141)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 141)) ;
+                  var_recordMap.setter_insertKey (enumerator_4767.current_mVarName (HERE), var_bitIndex, GALGAS_uint ((uint32_t) 1U), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 141)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 141)) ;
                   }
                   var_bitIndex.increment_operation (inCompiler  COMMA_SOURCE_FILE ("domain.galgas", 142)) ;
                 }
@@ -13189,7 +12266,7 @@ void categoryMethod_analyze (const GALGAS_domainDeclarationList inObject,
                   const cEnumAssociatedValues_bddType_boolArray * extractPtr_5062 = (const cEnumAssociatedValues_bddType_boolArray *) (enumerator_4767.current_mType (HERE).unsafePointer ()) ;
                   const GALGAS_uint extractedValue_size = extractPtr_5062->mAssociatedValue0 ;
                   {
-                  var_recordMap.modifier_insertKey (enumerator_4767.current_mVarName (HERE), var_bitIndex, extractedValue_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 144)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 144)) ;
+                  var_recordMap.setter_insertKey (enumerator_4767.current_mVarName (HERE), var_bitIndex, extractedValue_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 144)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 144)) ;
                   }
                   var_bitIndex = var_bitIndex.add_operation (extractedValue_size, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 145)) ;
                 }
@@ -13202,7 +12279,7 @@ void categoryMethod_analyze (const GALGAS_domainDeclarationList inObject,
                   GALGAS_recordDomainMap var_subdomain ;
                   outArgument_outDomainMap.method_searchKey (extractedValue_typeName, var_size, var_subdomain, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 147)) ;
                   {
-                  var_recordMap.modifier_insertKey (enumerator_4767.current_mVarName (HERE), var_bitIndex, var_size, var_subdomain, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 148)) ;
+                  var_recordMap.setter_insertKey (enumerator_4767.current_mVarName (HERE), var_bitIndex, var_size, var_subdomain, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 148)) ;
                   }
                   var_bitIndex = var_bitIndex.add_operation (var_size, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 149)) ;
                 }
@@ -13215,7 +12292,7 @@ void categoryMethod_analyze (const GALGAS_domainDeclarationList inObject,
             }
           }
           {
-          outArgument_outDomainMap.modifier_insertKey (enumerator_4171.current_mDomainName (HERE), var_bitIndex, var_recordMap, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 152)) ;
+          outArgument_outDomainMap.setter_insertKey (enumerator_4171.current_mDomainName (HERE), var_bitIndex, var_recordMap, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 152)) ;
           }
         }
         break ;
@@ -13251,10 +12328,10 @@ void categoryMethod_analyze (const GALGAS_domainFieldList inObject,
     case GALGAS_bddType::kEnum_bool:
       {
         {
-        ioArgument_ioVarMap.modifier_insertKey (enumerator_6481.current_mVarName (HERE), ioArgument_ioTotalBitCount, GALGAS_uint ((uint32_t) 1U), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 189)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 189)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6481.current_mVarName (HERE), ioArgument_ioTotalBitCount, GALGAS_uint ((uint32_t) 1U), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 189)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 189)) ;
         }
         {
-        ioArgument_ioVarList.modifier_insertAtIndex (enumerator_6481.current_mVarName (HERE).mAttribute_string, ioArgument_ioTotalBitCount, GALGAS_uint ((uint32_t) 1U), GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 190)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6481.current_mVarName (HERE).mAttribute_string, ioArgument_ioTotalBitCount, GALGAS_uint ((uint32_t) 1U), GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 190)) ;
         }
         ioArgument_ioTotalBitCount.increment_operation (inCompiler  COMMA_SOURCE_FILE ("domain.galgas", 191)) ;
       }
@@ -13264,10 +12341,10 @@ void categoryMethod_analyze (const GALGAS_domainFieldList inObject,
         const cEnumAssociatedValues_bddType_boolArray * extractPtr_6882 = (const cEnumAssociatedValues_bddType_boolArray *) (enumerator_6481.current_mType (HERE).unsafePointer ()) ;
         const GALGAS_uint extractedValue_size = extractPtr_6882->mAssociatedValue0 ;
         {
-        ioArgument_ioVarMap.modifier_insertKey (enumerator_6481.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 193)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 193)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6481.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 193)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 193)) ;
         }
         {
-        ioArgument_ioVarList.modifier_insertAtIndex (enumerator_6481.current_mVarName (HERE).mAttribute_string, ioArgument_ioTotalBitCount, extractedValue_size, GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 194)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6481.current_mVarName (HERE).mAttribute_string, ioArgument_ioTotalBitCount, extractedValue_size, GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 194)) ;
         }
         ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_size, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 195)) ;
       }
@@ -13280,10 +12357,10 @@ void categoryMethod_analyze (const GALGAS_domainFieldList inObject,
         GALGAS_recordDomainMap var_subDomainMap ;
         constinArgument_inDomainMap.method_searchKey (extractedValue_typeName, var_size, var_subDomainMap, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 197)) ;
         {
-        ioArgument_ioVarMap.modifier_insertKey (enumerator_6481.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size, var_subDomainMap, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 198)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6481.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size, var_subDomainMap, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 198)) ;
         }
         {
-        ioArgument_ioVarList.modifier_insertAtIndex (enumerator_6481.current_mVarName (HERE).mAttribute_string, ioArgument_ioTotalBitCount, var_size, GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 199)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6481.current_mVarName (HERE).mAttribute_string, ioArgument_ioTotalBitCount, var_size, GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 199)) ;
         }
         ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 200)) ;
       }
@@ -14916,7 +13993,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
       GALGAS_timer var_timer = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.galgas", 85)) ;
       GALGAS_binaryset var_result = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 86)) ;
       {
-      ioArgument_ioComputedFormulaMap.modifier_insertKey (object->mAttribute_mFormulaName, var_varList, var_totalBitCount, var_result, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 87)) ;
+      ioArgument_ioComputedFormulaMap.setter_insertKey (object->mAttribute_mFormulaName, var_varList, var_totalBitCount, var_result, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 87)) ;
       }
       GALGAS_uint_36__34_ var_valueCount = var_result.getter_valueCount (var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 88)) ;
       GALGAS_uint_36__34_ var_nodeCount = var_result.getter_nodeCount (SOURCE_FILE ("formula-assignment.galgas", 90)) ;
@@ -14945,7 +14022,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
       GALGAS_timer var_timer = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.galgas", 97)) ;
       GALGAS_binaryset var_result = extractedValue_startValue ;
       {
-      ioArgument_ioComputedFormulaMap.modifier_insertKey (object->mAttribute_mFormulaName, var_varList, var_totalBitCount, var_result, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 99)) ;
+      ioArgument_ioComputedFormulaMap.setter_insertKey (object->mAttribute_mFormulaName, var_varList, var_totalBitCount, var_result, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 99)) ;
       }
       GALGAS_bool var_iterate = GALGAS_bool (true) ;
       GALGAS_uint var_iterationCount = GALGAS_uint ((uint32_t) 0U) ;
@@ -14971,7 +14048,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
             }else if (kBoolFalse == test_4) {
               var_result = var_r ;
               {
-              ioArgument_ioComputedFormulaMap.modifier_setMValueForKey (var_result, object->mAttribute_mFormulaName.mAttribute_string, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 109)) ;
+              ioArgument_ioComputedFormulaMap.setter_setMValueForKey (var_result, object->mAttribute_mFormulaName.mAttribute_string, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 109)) ;
               }
             }
           }
