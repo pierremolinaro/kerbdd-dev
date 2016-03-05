@@ -16,6 +16,7 @@
 
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
+#include "galgas2/cLexiqueIntrospection.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1120,6 +1121,71 @@ GALGAS_stringlist C_Lexique_kerbdd_5F_lexique::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string (">=") COMMA_THERE) ;
   return result ;
 }
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void getKeywordLists_kerbdd_5F_lexique (TC_UniqueArray <C_String> & ioList) {
+  ioList.addObject ("kerbdd_lexique:delimitorsList") ;
+  ioList.addObject ("kerbdd_lexique:keyWordList") ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void getKeywordsForIdentifier_kerbdd_5F_lexique (const C_String & inIdentifier,
+                                                        bool & ioFound,
+                                                        TC_UniqueArray <C_String> & ioList) {
+  if (inIdentifier == "kerbdd_lexique:delimitorsList") {
+    ioFound = true ;
+    ioList.addObject ("!") ;
+    ioList.addObject ("&") ;
+    ioList.addObject ("(") ;
+    ioList.addObject (")") ;
+    ioList.addObject (",") ;
+    ioList.addObject (".") ;
+    ioList.addObject (":") ;
+    ioList.addObject (";") ;
+    ioList.addObject ("<") ;
+    ioList.addObject ("=") ;
+    ioList.addObject (">") ;
+    ioList.addObject ("\?") ;
+    ioList.addObject ("[") ;
+    ioList.addObject ("]") ;
+    ioList.addObject ("^") ;
+    ioList.addObject ("{") ;
+    ioList.addObject ("|") ;
+    ioList.addObject ("}") ;
+    ioList.addObject ("~") ;
+    ioList.addObject ("!=") ;
+    ioList.addObject ("+=") ;
+    ioList.addObject ("-=") ;
+    ioList.addObject ("->") ;
+    ioList.addObject ("..") ;
+    ioList.addObject (":=") ;
+    ioList.addObject ("<=") ;
+    ioList.addObject (">=") ;
+    ioList.sortArrayUsingCompareMethod() ;
+  }
+  if (inIdentifier == "kerbdd_lexique:keyWordList") {
+    ioFound = true ;
+    ioList.addObject ("bool") ;
+    ioList.addObject ("dump") ;
+    ioList.addObject ("true") ;
+    ioList.addObject ("false") ;
+    ioList.addObject ("domain") ;
+    ioList.addObject ("display") ;
+    ioList.addObject ("include") ;
+    ioList.addObject ("graphviz") ;
+    ioList.addObject ("andCacheMapSize") ;
+    ioList.addObject ("nodeHashMapSize") ;
+    ioList.sortArrayUsingCompareMethod() ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static cLexiqueIntrospection lexiqueIntrospection_kerbdd_5F_lexique
+__attribute__ ((used))
+__attribute__ ((unused)) (getKeywordLists_kerbdd_5F_lexique, getKeywordsForIdentifier_kerbdd_5F_lexique) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *
@@ -11989,6 +12055,7 @@ GALGAS_xorExpression GALGAS_xorExpression::extractObject (const GALGAS_object & 
 #include "utilities/F_DisplayException.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/F_verbose_output.h"
+#include "galgas2/cLexiqueIntrospection.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -12099,6 +12166,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     macroMyNew (commonLexique, C_Compiler (NULL, "", "" COMMA_HERE)) ;
     try{
       routine_before (commonLexique COMMA_HERE) ;
+      cLexiqueIntrospection::handleGetKeywordListOption (commonLexique) ;
       const bool verboseOptionOn = verboseOutput () ;
       for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
         if (gOption_galgas_5F_builtin_5F_options_trace.mValue) {
