@@ -4975,7 +4975,7 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Abstract category method '@abstractFormula analyzeFormula'                              *
+//                             Abstract extension method '@abstractFormula analyzeFormula'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5002,7 +5002,7 @@ void callCategoryMethod_analyzeFormula (const class cPtr_abstractFormula * inObj
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category method '@domainDeclarationList analyze'                                   *
+//                                  Extension method '@domainDeclarationList analyze'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5013,7 +5013,7 @@ void categoryMethod_analyze (const class GALGAS_domainDeclarationList inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     Category method '@domainFieldList analyze'                                      *
+//                                     Extension method '@domainFieldList analyze'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5027,7 +5027,7 @@ void categoryMethod_analyze (const class GALGAS_domainFieldList inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Abstract category getter '@expression computeExpression'                               *
+//                              Abstract extension getter '@expression computeExpression'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

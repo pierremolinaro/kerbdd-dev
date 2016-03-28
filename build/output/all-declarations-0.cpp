@@ -12252,7 +12252,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category method '@domainDeclarationList analyze'                                   *
+//                                  Extension method '@domainDeclarationList analyze'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -12376,7 +12376,7 @@ void categoryMethod_analyze (const GALGAS_domainDeclarationList inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     Category method '@domainFieldList analyze'                                      *
+//                                     Extension method '@domainFieldList analyze'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -12441,7 +12441,7 @@ void categoryMethod_analyze (const GALGAS_domainFieldList inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Abstract category getter '@expression computeExpression'                               *
+//                              Abstract extension getter '@expression computeExpression'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -12642,7 +12642,7 @@ GALGAS_ast GALGAS_ast::extractObject (const GALGAS_object & inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Abstract category method '@abstractFormula analyzeFormula'                              *
+//                             Abstract extension method '@abstractFormula analyzeFormula'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14036,7 +14036,7 @@ GALGAS_domainDeclarationList_2D_element GALGAS_domainDeclarationList_2D_element:
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Overriding category method '@assignmentFormula analyzeFormula'                            *
+//                           Overriding extension method '@assignmentFormula analyzeFormula'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14150,6 +14150,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
     break ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_assignmentFormula_analyzeFormula (void) {
@@ -14163,7 +14164,7 @@ C_PrologueEpilogue gMethod_assignmentFormula_analyzeFormula (defineCategoryMetho
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@setting_nodeHashMapSize analyzeFormula'                         *
+//                        Overriding extension method '@setting_nodeHashMapSize analyzeFormula'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14179,6 +14180,7 @@ static void categoryMethod_setting_5F_nodeHashMapSize_analyzeFormula (const cPtr
   GALGAS_binaryset::class_method_setNodeTableSize (object->mAttribute_mSetting.mAttribute_uint COMMA_SOURCE_FILE ("setting-map.galgas", 46)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_setting_5F_nodeHashMapSize_analyzeFormula (void) {
@@ -14192,7 +14194,7 @@ C_PrologueEpilogue gMethod_setting_5F_nodeHashMapSize_analyzeFormula (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@setting_andCacheMapSize analyzeFormula'                         *
+//                        Overriding extension method '@setting_andCacheMapSize analyzeFormula'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14208,6 +14210,7 @@ static void categoryMethod_setting_5F_andCacheMapSize_analyzeFormula (const cPtr
   GALGAS_binaryset::class_method_setAndTableSize (object->mAttribute_mSetting.mAttribute_uint COMMA_SOURCE_FILE ("setting-map.galgas", 56)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_setting_5F_andCacheMapSize_analyzeFormula (void) {
@@ -14221,7 +14224,7 @@ C_PrologueEpilogue gMethod_setting_5F_andCacheMapSize_analyzeFormula (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Overriding category method '@dumpFormula analyzeFormula'                               *
+//                              Overriding extension method '@dumpFormula analyzeFormula'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14256,6 +14259,7 @@ static void categoryMethod_dumpFormula_analyzeFormula (const cPtr_abstractFormul
   }
   inCompiler->printMessage (var_result.getter_print (var_nameList, var_bitCountList COMMA_SOURCE_FILE ("formula-dump.galgas", 46))  COMMA_SOURCE_FILE ("formula-dump.galgas", 46)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_dumpFormula_analyzeFormula (void) {
@@ -14269,7 +14273,7 @@ C_PrologueEpilogue gMethod_dumpFormula_analyzeFormula (defineCategoryMethod_dump
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Overriding category method '@graphvizFormula analyzeFormula'                             *
+//                            Overriding extension method '@graphvizFormula analyzeFormula'                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14306,6 +14310,7 @@ static void categoryMethod_graphvizFormula_analyzeFormula (const cPtr_abstractFo
   GALGAS_bool joker_2337 ; // Joker input parameter
   var_s.method_writeToFileWhenDifferentContents (var_filePath, joker_2337, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas", 51)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_graphvizFormula_analyzeFormula (void) {
@@ -14319,7 +14324,7 @@ C_PrologueEpilogue gMethod_graphvizFormula_analyzeFormula (defineCategoryMethod_
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Overriding category getter '@varInExpression computeExpression'                           *
+//                          Overriding extension getter '@varInExpression computeExpression'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14367,7 +14372,7 @@ C_PrologueEpilogue gGetter_varInExpression_computeExpression (defineCategoryGett
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@varBitInExpression computeExpression'                          *
+//                         Overriding extension getter '@varBitInExpression computeExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14415,7 +14420,7 @@ C_PrologueEpilogue gGetter_varBitInExpression_computeExpression (defineCategoryG
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Overriding category getter '@andExpression computeExpression'                            *
+//                           Overriding extension getter '@andExpression computeExpression'                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14450,7 +14455,7 @@ C_PrologueEpilogue gGetter_andExpression_computeExpression (defineCategoryGetter
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Overriding category getter '@orExpression computeExpression'                             *
+//                            Overriding extension getter '@orExpression computeExpression'                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14485,7 +14490,7 @@ C_PrologueEpilogue gGetter_orExpression_computeExpression (defineCategoryGetter_
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Overriding category getter '@xorExpression computeExpression'                            *
+//                           Overriding extension getter '@xorExpression computeExpression'                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14520,7 +14525,7 @@ C_PrologueEpilogue gGetter_xorExpression_computeExpression (defineCategoryGetter
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category getter '@impliesExpression computeExpression'                          *
+//                         Overriding extension getter '@impliesExpression computeExpression'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14555,7 +14560,7 @@ C_PrologueEpilogue gGetter_impliesExpression_computeExpression (defineCategoryGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Overriding category getter '@equalExpression computeExpression'                           *
+//                          Overriding extension getter '@equalExpression computeExpression'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14590,7 +14595,7 @@ C_PrologueEpilogue gGetter_equalExpression_computeExpression (defineCategoryGett
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@notEqualExpression computeExpression'                          *
+//                         Overriding extension getter '@notEqualExpression computeExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14625,7 +14630,7 @@ C_PrologueEpilogue gGetter_notEqualExpression_computeExpression (defineCategoryG
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category getter '@complementExpression computeExpression'                         *
+//                        Overriding extension getter '@complementExpression computeExpression'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14658,7 +14663,7 @@ C_PrologueEpilogue gGetter_complementExpression_computeExpression (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Overriding category getter '@trueExpression computeExpression'                            *
+//                           Overriding extension getter '@trueExpression computeExpression'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14689,7 +14694,7 @@ C_PrologueEpilogue gGetter_trueExpression_computeExpression (defineCategoryGette
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Overriding category getter '@falseExpression computeExpression'                           *
+//                          Overriding extension getter '@falseExpression computeExpression'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14720,7 +14725,7 @@ C_PrologueEpilogue gGetter_falseExpression_computeExpression (defineCategoryGett
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@formulaInExpression computeExpression'                         *
+//                        Overriding extension getter '@formulaInExpression computeExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14822,7 +14827,7 @@ C_PrologueEpilogue gGetter_formulaInExpression_computeExpression (defineCategory
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category getter '@existInExpression computeExpression'                          *
+//                         Overriding extension getter '@existInExpression computeExpression'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14860,7 +14865,7 @@ C_PrologueEpilogue gGetter_existInExpression_computeExpression (defineCategoryGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@forAllInExpression computeExpression'                          *
+//                         Overriding extension getter '@forAllInExpression computeExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14898,7 +14903,7 @@ C_PrologueEpilogue gGetter_forAllInExpression_computeExpression (defineCategoryG
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@comparisonWithConstantInExpression computeExpression'                  *
+//                 Overriding extension getter '@comparisonWithConstantInExpression computeExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14991,7 +14996,7 @@ C_PrologueEpilogue gGetter_comparisonWithConstantInExpression_computeExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@variableComparisonInExpression computeExpression'                    *
+//                   Overriding extension getter '@variableComparisonInExpression computeExpression'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
