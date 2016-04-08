@@ -12122,13 +12122,13 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
   var_ast.drop () ;
   cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_ast  COMMA_SOURCE_FILE ("program.galgas", 17)) ;
   GALGAS_domainMap var_domainMap ;
-  categoryMethod_analyze (var_ast.mAttribute_mDomainList, var_domainMap, inCompiler COMMA_SOURCE_FILE ("program.galgas", 19)) ;
+  extensionMethod_analyze (var_ast.mAttribute_mDomainList, var_domainMap, inCompiler COMMA_SOURCE_FILE ("program.galgas", 19)) ;
   GALGAS_computedFormulaMap var_computedFormulaMap = GALGAS_computedFormulaMap::constructor_emptyMap (SOURCE_FILE ("program.galgas", 21)) ;
   cEnumerator_formulaList enumerator_1021 (var_ast.mAttribute_mFormulaList, kEnumeration_up) ;
   bool bool_0 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("program.galgas", 22)).objectCompare (GALGAS_uint ((uint32_t) 0U))).isValidAndTrue () ;
   if (enumerator_1021.hasCurrentObject () && bool_0) {
     while (enumerator_1021.hasCurrentObject () && bool_0) {
-      callCategoryMethod_analyzeFormula ((const cPtr_abstractFormula *) enumerator_1021.current_mFormula (HERE).ptr (), constinArgument_inSourceFile.mAttribute_string, var_domainMap, var_computedFormulaMap, inCompiler COMMA_SOURCE_FILE ("program.galgas", 23)) ;
+      callExtensionMethod_analyzeFormula ((const cPtr_abstractFormula *) enumerator_1021.current_mFormula (HERE).ptr (), constinArgument_inSourceFile.mAttribute_string, var_domainMap, var_computedFormulaMap, inCompiler COMMA_SOURCE_FILE ("program.galgas", 23)) ;
       enumerator_1021.gotoNextObject () ;
       if (enumerator_1021.hasCurrentObject ()) {
         bool_0 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("program.galgas", 22)).objectCompare (GALGAS_uint ((uint32_t) 0U))).isValidAndTrue () ;
@@ -12256,10 +12256,10 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_analyze (const GALGAS_domainDeclarationList inObject,
-                             GALGAS_domainMap & outArgument_outDomainMap,
-                             C_Compiler * inCompiler
-                             COMMA_UNUSED_LOCATION_ARGS) {
+void extensionMethod_analyze (const GALGAS_domainDeclarationList inObject,
+                              GALGAS_domainMap & outArgument_outDomainMap,
+                              C_Compiler * inCompiler
+                              COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outDomainMap.drop () ; // Release 'out' argument
   outArgument_outDomainMap = GALGAS_domainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 122)) ;
   const GALGAS_domainDeclarationList temp_0 = inObject ;
@@ -12380,13 +12380,13 @@ void categoryMethod_analyze (const GALGAS_domainDeclarationList inObject,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_analyze (const GALGAS_domainFieldList inObject,
-                             const GALGAS_domainMap constinArgument_inDomainMap,
-                             GALGAS_varMap & ioArgument_ioVarMap,
-                             GALGAS_varList & ioArgument_ioVarList,
-                             GALGAS_uint & ioArgument_ioTotalBitCount,
-                             C_Compiler * inCompiler
-                             COMMA_UNUSED_LOCATION_ARGS) {
+void extensionMethod_analyze (const GALGAS_domainFieldList inObject,
+                              const GALGAS_domainMap constinArgument_inDomainMap,
+                              GALGAS_varMap & ioArgument_ioVarMap,
+                              GALGAS_varList & ioArgument_ioVarList,
+                              GALGAS_uint & ioArgument_ioTotalBitCount,
+                              C_Compiler * inCompiler
+                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_domainFieldList temp_0 = inObject ;
   cEnumerator_domainFieldList enumerator_6481 (temp_0, kEnumeration_down) ;
   while (enumerator_6481.hasCurrentObject ()) {
@@ -12445,54 +12445,54 @@ void categoryMethod_analyze (const GALGAS_domainFieldList inObject,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_expression_computeExpression> gCategoryGetterTable_expression_computeExpression ;
+static TC_UniqueArray <enterExtensionGetter_expression_computeExpression> gExtensionGetterTable_expression_computeExpression ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_computeExpression (const int32_t inClassIndex,
-                                            categoryGetterSignature_expression_computeExpression inGetter) {
-  gCategoryGetterTable_expression_computeExpression.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_computeExpression (const int32_t inClassIndex,
+                                             enterExtensionGetter_expression_computeExpression inGetter) {
+  gExtensionGetterTable_expression_computeExpression.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_expression_computeExpression (void) {
-  gCategoryGetterTable_expression_computeExpression.free () ;
+static void freeExtensionGetter_expression_computeExpression (void) {
+  gExtensionGetterTable_expression_computeExpression.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_expression_computeExpression (NULL,
-                                                         freeCategoryGetter_expression_computeExpression) ;
+                                                         freeExtensionGetter_expression_computeExpression) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_binaryset callCategoryGetter_computeExpression (const cPtr_expression * inObject,
-                                                       const GALGAS_domainMap & in_inDomainMap,
-                                                       const GALGAS_varMap & in_inVarMap,
-                                                       const GALGAS_uint & in_inTotalBitCount,
-                                                       const GALGAS_computedFormulaMap & in_inComputedFormulaMap,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+GALGAS_binaryset callExtensionGetter_computeExpression (const cPtr_expression * inObject,
+                                                        const GALGAS_domainMap & in_inDomainMap,
+                                                        const GALGAS_varMap & in_inVarMap,
+                                                        const GALGAS_uint & in_inTotalBitCount,
+                                                        const GALGAS_computedFormulaMap & in_inComputedFormulaMap,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   GALGAS_binaryset result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_expression) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_expression_computeExpression f = NULL ;
-    if (classIndex < gCategoryGetterTable_expression_computeExpression.count ()) {
-      f = gCategoryGetterTable_expression_computeExpression (classIndex COMMA_HERE) ;
+    enterExtensionGetter_expression_computeExpression f = NULL ;
+    if (classIndex < gExtensionGetterTable_expression_computeExpression.count ()) {
+      f = gExtensionGetterTable_expression_computeExpression (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_expression_computeExpression.count ()) {
-           f = gCategoryGetterTable_expression_computeExpression (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_expression_computeExpression.count ()) {
+           f = gExtensionGetterTable_expression_computeExpression (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_expression_computeExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_expression_computeExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -12646,53 +12646,53 @@ GALGAS_ast GALGAS_ast::extractObject (const GALGAS_object & inObject,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractFormula_analyzeFormula> gCategoryMethodTable_abstractFormula_analyzeFormula ;
+static TC_UniqueArray <extensionMethodSignature_abstractFormula_analyzeFormula> gExtensionMethodTable_abstractFormula_analyzeFormula ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeFormula (const int32_t inClassIndex,
-                                         categoryMethodSignature_abstractFormula_analyzeFormula inMethod) {
-  gCategoryMethodTable_abstractFormula_analyzeFormula.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_analyzeFormula (const int32_t inClassIndex,
+                                          extensionMethodSignature_abstractFormula_analyzeFormula inMethod) {
+  gExtensionMethodTable_abstractFormula_analyzeFormula.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractFormula_analyzeFormula (void) {
-  gCategoryMethodTable_abstractFormula_analyzeFormula.free () ;
+static void freeExtensionMethod_abstractFormula_analyzeFormula (void) {
+  gExtensionMethodTable_abstractFormula_analyzeFormula.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractFormula_analyzeFormula (NULL,
-                                                           freeCategoryMethod_abstractFormula_analyzeFormula) ;
+                                                           freeExtensionMethod_abstractFormula_analyzeFormula) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_analyzeFormula (const cPtr_abstractFormula * inObject,
-                                        const GALGAS_string constin_inSourceFilePath,
-                                        const GALGAS_domainMap constin_inDomainMap,
-                                        GALGAS_computedFormulaMap & io_ioComputedFormulaMap,
-                                        C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
+void callExtensionMethod_analyzeFormula (const cPtr_abstractFormula * inObject,
+                                         const GALGAS_string constin_inSourceFilePath,
+                                         const GALGAS_domainMap constin_inDomainMap,
+                                         GALGAS_computedFormulaMap & io_ioComputedFormulaMap,
+                                         C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractFormula) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractFormula_analyzeFormula f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractFormula_analyzeFormula.count ()) {
-      f = gCategoryMethodTable_abstractFormula_analyzeFormula (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractFormula_analyzeFormula f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractFormula_analyzeFormula.count ()) {
+      f = gExtensionMethodTable_abstractFormula_analyzeFormula (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractFormula_analyzeFormula.count ()) {
-           f = gCategoryMethodTable_abstractFormula_analyzeFormula (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractFormula_analyzeFormula.count ()) {
+           f = gExtensionMethodTable_abstractFormula_analyzeFormula (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractFormula_analyzeFormula.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractFormula_analyzeFormula.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -14040,18 +14040,18 @@ GALGAS_domainDeclarationList_2D_element GALGAS_domainDeclarationList_2D_element:
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstractFormula * inObject,
-                                                             const GALGAS_string /* constinArgument_inSourceFilePath */,
-                                                             const GALGAS_domainMap constinArgument_inDomainMap,
-                                                             GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_assignmentFormula_analyzeFormula (const cPtr_abstractFormula * inObject,
+                                                              const GALGAS_string /* constinArgument_inSourceFilePath */,
+                                                              const GALGAS_domainMap constinArgument_inDomainMap,
+                                                              GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_assignmentFormula * object = (const cPtr_assignmentFormula *) inObject ;
   macroValidSharedObject (object, cPtr_assignmentFormula) ;
   GALGAS_uint var_totalBitCount = GALGAS_uint ((uint32_t) 0U) ;
   GALGAS_varList var_varList = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("formula-assignment.galgas", 78)) ;
   GALGAS_varMap var_varMap = GALGAS_varMap::constructor_emptyMap (SOURCE_FILE ("formula-assignment.galgas", 79)) ;
-  categoryMethod_analyze (object->mAttribute_mFormulaArgumentList, constinArgument_inDomainMap, var_varMap, var_varList, var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 80)) ;
+  extensionMethod_analyze (object->mAttribute_mFormulaArgumentList, constinArgument_inDomainMap, var_varMap, var_varList, var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 80)) ;
   switch (object->mAttribute_mKind.enumValue ()) {
   case GALGAS_formulaKind::kNotBuilt:
     break ;
@@ -14059,7 +14059,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
     {
       inCompiler->printMessage (object->mAttribute_mFormulaName.mAttribute_string.add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 84))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 84)) ;
       GALGAS_timer var_timer = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.galgas", 85)) ;
-      GALGAS_binaryset var_result = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 86)) ;
+      GALGAS_binaryset var_result = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 86)) ;
       {
       ioArgument_ioComputedFormulaMap.setter_insertKey (object->mAttribute_mFormulaName, var_varList, var_totalBitCount, var_result, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 87)) ;
       }
@@ -14109,7 +14109,7 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
           if (loop_3988) {
             variant_3988 -- ;
             var_iterationCount.increment_operation (inCompiler  COMMA_SOURCE_FILE ("formula-assignment.galgas", 103)) ;
-            GALGAS_binaryset var_r = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 104)) ;
+            GALGAS_binaryset var_r = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 104)) ;
             const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, var_result.objectCompare (var_r)).boolEnum () ;
             if (kBoolTrue == test_4) {
               var_iterate = GALGAS_bool (false) ;
@@ -14153,14 +14153,14 @@ static void categoryMethod_assignmentFormula_analyzeFormula (const cPtr_abstract
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_assignmentFormula_analyzeFormula (void) {
-  enterCategoryMethod_analyzeFormula (kTypeDescriptor_GALGAS_assignmentFormula.mSlotID,
-                                      categoryMethod_assignmentFormula_analyzeFormula) ;
+static void defineExtensionMethod_assignmentFormula_analyzeFormula (void) {
+  enterExtensionMethod_analyzeFormula (kTypeDescriptor_GALGAS_assignmentFormula.mSlotID,
+                                       extensionMethod_assignmentFormula_analyzeFormula) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_assignmentFormula_analyzeFormula (defineCategoryMethod_assignmentFormula_analyzeFormula, NULL) ;
+C_PrologueEpilogue gMethod_assignmentFormula_analyzeFormula (defineExtensionMethod_assignmentFormula_analyzeFormula, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14168,12 +14168,12 @@ C_PrologueEpilogue gMethod_assignmentFormula_analyzeFormula (defineCategoryMetho
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_setting_5F_nodeHashMapSize_analyzeFormula (const cPtr_abstractFormula * inObject,
-                                                                      const GALGAS_string /* constinArgument_inSourceFilePath */,
-                                                                      const GALGAS_domainMap /* constinArgument_inDomainMap */,
-                                                                      GALGAS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
-                                                                      C_Compiler * /* inCompiler */
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_setting_5F_nodeHashMapSize_analyzeFormula (const cPtr_abstractFormula * inObject,
+                                                                       const GALGAS_string /* constinArgument_inSourceFilePath */,
+                                                                       const GALGAS_domainMap /* constinArgument_inDomainMap */,
+                                                                       GALGAS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
+                                                                       C_Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_setting_5F_nodeHashMapSize * object = (const cPtr_setting_5F_nodeHashMapSize *) inObject ;
   macroValidSharedObject (object, cPtr_setting_5F_nodeHashMapSize) ;
   {
@@ -14183,14 +14183,14 @@ static void categoryMethod_setting_5F_nodeHashMapSize_analyzeFormula (const cPtr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_setting_5F_nodeHashMapSize_analyzeFormula (void) {
-  enterCategoryMethod_analyzeFormula (kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize.mSlotID,
-                                      categoryMethod_setting_5F_nodeHashMapSize_analyzeFormula) ;
+static void defineExtensionMethod_setting_5F_nodeHashMapSize_analyzeFormula (void) {
+  enterExtensionMethod_analyzeFormula (kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize.mSlotID,
+                                       extensionMethod_setting_5F_nodeHashMapSize_analyzeFormula) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_setting_5F_nodeHashMapSize_analyzeFormula (defineCategoryMethod_setting_5F_nodeHashMapSize_analyzeFormula, NULL) ;
+C_PrologueEpilogue gMethod_setting_5F_nodeHashMapSize_analyzeFormula (defineExtensionMethod_setting_5F_nodeHashMapSize_analyzeFormula, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14198,12 +14198,12 @@ C_PrologueEpilogue gMethod_setting_5F_nodeHashMapSize_analyzeFormula (defineCate
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_setting_5F_andCacheMapSize_analyzeFormula (const cPtr_abstractFormula * inObject,
-                                                                      const GALGAS_string /* constinArgument_inSourceFilePath */,
-                                                                      const GALGAS_domainMap /* constinArgument_inDomainMap */,
-                                                                      GALGAS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
-                                                                      C_Compiler * /* inCompiler */
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_setting_5F_andCacheMapSize_analyzeFormula (const cPtr_abstractFormula * inObject,
+                                                                       const GALGAS_string /* constinArgument_inSourceFilePath */,
+                                                                       const GALGAS_domainMap /* constinArgument_inDomainMap */,
+                                                                       GALGAS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
+                                                                       C_Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_setting_5F_andCacheMapSize * object = (const cPtr_setting_5F_andCacheMapSize *) inObject ;
   macroValidSharedObject (object, cPtr_setting_5F_andCacheMapSize) ;
   {
@@ -14213,14 +14213,14 @@ static void categoryMethod_setting_5F_andCacheMapSize_analyzeFormula (const cPtr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_setting_5F_andCacheMapSize_analyzeFormula (void) {
-  enterCategoryMethod_analyzeFormula (kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize.mSlotID,
-                                      categoryMethod_setting_5F_andCacheMapSize_analyzeFormula) ;
+static void defineExtensionMethod_setting_5F_andCacheMapSize_analyzeFormula (void) {
+  enterExtensionMethod_analyzeFormula (kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize.mSlotID,
+                                       extensionMethod_setting_5F_andCacheMapSize_analyzeFormula) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_setting_5F_andCacheMapSize_analyzeFormula (defineCategoryMethod_setting_5F_andCacheMapSize_analyzeFormula, NULL) ;
+C_PrologueEpilogue gMethod_setting_5F_andCacheMapSize_analyzeFormula (defineExtensionMethod_setting_5F_andCacheMapSize_analyzeFormula, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14228,12 +14228,12 @@ C_PrologueEpilogue gMethod_setting_5F_andCacheMapSize_analyzeFormula (defineCate
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_dumpFormula_analyzeFormula (const cPtr_abstractFormula * inObject,
-                                                       const GALGAS_string /* constinArgument_inSourceFilePath */,
-                                                       const GALGAS_domainMap /* constinArgument_inDomainMap */,
-                                                       GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_dumpFormula_analyzeFormula (const cPtr_abstractFormula * inObject,
+                                                        const GALGAS_string /* constinArgument_inSourceFilePath */,
+                                                        const GALGAS_domainMap /* constinArgument_inDomainMap */,
+                                                        GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_dumpFormula * object = (const cPtr_dumpFormula *) inObject ;
   macroValidSharedObject (object, cPtr_dumpFormula) ;
   GALGAS_varList var_varList ;
@@ -14262,14 +14262,14 @@ static void categoryMethod_dumpFormula_analyzeFormula (const cPtr_abstractFormul
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_dumpFormula_analyzeFormula (void) {
-  enterCategoryMethod_analyzeFormula (kTypeDescriptor_GALGAS_dumpFormula.mSlotID,
-                                      categoryMethod_dumpFormula_analyzeFormula) ;
+static void defineExtensionMethod_dumpFormula_analyzeFormula (void) {
+  enterExtensionMethod_analyzeFormula (kTypeDescriptor_GALGAS_dumpFormula.mSlotID,
+                                       extensionMethod_dumpFormula_analyzeFormula) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_dumpFormula_analyzeFormula (defineCategoryMethod_dumpFormula_analyzeFormula, NULL) ;
+C_PrologueEpilogue gMethod_dumpFormula_analyzeFormula (defineExtensionMethod_dumpFormula_analyzeFormula, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14277,12 +14277,12 @@ C_PrologueEpilogue gMethod_dumpFormula_analyzeFormula (defineCategoryMethod_dump
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_graphvizFormula_analyzeFormula (const cPtr_abstractFormula * inObject,
-                                                           const GALGAS_string constinArgument_inSourceFilePath,
-                                                           const GALGAS_domainMap /* constinArgument_inDomainMap */,
-                                                           GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_graphvizFormula_analyzeFormula (const cPtr_abstractFormula * inObject,
+                                                            const GALGAS_string constinArgument_inSourceFilePath,
+                                                            const GALGAS_domainMap /* constinArgument_inDomainMap */,
+                                                            GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_graphvizFormula * object = (const cPtr_graphvizFormula *) inObject ;
   macroValidSharedObject (object, cPtr_graphvizFormula) ;
   GALGAS_varList var_varList ;
@@ -14313,14 +14313,14 @@ static void categoryMethod_graphvizFormula_analyzeFormula (const cPtr_abstractFo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_graphvizFormula_analyzeFormula (void) {
-  enterCategoryMethod_analyzeFormula (kTypeDescriptor_GALGAS_graphvizFormula.mSlotID,
-                                      categoryMethod_graphvizFormula_analyzeFormula) ;
+static void defineExtensionMethod_graphvizFormula_analyzeFormula (void) {
+  enterExtensionMethod_analyzeFormula (kTypeDescriptor_GALGAS_graphvizFormula.mSlotID,
+                                       extensionMethod_graphvizFormula_analyzeFormula) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_graphvizFormula_analyzeFormula (defineCategoryMethod_graphvizFormula_analyzeFormula, NULL) ;
+C_PrologueEpilogue gMethod_graphvizFormula_analyzeFormula (defineExtensionMethod_graphvizFormula_analyzeFormula, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14361,14 +14361,14 @@ static GALGAS_binaryset extensionGetter_varInExpression_computeExpression (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_varInExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_varInExpression.mSlotID,
-                                         extensionGetter_varInExpression_computeExpression) ;
+static void defineExtensionGetter_varInExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_varInExpression.mSlotID,
+                                          extensionGetter_varInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_varInExpression_computeExpression (defineCategoryGetter_varInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_varInExpression_computeExpression (defineExtensionGetter_varInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14409,14 +14409,14 @@ static GALGAS_binaryset extensionGetter_varBitInExpression_computeExpression (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_varBitInExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_varBitInExpression.mSlotID,
-                                         extensionGetter_varBitInExpression_computeExpression) ;
+static void defineExtensionGetter_varBitInExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_varBitInExpression.mSlotID,
+                                          extensionGetter_varBitInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_varBitInExpression_computeExpression (defineCategoryGetter_varBitInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_varBitInExpression_computeExpression (defineExtensionGetter_varBitInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14434,8 +14434,8 @@ static GALGAS_binaryset extensionGetter_andExpression_computeExpression (const c
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_andExpression * object = (const cPtr_andExpression *) inObject ;
   macroValidSharedObject (object, cPtr_andExpression) ;
-  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 343)) ;
-  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 344)) ;
+  GALGAS_binaryset var_left = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 343)) ;
+  GALGAS_binaryset var_right = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 344)) ;
   result_outResult = var_left.operator_and (var_right COMMA_SOURCE_FILE ("expression.galgas", 345)) ;
 //---
   return result_outResult ;
@@ -14444,14 +14444,14 @@ static GALGAS_binaryset extensionGetter_andExpression_computeExpression (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_andExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_andExpression.mSlotID,
-                                         extensionGetter_andExpression_computeExpression) ;
+static void defineExtensionGetter_andExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_andExpression.mSlotID,
+                                          extensionGetter_andExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_andExpression_computeExpression (defineCategoryGetter_andExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_andExpression_computeExpression (defineExtensionGetter_andExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14469,8 +14469,8 @@ static GALGAS_binaryset extensionGetter_orExpression_computeExpression (const cP
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_orExpression * object = (const cPtr_orExpression *) inObject ;
   macroValidSharedObject (object, cPtr_orExpression) ;
-  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 357)) ;
-  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 358)) ;
+  GALGAS_binaryset var_left = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 357)) ;
+  GALGAS_binaryset var_right = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 358)) ;
   result_outResult = var_left.operator_or (var_right COMMA_SOURCE_FILE ("expression.galgas", 359)) ;
 //---
   return result_outResult ;
@@ -14479,14 +14479,14 @@ static GALGAS_binaryset extensionGetter_orExpression_computeExpression (const cP
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_orExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_orExpression.mSlotID,
-                                         extensionGetter_orExpression_computeExpression) ;
+static void defineExtensionGetter_orExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_orExpression.mSlotID,
+                                          extensionGetter_orExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_orExpression_computeExpression (defineCategoryGetter_orExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_orExpression_computeExpression (defineExtensionGetter_orExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14504,8 +14504,8 @@ static GALGAS_binaryset extensionGetter_xorExpression_computeExpression (const c
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_xorExpression * object = (const cPtr_xorExpression *) inObject ;
   macroValidSharedObject (object, cPtr_xorExpression) ;
-  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 371)) ;
-  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 372)) ;
+  GALGAS_binaryset var_left = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 371)) ;
+  GALGAS_binaryset var_right = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 372)) ;
   result_outResult = var_left.operator_xor (var_right COMMA_SOURCE_FILE ("expression.galgas", 373)) ;
 //---
   return result_outResult ;
@@ -14514,14 +14514,14 @@ static GALGAS_binaryset extensionGetter_xorExpression_computeExpression (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_xorExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_xorExpression.mSlotID,
-                                         extensionGetter_xorExpression_computeExpression) ;
+static void defineExtensionGetter_xorExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_xorExpression.mSlotID,
+                                          extensionGetter_xorExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_xorExpression_computeExpression (defineCategoryGetter_xorExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_xorExpression_computeExpression (defineExtensionGetter_xorExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14539,8 +14539,8 @@ static GALGAS_binaryset extensionGetter_impliesExpression_computeExpression (con
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_impliesExpression * object = (const cPtr_impliesExpression *) inObject ;
   macroValidSharedObject (object, cPtr_impliesExpression) ;
-  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 385)) ;
-  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 386)) ;
+  GALGAS_binaryset var_left = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 385)) ;
+  GALGAS_binaryset var_right = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 386)) ;
   result_outResult = var_left.getter_implies (var_right COMMA_SOURCE_FILE ("expression.galgas", 387)) ;
 //---
   return result_outResult ;
@@ -14549,14 +14549,14 @@ static GALGAS_binaryset extensionGetter_impliesExpression_computeExpression (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_impliesExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_impliesExpression.mSlotID,
-                                         extensionGetter_impliesExpression_computeExpression) ;
+static void defineExtensionGetter_impliesExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_impliesExpression.mSlotID,
+                                          extensionGetter_impliesExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_impliesExpression_computeExpression (defineCategoryGetter_impliesExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_impliesExpression_computeExpression (defineExtensionGetter_impliesExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14574,8 +14574,8 @@ static GALGAS_binaryset extensionGetter_equalExpression_computeExpression (const
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_equalExpression * object = (const cPtr_equalExpression *) inObject ;
   macroValidSharedObject (object, cPtr_equalExpression) ;
-  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 399)) ;
-  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 400)) ;
+  GALGAS_binaryset var_left = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 399)) ;
+  GALGAS_binaryset var_right = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 400)) ;
   result_outResult = var_left.operator_xor (var_right COMMA_SOURCE_FILE ("expression.galgas", 401)).operator_tilde (SOURCE_FILE ("expression.galgas", 401)) ;
 //---
   return result_outResult ;
@@ -14584,14 +14584,14 @@ static GALGAS_binaryset extensionGetter_equalExpression_computeExpression (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_equalExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_equalExpression.mSlotID,
-                                         extensionGetter_equalExpression_computeExpression) ;
+static void defineExtensionGetter_equalExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_equalExpression.mSlotID,
+                                          extensionGetter_equalExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_equalExpression_computeExpression (defineCategoryGetter_equalExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_equalExpression_computeExpression (defineExtensionGetter_equalExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14609,8 +14609,8 @@ static GALGAS_binaryset extensionGetter_notEqualExpression_computeExpression (co
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_notEqualExpression * object = (const cPtr_notEqualExpression *) inObject ;
   macroValidSharedObject (object, cPtr_notEqualExpression) ;
-  GALGAS_binaryset var_left = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 413)) ;
-  GALGAS_binaryset var_right = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 414)) ;
+  GALGAS_binaryset var_left = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 413)) ;
+  GALGAS_binaryset var_right = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mRightExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 414)) ;
   result_outResult = var_left.operator_xor (var_right COMMA_SOURCE_FILE ("expression.galgas", 415)) ;
 //---
   return result_outResult ;
@@ -14619,14 +14619,14 @@ static GALGAS_binaryset extensionGetter_notEqualExpression_computeExpression (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_notEqualExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_notEqualExpression.mSlotID,
-                                         extensionGetter_notEqualExpression_computeExpression) ;
+static void defineExtensionGetter_notEqualExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_notEqualExpression.mSlotID,
+                                          extensionGetter_notEqualExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_notEqualExpression_computeExpression (defineCategoryGetter_notEqualExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_notEqualExpression_computeExpression (defineExtensionGetter_notEqualExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14644,7 +14644,7 @@ static GALGAS_binaryset extensionGetter_complementExpression_computeExpression (
   GALGAS_binaryset result_outResult ; // Returned variable
   const cPtr_complementExpression * object = (const cPtr_complementExpression *) inObject ;
   macroValidSharedObject (object, cPtr_complementExpression) ;
-  result_outResult = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 427)).operator_tilde (SOURCE_FILE ("expression.galgas", 427)) ;
+  result_outResult = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 427)).operator_tilde (SOURCE_FILE ("expression.galgas", 427)) ;
 //---
   return result_outResult ;
 }
@@ -14652,14 +14652,14 @@ static GALGAS_binaryset extensionGetter_complementExpression_computeExpression (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_complementExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_complementExpression.mSlotID,
-                                         extensionGetter_complementExpression_computeExpression) ;
+static void defineExtensionGetter_complementExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_complementExpression.mSlotID,
+                                          extensionGetter_complementExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_complementExpression_computeExpression (defineCategoryGetter_complementExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_complementExpression_computeExpression (defineExtensionGetter_complementExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14683,14 +14683,14 @@ static GALGAS_binaryset extensionGetter_trueExpression_computeExpression (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_trueExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_trueExpression.mSlotID,
-                                         extensionGetter_trueExpression_computeExpression) ;
+static void defineExtensionGetter_trueExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_trueExpression.mSlotID,
+                                          extensionGetter_trueExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_trueExpression_computeExpression (defineCategoryGetter_trueExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_trueExpression_computeExpression (defineExtensionGetter_trueExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14714,14 +14714,14 @@ static GALGAS_binaryset extensionGetter_falseExpression_computeExpression (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_falseExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_falseExpression.mSlotID,
-                                         extensionGetter_falseExpression_computeExpression) ;
+static void defineExtensionGetter_falseExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_falseExpression.mSlotID,
+                                          extensionGetter_falseExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_falseExpression_computeExpression (defineCategoryGetter_falseExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_falseExpression_computeExpression (defineExtensionGetter_falseExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14816,14 +14816,14 @@ static GALGAS_binaryset extensionGetter_formulaInExpression_computeExpression (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_formulaInExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_formulaInExpression.mSlotID,
-                                         extensionGetter_formulaInExpression_computeExpression) ;
+static void defineExtensionGetter_formulaInExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_formulaInExpression.mSlotID,
+                                          extensionGetter_formulaInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_formulaInExpression_computeExpression (defineCategoryGetter_formulaInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_formulaInExpression_computeExpression (defineExtensionGetter_formulaInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14844,8 +14844,8 @@ static GALGAS_binaryset extensionGetter_existInExpression_computeExpression (con
   GALGAS_varMap var_varMap = constinArgument_inVarMap ;
   GALGAS_uint var_totalBitCount = constinArgument_inTotalBitCount ;
   GALGAS_varList joker_17863 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("expression.galgas", 506)) ;
-  categoryMethod_analyze (object->mAttribute_mArgumentList, constinArgument_inDomainMap, var_varMap, joker_17863, var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 506)) ;
-  GALGAS_binaryset var_r = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 507)) ;
+  extensionMethod_analyze (object->mAttribute_mArgumentList, constinArgument_inDomainMap, var_varMap, joker_17863, var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 506)) ;
+  GALGAS_binaryset var_r = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 507)) ;
   result_outResult = var_r.getter_existOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.galgas", 508)) ;
 //---
   return result_outResult ;
@@ -14854,14 +14854,14 @@ static GALGAS_binaryset extensionGetter_existInExpression_computeExpression (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_existInExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_existInExpression.mSlotID,
-                                         extensionGetter_existInExpression_computeExpression) ;
+static void defineExtensionGetter_existInExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_existInExpression.mSlotID,
+                                          extensionGetter_existInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_existInExpression_computeExpression (defineCategoryGetter_existInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_existInExpression_computeExpression (defineExtensionGetter_existInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14882,8 +14882,8 @@ static GALGAS_binaryset extensionGetter_forAllInExpression_computeExpression (co
   GALGAS_varMap var_varMap = constinArgument_inVarMap ;
   GALGAS_uint var_totalBitCount = constinArgument_inTotalBitCount ;
   GALGAS_varList joker_18498 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("expression.galgas", 522)) ;
-  categoryMethod_analyze (object->mAttribute_mArgumentList, constinArgument_inDomainMap, var_varMap, joker_18498, var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 522)) ;
-  GALGAS_binaryset var_r = callCategoryGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 523)) ;
+  extensionMethod_analyze (object->mAttribute_mArgumentList, constinArgument_inDomainMap, var_varMap, joker_18498, var_totalBitCount, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 522)) ;
+  GALGAS_binaryset var_r = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mAttribute_mExpression.ptr (), constinArgument_inDomainMap, var_varMap, var_totalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 523)) ;
   result_outResult = var_r.getter_forAllOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.galgas", 524)) ;
 //---
   return result_outResult ;
@@ -14892,14 +14892,14 @@ static GALGAS_binaryset extensionGetter_forAllInExpression_computeExpression (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_forAllInExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_forAllInExpression.mSlotID,
-                                         extensionGetter_forAllInExpression_computeExpression) ;
+static void defineExtensionGetter_forAllInExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_forAllInExpression.mSlotID,
+                                          extensionGetter_forAllInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_forAllInExpression_computeExpression (defineCategoryGetter_forAllInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_forAllInExpression_computeExpression (defineExtensionGetter_forAllInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14985,14 +14985,14 @@ static GALGAS_binaryset extensionGetter_comparisonWithConstantInExpression_compu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_comparisonWithConstantInExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_comparisonWithConstantInExpression.mSlotID,
-                                         extensionGetter_comparisonWithConstantInExpression_computeExpression) ;
+static void defineExtensionGetter_comparisonWithConstantInExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_comparisonWithConstantInExpression.mSlotID,
+                                          extensionGetter_comparisonWithConstantInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_comparisonWithConstantInExpression_computeExpression (defineCategoryGetter_comparisonWithConstantInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_comparisonWithConstantInExpression_computeExpression (defineExtensionGetter_comparisonWithConstantInExpression_computeExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -15112,12 +15112,12 @@ static GALGAS_binaryset extensionGetter_variableComparisonInExpression_computeEx
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_variableComparisonInExpression_computeExpression (void) {
-  enterCategoryGetter_computeExpression (kTypeDescriptor_GALGAS_variableComparisonInExpression.mSlotID,
-                                         extensionGetter_variableComparisonInExpression_computeExpression) ;
+static void defineExtensionGetter_variableComparisonInExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_variableComparisonInExpression.mSlotID,
+                                          extensionGetter_variableComparisonInExpression_computeExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_variableComparisonInExpression_computeExpression (defineCategoryGetter_variableComparisonInExpression_computeExpression, NULL) ;
+C_PrologueEpilogue gGetter_variableComparisonInExpression_computeExpression (defineExtensionGetter_variableComparisonInExpression_computeExpression, NULL) ;
 
