@@ -4979,26 +4979,26 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef void (*categoryMethodSignature_abstractFormula_analyzeFormula) (const class cPtr_abstractFormula * inObject,
-                                                                        const class GALGAS_string constinArgument0,
-                                                                        const class GALGAS_domainMap constinArgument1,
-                                                                        class GALGAS_computedFormulaMap & ioArgument2,
-                                                                        class C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+typedef void (*extensionMethodSignature_abstractFormula_analyzeFormula) (const class cPtr_abstractFormula * inObject,
+                                                                         const class GALGAS_string constinArgument0,
+                                                                         const class GALGAS_domainMap constinArgument1,
+                                                                         class GALGAS_computedFormulaMap & ioArgument2,
+                                                                         class C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeFormula (const int32_t inClassIndex,
-                                         categoryMethodSignature_abstractFormula_analyzeFormula inMethod) ;
+void enterExtensionMethod_analyzeFormula (const int32_t inClassIndex,
+                                          extensionMethodSignature_abstractFormula_analyzeFormula inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_analyzeFormula (const class cPtr_abstractFormula * inObject,
-                                        const GALGAS_string constin_inSourceFilePath,
-                                        const GALGAS_domainMap constin_inDomainMap,
-                                        GALGAS_computedFormulaMap & io_ioComputedFormulaMap,
-                                        C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
+void callExtensionMethod_analyzeFormula (const class cPtr_abstractFormula * inObject,
+                                         const GALGAS_string constin_inSourceFilePath,
+                                         const GALGAS_domainMap constin_inDomainMap,
+                                         GALGAS_computedFormulaMap & io_ioComputedFormulaMap,
+                                         C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5006,10 +5006,10 @@ void callCategoryMethod_analyzeFormula (const class cPtr_abstractFormula * inObj
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_analyze (const class GALGAS_domainDeclarationList inObject,
-                             class GALGAS_domainMap & out_outDomainMap,
-                             class C_Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) ;
+void extensionMethod_analyze (const class GALGAS_domainDeclarationList inObject,
+                              class GALGAS_domainMap & out_outDomainMap,
+                              class C_Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5017,13 +5017,13 @@ void categoryMethod_analyze (const class GALGAS_domainDeclarationList inObject,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_analyze (const class GALGAS_domainFieldList inObject,
-                             const class GALGAS_domainMap constin_inDomainMap,
-                             class GALGAS_varMap & io_ioVarMap,
-                             class GALGAS_varList & io_ioVarList,
-                             class GALGAS_uint & io_ioTotalBitCount,
-                             class C_Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) ;
+void extensionMethod_analyze (const class GALGAS_domainFieldList inObject,
+                              const class GALGAS_domainMap constin_inDomainMap,
+                              class GALGAS_varMap & io_ioVarMap,
+                              class GALGAS_varList & io_ioVarList,
+                              class GALGAS_uint & io_ioTotalBitCount,
+                              class C_Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5031,27 +5031,27 @@ void categoryMethod_analyze (const class GALGAS_domainFieldList inObject,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_binaryset (*categoryGetterSignature_expression_computeExpression) (const class cPtr_expression * inObject,
-                                                                                        const class GALGAS_domainMap & constinArgument0,
-                                                                                        const class GALGAS_varMap & constinArgument1,
-                                                                                        const class GALGAS_uint & constinArgument2,
-                                                                                        const class GALGAS_computedFormulaMap & constinArgument3,
-                                                                                        class C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_binaryset (*enterExtensionGetter_expression_computeExpression) (const class cPtr_expression * inObject,
+                                                                                     const class GALGAS_domainMap & constinArgument0,
+                                                                                     const class GALGAS_varMap & constinArgument1,
+                                                                                     const class GALGAS_uint & constinArgument2,
+                                                                                     const class GALGAS_computedFormulaMap & constinArgument3,
+                                                                                     class C_Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_computeExpression (const int32_t inClassIndex,
-                                            categoryGetterSignature_expression_computeExpression inMethod) ;
+void enterExtensionGetter_computeExpression (const int32_t inClassIndex,
+                                             enterExtensionGetter_expression_computeExpression inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_binaryset callCategoryGetter_computeExpression (const class cPtr_expression * inObject,
-                                                             const GALGAS_domainMap & constin_inDomainMap,
-                                                             const GALGAS_varMap & constin_inVarMap,
-                                                             const GALGAS_uint & constin_inTotalBitCount,
-                                                             const GALGAS_computedFormulaMap & constin_inComputedFormulaMap,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
+class GALGAS_binaryset callExtensionGetter_computeExpression (const class cPtr_expression * inObject,
+                                                              const GALGAS_domainMap & constin_inDomainMap,
+                                                              const GALGAS_varMap & constin_inVarMap,
+                                                              const GALGAS_uint & constin_inTotalBitCount,
+                                                              const GALGAS_computedFormulaMap & constin_inComputedFormulaMap,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 #endif
