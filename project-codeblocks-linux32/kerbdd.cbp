@@ -23,6 +23,7 @@
      <Add option="-Wmissing-include-dirs" />
      <Add option="-Weffc++" />
      <Add option="-std=c++98" />
+     <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
      <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
@@ -46,6 +47,7 @@
      <Add option="-Wmissing-include-dirs" />
      <Add option="-Weffc++" />
      <Add option="-std=c++98" />
+     <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
     </Compiler>
@@ -65,6 +67,7 @@
   <Unit filename="../build/libpm/galgas2/all-galgas.cpp" />
   <Unit filename="../build/libpm/galgas2/C_galgas_quiet_option.cpp" />
   <Unit filename="../build/output/all-declarations-0.cpp" />
+  <Unit filename="../build/output/all-predefined-types.cpp" />
 
   <Unit filename="../build/libpm/gmp/32-mp_bases.c" />
   <Unit filename="../build/libpm/gmp/64-mp_bases.c" />
