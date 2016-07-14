@@ -4681,8 +4681,7 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i3_ (GALGAS_bddType & 
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_kerbdd_5F_lexique::kToken__5D_) COMMA_SOURCE_FILE ("domain.galgas", 85)) ;
       const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_bitCount_2726.mAttribute_uint.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        GALGAS_location location_1 (var_bitCount_2726.getter_location (HERE)) ; // Implicit use of 'location' getter
-        inCompiler->emitSemanticError (location_1, GALGAS_string ("size should be > 0")  COMMA_SOURCE_FILE ("domain.galgas", 87)) ;
+        inCompiler->emitSemanticError (var_bitCount_2726.getter_location (SOURCE_FILE ("domain.galgas", 87)), GALGAS_string ("size should be > 0")  COMMA_SOURCE_FILE ("domain.galgas", 87)) ;
       }
       outArgument_outType = GALGAS_bddType::constructor_boolArray (var_bitCount_2726.mAttribute_uint  COMMA_SOURCE_FILE ("domain.galgas", 89)) ;
     } break ;
@@ -14340,13 +14339,11 @@ static GALGAS_binaryset extensionGetter_varInExpression_computeExpression (const
   constinArgument_inVarMap.method_searchKey (object->mAttribute_mVarName, var_idx_9647, var_bitCount_9661, var_subdomainMap_9679, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 307)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_subdomainMap_9679.getter_count (SOURCE_FILE ("expression.galgas", 308)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (object->mAttribute_mVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
-    inCompiler->emitSemanticError (location_1, GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 309)) ;
+    inCompiler->emitSemanticError (object->mAttribute_mVarName.getter_location (SOURCE_FILE ("expression.galgas", 309)), GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 309)) ;
   }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_bitCount_9661.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (object->mAttribute_mVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_3, GALGAS_string ("variable is not boolean; use {...} or dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 311)) ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_bitCount_9661.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      inCompiler->emitSemanticError (object->mAttribute_mVarName.getter_location (SOURCE_FILE ("expression.galgas", 311)), GALGAS_string ("variable is not boolean; use {...} or dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 311)) ;
     }
   }
   result_outResult = GALGAS_binaryset::constructor_binarySetWithBit (var_idx_9647, inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 313)) ;
@@ -14388,13 +14385,11 @@ static GALGAS_binaryset extensionGetter_varBitInExpression_computeExpression (co
   constinArgument_inVarMap.method_searchKey (object->mAttribute_mVarName, var_idx_10333, var_bitCount_10347, var_subdomainMap_10365, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 325)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_subdomainMap_10365.getter_count (SOURCE_FILE ("expression.galgas", 326)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (object->mAttribute_mVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
-    inCompiler->emitSemanticError (location_1, GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 327)) ;
+    inCompiler->emitSemanticError (object->mAttribute_mVarName.getter_location (SOURCE_FILE ("expression.galgas", 327)), GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 327)) ;
   }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsInfOrEqual, var_bitCount_10347.objectCompare (object->mAttribute_mVarBit.mAttribute_uint)).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (object->mAttribute_mVarBit.getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_3, GALGAS_string ("bit index should be < ").add_operation (var_bitCount_10347.getter_string (SOURCE_FILE ("expression.galgas", 329)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 329))  COMMA_SOURCE_FILE ("expression.galgas", 329)) ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsInfOrEqual, var_bitCount_10347.objectCompare (object->mAttribute_mVarBit.mAttribute_uint)).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      inCompiler->emitSemanticError (object->mAttribute_mVarBit.getter_location (SOURCE_FILE ("expression.galgas", 329)), GALGAS_string ("bit index should be < ").add_operation (var_bitCount_10347.getter_string (SOURCE_FILE ("expression.galgas", 329)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 329))  COMMA_SOURCE_FILE ("expression.galgas", 329)) ;
     }
   }
   result_outResult = GALGAS_binaryset::constructor_binarySetWithBit (var_idx_10333.add_operation (object->mAttribute_mVarBit.mAttribute_uint, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 331)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 331)) ;
@@ -14755,8 +14750,7 @@ static GALGAS_binaryset extensionGetter_formulaInExpression_computeExpression (c
     }else if (kBoolFalse == test_4) {
       temp_3 = GALGAS_string::makeEmptyString () ;
     }
-    GALGAS_location location_5 (object->mAttribute_mFormulaName.getter_location (HERE)) ; // Implicit use of 'location' getter
-    inCompiler->emitSemanticError (location_5, GALGAS_string ("the $").add_operation (object->mAttribute_mFormulaName.getter_string (SOURCE_FILE ("expression.galgas", 467)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (GALGAS_string (" names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (var_varList_15851.getter_length (SOURCE_FILE ("expression.galgas", 468)).getter_string (SOURCE_FILE ("expression.galgas", 467)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (GALGAS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (temp_1, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (GALGAS_string (", but this call names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (object->mAttribute_mParameterList.getter_length (SOURCE_FILE ("expression.galgas", 470)).getter_string (SOURCE_FILE ("expression.galgas", 469)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 469)).add_operation (GALGAS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 470)).add_operation (temp_3, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 470))  COMMA_SOURCE_FILE ("expression.galgas", 467)) ;
+    inCompiler->emitSemanticError (object->mAttribute_mFormulaName.getter_location (SOURCE_FILE ("expression.galgas", 467)), GALGAS_string ("the $").add_operation (object->mAttribute_mFormulaName.getter_string (SOURCE_FILE ("expression.galgas", 467)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (GALGAS_string (" names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (var_varList_15851.getter_length (SOURCE_FILE ("expression.galgas", 468)).getter_string (SOURCE_FILE ("expression.galgas", 467)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 467)).add_operation (GALGAS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (temp_1, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (GALGAS_string (", but this call names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 468)).add_operation (object->mAttribute_mParameterList.getter_length (SOURCE_FILE ("expression.galgas", 470)).getter_string (SOURCE_FILE ("expression.galgas", 469)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 469)).add_operation (GALGAS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 470)).add_operation (temp_3, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 470))  COMMA_SOURCE_FILE ("expression.galgas", 467)) ;
     result_outResult.drop () ; // Release error dropped variable
   }else if (kBoolFalse == test_0) {
     GALGAS_uintlist var_transformationList_16311 = GALGAS_uintlist::constructor_emptyList (SOURCE_FILE ("expression.galgas", 473)) ;
@@ -14776,24 +14770,23 @@ static GALGAS_binaryset extensionGetter_formulaInExpression_computeExpression (c
         var_subdomainMap_16553 = var_fieldSubdomainMap_16708 ;
         enumerator_16593.gotoNextObject () ;
       }
-      const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, enumerator_16380.current_mBitCount (HERE).objectCompare (var_parameterBitCount_16522)).boolEnum () ;
-      if (kBoolTrue == test_6) {
-        GALGAS_string temp_7 ;
-        const enumGalgasBool test_8 = GALGAS_bool (kIsStrictSup, var_parameterBitCount_16522.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
-        if (kBoolTrue == test_8) {
-          temp_7 = GALGAS_string ("s") ;
-        }else if (kBoolFalse == test_8) {
-          temp_7 = GALGAS_string::makeEmptyString () ;
+      const enumGalgasBool test_5 = GALGAS_bool (kIsNotEqual, enumerator_16380.current_mBitCount (HERE).objectCompare (var_parameterBitCount_16522)).boolEnum () ;
+      if (kBoolTrue == test_5) {
+        GALGAS_string temp_6 ;
+        const enumGalgasBool test_7 = GALGAS_bool (kIsStrictSup, var_parameterBitCount_16522.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+        if (kBoolTrue == test_7) {
+          temp_6 = GALGAS_string ("s") ;
+        }else if (kBoolFalse == test_7) {
+          temp_6 = GALGAS_string::makeEmptyString () ;
         }
-        GALGAS_string temp_9 ;
-        const enumGalgasBool test_10 = GALGAS_bool (kIsStrictSup, enumerator_16380.current_mBitCount (HERE).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
-        if (kBoolTrue == test_10) {
-          temp_9 = GALGAS_string ("s") ;
-        }else if (kBoolFalse == test_10) {
-          temp_9 = GALGAS_string::makeEmptyString () ;
+        GALGAS_string temp_8 ;
+        const enumGalgasBool test_9 = GALGAS_bool (kIsStrictSup, enumerator_16380.current_mBitCount (HERE).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+        if (kBoolTrue == test_9) {
+          temp_8 = GALGAS_string ("s") ;
+        }else if (kBoolFalse == test_9) {
+          temp_8 = GALGAS_string::makeEmptyString () ;
         }
-        GALGAS_location location_11 (enumerator_16431.current_mParameterName (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-        inCompiler->emitSemanticError (location_11, GALGAS_string ("this parameter is declared with a size of ").add_operation (var_parameterBitCount_16522.getter_string (SOURCE_FILE ("expression.galgas", 482)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 482)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (GALGAS_string (", but corresponding formal argument '"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (enumerator_16380.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (GALGAS_string ("' is declared with a size of "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (enumerator_16380.current_mBitCount (HERE).getter_string (SOURCE_FILE ("expression.galgas", 484)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 485)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 485))  COMMA_SOURCE_FILE ("expression.galgas", 482)) ;
+        inCompiler->emitSemanticError (enumerator_16431.current_mParameterName (HERE).getter_location (SOURCE_FILE ("expression.galgas", 482)), GALGAS_string ("this parameter is declared with a size of ").add_operation (var_parameterBitCount_16522.getter_string (SOURCE_FILE ("expression.galgas", 482)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 482)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (GALGAS_string (", but corresponding formal argument '"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 483)).add_operation (enumerator_16380.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (GALGAS_string ("' is declared with a size of "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (enumerator_16380.current_mBitCount (HERE).getter_string (SOURCE_FILE ("expression.galgas", 484)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 484)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 485)).add_operation (temp_8, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 485))  COMMA_SOURCE_FILE ("expression.galgas", 482)) ;
       }
       cEnumerator_range enumerator_17265 (GALGAS_range (GALGAS_uint ((uint32_t) 0U), var_parameterBitCount_16522.substract_operation (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 487))), kEnumeration_up) ;
       while (enumerator_17265.hasCurrentObject ()) {
@@ -14928,16 +14921,14 @@ static GALGAS_binaryset extensionGetter_comparisonWithConstantInExpression_compu
   }
   const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_subDomainMap_19142.getter_count (SOURCE_FILE ("expression.galgas", 542)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (object->mAttribute_mVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
-    inCompiler->emitSemanticError (location_1, GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 543)) ;
+    inCompiler->emitSemanticError (object->mAttribute_mVarName.getter_location (SOURCE_FILE ("expression.galgas", 543)), GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 543)) ;
     result_outResult.drop () ; // Release error dropped variable
   }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, object->mAttribute_mConstant.mAttribute_uint.getter_significantBitCount (SOURCE_FILE ("expression.galgas", 544)).objectCompare (var_bitCount_19111)).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (object->mAttribute_mConstant.getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_3, GALGAS_string ("Constant too large (should be < 2**").add_operation (var_bitCount_19111.getter_string (SOURCE_FILE ("expression.galgas", 545)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 545))  COMMA_SOURCE_FILE ("expression.galgas", 545)) ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, object->mAttribute_mConstant.mAttribute_uint.getter_significantBitCount (SOURCE_FILE ("expression.galgas", 544)).objectCompare (var_bitCount_19111)).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      inCompiler->emitSemanticError (object->mAttribute_mConstant.getter_location (SOURCE_FILE ("expression.galgas", 545)), GALGAS_string ("Constant too large (should be < 2**").add_operation (var_bitCount_19111.getter_string (SOURCE_FILE ("expression.galgas", 545)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 545))  COMMA_SOURCE_FILE ("expression.galgas", 545)) ;
       result_outResult.drop () ; // Release error dropped variable
-    }else if (kBoolFalse == test_2) {
+    }else if (kBoolFalse == test_1) {
       switch (object->mAttribute_mComparison.enumValue ()) {
       case GALGAS_comparison::kNotBuilt:
         break ;
@@ -15034,36 +15025,33 @@ static GALGAS_binaryset extensionGetter_variableComparisonInExpression_computeEx
   }
   const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_leftSubDomainMap_20906.getter_count (SOURCE_FILE ("expression.galgas", 585)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (object->mAttribute_mLeftVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
-    inCompiler->emitSemanticError (location_1, GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 586)) ;
+    inCompiler->emitSemanticError (object->mAttribute_mLeftVarName.getter_location (SOURCE_FILE ("expression.galgas", 586)), GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 586)) ;
     result_outResult.drop () ; // Release error dropped variable
   }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, var_rightSubDomainMap_21258.getter_count (SOURCE_FILE ("expression.galgas", 587)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (object->mAttribute_mRightVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_3, GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 588)) ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, var_rightSubDomainMap_21258.getter_count (SOURCE_FILE ("expression.galgas", 587)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      inCompiler->emitSemanticError (object->mAttribute_mRightVarName.getter_location (SOURCE_FILE ("expression.galgas", 588)), GALGAS_string ("variable is a record; use dot notation")  COMMA_SOURCE_FILE ("expression.galgas", 588)) ;
       result_outResult.drop () ; // Release error dropped variable
-    }else if (kBoolFalse == test_2) {
-      const enumGalgasBool test_4 = GALGAS_bool (kIsNotEqual, var_leftBitCount_20870.objectCompare (var_rightBitCount_21222)).boolEnum () ;
-      if (kBoolTrue == test_4) {
+    }else if (kBoolFalse == test_1) {
+      const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_leftBitCount_20870.objectCompare (var_rightBitCount_21222)).boolEnum () ;
+      if (kBoolTrue == test_2) {
+        GALGAS_string temp_3 ;
+        const enumGalgasBool test_4 = GALGAS_bool (kIsStrictSup, var_leftBitCount_20870.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+        if (kBoolTrue == test_4) {
+          temp_3 = GALGAS_string ("s") ;
+        }else if (kBoolFalse == test_4) {
+          temp_3 = GALGAS_string::makeEmptyString () ;
+        }
         GALGAS_string temp_5 ;
-        const enumGalgasBool test_6 = GALGAS_bool (kIsStrictSup, var_leftBitCount_20870.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+        const enumGalgasBool test_6 = GALGAS_bool (kIsStrictSup, var_rightBitCount_21222.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
         if (kBoolTrue == test_6) {
           temp_5 = GALGAS_string ("s") ;
         }else if (kBoolFalse == test_6) {
           temp_5 = GALGAS_string::makeEmptyString () ;
         }
-        GALGAS_string temp_7 ;
-        const enumGalgasBool test_8 = GALGAS_bool (kIsStrictSup, var_rightBitCount_21222.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
-        if (kBoolTrue == test_8) {
-          temp_7 = GALGAS_string ("s") ;
-        }else if (kBoolFalse == test_8) {
-          temp_7 = GALGAS_string::makeEmptyString () ;
-        }
-        GALGAS_location location_9 (object->mAttribute_mRightVarName.getter_location (HERE)) ; // Implicit use of 'location' getter
-        inCompiler->emitSemanticError (location_9, GALGAS_string ("'").add_operation (object->mAttribute_mLeftVarName.getter_string (SOURCE_FILE ("expression.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (GALGAS_string ("' variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (var_leftBitCount_20870.getter_string (SOURCE_FILE ("expression.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (GALGAS_string (", but this variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (var_rightBitCount_21222.getter_string (SOURCE_FILE ("expression.galgas", 592)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 592)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 593)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 593))  COMMA_SOURCE_FILE ("expression.galgas", 590)) ;
+        inCompiler->emitSemanticError (object->mAttribute_mRightVarName.getter_location (SOURCE_FILE ("expression.galgas", 590)), GALGAS_string ("'").add_operation (object->mAttribute_mLeftVarName.getter_string (SOURCE_FILE ("expression.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (GALGAS_string ("' variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (var_leftBitCount_20870.getter_string (SOURCE_FILE ("expression.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (temp_3, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (GALGAS_string (", but this variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (var_rightBitCount_21222.getter_string (SOURCE_FILE ("expression.galgas", 592)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 592)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 593)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 593))  COMMA_SOURCE_FILE ("expression.galgas", 590)) ;
         result_outResult.drop () ; // Release error dropped variable
-      }else if (kBoolFalse == test_4) {
+      }else if (kBoolFalse == test_2) {
         switch (object->mAttribute_mComparison.enumValue ()) {
         case GALGAS_comparison::kNotBuilt:
           break ;
