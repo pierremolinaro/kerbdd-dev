@@ -293,7 +293,7 @@ abstract getter @expression computeExpression
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
   ?let @computedFormulaMap inComputedFormulaMap
-  -> @binaryset outResult
+  -> @binaryset
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
