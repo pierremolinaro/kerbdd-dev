@@ -143,7 +143,7 @@ class C_Lexique_kerbdd_5F_lexique : public C_Lexique {
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
 
 //--- Enter Token
-  protected : void enterToken (const cTokenFor_kerbdd_5F_lexique & inToken) ;
+  protected : void enterToken (cTokenFor_kerbdd_5F_lexique & ioToken) ;
 
 //--- Style name for Latex
   protected : virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;
