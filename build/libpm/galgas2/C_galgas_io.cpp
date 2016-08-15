@@ -152,7 +152,9 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
                                                         const C_IssueWithFixIt & inIssue,
                                                         const C_SourceTextInString * inSourceTextPtr) {
   C_String result ;
-  if (inSourceTextPtr != NULL) {
+  if (inSourceTextPtr == NULL) {
+    result << inMessage ;
+  }else{
     macroValidSharedObject (inSourceTextPtr, C_SourceTextInString) ;
   //--- Construct message
     result << errorOrWarningLocationString (inIssue, inSourceTextPtr)
@@ -164,10 +166,8 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
       for (int32_t i=1 ; i<inIssue.mStartLocation.columnNumber () ; i++) {
         result << "-" ;
       }
-      C_String token ;
       for (int32_t i=inIssue.mStartLocation.columnNumber () ; i <= inIssue.mEndLocation.columnNumber () ; i++) {
         result << "^" ;
-        token << cStringWithUnicodeCharacter (textLine (i-1 COMMA_HERE)) ;
       }
       result << "\n" ;
     //--- Add fix it suggestions
@@ -176,16 +176,16 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
         const C_FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
         switch (d.kind()) {
         case kFixItRemove :
-          result << "Fix-it: remove \"" << token << "\"\n" ;
+          result << "Fix-it, remove\n" ;
           break ;
         case kFixItReplace :
-          result << "Fix-it: replace \"" << token << "\" with \"" << ZeroWidthSpace << d.actionString() << ZeroWidthSpace << "\"\n" ;
+          result << "Fix-it, replace with " << ZeroWidthSpace << d.actionString() << "\n" ;
           break ;
         case kFixItInsertBefore :
-          result << "Fix-it: before \"" << token << "\", insert \"" << ZeroWidthSpace << d.actionString() << ZeroWidthSpace << "\"\n" ;
+          result << "Fix-it, insert before: " << ZeroWidthSpace << d.actionString() << "\n" ;
           break ;
         case kFixItInsertAfter :
-          result << "Fix-it: after \"" << token << "\", insert \"" << ZeroWidthSpace << d.actionString() << ZeroWidthSpace << "\"\n" ;
+          result << "Fix-it, insert after: " << ZeroWidthSpace << d.actionString() << "\n" ;
           break ;
         }
       }
@@ -518,7 +518,7 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
   C_String errorMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceTextPtr) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
-      errorMessage << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
+      errorMessage << "[Error raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
                    << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     }
   #endif
@@ -530,12 +530,14 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
       co.appendUnicodeCharacter (COCOA_ERROR_ID COMMA_HERE) ;
       co << errorMessage ;
       co.setTextAttribute (kAllAttributesOff) ;
+      co << "\n" ;
       co.flush () ;
     }else{
       co.setForeColor (kRedForeColor) ;
       co.setTextAttribute (kBoldTextAttribute) ;
       co << errorMessage ;
       co.setTextAttribute (kAllAttributesOff) ;
+      co << "\n" ;
       co.flush () ;
     }
   }
@@ -555,7 +557,7 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
   C_String warningMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceTextPtr) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
-      warningMessage << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
+      warningMessage << "[Warning raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
                      << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     }
   #endif
@@ -571,12 +573,14 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
       co.appendUnicodeCharacter (COCOA_WARNING_ID COMMA_HERE) ;
       co << warningMessage ;
       co.setTextAttribute (kAllAttributesOff) ;
+      co << "\n" ;
       co.flush () ;
     }else{
       co.setForeColor (kYellowForeColor) ;
       co.setTextAttribute (kBoldTextAttribute) ;
       co << warningMessage ;
       co.setTextAttribute (kAllAttributesOff) ;
+      co << "\n" ;
       co.flush () ;
     }
   }
