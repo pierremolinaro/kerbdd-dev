@@ -3,7 +3,7 @@
 
 //--- END OF USER ZONE 1
 
-#import "lexique-kerbdd_lexique-cocoa.h"
+#import "lexique-kerbdd-5F-lexique-cocoa.h"
 #import "PMDebug.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
