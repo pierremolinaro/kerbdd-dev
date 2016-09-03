@@ -5,7 +5,7 @@
 
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
-#import "lexique-kerbdd_lexique-cocoa.m"
+#import "lexique-kerbdd-5F-lexique-cocoa.m"
 
 #ifdef USER_DEFAULT_COLORS_DEFINED
   #import "user_default_colors.h"
@@ -36,7 +36,7 @@ NSArray * nibsAndClasses (void) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#import "option-kerbdd_options-cocoa.m"
+#import "option-kerbdd-5F-options-cocoa.m"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
