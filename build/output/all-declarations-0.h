@@ -42,8 +42,6 @@ class cTokenFor_kerbdd_5F_lexique : public cToken {
 class C_Lexique_kerbdd_5F_lexique : public C_Lexique {
 //--- Constructors
   public : C_Lexique_kerbdd_5F_lexique (C_Compiler * inCallerCompiler,
-                       const C_String & inDependencyFileExtension,
-                       const C_String & inDependencyFilePath,
                        const C_String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
@@ -161,9 +159,9 @@ class GALGAS_domainFieldList : public AC_GALGAS_list {
   public : GALGAS_domainFieldList (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_domainFieldList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_domainFieldList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstring & in_mVarName,
                                                   const class GALGAS_bddType & in_mType
@@ -418,8 +416,8 @@ class cEnumAssociatedValues_bddType_namedType : public cEnumAssociatedValues {
 
 class GALGAS_domainFieldList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mVarName ;
-  public : GALGAS_bddType mAttribute_mType ;
+  public : GALGAS_lstring mProperty_mVarName ;
+  public : GALGAS_bddType mProperty_mType ;
 
 
 //--------------------------------- Accessors
@@ -489,9 +487,9 @@ class GALGAS_domainDeclarationList : public AC_GALGAS_list {
   public : GALGAS_domainDeclarationList (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_domainDeclarationList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_domainDeclarationList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstring & in_mDomainName,
                                                   const class GALGAS_domainDeclarationType & in_mType
@@ -741,8 +739,8 @@ class cEnumAssociatedValues_domainDeclarationType_record : public cEnumAssociate
 
 class GALGAS_domainDeclarationList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mDomainName ;
-  public : GALGAS_domainDeclarationType mAttribute_mType ;
+  public : GALGAS_lstring mProperty_mDomainName ;
+  public : GALGAS_domainDeclarationType mProperty_mType ;
 
 
 //--------------------------------- Accessors
@@ -939,9 +937,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_recordDomainMap ;
 
 class cMapElement_recordDomainMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mIndex ;
-  public : GALGAS_uint mAttribute_mBitCount ;
-  public : GALGAS_recordDomainMap mAttribute_mSubDomain ;
+  public : GALGAS_uint mProperty_mIndex ;
+  public : GALGAS_uint mProperty_mBitCount ;
+  public : GALGAS_recordDomainMap mProperty_mSubDomain ;
 
 //--- Constructor
   public : cMapElement_recordDomainMap (const GALGAS_lstring & inKey,
@@ -971,10 +969,10 @@ class cMapElement_recordDomainMap : public cMapElement {
 
 class GALGAS_recordDomainMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mIndex ;
-  public : GALGAS_uint mAttribute_mBitCount ;
-  public : GALGAS_recordDomainMap mAttribute_mSubDomain ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mIndex ;
+  public : GALGAS_uint mProperty_mBitCount ;
+  public : GALGAS_recordDomainMap mProperty_mSubDomain ;
 
 
 //--------------------------------- Accessors
@@ -1169,8 +1167,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainMap ;
 
 class cMapElement_domainMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mBitCount ;
-  public : GALGAS_recordDomainMap mAttribute_mRecordMap ;
+  public : GALGAS_uint mProperty_mBitCount ;
+  public : GALGAS_recordDomainMap mProperty_mRecordMap ;
 
 //--- Constructor
   public : cMapElement_domainMap (const GALGAS_lstring & inKey,
@@ -1199,9 +1197,9 @@ class cMapElement_domainMap : public cMapElement {
 
 class GALGAS_domainMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mBitCount ;
-  public : GALGAS_recordDomainMap mAttribute_mRecordMap ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mBitCount ;
+  public : GALGAS_recordDomainMap mProperty_mRecordMap ;
 
 
 //--------------------------------- Accessors
@@ -1289,9 +1287,9 @@ class GALGAS_varList : public AC_GALGAS_list {
   public : GALGAS_varList (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_varList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_varList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_string & in_mVarName,
                                                   const class GALGAS_uint & in_mBitIndex,
@@ -1437,9 +1435,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varList ;
 
 class GALGAS_varList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_string mAttribute_mVarName ;
-  public : GALGAS_uint mAttribute_mBitIndex ;
-  public : GALGAS_uint mAttribute_mBitCount ;
+  public : GALGAS_string mProperty_mVarName ;
+  public : GALGAS_uint mProperty_mBitIndex ;
+  public : GALGAS_uint mProperty_mBitCount ;
 
 
 //--------------------------------- Accessors
@@ -1643,9 +1641,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varMap ;
 
 class cMapElement_varMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mIndex ;
-  public : GALGAS_uint mAttribute_mBitCount ;
-  public : GALGAS_recordDomainMap mAttribute_mRecordDomainMap ;
+  public : GALGAS_uint mProperty_mIndex ;
+  public : GALGAS_uint mProperty_mBitCount ;
+  public : GALGAS_recordDomainMap mProperty_mRecordDomainMap ;
 
 //--- Constructor
   public : cMapElement_varMap (const GALGAS_lstring & inKey,
@@ -1675,10 +1673,10 @@ class cMapElement_varMap : public cMapElement {
 
 class GALGAS_varMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mIndex ;
-  public : GALGAS_uint mAttribute_mBitCount ;
-  public : GALGAS_recordDomainMap mAttribute_mRecordDomainMap ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mIndex ;
+  public : GALGAS_uint mProperty_mBitCount ;
+  public : GALGAS_recordDomainMap mProperty_mRecordDomainMap ;
 
 
 //--------------------------------- Accessors
@@ -2038,9 +2036,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_computedFormulaMap 
 
 class cMapElement_computedFormulaMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_varList mAttribute_mVarList ;
-  public : GALGAS_uint mAttribute_mBitCount ;
-  public : GALGAS_binaryset mAttribute_mValue ;
+  public : GALGAS_varList mProperty_mVarList ;
+  public : GALGAS_uint mProperty_mBitCount ;
+  public : GALGAS_binaryset mProperty_mValue ;
 
 //--- Constructor
   public : cMapElement_computedFormulaMap (const GALGAS_lstring & inKey,
@@ -2070,10 +2068,10 @@ class cMapElement_computedFormulaMap : public cMapElement {
 
 class GALGAS_computedFormulaMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_varList mAttribute_mVarList ;
-  public : GALGAS_uint mAttribute_mBitCount ;
-  public : GALGAS_binaryset mAttribute_mValue ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_varList mProperty_mVarList ;
+  public : GALGAS_uint mProperty_mBitCount ;
+  public : GALGAS_binaryset mProperty_mValue ;
 
 
 //--------------------------------- Accessors
@@ -2206,8 +2204,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpression ;
 
 class cPtr_andExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_expression mAttribute_mLeftExpression ;
-  public : GALGAS_expression mAttribute_mRightExpression ;
+  public : GALGAS_expression mProperty_mLeftExpression ;
+  public : GALGAS_expression mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_andExpression (const GALGAS_expression & in_mLeftExpression,
@@ -2293,8 +2291,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpression ;
 
 class cPtr_orExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_expression mAttribute_mLeftExpression ;
-  public : GALGAS_expression mAttribute_mRightExpression ;
+  public : GALGAS_expression mProperty_mLeftExpression ;
+  public : GALGAS_expression mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_orExpression (const GALGAS_expression & in_mLeftExpression,
@@ -2380,8 +2378,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpression ;
 
 class cPtr_xorExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_expression mAttribute_mLeftExpression ;
-  public : GALGAS_expression mAttribute_mRightExpression ;
+  public : GALGAS_expression mProperty_mLeftExpression ;
+  public : GALGAS_expression mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_xorExpression (const GALGAS_expression & in_mLeftExpression,
@@ -2467,8 +2465,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equalExpression ;
 
 class cPtr_equalExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_expression mAttribute_mLeftExpression ;
-  public : GALGAS_expression mAttribute_mRightExpression ;
+  public : GALGAS_expression mProperty_mLeftExpression ;
+  public : GALGAS_expression mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_equalExpression (const GALGAS_expression & in_mLeftExpression,
@@ -2554,8 +2552,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notEqualExpression 
 
 class cPtr_notEqualExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_expression mAttribute_mLeftExpression ;
-  public : GALGAS_expression mAttribute_mRightExpression ;
+  public : GALGAS_expression mProperty_mLeftExpression ;
+  public : GALGAS_expression mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_notEqualExpression (const GALGAS_expression & in_mLeftExpression,
@@ -2641,8 +2639,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_impliesExpression ;
 
 class cPtr_impliesExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_expression mAttribute_mLeftExpression ;
-  public : GALGAS_expression mAttribute_mRightExpression ;
+  public : GALGAS_expression mProperty_mLeftExpression ;
+  public : GALGAS_expression mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_impliesExpression (const GALGAS_expression & in_mLeftExpression,
@@ -2725,7 +2723,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_complementExpressio
 
 class cPtr_complementExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_expression mAttribute_mExpression ;
+  public : GALGAS_expression mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_complementExpression (const GALGAS_expression & in_mExpression
@@ -2913,9 +2911,9 @@ class GALGAS_formulaParameterListInExpression : public AC_GALGAS_list {
   public : GALGAS_formulaParameterListInExpression (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_formulaParameterListInExpression (cSharedList * inSharedListPtr) ;
+  public : GALGAS_formulaParameterListInExpression (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstring & in_mParameterName,
                                                   const class GALGAS_lstringlist & in_mFieldNames
@@ -3047,8 +3045,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaParameterLis
 
 class GALGAS_formulaParameterListInExpression_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mParameterName ;
-  public : GALGAS_lstringlist mAttribute_mFieldNames ;
+  public : GALGAS_lstring mProperty_mParameterName ;
+  public : GALGAS_lstringlist mProperty_mFieldNames ;
 
 
 //--------------------------------- Accessors
@@ -3173,8 +3171,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_existInExpression ;
 
 class cPtr_existInExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_domainFieldList mAttribute_mArgumentList ;
-  public : GALGAS_expression mAttribute_mExpression ;
+  public : GALGAS_domainFieldList mProperty_mArgumentList ;
+  public : GALGAS_expression mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_existInExpression (const GALGAS_domainFieldList & in_mArgumentList,
@@ -3260,8 +3258,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forAllInExpression 
 
 class cPtr_forAllInExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_domainFieldList mAttribute_mArgumentList ;
-  public : GALGAS_expression mAttribute_mExpression ;
+  public : GALGAS_domainFieldList mProperty_mArgumentList ;
+  public : GALGAS_expression mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_forAllInExpression (const GALGAS_domainFieldList & in_mArgumentList,
@@ -3378,10 +3376,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparison ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef class GALGAS_binaryset (*enterExtensionGetter_expression_computeExpression) (const class cPtr_expression * inObject,
-                                                                                     const class GALGAS_domainMap & constinArgument0,
-                                                                                     const class GALGAS_varMap & constinArgument1,
-                                                                                     const class GALGAS_uint & constinArgument2,
-                                                                                     const class GALGAS_computedFormulaMap & constinArgument3,
+                                                                                     const class GALGAS_domainMap constinArgument0,
+                                                                                     const class GALGAS_varMap constinArgument1,
+                                                                                     const class GALGAS_uint constinArgument2,
+                                                                                     const class GALGAS_computedFormulaMap constinArgument3,
                                                                                      class C_Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
@@ -3393,10 +3391,10 @@ void enterExtensionGetter_computeExpression (const int32_t inClassIndex,
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_binaryset callExtensionGetter_computeExpression (const class cPtr_expression * inObject,
-                                                              const GALGAS_domainMap & constin_inDomainMap,
-                                                              const GALGAS_varMap & constin_inVarMap,
-                                                              const GALGAS_uint & constin_inTotalBitCount,
-                                                              const GALGAS_computedFormulaMap & constin_inComputedFormulaMap,
+                                                              const GALGAS_domainMap constin_inDomainMap,
+                                                              const GALGAS_varMap constin_inVarMap,
+                                                              const GALGAS_uint constin_inTotalBitCount,
+                                                              const GALGAS_computedFormulaMap constin_inComputedFormulaMap,
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
@@ -3766,10 +3764,10 @@ class cEnumAssociatedValues_formulaKind_fixedPoint : public cEnumAssociatedValue
 
 class cPtr_assignmentFormula : public cPtr_abstractFormula {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mFormulaName ;
-  public : GALGAS_domainFieldList mAttribute_mFormulaArgumentList ;
-  public : GALGAS_formulaKind mAttribute_mKind ;
-  public : GALGAS_expression mAttribute_mExpression ;
+  public : GALGAS_lstring mProperty_mFormulaName ;
+  public : GALGAS_domainFieldList mProperty_mFormulaArgumentList ;
+  public : GALGAS_formulaKind mProperty_mKind ;
+  public : GALGAS_expression mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_assignmentFormula (const GALGAS_lstring & in_mFormulaName,
@@ -3865,10 +3863,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonWithConst
 
 class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mVarName ;
-  public : GALGAS_lstringlist mAttribute_mFieldNames ;
-  public : GALGAS_comparison mAttribute_mComparison ;
-  public : GALGAS_luint mAttribute_mConstant ;
+  public : GALGAS_lstring mProperty_mVarName ;
+  public : GALGAS_lstringlist mProperty_mFieldNames ;
+  public : GALGAS_comparison mProperty_mComparison ;
+  public : GALGAS_luint mProperty_mConstant ;
 
 //--- Constructor
   public : cPtr_comparisonWithConstantInExpression (const GALGAS_lstring & in_mVarName,
@@ -3958,7 +3956,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dumpFormula ;
 
 class cPtr_dumpFormula : public cPtr_abstractFormula {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mFormulaName ;
+  public : GALGAS_lstring mProperty_mFormulaName ;
 
 //--- Constructor
   public : cPtr_dumpFormula (const GALGAS_lstring & in_mFormulaName
@@ -4045,8 +4043,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaInExpression
 
 class cPtr_formulaInExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mFormulaName ;
-  public : GALGAS_formulaParameterListInExpression mAttribute_mParameterList ;
+  public : GALGAS_lstring mProperty_mFormulaName ;
+  public : GALGAS_formulaParameterListInExpression mProperty_mParameterList ;
 
 //--- Constructor
   public : cPtr_formulaInExpression (const GALGAS_lstring & in_mFormulaName,
@@ -4132,7 +4130,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphvizFormula ;
 
 class cPtr_graphvizFormula : public cPtr_abstractFormula {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mFormulaName ;
+  public : GALGAS_lstring mProperty_mFormulaName ;
 
 //--- Constructor
   public : cPtr_graphvizFormula (const GALGAS_lstring & in_mFormulaName
@@ -4216,7 +4214,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_andCache
 
 class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
 //--- Attributes
-  public : GALGAS_luint mAttribute_mSetting ;
+  public : GALGAS_luint mProperty_mSetting ;
 
 //--- Constructor
   public : cPtr_setting_5F_andCacheMapSize (const GALGAS_luint & in_mSetting
@@ -4300,7 +4298,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_nodeHash
 
 class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
 //--- Attributes
-  public : GALGAS_luint mAttribute_mSetting ;
+  public : GALGAS_luint mProperty_mSetting ;
 
 //--- Constructor
   public : cPtr_setting_5F_nodeHashMapSize (const GALGAS_luint & in_mSetting
@@ -4387,8 +4385,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varBitInExpression 
 
 class cPtr_varBitInExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mVarName ;
-  public : GALGAS_luint mAttribute_mVarBit ;
+  public : GALGAS_lstring mProperty_mVarName ;
+  public : GALGAS_luint mProperty_mVarBit ;
 
 //--- Constructor
   public : cPtr_varBitInExpression (const GALGAS_lstring & in_mVarName,
@@ -4474,7 +4472,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpression ;
 
 class cPtr_varInExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mVarName ;
+  public : GALGAS_lstring mProperty_mVarName ;
 
 //--- Constructor
   public : cPtr_varInExpression (const GALGAS_lstring & in_mVarName
@@ -4567,11 +4565,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableComparisonI
 
 class cPtr_variableComparisonInExpression : public cPtr_expression {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mLeftVarName ;
-  public : GALGAS_lstringlist mAttribute_mLeftFieldNames ;
-  public : GALGAS_comparison mAttribute_mComparison ;
-  public : GALGAS_lstring mAttribute_mRightVarName ;
-  public : GALGAS_lstringlist mAttribute_mRightFieldNames ;
+  public : GALGAS_lstring mProperty_mLeftVarName ;
+  public : GALGAS_lstringlist mProperty_mLeftFieldNames ;
+  public : GALGAS_comparison mProperty_mComparison ;
+  public : GALGAS_lstring mProperty_mRightVarName ;
+  public : GALGAS_lstringlist mProperty_mRightFieldNames ;
 
 //--- Constructor
   public : cPtr_variableComparisonInExpression (const GALGAS_lstring & in_mLeftVarName,
@@ -4611,9 +4609,9 @@ class GALGAS_formulaList : public AC_GALGAS_list {
   public : GALGAS_formulaList (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_formulaList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_formulaList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_abstractFormula & in_mFormula
                                                   COMMA_LOCATION_ARGS) ;
@@ -4731,8 +4729,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaList ;
 
 class GALGAS_ast : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_domainDeclarationList mAttribute_mDomainList ;
-  public : GALGAS_formulaList mAttribute_mFormulaList ;
+  public : GALGAS_domainDeclarationList mProperty_mDomainList ;
+  public : GALGAS_formulaList mProperty_mFormulaList ;
 
 
 //--------------------------------- Accessors
@@ -4802,7 +4800,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ast ;
 
 class GALGAS_formulaList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_abstractFormula mAttribute_mFormula ;
+  public : GALGAS_abstractFormula mProperty_mFormula ;
 
 
 //--------------------------------- Accessors
