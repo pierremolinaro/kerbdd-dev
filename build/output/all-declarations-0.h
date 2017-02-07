@@ -125,6 +125,8 @@ class C_Lexique_kerbdd_5F_lexique : public C_Lexique {
 
 //--- Indexing keys
 
+//--- Unicode test functions
+
 //--- Indexing directory
   protected : virtual C_String indexingDirectory (void) const ;
 
@@ -415,10 +417,10 @@ class cEnumAssociatedValues_bddType_namedType : public cEnumAssociatedValues {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_domainFieldList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mVarName ;
-  public : GALGAS_bddType mProperty_mType ;
 
+  public : GALGAS_bddType mProperty_mType ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -738,10 +740,10 @@ class cEnumAssociatedValues_domainDeclarationType_record : public cEnumAssociate
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_domainDeclarationList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mDomainName ;
-  public : GALGAS_domainDeclarationType mProperty_mType ;
 
+  public : GALGAS_domainDeclarationType mProperty_mType ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -968,12 +970,14 @@ class cMapElement_recordDomainMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_recordDomainMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_uint mProperty_mIndex ;
-  public : GALGAS_uint mProperty_mBitCount ;
-  public : GALGAS_recordDomainMap mProperty_mSubDomain ;
 
+  public : GALGAS_uint mProperty_mIndex ;
+
+  public : GALGAS_uint mProperty_mBitCount ;
+
+  public : GALGAS_recordDomainMap mProperty_mSubDomain ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1196,11 +1200,12 @@ class cMapElement_domainMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_domainMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_uint mProperty_mBitCount ;
-  public : GALGAS_recordDomainMap mProperty_mRecordMap ;
 
+  public : GALGAS_uint mProperty_mBitCount ;
+
+  public : GALGAS_recordDomainMap mProperty_mRecordMap ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1434,11 +1439,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varList ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_varList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mVarName ;
-  public : GALGAS_uint mProperty_mBitIndex ;
-  public : GALGAS_uint mProperty_mBitCount ;
 
+  public : GALGAS_uint mProperty_mBitIndex ;
+
+  public : GALGAS_uint mProperty_mBitCount ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1672,12 +1678,14 @@ class cMapElement_varMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_varMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_uint mProperty_mIndex ;
-  public : GALGAS_uint mProperty_mBitCount ;
-  public : GALGAS_recordDomainMap mProperty_mRecordDomainMap ;
 
+  public : GALGAS_uint mProperty_mIndex ;
+
+  public : GALGAS_uint mProperty_mBitCount ;
+
+  public : GALGAS_recordDomainMap mProperty_mRecordDomainMap ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2067,12 +2075,14 @@ class cMapElement_computedFormulaMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_computedFormulaMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_varList mProperty_mVarList ;
-  public : GALGAS_uint mProperty_mBitCount ;
-  public : GALGAS_binaryset mProperty_mValue ;
 
+  public : GALGAS_varList mProperty_mVarList ;
+
+  public : GALGAS_uint mProperty_mBitCount ;
+
+  public : GALGAS_binaryset mProperty_mValue ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3044,10 +3054,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaParameterLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formulaParameterListInExpression_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mParameterName ;
-  public : GALGAS_lstringlist mProperty_mFieldNames ;
 
+  public : GALGAS_lstringlist mProperty_mFieldNames ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4728,10 +4738,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaList ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_ast : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_domainDeclarationList mProperty_mDomainList ;
-  public : GALGAS_formulaList mProperty_mFormulaList ;
 
+  public : GALGAS_formulaList mProperty_mFormulaList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4799,9 +4809,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ast ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formulaList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_abstractFormula mProperty_mFormula ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;

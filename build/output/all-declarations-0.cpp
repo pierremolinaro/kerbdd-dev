@@ -847,7 +847,10 @@ C_String C_Lexique_kerbdd_5F_lexique::getCurrentTokenString (const cToken * inTo
 //---------------------------------------------------------------------------------------------------------------------*
 
 
-
+//---------------------------------------------------------------------------------------------------------------------*
+//            Unicode test functions                                                                                   *
+//---------------------------------------------------------------------------------------------------------------------*
+ 
 //---------------------------------------------------------------------------------------------------------------------*
 //               P A R S E    L E X I C A L    T O K E N                                                               *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2298,7 +2301,7 @@ void GALGAS_recordDomainMap::setter_setMIndexForKey (GALGAS_uint inAttributeValu
                                                      GALGAS_string inKey,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_recordDomainMap * p = (cMapElement_recordDomainMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_recordDomainMap) ;
@@ -2312,7 +2315,7 @@ void GALGAS_recordDomainMap::setter_setMBitCountForKey (GALGAS_uint inAttributeV
                                                         GALGAS_string inKey,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_recordDomainMap * p = (cMapElement_recordDomainMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_recordDomainMap) ;
@@ -2326,7 +2329,7 @@ void GALGAS_recordDomainMap::setter_setMSubDomainForKey (GALGAS_recordDomainMap 
                                                          GALGAS_string inKey,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_recordDomainMap * p = (cMapElement_recordDomainMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_recordDomainMap) ;
@@ -2339,7 +2342,7 @@ void GALGAS_recordDomainMap::setter_setMSubDomainForKey (GALGAS_recordDomainMap 
 cMapElement_recordDomainMap * GALGAS_recordDomainMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                          const GALGAS_string & inKey
                                                                                          COMMA_LOCATION_ARGS) {
-  cMapElement_recordDomainMap * result = (cMapElement_recordDomainMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_recordDomainMap * result = (cMapElement_recordDomainMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_recordDomainMap) ;
   return result ;
 }
@@ -2629,7 +2632,7 @@ void GALGAS_domainMap::setter_setMBitCountForKey (GALGAS_uint inAttributeValue,
                                                   GALGAS_string inKey,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_domainMap * p = (cMapElement_domainMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_domainMap) ;
@@ -2643,7 +2646,7 @@ void GALGAS_domainMap::setter_setMRecordMapForKey (GALGAS_recordDomainMap inAttr
                                                    GALGAS_string inKey,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_domainMap * p = (cMapElement_domainMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_domainMap) ;
@@ -2656,7 +2659,7 @@ void GALGAS_domainMap::setter_setMRecordMapForKey (GALGAS_recordDomainMap inAttr
 cMapElement_domainMap * GALGAS_domainMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                              const GALGAS_string & inKey
                                                                              COMMA_LOCATION_ARGS) {
-  cMapElement_domainMap * result = (cMapElement_domainMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_domainMap * result = (cMapElement_domainMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_domainMap) ;
   return result ;
 }
@@ -3549,7 +3552,7 @@ void GALGAS_varMap::setter_setMIndexForKey (GALGAS_uint inAttributeValue,
                                             GALGAS_string inKey,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_varMap * p = (cMapElement_varMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_varMap) ;
@@ -3563,7 +3566,7 @@ void GALGAS_varMap::setter_setMBitCountForKey (GALGAS_uint inAttributeValue,
                                                GALGAS_string inKey,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_varMap * p = (cMapElement_varMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_varMap) ;
@@ -3577,7 +3580,7 @@ void GALGAS_varMap::setter_setMRecordDomainMapForKey (GALGAS_recordDomainMap inA
                                                       GALGAS_string inKey,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_varMap * p = (cMapElement_varMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_varMap) ;
@@ -3590,7 +3593,7 @@ void GALGAS_varMap::setter_setMRecordDomainMapForKey (GALGAS_recordDomainMap inA
 cMapElement_varMap * GALGAS_varMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                        const GALGAS_string & inKey
                                                                        COMMA_LOCATION_ARGS) {
-  cMapElement_varMap * result = (cMapElement_varMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_varMap * result = (cMapElement_varMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_varMap) ;
   return result ;
 }
@@ -3713,7 +3716,7 @@ void extensionMethod_analyze (const GALGAS_domainFieldList inObject,
         ioArgument_ioVarMap.setter_insertKey (enumerator_6481.current_mVarName (HERE), ioArgument_ioTotalBitCount, GALGAS_uint ((uint32_t) 1U), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 189)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 189)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6481.current_mVarName (HERE).mProperty_string, ioArgument_ioTotalBitCount, GALGAS_uint ((uint32_t) 1U), GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 190)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6481.current_mVarName (HERE).getter_string (HERE), ioArgument_ioTotalBitCount, GALGAS_uint ((uint32_t) 1U), GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 190)) ;
         }
         ioArgument_ioTotalBitCount.increment_operation (inCompiler  COMMA_SOURCE_FILE ("domain.galgas", 191)) ;
       }
@@ -3726,7 +3729,7 @@ void extensionMethod_analyze (const GALGAS_domainFieldList inObject,
         ioArgument_ioVarMap.setter_insertKey (enumerator_6481.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.galgas", 193)), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 193)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6481.current_mVarName (HERE).mProperty_string, ioArgument_ioTotalBitCount, extractedValue_size, GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 194)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6481.current_mVarName (HERE).getter_string (HERE), ioArgument_ioTotalBitCount, extractedValue_size, GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 194)) ;
         }
         ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_size, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 195)) ;
       }
@@ -3742,7 +3745,7 @@ void extensionMethod_analyze (const GALGAS_domainFieldList inObject,
         ioArgument_ioVarMap.setter_insertKey (enumerator_6481.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_6972, var_subDomainMap_6990, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 198)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6481.current_mVarName (HERE).mProperty_string, ioArgument_ioTotalBitCount, var_size_6972, GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 199)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6481.current_mVarName (HERE).getter_string (HERE), ioArgument_ioTotalBitCount, var_size_6972, GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("domain.galgas", 199)) ;
         }
         ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_6972, inCompiler COMMA_SOURCE_FILE ("domain.galgas", 200)) ;
       }
@@ -3778,13 +3781,13 @@ typeComparisonResult GALGAS_abstractFormula::objectCompare (const GALGAS_abstrac
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_abstractFormula::GALGAS_abstractFormula (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_abstractFormula::GALGAS_abstractFormula (const cPtr_abstractFormula * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractFormula) ;
 }
 
@@ -3865,13 +3868,13 @@ typeComparisonResult GALGAS_expression::objectCompare (const GALGAS_expression &
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_expression::GALGAS_expression (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_expression::GALGAS_expression (const cPtr_expression * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_expression) ;
 }
 
@@ -4148,7 +4151,7 @@ void GALGAS_computedFormulaMap::setter_setMVarListForKey (GALGAS_varList inAttri
                                                           GALGAS_string inKey,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_computedFormulaMap * p = (cMapElement_computedFormulaMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_computedFormulaMap) ;
@@ -4162,7 +4165,7 @@ void GALGAS_computedFormulaMap::setter_setMBitCountForKey (GALGAS_uint inAttribu
                                                            GALGAS_string inKey,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_computedFormulaMap * p = (cMapElement_computedFormulaMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_computedFormulaMap) ;
@@ -4176,7 +4179,7 @@ void GALGAS_computedFormulaMap::setter_setMValueForKey (GALGAS_binaryset inAttri
                                                         GALGAS_string inKey,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_computedFormulaMap * p = (cMapElement_computedFormulaMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_computedFormulaMap) ;
@@ -4189,7 +4192,7 @@ void GALGAS_computedFormulaMap::setter_setMValueForKey (GALGAS_binaryset inAttri
 cMapElement_computedFormulaMap * GALGAS_computedFormulaMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                const GALGAS_string & inKey
                                                                                                COMMA_LOCATION_ARGS) {
-  cMapElement_computedFormulaMap * result = (cMapElement_computedFormulaMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_computedFormulaMap * result = (cMapElement_computedFormulaMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_computedFormulaMap) ;
   return result ;
 }
@@ -6893,12 +6896,12 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i3_ (GALGAS_bddType & 
       GALGAS_luint var_bitCount_2726 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_kerbdd_5F_lexique::kToken_integer) COMMA_SOURCE_FILE ("domain.galgas", 84)) ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_kerbdd_5F_lexique::kToken__5D_) COMMA_SOURCE_FILE ("domain.galgas", 85)) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_bitCount_2726.mProperty_uint.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_bitCount_2726.getter_uint (HERE).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_0) {
         TC_Array <C_FixItDescription> fixItArray1 ;
         inCompiler->emitSemanticError (var_bitCount_2726.getter_location (SOURCE_FILE ("domain.galgas", 87)), GALGAS_string ("size should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("domain.galgas", 87)) ;
       }
-      outArgument_outType = GALGAS_bddType::constructor_boolArray (var_bitCount_2726.mProperty_uint  COMMA_SOURCE_FILE ("domain.galgas", 89)) ;
+      outArgument_outType = GALGAS_bddType::constructor_boolArray (var_bitCount_2726.getter_uint (HERE)  COMMA_SOURCE_FILE ("domain.galgas", 89)) ;
     } break ;
     default:
       break ;
@@ -13830,7 +13833,7 @@ static void extensionMethod_assignmentFormula_analyzeFormula (const cPtr_abstrac
     break ;
   case GALGAS_formulaKind::kEnum_assignment:
     {
-      inCompiler->printMessage (object->mProperty_mFormulaName.mProperty_string.add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 84))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 84)) ;
+      inCompiler->printMessage (object->mProperty_mFormulaName.getter_string (HERE).add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 84))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 84)) ;
       GALGAS_timer var_timer_3092 = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.galgas", 85)) ;
       GALGAS_binaryset var_result_3122 = callExtensionGetter_computeExpression ((const cPtr_expression *) object->mProperty_mExpression.ptr (), constinArgument_inDomainMap, var_varMap_2893, var_totalBitCount_2848, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 86)) ;
       {
@@ -13859,7 +13862,7 @@ static void extensionMethod_assignmentFormula_analyzeFormula (const cPtr_abstrac
     {
       const cEnumAssociatedValues_formulaKind_fixedPoint * extractPtr_4806 = (const cEnumAssociatedValues_formulaKind_fixedPoint *) (object->mProperty_mKind.unsafePointer ()) ;
       const GALGAS_binaryset extractedValue_startValue = extractPtr_4806->mAssociatedValue0 ;
-      inCompiler->printMessage (object->mProperty_mFormulaName.mProperty_string.add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 96))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 96)) ;
+      inCompiler->printMessage (object->mProperty_mFormulaName.getter_string (HERE).add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 96))  COMMA_SOURCE_FILE ("formula-assignment.galgas", 96)) ;
       GALGAS_timer var_timer_3792 = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.galgas", 97)) ;
       GALGAS_binaryset var_result_3829 = extractedValue_startValue ;
       {
@@ -13889,7 +13892,7 @@ static void extensionMethod_assignmentFormula_analyzeFormula (const cPtr_abstrac
             }else if (kBoolFalse == test_4) {
               var_result_3829 = var_r_4053 ;
               {
-              ioArgument_ioComputedFormulaMap.setter_setMValueForKey (var_result_3829, object->mProperty_mFormulaName.mProperty_string, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 109)) ;
+              ioArgument_ioComputedFormulaMap.setter_setMValueForKey (var_result_3829, object->mProperty_mFormulaName.getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas", 109)) ;
               }
             }
           }
@@ -13950,7 +13953,7 @@ static void extensionMethod_setting_5F_nodeHashMapSize_analyzeFormula (const cPt
   const cPtr_setting_5F_nodeHashMapSize * object = (const cPtr_setting_5F_nodeHashMapSize *) inObject ;
   macroValidSharedObject (object, cPtr_setting_5F_nodeHashMapSize) ;
   {
-  GALGAS_binaryset::class_method_setNodeTableSize (object->mProperty_mSetting.mProperty_uint COMMA_SOURCE_FILE ("setting-map.galgas", 46)) ;
+  GALGAS_binaryset::class_method_setNodeTableSize (object->mProperty_mSetting.getter_uint (HERE) COMMA_SOURCE_FILE ("setting-map.galgas", 46)) ;
   }
 }
 
@@ -13980,7 +13983,7 @@ static void extensionMethod_setting_5F_andCacheMapSize_analyzeFormula (const cPt
   const cPtr_setting_5F_andCacheMapSize * object = (const cPtr_setting_5F_andCacheMapSize *) inObject ;
   macroValidSharedObject (object, cPtr_setting_5F_andCacheMapSize) ;
   {
-  GALGAS_binaryset::class_method_setAndTableSize (object->mProperty_mSetting.mProperty_uint COMMA_SOURCE_FILE ("setting-map.galgas", 56)) ;
+  GALGAS_binaryset::class_method_setAndTableSize (object->mProperty_mSetting.getter_uint (HERE) COMMA_SOURCE_FILE ("setting-map.galgas", 56)) ;
   }
 }
 
@@ -14168,13 +14171,13 @@ static GALGAS_binaryset extensionGetter_varBitInExpression_computeExpression (co
     TC_Array <C_FixItDescription> fixItArray1 ;
     inCompiler->emitSemanticError (object->mProperty_mVarName.getter_location (SOURCE_FILE ("expression.galgas", 327)), GALGAS_string ("variable is a record; use dot notation"), fixItArray1  COMMA_SOURCE_FILE ("expression.galgas", 327)) ;
   }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsInfOrEqual, var_bitCount_10337.objectCompare (object->mProperty_mVarBit.mProperty_uint)).boolEnum () ;
+    const enumGalgasBool test_2 = GALGAS_bool (kIsInfOrEqual, var_bitCount_10337.objectCompare (object->mProperty_mVarBit.getter_uint (HERE))).boolEnum () ;
     if (kBoolTrue == test_2) {
       TC_Array <C_FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (object->mProperty_mVarBit.getter_location (SOURCE_FILE ("expression.galgas", 329)), GALGAS_string ("bit index should be < ").add_operation (var_bitCount_10337.getter_string (SOURCE_FILE ("expression.galgas", 329)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 329)), fixItArray3  COMMA_SOURCE_FILE ("expression.galgas", 329)) ;
     }
   }
-  result_outResult = GALGAS_binaryset::constructor_binarySetWithBit (var_idx_10323.add_operation (object->mProperty_mVarBit.mProperty_uint, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 331)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 331)) ;
+  result_outResult = GALGAS_binaryset::constructor_binarySetWithBit (var_idx_10323.add_operation (object->mProperty_mVarBit.getter_uint (HERE), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 331)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 331)) ;
 //---
   return result_outResult ;
 }
@@ -14709,7 +14712,7 @@ static GALGAS_binaryset extensionGetter_comparisonWithConstantInExpression_compu
     inCompiler->emitSemanticError (object->mProperty_mVarName.getter_location (SOURCE_FILE ("expression.galgas", 543)), GALGAS_string ("variable is a record; use dot notation"), fixItArray1  COMMA_SOURCE_FILE ("expression.galgas", 543)) ;
     result_outResult.drop () ; // Release error dropped variable
   }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, object->mProperty_mConstant.mProperty_uint.getter_significantBitCount (SOURCE_FILE ("expression.galgas", 544)).objectCompare (var_bitCount_19101)).boolEnum () ;
+    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, object->mProperty_mConstant.getter_uint (HERE).getter_significantBitCount (SOURCE_FILE ("expression.galgas", 544)).objectCompare (var_bitCount_19101)).boolEnum () ;
     if (kBoolTrue == test_2) {
       TC_Array <C_FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (object->mProperty_mConstant.getter_location (SOURCE_FILE ("expression.galgas", 545)), GALGAS_string ("Constant too large (should be < 2**").add_operation (var_bitCount_19101.getter_string (SOURCE_FILE ("expression.galgas", 545)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 545)), fixItArray3  COMMA_SOURCE_FILE ("expression.galgas", 545)) ;
@@ -14720,32 +14723,32 @@ static GALGAS_binaryset extensionGetter_comparisonWithConstantInExpression_compu
         break ;
       case GALGAS_comparison::kEnum_equal:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithEqualToConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.mProperty_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 549)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 549)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithEqualToConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.getter_uint (HERE).getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 549)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 549)) ;
         }
         break ;
       case GALGAS_comparison::kEnum_notEqual:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithNotEqualToConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.mProperty_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 551)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 551)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithNotEqualToConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.getter_uint (HERE).getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 551)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 551)) ;
         }
         break ;
       case GALGAS_comparison::kEnum_lowerOrEqual:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithLowerOrEqualToConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.mProperty_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 553)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 553)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithLowerOrEqualToConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.getter_uint (HERE).getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 553)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 553)) ;
         }
         break ;
       case GALGAS_comparison::kEnum_lowerThan:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithStrictLowerThanConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.mProperty_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 555)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 555)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithStrictLowerThanConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.getter_uint (HERE).getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 555)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 555)) ;
         }
         break ;
       case GALGAS_comparison::kEnum_greaterOrEqual:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithGreaterOrEqualToConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.mProperty_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 557)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 557)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithGreaterOrEqualToConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.getter_uint (HERE).getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 557)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 557)) ;
         }
         break ;
       case GALGAS_comparison::kEnum_greaterThan:
         {
-          result_outResult = GALGAS_binaryset::constructor_binarySetWithStrictGreaterThanConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.mProperty_uint.getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 559)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 559)) ;
+          result_outResult = GALGAS_binaryset::constructor_binarySetWithStrictGreaterThanConstant (var_idx_19085, var_bitCount_19101, object->mProperty_mConstant.getter_uint (HERE).getter_uint_36__34_ (SOURCE_FILE ("expression.galgas", 559)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 559)) ;
         }
         break ;
       }
@@ -14967,13 +14970,13 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
   var_ast_841.drop () ;
   cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_ast_841  COMMA_SOURCE_FILE ("program.galgas", 17)) ;
   GALGAS_domainMap var_domainMap_916 ;
-  extensionMethod_analyze (var_ast_841.mProperty_mDomainList, var_domainMap_916, inCompiler COMMA_SOURCE_FILE ("program.galgas", 19)) ;
+  extensionMethod_analyze (var_ast_841.getter_mDomainList (HERE), var_domainMap_916, inCompiler COMMA_SOURCE_FILE ("program.galgas", 19)) ;
   GALGAS_computedFormulaMap var_computedFormulaMap_980 = GALGAS_computedFormulaMap::constructor_emptyMap (SOURCE_FILE ("program.galgas", 21)) ;
-  cEnumerator_formulaList enumerator_1021 (var_ast_841.mProperty_mFormulaList, kENUMERATION_UP) ;
+  cEnumerator_formulaList enumerator_1021 (var_ast_841.getter_mFormulaList (HERE), kENUMERATION_UP) ;
   bool bool_0 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("program.galgas", 22)).objectCompare (GALGAS_uint ((uint32_t) 0U))).isValidAndTrue () ;
   if (enumerator_1021.hasCurrentObject () && bool_0) {
     while (enumerator_1021.hasCurrentObject () && bool_0) {
-      callExtensionMethod_analyzeFormula ((const cPtr_abstractFormula *) enumerator_1021.current_mFormula (HERE).ptr (), constinArgument_inSourceFile.mProperty_string, var_domainMap_916, var_computedFormulaMap_980, inCompiler COMMA_SOURCE_FILE ("program.galgas", 23)) ;
+      callExtensionMethod_analyzeFormula ((const cPtr_abstractFormula *) enumerator_1021.current_mFormula (HERE).ptr (), constinArgument_inSourceFile.getter_string (HERE), var_domainMap_916, var_computedFormulaMap_980, inCompiler COMMA_SOURCE_FILE ("program.galgas", 23)) ;
       enumerator_1021.gotoNextObject () ;
       if (enumerator_1021.hasCurrentObject ()) {
         bool_0 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("program.galgas", 22)).objectCompare (GALGAS_uint ((uint32_t) 0U))).isValidAndTrue () ;
