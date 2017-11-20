@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__30__ENTITIES_DEFINED
-#define all_2D_declarations_2D__30__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5049,4 +5048,3 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#endif
