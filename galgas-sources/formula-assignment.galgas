@@ -89,7 +89,7 @@ override method @assignmentFormula analyzeFormula
 #    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
     let @uint64 nodeCount = [result nodeCount]
     message " "
-      + valueCount + "(" + valueCount + ") value" + if valueCount > 1L then "s" else "" end
+      + valueCount + " value" + if valueCount > 1L then "s" else "" end
       + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
       + " (" + timer + ")\n"
   case fixedPoint (@binaryset startValue) :
@@ -114,7 +114,7 @@ override method @assignmentFormula analyzeFormula
     let @uint64 nodeCount = [result nodeCount]
     message " "
       + iterationCount + " iteration" + if iterationCount > 1 then "s" else "" end
-      + ", " + valueCount + "(" + valueCount + ") value" + if valueCount > 1L then "s" else "" end
+      + ", " + valueCount + " value" + if valueCount > 1L then "s" else "" end
       + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
       + " (" + timer + ")\n"
   end
