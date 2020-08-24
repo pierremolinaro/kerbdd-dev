@@ -1,31 +1,31 @@
 #pragma once
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              LEXIQUE kerbdd_5F_lexique                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//LEXIQUE kerbdd_5F_lexique
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_Lexique.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                    E X T E R N    R O U T I N E S                                                                   *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                    E X T E R N    R O U T I N E S                                             
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                    E X T E R N    F U N C T I O N S                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                    E X T E R N    F U N C T I O N S                                           
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                       T O K E N    C L A S S                                                                        *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                       T O K E N    C L A S S                                                  
+//----------------------------------------------------------------------------------------------------------------------
 
 class cTokenFor_kerbdd_5F_lexique : public cToken {
   public : C_String mLexicalAttribute_tokenString ;
@@ -34,9 +34,9 @@ class cTokenFor_kerbdd_5F_lexique : public cToken {
   public : cTokenFor_kerbdd_5F_lexique (void) ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                     S C A N N E R    C L A S S                                                                      *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                     S C A N N E R    C L A S S                                                
+//----------------------------------------------------------------------------------------------------------------------
 
 class C_Lexique_kerbdd_5F_lexique : public C_Lexique {
 //--- Constructors
@@ -149,11 +149,11 @@ class C_Lexique_kerbdd_5F_lexique : public C_Lexique {
   protected : virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                    @bddType enum                                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                                                Phase 1: @bddType enum                                               *
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_bddType : public AC_GALGAS_root {
 //--------------------------------- Default constructor
@@ -226,21 +226,23 @@ class GALGAS_bddType : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNamedType (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_bddType class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bddType ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @bddType enum, associated values                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: @bddType enum, associated values
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumAssociatedValues_bddType_boolArray : public cEnumAssociatedValues {
   public : const GALGAS_uint mAssociatedValue0 ;
@@ -256,7 +258,7 @@ class cEnumAssociatedValues_bddType_boolArray : public cEnumAssociatedValues {
   public : virtual ~ cEnumAssociatedValues_bddType_boolArray (void) {}
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumAssociatedValues_bddType_namedType : public cEnumAssociatedValues {
   public : const GALGAS_lstring mAssociatedValue0 ;
@@ -272,11 +274,11 @@ class cEnumAssociatedValues_bddType_namedType : public cEnumAssociatedValues {
   public : virtual ~ cEnumAssociatedValues_bddType_namedType (void) {}
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @domainFieldList list                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @domainFieldList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_domainFieldList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -350,6 +352,16 @@ class GALGAS_domainFieldList : public AC_GALGAS_list {
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
+  public : VIRTUAL_IN_DEBUG void setter_setMTypeAtIndex (class GALGAS_bddType constinArgument0,
+                                                         class GALGAS_uint constinArgument1,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMVarNameAtIndex (class GALGAS_lstring constinArgument0,
+                                                            class GALGAS_uint constinArgument1,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
@@ -386,6 +398,8 @@ class GALGAS_domainFieldList : public AC_GALGAS_list {
                                                                                   COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -394,9 +408,9 @@ class GALGAS_domainFieldList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_domainFieldList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_domainFieldList : public cGenericAbstractEnumerator {
   public : cEnumerator_domainFieldList (const GALGAS_domainFieldList & inEnumeratedObject,
@@ -409,15 +423,15 @@ class cEnumerator_domainFieldList : public cGenericAbstractEnumerator {
   public : class GALGAS_domainFieldList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainFieldList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         @domainFieldList_2D_element struct                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @domainFieldList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_domainFieldList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -471,21 +485,23 @@ class GALGAS_domainFieldList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_domainFieldList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainFieldList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @domainDeclarationType enum                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                                         Phase 1: @domainDeclarationType enum                                        *
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_domainDeclarationType : public AC_GALGAS_root {
 //--------------------------------- Default constructor
@@ -553,21 +569,23 @@ class GALGAS_domainDeclarationType : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isType (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_domainDeclarationType class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainDeclarationType ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   @domainDeclarationType enum, associated values                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: @domainDeclarationType enum, associated values
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumAssociatedValues_domainDeclarationType_type : public cEnumAssociatedValues {
   public : const GALGAS_bddType mAssociatedValue0 ;
@@ -583,7 +601,7 @@ class cEnumAssociatedValues_domainDeclarationType_type : public cEnumAssociatedV
   public : virtual ~ cEnumAssociatedValues_domainDeclarationType_type (void) {}
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumAssociatedValues_domainDeclarationType_record : public cEnumAssociatedValues {
   public : const GALGAS_domainFieldList mAssociatedValue0 ;
@@ -599,11 +617,11 @@ class cEnumAssociatedValues_domainDeclarationType_record : public cEnumAssociate
   public : virtual ~ cEnumAssociatedValues_domainDeclarationType_record (void) {}
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @domainDeclarationList list                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @domainDeclarationList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_domainDeclarationList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -677,6 +695,16 @@ class GALGAS_domainDeclarationList : public AC_GALGAS_list {
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
+  public : VIRTUAL_IN_DEBUG void setter_setMDomainNameAtIndex (class GALGAS_lstring constinArgument0,
+                                                               class GALGAS_uint constinArgument1,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMTypeAtIndex (class GALGAS_domainDeclarationType constinArgument0,
+                                                         class GALGAS_uint constinArgument1,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
@@ -713,6 +741,8 @@ class GALGAS_domainDeclarationList : public AC_GALGAS_list {
                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -721,9 +751,9 @@ class GALGAS_domainDeclarationList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_domainDeclarationList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_domainDeclarationList : public cGenericAbstractEnumerator {
   public : cEnumerator_domainDeclarationList (const GALGAS_domainDeclarationList & inEnumeratedObject,
@@ -736,15 +766,15 @@ class cEnumerator_domainDeclarationList : public cGenericAbstractEnumerator {
   public : class GALGAS_domainDeclarationList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainDeclarationList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      @domainDeclarationList_2D_element struct                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @domainDeclarationList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_domainDeclarationList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -798,29 +828,31 @@ class GALGAS_domainDeclarationList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_domainDeclarationType getter_mType (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_domainDeclarationList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainDeclarationList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @recordDomainMap map                                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @recordDomainMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_recordDomainMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_recordDomainMap_searchKey ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_recordDomainMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -829,7 +861,7 @@ class GALGAS_recordDomainMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_recordDomainMap (const GALGAS_recordDomainMap & inSource) ;
   public : GALGAS_recordDomainMap & operator = (const GALGAS_recordDomainMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -905,6 +937,13 @@ class GALGAS_recordDomainMap : public AC_GALGAS_map {
                                                                                COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                     class GALGAS_uint & outOperand1,
+                                                     class GALGAS_uint & outOperand2,
+                                                     class GALGAS_recordDomainMap & outOperand3) const ;
+
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
   public : VIRTUAL_IN_DEBUG cMapElement_recordDomainMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
@@ -917,9 +956,9 @@ class GALGAS_recordDomainMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_recordDomainMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_recordDomainMap : public cGenericAbstractEnumerator {
   public : cEnumerator_recordDomainMap (const GALGAS_recordDomainMap & inEnumeratedObject,
@@ -934,15 +973,15 @@ class cEnumerator_recordDomainMap : public cGenericAbstractEnumerator {
   public : class GALGAS_recordDomainMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_recordDomainMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Class for element of '@recordDomainMap' map                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@recordDomainMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_recordDomainMap : public cMapElement {
 //--- Map attributes
@@ -970,11 +1009,11 @@ class cMapElement_recordDomainMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         @recordDomainMap_2D_element struct                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @recordDomainMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_recordDomainMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1043,29 +1082,31 @@ class GALGAS_recordDomainMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_recordDomainMap getter_mSubDomain (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_recordDomainMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_recordDomainMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                   @domainMap map                                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @domainMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_domainMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_domainMap_searchKey ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_domainMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -1074,7 +1115,7 @@ class GALGAS_domainMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_domainMap (const GALGAS_domainMap & inSource) ;
   public : GALGAS_domainMap & operator = (const GALGAS_domainMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1138,6 +1179,12 @@ class GALGAS_domainMap : public AC_GALGAS_map {
                                                                          COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                     class GALGAS_uint & outOperand1,
+                                                     class GALGAS_recordDomainMap & outOperand2) const ;
+
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
   public : VIRTUAL_IN_DEBUG cMapElement_domainMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
@@ -1150,9 +1197,9 @@ class GALGAS_domainMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_domainMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_domainMap : public cGenericAbstractEnumerator {
   public : cEnumerator_domainMap (const GALGAS_domainMap & inEnumeratedObject,
@@ -1166,15 +1213,15 @@ class cEnumerator_domainMap : public cGenericAbstractEnumerator {
   public : class GALGAS_domainMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        Class for element of '@domainMap' map                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@domainMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_domainMap : public cMapElement {
 //--- Map attributes
@@ -1200,11 +1247,11 @@ class cMapElement_domainMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @domainMap_2D_element struct                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @domainMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_domainMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1267,32 +1314,34 @@ class GALGAS_domainMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_recordDomainMap getter_mRecordMap (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_domainMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Extension method '@domainDeclarationList analyze'                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@domainDeclarationList analyze'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void extensionMethod_analyze (const class GALGAS_domainDeclarationList inObject,
                               class GALGAS_domainMap & out_outDomainMap,
                               class C_Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                    @varList list                                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @varList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_varList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1373,6 +1422,21 @@ class GALGAS_varList : public AC_GALGAS_list {
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
+  public : VIRTUAL_IN_DEBUG void setter_setMBitCountAtIndex (class GALGAS_uint constinArgument0,
+                                                             class GALGAS_uint constinArgument1,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMBitIndexAtIndex (class GALGAS_uint constinArgument0,
+                                                             class GALGAS_uint constinArgument1,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMVarNameAtIndex (class GALGAS_string constinArgument0,
+                                                            class GALGAS_uint constinArgument1,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_string & outArgument0,
@@ -1415,6 +1479,8 @@ class GALGAS_varList : public AC_GALGAS_list {
                                                                           COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -1423,9 +1489,9 @@ class GALGAS_varList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_varList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_varList : public cGenericAbstractEnumerator {
   public : cEnumerator_varList (const GALGAS_varList & inEnumeratedObject,
@@ -1439,15 +1505,15 @@ class cEnumerator_varList : public cGenericAbstractEnumerator {
   public : class GALGAS_varList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @varList_2D_element struct                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @varList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_varList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1510,29 +1576,31 @@ class GALGAS_varList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_varList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                     @varMap map                                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @varMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_varMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_varMap_searchKey ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_varMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -1541,7 +1609,7 @@ class GALGAS_varMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_varMap (const GALGAS_varMap & inSource) ;
   public : GALGAS_varMap & operator = (const GALGAS_varMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1617,6 +1685,13 @@ class GALGAS_varMap : public AC_GALGAS_map {
                                                                       COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                     class GALGAS_uint & outOperand1,
+                                                     class GALGAS_uint & outOperand2,
+                                                     class GALGAS_recordDomainMap & outOperand3) const ;
+
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
   public : VIRTUAL_IN_DEBUG cMapElement_varMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
@@ -1629,9 +1704,9 @@ class GALGAS_varMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_varMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_varMap : public cGenericAbstractEnumerator {
   public : cEnumerator_varMap (const GALGAS_varMap & inEnumeratedObject,
@@ -1646,15 +1721,15 @@ class cEnumerator_varMap : public cGenericAbstractEnumerator {
   public : class GALGAS_varMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         Class for element of '@varMap' map                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@varMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_varMap : public cMapElement {
 //--- Map attributes
@@ -1682,11 +1757,11 @@ class cMapElement_varMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @varMap_2D_element struct                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @varMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_varMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1755,21 +1830,23 @@ class GALGAS_varMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_recordDomainMap getter_mRecordDomainMap (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_varMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Extension method '@domainFieldList analyze'                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@domainFieldList analyze'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void extensionMethod_analyze (const class GALGAS_domainFieldList inObject,
                               const class GALGAS_domainMap constin_inDomainMap,
@@ -1779,11 +1856,11 @@ void extensionMethod_analyze (const class GALGAS_domainFieldList inObject,
                               class C_Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                  @formulaKind enum                                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                                              Phase 1: @formulaKind enum                                             *
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_formulaKind : public AC_GALGAS_root {
 //--------------------------------- Default constructor
@@ -1846,21 +1923,23 @@ class GALGAS_formulaKind : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFixedPoint (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_formulaKind class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaKind ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @formulaKind enum, associated values                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: @formulaKind enum, associated values
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumAssociatedValues_formulaKind_fixedPoint : public cEnumAssociatedValues {
   public : const GALGAS_binaryset mAssociatedValue0 ;
@@ -1876,11 +1955,11 @@ class cEnumAssociatedValues_formulaKind_fixedPoint : public cEnumAssociatedValue
   public : virtual ~ cEnumAssociatedValues_formulaKind_fixedPoint (void) {}
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @abstractFormula class                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @abstractFormula class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractFormula : public AC_GALGAS_class {
 //--- Constructor
@@ -1912,21 +1991,23 @@ class GALGAS_abstractFormula : public AC_GALGAS_class {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_abstractFormula class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractFormula ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Pointer class for @abstractFormula class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @abstractFormula class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractFormula : public acPtr_class {
 //--- Attributes
@@ -1945,11 +2026,11 @@ class cPtr_abstractFormula : public acPtr_class {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                  @expression class                                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @expression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_expression : public AC_GALGAS_class {
 //--- Constructor
@@ -1981,21 +2062,23 @@ class GALGAS_expression : public AC_GALGAS_class {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_expression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         Pointer class for @expression class                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @expression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_expression : public acPtr_class {
 //--- Attributes
@@ -2014,19 +2097,19 @@ class cPtr_expression : public acPtr_class {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @computedFormulaMap map                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @computedFormulaMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_computedFormulaMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_computedFormulaMap_searchKey ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_computedFormulaMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -2035,7 +2118,7 @@ class GALGAS_computedFormulaMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_computedFormulaMap (const GALGAS_computedFormulaMap & inSource) ;
   public : GALGAS_computedFormulaMap & operator = (const GALGAS_computedFormulaMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2111,6 +2194,13 @@ class GALGAS_computedFormulaMap : public AC_GALGAS_map {
                                                                                   COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                     class GALGAS_varList & outOperand1,
+                                                     class GALGAS_uint & outOperand2,
+                                                     class GALGAS_binaryset & outOperand3) const ;
+
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
   public : VIRTUAL_IN_DEBUG cMapElement_computedFormulaMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
@@ -2123,9 +2213,9 @@ class GALGAS_computedFormulaMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_computedFormulaMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_computedFormulaMap : public cGenericAbstractEnumerator {
   public : cEnumerator_computedFormulaMap (const GALGAS_computedFormulaMap & inEnumeratedObject,
@@ -2140,15 +2230,15 @@ class cEnumerator_computedFormulaMap : public cGenericAbstractEnumerator {
   public : class GALGAS_computedFormulaMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_computedFormulaMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Class for element of '@computedFormulaMap' map                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@computedFormulaMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_computedFormulaMap : public cMapElement {
 //--- Map attributes
@@ -2176,11 +2266,11 @@ class cMapElement_computedFormulaMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @computedFormulaMap_2D_element struct                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @computedFormulaMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_computedFormulaMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -2249,21 +2339,23 @@ class GALGAS_computedFormulaMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_varList getter_mVarList (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_computedFormulaMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @andExpression class                                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @andExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_andExpression : public GALGAS_expression {
 //--- Constructor
@@ -2294,6 +2386,12 @@ class GALGAS_andExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_andExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_expression inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_expression inArgument0
+                                                             COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -2304,21 +2402,23 @@ class GALGAS_andExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_andExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Pointer class for @andExpression class                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @andExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_andExpression : public cPtr_expression {
 //--- Attributes
@@ -2335,7 +2435,9 @@ class cPtr_andExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -2346,11 +2448,11 @@ class cPtr_andExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                 @orExpression class                                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @orExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_orExpression : public GALGAS_expression {
 //--- Constructor
@@ -2381,6 +2483,12 @@ class GALGAS_orExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_orExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_expression inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_expression inArgument0
+                                                             COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -2391,21 +2499,23 @@ class GALGAS_orExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_orExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        Pointer class for @orExpression class                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @orExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_orExpression : public cPtr_expression {
 //--- Attributes
@@ -2422,7 +2532,9 @@ class cPtr_orExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -2433,11 +2545,11 @@ class cPtr_orExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @xorExpression class                                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @xorExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_xorExpression : public GALGAS_expression {
 //--- Constructor
@@ -2468,6 +2580,12 @@ class GALGAS_xorExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_xorExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_expression inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_expression inArgument0
+                                                             COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -2478,21 +2596,23 @@ class GALGAS_xorExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_xorExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Pointer class for @xorExpression class                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @xorExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_xorExpression : public cPtr_expression {
 //--- Attributes
@@ -2509,7 +2629,9 @@ class cPtr_xorExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -2520,11 +2642,11 @@ class cPtr_xorExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @equalExpression class                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @equalExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_equalExpression : public GALGAS_expression {
 //--- Constructor
@@ -2555,6 +2677,12 @@ class GALGAS_equalExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_equalExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_expression inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_expression inArgument0
+                                                             COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -2565,21 +2693,23 @@ class GALGAS_equalExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_equalExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equalExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Pointer class for @equalExpression class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @equalExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_equalExpression : public cPtr_expression {
 //--- Attributes
@@ -2596,7 +2726,9 @@ class cPtr_equalExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -2607,11 +2739,11 @@ class cPtr_equalExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @notEqualExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @notEqualExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_notEqualExpression : public GALGAS_expression {
 //--- Constructor
@@ -2642,6 +2774,12 @@ class GALGAS_notEqualExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_notEqualExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_expression inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_expression inArgument0
+                                                             COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -2652,21 +2790,23 @@ class GALGAS_notEqualExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_notEqualExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notEqualExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Pointer class for @notEqualExpression class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @notEqualExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_notEqualExpression : public cPtr_expression {
 //--- Attributes
@@ -2683,7 +2823,9 @@ class cPtr_notEqualExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -2694,11 +2836,11 @@ class cPtr_notEqualExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @impliesExpression class                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @impliesExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_impliesExpression : public GALGAS_expression {
 //--- Constructor
@@ -2729,6 +2871,12 @@ class GALGAS_impliesExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_impliesExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_expression inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_expression inArgument0
+                                                             COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -2739,21 +2887,23 @@ class GALGAS_impliesExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_impliesExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_impliesExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Pointer class for @impliesExpression class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @impliesExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_impliesExpression : public cPtr_expression {
 //--- Attributes
@@ -2770,7 +2920,9 @@ class cPtr_impliesExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mRightExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -2781,11 +2933,11 @@ class cPtr_impliesExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @complementExpression class                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @complementExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_complementExpression : public GALGAS_expression {
 //--- Constructor
@@ -2815,6 +2967,9 @@ class GALGAS_complementExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_complementExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_expression inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -2823,21 +2978,23 @@ class GALGAS_complementExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_expression getter_mExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_complementExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_complementExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Pointer class for @complementExpression class                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @complementExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_complementExpression : public cPtr_expression {
 //--- Attributes
@@ -2852,6 +3009,7 @@ class cPtr_complementExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -2862,11 +3020,11 @@ class cPtr_complementExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @trueExpression class                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @trueExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_trueExpression : public GALGAS_expression {
 //--- Constructor
@@ -2904,21 +3062,23 @@ class GALGAS_trueExpression : public GALGAS_expression {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_trueExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Pointer class for @trueExpression class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @trueExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_trueExpression : public cPtr_expression {
 //--- Attributes
@@ -2940,11 +3100,11 @@ class cPtr_trueExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @falseExpression class                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @falseExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_falseExpression : public GALGAS_expression {
 //--- Constructor
@@ -2982,21 +3142,23 @@ class GALGAS_falseExpression : public GALGAS_expression {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_falseExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Pointer class for @falseExpression class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @falseExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_falseExpression : public cPtr_expression {
 //--- Attributes
@@ -3018,11 +3180,11 @@ class cPtr_falseExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       @formulaParameterListInExpression list                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @formulaParameterListInExpression list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_formulaParameterListInExpression : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -3096,6 +3258,16 @@ class GALGAS_formulaParameterListInExpression : public AC_GALGAS_list {
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
+  public : VIRTUAL_IN_DEBUG void setter_setMFieldNamesAtIndex (class GALGAS_lstringlist constinArgument0,
+                                                               class GALGAS_uint constinArgument1,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMParameterNameAtIndex (class GALGAS_lstring constinArgument0,
+                                                                  class GALGAS_uint constinArgument1,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
@@ -3132,6 +3304,8 @@ class GALGAS_formulaParameterListInExpression : public AC_GALGAS_list {
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -3140,9 +3314,9 @@ class GALGAS_formulaParameterListInExpression : public AC_GALGAS_list {
  
 } ; // End of GALGAS_formulaParameterListInExpression class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_formulaParameterListInExpression : public cGenericAbstractEnumerator {
   public : cEnumerator_formulaParameterListInExpression (const GALGAS_formulaParameterListInExpression & inEnumeratedObject,
@@ -3155,15 +3329,15 @@ class cEnumerator_formulaParameterListInExpression : public cGenericAbstractEnum
   public : class GALGAS_formulaParameterListInExpression_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaParameterListInExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 @formulaParameterListInExpression_2D_element struct                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @formulaParameterListInExpression_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_formulaParameterListInExpression_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -3220,21 +3394,23 @@ class GALGAS_formulaParameterListInExpression_2D_element : public AC_GALGAS_root
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mParameterName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_formulaParameterListInExpression_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaParameterListInExpression_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @existInExpression class                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @existInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_existInExpression : public GALGAS_expression {
 //--- Constructor
@@ -3265,6 +3441,12 @@ class GALGAS_existInExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_existInExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMArgumentList (class GALGAS_domainFieldList inArgument0
+                                                          COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_expression inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -3275,21 +3457,23 @@ class GALGAS_existInExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_expression getter_mExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_existInExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_existInExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Pointer class for @existInExpression class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @existInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_existInExpression : public cPtr_expression {
 //--- Attributes
@@ -3306,7 +3490,9 @@ class cPtr_existInExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_domainFieldList getter_mArgumentList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMArgumentList (GALGAS_domainFieldList inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -3317,11 +3503,11 @@ class cPtr_existInExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @forAllInExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @forAllInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_forAllInExpression : public GALGAS_expression {
 //--- Constructor
@@ -3352,6 +3538,12 @@ class GALGAS_forAllInExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_forAllInExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMArgumentList (class GALGAS_domainFieldList inArgument0
+                                                          COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_expression inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -3362,21 +3554,23 @@ class GALGAS_forAllInExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_expression getter_mExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_forAllInExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forAllInExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Pointer class for @forAllInExpression class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @forAllInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_forAllInExpression : public cPtr_expression {
 //--- Attributes
@@ -3393,7 +3587,9 @@ class cPtr_forAllInExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_domainFieldList getter_mArgumentList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMArgumentList (GALGAS_domainFieldList inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -3404,11 +3600,11 @@ class cPtr_forAllInExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                  @comparison enum                                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                                              Phase 1: @comparison enum                                              *
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_comparison : public AC_GALGAS_root {
 //--------------------------------- Default constructor
@@ -3481,21 +3677,23 @@ class GALGAS_comparison : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNotEqual (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_comparison class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparison ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Abstract extension getter '@expression computeExpression'                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@expression computeExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 typedef class GALGAS_binaryset (*enterExtensionGetter_expression_computeExpression) (const class cPtr_expression * inObject,
                                                                                      const class GALGAS_domainMap constinArgument0,
@@ -3505,12 +3703,12 @@ typedef class GALGAS_binaryset (*enterExtensionGetter_expression_computeExpressi
                                                                                      class C_Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_computeExpression (const int32_t inClassIndex,
                                              enterExtensionGetter_expression_computeExpression inMethod) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_binaryset callExtensionGetter_computeExpression (const class cPtr_expression * inObject,
                                                               const GALGAS_domainMap constin_inDomainMap,
@@ -3520,11 +3718,11 @@ class GALGAS_binaryset callExtensionGetter_computeExpression (const class cPtr_e
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Parser class 'kerbdd_syntax' declaration                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Parser class 'kerbdd_syntax' declaration
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cParser_kerbdd_5F_syntax {
 //--- Virtual destructor
@@ -3720,11 +3918,11 @@ class cParser_kerbdd_5F_syntax {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @assignmentFormula class                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @assignmentFormula class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_assignmentFormula : public GALGAS_abstractFormula {
 //--- Constructor
@@ -3757,6 +3955,18 @@ class GALGAS_assignmentFormula : public GALGAS_abstractFormula {
   public : typeComparisonResult objectCompare (const GALGAS_assignmentFormula & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_expression inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaArgumentList (class GALGAS_domainFieldList inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaName (class GALGAS_lstring inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMKind (class GALGAS_formulaKind inArgument0
+                                                  COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -3771,21 +3981,23 @@ class GALGAS_assignmentFormula : public GALGAS_abstractFormula {
   public : VIRTUAL_IN_DEBUG class GALGAS_formulaKind getter_mKind (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_assignmentFormula class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentFormula ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Pointer class for @assignmentFormula class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @assignmentFormula class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_assignmentFormula : public cPtr_abstractFormula {
 //--- Attributes
@@ -3806,9 +4018,13 @@ class cPtr_assignmentFormula : public cPtr_abstractFormula {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mFormulaName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_domainFieldList getter_mFormulaArgumentList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaArgumentList (GALGAS_domainFieldList inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_formulaKind getter_mKind (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMKind (GALGAS_formulaKind inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_expression getter_mExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMExpression (GALGAS_expression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -3819,11 +4035,11 @@ class cPtr_assignmentFormula : public cPtr_abstractFormula {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      @comparisonWithConstantInExpression class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @comparisonWithConstantInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_comparisonWithConstantInExpression : public GALGAS_expression {
 //--- Constructor
@@ -3856,6 +4072,18 @@ class GALGAS_comparisonWithConstantInExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_comparisonWithConstantInExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMComparison (class GALGAS_comparison inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMConstant (class GALGAS_luint inArgument0
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMFieldNames (class GALGAS_lstringlist inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMVarName (class GALGAS_lstring inArgument0
+                                                     COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -3870,21 +4098,23 @@ class GALGAS_comparisonWithConstantInExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_comparisonWithConstantInExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonWithConstantInExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Pointer class for @comparisonWithConstantInExpression class                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @comparisonWithConstantInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
 //--- Attributes
@@ -3905,9 +4135,13 @@ class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMVarName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mFieldNames (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMFieldNames (GALGAS_lstringlist inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_comparison getter_mComparison (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMComparison (GALGAS_comparison inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_luint getter_mConstant (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMConstant (GALGAS_luint inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -3918,11 +4152,11 @@ class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                 @dumpFormula class                                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @dumpFormula class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_dumpFormula : public GALGAS_abstractFormula {
 //--- Constructor
@@ -3955,6 +4189,9 @@ class GALGAS_dumpFormula : public GALGAS_abstractFormula {
   public : typeComparisonResult objectCompare (const GALGAS_dumpFormula & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaName (class GALGAS_lstring inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -3963,21 +4200,23 @@ class GALGAS_dumpFormula : public GALGAS_abstractFormula {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormulaName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_dumpFormula class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dumpFormula ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        Pointer class for @dumpFormula class                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @dumpFormula class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_dumpFormula : public cPtr_abstractFormula {
 //--- Attributes
@@ -3992,6 +4231,7 @@ class cPtr_dumpFormula : public cPtr_abstractFormula {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mFormulaName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -4002,11 +4242,11 @@ class cPtr_dumpFormula : public cPtr_abstractFormula {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @formulaInExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @formulaInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_formulaInExpression : public GALGAS_expression {
 //--- Constructor
@@ -4040,6 +4280,12 @@ class GALGAS_formulaInExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_formulaInExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaName (class GALGAS_lstring inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMParameterList (class GALGAS_formulaParameterListInExpression inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4050,21 +4296,23 @@ class GALGAS_formulaInExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_formulaParameterListInExpression getter_mParameterList (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_formulaInExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaInExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Pointer class for @formulaInExpression class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @formulaInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_formulaInExpression : public cPtr_expression {
 //--- Attributes
@@ -4081,7 +4329,9 @@ class cPtr_formulaInExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mFormulaName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_formulaParameterListInExpression getter_mParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMParameterList (GALGAS_formulaParameterListInExpression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -4092,11 +4342,11 @@ class cPtr_formulaInExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @graphvizFormula class                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @graphvizFormula class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_graphvizFormula : public GALGAS_abstractFormula {
 //--- Constructor
@@ -4129,6 +4379,9 @@ class GALGAS_graphvizFormula : public GALGAS_abstractFormula {
   public : typeComparisonResult objectCompare (const GALGAS_graphvizFormula & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaName (class GALGAS_lstring inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4137,21 +4390,23 @@ class GALGAS_graphvizFormula : public GALGAS_abstractFormula {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormulaName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_graphvizFormula class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphvizFormula ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Pointer class for @graphvizFormula class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @graphvizFormula class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_graphvizFormula : public cPtr_abstractFormula {
 //--- Attributes
@@ -4166,6 +4421,7 @@ class cPtr_graphvizFormula : public cPtr_abstractFormula {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mFormulaName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -4176,11 +4432,11 @@ class cPtr_graphvizFormula : public cPtr_abstractFormula {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @setting_5F_andCacheMapSize class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @setting_5F_andCacheMapSize class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_setting_5F_andCacheMapSize : public GALGAS_abstractFormula {
 //--- Constructor
@@ -4213,6 +4469,9 @@ class GALGAS_setting_5F_andCacheMapSize : public GALGAS_abstractFormula {
   public : typeComparisonResult objectCompare (const GALGAS_setting_5F_andCacheMapSize & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMSetting (class GALGAS_luint inArgument0
+                                                     COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4221,21 +4480,23 @@ class GALGAS_setting_5F_andCacheMapSize : public GALGAS_abstractFormula {
   public : VIRTUAL_IN_DEBUG class GALGAS_luint getter_mSetting (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_setting_5F_andCacheMapSize class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Pointer class for @setting_andCacheMapSize class                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @setting_andCacheMapSize class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
 //--- Attributes
@@ -4250,6 +4511,7 @@ class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_luint getter_mSetting (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMSetting (GALGAS_luint inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -4260,11 +4522,11 @@ class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @setting_5F_nodeHashMapSize class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @setting_5F_nodeHashMapSize class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_setting_5F_nodeHashMapSize : public GALGAS_abstractFormula {
 //--- Constructor
@@ -4297,6 +4559,9 @@ class GALGAS_setting_5F_nodeHashMapSize : public GALGAS_abstractFormula {
   public : typeComparisonResult objectCompare (const GALGAS_setting_5F_nodeHashMapSize & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMSetting (class GALGAS_luint inArgument0
+                                                     COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4305,21 +4570,23 @@ class GALGAS_setting_5F_nodeHashMapSize : public GALGAS_abstractFormula {
   public : VIRTUAL_IN_DEBUG class GALGAS_luint getter_mSetting (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_setting_5F_nodeHashMapSize class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Pointer class for @setting_nodeHashMapSize class                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @setting_nodeHashMapSize class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
 //--- Attributes
@@ -4334,6 +4601,7 @@ class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_luint getter_mSetting (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMSetting (GALGAS_luint inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -4344,11 +4612,11 @@ class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @varBitInExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @varBitInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_varBitInExpression : public GALGAS_expression {
 //--- Constructor
@@ -4382,6 +4650,12 @@ class GALGAS_varBitInExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_varBitInExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMVarBit (class GALGAS_luint inArgument0
+                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMVarName (class GALGAS_lstring inArgument0
+                                                     COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4392,21 +4666,23 @@ class GALGAS_varBitInExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_varBitInExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varBitInExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Pointer class for @varBitInExpression class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @varBitInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_varBitInExpression : public cPtr_expression {
 //--- Attributes
@@ -4423,7 +4699,9 @@ class cPtr_varBitInExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMVarName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_luint getter_mVarBit (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMVarBit (GALGAS_luint inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -4434,11 +4712,11 @@ class cPtr_varBitInExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @varInExpression class                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @varInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_varInExpression : public GALGAS_expression {
 //--- Constructor
@@ -4471,6 +4749,9 @@ class GALGAS_varInExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_varInExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMVarName (class GALGAS_lstring inArgument0
+                                                     COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4479,21 +4760,23 @@ class GALGAS_varInExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_varInExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Pointer class for @varInExpression class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @varInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_varInExpression : public cPtr_expression {
 //--- Attributes
@@ -4508,6 +4791,7 @@ class cPtr_varInExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMVarName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -4518,11 +4802,11 @@ class cPtr_varInExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @variableComparisonInExpression class                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @variableComparisonInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_variableComparisonInExpression : public GALGAS_expression {
 //--- Constructor
@@ -4556,6 +4840,21 @@ class GALGAS_variableComparisonInExpression : public GALGAS_expression {
   public : typeComparisonResult objectCompare (const GALGAS_variableComparisonInExpression & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMComparison (class GALGAS_comparison inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftFieldNames (class GALGAS_lstringlist inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftVarName (class GALGAS_lstring inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMRightFieldNames (class GALGAS_lstringlist inArgument0
+                                                             COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMRightVarName (class GALGAS_lstring inArgument0
+                                                          COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4572,21 +4871,23 @@ class GALGAS_variableComparisonInExpression : public GALGAS_expression {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mRightVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_variableComparisonInExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableComparisonInExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Pointer class for @variableComparisonInExpression class                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @variableComparisonInExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_variableComparisonInExpression : public cPtr_expression {
 //--- Attributes
@@ -4609,10 +4910,15 @@ class cPtr_variableComparisonInExpression : public cPtr_expression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mLeftVarName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftVarName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mLeftFieldNames (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftFieldNames (GALGAS_lstringlist inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_comparison getter_mComparison (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMComparison (GALGAS_comparison inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mRightVarName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMRightVarName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mRightFieldNames (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMRightFieldNames (GALGAS_lstringlist inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -4623,11 +4929,11 @@ class cPtr_variableComparisonInExpression : public cPtr_expression {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                  @formulaList list                                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @formulaList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_formulaList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -4694,6 +5000,11 @@ class GALGAS_formulaList : public AC_GALGAS_list {
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
+  public : VIRTUAL_IN_DEBUG void setter_setMFormulaAtIndex (class GALGAS_abstractFormula constinArgument0,
+                                                            class GALGAS_uint constinArgument1,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_abstractFormula & outArgument0,
@@ -4724,6 +5035,8 @@ class GALGAS_formulaList : public AC_GALGAS_list {
                                                                               COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -4732,9 +5045,9 @@ class GALGAS_formulaList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_formulaList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_formulaList : public cGenericAbstractEnumerator {
   public : cEnumerator_formulaList (const GALGAS_formulaList & inEnumeratedObject,
@@ -4746,15 +5059,15 @@ class cEnumerator_formulaList : public cGenericAbstractEnumerator {
   public : class GALGAS_formulaList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                     @ast struct                                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @ast struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_ast : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -4811,21 +5124,23 @@ class GALGAS_ast : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_formulaList getter_mFormulaList (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_ast class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ast ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @formulaList_2D_element struct                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @formulaList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_formulaList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -4873,21 +5188,23 @@ class GALGAS_formulaList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_abstractFormula getter_mFormula (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_formulaList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Abstract extension method '@abstractFormula analyzeFormula'                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractFormula analyzeFormula'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 typedef void (*extensionMethodSignature_abstractFormula_analyzeFormula) (const class cPtr_abstractFormula * inObject,
                                                                          const class GALGAS_string constinArgument0,
@@ -4896,12 +5213,12 @@ typedef void (*extensionMethodSignature_abstractFormula_analyzeFormula) (const c
                                                                          class C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_analyzeFormula (const int32_t inClassIndex,
                                           extensionMethodSignature_abstractFormula_analyzeFormula inMethod) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeFormula (const class cPtr_abstractFormula * inObject,
                                          const GALGAS_string constin_inSourceFilePath,
@@ -4910,9 +5227,9 @@ void callExtensionMethod_analyzeFormula (const class cPtr_abstractFormula * inOb
                                          C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 //  GRAMMAR kerbdd_grammar
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 //------------------------------------- 'comparison' non terminal
@@ -5040,31 +5357,31 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
   public : virtual int32_t select_kerbdd_5F_syntax_17 (C_Lexique_kerbdd_5F_lexique *) ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Bool options                                                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               Bool options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               UInt options                                                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               UInt options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              String options                                                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String options                                                   
+//
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              String List options                                                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String List options                                              
+//
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 

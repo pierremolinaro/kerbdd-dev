@@ -1,0 +1,19 @@
+S1 (f : bool, g : bool, h : bool) := f & g & h ;
+S2 (f : bool, g : bool, h : bool) := ~ ((~f) | (~g) | (~h)) ;
+S3 (f : bool, g : bool, h : bool) := S1 (f, g, h) = S2 (f, g, h) ;
+S4 (f : bool, g : bool, h : bool) := S1 (f, g, h) != S2 (f, g, h) ;
+S5 (f : bool, g : bool) := ?h : bool (S1 (f, g, h)) ;
+Test1 (a:bool) := a ;
+Test2 (a:bool) := ~a ;
+Test3 (a:bool, b:bool) := a ;
+Test4 (a:bool, b:bool) := a & b ;
+Test5 (a:bool, b:bool) := a = b ;
+# Test6 (a:bool, b:bool, c:bool) := if a then b else c end ;
+testImplique (x:bool, y:bool) := (x -> y) = (~x | y) ;
+#testIte (x:bool, y:bool, z:bool) := (if x then y else z end) = ((x & y) | (~x & z)) ;
+ex (x:bool [14]) := {x < 8236} ;
+F (x0:bool, x1:bool, x2:bool, x3:bool) := x3 & x2 ;
+G (x0:bool, x1:bool, x2:bool, x3:bool) := (~x3 & x1) | x3 ;
+H (x0:bool, x1:bool, x2:bool, x3:bool) := x2 & x0 ;
+#ite (x0:bool, x1:bool, x2:bool, x3:bool) := if F (x0, x1, x2, x3) then G (x0, x1, x2, x3) else H  (x0, x1, x2, x3) end ;
+

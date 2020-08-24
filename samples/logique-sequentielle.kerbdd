@@ -1,0 +1,27 @@
+#--- Porte et bouclée
+porteEtBouclee (e : bool, s : bool) := (e & s) = s ;
+dump porteEtBouclee ;
+
+#--- Bascule RS
+basculeRS (e1 : bool, e2 : bool, s1 : bool, s2 : bool)
+  := (s1 = ~(e1 & s2)) & (s2 = ~(e2 & s1)) ;
+dump basculeRS ;
+
+#--- Répéteur CAN (erroné)
+repeteurCAN (TxG : bool, TxD : bool, RxG : bool, RxD : bool,
+             Tx0 : bool, Tx1 : bool, Rx0 : bool, Rx1 : bool)
+  := (RxG = TxG & Tx0) & (RxG = Rx0)
+   & (RxD = TxD & Tx1) & (RxD = Rx1)
+   & (Tx0 = ~ (Rx0 & ~ Rx1))
+   & (Tx1 = ~ (Rx1 & ~ Rx0)) ;
+dump repeteurCAN ;
+
+#--- Répéteur CAN (basculeRS)
+repeteurCAN2 (TxG : bool, TxD : bool, RxG : bool, RxD : bool,
+              Tx0 : bool, Tx1 : bool, Rx0 : bool, Rx1 : bool,
+               X0 : bool,  X1 : bool)
+  := (RxG = TxG & Tx0) & (RxG = Rx0)
+   & (RxD = TxD & Tx1) & (RxD = Rx1)
+   & (Tx0 = ~ X1) & (Tx1 = ~X0)
+   & (X0 = ~ (Rx0 | X1)) & (X1 = ~ (Rx1 | X0)) ;
+dump repeteurCAN2 ;
