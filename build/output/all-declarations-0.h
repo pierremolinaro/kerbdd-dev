@@ -227,6 +227,12 @@ class GALGAS_bddType : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_bool () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_boolArray (class GALGAS_uint & outOperand0) const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_namedType (class GALGAS_lstring & outOperand0) const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -570,6 +576,10 @@ class GALGAS_domainDeclarationType : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_record (class GALGAS_domainFieldList & outOperand0) const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_type (class GALGAS_bddType & outOperand0) const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -1924,6 +1934,10 @@ class GALGAS_formulaKind : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_assignment () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_fixedPoint (class GALGAS_binaryset & outOperand0) const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -3678,6 +3692,18 @@ class GALGAS_comparison : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_equal () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_greaterOrEqual () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_greaterThan () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_lowerOrEqual () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_lowerThan () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_notEqual () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;

@@ -1404,6 +1404,37 @@ void GALGAS_bddType::method_namedType (GALGAS_lstring & outAssociatedValue0,
 
 //----------------------------------------------------------------------------------------------------------------------
 
+bool GALGAS_bddType::optional_bool () const {
+  const bool ok = mEnum == kEnum_bool ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_bddType::optional_boolArray (GALGAS_uint & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_boolArray ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_bddType_boolArray *) unsafePointer () ;
+    // const cEnumAssociatedValues_bddType_boolArray * ptr = (const cEnumAssociatedValues_bddType_boolArray *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_bddType::optional_namedType (GALGAS_lstring & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_namedType ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_bddType_namedType *) unsafePointer () ;
+    // const cEnumAssociatedValues_bddType_namedType * ptr = (const cEnumAssociatedValues_bddType_namedType *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_bddType [4] = {
   "(not built)",
   "bool",
@@ -2082,6 +2113,30 @@ void GALGAS_domainDeclarationType::method_record (GALGAS_domainFieldList & outAs
     const cEnumAssociatedValues_domainDeclarationType_record * ptr = (const cEnumAssociatedValues_domainDeclarationType_record *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_domainDeclarationType::optional_type (GALGAS_bddType & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_type ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_domainDeclarationType_type *) unsafePointer () ;
+    // const cEnumAssociatedValues_domainDeclarationType_type * ptr = (const cEnumAssociatedValues_domainDeclarationType_type *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_domainDeclarationType::optional_record (GALGAS_domainFieldList & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_record ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_domainDeclarationType_record *) unsafePointer () ;
+    // const cEnumAssociatedValues_domainDeclarationType_record * ptr = (const cEnumAssociatedValues_domainDeclarationType_record *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4500,6 +4555,25 @@ void GALGAS_formulaKind::method_fixedPoint (GALGAS_binaryset & outAssociatedValu
     const cEnumAssociatedValues_formulaKind_fixedPoint * ptr = (const cEnumAssociatedValues_formulaKind_fixedPoint *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_formulaKind::optional_assignment () const {
+  const bool ok = mEnum == kEnum_assignment ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_formulaKind::optional_fixedPoint (GALGAS_binaryset & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_fixedPoint ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_formulaKind_fixedPoint *) unsafePointer () ;
+    // const cEnumAssociatedValues_formulaKind_fixedPoint * ptr = (const cEnumAssociatedValues_formulaKind_fixedPoint *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7786,6 +7860,48 @@ GALGAS_comparison GALGAS_comparison::constructor_greaterThan (UNUSED_LOCATION_AR
   GALGAS_comparison result ;
   result.mEnum = kEnum_greaterThan ;
   return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_equal () const {
+  const bool ok = mEnum == kEnum_equal ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_notEqual () const {
+  const bool ok = mEnum == kEnum_notEqual ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_lowerOrEqual () const {
+  const bool ok = mEnum == kEnum_lowerOrEqual ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_lowerThan () const {
+  const bool ok = mEnum == kEnum_lowerThan ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_greaterOrEqual () const {
+  const bool ok = mEnum == kEnum_greaterOrEqual ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_comparison::optional_greaterThan () const {
+  const bool ok = mEnum == kEnum_greaterThan ;
+  return ok ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
