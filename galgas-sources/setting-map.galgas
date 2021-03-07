@@ -43,7 +43,7 @@ override method @setting_nodeHashMapSize analyzeFormula
   ?let @domainMap unused inDomainMap
   ?!@computedFormulaMap unused ioComputedFormulaMap
 {
-  [@binaryset setNodeTableSize !mSetting.uint]
+  [@binaryset setNodeTableSize !self.mSetting.uint]
 }
 
 #·······················································································································
@@ -53,7 +53,7 @@ override method @setting_andCacheMapSize analyzeFormula
   ?let @domainMap unused inDomainMap
   ?!@computedFormulaMap unused ioComputedFormulaMap
 {
-  [@binaryset setAndTableSize !mSetting.uint]
+  [@binaryset setAndTableSize !self.mSetting.uint]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

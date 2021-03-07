@@ -77,14 +77,14 @@ override method @assignmentFormula analyzeFormula
   @uint totalBitCount = 0
   @varList varList = {}
   @varMap varMap = {}
-  [mFormulaArgumentList analyze !inDomainMap !?varMap !?varList !?totalBitCount]
+  [self.mFormulaArgumentList analyze !inDomainMap !?varMap !?varList !?totalBitCount]
 #--- Compute expression
-  switch mKind
+  switch self.mKind
   case assignment :
-    message mFormulaName.string + "..."
+    message self.mFormulaName.string + "..."
     let timer = @timer.start
-    let result = [mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
-    [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
+    let result = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
+    [!?ioComputedFormulaMap insertKey !self.mFormulaName !varList !totalBitCount !result]
     let @uint64 valueCount = [result valueCount !totalBitCount]
 #    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
     let @uint64 nodeCount = [result nodeCount]
@@ -93,20 +93,20 @@ override method @assignmentFormula analyzeFormula
       + ", " + nodeCount + " node" + if nodeCount > 1L then "s" else "" end
       + " (" + timer + ")\n"
   case fixedPoint (@binaryset startValue) :
-    message mFormulaName.string + "..."
+    message self.mFormulaName.string + "..."
     let timer = @timer.start
     @binaryset result = startValue
-    [!?ioComputedFormulaMap insertKey !mFormulaName !varList !totalBitCount !result]
+    [!?ioComputedFormulaMap insertKey !self.mFormulaName !varList !totalBitCount !result]
     var iterate = true ;
     var iterationCount = 0
     loop (@uint.max) while iterate do
       iterationCount ++
-      let r = [mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
+      let r = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
       if result == r then
         iterate = false
       else
         result = r
-        [!?ioComputedFormulaMap setMValueForKey !result !mFormulaName.string]
+        [!?ioComputedFormulaMap setMValueForKey !result !self.mFormulaName.string]
       end
     end
     let @uint64 valueCount = [result valueCount !totalBitCount]

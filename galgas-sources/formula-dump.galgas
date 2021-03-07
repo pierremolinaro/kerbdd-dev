@@ -34,9 +34,9 @@ override method @dumpFormula analyzeFormula
   ?let @domainMap unused inDomainMap
   ?!@computedFormulaMap ioComputedFormulaMap
 {
-  [ioComputedFormulaMap searchKey !mFormulaName ?let @varList varList ?let bitCount ?let result]
+  [ioComputedFormulaMap searchKey !self.mFormulaName ?let @varList varList ?let bitCount ?let result]
   let @uint64 valueCount = [result valueCount !bitCount]
-  message "Dump $" + mFormulaName + " (" + valueCount + " value" + if valueCount > 1L then "s" else "" end + ")\n"
+  message "Dump $" + self.mFormulaName + " (" + valueCount + " value" + if valueCount > 1L then "s" else "" end + ")\n"
   @stringlist nameList = {}
   @uintlist bitCountList = {}
   for () in varList do

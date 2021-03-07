@@ -7,6 +7,154 @@
 
 #include "all-declarations-1.h"
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@variableComparisonInExpression computeExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static GALGAS_binaryset extensionGetter_variableComparisonInExpression_computeExpression (const cPtr_expression * inObject,
+                                                                                          const GALGAS_domainMap /* constinArgument_inDomainMap */,
+                                                                                          const GALGAS_varMap constinArgument_inVarMap,
+                                                                                          const GALGAS_uint /* constinArgument_inTotalBitCount */,
+                                                                                          const GALGAS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_binaryset result_outResult ; // Returned variable
+  const cPtr_variableComparisonInExpression * object = (const cPtr_variableComparisonInExpression *) inObject ;
+  macroValidSharedObject (object, cPtr_variableComparisonInExpression) ;
+  GALGAS_uint var_leftIdx_21064 ;
+  GALGAS_uint var_leftBitCount_21085 ;
+  GALGAS_recordDomainMap var_leftSubDomainMap_21121 ;
+  const GALGAS_variableComparisonInExpression temp_0 = object ;
+  constinArgument_inVarMap.method_searchKey (temp_0.getter_mLeftVarName (HERE), var_leftIdx_21064, var_leftBitCount_21085, var_leftSubDomainMap_21121, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 573)) ;
+  const GALGAS_variableComparisonInExpression temp_1 = object ;
+  cEnumerator_lstringlist enumerator_21164 (temp_1.getter_mLeftFieldNames (HERE), kENUMERATION_UP) ;
+  while (enumerator_21164.hasCurrentObject ()) {
+    GALGAS_uint var_fieldRelativeBitIndex_21237 ;
+    GALGAS_recordDomainMap var_fieldSubdomainMap_21274 ;
+    var_leftSubDomainMap_21121.method_searchKey (enumerator_21164.current_mValue (HERE), var_fieldRelativeBitIndex_21237, var_leftBitCount_21085, var_fieldSubdomainMap_21274, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 575)) ;
+    var_leftIdx_21064 = var_leftIdx_21064.add_operation (var_fieldRelativeBitIndex_21237, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 576)) ;
+    var_leftSubDomainMap_21121 = var_fieldSubdomainMap_21274 ;
+    enumerator_21164.gotoNextObject () ;
+  }
+  GALGAS_uint var_rightIdx_21426 ;
+  GALGAS_uint var_rightBitCount_21447 ;
+  GALGAS_recordDomainMap var_rightSubDomainMap_21483 ;
+  const GALGAS_variableComparisonInExpression temp_2 = object ;
+  constinArgument_inVarMap.method_searchKey (temp_2.getter_mRightVarName (HERE), var_rightIdx_21426, var_rightBitCount_21447, var_rightSubDomainMap_21483, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 579)) ;
+  const GALGAS_variableComparisonInExpression temp_3 = object ;
+  cEnumerator_lstringlist enumerator_21527 (temp_3.getter_mRightFieldNames (HERE), kENUMERATION_UP) ;
+  while (enumerator_21527.hasCurrentObject ()) {
+    GALGAS_uint var_fieldRelativeBitIndex_21601 ;
+    GALGAS_recordDomainMap var_fieldSubdomainMap_21639 ;
+    var_rightSubDomainMap_21483.method_searchKey (enumerator_21527.current_mValue (HERE), var_fieldRelativeBitIndex_21601, var_rightBitCount_21447, var_fieldSubdomainMap_21639, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 581)) ;
+    var_rightIdx_21426 = var_rightIdx_21426.add_operation (var_fieldRelativeBitIndex_21601, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 582)) ;
+    var_rightSubDomainMap_21483 = var_fieldSubdomainMap_21639 ;
+    enumerator_21527.gotoNextObject () ;
+  }
+  enumGalgasBool test_4 = kBoolTrue ;
+  if (kBoolTrue == test_4) {
+    test_4 = GALGAS_bool (kIsStrictSup, var_leftSubDomainMap_21121.getter_count (SOURCE_FILE ("expression.galgas", 585)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    if (kBoolTrue == test_4) {
+      const GALGAS_variableComparisonInExpression temp_5 = object ;
+      TC_Array <C_FixItDescription> fixItArray6 ;
+      inCompiler->emitSemanticError (temp_5.getter_mLeftVarName (HERE).getter_location (SOURCE_FILE ("expression.galgas", 586)), GALGAS_string ("variable is a record; use dot notation"), fixItArray6  COMMA_SOURCE_FILE ("expression.galgas", 586)) ;
+      result_outResult.drop () ; // Release error dropped variable
+    }
+  }
+  if (kBoolFalse == test_4) {
+    enumGalgasBool test_7 = kBoolTrue ;
+    if (kBoolTrue == test_7) {
+      test_7 = GALGAS_bool (kIsStrictSup, var_rightSubDomainMap_21483.getter_count (SOURCE_FILE ("expression.galgas", 587)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      if (kBoolTrue == test_7) {
+        const GALGAS_variableComparisonInExpression temp_8 = object ;
+        TC_Array <C_FixItDescription> fixItArray9 ;
+        inCompiler->emitSemanticError (temp_8.getter_mRightVarName (HERE).getter_location (SOURCE_FILE ("expression.galgas", 588)), GALGAS_string ("variable is a record; use dot notation"), fixItArray9  COMMA_SOURCE_FILE ("expression.galgas", 588)) ;
+        result_outResult.drop () ; // Release error dropped variable
+      }
+    }
+    if (kBoolFalse == test_7) {
+      enumGalgasBool test_10 = kBoolTrue ;
+      if (kBoolTrue == test_10) {
+        test_10 = GALGAS_bool (kIsNotEqual, var_leftBitCount_21085.objectCompare (var_rightBitCount_21447)).boolEnum () ;
+        if (kBoolTrue == test_10) {
+          const GALGAS_variableComparisonInExpression temp_11 = object ;
+          const GALGAS_variableComparisonInExpression temp_12 = object ;
+          GALGAS_string temp_13 ;
+          const enumGalgasBool test_14 = GALGAS_bool (kIsStrictSup, var_leftBitCount_21085.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+          if (kBoolTrue == test_14) {
+            temp_13 = GALGAS_string ("s") ;
+          }else if (kBoolFalse == test_14) {
+            temp_13 = GALGAS_string::makeEmptyString () ;
+          }
+          GALGAS_string temp_15 ;
+          const enumGalgasBool test_16 = GALGAS_bool (kIsStrictSup, var_rightBitCount_21447.objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+          if (kBoolTrue == test_16) {
+            temp_15 = GALGAS_string ("s") ;
+          }else if (kBoolFalse == test_16) {
+            temp_15 = GALGAS_string::makeEmptyString () ;
+          }
+          TC_Array <C_FixItDescription> fixItArray17 ;
+          inCompiler->emitSemanticError (temp_11.getter_mRightVarName (HERE).getter_location (SOURCE_FILE ("expression.galgas", 590)), GALGAS_string ("'").add_operation (temp_12.getter_mLeftVarName (HERE).getter_string (SOURCE_FILE ("expression.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (GALGAS_string ("' variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (var_leftBitCount_21085.getter_string (SOURCE_FILE ("expression.galgas", 590)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 590)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (temp_13, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (GALGAS_string (", but this variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 591)).add_operation (var_rightBitCount_21447.getter_string (SOURCE_FILE ("expression.galgas", 592)), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 592)).add_operation (GALGAS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas", 593)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("expression.galgas", 593)), fixItArray17  COMMA_SOURCE_FILE ("expression.galgas", 590)) ;
+          result_outResult.drop () ; // Release error dropped variable
+        }
+      }
+      if (kBoolFalse == test_10) {
+        const GALGAS_variableComparisonInExpression temp_18 = object ;
+        switch (temp_18.getter_mComparison (HERE).enumValue ()) {
+        case GALGAS_comparison::kNotBuilt:
+          break ;
+        case GALGAS_comparison::kEnum_equal:
+          {
+            result_outResult = GALGAS_binaryset::constructor_binarySetWithEqualComparison (var_leftIdx_21064, var_leftBitCount_21085, var_rightIdx_21426, inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 598)) ;
+          }
+          break ;
+        case GALGAS_comparison::kEnum_notEqual:
+          {
+            result_outResult = GALGAS_binaryset::constructor_binarySetWithNotEqualComparison (var_leftIdx_21064, var_leftBitCount_21085, var_rightIdx_21426, inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 600)) ;
+          }
+          break ;
+        case GALGAS_comparison::kEnum_lowerOrEqual:
+          {
+            result_outResult = GALGAS_binaryset::constructor_binarySetWithLowerOrEqualComparison (var_leftIdx_21064, var_leftBitCount_21085, var_rightIdx_21426, inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 602)) ;
+          }
+          break ;
+        case GALGAS_comparison::kEnum_lowerThan:
+          {
+            result_outResult = GALGAS_binaryset::constructor_binarySetWithStrictLowerComparison (var_leftIdx_21064, var_leftBitCount_21085, var_rightIdx_21426, inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 604)) ;
+          }
+          break ;
+        case GALGAS_comparison::kEnum_greaterOrEqual:
+          {
+            result_outResult = GALGAS_binaryset::constructor_binarySetWithGreaterOrEqualComparison (var_leftIdx_21064, var_leftBitCount_21085, var_rightIdx_21426, inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 606)) ;
+          }
+          break ;
+        case GALGAS_comparison::kEnum_greaterThan:
+          {
+            result_outResult = GALGAS_binaryset::constructor_binarySetWithStrictGreaterComparison (var_leftIdx_21064, var_leftBitCount_21085, var_rightIdx_21426, inCompiler  COMMA_SOURCE_FILE ("expression.galgas", 608)) ;
+          }
+          break ;
+        }
+      }
+    }
+  }
+//---
+  return result_outResult ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionGetter_variableComparisonInExpression_computeExpression (void) {
+  enterExtensionGetter_computeExpression (kTypeDescriptor_GALGAS_variableComparisonInExpression.mSlotID,
+                                          extensionGetter_variableComparisonInExpression_computeExpression) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gGetter_variableComparisonInExpression_computeExpression (defineExtensionGetter_variableComparisonInExpression_computeExpression, NULL) ;
+
 #include "project_header.h"
 #include "command_line_interface/F_mainForLIBPM.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
