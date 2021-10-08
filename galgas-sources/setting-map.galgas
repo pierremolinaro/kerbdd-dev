@@ -2,7 +2,13 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @setting_nodeHashMapSize, @setting_andCacheMapSize : @abstractFormula {
+shared class @setting_nodeHashMapSize : @abstractFormula {
+  @luint mSetting
+}
+
+#·······················································································································
+
+shared class @setting_andCacheMapSize : @abstractFormula {
   @luint mSetting
 }
 

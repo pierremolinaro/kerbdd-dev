@@ -2,38 +2,78 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @expression {
+abstract shared class @expression {
 }
 
 #·······················································································································
 
-class @varInExpression : @expression {
+shared class @varInExpression : @expression {
   @lstring mVarName
 }
 
 #·······················································································································
 
-class @varBitInExpression : @expression {
+shared class @varBitInExpression : @expression {
   @lstring mVarName
   @luint mVarBit
 }
 
 #·······················································································································
 
-class @andExpression, @orExpression, @xorExpression, @equalExpression, @notEqualExpression, @impliesExpression : @expression {
+shared class @andExpression : @expression {
   @expression mLeftExpression
   @expression mRightExpression
 }
 
 #·······················································································································
 
-class @complementExpression : @expression {
+shared class @orExpression : @expression {
+  @expression mLeftExpression
+  @expression mRightExpression
+}
+
+#·······················································································································
+
+shared class @xorExpression : @expression {
+  @expression mLeftExpression
+  @expression mRightExpression
+}
+
+#·······················································································································
+
+shared class @equalExpression : @expression {
+  @expression mLeftExpression
+  @expression mRightExpression
+}
+
+#·······················································································································
+
+shared class @notEqualExpression : @expression {
+  @expression mLeftExpression
+  @expression mRightExpression
+}
+
+#·······················································································································
+
+shared class @impliesExpression : @expression {
+  @expression mLeftExpression
+  @expression mRightExpression
+}
+
+#·······················································································································
+
+shared class @complementExpression : @expression {
   @expression mExpression
 }
 
 #·······················································································································
 
-class @trueExpression, @falseExpression : @expression {
+shared class @trueExpression : @expression {
+}
+
+#·······················································································································
+
+shared class @falseExpression : @expression {
 }
 
 #·······················································································································
@@ -45,14 +85,21 @@ list @formulaParameterListInExpression {
 
 #·······················································································································
 
-class @formulaInExpression : @expression {
+shared class @formulaInExpression : @expression {
   @lstring mFormulaName
   @formulaParameterListInExpression mParameterList
 }
 
 #·······················································································································
 
-class @existInExpression, @forAllInExpression : @expression {
+shared class @existInExpression : @expression {
+  @domainFieldList mArgumentList
+  @expression mExpression
+}
+
+#·······················································································································
+
+shared class @forAllInExpression : @expression {
   @domainFieldList mArgumentList
   @expression mExpression
 }
@@ -70,7 +117,7 @@ enum @comparison {
 
 #·······················································································································
 
-class @comparisonWithConstantInExpression : @expression {
+shared class @comparisonWithConstantInExpression : @expression {
   @lstring mVarName
   @lstringlist mFieldNames
   @comparison mComparison
@@ -79,7 +126,7 @@ class @comparisonWithConstantInExpression : @expression {
 
 #·······················································································································
 
-class @variableComparisonInExpression : @expression {
+shared class @variableComparisonInExpression : @expression {
   @lstring mLeftVarName
   @lstringlist mLeftFieldNames
   @comparison mComparison

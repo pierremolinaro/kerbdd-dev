@@ -2,7 +2,7 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @graphvizFormula : @abstractFormula {
+shared class @graphvizFormula : @abstractFormula {
   @lstring mFormulaName
 }
 

@@ -9,7 +9,7 @@ enum @formulaKind {
 
 #·······················································································································
 
-class @assignmentFormula : @abstractFormula {
+shared class @assignmentFormula : @abstractFormula {
   @lstring mFormulaName
   @domainFieldList mFormulaArgumentList
   @formulaKind mKind
