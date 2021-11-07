@@ -11,8 +11,8 @@ enum @bddType {
 #·······················································································································
 
 list @domainFieldList {
-  @lstring mVarName
-  @bddType mType
+  public var @lstring mVarName
+  public var @bddType mType
 }
 
 #·······················································································································
@@ -25,8 +25,8 @@ enum @domainDeclarationType {
 #·······················································································································
 
 list @domainDeclarationList {
-  @lstring mDomainName
-  @domainDeclarationType mType
+  public var @lstring mDomainName
+  public var @domainDeclarationType mType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -41,7 +41,7 @@ rule <topLevelDeClaration> ?!@ast ioAST {
   $domain$
   $identifier$ ?let domainName
   $:$
-  @domainDeclarationType domainDeclarationType
+  var @domainDeclarationType domainDeclarationType
   select
     <type> ?let @bddType type
     domainDeclarationType = .type {!type:type}
@@ -100,9 +100,9 @@ rule <type> !@bddType outType {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @recordDomainMap {
-  @uint mIndex
-  @uint mBitCount
-  @recordDomainMap mSubDomain
+  public var @uint mIndex
+  public var @uint mBitCount
+  public var @recordDomainMap mSubDomain
   insert insertKey error message "the '%K' field is already declared in %L"
   search searchKey error message "there is no '%K' field"
 }
@@ -110,8 +110,8 @@ map @recordDomainMap {
 #·······················································································································
 
 map @domainMap {
-  @uint mBitCount
-  @recordDomainMap mRecordMap
+  public var @uint mBitCount
+  public var @recordDomainMap mRecordMap
   insert insertKey error message "the '%K' domain is already declared in %L"
   search searchKey error message "there is no '%K' domain"
 }
@@ -134,7 +134,7 @@ method @domainDeclarationList analyze !@domainMap outDomainMap {
       end
     case record (@domainFieldList fieldList) :
       var bitIndex = 0
-      @recordDomainMap recordMap = {}
+      var @recordDomainMap recordMap = {}
       for > (name typeDefinition) in fieldList while @uint.errorCount == 0 do
         switch typeDefinition
         case bool :
@@ -159,17 +159,17 @@ method @domainDeclarationList analyze !@domainMap outDomainMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @varList {
-  @string mVarName
-  @uint mBitIndex
-  @uint mBitCount
+  public var @string mVarName
+  public var @uint mBitIndex
+  public var @uint mBitCount
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @varMap {
-  @uint mIndex
-  @uint mBitCount
-  @recordDomainMap mRecordDomainMap
+  public var @uint mIndex
+  public var @uint mBitCount
+  public var @recordDomainMap mRecordDomainMap
   insert insertKey error message "the '%K' variable is already declared in %L"
   search searchKey error message "there is no '%K' variable"
 }

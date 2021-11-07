@@ -2,106 +2,106 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @expression {
+abstract refclass @expression {
 }
 
 #·······················································································································
 
-shared class @varInExpression : @expression {
-  @lstring mVarName
+refclass @varInExpression : @expression {
+  public var @lstring mVarName
 }
 
 #·······················································································································
 
-shared class @varBitInExpression : @expression {
-  @lstring mVarName
-  @luint mVarBit
+refclass @varBitInExpression : @expression {
+  public var @lstring mVarName
+  public var @luint mVarBit
 }
 
 #·······················································································································
 
-shared class @andExpression : @expression {
-  @expression mLeftExpression
-  @expression mRightExpression
+refclass @andExpression : @expression {
+  public var @expression mLeftExpression
+  public var @expression mRightExpression
 }
 
 #·······················································································································
 
-shared class @orExpression : @expression {
-  @expression mLeftExpression
-  @expression mRightExpression
+refclass @orExpression : @expression {
+  public var @expression mLeftExpression
+  public var @expression mRightExpression
 }
 
 #·······················································································································
 
-shared class @xorExpression : @expression {
-  @expression mLeftExpression
-  @expression mRightExpression
+refclass @xorExpression : @expression {
+  public var @expression mLeftExpression
+  public var @expression mRightExpression
 }
 
 #·······················································································································
 
-shared class @equalExpression : @expression {
-  @expression mLeftExpression
-  @expression mRightExpression
+refclass @equalExpression : @expression {
+  public var @expression mLeftExpression
+  public var @expression mRightExpression
 }
 
 #·······················································································································
 
-shared class @notEqualExpression : @expression {
-  @expression mLeftExpression
-  @expression mRightExpression
+refclass @notEqualExpression : @expression {
+  public var @expression mLeftExpression
+  public var @expression mRightExpression
 }
 
 #·······················································································································
 
-shared class @impliesExpression : @expression {
-  @expression mLeftExpression
-  @expression mRightExpression
+refclass @impliesExpression : @expression {
+  public var @expression mLeftExpression
+  public var @expression mRightExpression
 }
 
 #·······················································································································
 
-shared class @complementExpression : @expression {
-  @expression mExpression
+refclass @complementExpression : @expression {
+  public var @expression mExpression
 }
 
 #·······················································································································
 
-shared class @trueExpression : @expression {
+refclass @trueExpression : @expression {
 }
 
 #·······················································································································
 
-shared class @falseExpression : @expression {
+refclass @falseExpression : @expression {
 }
 
 #·······················································································································
 
 list @formulaParameterListInExpression {
-  @lstring mParameterName
-  @lstringlist mFieldNames
+  public var @lstring mParameterName
+  public var @lstringlist mFieldNames
 }
 
 #·······················································································································
 
-shared class @formulaInExpression : @expression {
-  @lstring mFormulaName
-  @formulaParameterListInExpression mParameterList
+refclass @formulaInExpression : @expression {
+  public var @lstring mFormulaName
+  public var @formulaParameterListInExpression mParameterList
 }
 
 #·······················································································································
 
-shared class @existInExpression : @expression {
-  @domainFieldList mArgumentList
-  @expression mExpression
+refclass @existInExpression : @expression {
+  public var @domainFieldList mArgumentList
+  public var @expression mExpression
 }
 
 #·······················································································································
 
-shared class @forAllInExpression : @expression {
-  @domainFieldList mArgumentList
-  @expression mExpression
+refclass @forAllInExpression : @expression {
+  public var @domainFieldList mArgumentList
+  public var @expression mExpression
 }
 
 #·······················································································································
@@ -117,21 +117,21 @@ enum @comparison {
 
 #·······················································································································
 
-shared class @comparisonWithConstantInExpression : @expression {
-  @lstring mVarName
-  @lstringlist mFieldNames
-  @comparison mComparison
-  @luint mConstant
+refclass @comparisonWithConstantInExpression : @expression {
+  public var @lstring mVarName
+  public var @lstringlist mFieldNames
+  public var @comparison mComparison
+  public var @luint mConstant
 }
 
 #·······················································································································
 
-shared class @variableComparisonInExpression : @expression {
-  @lstring mLeftVarName
-  @lstringlist mLeftFieldNames
-  @comparison mComparison
-  @lstring mRightVarName
-  @lstringlist mRightFieldNames
+refclass @variableComparisonInExpression : @expression {
+  public var @lstring mLeftVarName
+  public var @lstringlist mLeftFieldNames
+  public var @comparison mComparison
+  public var @lstring mRightVarName
+  public var @lstringlist mRightFieldNames
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -235,13 +235,13 @@ rule <factor> !@expression outExpression {
 
 rule <factor> !@expression outExpression {
   $identifier$ ?let formulaName
-  @formulaParameterListInExpression parameterList = {}
+  var @formulaParameterListInExpression parameterList = {}
   $($
   select
   or
     repeat
       $identifier$ ?let parameterName
-      @lstringlist fieldNames = {}
+      var @lstringlist fieldNames = {}
       repeat
       while
         $.$
@@ -283,14 +283,14 @@ rule <factor> !@expression outExpression {
 rule <factor> !@expression outExpression {
   ${$
   $identifier$ ?let varName
-  @lstringlist leftFieldNames = {}
+  var @lstringlist leftFieldNames = {}
   repeat
   while
     $.$
     $identifier$ ?let fieldName
     leftFieldNames += !fieldName
   end
-  @comparison comparison
+  var @comparison comparison
   select
     $=$
     comparison = .equal
@@ -315,7 +315,7 @@ rule <factor> !@expression outExpression {
     outExpression = @comparisonWithConstantInExpression.new {!varName !leftFieldNames !comparison !constant}
   or
     $identifier$ ?let rightVarName
-    @lstringlist rightFieldNames = {}
+    var @lstringlist rightFieldNames = {}
     repeat
     while
       $.$
@@ -517,8 +517,8 @@ override getter @formulaInExpression computeExpression
       + [self.mParameterList length] + " variable" + if [self.mParameterList length] > 1 then "s" else "" end
     : outResult
   else
-    @uintlist transformationList = {}
-    for > (formalName formalBitIndex formalBitCount) in varList, > (parameterName fieldNameList) in self.mParameterList do
+    var @uintlist transformationList = {}
+    for > (formalName * formalBitCount) in varList, > (parameterName fieldNameList) in self.mParameterList do
       [inVarMap searchKey !parameterName ?@uint parameterIndex ?@uint parameterBitCount ?@recordDomainMap subdomainMap]
       for (fieldName) in fieldNameList do
         [subdomainMap searchKey !fieldName ?let fieldRelativeBitIndex ?parameterBitCount ?let fieldSubdomainMap]
@@ -548,8 +548,8 @@ override getter @existInExpression computeExpression
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  @varMap varMap = inVarMap
-  @uint totalBitCount = inTotalBitCount 
+  var @varMap varMap = inVarMap
+  var @uint totalBitCount = inTotalBitCount 
   [self.mArgumentList analyze !inDomainMap !?varMap !?* !?totalBitCount]
   let r = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !inComputedFormulaMap]
   outResult = [r existOnBitIndexAndBeyond !inTotalBitCount]
@@ -564,8 +564,8 @@ override getter @forAllInExpression computeExpression
   ?let @computedFormulaMap inComputedFormulaMap
   -> @binaryset outResult
 {
-  @varMap varMap = inVarMap
-  @uint totalBitCount = inTotalBitCount 
+  var @varMap varMap = inVarMap
+  var @uint totalBitCount = inTotalBitCount 
   [self.mArgumentList analyze !inDomainMap !?varMap !?* !?totalBitCount]
   let r = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !inComputedFormulaMap]
   outResult = [r forAllOnBitIndexAndBeyond !inTotalBitCount]

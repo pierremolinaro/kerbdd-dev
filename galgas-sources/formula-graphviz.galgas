@@ -2,8 +2,8 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @graphvizFormula : @abstractFormula {
-  @lstring mFormulaName
+refclass @graphvizFormula : @abstractFormula {
+  public var @lstring mFormulaName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -37,8 +37,8 @@ override method @graphvizFormula analyzeFormula
   [ioComputedFormulaMap searchKey !self.mFormulaName ?let @varList varList ?* ?let result]
   let filePath = [inSourceFilePath stringByDeletingPathExtension] + "." + self.mFormulaName + ".dot"
   message "Graphviz $" + self.mFormulaName + " -> " + filePath + "\n"
-  @stringlist bitNameList = {}
-  for > () in varList do
+  var @stringlist bitNameList = {}
+  for > (mVarName * mBitCount) in varList do
     if mBitCount == 1 then
       bitNameList += !mVarName
     else

@@ -11,19 +11,19 @@ grammar kerbdd_grammar "SLR" {
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract shared class @abstractFormula {}
+abstract refclass @abstractFormula {}
 
 #·······················································································································
 
 list @formulaList {
-  @abstractFormula mFormula
+  public var @abstractFormula mFormula
 }
 
 #·······················································································································
 
 struct @ast {
-  @domainDeclarationList mDomainList
-  @formulaList mFormulaList
+  public var @domainDeclarationList mDomainList
+  public var @formulaList mFormulaList
 }
 
 

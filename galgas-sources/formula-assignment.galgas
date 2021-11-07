@@ -9,11 +9,11 @@ enum @formulaKind {
 
 #·······················································································································
 
-shared class @assignmentFormula : @abstractFormula {
-  @lstring mFormulaName
-  @domainFieldList mFormulaArgumentList
-  @formulaKind mKind
-  @expression mExpression
+refclass @assignmentFormula : @abstractFormula {
+  public var @lstring mFormulaName
+  public var @domainFieldList mFormulaArgumentList
+  public var @formulaKind mKind
+  public var @expression mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -26,7 +26,7 @@ syntax extension kerbdd_syntax {
 
 rule <topLevelDeClaration> ?!@ast ioAST {
   $identifier$ ?let formulaName
-  @domainFieldList domainFieldList
+  var @domainFieldList domainFieldList
   $($
   select
     domainFieldList = {}
@@ -34,7 +34,7 @@ rule <topLevelDeClaration> ?!@ast ioAST {
     <recordFields> ?domainFieldList
   end
   $)$
-  @formulaKind kind
+  var @formulaKind kind
   select
     $:=$
     kind = .assignment
@@ -59,9 +59,9 @@ rule <topLevelDeClaration> ?!@ast ioAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @computedFormulaMap {
-  @varList mVarList
-  @uint mBitCount
-  @binaryset mValue
+  public var @varList mVarList
+  public var @uint mBitCount
+  public var @binaryset mValue
   insert insertKey error message "the '%K' formula is already declared in %L"
   search searchKey error message "there is no '%K' formula"
 }
@@ -74,9 +74,9 @@ override method @assignmentFormula analyzeFormula
   ?!@computedFormulaMap ioComputedFormulaMap
 {
 #--- Build variable map
-  @uint totalBitCount = 0
-  @varList varList = {}
-  @varMap varMap = {}
+  var @uint totalBitCount = 0
+  var @varList varList = {}
+  var @varMap varMap = {}
   [self.mFormulaArgumentList analyze !inDomainMap !?varMap !?varList !?totalBitCount]
 #--- Compute expression
   switch self.mKind
@@ -95,7 +95,7 @@ override method @assignmentFormula analyzeFormula
   case fixedPoint (@binaryset startValue) :
     message self.mFormulaName.string + "..."
     let timer = @timer.start
-    @binaryset result = startValue
+    var @binaryset result = startValue
     [!?ioComputedFormulaMap insertKey !self.mFormulaName !varList !totalBitCount !result]
     var iterate = true ;
     var iterationCount = 0

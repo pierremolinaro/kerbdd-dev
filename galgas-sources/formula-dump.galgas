@@ -2,8 +2,8 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @dumpFormula : @abstractFormula {
-  @lstring mFormulaName
+refclass @dumpFormula : @abstractFormula {
+  public var @lstring mFormulaName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -37,9 +37,9 @@ override method @dumpFormula analyzeFormula
   [ioComputedFormulaMap searchKey !self.mFormulaName ?let @varList varList ?let bitCount ?let result]
   let @uint64 valueCount = [result valueCount !bitCount]
   message "Dump $" + self.mFormulaName + " (" + valueCount + " value" + if valueCount > 1L then "s" else "" end + ")\n"
-  @stringlist nameList = {}
-  @uintlist bitCountList = {}
-  for () in varList do
+  var @stringlist nameList = {}
+  var @uintlist bitCountList = {}
+  for (mVarName * mBitCount) in varList do
     nameList += !mVarName
     bitCountList += !mBitCount
   end
