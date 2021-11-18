@@ -2123,6 +2123,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractFormula ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractFormula : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -2197,6 +2200,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_expression : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_binaryset getter_computeExpression (const GALGAS_domainMap inDomainMap,
+           const GALGAS_varMap inVarMap,
+           const GALGAS_uint inTotalBitCount,
+           const GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -2673,6 +2684,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_andExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
@@ -2825,6 +2839,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_orExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
@@ -2977,6 +2994,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_xorExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
@@ -3129,6 +3149,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equalExpression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_equalExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
@@ -3281,6 +3304,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notEqualExpression 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_notEqualExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
@@ -3433,6 +3459,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_impliesExpression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_impliesExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
@@ -3579,6 +3608,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_complementExpressio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_complementExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_expression mProperty_mExpression ;
 
@@ -3720,6 +3752,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_trueExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -3859,6 +3894,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_falseExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -4244,6 +4282,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_existInExpression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_existInExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_domainFieldList mProperty_mArgumentList ;
   public: GALGAS_expression mProperty_mExpression ;
@@ -4396,6 +4437,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forAllInExpression 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_forAllInExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_domainFieldList mProperty_mArgumentList ;
   public: GALGAS_expression mProperty_mExpression ;
@@ -4890,6 +4934,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentFormula ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_assignmentFormula : public cPtr_abstractFormula {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
   public: GALGAS_domainFieldList mProperty_mFormulaArgumentList ;
@@ -5002,6 +5049,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonWithConst
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
   public: GALGAS_lstringlist mProperty_mFieldNames ;
@@ -5099,6 +5149,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dumpFormula ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_dumpFormula : public cPtr_abstractFormula {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
 
@@ -5196,6 +5249,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaInExpression
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_formulaInExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
   public: GALGAS_formulaParameterListInExpression mProperty_mParameterList ;
@@ -5289,6 +5345,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphvizFormula ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_graphvizFormula : public cPtr_abstractFormula {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
 
@@ -5380,6 +5439,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_andCache
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_luint mProperty_mSetting ;
 
@@ -5471,6 +5533,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_nodeHash
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_luint mProperty_mSetting ;
 
@@ -5568,6 +5633,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varBitInExpression 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_varBitInExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
   public: GALGAS_luint mProperty_mVarBit ;
@@ -5661,6 +5729,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_varInExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
 
@@ -5773,6 +5844,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableComparisonI
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_variableComparisonInExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mLeftVarName ;
   public: GALGAS_lstringlist mProperty_mLeftFieldNames ;
