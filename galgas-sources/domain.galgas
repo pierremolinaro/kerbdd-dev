@@ -41,7 +41,7 @@ rule <topLevelDeClaration> ?!@ast ioAST {
   $domain$
   $identifier$ ?let domainName
   $:$
-  var @domainDeclarationType domainDeclarationType
+  let @domainDeclarationType domainDeclarationType
   select
     <type> ?let @bddType type
     domainDeclarationType = .type {!type:type}

@@ -290,7 +290,7 @@ rule <factor> !@expression outExpression {
     $identifier$ ?let fieldName
     leftFieldNames += !fieldName
   end
-  var @comparison comparison
+  let @comparison comparison
   select
     $=$
     comparison = .equal
