@@ -1309,19 +1309,19 @@ static void routine_after (C_Compiler * /* inCompiler */
 static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
                                          C_Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_ast var_ast_841 ;
-  var_ast_841.drop () ;
-  cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_ast_841  COMMA_SOURCE_FILE ("program.galgas", 17)) ;
-  GALGAS_domainMap var_domainMap_916 ;
-  extensionMethod_analyze (var_ast_841.readProperty_mDomainList (), var_domainMap_916, inCompiler COMMA_SOURCE_FILE ("program.galgas", 19)) ;
-  GALGAS_computedFormulaMap var_computedFormulaMap_984 = GALGAS_computedFormulaMap::constructor_emptyMap (SOURCE_FILE ("program.galgas", 21)) ;
-  cEnumerator_formulaList enumerator_1004 (var_ast_841.readProperty_mFormulaList (), kENUMERATION_UP) ;
+  GALGAS_ast var_ast_826 ;
+  var_ast_826.drop () ;
+  cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_ast_826  COMMA_SOURCE_FILE ("program.galgas", 17)) ;
+  GALGAS_domainMap var_domainMap_918 ;
+  extensionMethod_analyze (var_ast_826.readProperty_mDomainList (), var_domainMap_918, inCompiler COMMA_SOURCE_FILE ("program.galgas", 19)) ;
+  GALGAS_computedFormulaMap var_computedFormulaMap_986 = GALGAS_computedFormulaMap::constructor_emptyMap (SOURCE_FILE ("program.galgas", 21)) ;
+  cEnumerator_formulaList enumerator_1006 (var_ast_826.readProperty_mFormulaList (), kENUMERATION_UP) ;
   bool bool_0 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("program.galgas", 22)).objectCompare (GALGAS_uint ((uint32_t) 0U))).isValidAndTrue () ;
-  if (enumerator_1004.hasCurrentObject () && bool_0) {
-    while (enumerator_1004.hasCurrentObject () && bool_0) {
-      callExtensionMethod_analyzeFormula ((const cPtr_abstractFormula *) enumerator_1004.current_mFormula (HERE).ptr (), constinArgument_inSourceFile.readProperty_string (), var_domainMap_916, var_computedFormulaMap_984, inCompiler COMMA_SOURCE_FILE ("program.galgas", 23)) ;
-      enumerator_1004.gotoNextObject () ;
-      if (enumerator_1004.hasCurrentObject ()) {
+  if (enumerator_1006.hasCurrentObject () && bool_0) {
+    while (enumerator_1006.hasCurrentObject () && bool_0) {
+      callExtensionMethod_analyzeFormula ((const cPtr_abstractFormula *) enumerator_1006.current_mFormula (HERE).ptr (), constinArgument_inSourceFile.readProperty_string (), var_domainMap_918, var_computedFormulaMap_986, inCompiler COMMA_SOURCE_FILE ("program.galgas", 23)) ;
+      enumerator_1006.gotoNextObject () ;
+      if (enumerator_1006.hasCurrentObject ()) {
         bool_0 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("program.galgas", 22)).objectCompare (GALGAS_uint ((uint32_t) 0U))).isValidAndTrue () ;
       }
     }

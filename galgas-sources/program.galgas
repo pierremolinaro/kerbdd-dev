@@ -14,7 +14,7 @@ message "a source text file with the .kerbdd extension"
 grammar kerbdd_grammar
 ?sourceFilePath:@lstring inSourceFile {
 #--- Parse
-  grammar kerbdd_grammar in inSourceFile ?let @ast ast
+  grammar kerbdd_grammar (?let @ast ast) in inSourceFile
 #--- Analyze domaines
   [ast.mDomainList analyze ?let @domainMap domainMap]
 #--- Analyze formulas
