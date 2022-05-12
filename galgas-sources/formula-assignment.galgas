@@ -100,7 +100,7 @@ override method @assignmentFormula analyzeFormula
     var iterate = true ;
     var iterationCount = 0
     loop (@uint.max) while iterate do
-      iterationCount ++
+      iterationCount += 1
       let r = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
       if result == r then
         iterate = false
