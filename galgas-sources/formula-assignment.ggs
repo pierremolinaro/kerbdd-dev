@@ -2,14 +2,18 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @setting_nodeHashMapSize : @abstractFormula {
-  public var @luint mSetting
+enum @formulaKind {
+  case assignment
+  case fixedPoint (@binaryset startValue)
 }
 
 #·······················································································································
 
-refclass @setting_andCacheMapSize : @abstractFormula {
-  public var @luint mSetting
+class @assignmentFormula : @abstractFormula {
+  public var @lstring mFormulaName
+  public var @domainFieldList mFormulaArgumentList
+  public var @formulaKind mKind
+  public var @expression mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -20,21 +24,31 @@ syntax extension kerbdd_syntax {
 
 #·······················································································································
 
-  rule <topLevelDeClaration> ?!@ast ioAST {
-    $nodeHashMapSize$
-    $integer$ ?let setting
-    $;$
-    ioAST.mFormulaList += !@setting_nodeHashMapSize.new {!setting}
-  }
-
-#·······················································································································
-
-  rule <topLevelDeClaration> ?!@ast ioAST {
-    $andCacheMapSize$
-    $integer$ ?let setting
-    $;$
-    ioAST.mFormulaList += !@setting_andCacheMapSize.new {!setting}
-  }
+rule <topLevelDeClaration>( ?!@ast ioAST) {
+  $identifier$( ?let formulaName)
+  let @domainFieldList domainFieldList
+  $($
+  select
+    domainFieldList = {}
+  or
+    <recordFields>( ?domainFieldList)
+  end
+  $)$
+  let @formulaKind kind
+  select
+    $:=$
+    kind = .assignment
+  or
+    $+=$
+    kind = .fixedPoint (!startValue:.emptyBinarySet)
+  or
+    $-=$
+    kind = .fixedPoint (!startValue:.fullBinarySet)
+  end
+  <expression>( ?let @expression expression)
+  $;$
+  ioAST.mFormulaList += !@assignmentFormula.new (!formulaName !domainFieldList !kind !expression)
+}
 
 #·······················································································································
 
@@ -44,22 +58,66 @@ syntax extension kerbdd_syntax {
 #    ANALYZE FORMULA                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @setting_nodeHashMapSize analyzeFormula 
-  ?let @string unused inSourceFilePath
-  ?let @domainMap unused inDomainMap
-  ?!@computedFormulaMap unused ioComputedFormulaMap
-{
-  [@binaryset setNodeTableSize !self.mSetting.uint]
+map @computedFormulaMap {
+  public var @varList mVarList
+  public var @uint mBitCount
+  public var @binaryset mValue
+  insert insertKey error message "the '%K' formula is already declared in %L"
+  search searchKey error message "there is no '%K' formula"
 }
 
-#·······················································································································
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @setting_andCacheMapSize analyzeFormula 
+override method @assignmentFormula analyzeFormula( 
   ?let @string unused inSourceFilePath
-  ?let @domainMap unused inDomainMap
-  ?!@computedFormulaMap unused ioComputedFormulaMap
+  ?let @domainMap inDomainMap
+  ?!@computedFormulaMap ioComputedFormulaMap)
 {
-  [@binaryset setAndTableSize !self.mSetting.uint]
+#--- Build variable map
+  var @uint totalBitCount = 0
+  var @varList varList = {}
+  var @varMap varMap = {}
+  [self.mFormulaArgumentList analyze !inDomainMap !?varMap !?varList !?totalBitCount]
+#--- Compute expression
+  switch self.mKind
+  case assignment :
+    message self.mFormulaName.string + "..."
+    let timer = @timer.start
+    let result = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
+    [!?ioComputedFormulaMap insertKey !self.mFormulaName !varList !totalBitCount !result]
+    let @uint64 valueCount = [result valueCount !totalBitCount]
+#    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
+    let @uint64 nodeCount = [result nodeCount]
+    message " "
+      + valueCount + " value" + if valueCount > 1 then "s" else "" end
+      + ", " + nodeCount + " node" + if nodeCount > 1 then "s" else "" end
+      + " (" + timer + ")\n"
+  case fixedPoint (@binaryset startValue) :
+    message self.mFormulaName.string + "..."
+    let timer = @timer.start
+    var @binaryset result = startValue
+    [!?ioComputedFormulaMap insertKey !self.mFormulaName !varList !totalBitCount !result]
+    var iterate = true ;
+    var iterationCount = 0
+    loop (@uint.max) while iterate do
+      iterationCount += 1
+      let r = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
+      if result == r then
+        iterate = false
+      else
+        result = r
+        [!?ioComputedFormulaMap setMValueForKey !result !self.mFormulaName.string]
+      end
+    end
+    let @uint64 valueCount = [result valueCount !totalBitCount]
+#    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
+    let @uint64 nodeCount = [result nodeCount]
+    message " "
+      + iterationCount + " iteration" + if iterationCount > 1 then "s" else "" end
+      + ", " + valueCount + " value" + if valueCount > 1 then "s" else "" end
+      + ", " + nodeCount + " node" + if nodeCount > 1 then "s" else "" end
+      + " (" + timer + ")\n"
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

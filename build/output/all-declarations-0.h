@@ -2119,7 +2119,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractFormula ;
 
 class cPtr_abstractFormula : public acStrongPtr_class {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method analyzeFormula
+  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
+           const class GALGAS_domainMap inDomainMap,
+           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Properties
 
@@ -2129,11 +2133,11 @@ class cPtr_abstractFormula : public acStrongPtr_class {
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const = 0 ;
+                                    const int32_t inIndentation) const override = 0 ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 
@@ -2191,13 +2195,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expression ;
 
 class cPtr_expression : public acStrongPtr_class {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
-/* § public: virtual GALGAS_binaryset getter_computeExpression (const GALGAS_domainMap inDomainMap,
-           const GALGAS_varMap inVarMap,
-           const GALGAS_uint inTotalBitCount,
-           const GALGAS_computedFormulaMap inComputedFormulaMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -2206,11 +2210,11 @@ class cPtr_expression : public acStrongPtr_class {
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const = 0 ;
+                                    const int32_t inIndentation) const override = 0 ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 
@@ -2611,7 +2615,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_nodeHash
 
 class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method analyzeFormula
+  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
+           const class GALGAS_domainMap inDomainMap,
+           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_luint mProperty_mSetting ;
@@ -2621,16 +2629,16 @@ class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -2756,7 +2764,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_andCache
 
 class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method analyzeFormula
+  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
+           const class GALGAS_domainMap inDomainMap,
+           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_luint mProperty_mSetting ;
@@ -2766,16 +2778,16 @@ class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -2901,7 +2913,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dumpFormula ;
 
 class cPtr_dumpFormula : public cPtr_abstractFormula {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method analyzeFormula
+  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
+           const class GALGAS_domainMap inDomainMap,
+           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
@@ -2911,16 +2927,16 @@ class cPtr_dumpFormula : public cPtr_abstractFormula {
                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3046,7 +3062,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphvizFormula ;
 
 class cPtr_graphvizFormula : public cPtr_abstractFormula {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method analyzeFormula
+  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
+           const class GALGAS_domainMap inDomainMap,
+           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
@@ -3056,16 +3076,16 @@ class cPtr_graphvizFormula : public cPtr_abstractFormula {
                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3247,7 +3267,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpression ;
 
 class cPtr_varInExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
@@ -3257,16 +3282,16 @@ class cPtr_varInExpression : public cPtr_expression {
                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3398,7 +3423,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varBitInExpression 
 
 class cPtr_varBitInExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
@@ -3410,16 +3440,16 @@ class cPtr_varBitInExpression : public cPtr_expression {
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3548,7 +3578,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpression ;
 
 class cPtr_andExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
@@ -3560,16 +3595,16 @@ class cPtr_andExpression : public cPtr_expression {
                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3698,7 +3733,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpression ;
 
 class cPtr_orExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
@@ -3710,16 +3750,16 @@ class cPtr_orExpression : public cPtr_expression {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3848,7 +3888,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpression ;
 
 class cPtr_xorExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
@@ -3860,16 +3905,16 @@ class cPtr_xorExpression : public cPtr_expression {
                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -3998,7 +4043,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equalExpression ;
 
 class cPtr_equalExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
@@ -4010,16 +4060,16 @@ class cPtr_equalExpression : public cPtr_expression {
                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -4148,7 +4198,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notEqualExpression 
 
 class cPtr_notEqualExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
@@ -4160,16 +4215,16 @@ class cPtr_notEqualExpression : public cPtr_expression {
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -4298,7 +4353,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_impliesExpression ;
 
 class cPtr_impliesExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_expression mProperty_mLeftExpression ;
@@ -4310,16 +4370,16 @@ class cPtr_impliesExpression : public cPtr_expression {
                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -4442,7 +4502,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_complementExpressio
 
 class cPtr_complementExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_expression mProperty_mExpression ;
@@ -4452,16 +4517,16 @@ class cPtr_complementExpression : public cPtr_expression {
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -4581,7 +4646,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpression ;
 
 class cPtr_trueExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
 
@@ -4589,16 +4659,16 @@ class cPtr_trueExpression : public cPtr_expression {
   public: cPtr_trueExpression (LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -4718,7 +4788,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpression ;
 
 class cPtr_falseExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
 
@@ -4726,16 +4801,16 @@ class cPtr_falseExpression : public cPtr_expression {
   public: cPtr_falseExpression (LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -5104,7 +5179,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaInExpression
 
 class cPtr_formulaInExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
@@ -5116,16 +5196,16 @@ class cPtr_formulaInExpression : public cPtr_expression {
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -5254,7 +5334,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_existInExpression ;
 
 class cPtr_existInExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_domainFieldList mProperty_mArgumentList ;
@@ -5266,16 +5351,16 @@ class cPtr_existInExpression : public cPtr_expression {
                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -5404,7 +5489,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forAllInExpression 
 
 class cPtr_forAllInExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_domainFieldList mProperty_mArgumentList ;
@@ -5416,16 +5506,16 @@ class cPtr_forAllInExpression : public cPtr_expression {
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -5667,7 +5757,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonWithConst
 
 class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
@@ -5683,16 +5778,16 @@ class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -5839,7 +5934,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableComparisonI
 
 class cPtr_variableComparisonInExpression : public cPtr_expression {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension getter computeExpression
+  public: virtual class GALGAS_binaryset getter_computeExpression (const class GALGAS_domainMap inDomainMap,
+           const class GALGAS_varMap inVarMap,
+           const class GALGAS_uint inTotalBitCount,
+           const class GALGAS_computedFormulaMap inComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mLeftVarName ;
@@ -5857,16 +5957,16 @@ class cPtr_variableComparisonInExpression : public cPtr_expression {
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -5930,21 +6030,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableComparisonI
 //
 //Abstract extension getter '@expression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_binaryset (*enterExtensionGetter_expression_computeExpression) (const class cPtr_expression * inObject,
-                                                                                     const class GALGAS_domainMap constinArgument0,
-                                                                                     const class GALGAS_varMap constinArgument1,
-                                                                                     const class GALGAS_uint constinArgument2,
-                                                                                     const class GALGAS_computedFormulaMap constinArgument3,
-                                                                                     class C_Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_computeExpression (const int32_t inClassIndex,
-                                             enterExtensionGetter_expression_computeExpression inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_binaryset callExtensionGetter_computeExpression (const class cPtr_expression * inObject,
@@ -6236,7 +6321,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentFormula ;
 
 class cPtr_assignmentFormula : public cPtr_abstractFormula {
 
-//----------------------------------------------------------------------------------------------------------------------
+//--- Extension method analyzeFormula
+  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
+           const class GALGAS_domainMap inDomainMap,
+           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+           C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
@@ -6252,16 +6341,16 @@ class cPtr_assignmentFormula : public cPtr_abstractFormula {
                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 
@@ -6557,20 +6646,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaList_2D_elem
 //
 //Abstract extension method '@abstractFormula analyzeFormula'
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef void (*extensionMethodSignature_abstractFormula_analyzeFormula) (const class cPtr_abstractFormula * inObject,
-                                                                         const class GALGAS_string constinArgument0,
-                                                                         const class GALGAS_domainMap constinArgument1,
-                                                                         class GALGAS_computedFormulaMap & ioArgument2,
-                                                                         class C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionMethod_analyzeFormula (const int32_t inClassIndex,
-                                          extensionMethodSignature_abstractFormula_analyzeFormula inMethod) ;
-
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeFormula (const class cPtr_abstractFormula * inObject,

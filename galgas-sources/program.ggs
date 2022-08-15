@@ -1,9 +1,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract method @abstractFormula analyzeFormula
+abstract method @abstractFormula analyzeFormula(
   ?let @string inSourceFilePath
   ?let @domainMap inDomainMap
-  ?!@computedFormulaMap ioComputedFormulaMap
+  ?!@computedFormulaMap ioComputedFormulaMap)
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #    MAIN                                                                                                               

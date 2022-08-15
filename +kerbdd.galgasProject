@@ -13,17 +13,17 @@ project (2:0:0) -> "kerbdd" {
   %codeblocks-mac
 
 #--- Source files
-  "galgas-sources/lexique.galgas"
-  "galgas-sources/kerbdd-options.galgas"
-  "galgas-sources/kerbdd-semantics.galgas"
-  "galgas-sources/domain.galgas"
-  "galgas-sources/formula-assignment.galgas"
-  "galgas-sources/setting-map.galgas"
-  "galgas-sources/formula-dump.galgas"
-  "galgas-sources/formula-graphviz.galgas"
-  "galgas-sources/expression.galgas"
-  "galgas-sources/grammar.galgas"
-  "galgas-sources/kerbdd-cocoa.galgas"
-  "galgas-sources/program.galgas"
+  "galgas-sources/lexique.ggs"
+  "galgas-sources/kerbdd-options.ggs"
+  "galgas-sources/kerbdd-semantics.ggs"
+  "galgas-sources/domain.ggs"
+  "galgas-sources/formula-assignment.ggs"
+  "galgas-sources/setting-map.ggs"
+  "galgas-sources/formula-dump.ggs"
+  "galgas-sources/formula-graphviz.ggs"
+  "galgas-sources/expression.ggs"
+  "galgas-sources/grammar.ggs"
+  "galgas-sources/kerbdd-cocoa.ggs"
+  "galgas-sources/program.ggs"
 }
 

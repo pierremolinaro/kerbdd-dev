@@ -1,0 +1,54 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    AST                                                                                                                
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @graphvizFormula : @abstractFormula {
+  public var @lstring mFormulaName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    SYNTAX                                                                                                             
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension kerbdd_syntax {
+
+#·······················································································································
+
+  rule <topLevelDeClaration>( ?!@ast ioAST) {
+    $graphviz$
+    $identifier$( ?let formulaName)
+    $;$
+    ioAST.mFormulaList += !@graphvizFormula.new (!formulaName)
+  }
+
+#·······················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    ANALYZE FORMULA                                                                                                    
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @graphvizFormula analyzeFormula(
+  ?let @string inSourceFilePath
+  ?let @domainMap unused inDomainMap
+  ?!@computedFormulaMap ioComputedFormulaMap)
+{
+  [ioComputedFormulaMap searchKey !self.mFormulaName ?let @varList varList ?* ?let result]
+  let filePath = [inSourceFilePath stringByDeletingPathExtension] + "." + self.mFormulaName + ".dot"
+  message "Graphviz $" + self.mFormulaName + " -> " + filePath + "\n"
+  var @stringlist bitNameList = {}
+  for > (mVarName * mBitCount) in varList do
+    if mBitCount == 1 then
+      bitNameList += !mVarName
+    else
+      for i in 0 ..< mBitCount do
+        bitNameList += !mVarName + "." + i
+      end
+    end
+  end
+  let s = [result graphviz !bitNameList]
+  [s writeToFileWhenDifferentContents !filePath ?*]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

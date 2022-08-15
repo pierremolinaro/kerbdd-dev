@@ -2,8 +2,14 @@
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @graphvizFormula : @abstractFormula {
-  public var @lstring mFormulaName
+class @setting_nodeHashMapSize : @abstractFormula {
+  public var @luint mSetting
+}
+
+#·······················································································································
+
+class @setting_andCacheMapSize : @abstractFormula {
+  public var @luint mSetting
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -14,11 +20,20 @@ syntax extension kerbdd_syntax {
 
 #·······················································································································
 
-  rule <topLevelDeClaration> ?!@ast ioAST {
-    $graphviz$
-    $identifier$ ?let formulaName
+  rule <topLevelDeClaration>( ?!@ast ioAST) {
+    $nodeHashMapSize$
+    $integer$( ?let setting)
     $;$
-    ioAST.mFormulaList += !@graphvizFormula.new {!formulaName}
+    ioAST.mFormulaList += !@setting_nodeHashMapSize.new (!setting)
+  }
+
+#·······················································································································
+
+  rule <topLevelDeClaration>( ?!@ast ioAST) {
+    $andCacheMapSize$
+    $integer$( ?let setting)
+    $;$
+    ioAST.mFormulaList += !@setting_andCacheMapSize.new (!setting)
   }
 
 #·······················································································································
@@ -29,26 +44,22 @@ syntax extension kerbdd_syntax {
 #    ANALYZE FORMULA                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @graphvizFormula analyzeFormula
-  ?let @string inSourceFilePath
+override method @setting_nodeHashMapSize analyzeFormula( 
+  ?let @string unused inSourceFilePath
   ?let @domainMap unused inDomainMap
-  ?!@computedFormulaMap ioComputedFormulaMap
+  ?!@computedFormulaMap unused ioComputedFormulaMap)
 {
-  [ioComputedFormulaMap searchKey !self.mFormulaName ?let @varList varList ?* ?let result]
-  let filePath = [inSourceFilePath stringByDeletingPathExtension] + "." + self.mFormulaName + ".dot"
-  message "Graphviz $" + self.mFormulaName + " -> " + filePath + "\n"
-  var @stringlist bitNameList = {}
-  for > (mVarName * mBitCount) in varList do
-    if mBitCount == 1 then
-      bitNameList += !mVarName
-    else
-      for i in 0 ..< mBitCount do
-        bitNameList += !mVarName + "." + i
-      end
-    end
-  end
-  let s = [result graphviz !bitNameList]
-  [s writeToFileWhenDifferentContents !filePath ?*]
+  [@binaryset setNodeTableSize !self.mSetting.uint]
+}
+
+#·······················································································································
+
+override method @setting_andCacheMapSize analyzeFormula( 
+  ?let @string unused inSourceFilePath
+  ?let @domainMap unused inDomainMap
+  ?!@computedFormulaMap unused ioComputedFormulaMap)
+{
+  [@binaryset setAndTableSize !self.mSetting.uint]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

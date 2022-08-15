@@ -1,49 +1,50 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#    GRAMMAR                                                                                                            
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+grammar kerbdd_grammar "SLR" {
+  syntax kerbdd_syntax
+  <start_symbol>( !@ast outAST)
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #    AST                                                                                                                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @dumpFormula : @abstractFormula {
-  public var @lstring mFormulaName
+abstract class @abstractFormula {}
+
+#·······················································································································
+
+list @formulaList {
+  public var @abstractFormula mFormula
 }
+
+#·······················································································································
+
+struct @ast {
+  public var @domainDeclarationList mDomainList
+  public var @formulaList mFormulaList
+}
+
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #    SYNTAX                                                                                                             
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension kerbdd_syntax {
+syntax kerbdd_syntax (kerbdd_lexique) {
 
 #·······················································································································
 
-  rule <topLevelDeClaration> ?!@ast ioAST {
-    $dump$
-    $identifier$ ?let formulaName
-    $;$
-    ioAST.mFormulaList += !@dumpFormula.new {!formulaName}
-  }
-
-#·······················································································································
-
+rule <start_symbol>( !@ast outAST) {
+  outAST = .default
+  repeat
+  while
+    <topLevelDeClaration>( !?outAST)
+  end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#    ANALYZE FORMULA                                                                                                    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#·······················································································································
 
-override method @dumpFormula analyzeFormula 
-  ?let @string unused inSourceFilePath
-  ?let @domainMap unused inDomainMap
-  ?!@computedFormulaMap ioComputedFormulaMap
-{
-  [ioComputedFormulaMap searchKey !self.mFormulaName ?let @varList varList ?let bitCount ?let result]
-  let @uint64 valueCount = [result valueCount !bitCount]
-  message "Dump $" + self.mFormulaName + " (" + valueCount + " value" + if valueCount > 1L then "s" else "" end + ")\n"
-  var @stringlist nameList = {}
-  var @uintlist bitCountList = {}
-  for (mVarName * mBitCount) in varList do
-    nameList += !mVarName
-    bitCountList += !mBitCount
-  end
-  message [result print !nameList !bitCountList]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -37,18 +37,18 @@ syntax extension kerbdd_syntax {
 
 #·······················································································································
 
-rule <topLevelDeClaration> ?!@ast ioAST {
+rule <topLevelDeClaration>( ?!@ast ioAST) {
   $domain$
-  $identifier$ ?let domainName
+  $identifier$( ?let domainName)
   $:$
   let @domainDeclarationType domainDeclarationType
   select
-    <type> ?let @bddType type
-    domainDeclarationType = .type {!type:type}
+    <type>( ?let @bddType type)
+    domainDeclarationType = .type (!type:type)
   or
     $($
-    <recordFields> ?let @domainFieldList fieldList
-    domainDeclarationType = .record {!fieldList:fieldList}
+    <recordFields>( ?let @domainFieldList fieldList)
+    domainDeclarationType = .record (!fieldList:fieldList)
     $)$
   end
   $;$
@@ -57,12 +57,12 @@ rule <topLevelDeClaration> ?!@ast ioAST {
 
 #·······················································································································
 
-rule <recordFields> !@domainFieldList outFormulaArgumentList {
+rule <recordFields>( !@domainFieldList outFormulaArgumentList) {
   outFormulaArgumentList = {}
   repeat
-    $identifier$ ?let varName
+    $identifier$( ?let varName)
     $:$
-    <type> ?let @bddType type
+    <type>( ?let @bddType type)
     outFormulaArgumentList += !varName !type
   while
     $,$
@@ -71,22 +71,22 @@ rule <recordFields> !@domainFieldList outFormulaArgumentList {
 
 #·······················································································································
 
-rule <type> !@bddType outType {
+rule <type>( !@bddType outType) {
   select
-    $identifier$ ?let typeName
-    outType = .namedType {!typeName:typeName}
+    $identifier$( ?let typeName)
+    outType = .namedType (!typeName:typeName)
   or
     $bool$
     select
       outType = .bool
     or
       $[$
-      $integer$ ?let bitCount
+      $integer$( ?let bitCount)
       $]$
       if bitCount.uint == 0 then
         error bitCount : "size should be > 0"
       end
-      outType = .boolArray {!size:bitCount.uint}
+      outType = .boolArray (!size:bitCount.uint)
     end
   end
 }
@@ -118,7 +118,7 @@ map @domainMap {
 
 #·······················································································································
 
-method @domainDeclarationList analyze !@domainMap outDomainMap {
+method @domainDeclarationList analyze( !@domainMap outDomainMap) {
   outDomainMap = {}
   for (name typeDefinition) in self while @uint.errorCount == 0 do
     switch typeDefinition
@@ -176,11 +176,11 @@ map @varMap {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @domainFieldList analyze
+method @domainFieldList analyze(
   ?let @domainMap inDomainMap
   ?!@varMap ioVarMap
   ?!@varList ioVarList
-  ?!@uint ioTotalBitCount
+  ?!@uint ioTotalBitCount)
 {
 #--- Build variable map
   for > (idf type) in self do
