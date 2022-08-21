@@ -68,7 +68,7 @@ map @computedFormulaMap {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @assignmentFormula analyzeFormula( 
+override proc @assignmentFormula. analyzeFormula( 
   ?let @string unused inSourceFilePath
   ?let @domainMap inDomainMap
   ?!@computedFormulaMap ioComputedFormulaMap)

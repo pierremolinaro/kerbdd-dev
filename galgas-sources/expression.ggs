@@ -335,7 +335,7 @@ rule <factor>( !@expression outExpression) {
 #    ANALYZE EXPRESSION                                                                                                 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @expression computeExpression(
+abstract func @expression. computeExpression(
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
@@ -344,7 +344,7 @@ abstract getter @expression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @varInExpression computeExpression(
+override func @varInExpression. computeExpression(
   ?let @domainMap unused inDomainMap
   ?let @varMap inVarMap
   ?let @uint unused inTotalBitCount
@@ -362,7 +362,7 @@ override getter @varInExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @varBitInExpression computeExpression(
+override func @varBitInExpression. computeExpression(
   ?let @domainMap unused inDomainMap
   ?let @varMap inVarMap
   ?let @uint unused inTotalBitCount
@@ -380,7 +380,7 @@ override getter @varBitInExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @andExpression computeExpression(
+override func @andExpression. computeExpression(
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
@@ -394,7 +394,7 @@ override getter @andExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @orExpression computeExpression(
+override func @orExpression. computeExpression(
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
@@ -408,7 +408,7 @@ override getter @orExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @xorExpression computeExpression(
+override func @xorExpression. computeExpression(
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
@@ -422,7 +422,7 @@ override getter @xorExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @impliesExpression computeExpression(
+override func @impliesExpression. computeExpression(
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
@@ -436,7 +436,7 @@ override getter @impliesExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @equalExpression computeExpression(
+override func @equalExpression. computeExpression(
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
@@ -450,7 +450,7 @@ override getter @equalExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @notEqualExpression computeExpression(
+override func @notEqualExpression. computeExpression(
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
@@ -464,7 +464,7 @@ override getter @notEqualExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @complementExpression computeExpression(
+override func @complementExpression. computeExpression(
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
@@ -476,7 +476,7 @@ override getter @complementExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @trueExpression computeExpression(
+override func @trueExpression. computeExpression(
   ?let @domainMap unused inDomainMap
   ?let @varMap unused inVarMap
   ?let @uint unused inTotalBitCount
@@ -488,7 +488,7 @@ override getter @trueExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @falseExpression computeExpression(
+override func @falseExpression. computeExpression(
   ?let @domainMap unused inDomainMap
   ?let @varMap unused inVarMap
   ?let @uint unused inTotalBitCount
@@ -500,7 +500,7 @@ override getter @falseExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @formulaInExpression computeExpression(
+override func @formulaInExpression. computeExpression(
   ?let @domainMap unused inDomainMap
   ?let @varMap inVarMap
   ?let @uint unused inTotalBitCount
@@ -541,7 +541,7 @@ override getter @formulaInExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @existInExpression computeExpression(
+override func @existInExpression. computeExpression(
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
@@ -557,7 +557,7 @@ override getter @existInExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @forAllInExpression computeExpression(
+override func @forAllInExpression. computeExpression(
   ?let @domainMap inDomainMap
   ?let @varMap inVarMap
   ?let @uint inTotalBitCount
@@ -573,7 +573,7 @@ override getter @forAllInExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @comparisonWithConstantInExpression computeExpression(
+override func @comparisonWithConstantInExpression. computeExpression(
   ?let @domainMap unused inDomainMap
   ?let @varMap inVarMap
   ?let @uint unused inTotalBitCount
@@ -610,7 +610,7 @@ override getter @comparisonWithConstantInExpression computeExpression(
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @variableComparisonInExpression computeExpression(
+override func @variableComparisonInExpression. computeExpression(
   ?let @domainMap unused inDomainMap
   ?let @varMap inVarMap
   ?let @uint unused inTotalBitCount

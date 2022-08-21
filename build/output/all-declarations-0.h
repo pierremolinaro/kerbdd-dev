@@ -16,15 +16,15 @@
 #include "galgas2/C_Lexique.h"
 
 //----------------------------------------------------------------------------------------------------------------------
-//                    E X T E R N    R O U T I N E S                                             
+//                    E X T E R N    R O U T I N E S
 //----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
-//                    E X T E R N    F U N C T I O N S                                           
+//                    E X T E R N    F U N C T I O N S
 //----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
-//                       T O K E N    C L A S S                                                  
+//                       T O K E N    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
 
 class cTokenFor_kerbdd_5F_lexique : public cToken {
@@ -35,7 +35,7 @@ class cTokenFor_kerbdd_5F_lexique : public cToken {
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
-//                     S C A N N E R    C L A S S                                                
+//                     S C A N N E R    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
 
 class C_Lexique_kerbdd_5F_lexique : public C_Lexique {
@@ -124,29 +124,28 @@ class C_Lexique_kerbdd_5F_lexique : public C_Lexique {
 
 //--- Indexing keys
 
-//--- Unicode test functions
-
 //--- Indexing directory
-  protected: virtual C_String indexingDirectory (void) const ;
+  protected: virtual C_String indexingDirectory (void) const override  ;
 
 //--- Parse lexical token
-  protected: virtual bool parseLexicalToken (void) ;
+  protected: void internalParseLexicalToken (cTokenFor_kerbdd_5F_lexique & token) ;
+  protected: virtual bool parseLexicalToken (void) override ;
 
 //--- Get terminal message
-  protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
+  protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const { return 41 ; }
+  public: virtual int16_t terminalVocabularyCount (void) const override { return 41 ; }
 
 //--- Get Token String
-  public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
+  public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;
 
 //--- Enter Token
   protected: void enterToken (cTokenFor_kerbdd_5F_lexique & ioToken) ;
 
 //--- Style name for Latex
-  protected: virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;
-  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
+  protected: virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const override ;
+  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const override ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2123,7 +2122,7 @@ class cPtr_abstractFormula : public acStrongPtr_class {
   public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
            const class GALGAS_domainMap inDomainMap,
            class GALGAS_computedFormulaMap & ioComputedFormulaMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
 
@@ -2619,7 +2618,7 @@ class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
   public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
            const class GALGAS_domainMap inDomainMap,
            class GALGAS_computedFormulaMap & ioComputedFormulaMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_luint mProperty_mSetting ;
@@ -2768,7 +2767,7 @@ class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
   public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
            const class GALGAS_domainMap inDomainMap,
            class GALGAS_computedFormulaMap & ioComputedFormulaMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_luint mProperty_mSetting ;
@@ -2917,7 +2916,7 @@ class cPtr_dumpFormula : public cPtr_abstractFormula {
   public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
            const class GALGAS_domainMap inDomainMap,
            class GALGAS_computedFormulaMap & ioComputedFormulaMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
@@ -3066,7 +3065,7 @@ class cPtr_graphvizFormula : public cPtr_abstractFormula {
   public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
            const class GALGAS_domainMap inDomainMap,
            class GALGAS_computedFormulaMap & ioComputedFormulaMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
@@ -6325,7 +6324,7 @@ class cPtr_assignmentFormula : public cPtr_abstractFormula {
   public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
            const class GALGAS_domainMap inDomainMap,
            class GALGAS_computedFormulaMap & ioComputedFormulaMap,
-           C_Compiler * COMMA_LOCATION_ARGS) const override ;
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
@@ -6648,7 +6647,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaList_2D_elem
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeFormula (const class cPtr_abstractFormula * inObject,
+void callExtensionMethod_analyzeFormula (class cPtr_abstractFormula * inObject,
                                          const GALGAS_string constin_inSourceFilePath,
                                          const GALGAS_domainMap constin_inDomainMap,
                                          GALGAS_computedFormulaMap & io_ioComputedFormulaMap,

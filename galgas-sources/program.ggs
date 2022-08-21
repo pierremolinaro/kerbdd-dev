@@ -1,6 +1,6 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract method @abstractFormula analyzeFormula(
+abstract proc @abstractFormula. analyzeFormula(
   ?let @string inSourceFilePath
   ?let @domainMap inDomainMap
   ?!@computedFormulaMap ioComputedFormulaMap)

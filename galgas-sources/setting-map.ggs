@@ -44,7 +44,7 @@ syntax extension kerbdd_syntax {
 #    ANALYZE FORMULA                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @setting_nodeHashMapSize analyzeFormula( 
+override proc @setting_nodeHashMapSize. analyzeFormula( 
   ?let @string unused inSourceFilePath
   ?let @domainMap unused inDomainMap
   ?!@computedFormulaMap unused ioComputedFormulaMap)
@@ -54,7 +54,7 @@ override method @setting_nodeHashMapSize analyzeFormula(
 
 #·······················································································································
 
-override method @setting_andCacheMapSize analyzeFormula( 
+override proc @setting_andCacheMapSize. analyzeFormula( 
   ?let @string unused inSourceFilePath
   ?let @domainMap unused inDomainMap
   ?!@computedFormulaMap unused ioComputedFormulaMap)

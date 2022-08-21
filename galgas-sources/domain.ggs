@@ -118,7 +118,7 @@ map @domainMap {
 
 #·······················································································································
 
-method @domainDeclarationList analyze( !@domainMap outDomainMap) {
+proc @domainDeclarationList.analyze( !@domainMap outDomainMap) {
   outDomainMap = {}
   for (name typeDefinition) in self while @uint.errorCount == 0 do
     switch typeDefinition
@@ -176,7 +176,7 @@ map @varMap {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @domainFieldList analyze(
+proc @domainFieldList. analyze(
   ?let @domainMap inDomainMap
   ?!@varMap ioVarMap
   ?!@varList ioVarList

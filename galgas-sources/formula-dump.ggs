@@ -29,7 +29,7 @@ syntax extension kerbdd_syntax {
 #    ANALYZE FORMULA                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @dumpFormula analyzeFormula( 
+override proc @dumpFormula. analyzeFormula( 
   ?let @string unused inSourceFilePath
   ?let @domainMap unused inDomainMap
   ?!@computedFormulaMap ioComputedFormulaMap)
