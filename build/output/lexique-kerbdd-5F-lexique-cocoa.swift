@@ -434,7 +434,7 @@ class SWIFT_Lexique_kerbdd_lexique : SWIFT_Lexique {
       tokenCode = kerbdd_lexique_1__5D_
     }else if scanningOk && self.testForInputString ("[", advance: true) {
       tokenCode = kerbdd_lexique_1__5B_
-    }else if scanningOk && self.testForInputString ("?", advance: true) {
+    }else if scanningOk && self.testForInputString ("\?", advance: true) {
       tokenCode = kerbdd_lexique_1__3F_
     }else if scanningOk && self.testForInputString (">", advance: true) {
       tokenCode = kerbdd_lexique_1__3E_

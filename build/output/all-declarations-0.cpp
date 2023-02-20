@@ -160,7 +160,7 @@ static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__7E_ = "the '~' delimi
 static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__2C_ = "the ',' delimitor" ;
 
 //--- Syntax error message for terminal '$?$' :
-static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3F_ = "the '?' delimitor" ;
+static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__3F_ = "the '\?' delimitor" ;
 
 //--- Syntax error message for terminal '$!$' :
 static const char * gSyntaxErrorMessage_kerbdd_5F_lexique__21_ = "the '!' delimitor" ;
@@ -786,7 +786,7 @@ C_String C_Lexique_kerbdd_5F_lexique::getCurrentTokenString (const cToken * inTo
       break ;
     case kToken__3F_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("?") ;
+      s.appendCString ("\?") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken__21_:
@@ -1123,7 +1123,7 @@ GALGAS_stringlist C_Lexique_kerbdd_5F_lexique::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("^") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("~") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (",") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("?") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("\?") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (";") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("=") COMMA_THERE) ;
@@ -1160,7 +1160,7 @@ static void getKeywordsForIdentifier_kerbdd_5F_lexique (const C_String & inIdent
     ioList.appendObject ("<") ;
     ioList.appendObject ("=") ;
     ioList.appendObject (">") ;
-    ioList.appendObject ("?") ;
+    ioList.appendObject ("\?") ;
     ioList.appendObject ("[") ;
     ioList.appendObject ("]") ;
     ioList.appendObject ("^") ;

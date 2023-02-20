@@ -6032,11 +6032,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableComparisonI
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_binaryset callExtensionGetter_computeExpression (const class cPtr_expression * inObject,
-                                                              const GALGAS_domainMap constin_inDomainMap,
-                                                              const GALGAS_varMap constin_inVarMap,
-                                                              const GALGAS_uint constin_inTotalBitCount,
-                                                              const GALGAS_computedFormulaMap constin_inComputedFormulaMap,
-                                                              C_Compiler * inCompiler
+                                                              const class GALGAS_domainMap constin_inDomainMap,
+                                                              const class GALGAS_varMap constin_inVarMap,
+                                                              const class GALGAS_uint constin_inTotalBitCount,
+                                                              const class GALGAS_computedFormulaMap constin_inComputedFormulaMap,
+                                                              class C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6648,10 +6648,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaList_2D_elem
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeFormula (class cPtr_abstractFormula * inObject,
-                                         const GALGAS_string constin_inSourceFilePath,
-                                         const GALGAS_domainMap constin_inDomainMap,
-                                         GALGAS_computedFormulaMap & io_ioComputedFormulaMap,
-                                         C_Compiler * inCompiler
+                                         const class GALGAS_string constin_inSourceFilePath,
+                                         const class GALGAS_domainMap constin_inDomainMap,
+                                         class GALGAS_computedFormulaMap & io_ioComputedFormulaMap,
+                                         class C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
