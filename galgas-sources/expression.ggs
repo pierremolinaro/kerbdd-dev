@@ -515,7 +515,7 @@ override func @formulaInExpression. computeExpression(
       + [varList length] + " variable" + if [varList length] > 1 then "s" else "" end
       + ", but this call names "
       + [self.mParameterList length] + " variable" + if [self.mParameterList length] > 1 then "s" else "" end
-    : outResult
+    spoil outResult
   else
     var @uintlist transformationList = {}
     for > (formalName * formalBitCount) in varList, > (parameterName fieldNameList) in self.mParameterList do
@@ -587,9 +587,9 @@ override func @comparisonWithConstantInExpression. computeExpression(
     subDomainMap = fieldSubdomainMap
   end
   if [subDomainMap count] > 0 then
-    error self.mVarName : "variable is a record; use dot notation" : outResult
+    error self.mVarName : "variable is a record; use dot notation" spoil outResult
   elsif [self.mConstant.uint significantBitCount] > bitCount then
-    error self.mConstant : "Constant too large (should be < 2**" + bitCount : outResult
+    error self.mConstant : "Constant too large (should be < 2**" + bitCount spoil outResult
   else
     switch self.mComparison
     case equal :
@@ -630,15 +630,15 @@ override func @variableComparisonInExpression. computeExpression(
     rightSubDomainMap = fieldSubdomainMap
   end
   if [leftSubDomainMap count] > 0 then
-    error self.mLeftVarName : "variable is a record; use dot notation" : outResult
+    error self.mLeftVarName : "variable is a record; use dot notation" spoil outResult
   elsif [rightSubDomainMap count] > 0 then
-    error self.mRightVarName : "variable is a record; use dot notation" : outResult
+    error self.mRightVarName : "variable is a record; use dot notation" spoil outResult
   elsif leftBitCount != rightBitCount then
     error self.mRightVarName : "'" + self.mLeftVarName + "' variable uses "
       + leftBitCount + " bit" + if leftBitCount > 1 then "s" else "" end
       + ", but this variable uses "
       + rightBitCount + " bit" + if rightBitCount > 1 then "s" else "" end
-    : outResult
+    spoil outResult
   else
     switch self.mComparison
     case equal :

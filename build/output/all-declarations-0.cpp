@@ -1579,7 +1579,7 @@ mObject (inElement.mProperty_mVarName, inElement.mProperty_mType) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_domainFieldList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2300,7 +2300,7 @@ mObject (inElement.mProperty_mDomainName, inElement.mProperty_mType) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_domainDeclarationList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2751,7 +2751,8 @@ mProperty_mSubDomain (in_mSubDomain) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_recordDomainMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mSubDomain.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mSubDomain.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3128,7 +3129,8 @@ mProperty_mRecordMap (in_mRecordMap) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_domainMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordMap.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordMap.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3612,7 +3614,7 @@ mObject (inElement.mProperty_mVarName, inElement.mProperty_mBitIndex, inElement.
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_varList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4126,7 +4128,8 @@ mProperty_mRecordDomainMap (in_mRecordDomainMap) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_varMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordDomainMap.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordDomainMap.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5035,7 +5038,8 @@ mProperty_mValue (in_mValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_computedFormulaMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8733,7 +8737,7 @@ mObject (inElement.mProperty_mParameterName, inElement.mProperty_mFieldNames) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_formulaParameterListInExpression::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11276,7 +11280,7 @@ mObject (inElement.mProperty_mFormula) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_formulaList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
