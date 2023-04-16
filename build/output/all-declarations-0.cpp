@@ -42,14 +42,6 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//                 I N D E X I N G    D I R E C T O R Y                                          
-//----------------------------------------------------------------------------------------------------------------------
-
-C_String C_Lexique_kerbdd_5F_lexique::indexingDirectory (void) const {
-  return "" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 //                        Lexical error message list                                             
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1491,7 +1483,7 @@ typeComparisonResult GALGAS_bddType::objectCompare (const GALGAS_bddType & inOpe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@bddType type
+//     @bddType generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1973,7 +1965,7 @@ GALGAS_bddType cEnumerator_domainFieldList::current_mType (LOCATION_ARGS) const 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@domainFieldList type
+//     @domainFieldList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2212,7 +2204,7 @@ typeComparisonResult GALGAS_domainDeclarationType::objectCompare (const GALGAS_d
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@domainDeclarationType type
+//     @domainDeclarationType generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2694,7 +2686,7 @@ GALGAS_domainDeclarationType cEnumerator_domainDeclarationList::current_mType (L
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@domainDeclarationList type
+//     @domainDeclarationList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3074,7 +3066,7 @@ bool GALGAS_recordDomainMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@recordDomainMap type
+//     @recordDomainMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3400,7 +3392,7 @@ bool GALGAS_domainMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@domainMap type
+//     @domainMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4071,7 +4063,7 @@ GALGAS_uint cEnumerator_varList::current_mBitCount (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@varList type
+//     @varList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4451,7 +4443,7 @@ bool GALGAS_varMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@varMap type
+//     @varMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4698,7 +4690,7 @@ typeComparisonResult GALGAS_formulaKind::objectCompare (const GALGAS_formulaKind
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formulaKind type
+//     @formulaKind generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4743,6 +4735,14 @@ GALGAS_formulaKind GALGAS_formulaKind::extractObject (const GALGAS_object & inOb
 // @abstractFormula reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_abstractFormula::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 
 typeComparisonResult GALGAS_abstractFormula::objectCompare (const GALGAS_abstractFormula & inOperand) const {
@@ -4755,7 +4755,7 @@ typeComparisonResult GALGAS_abstractFormula::objectCompare (const GALGAS_abstrac
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -4784,7 +4784,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractFormula type
+//     @abstractFormula generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4829,6 +4829,14 @@ GALGAS_abstractFormula GALGAS_abstractFormula::extractObject (const GALGAS_objec
 // @expression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_expression::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 
 typeComparisonResult GALGAS_expression::objectCompare (const GALGAS_expression & inOperand) const {
@@ -4841,7 +4849,7 @@ typeComparisonResult GALGAS_expression::objectCompare (const GALGAS_expression &
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -4870,7 +4878,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@expression type
+//     @expression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4981,7 +4989,7 @@ GALGAS_abstractFormula GALGAS_abstractFormula_2D_weak::bang_abstractFormula_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractFormula-weak type
+//     @abstractFormula-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5361,7 +5369,7 @@ bool GALGAS_computedFormulaMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@computedFormulaMap type
+//     @computedFormulaMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5472,7 +5480,7 @@ GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@setting_nodeHashMapSize-weak type
+//     @setting_nodeHashMapSize-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5583,7 +5591,7 @@ GALGAS_setting_5F_andCacheMapSize GALGAS_setting_5F_andCacheMapSize_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@setting_andCacheMapSize-weak type
+//     @setting_andCacheMapSize-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5694,7 +5702,7 @@ GALGAS_dumpFormula GALGAS_dumpFormula_2D_weak::bang_dumpFormula_2D_weak (C_Compi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@dumpFormula-weak type
+//     @dumpFormula-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5805,7 +5813,7 @@ GALGAS_graphvizFormula GALGAS_graphvizFormula_2D_weak::bang_graphvizFormula_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@graphvizFormula-weak type
+//     @graphvizFormula-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5916,7 +5924,7 @@ GALGAS_expression GALGAS_expression_2D_weak::bang_expression_2D_weak (C_Compiler
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@expression-weak type
+//     @expression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6027,7 +6035,7 @@ GALGAS_varInExpression GALGAS_varInExpression_2D_weak::bang_varInExpression_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@varInExpression-weak type
+//     @varInExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6138,7 +6146,7 @@ GALGAS_varBitInExpression GALGAS_varBitInExpression_2D_weak::bang_varBitInExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@varBitInExpression-weak type
+//     @varBitInExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6183,6 +6191,16 @@ GALGAS_varBitInExpression_2D_weak GALGAS_varBitInExpression_2D_weak::extractObje
 // @andExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_andExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_andExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_andExpression * p = (const cPtr_andExpression *) inOperandPtr ;
@@ -6209,7 +6227,7 @@ typeComparisonResult GALGAS_andExpression::objectCompare (const GALGAS_andExpres
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -6323,7 +6341,7 @@ acPtr_class * cPtr_andExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@andExpression type
+//     @andExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6434,7 +6452,7 @@ GALGAS_andExpression GALGAS_andExpression_2D_weak::bang_andExpression_2D_weak (C
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@andExpression-weak type
+//     @andExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6479,6 +6497,16 @@ GALGAS_andExpression_2D_weak GALGAS_andExpression_2D_weak::extractObject (const 
 // @orExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_orExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_orExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_orExpression * p = (const cPtr_orExpression *) inOperandPtr ;
@@ -6505,7 +6533,7 @@ typeComparisonResult GALGAS_orExpression::objectCompare (const GALGAS_orExpressi
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -6619,7 +6647,7 @@ acPtr_class * cPtr_orExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@orExpression type
+//     @orExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6730,7 +6758,7 @@ GALGAS_orExpression GALGAS_orExpression_2D_weak::bang_orExpression_2D_weak (C_Co
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@orExpression-weak type
+//     @orExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6775,6 +6803,16 @@ GALGAS_orExpression_2D_weak GALGAS_orExpression_2D_weak::extractObject (const GA
 // @xorExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_xorExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_xorExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_xorExpression * p = (const cPtr_xorExpression *) inOperandPtr ;
@@ -6801,7 +6839,7 @@ typeComparisonResult GALGAS_xorExpression::objectCompare (const GALGAS_xorExpres
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -6915,7 +6953,7 @@ acPtr_class * cPtr_xorExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@xorExpression type
+//     @xorExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7026,7 +7064,7 @@ GALGAS_xorExpression GALGAS_xorExpression_2D_weak::bang_xorExpression_2D_weak (C
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@xorExpression-weak type
+//     @xorExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7071,6 +7109,16 @@ GALGAS_xorExpression_2D_weak GALGAS_xorExpression_2D_weak::extractObject (const 
 // @equalExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_equalExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_equalExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_equalExpression * p = (const cPtr_equalExpression *) inOperandPtr ;
@@ -7097,7 +7145,7 @@ typeComparisonResult GALGAS_equalExpression::objectCompare (const GALGAS_equalEx
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -7211,7 +7259,7 @@ acPtr_class * cPtr_equalExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@equalExpression type
+//     @equalExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7322,7 +7370,7 @@ GALGAS_equalExpression GALGAS_equalExpression_2D_weak::bang_equalExpression_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@equalExpression-weak type
+//     @equalExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7367,6 +7415,16 @@ GALGAS_equalExpression_2D_weak GALGAS_equalExpression_2D_weak::extractObject (co
 // @notEqualExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_notEqualExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_notEqualExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_notEqualExpression * p = (const cPtr_notEqualExpression *) inOperandPtr ;
@@ -7393,7 +7451,7 @@ typeComparisonResult GALGAS_notEqualExpression::objectCompare (const GALGAS_notE
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -7507,7 +7565,7 @@ acPtr_class * cPtr_notEqualExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@notEqualExpression type
+//     @notEqualExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7618,7 +7676,7 @@ GALGAS_notEqualExpression GALGAS_notEqualExpression_2D_weak::bang_notEqualExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@notEqualExpression-weak type
+//     @notEqualExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7663,6 +7721,16 @@ GALGAS_notEqualExpression_2D_weak GALGAS_notEqualExpression_2D_weak::extractObje
 // @impliesExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_impliesExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_impliesExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_impliesExpression * p = (const cPtr_impliesExpression *) inOperandPtr ;
@@ -7689,7 +7757,7 @@ typeComparisonResult GALGAS_impliesExpression::objectCompare (const GALGAS_impli
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -7803,7 +7871,7 @@ acPtr_class * cPtr_impliesExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@impliesExpression type
+//     @impliesExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7914,7 +7982,7 @@ GALGAS_impliesExpression GALGAS_impliesExpression_2D_weak::bang_impliesExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@impliesExpression-weak type
+//     @impliesExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7959,6 +8027,15 @@ GALGAS_impliesExpression_2D_weak GALGAS_impliesExpression_2D_weak::extractObject
 // @complementExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_complementExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_complementExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_complementExpression * p = (const cPtr_complementExpression *) inOperandPtr ;
@@ -7982,7 +8059,7 @@ typeComparisonResult GALGAS_complementExpression::objectCompare (const GALGAS_co
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8068,7 +8145,7 @@ acPtr_class * cPtr_complementExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@complementExpression type
+//     @complementExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8179,7 +8256,7 @@ GALGAS_complementExpression GALGAS_complementExpression_2D_weak::bang_complement
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@complementExpression-weak type
+//     @complementExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8224,6 +8301,14 @@ GALGAS_complementExpression_2D_weak GALGAS_complementExpression_2D_weak::extract
 // @trueExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_trueExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_trueExpression::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
   return kOperandEqual ;
 }
@@ -8241,7 +8326,7 @@ typeComparisonResult GALGAS_trueExpression::objectCompare (const GALGAS_trueExpr
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8303,7 +8388,7 @@ acPtr_class * cPtr_trueExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@trueExpression type
+//     @trueExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8414,7 +8499,7 @@ GALGAS_trueExpression GALGAS_trueExpression_2D_weak::bang_trueExpression_2D_weak
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@trueExpression-weak type
+//     @trueExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8459,6 +8544,14 @@ GALGAS_trueExpression_2D_weak GALGAS_trueExpression_2D_weak::extractObject (cons
 // @falseExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_falseExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_falseExpression::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
   return kOperandEqual ;
 }
@@ -8476,7 +8569,7 @@ typeComparisonResult GALGAS_falseExpression::objectCompare (const GALGAS_falseEx
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8538,7 +8631,7 @@ acPtr_class * cPtr_falseExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@falseExpression type
+//     @falseExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8649,7 +8742,7 @@ GALGAS_falseExpression GALGAS_falseExpression_2D_weak::bang_falseExpression_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@falseExpression-weak type
+//     @falseExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9131,7 +9224,7 @@ GALGAS_lstringlist cEnumerator_formulaParameterListInExpression::current_mFieldN
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formulaParameterListInExpression type
+//     @formulaParameterListInExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9242,7 +9335,7 @@ GALGAS_formulaInExpression GALGAS_formulaInExpression_2D_weak::bang_formulaInExp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formulaInExpression-weak type
+//     @formulaInExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9287,6 +9380,16 @@ GALGAS_formulaInExpression_2D_weak GALGAS_formulaInExpression_2D_weak::extractOb
 // @existInExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_existInExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mArgumentList.printNonNullClassInstanceProperties ("mArgumentList") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_existInExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_existInExpression * p = (const cPtr_existInExpression *) inOperandPtr ;
@@ -9313,7 +9416,7 @@ typeComparisonResult GALGAS_existInExpression::objectCompare (const GALGAS_exist
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -9427,7 +9530,7 @@ acPtr_class * cPtr_existInExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@existInExpression type
+//     @existInExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9538,7 +9641,7 @@ GALGAS_existInExpression GALGAS_existInExpression_2D_weak::bang_existInExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@existInExpression-weak type
+//     @existInExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9583,6 +9686,16 @@ GALGAS_existInExpression_2D_weak GALGAS_existInExpression_2D_weak::extractObject
 // @forAllInExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_forAllInExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mArgumentList.printNonNullClassInstanceProperties ("mArgumentList") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_forAllInExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_forAllInExpression * p = (const cPtr_forAllInExpression *) inOperandPtr ;
@@ -9609,7 +9722,7 @@ typeComparisonResult GALGAS_forAllInExpression::objectCompare (const GALGAS_forA
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -9723,7 +9836,7 @@ acPtr_class * cPtr_forAllInExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@forAllInExpression type
+//     @forAllInExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9834,7 +9947,7 @@ GALGAS_forAllInExpression GALGAS_forAllInExpression_2D_weak::bang_forAllInExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@forAllInExpression-weak type
+//     @forAllInExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10045,7 +10158,7 @@ typeComparisonResult GALGAS_comparison::objectCompare (const GALGAS_comparison &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@comparison type
+//     @comparison generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10156,7 +10269,7 @@ GALGAS_comparisonWithConstantInExpression GALGAS_comparisonWithConstantInExpress
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@comparisonWithConstantInExpression-weak type
+//     @comparisonWithConstantInExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10267,7 +10380,7 @@ GALGAS_variableComparisonInExpression GALGAS_variableComparisonInExpression_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@variableComparisonInExpression-weak type
+//     @variableComparisonInExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10368,6 +10481,22 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_start_5F_symbol_i0_parse (C
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_start_5F_symbol_i0_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_kerbdd_5F_syntax_0 (inCompiler)) {
+    case 2: {
+      nt_topLevelDeClaration_indexing (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i1_ (GALGAS_ast & ioArgument_ioAST,
                                                                               C_Lexique_kerbdd_5F_lexique * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_domain COMMA_SOURCE_FILE ("domain.ggs", 41)) ;
@@ -10419,6 +10548,27 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i1_pars
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i1_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_domain COMMA_SOURCE_FILE ("domain.ggs", 41)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 42)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.ggs", 43)) ;
+  switch (select_kerbdd_5F_syntax_1 (inCompiler)) {
+  case 1: {
+    nt_type_indexing (inCompiler) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("domain.ggs", 49)) ;
+    nt_recordFields_indexing (inCompiler) ;
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("domain.ggs", 52)) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("domain.ggs", 54)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_recordFields_i2_ (GALGAS_domainFieldList & outArgument_outFormulaArgumentList,
                                                                        C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outFormulaArgumentList.drop () ; // Release 'out' argument
@@ -10460,6 +10610,25 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_recordFields_i2_parse (C_Le
     }
   }
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_recordFields_i2_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 63)) ;
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.ggs", 64)) ;
+    nt_type_indexing (inCompiler) ;
+    switch (select_kerbdd_5F_syntax_2 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("domain.ggs", 68)) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10528,6 +10697,32 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i3_parse (C_Lexique_ke
     break ;
   }
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i3_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  switch (select_kerbdd_5F_syntax_3 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 76)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_bool COMMA_SOURCE_FILE ("domain.ggs", 79)) ;
+    switch (select_kerbdd_5F_syntax_4 (inCompiler)) {
+    case 1: {
+    } break ;
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__5B_ COMMA_SOURCE_FILE ("domain.ggs", 83)) ;
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("domain.ggs", 84)) ;
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__5D_ COMMA_SOURCE_FILE ("domain.ggs", 85)) ;
+    } break ;
+    default:
+      break ;
+    }
+  } break ;
+  default:
+    break ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10607,6 +10802,38 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i4_pars
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i4_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-assignment.ggs", 28)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 30)) ;
+  switch (select_kerbdd_5F_syntax_5 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    nt_recordFields_indexing (inCompiler) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 36)) ;
+  switch (select_kerbdd_5F_syntax_6 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3A__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 39)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2B__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 42)) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2D__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 45)) ;
+  } break ;
+  default:
+    break ;
+  }
+  nt_expression_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 49)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i5_ (GALGAS_ast & ioArgument_ioAST,
                                                                               C_Lexique_kerbdd_5F_lexique * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize COMMA_SOURCE_FILE ("setting-map.ggs", 24)) ;
@@ -10623,6 +10850,14 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i5_pars
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.ggs", 25)) ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.ggs", 26)) ;
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i5_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize COMMA_SOURCE_FILE ("setting-map.ggs", 24)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.ggs", 25)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.ggs", 26)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10647,6 +10882,14 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i6_pars
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i6_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize COMMA_SOURCE_FILE ("setting-map.ggs", 33)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.ggs", 34)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.ggs", 35)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i7_ (GALGAS_ast & ioArgument_ioAST,
                                                                               C_Lexique_kerbdd_5F_lexique * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_dump COMMA_SOURCE_FILE ("formula-dump.ggs", 18)) ;
@@ -10667,6 +10910,14 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i7_pars
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i7_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_dump COMMA_SOURCE_FILE ("formula-dump.ggs", 18)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-dump.ggs", 19)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-dump.ggs", 20)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i8_ (GALGAS_ast & ioArgument_ioAST,
                                                                               C_Lexique_kerbdd_5F_lexique * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_graphviz COMMA_SOURCE_FILE ("formula-graphviz.ggs", 18)) ;
@@ -10683,6 +10934,14 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i8_pars
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-graphviz.ggs", 19)) ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-graphviz.ggs", 20)) ;
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i8_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_graphviz COMMA_SOURCE_FILE ("formula-graphviz.ggs", 18)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-graphviz.ggs", 19)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-graphviz.ggs", 20)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10730,6 +10989,26 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_expression_i9_parse (C_Lexi
     break ;
   }
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_expression_i9_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  nt_comparison_indexing (inCompiler) ;
+  switch (select_kerbdd_5F_syntax_7 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.ggs", 149)) ;
+    nt_comparison_indexing (inCompiler) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.ggs", 153)) ;
+    nt_comparison_indexing (inCompiler) ;
+  } break ;
+  default:
+    break ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10785,6 +11064,28 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_comparison_i10_parse (C_Lex
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_comparison_i10_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  nt_term_indexing (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_kerbdd_5F_syntax_8 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__7C_ COMMA_SOURCE_FILE ("expression.ggs", 165)) ;
+      nt_term_indexing (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__5E_ COMMA_SOURCE_FILE ("expression.ggs", 169)) ;
+      nt_term_indexing (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i11_ (GALGAS_expression & outArgument_outExpression,
                                                                 C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
@@ -10836,6 +11137,28 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i11_parse (C_Lexique_k
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i11_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  nt_factor_indexing (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_kerbdd_5F_syntax_9 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__26_ COMMA_SOURCE_FILE ("expression.ggs", 181)) ;
+      nt_factor_indexing (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2D__3E_ COMMA_SOURCE_FILE ("expression.ggs", 185)) ;
+      nt_factor_indexing (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i12_ (GALGAS_expression & outArgument_outExpression,
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
@@ -10875,6 +11198,22 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i12_parse (C_Lexique
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i12_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 194)) ;
+  switch (select_kerbdd_5F_syntax_10 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 198)) ;
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.ggs", 199)) ;
+  } break ;
+  default:
+    break ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i13_ (GALGAS_expression & outArgument_outExpression,
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
@@ -10890,6 +11229,14 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i13_parse (C_Lexique
   nt_expression_parse (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 209)) ;
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i13_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 207)) ;
+  nt_expression_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 209)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10913,6 +11260,13 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i14_parse (C_Lexique
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i14_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__7E_ COMMA_SOURCE_FILE ("expression.ggs", 215)) ;
+  nt_factor_indexing (inCompiler) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i15_ (GALGAS_expression & outArgument_outExpression,
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
@@ -10929,6 +11283,12 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i15_parse (C_Lexique
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i15_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_true COMMA_SOURCE_FILE ("expression.ggs", 223)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i16_ (GALGAS_expression & outArgument_outExpression,
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
@@ -10941,6 +11301,12 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i16_ (GALGAS_express
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i16_parse (C_Lexique_kerbdd_5F_lexique * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_false COMMA_SOURCE_FILE ("expression.ggs", 230)) ;
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i16_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_false COMMA_SOURCE_FILE ("expression.ggs", 230)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11036,6 +11402,46 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i17_parse (C_Lexique
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i17_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 237)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 239)) ;
+  switch (select_kerbdd_5F_syntax_11 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    bool repeatFlag_0 = true ;
+    while (repeatFlag_0) {
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 243)) ;
+      bool repeatFlag_1 = true ;
+      while (repeatFlag_1) {
+        switch (select_kerbdd_5F_syntax_13 (inCompiler)) {
+        case 2: {
+          inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 247)) ;
+          inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 248)) ;
+        } break ;
+        default:
+          repeatFlag_1 = false ;
+          break ;
+        }
+      }
+      switch (select_kerbdd_5F_syntax_12 (inCompiler)) {
+      case 2: {
+        inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("expression.ggs", 253)) ;
+      } break ;
+      default:
+        repeatFlag_0 = false ;
+        break ;
+      }
+    }
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 256)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i18_ (GALGAS_expression & outArgument_outExpression,
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
@@ -11062,6 +11468,16 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i18_parse (C_Lexique
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i18_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3F_ COMMA_SOURCE_FILE ("expression.ggs", 263)) ;
+  nt_recordFields_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 265)) ;
+  nt_expression_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 267)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i19_ (GALGAS_expression & outArgument_outExpression,
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
@@ -11084,6 +11500,16 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i19_parse (C_Lexique
   nt_expression_parse (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 278)) ;
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i19_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__21_ COMMA_SOURCE_FILE ("expression.ggs", 274)) ;
+  nt_recordFields_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 276)) ;
+  nt_expression_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 278)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11233,6 +11659,70 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i20_parse (C_Lexique
   }
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__7D_ COMMA_SOURCE_FILE ("expression.ggs", 327)) ;
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i20_indexing (C_Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__7B_ COMMA_SOURCE_FILE ("expression.ggs", 284)) ;
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 285)) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_kerbdd_5F_syntax_14 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 289)) ;
+      inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 290)) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+  switch (select_kerbdd_5F_syntax_15 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.ggs", 295)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.ggs", 298)) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3C__3D_ COMMA_SOURCE_FILE ("expression.ggs", 301)) ;
+  } break ;
+  case 4: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3C_ COMMA_SOURCE_FILE ("expression.ggs", 304)) ;
+  } break ;
+  case 5: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3E__3D_ COMMA_SOURCE_FILE ("expression.ggs", 307)) ;
+  } break ;
+  case 6: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3E_ COMMA_SOURCE_FILE ("expression.ggs", 310)) ;
+  } break ;
+  default:
+    break ;
+  }
+  switch (select_kerbdd_5F_syntax_16 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.ggs", 314)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 317)) ;
+    bool repeatFlag_1 = true ;
+    while (repeatFlag_1) {
+      switch (select_kerbdd_5F_syntax_17 (inCompiler)) {
+      case 2: {
+        inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 321)) ;
+        inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 322)) ;
+      } break ;
+      default:
+        repeatFlag_1 = false ;
+        break ;
+      }
+    }
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__7D_ COMMA_SOURCE_FILE ("expression.ggs", 327)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11611,7 +12101,7 @@ GALGAS_abstractFormula cEnumerator_formulaList::current_mFormula (LOCATION_ARGS)
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formulaList type
+//     @formulaList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11734,7 +12224,7 @@ void GALGAS_ast::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ast type
+//     @ast generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11887,7 +12377,7 @@ void GALGAS_varList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@varList-element type
+//     @varList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11993,7 +12483,7 @@ void GALGAS_formulaList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formulaList-element type
+//     @formulaList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12038,6 +12528,18 @@ GALGAS_formulaList_2D_element GALGAS_formulaList_2D_element::extractObject (cons
 // @assignmentFormula reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_assignmentFormula::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
+    mProperty_mFormulaName.printNonNullClassInstanceProperties ("mFormulaName") ;
+    mProperty_mFormulaArgumentList.printNonNullClassInstanceProperties ("mFormulaArgumentList") ;
+    mProperty_mKind.printNonNullClassInstanceProperties ("mKind") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_assignmentFormula::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_assignmentFormula * p = (const cPtr_assignmentFormula *) inOperandPtr ;
@@ -12070,7 +12572,7 @@ typeComparisonResult GALGAS_assignmentFormula::objectCompare (const GALGAS_assig
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -12240,7 +12742,7 @@ acPtr_class * cPtr_assignmentFormula::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@assignmentFormula type
+//     @assignmentFormula generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12351,7 +12853,7 @@ GALGAS_assignmentFormula GALGAS_assignmentFormula_2D_weak::bang_assignmentFormul
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@assignmentFormula-weak type
+//     @assignmentFormula-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12396,6 +12898,15 @@ GALGAS_assignmentFormula_2D_weak GALGAS_assignmentFormula_2D_weak::extractObject
 // @setting_5F_andCacheMapSize reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_setting_5F_andCacheMapSize::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
+    mProperty_mSetting.printNonNullClassInstanceProperties ("mSetting") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_setting_5F_andCacheMapSize::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_setting_5F_andCacheMapSize * p = (const cPtr_setting_5F_andCacheMapSize *) inOperandPtr ;
@@ -12419,7 +12930,7 @@ typeComparisonResult GALGAS_setting_5F_andCacheMapSize::objectCompare (const GAL
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -12512,7 +13023,7 @@ acPtr_class * cPtr_setting_5F_andCacheMapSize::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@setting_andCacheMapSize type
+//     @setting_andCacheMapSize generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12557,6 +13068,15 @@ GALGAS_setting_5F_andCacheMapSize GALGAS_setting_5F_andCacheMapSize::extractObje
 // @dumpFormula reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_dumpFormula::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
+    mProperty_mFormulaName.printNonNullClassInstanceProperties ("mFormulaName") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_dumpFormula::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_dumpFormula * p = (const cPtr_dumpFormula *) inOperandPtr ;
@@ -12580,7 +13100,7 @@ typeComparisonResult GALGAS_dumpFormula::objectCompare (const GALGAS_dumpFormula
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -12673,7 +13193,7 @@ acPtr_class * cPtr_dumpFormula::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@dumpFormula type
+//     @dumpFormula generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12718,6 +13238,15 @@ GALGAS_dumpFormula GALGAS_dumpFormula::extractObject (const GALGAS_object & inOb
 // @graphvizFormula reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_graphvizFormula::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
+    mProperty_mFormulaName.printNonNullClassInstanceProperties ("mFormulaName") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_graphvizFormula::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_graphvizFormula * p = (const cPtr_graphvizFormula *) inOperandPtr ;
@@ -12741,7 +13270,7 @@ typeComparisonResult GALGAS_graphvizFormula::objectCompare (const GALGAS_graphvi
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -12834,7 +13363,7 @@ acPtr_class * cPtr_graphvizFormula::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@graphvizFormula type
+//     @graphvizFormula generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12879,6 +13408,15 @@ GALGAS_graphvizFormula GALGAS_graphvizFormula::extractObject (const GALGAS_objec
 // @varInExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_varInExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_varInExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_varInExpression * p = (const cPtr_varInExpression *) inOperandPtr ;
@@ -12902,7 +13440,7 @@ typeComparisonResult GALGAS_varInExpression::objectCompare (const GALGAS_varInEx
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -12995,7 +13533,7 @@ acPtr_class * cPtr_varInExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@varInExpression type
+//     @varInExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13040,6 +13578,16 @@ GALGAS_varInExpression GALGAS_varInExpression::extractObject (const GALGAS_objec
 // @varBitInExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_varBitInExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVarBit.printNonNullClassInstanceProperties ("mVarBit") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_varBitInExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_varBitInExpression * p = (const cPtr_varBitInExpression *) inOperandPtr ;
@@ -13066,7 +13614,7 @@ typeComparisonResult GALGAS_varBitInExpression::objectCompare (const GALGAS_varB
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -13188,7 +13736,7 @@ acPtr_class * cPtr_varBitInExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@varBitInExpression type
+//     @varBitInExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13233,6 +13781,16 @@ GALGAS_varBitInExpression GALGAS_varBitInExpression::extractObject (const GALGAS
 // @formulaInExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_formulaInExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mFormulaName.printNonNullClassInstanceProperties ("mFormulaName") ;
+    mProperty_mParameterList.printNonNullClassInstanceProperties ("mParameterList") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_formulaInExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_formulaInExpression * p = (const cPtr_formulaInExpression *) inOperandPtr ;
@@ -13259,7 +13817,7 @@ typeComparisonResult GALGAS_formulaInExpression::objectCompare (const GALGAS_for
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -13381,7 +13939,7 @@ acPtr_class * cPtr_formulaInExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formulaInExpression type
+//     @formulaInExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13426,6 +13984,18 @@ GALGAS_formulaInExpression GALGAS_formulaInExpression::extractObject (const GALG
 // @comparisonWithConstantInExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_comparisonWithConstantInExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mFieldNames.printNonNullClassInstanceProperties ("mFieldNames") ;
+    mProperty_mComparison.printNonNullClassInstanceProperties ("mComparison") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_comparisonWithConstantInExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_comparisonWithConstantInExpression * p = (const cPtr_comparisonWithConstantInExpression *) inOperandPtr ;
@@ -13458,7 +14028,7 @@ typeComparisonResult GALGAS_comparisonWithConstantInExpression::objectCompare (c
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -13628,7 +14198,7 @@ acPtr_class * cPtr_comparisonWithConstantInExpression::duplicate (LOCATION_ARGS)
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@comparisonWithConstantInExpression type
+//     @comparisonWithConstantInExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13673,6 +14243,19 @@ GALGAS_comparisonWithConstantInExpression GALGAS_comparisonWithConstantInExpress
 // @variableComparisonInExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_variableComparisonInExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_expression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftVarName.printNonNullClassInstanceProperties ("mLeftVarName") ;
+    mProperty_mLeftFieldNames.printNonNullClassInstanceProperties ("mLeftFieldNames") ;
+    mProperty_mComparison.printNonNullClassInstanceProperties ("mComparison") ;
+    mProperty_mRightVarName.printNonNullClassInstanceProperties ("mRightVarName") ;
+    mProperty_mRightFieldNames.printNonNullClassInstanceProperties ("mRightFieldNames") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_variableComparisonInExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_variableComparisonInExpression * p = (const cPtr_variableComparisonInExpression *) inOperandPtr ;
@@ -13708,7 +14291,7 @@ typeComparisonResult GALGAS_variableComparisonInExpression::objectCompare (const
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -13906,7 +14489,7 @@ acPtr_class * cPtr_variableComparisonInExpression::duplicate (LOCATION_ARGS) con
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@variableComparisonInExpression type
+//     @variableComparisonInExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15145,6 +15728,17 @@ void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_parse (C_Lexique_kerbdd_5F_l
   }
 }
 
+void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_indexing (C_Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 0 :
+      rule_kerbdd_5F_syntax_start_5F_symbol_i0_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
 void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_ (GALGAS_ast &  parameter_1,
                                 C_Lexique_kerbdd_5F_lexique * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
@@ -15156,8 +15750,22 @@ void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_ (GALGAS_ast &  parameter_1,
   }
 }
 
-void cGrammar_kerbdd_5F_grammar::performIndexing (C_Compiler * /* inCompiler */,
-             const C_String & /* inSourceFilePath */) {
+void cGrammar_kerbdd_5F_grammar::performIndexing (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_kerbdd_5F_lexique * scanner = nullptr ;
+  macroMyNew (scanner, C_Lexique_kerbdd_5F_lexique (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  scanner->enableIndexing () ;
+  if (scanner->sourceText ().isValid ()) {
+    const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
+                                                     gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
+                                                     gProductionsTable_kerbdd_grammar) ;
+    if (ok) {
+      cGrammar_kerbdd_5F_grammar grammar ;
+      grammar.nt_start_5F_symbol_indexing (scanner) ;
+    }
+    scanner->generateIndexFile () ;
+  }
+  macroDetachSharedObject (scanner) ;
 }
 
 void cGrammar_kerbdd_5F_grammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
@@ -15282,6 +15890,32 @@ void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_parse (C_Lexique_kerbdd_
   }
 }
 
+void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_indexing (C_Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 1 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i1_indexing(inLexique) ;
+    break ;
+  case 4 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i4_indexing(inLexique) ;
+    break ;
+  case 5 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i5_indexing(inLexique) ;
+    break ;
+  case 6 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i6_indexing(inLexique) ;
+    break ;
+  case 7 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i7_indexing(inLexique) ;
+    break ;
+  case 8 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i8_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
 void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_ (GALGAS_ast &  parameter_1,
                                 C_Lexique_kerbdd_5F_lexique * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
@@ -15325,6 +15959,17 @@ void cGrammar_kerbdd_5F_grammar::nt_recordFields_parse (C_Lexique_kerbdd_5F_lexi
   }
 }
 
+void cGrammar_kerbdd_5F_grammar::nt_recordFields_indexing (C_Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 2 :
+      rule_kerbdd_5F_syntax_recordFields_i2_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
 void cGrammar_kerbdd_5F_grammar::nt_recordFields_ (GALGAS_domainFieldList &  parameter_1,
                                 C_Lexique_kerbdd_5F_lexique * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
@@ -15346,6 +15991,17 @@ void cGrammar_kerbdd_5F_grammar::nt_type_parse (C_Lexique_kerbdd_5F_lexique * in
   switch (inLexique->nextProductionIndex ()) {
   case 3 :
       rule_kerbdd_5F_syntax_type_i3_parse(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_type_indexing (C_Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 3 :
+      rule_kerbdd_5F_syntax_type_i3_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -15381,6 +16037,17 @@ void cGrammar_kerbdd_5F_grammar::nt_expression_parse (C_Lexique_kerbdd_5F_lexiqu
   }
 }
 
+void cGrammar_kerbdd_5F_grammar::nt_expression_indexing (C_Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 9 :
+      rule_kerbdd_5F_syntax_expression_i9_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
 void cGrammar_kerbdd_5F_grammar::nt_expression_ (GALGAS_expression &  parameter_1,
                                 C_Lexique_kerbdd_5F_lexique * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
@@ -15409,6 +16076,17 @@ void cGrammar_kerbdd_5F_grammar::nt_comparison_parse (C_Lexique_kerbdd_5F_lexiqu
   }
 }
 
+void cGrammar_kerbdd_5F_grammar::nt_comparison_indexing (C_Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 10 :
+      rule_kerbdd_5F_syntax_comparison_i10_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
 void cGrammar_kerbdd_5F_grammar::nt_comparison_ (GALGAS_expression &  parameter_1,
                                 C_Lexique_kerbdd_5F_lexique * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
@@ -15430,6 +16108,17 @@ void cGrammar_kerbdd_5F_grammar::nt_term_parse (C_Lexique_kerbdd_5F_lexique * in
   switch (inLexique->nextProductionIndex ()) {
   case 11 :
       rule_kerbdd_5F_syntax_term_i11_parse(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_term_indexing (C_Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 11 :
+      rule_kerbdd_5F_syntax_term_i11_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -15482,6 +16171,41 @@ void cGrammar_kerbdd_5F_grammar::nt_factor_parse (C_Lexique_kerbdd_5F_lexique * 
     break ;
   case 20 :
       rule_kerbdd_5F_syntax_factor_i20_parse(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_factor_indexing (C_Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 12 :
+      rule_kerbdd_5F_syntax_factor_i12_indexing(inLexique) ;
+    break ;
+  case 13 :
+      rule_kerbdd_5F_syntax_factor_i13_indexing(inLexique) ;
+    break ;
+  case 14 :
+      rule_kerbdd_5F_syntax_factor_i14_indexing(inLexique) ;
+    break ;
+  case 15 :
+      rule_kerbdd_5F_syntax_factor_i15_indexing(inLexique) ;
+    break ;
+  case 16 :
+      rule_kerbdd_5F_syntax_factor_i16_indexing(inLexique) ;
+    break ;
+  case 17 :
+      rule_kerbdd_5F_syntax_factor_i17_indexing(inLexique) ;
+    break ;
+  case 18 :
+      rule_kerbdd_5F_syntax_factor_i18_indexing(inLexique) ;
+    break ;
+  case 19 :
+      rule_kerbdd_5F_syntax_factor_i19_indexing(inLexique) ;
+    break ;
+  case 20 :
+      rule_kerbdd_5F_syntax_factor_i20_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -15799,7 +16523,7 @@ void GALGAS_domainFieldList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@domainFieldList-element type
+//     @domainFieldList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15915,7 +16639,7 @@ void GALGAS_domainDeclarationList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@domainDeclarationList-element type
+//     @domainDeclarationList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -16060,7 +16784,7 @@ void GALGAS_recordDomainMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@recordDomainMap-element type
+//     @recordDomainMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -16194,7 +16918,7 @@ void GALGAS_domainMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@domainMap-element type
+//     @domainMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -16339,7 +17063,7 @@ void GALGAS_varMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@varMap-element type
+//     @varMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -16380,585 +17104,3 @@ GALGAS_varMap_2D_element GALGAS_varMap_2D_element::extractObject (const GALGAS_o
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element::GALGAS_computedFormulaMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mVarList (),
-mProperty_mBitCount (),
-mProperty_mValue () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element::~ GALGAS_computedFormulaMap_2D_element (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element::GALGAS_computedFormulaMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                            const GALGAS_varList & inOperand1,
-                                                                            const GALGAS_uint & inOperand2,
-                                                                            const GALGAS_binaryset & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mVarList (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mValue (inOperand3) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_computedFormulaMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                               GALGAS_varList::constructor_emptyList (HERE),
-                                               GALGAS_uint::constructor_default (HERE),
-                                               GALGAS_binaryset::constructor_emptyBinarySet (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                            const GALGAS_varList & in_mVarList,
-                                                                                            const GALGAS_uint & in_mBitCount,
-                                                                                            const GALGAS_binaryset & in_mValue 
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_computedFormulaMap_2D_element result ;
-  if (in_lkey.isValid () && in_mVarList.isValid () && in_mBitCount.isValid () && in_mValue.isValid ()) {
-    result = GALGAS_computedFormulaMap_2D_element (in_lkey, in_mVarList, in_mBitCount, in_mValue) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_computedFormulaMap_2D_element::objectCompare (const GALGAS_computedFormulaMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mVarList.objectCompare (inOperand.mProperty_mVarList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_computedFormulaMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_computedFormulaMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mVarList.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mValue.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_computedFormulaMap_2D_element::description (C_String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString << "<struct @computedFormulaMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mVarList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mValue.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@computedFormulaMap-element type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ("computedFormulaMap-element",
-                                                      NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_computedFormulaMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_computedFormulaMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_computedFormulaMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_computedFormulaMap_2D_element result ;
-  const GALGAS_computedFormulaMap_2D_element * p = (const GALGAS_computedFormulaMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_computedFormulaMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("computedFormulaMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_formulaParameterListInExpression_2D_element::GALGAS_formulaParameterListInExpression_2D_element (void) :
-mProperty_mParameterName (),
-mProperty_mFieldNames () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_formulaParameterListInExpression_2D_element::~ GALGAS_formulaParameterListInExpression_2D_element (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_formulaParameterListInExpression_2D_element::GALGAS_formulaParameterListInExpression_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                        const GALGAS_lstringlist & inOperand1) :
-mProperty_mParameterName (inOperand0),
-mProperty_mFieldNames (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListInExpression_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_formulaParameterListInExpression_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                             GALGAS_lstringlist::constructor_emptyList (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListInExpression_2D_element::constructor_new (const GALGAS_lstring & in_mParameterName,
-                                                                                                                        const GALGAS_lstringlist & in_mFieldNames 
-                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_formulaParameterListInExpression_2D_element result ;
-  if (in_mParameterName.isValid () && in_mFieldNames.isValid ()) {
-    result = GALGAS_formulaParameterListInExpression_2D_element (in_mParameterName, in_mFieldNames) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_formulaParameterListInExpression_2D_element::objectCompare (const GALGAS_formulaParameterListInExpression_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_mParameterName.objectCompare (inOperand.mProperty_mParameterName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mFieldNames.objectCompare (inOperand.mProperty_mFieldNames) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_formulaParameterListInExpression_2D_element::isValid (void) const {
-  return mProperty_mParameterName.isValid () && mProperty_mFieldNames.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_formulaParameterListInExpression_2D_element::drop (void) {
-  mProperty_mParameterName.drop () ;
-  mProperty_mFieldNames.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_formulaParameterListInExpression_2D_element::description (C_String & ioString,
-                                                                      const int32_t inIndentation) const {
-  ioString << "<struct @formulaParameterListInExpression-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_mParameterName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mFieldNames.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@formulaParameterListInExpression-element type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_formulaParameterListInExpression_2D_element ("formulaParameterListInExpression-element",
-                                                                    NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_formulaParameterListInExpression_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_formulaParameterListInExpression_2D_element ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_formulaParameterListInExpression_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_formulaParameterListInExpression_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListInExpression_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                      C_Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_formulaParameterListInExpression_2D_element result ;
-  const GALGAS_formulaParameterListInExpression_2D_element * p = (const GALGAS_formulaParameterListInExpression_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_formulaParameterListInExpression_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("formulaParameterListInExpression-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-// @setting_5F_nodeHashMapSize reference class
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_setting_5F_nodeHashMapSize::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_setting_5F_nodeHashMapSize * p = (const cPtr_setting_5F_nodeHashMapSize *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_setting_5F_nodeHashMapSize) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mSetting.objectCompare (p->mProperty_mSetting) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_setting_5F_nodeHashMapSize::objectCompare (const GALGAS_setting_5F_nodeHashMapSize & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_setting_5F_nodeHashMapSize::GALGAS_setting_5F_nodeHashMapSize (void) :
-GALGAS_abstractFormula () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::constructor_default (LOCATION_ARGS) {
-  return GALGAS_setting_5F_nodeHashMapSize::constructor_new (GALGAS_luint::constructor_default (HERE)
-                                                             COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_setting_5F_nodeHashMapSize::GALGAS_setting_5F_nodeHashMapSize (const cPtr_setting_5F_nodeHashMapSize * inSourcePtr) :
-GALGAS_abstractFormula (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_setting_5F_nodeHashMapSize) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::constructor_new (const GALGAS_luint & inAttribute_mSetting
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_setting_5F_nodeHashMapSize result ;
-  if (inAttribute_mSetting.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_setting_5F_nodeHashMapSize (inAttribute_mSetting COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_setting_5F_nodeHashMapSize::setter_setMSetting (GALGAS_luint inValue
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_setting_5F_nodeHashMapSize * p = (cPtr_setting_5F_nodeHashMapSize *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_setting_5F_nodeHashMapSize) ;
-    p->mProperty_mSetting = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_luint GALGAS_setting_5F_nodeHashMapSize::readProperty_mSetting (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_luint () ;
-  }else{
-    cPtr_setting_5F_nodeHashMapSize * p = (cPtr_setting_5F_nodeHashMapSize *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_setting_5F_nodeHashMapSize) ;
-    return p->mProperty_mSetting ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @setting_nodeHashMapSize class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_setting_5F_nodeHashMapSize::cPtr_setting_5F_nodeHashMapSize (const GALGAS_luint & in_mSetting
-                                                                  COMMA_LOCATION_ARGS) :
-cPtr_abstractFormula (THERE),
-mProperty_mSetting (in_mSetting) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_setting_5F_nodeHashMapSize::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ;
-}
-
-void cPtr_setting_5F_nodeHashMapSize::description (C_String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString << "[@setting_nodeHashMapSize:" ;
-  mProperty_mSetting.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_setting_5F_nodeHashMapSize::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_setting_5F_nodeHashMapSize (mProperty_mSetting COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@setting_nodeHashMapSize type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ("setting_nodeHashMapSize",
-                                                   & kTypeDescriptor_GALGAS_abstractFormula) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_setting_5F_nodeHashMapSize::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_setting_5F_nodeHashMapSize::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_setting_5F_nodeHashMapSize (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_setting_5F_nodeHashMapSize result ;
-  const GALGAS_setting_5F_nodeHashMapSize * p = (const GALGAS_setting_5F_nodeHashMapSize *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_setting_5F_nodeHashMapSize *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("setting_nodeHashMapSize", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                               Bool options                                                    
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                               UInt options                                                    
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                              String options                                                   
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//                              String List options                                              
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@assignmentFormula analyzeFormula'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_assignmentFormula::method_analyzeFormula (const GALGAS_string /* constinArgument_inSourceFilePath */,
-                                                    const GALGAS_domainMap constinArgument_inDomainMap,
-                                                    GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_uint var_totalBitCount_2946 = GALGAS_uint (uint32_t (0U)) ;
-  GALGAS_varList var_varList_2973 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("formula-assignment.ggs", 78)) ;
-  GALGAS_varMap var_varMap_2999 = GALGAS_varMap::constructor_emptyMap (SOURCE_FILE ("formula-assignment.ggs", 79)) ;
-  const GALGAS_assignmentFormula temp_0 = this ;
-  extensionMethod_analyze (temp_0.readProperty_mFormulaArgumentList (), constinArgument_inDomainMap, var_varMap_2999, var_varList_2973, var_totalBitCount_2946, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 80)) ;
-  const GALGAS_assignmentFormula temp_1 = this ;
-  switch (temp_1.readProperty_mKind ().enumValue ()) {
-  case GALGAS_formulaKind::kNotBuilt:
-    break ;
-  case GALGAS_formulaKind::kEnum_assignment:
-    {
-      const GALGAS_assignmentFormula temp_2 = this ;
-      inCompiler->printMessage (temp_2.readProperty_mFormulaName ().readProperty_string ().add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 84))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 84)) ;
-      GALGAS_timer var_timer_3213 = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.ggs", 85)) ;
-      const GALGAS_assignmentFormula temp_3 = this ;
-      GALGAS_binaryset var_result_3243 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_3.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_2999, var_totalBitCount_2946, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 86)) ;
-      {
-      const GALGAS_assignmentFormula temp_4 = this ;
-      ioArgument_ioComputedFormulaMap.setter_insertKey (temp_4.readProperty_mFormulaName (), var_varList_2973, var_totalBitCount_2946, var_result_3243, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 87)) ;
-      }
-      GALGAS_uint_36__34_ var_valueCount_3457 = var_result_3243.getter_valueCount (var_totalBitCount_2946, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 88)) ;
-      GALGAS_uint_36__34_ var_nodeCount_3591 = var_result_3243.getter_nodeCount (SOURCE_FILE ("formula-assignment.ggs", 90)) ;
-      GALGAS_string temp_5 ;
-      const enumGalgasBool test_6 = GALGAS_bool (kIsStrictSup, var_valueCount_3457.objectCompare (GALGAS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (kBoolTrue == test_6) {
-        temp_5 = GALGAS_string ("s") ;
-      }else if (kBoolFalse == test_6) {
-        temp_5 = GALGAS_string::makeEmptyString () ;
-      }
-      GALGAS_string temp_7 ;
-      const enumGalgasBool test_8 = GALGAS_bool (kIsStrictSup, var_nodeCount_3591.objectCompare (GALGAS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (kBoolTrue == test_8) {
-        temp_7 = GALGAS_string ("s") ;
-      }else if (kBoolFalse == test_8) {
-        temp_7 = GALGAS_string::makeEmptyString () ;
-      }
-      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_valueCount_3457.getter_string (SOURCE_FILE ("formula-assignment.ggs", 91)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 91)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 92)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 92)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 92)).add_operation (var_nodeCount_3591.getter_string (SOURCE_FILE ("formula-assignment.ggs", 93)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (var_timer_3213.getter_string (SOURCE_FILE ("formula-assignment.ggs", 94)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 94)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 94))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 91)) ;
-    }
-    break ;
-  case GALGAS_formulaKind::kEnum_fixedPoint:
-    {
-      const cEnumAssociatedValues_formulaKind_fixedPoint * extractPtr_4919 = (const cEnumAssociatedValues_formulaKind_fixedPoint *) (temp_1.readProperty_mKind ().unsafePointer ()) ;
-      const GALGAS_binaryset extractedValue_3844_startValue = extractPtr_4919->mAssociatedValue0 ;
-      const GALGAS_assignmentFormula temp_9 = this ;
-      inCompiler->printMessage (temp_9.readProperty_mFormulaName ().readProperty_string ().add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 96))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 96)) ;
-      GALGAS_timer var_timer_3906 = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.ggs", 97)) ;
-      GALGAS_binaryset var_result_3947 = extractedValue_3844_startValue ;
-      {
-      const GALGAS_assignmentFormula temp_10 = this ;
-      ioArgument_ioComputedFormulaMap.setter_insertKey (temp_10.readProperty_mFormulaName (), var_varList_2973, var_totalBitCount_2946, var_result_3947, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 99)) ;
-      }
-      GALGAS_bool var_iterate_4066 = GALGAS_bool (true) ;
-      GALGAS_bigint var_iterationCount_4098 = GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 101)) ;
-      if (GALGAS_uint::constructor_max (SOURCE_FILE ("formula-assignment.ggs", 102)).isValid ()) {
-        uint32_t variant_4111 = GALGAS_uint::constructor_max (SOURCE_FILE ("formula-assignment.ggs", 102)).uintValue () ;
-        bool loop_4111 = true ;
-        while (loop_4111) {
-          loop_4111 = var_iterate_4066.isValid () ;
-          if (loop_4111) {
-            loop_4111 = var_iterate_4066.boolValue () ;
-          }
-          if (loop_4111 && (0 == variant_4111)) {
-            loop_4111 = false ;
-            inCompiler->loopRunTimeVariantError (SOURCE_FILE ("formula-assignment.ggs", 102)) ;
-          }
-          if (loop_4111) {
-            variant_4111 -- ;
-            var_iterationCount_4098.plusAssign_operation(GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)) ;
-            const GALGAS_assignmentFormula temp_11 = this ;
-            GALGAS_binaryset var_r_4178 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_11.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_2999, var_totalBitCount_2946, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 104)) ;
-            enumGalgasBool test_12 = kBoolTrue ;
-            if (kBoolTrue == test_12) {
-              test_12 = GALGAS_bool (kIsEqual, var_result_3947.objectCompare (var_r_4178)).boolEnum () ;
-              if (kBoolTrue == test_12) {
-                var_iterate_4066 = GALGAS_bool (false) ;
-              }
-            }
-            if (kBoolFalse == test_12) {
-              var_result_3947 = var_r_4178 ;
-              {
-              const GALGAS_assignmentFormula temp_13 = this ;
-              ioArgument_ioComputedFormulaMap.setter_setMValueForKey (var_result_3947, temp_13.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 109)) ;
-              }
-            }
-          }
-        }
-      }
-      GALGAS_uint_36__34_ var_valueCount_4483 = var_result_3947.getter_valueCount (var_totalBitCount_2946, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 112)) ;
-      GALGAS_uint_36__34_ var_nodeCount_4617 = var_result_3947.getter_nodeCount (SOURCE_FILE ("formula-assignment.ggs", 114)) ;
-      GALGAS_string temp_14 ;
-      const enumGalgasBool test_15 = GALGAS_bool (kIsStrictSup, var_iterationCount_4098.objectCompare (GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)))).boolEnum () ;
-      if (kBoolTrue == test_15) {
-        temp_14 = GALGAS_string ("s") ;
-      }else if (kBoolFalse == test_15) {
-        temp_14 = GALGAS_string::makeEmptyString () ;
-      }
-      GALGAS_string temp_16 ;
-      const enumGalgasBool test_17 = GALGAS_bool (kIsStrictSup, var_valueCount_4483.objectCompare (GALGAS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (kBoolTrue == test_17) {
-        temp_16 = GALGAS_string ("s") ;
-      }else if (kBoolFalse == test_17) {
-        temp_16 = GALGAS_string::makeEmptyString () ;
-      }
-      GALGAS_string temp_18 ;
-      const enumGalgasBool test_19 = GALGAS_bool (kIsStrictSup, var_nodeCount_4617.objectCompare (GALGAS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (kBoolTrue == test_19) {
-        temp_18 = GALGAS_string ("s") ;
-      }else if (kBoolFalse == test_19) {
-        temp_18 = GALGAS_string::makeEmptyString () ;
-      }
-      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_iterationCount_4098.getter_string (SOURCE_FILE ("formula-assignment.ggs", 115)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (GALGAS_string (" iteration"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (temp_14, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (var_valueCount_4483.getter_string (SOURCE_FILE ("formula-assignment.ggs", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (temp_16, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (var_nodeCount_4617.getter_string (SOURCE_FILE ("formula-assignment.ggs", 118)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (temp_18, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (var_timer_3906.getter_string (SOURCE_FILE ("formula-assignment.ggs", 119)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 119)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 119))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)) ;
-    }
-    break ;
-  }
-}

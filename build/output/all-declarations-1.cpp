@@ -8,6 +8,597 @@
 #include "all-declarations-1.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element::GALGAS_computedFormulaMap_2D_element (void) :
+mProperty_lkey (),
+mProperty_mVarList (),
+mProperty_mBitCount (),
+mProperty_mValue () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element::~ GALGAS_computedFormulaMap_2D_element (void) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element::GALGAS_computedFormulaMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                                            const GALGAS_varList & inOperand1,
+                                                                            const GALGAS_uint & inOperand2,
+                                                                            const GALGAS_binaryset & inOperand3) :
+mProperty_lkey (inOperand0),
+mProperty_mVarList (inOperand1),
+mProperty_mBitCount (inOperand2),
+mProperty_mValue (inOperand3) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_computedFormulaMap_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                               GALGAS_varList::constructor_emptyList (HERE),
+                                               GALGAS_uint::constructor_default (HERE),
+                                               GALGAS_binaryset::constructor_emptyBinarySet (HERE)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
+                                                                                            const GALGAS_varList & in_mVarList,
+                                                                                            const GALGAS_uint & in_mBitCount,
+                                                                                            const GALGAS_binaryset & in_mValue 
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_computedFormulaMap_2D_element result ;
+  if (in_lkey.isValid () && in_mVarList.isValid () && in_mBitCount.isValid () && in_mValue.isValid ()) {
+    result = GALGAS_computedFormulaMap_2D_element (in_lkey, in_mVarList, in_mBitCount, in_mValue) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_computedFormulaMap_2D_element::objectCompare (const GALGAS_computedFormulaMap_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mVarList.objectCompare (inOperand.mProperty_mVarList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_computedFormulaMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_computedFormulaMap_2D_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mVarList.drop () ;
+  mProperty_mBitCount.drop () ;
+  mProperty_mValue.drop () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_computedFormulaMap_2D_element::description (C_String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString << "<struct @computedFormulaMap-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mVarList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mBitCount.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @computedFormulaMap-element generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ("computedFormulaMap-element",
+                                                      NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_computedFormulaMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_computedFormulaMap_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_computedFormulaMap_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_computedFormulaMap_2D_element result ;
+  const GALGAS_computedFormulaMap_2D_element * p = (const GALGAS_computedFormulaMap_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_computedFormulaMap_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("computedFormulaMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_formulaParameterListInExpression_2D_element::GALGAS_formulaParameterListInExpression_2D_element (void) :
+mProperty_mParameterName (),
+mProperty_mFieldNames () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_formulaParameterListInExpression_2D_element::~ GALGAS_formulaParameterListInExpression_2D_element (void) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_formulaParameterListInExpression_2D_element::GALGAS_formulaParameterListInExpression_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                                        const GALGAS_lstringlist & inOperand1) :
+mProperty_mParameterName (inOperand0),
+mProperty_mFieldNames (inOperand1) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListInExpression_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_formulaParameterListInExpression_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                             GALGAS_lstringlist::constructor_emptyList (HERE)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListInExpression_2D_element::constructor_new (const GALGAS_lstring & in_mParameterName,
+                                                                                                                        const GALGAS_lstringlist & in_mFieldNames 
+                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_formulaParameterListInExpression_2D_element result ;
+  if (in_mParameterName.isValid () && in_mFieldNames.isValid ()) {
+    result = GALGAS_formulaParameterListInExpression_2D_element (in_mParameterName, in_mFieldNames) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_formulaParameterListInExpression_2D_element::objectCompare (const GALGAS_formulaParameterListInExpression_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_mParameterName.objectCompare (inOperand.mProperty_mParameterName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mFieldNames.objectCompare (inOperand.mProperty_mFieldNames) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_formulaParameterListInExpression_2D_element::isValid (void) const {
+  return mProperty_mParameterName.isValid () && mProperty_mFieldNames.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_formulaParameterListInExpression_2D_element::drop (void) {
+  mProperty_mParameterName.drop () ;
+  mProperty_mFieldNames.drop () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_formulaParameterListInExpression_2D_element::description (C_String & ioString,
+                                                                      const int32_t inIndentation) const {
+  ioString << "<struct @formulaParameterListInExpression-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mProperty_mParameterName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mFieldNames.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @formulaParameterListInExpression-element generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_formulaParameterListInExpression_2D_element ("formulaParameterListInExpression-element",
+                                                                    NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_formulaParameterListInExpression_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formulaParameterListInExpression_2D_element ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_formulaParameterListInExpression_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_formulaParameterListInExpression_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListInExpression_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_formulaParameterListInExpression_2D_element result ;
+  const GALGAS_formulaParameterListInExpression_2D_element * p = (const GALGAS_formulaParameterListInExpression_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_formulaParameterListInExpression_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("formulaParameterListInExpression-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// @setting_5F_nodeHashMapSize reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_setting_5F_nodeHashMapSize::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
+    mProperty_mSetting.printNonNullClassInstanceProperties ("mSetting") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_setting_5F_nodeHashMapSize::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_setting_5F_nodeHashMapSize * p = (const cPtr_setting_5F_nodeHashMapSize *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_setting_5F_nodeHashMapSize) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mSetting.objectCompare (p->mProperty_mSetting) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_setting_5F_nodeHashMapSize::objectCompare (const GALGAS_setting_5F_nodeHashMapSize & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_setting_5F_nodeHashMapSize::GALGAS_setting_5F_nodeHashMapSize (void) :
+GALGAS_abstractFormula () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::constructor_default (LOCATION_ARGS) {
+  return GALGAS_setting_5F_nodeHashMapSize::constructor_new (GALGAS_luint::constructor_default (HERE)
+                                                             COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_setting_5F_nodeHashMapSize::GALGAS_setting_5F_nodeHashMapSize (const cPtr_setting_5F_nodeHashMapSize * inSourcePtr) :
+GALGAS_abstractFormula (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_setting_5F_nodeHashMapSize) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::constructor_new (const GALGAS_luint & inAttribute_mSetting
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_setting_5F_nodeHashMapSize result ;
+  if (inAttribute_mSetting.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_setting_5F_nodeHashMapSize (inAttribute_mSetting COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_setting_5F_nodeHashMapSize::setter_setMSetting (GALGAS_luint inValue
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    cPtr_setting_5F_nodeHashMapSize * p = (cPtr_setting_5F_nodeHashMapSize *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_setting_5F_nodeHashMapSize) ;
+    p->mProperty_mSetting = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_luint GALGAS_setting_5F_nodeHashMapSize::readProperty_mSetting (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_luint () ;
+  }else{
+    cPtr_setting_5F_nodeHashMapSize * p = (cPtr_setting_5F_nodeHashMapSize *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_setting_5F_nodeHashMapSize) ;
+    return p->mProperty_mSetting ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @setting_nodeHashMapSize class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_setting_5F_nodeHashMapSize::cPtr_setting_5F_nodeHashMapSize (const GALGAS_luint & in_mSetting
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (THERE),
+mProperty_mSetting (in_mSetting) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_setting_5F_nodeHashMapSize::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ;
+}
+
+void cPtr_setting_5F_nodeHashMapSize::description (C_String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString << "[@setting_nodeHashMapSize:" ;
+  mProperty_mSetting.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_setting_5F_nodeHashMapSize::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_setting_5F_nodeHashMapSize (mProperty_mSetting COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @setting_nodeHashMapSize generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ("setting_nodeHashMapSize",
+                                                   & kTypeDescriptor_GALGAS_abstractFormula) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_setting_5F_nodeHashMapSize::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_setting_5F_nodeHashMapSize::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_setting_5F_nodeHashMapSize (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_setting_5F_nodeHashMapSize result ;
+  const GALGAS_setting_5F_nodeHashMapSize * p = (const GALGAS_setting_5F_nodeHashMapSize *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_setting_5F_nodeHashMapSize *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("setting_nodeHashMapSize", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               Bool options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               UInt options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String options                                                   
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String List options                                              
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@assignmentFormula analyzeFormula'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_assignmentFormula::method_analyzeFormula (const GALGAS_string /* constinArgument_inSourceFilePath */,
+                                                    const GALGAS_domainMap constinArgument_inDomainMap,
+                                                    GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_uint var_totalBitCount_2946 = GALGAS_uint (uint32_t (0U)) ;
+  GALGAS_varList var_varList_2973 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("formula-assignment.ggs", 78)) ;
+  GALGAS_varMap var_varMap_2999 = GALGAS_varMap::constructor_emptyMap (SOURCE_FILE ("formula-assignment.ggs", 79)) ;
+  const GALGAS_assignmentFormula temp_0 = this ;
+  extensionMethod_analyze (temp_0.readProperty_mFormulaArgumentList (), constinArgument_inDomainMap, var_varMap_2999, var_varList_2973, var_totalBitCount_2946, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 80)) ;
+  const GALGAS_assignmentFormula temp_1 = this ;
+  switch (temp_1.readProperty_mKind ().enumValue ()) {
+  case GALGAS_formulaKind::kNotBuilt:
+    break ;
+  case GALGAS_formulaKind::kEnum_assignment:
+    {
+      const GALGAS_assignmentFormula temp_2 = this ;
+      inCompiler->printMessage (temp_2.readProperty_mFormulaName ().readProperty_string ().add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 84))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 84)) ;
+      GALGAS_timer var_timer_3213 = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.ggs", 85)) ;
+      const GALGAS_assignmentFormula temp_3 = this ;
+      GALGAS_binaryset var_result_3243 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_3.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_2999, var_totalBitCount_2946, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 86)) ;
+      {
+      const GALGAS_assignmentFormula temp_4 = this ;
+      ioArgument_ioComputedFormulaMap.setter_insertKey (temp_4.readProperty_mFormulaName (), var_varList_2973, var_totalBitCount_2946, var_result_3243, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 87)) ;
+      }
+      GALGAS_uint_36__34_ var_valueCount_3457 = var_result_3243.getter_valueCount (var_totalBitCount_2946, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 88)) ;
+      GALGAS_uint_36__34_ var_nodeCount_3591 = var_result_3243.getter_nodeCount (SOURCE_FILE ("formula-assignment.ggs", 90)) ;
+      GALGAS_string temp_5 ;
+      const enumGalgasBool test_6 = GALGAS_bool (kIsStrictSup, var_valueCount_3457.objectCompare (GALGAS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+      if (kBoolTrue == test_6) {
+        temp_5 = GALGAS_string ("s") ;
+      }else if (kBoolFalse == test_6) {
+        temp_5 = GALGAS_string::makeEmptyString () ;
+      }
+      GALGAS_string temp_7 ;
+      const enumGalgasBool test_8 = GALGAS_bool (kIsStrictSup, var_nodeCount_3591.objectCompare (GALGAS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+      if (kBoolTrue == test_8) {
+        temp_7 = GALGAS_string ("s") ;
+      }else if (kBoolFalse == test_8) {
+        temp_7 = GALGAS_string::makeEmptyString () ;
+      }
+      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_valueCount_3457.getter_string (SOURCE_FILE ("formula-assignment.ggs", 91)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 91)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 92)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 92)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 92)).add_operation (var_nodeCount_3591.getter_string (SOURCE_FILE ("formula-assignment.ggs", 93)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (var_timer_3213.getter_string (SOURCE_FILE ("formula-assignment.ggs", 94)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 94)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 94))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 91)) ;
+    }
+    break ;
+  case GALGAS_formulaKind::kEnum_fixedPoint:
+    {
+      const cEnumAssociatedValues_formulaKind_fixedPoint * extractPtr_4919 = (const cEnumAssociatedValues_formulaKind_fixedPoint *) (temp_1.readProperty_mKind ().unsafePointer ()) ;
+      const GALGAS_binaryset extractedValue_3844_startValue = extractPtr_4919->mAssociatedValue0 ;
+      const GALGAS_assignmentFormula temp_9 = this ;
+      inCompiler->printMessage (temp_9.readProperty_mFormulaName ().readProperty_string ().add_operation (GALGAS_string ("..."), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 96))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 96)) ;
+      GALGAS_timer var_timer_3906 = GALGAS_timer::constructor_start (SOURCE_FILE ("formula-assignment.ggs", 97)) ;
+      GALGAS_binaryset var_result_3947 = extractedValue_3844_startValue ;
+      {
+      const GALGAS_assignmentFormula temp_10 = this ;
+      ioArgument_ioComputedFormulaMap.setter_insertKey (temp_10.readProperty_mFormulaName (), var_varList_2973, var_totalBitCount_2946, var_result_3947, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 99)) ;
+      }
+      GALGAS_bool var_iterate_4066 = GALGAS_bool (true) ;
+      GALGAS_bigint var_iterationCount_4098 = GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 101)) ;
+      if (GALGAS_uint::constructor_max (SOURCE_FILE ("formula-assignment.ggs", 102)).isValid ()) {
+        uint32_t variant_4111 = GALGAS_uint::constructor_max (SOURCE_FILE ("formula-assignment.ggs", 102)).uintValue () ;
+        bool loop_4111 = true ;
+        while (loop_4111) {
+          loop_4111 = var_iterate_4066.isValid () ;
+          if (loop_4111) {
+            loop_4111 = var_iterate_4066.boolValue () ;
+          }
+          if (loop_4111 && (0 == variant_4111)) {
+            loop_4111 = false ;
+            inCompiler->loopRunTimeVariantError (SOURCE_FILE ("formula-assignment.ggs", 102)) ;
+          }
+          if (loop_4111) {
+            variant_4111 -- ;
+            var_iterationCount_4098.plusAssign_operation(GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)) ;
+            const GALGAS_assignmentFormula temp_11 = this ;
+            GALGAS_binaryset var_r_4178 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_11.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_2999, var_totalBitCount_2946, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 104)) ;
+            enumGalgasBool test_12 = kBoolTrue ;
+            if (kBoolTrue == test_12) {
+              test_12 = GALGAS_bool (kIsEqual, var_result_3947.objectCompare (var_r_4178)).boolEnum () ;
+              if (kBoolTrue == test_12) {
+                var_iterate_4066 = GALGAS_bool (false) ;
+              }
+            }
+            if (kBoolFalse == test_12) {
+              var_result_3947 = var_r_4178 ;
+              {
+              const GALGAS_assignmentFormula temp_13 = this ;
+              ioArgument_ioComputedFormulaMap.setter_setMValueForKey (var_result_3947, temp_13.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 109)) ;
+              }
+            }
+          }
+        }
+      }
+      GALGAS_uint_36__34_ var_valueCount_4483 = var_result_3947.getter_valueCount (var_totalBitCount_2946, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 112)) ;
+      GALGAS_uint_36__34_ var_nodeCount_4617 = var_result_3947.getter_nodeCount (SOURCE_FILE ("formula-assignment.ggs", 114)) ;
+      GALGAS_string temp_14 ;
+      const enumGalgasBool test_15 = GALGAS_bool (kIsStrictSup, var_iterationCount_4098.objectCompare (GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)))).boolEnum () ;
+      if (kBoolTrue == test_15) {
+        temp_14 = GALGAS_string ("s") ;
+      }else if (kBoolFalse == test_15) {
+        temp_14 = GALGAS_string::makeEmptyString () ;
+      }
+      GALGAS_string temp_16 ;
+      const enumGalgasBool test_17 = GALGAS_bool (kIsStrictSup, var_valueCount_4483.objectCompare (GALGAS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+      if (kBoolTrue == test_17) {
+        temp_16 = GALGAS_string ("s") ;
+      }else if (kBoolFalse == test_17) {
+        temp_16 = GALGAS_string::makeEmptyString () ;
+      }
+      GALGAS_string temp_18 ;
+      const enumGalgasBool test_19 = GALGAS_bool (kIsStrictSup, var_nodeCount_4617.objectCompare (GALGAS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+      if (kBoolTrue == test_19) {
+        temp_18 = GALGAS_string ("s") ;
+      }else if (kBoolFalse == test_19) {
+        temp_18 = GALGAS_string::makeEmptyString () ;
+      }
+      inCompiler->printMessage (GALGAS_string (" ").add_operation (var_iterationCount_4098.getter_string (SOURCE_FILE ("formula-assignment.ggs", 115)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (GALGAS_string (" iteration"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (temp_14, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (var_valueCount_4483.getter_string (SOURCE_FILE ("formula-assignment.ggs", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (temp_16, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (var_nodeCount_4617.getter_string (SOURCE_FILE ("formula-assignment.ggs", 118)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (GALGAS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (temp_18, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (var_timer_3906.getter_string (SOURCE_FILE ("formula-assignment.ggs", 119)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 119)).add_operation (GALGAS_string (")\n"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 119))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)) ;
+    }
+    break ;
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
 //
 //Overriding extension method '@setting_nodeHashMapSize analyzeFormula'
 //
