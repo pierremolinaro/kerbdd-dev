@@ -30,14 +30,14 @@ syntax extension kerbdd_syntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override proc @graphvizFormula. analyzeFormula(
-  ?let @string inSourceFilePath
-  ?let @domainMap unused inDomainMap
+  ?let @string inSourceFilePath,
+  ?let @domainMap unused inDomainMap,
   ?!@computedFormulaMap ioComputedFormulaMap)
 {
-  [ioComputedFormulaMap searchKey !self.mFormulaName ?let @varList varList ?* ?let result]
-  let filePath = [inSourceFilePath stringByDeletingPathExtension] + "." + self.mFormulaName + ".dot"
-  message "Graphviz $" + self.mFormulaName + " -> " + filePath + "\n"
-  var @stringlist bitNameList = {}
+  [ioComputedFormulaMap searchKey !self.mFormulaName, ?let @varList varList, ?*, ?let result]
+  let filePath = inSourceFilePath.stringByDeletingPathExtension () + "." + self.mFormulaName + ".dot"
+  print ("Graphviz $" + self.mFormulaName + " -> " + filePath)
+  var @stringlist bitNameList = []
   for > (mVarName * mBitCount) in varList do
     if mBitCount == 1 then
       bitNameList += !mVarName
@@ -47,8 +47,8 @@ override proc @graphvizFormula. analyzeFormula(
       end
     end
   end
-  let s = [result graphviz !bitNameList]
-  [s writeToFileWhenDifferentContents !filePath ?*]
+  let s = result.graphviz (!bitNameList)
+  [s writeToFileWhenDifferentContents !filePath, ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

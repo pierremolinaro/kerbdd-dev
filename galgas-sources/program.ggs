@@ -1,8 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract proc @abstractFormula. analyzeFormula(
-  ?let @string inSourceFilePath
-  ?let @domainMap inDomainMap
+  ?let @string inSourceFilePath,
+  ?let @domainMap inDomainMap,
   ?!@computedFormulaMap ioComputedFormulaMap)
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -18,9 +18,9 @@ grammar kerbdd_grammar
 #--- Analyze domaines
   [ast.mDomainList analyze ?let @domainMap domainMap]
 #--- Analyze formulas
-  var @computedFormulaMap computedFormulaMap = {}
+  var @computedFormulaMap computedFormulaMap = []
   for (formula) in ast.mFormulaList while @uint.errorCount == 0 do
-    [formula analyzeFormula !inSourceFile.string !domainMap !?computedFormulaMap]
+    [formula analyzeFormula !inSourceFile.string, !domainMap, !?computedFormulaMap]
   end
 }
 

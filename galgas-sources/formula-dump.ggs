@@ -30,20 +30,20 @@ syntax extension kerbdd_syntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override proc @dumpFormula. analyzeFormula( 
-  ?let @string unused inSourceFilePath
-  ?let @domainMap unused inDomainMap
+  ?let @string unused inSourceFilePath,
+  ?let @domainMap unused inDomainMap,
   ?!@computedFormulaMap ioComputedFormulaMap)
 {
-  [ioComputedFormulaMap searchKey !self.mFormulaName ?let @varList varList ?let bitCount ?let result]
-  let @uint64 valueCount = [result valueCount !bitCount]
-  message "Dump $" + self.mFormulaName + " (" + valueCount + " value" + if valueCount > 1 then "s" else "" end + ")\n"
-  var @stringlist nameList = {}
-  var @uintlist bitCountList = {}
+  [ioComputedFormulaMap searchKey !self.mFormulaName, ?let @varList varList, ?let bitCount, ?let result]
+  let @uint64 valueCount = result.valueCount (!bitCount)
+  print ("Dump $" + self.mFormulaName + " (" + valueCount + " value" + if valueCount > 1 then "s" else "" end + ")")
+  var @stringlist nameList = []
+  var @uintlist bitCountList = []
   for (mVarName * mBitCount) in varList do
     nameList += !mVarName
     bitCountList += !mBitCount
   end
-  message [result print !nameList !bitCountList]
+  print (result.print (!nameList, !bitCountList))
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

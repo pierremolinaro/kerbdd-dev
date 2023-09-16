@@ -913,6 +913,11 @@ class GALGAS_recordDomainMap : public AC_GALGAS_map {
                                                      const class GALGAS_recordDomainMap & inOperand3,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GALGAS_recordDomainMap add_operation (const GALGAS_recordDomainMap & inOperand,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
@@ -1187,6 +1192,11 @@ class GALGAS_domainMap : public AC_GALGAS_map {
                                                      const class GALGAS_recordDomainMap & inOperand2,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GALGAS_domainMap add_operation (const GALGAS_domainMap & inOperand,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
@@ -1714,6 +1724,11 @@ class GALGAS_varMap : public AC_GALGAS_map {
                                                      const class GALGAS_recordDomainMap & inOperand3,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GALGAS_varMap add_operation (const GALGAS_varMap & inOperand,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
@@ -2321,6 +2336,11 @@ class GALGAS_computedFormulaMap : public AC_GALGAS_map {
                                                      const class GALGAS_binaryset & inOperand3,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GALGAS_computedFormulaMap add_operation (const GALGAS_computedFormulaMap & inOperand,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
@@ -6666,9 +6686,7 @@ class GALGAS_ast : public AC_GALGAS_root {
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_ast constructor_new (const class GALGAS_domainDeclarationList & inOperand0,
-                                                   const class GALGAS_formulaList & inOperand1
-                                                   COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_ast constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,

@@ -148,11 +148,11 @@ rule <expression>( !@expression outExpression) {
   or
     $=$
     <comparison>( ?let @expression rightExpression)
-    outExpression = @equalExpression.new (!outExpression !rightExpression)
+    outExpression = @equalExpression.new (!outExpression, !rightExpression)
   or
     $!=$
     <comparison>( ?let @expression rightExpression)
-    outExpression = @notEqualExpression.new (!outExpression !rightExpression)
+    outExpression = @notEqualExpression.new (!outExpression, !rightExpression)
   end
 }
 
@@ -164,11 +164,11 @@ rule <comparison>( !@expression outExpression) {
   while
     $|$
     <term>( ?let @expression rightExpression)
-    outExpression = @orExpression.new (!outExpression !rightExpression)
+    outExpression = @orExpression.new (!outExpression, !rightExpression)
   while
     $^$
     <term>( ?let @expression rightExpression)
-    outExpression = @xorExpression.new (!outExpression !rightExpression)
+    outExpression = @xorExpression.new (!outExpression, !rightExpression)
   end
 }
 
@@ -180,11 +180,11 @@ rule <term>( !@expression outExpression) {
   while
     $&$
     <factor>( ?let @expression rightExpression)
-    outExpression = @andExpression.new (!outExpression !rightExpression)
+    outExpression = @andExpression.new (!outExpression, !rightExpression)
   while
     $->$
     <factor>( ?let @expression rightExpression)
-    outExpression = @impliesExpression.new (!outExpression !rightExpression)
+    outExpression = @impliesExpression.new (!outExpression, !rightExpression)
   end
 }
 
@@ -197,7 +197,7 @@ rule <factor>( !@expression outExpression) {
   or
     $.$
     $integer$( ?let varBit)
-    outExpression = @varBitInExpression.new (!varName !varBit)
+    outExpression = @varBitInExpression (!varName, !varBit)
   end
 }
 
@@ -235,13 +235,13 @@ rule <factor>( !@expression outExpression) {
 
 rule <factor>( !@expression outExpression) {
   $identifier$( ?let formulaName)
-  var @formulaParameterListInExpression parameterList = {}
+  var @formulaParameterListInExpression parameterList = []
   $($
   select
   or
     repeat
       $identifier$( ?let parameterName)
-      var @lstringlist fieldNames = {}
+      var @lstringlist fieldNames = []
       repeat
       while
         $.$
@@ -254,7 +254,7 @@ rule <factor>( !@expression outExpression) {
     end
   end
   $)$
-  outExpression = @formulaInExpression.new (!formulaName !parameterList)
+  outExpression = @formulaInExpression.new (!formulaName, !parameterList)
 }
 
 #·······················································································································
@@ -265,7 +265,7 @@ rule <factor>( !@expression outExpression) {
   $($
   <expression>( ?let expression)
   $)$
-  outExpression = @existInExpression.new (!domainFieldList !expression)
+  outExpression = @existInExpression.new (!domainFieldList, !expression)
 }
 
 #·······················································································································
@@ -276,14 +276,14 @@ rule <factor>( !@expression outExpression) {
   $($
   <expression>( ?let expression)
   $)$
-  outExpression = @forAllInExpression.new (!domainFieldList !expression)
+  outExpression = @forAllInExpression.new (!domainFieldList, !expression)
 }
 #·······················································································································
 
 rule <factor>( !@expression outExpression) {
   ${$
   $identifier$( ?let varName)
-  var @lstringlist leftFieldNames = {}
+  var @lstringlist leftFieldNames = []
   repeat
   while
     $.$
@@ -312,17 +312,17 @@ rule <factor>( !@expression outExpression) {
   end
   select
     $integer$( ?let constant)
-    outExpression = @comparisonWithConstantInExpression.new (!varName !leftFieldNames !comparison !constant)
+    outExpression = @comparisonWithConstantInExpression.new (!varName, !leftFieldNames, !comparison, !constant)
   or
     $identifier$( ?let rightVarName)
-    var @lstringlist rightFieldNames = {}
+    var @lstringlist rightFieldNames = []
     repeat
     while
       $.$
       $identifier$( ?let fieldName)
       rightFieldNames += !fieldName
     end
-    outExpression = @variableComparisonInExpression.new (!varName !leftFieldNames !comparison !rightVarName !rightFieldNames)
+    outExpression = @variableComparisonInExpression.new (!varName, !leftFieldNames, !comparison, !rightVarName, !rightFieldNames)
   end
   $}$
 }
@@ -336,23 +336,23 @@ rule <factor>( !@expression outExpression) {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract func @expression. computeExpression(
-  ?let @domainMap inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint inTotalBitCount
+  ?let @domainMap inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @varInExpression. computeExpression(
-  ?let @domainMap unused inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint unused inTotalBitCount
+  ?let @domainMap unused inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint unused inTotalBitCount,
   ?let @computedFormulaMap unused inComputedFormulaMap)
   -> @binaryset outResult
 {
-  [inVarMap searchKey !self.mVarName ?let idx ?let bitCount ?let subdomainMap]
-  if [subdomainMap count] > 0 then
+  [inVarMap searchKey !self.mVarName, ?let idx, ?let bitCount, ?let subdomainMap]
+  if subdomainMap.count () > 0 then
     error self.mVarName : "variable is a record; use dot notation"
   elsif bitCount != 1 then
     error self.mVarName : "variable is not boolean; use {...} or dot notation"
@@ -363,14 +363,14 @@ override func @varInExpression. computeExpression(
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @varBitInExpression. computeExpression(
-  ?let @domainMap unused inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint unused inTotalBitCount
+  ?let @domainMap unused inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint unused inTotalBitCount,
   ?let @computedFormulaMap unused inComputedFormulaMap)
   -> @binaryset outResult
 {
-  [inVarMap searchKey !self.mVarName ?let idx ?let bitCount ?let subdomainMap]
-  if [subdomainMap count] > 0 then
+  [inVarMap searchKey !self.mVarName, ?let idx, ?let bitCount, ?let subdomainMap]
+  if subdomainMap.count () > 0 then
     error self.mVarName : "variable is a record; use dot notation"
   elsif bitCount <= self.mVarBit.uint then
     error self.mVarBit : "bit index should be < " + bitCount
@@ -381,105 +381,105 @@ override func @varBitInExpression. computeExpression(
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @andExpression. computeExpression(
-  ?let @domainMap inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint inTotalBitCount
+  ?let @domainMap inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
-  let left  = [self.mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [self.mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let left  = self.mLeftExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
+  let right = self.mRightExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
   outResult = left & right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @orExpression. computeExpression(
-  ?let @domainMap inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint inTotalBitCount
+  ?let @domainMap inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
-  let left  = [self.mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [self.mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let left  = self.mLeftExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
+  let right = self.mRightExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
   outResult = left | right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @xorExpression. computeExpression(
-  ?let @domainMap inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint inTotalBitCount
+  ?let @domainMap inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
-  let left  = [self.mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [self.mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let left  = self.mLeftExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
+  let right = self.mRightExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
   outResult = left ^ right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @impliesExpression. computeExpression(
-  ?let @domainMap inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint inTotalBitCount
+  ?let @domainMap inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
-  let left  = [self.mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [self.mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  outResult = [left implies !right]
+  let left  = self.mLeftExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
+  let right = self.mRightExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
+  outResult = left.implies (right)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @equalExpression. computeExpression(
-  ?let @domainMap inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint inTotalBitCount
+  ?let @domainMap inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
-  let left  = [self.mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [self.mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let left  = self.mLeftExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
+  let right = self.mRightExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
   outResult = ~(left ^ right)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @notEqualExpression. computeExpression(
-  ?let @domainMap inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint inTotalBitCount
+  ?let @domainMap inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
-  let left  = [self.mLeftExpression  computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
-  let right = [self.mRightExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  let left  = self.mLeftExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
+  let right = self.mRightExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
   outResult = left ^ right
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @complementExpression. computeExpression(
-  ?let @domainMap inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint inTotalBitCount
+  ?let @domainMap inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
-  outResult = ~ [self.mExpression computeExpression !inDomainMap !inVarMap !inTotalBitCount !inComputedFormulaMap]
+  outResult = ~ self.mExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @trueExpression. computeExpression(
-  ?let @domainMap unused inDomainMap
-  ?let @varMap unused inVarMap
-  ?let @uint unused inTotalBitCount
+  ?let @domainMap unused inDomainMap,
+  ?let @varMap unused inVarMap,
+  ?let @uint unused inTotalBitCount,
   ?let @computedFormulaMap unused inComputedFormulaMap)
   -> @binaryset outResult
 {
@@ -489,9 +489,9 @@ override func @trueExpression. computeExpression(
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @falseExpression. computeExpression(
-  ?let @domainMap unused inDomainMap
-  ?let @varMap unused inVarMap
-  ?let @uint unused inTotalBitCount
+  ?let @domainMap unused inDomainMap,
+  ?let @varMap unused inVarMap,
+  ?let @uint unused inTotalBitCount,
   ?let @computedFormulaMap unused inComputedFormulaMap)
   -> @binaryset outResult
 {
@@ -501,27 +501,27 @@ override func @falseExpression. computeExpression(
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @formulaInExpression. computeExpression(
-  ?let @domainMap unused inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint unused inTotalBitCount
+  ?let @domainMap unused inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint unused inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
 #--- Read formula
-  [inComputedFormulaMap searchKey !self.mFormulaName ?let varList ?let unused totalBitCount ?let formulaValue]
+  [inComputedFormulaMap searchKey !self.mFormulaName, ?let varList, ?let unused totalBitCount, ?let formulaValue]
 #--- Check parameter list
-  if [self.mParameterList length] != [varList length] then
+  if self.mParameterList.length () != varList.length () then
     error self.mFormulaName : "the $" + self.mFormulaName + " names "
-      + [varList length] + " variable" + if [varList length] > 1 then "s" else "" end
+      + varList.length () + " variable" + if varList.length () > 1 then "s" else "" end
       + ", but this call names "
-      + [self.mParameterList length] + " variable" + if [self.mParameterList length] > 1 then "s" else "" end
-    spoil outResult
+      + self.mParameterList.length () + " variable" + if self.mParameterList.length () > 1 then "s" else "" end
+    spoil (outResult)
   else
-    var @uintlist transformationList = {}
+    var @uintlist transformationList = []
     for > (formalName * formalBitCount) in varList, > (parameterName fieldNameList) in self.mParameterList do
-      [inVarMap searchKey !parameterName ?@uint parameterIndex ?@uint parameterBitCount ?@recordDomainMap subdomainMap]
+      [inVarMap searchKey !parameterName, ?@uint parameterIndex, ?@uint parameterBitCount, ?@recordDomainMap subdomainMap]
       for (fieldName) in fieldNameList do
-        [subdomainMap searchKey !fieldName ?let fieldRelativeBitIndex ?parameterBitCount ?let fieldSubdomainMap]
+        [subdomainMap searchKey !fieldName, ?let fieldRelativeBitIndex, ?parameterBitCount, ?let fieldSubdomainMap]
         parameterIndex = parameterIndex + fieldRelativeBitIndex
         subdomainMap = fieldSubdomainMap
       end
@@ -535,75 +535,75 @@ override func @formulaInExpression. computeExpression(
         transformationList += !parameterIndex + i
       end
     end
-    outResult = [formulaValue transformedBy !transformationList]
+    outResult = formulaValue.transformedBy (transformationList)
   end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @existInExpression. computeExpression(
-  ?let @domainMap inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint inTotalBitCount
+  ?let @domainMap inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
   var @varMap varMap = inVarMap
   var @uint totalBitCount = inTotalBitCount 
-  [self.mArgumentList analyze !inDomainMap !?varMap !?* !?totalBitCount]
-  let r = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !inComputedFormulaMap]
-  outResult = [r existOnBitIndexAndBeyond !inTotalBitCount]
+  [self.mArgumentList analyze !inDomainMap, !?varMap, !?*, !?totalBitCount]
+  let r = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !inComputedFormulaMap)
+  outResult = r.existOnBitIndexAndBeyond (!inTotalBitCount)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @forAllInExpression. computeExpression(
-  ?let @domainMap inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint inTotalBitCount
+  ?let @domainMap inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint inTotalBitCount,
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
   var @varMap varMap = inVarMap
   var @uint totalBitCount = inTotalBitCount 
-  [self.mArgumentList analyze !inDomainMap !?varMap !?* !?totalBitCount]
-  let r = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !inComputedFormulaMap]
-  outResult = [r forAllOnBitIndexAndBeyond !inTotalBitCount]
+  [self.mArgumentList analyze !inDomainMap, !?varMap, !?*, !?totalBitCount]
+  let r = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !inComputedFormulaMap)
+  outResult = r.forAllOnBitIndexAndBeyond (inTotalBitCount)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @comparisonWithConstantInExpression. computeExpression(
-  ?let @domainMap unused inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint unused inTotalBitCount
+  ?let @domainMap unused inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint unused inTotalBitCount,
   ?let @computedFormulaMap unused inComputedFormulaMap)
   -> @binaryset outResult
 {
-  [inVarMap searchKey !self.mVarName ?@uint idx ?@uint bitCount ?@recordDomainMap subDomainMap]
+  [inVarMap searchKey !self.mVarName, ?@uint idx, ?@uint bitCount, ?@recordDomainMap subDomainMap]
   for (fieldName) in self.mFieldNames do
-    [subDomainMap searchKey !fieldName ?let fieldRelativeBitIndex ?bitCount ?let fieldSubdomainMap]
+    [subDomainMap searchKey !fieldName, ?let fieldRelativeBitIndex, ?bitCount, ?let fieldSubdomainMap]
     idx = idx + fieldRelativeBitIndex
     subDomainMap = fieldSubdomainMap
   end
-  if [subDomainMap count] > 0 then
-    error self.mVarName : "variable is a record; use dot notation" spoil outResult
-  elsif [self.mConstant.uint significantBitCount] > bitCount then
-    error self.mConstant : "Constant too large (should be < 2**" + bitCount spoil outResult
+  if subDomainMap.count () > 0 then
+    error self.mVarName : "variable is a record; use dot notation" spoil (outResult)
+  elsif self.mConstant.uint.significantBitCount () > bitCount then
+    error self.mConstant : "Constant too large (should be < 2**" + bitCount spoil (outResult)
   else
     switch self.mComparison
     case equal :
-      outResult = @binaryset.binarySetWithEqualToConstant (!idx !bitCount ![self.mConstant.uint uint64])
+      outResult = @binaryset.binarySetWithEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
     case notEqual :
-      outResult = @binaryset.binarySetWithNotEqualToConstant (!idx !bitCount ![self.mConstant.uint uint64])
+      outResult = @binaryset.binarySetWithNotEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
     case lowerOrEqual :
-      outResult = @binaryset.binarySetWithLowerOrEqualToConstant (!idx !bitCount ![self.mConstant.uint uint64])
+      outResult = @binaryset.binarySetWithLowerOrEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
     case lowerThan :
-      outResult = @binaryset.binarySetWithStrictLowerThanConstant (!idx !bitCount ![self.mConstant.uint uint64])
+      outResult = @binaryset.binarySetWithStrictLowerThanConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
     case greaterOrEqual :
-      outResult = @binaryset.binarySetWithGreaterOrEqualToConstant (!idx !bitCount ![self.mConstant.uint uint64])
+      outResult = @binaryset.binarySetWithGreaterOrEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
     case greaterThan :
-      outResult = @binaryset.binarySetWithStrictGreaterThanConstant (!idx !bitCount ![self.mConstant.uint uint64])
+      outResult = @binaryset.binarySetWithStrictGreaterThanConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
     end
   end
 }
@@ -611,48 +611,48 @@ override func @comparisonWithConstantInExpression. computeExpression(
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @variableComparisonInExpression. computeExpression(
-  ?let @domainMap unused inDomainMap
-  ?let @varMap inVarMap
-  ?let @uint unused inTotalBitCount
+  ?let @domainMap unused inDomainMap,
+  ?let @varMap inVarMap,
+  ?let @uint unused inTotalBitCount,
   ?let @computedFormulaMap unused inComputedFormulaMap)
   -> @binaryset outResult
 {
-  [inVarMap searchKey !self.mLeftVarName  ?@uint  leftIdx ?@uint  leftBitCount ?@recordDomainMap  leftSubDomainMap]
+  [inVarMap searchKey !self.mLeftVarName, ?@uint leftIdx, ?@uint  leftBitCount, ?@recordDomainMap  leftSubDomainMap]
   for (fieldName) in self.mLeftFieldNames do
-    [leftSubDomainMap searchKey !fieldName ?let fieldRelativeBitIndex ?leftBitCount ?let fieldSubdomainMap]
+    [leftSubDomainMap searchKey !fieldName, ?let fieldRelativeBitIndex, ?leftBitCount, ?let fieldSubdomainMap]
     leftIdx = leftIdx + fieldRelativeBitIndex
     leftSubDomainMap = fieldSubdomainMap
   end
-  [inVarMap searchKey !self.mRightVarName ?@uint rightIdx ?@uint rightBitCount ?@recordDomainMap rightSubDomainMap]
+  [inVarMap searchKey !self.mRightVarName, ?@uint rightIdx, ?@uint rightBitCount, ?@recordDomainMap rightSubDomainMap]
   for (fieldName) in self.mRightFieldNames do
-    [rightSubDomainMap searchKey !fieldName ?let fieldRelativeBitIndex ?rightBitCount ?let fieldSubdomainMap]
+    [rightSubDomainMap searchKey !fieldName, ?let fieldRelativeBitIndex, ?rightBitCount, ?let fieldSubdomainMap]
     rightIdx = rightIdx + fieldRelativeBitIndex
     rightSubDomainMap = fieldSubdomainMap
   end
-  if [leftSubDomainMap count] > 0 then
-    error self.mLeftVarName : "variable is a record; use dot notation" spoil outResult
-  elsif [rightSubDomainMap count] > 0 then
-    error self.mRightVarName : "variable is a record; use dot notation" spoil outResult
+  if leftSubDomainMap.count () > 0 then
+    error self.mLeftVarName : "variable is a record; use dot notation" spoil (outResult)
+  elsif rightSubDomainMap.count () > 0 then
+    error self.mRightVarName : "variable is a record; use dot notation" spoil (outResult)
   elsif leftBitCount != rightBitCount then
     error self.mRightVarName : "'" + self.mLeftVarName + "' variable uses "
       + leftBitCount + " bit" + if leftBitCount > 1 then "s" else "" end
       + ", but this variable uses "
       + rightBitCount + " bit" + if rightBitCount > 1 then "s" else "" end
-    spoil outResult
+    spoil (outResult)
   else
     switch self.mComparison
     case equal :
-      outResult = @binaryset.binarySetWithEqualComparison (!leftIdx !leftBitCount !rightIdx)
+      outResult = @binaryset.binarySetWithEqualComparison (!leftIdx, !leftBitCount, !rightIdx)
     case notEqual :
-      outResult = @binaryset.binarySetWithNotEqualComparison (!leftIdx !leftBitCount !rightIdx)
+      outResult = @binaryset.binarySetWithNotEqualComparison (!leftIdx, !leftBitCount, !rightIdx)
     case lowerOrEqual :
-      outResult = @binaryset.binarySetWithLowerOrEqualComparison (!leftIdx !leftBitCount !rightIdx)
+      outResult = @binaryset.binarySetWithLowerOrEqualComparison (!leftIdx, !leftBitCount, !rightIdx)
     case lowerThan :
-      outResult = @binaryset.binarySetWithStrictLowerComparison (!leftIdx !leftBitCount !rightIdx)
+      outResult = @binaryset.binarySetWithStrictLowerComparison (!leftIdx, !leftBitCount, !rightIdx)
     case greaterOrEqual :
-      outResult = @binaryset.binarySetWithGreaterOrEqualComparison (!leftIdx !leftBitCount !rightIdx)
+      outResult = @binaryset.binarySetWithGreaterOrEqualComparison (!leftIdx, !leftBitCount, !rightIdx)
     case greaterThan :
-      outResult = @binaryset.binarySetWithStrictGreaterComparison (!leftIdx !leftBitCount !rightIdx)
+      outResult = @binaryset.binarySetWithStrictGreaterComparison (!leftIdx, !leftBitCount, !rightIdx)
     end
   end
 }

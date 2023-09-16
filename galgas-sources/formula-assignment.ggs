@@ -29,7 +29,7 @@ rule <topLevelDeClaration>( ?!@ast ioAST) {
   let @domainFieldList domainFieldList
   $($
   select
-    domainFieldList = {}
+    domainFieldList = []
   or
     <recordFields>( ?domainFieldList)
   end
@@ -47,7 +47,7 @@ rule <topLevelDeClaration>( ?!@ast ioAST) {
   end
   <expression>( ?let @expression expression)
   $;$
-  ioAST.mFormulaList += !@assignmentFormula.new (!formulaName !domainFieldList !kind !expression)
+  ioAST.mFormulaList += !@assignmentFormula.new (!formulaName, !domainFieldList, !kind, !expression)
 }
 
 #·······················································································································
@@ -69,54 +69,54 @@ map @computedFormulaMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override proc @assignmentFormula. analyzeFormula( 
-  ?let @string unused inSourceFilePath
-  ?let @domainMap inDomainMap
+  ?let @string unused inSourceFilePath,
+  ?let @domainMap inDomainMap,
   ?!@computedFormulaMap ioComputedFormulaMap)
 {
 #--- Build variable map
   var @uint totalBitCount = 0
-  var @varList varList = {}
-  var @varMap varMap = {}
-  [self.mFormulaArgumentList analyze !inDomainMap !?varMap !?varList !?totalBitCount]
+  var @varList varList = []
+  var @varMap varMap = []
+  [self.mFormulaArgumentList analyze !inDomainMap, !?varMap, !?varList, !?totalBitCount]
 #--- Compute expression
   switch self.mKind
   case assignment :
-    message self.mFormulaName.string + "..."
+#    print (self.mFormulaName.string + "...")
     let timer = @timer.start
-    let result = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
-    [!?ioComputedFormulaMap insertKey !self.mFormulaName !varList !totalBitCount !result]
-    let @uint64 valueCount = [result valueCount !totalBitCount]
+    let result = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !ioComputedFormulaMap)
+    !?ioComputedFormulaMap.insertKey (!self.mFormulaName, !varList, !totalBitCount, !result)
+    let @uint64 valueCount = result.valueCount (totalBitCount)
 #    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
-    let @uint64 nodeCount = [result nodeCount]
-    message " "
+    let @uint64 nodeCount = result.nodeCount ()
+    print (" "
       + valueCount + " value" + if valueCount > 1 then "s" else "" end
       + ", " + nodeCount + " node" + if nodeCount > 1 then "s" else "" end
-      + " (" + timer + ")\n"
+      + " (" + timer + ")")
   case fixedPoint (@binaryset startValue) :
-    message self.mFormulaName.string + "..."
+#    message self.mFormulaName.string + "..."
     let timer = @timer.start
     var @binaryset result = startValue
-    [!?ioComputedFormulaMap insertKey !self.mFormulaName !varList !totalBitCount !result]
+    !?ioComputedFormulaMap.insertKey (!self.mFormulaName, !varList, !totalBitCount, !result)
     var iterate = true ;
     var iterationCount = 0
     loop (@uint.max) while iterate do
       iterationCount += 1
-      let r = [self.mExpression computeExpression !inDomainMap !varMap !totalBitCount !ioComputedFormulaMap]
+      let r = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !ioComputedFormulaMap)
       if result == r then
         iterate = false
       else
         result = r
-        [!?ioComputedFormulaMap setMValueForKey !result !self.mFormulaName.string]
+        !?ioComputedFormulaMap.setMValueForKey (!result, !self.mFormulaName.string)
       end
     end
-    let @uint64 valueCount = [result valueCount !totalBitCount]
+    let @uint64 valueCount = result.valueCount (totalBitCount)
 #    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
-    let @uint64 nodeCount = [result nodeCount]
-    message " "
+    let @uint64 nodeCount = result.nodeCount ()
+    print (" "
       + iterationCount + " iteration" + if iterationCount > 1 then "s" else "" end
       + ", " + valueCount + " value" + if valueCount > 1 then "s" else "" end
       + ", " + nodeCount + " node" + if nodeCount > 1 then "s" else "" end
-      + " (" + timer + ")\n"
+      + " (" + timer + ")")
   end
 }
 

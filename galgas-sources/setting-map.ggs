@@ -44,22 +44,22 @@ syntax extension kerbdd_syntax {
 #    ANALYZE FORMULA                                                                                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override proc @setting_nodeHashMapSize. analyzeFormula( 
-  ?let @string unused inSourceFilePath
-  ?let @domainMap unused inDomainMap
+override proc @setting_nodeHashMapSize. analyzeFormula ( 
+  ?let @string unused inSourceFilePath,
+  ?let @domainMap unused inDomainMap,
   ?!@computedFormulaMap unused ioComputedFormulaMap)
 {
-  [@binaryset setNodeTableSize !self.mSetting.uint]
+  @binaryset.setNodeTableSize (!self.mSetting.uint)
 }
 
 #·······················································································································
 
 override proc @setting_andCacheMapSize. analyzeFormula( 
-  ?let @string unused inSourceFilePath
-  ?let @domainMap unused inDomainMap
+  ?let @string unused inSourceFilePath,
+  ?let @domainMap unused inDomainMap,
   ?!@computedFormulaMap unused ioComputedFormulaMap)
 {
-  [@binaryset setAndTableSize !self.mSetting.uint]
+  @binaryset.setAndTableSize (!self.mSetting.uint)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

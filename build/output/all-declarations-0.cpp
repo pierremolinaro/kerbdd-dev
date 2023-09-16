@@ -2743,7 +2743,6 @@ mProperty_mSubDomain (in_mSubDomain) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_recordDomainMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mSubDomain.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -2850,6 +2849,20 @@ void GALGAS_recordDomainMap::addAssign_operation (const GALGAS_lstring & inKey,
   const char * kInsertErrorMessage = "@recordDomainMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_recordDomainMap GALGAS_recordDomainMap::add_operation (const GALGAS_recordDomainMap & inOperand,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_recordDomainMap result = *this ;
+  cEnumerator_recordDomainMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), enumerator.current_mBitCount (HERE), enumerator.current_mSubDomain (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3121,7 +3134,6 @@ mProperty_mRecordMap (in_mRecordMap) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_domainMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordMap.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -3220,6 +3232,20 @@ void GALGAS_domainMap::addAssign_operation (const GALGAS_lstring & inKey,
   const char * kInsertErrorMessage = "@domainMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_domainMap GALGAS_domainMap::add_operation (const GALGAS_domainMap & inOperand,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  GALGAS_domainMap result = *this ;
+  cEnumerator_domainMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mBitCount (HERE), enumerator.current_mRecordMap (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3455,8 +3481,8 @@ void extensionMethod_analyze (const GALGAS_domainDeclarationList inObject,
         break ;
       case GALGAS_domainDeclarationType::kEnum_type:
         {
-          const cEnumAssociatedValues_domainDeclarationType_type * extractPtr_4735 = (const cEnumAssociatedValues_domainDeclarationType_type *) (enumerator_4285.current_mType (HERE).unsafePointer ()) ;
-          const GALGAS_bddType extractedValue_4380_type = extractPtr_4735->mAssociatedValue0 ;
+          const cEnumAssociatedValues_domainDeclarationType_type * extractPtr_4740 = (const cEnumAssociatedValues_domainDeclarationType_type *) (enumerator_4285.current_mType (HERE).unsafePointer ()) ;
+          const GALGAS_bddType extractedValue_4380_type = extractPtr_4740->mAssociatedValue0 ;
           switch (extractedValue_4380_type.enumValue ()) {
           case GALGAS_bddType::kNotBuilt:
             break ;
@@ -3469,22 +3495,22 @@ void extensionMethod_analyze (const GALGAS_domainDeclarationList inObject,
             break ;
           case GALGAS_bddType::kEnum_boolArray:
             {
-              const cEnumAssociatedValues_bddType_boolArray * extractPtr_4554 = (const cEnumAssociatedValues_bddType_boolArray *) (extractedValue_4380_type.unsafePointer ()) ;
-              const GALGAS_uint extractedValue_4500_size = extractPtr_4554->mAssociatedValue0 ;
+              const cEnumAssociatedValues_bddType_boolArray * extractPtr_4556 = (const cEnumAssociatedValues_bddType_boolArray *) (extractedValue_4380_type.unsafePointer ()) ;
+              const GALGAS_uint extractedValue_4501_size = extractPtr_4556->mAssociatedValue0 ;
               {
-              outArgument_outDomainMap.setter_insertKey (enumerator_4285.current_mDomainName (HERE), extractedValue_4500_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 130)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_4285.current_mDomainName (HERE), extractedValue_4501_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 130)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
               }
             }
             break ;
           case GALGAS_bddType::kEnum_namedType:
             {
-              const cEnumAssociatedValues_bddType_namedType * extractPtr_4725 = (const cEnumAssociatedValues_bddType_namedType *) (extractedValue_4380_type.unsafePointer ()) ;
-              const GALGAS_lstring extractedValue_4594_typeName = extractPtr_4725->mAssociatedValue0 ;
-              GALGAS_uint var_size_4649 ;
-              GALGAS_recordDomainMap var_subdomain_4664 ;
-              outArgument_outDomainMap.method_searchKey (extractedValue_4594_typeName, var_size_4649, var_subdomain_4664, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
+              const cEnumAssociatedValues_bddType_namedType * extractPtr_4730 = (const cEnumAssociatedValues_bddType_namedType *) (extractedValue_4380_type.unsafePointer ()) ;
+              const GALGAS_lstring extractedValue_4596_typeName = extractPtr_4730->mAssociatedValue0 ;
+              GALGAS_uint var_size_4652 ;
+              GALGAS_recordDomainMap var_subdomain_4668 ;
+              outArgument_outDomainMap.method_searchKey (extractedValue_4596_typeName, var_size_4652, var_subdomain_4668, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
               {
-              outArgument_outDomainMap.setter_insertKey (enumerator_4285.current_mDomainName (HERE), var_size_4649, var_subdomain_4664, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_4285.current_mDomainName (HERE), var_size_4652, var_subdomain_4668, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
               }
             }
             break ;
@@ -3493,57 +3519,57 @@ void extensionMethod_analyze (const GALGAS_domainDeclarationList inObject,
         break ;
       case GALGAS_domainDeclarationType::kEnum_record:
         {
-          const cEnumAssociatedValues_domainDeclarationType_record * extractPtr_5494 = (const cEnumAssociatedValues_domainDeclarationType_record *) (enumerator_4285.current_mType (HERE).unsafePointer ()) ;
-          const GALGAS_domainFieldList extractedValue_4779_fieldList = extractPtr_5494->mAssociatedValue0 ;
-          GALGAS_bigint var_bitIndex_4801 = GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
-          GALGAS_recordDomainMap var_recordMap_4842 = GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 137)) ;
-          cEnumerator_domainFieldList enumerator_4880 (extractedValue_4779_fieldList, kENUMERATION_DOWN) ;
+          const cEnumAssociatedValues_domainDeclarationType_record * extractPtr_5508 = (const cEnumAssociatedValues_domainDeclarationType_record *) (enumerator_4285.current_mType (HERE).unsafePointer ()) ;
+          const GALGAS_domainFieldList extractedValue_4784_fieldList = extractPtr_5508->mAssociatedValue0 ;
+          GALGAS_bigint var_bitIndex_4806 = GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
+          GALGAS_recordDomainMap var_recordMap_4847 = GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 137)) ;
+          cEnumerator_domainFieldList enumerator_4885 (extractedValue_4784_fieldList, kENUMERATION_DOWN) ;
           bool bool_2 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GALGAS_uint (uint32_t (0U)))).isValidAndTrue () ;
-          if (enumerator_4880.hasCurrentObject () && bool_2) {
-            while (enumerator_4880.hasCurrentObject () && bool_2) {
-              switch (enumerator_4880.current_mType (HERE).enumValue ()) {
+          if (enumerator_4885.hasCurrentObject () && bool_2) {
+            while (enumerator_4885.hasCurrentObject () && bool_2) {
+              switch (enumerator_4885.current_mType (HERE).enumValue ()) {
               case GALGAS_bddType::kNotBuilt:
                 break ;
               case GALGAS_bddType::kEnum_bool:
                 {
                   {
-                  var_recordMap_4842.setter_insertKey (enumerator_4880.current_mVarName (HERE), var_bitIndex_4801.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GALGAS_uint (uint32_t (1U)), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 141)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
+                  var_recordMap_4847.setter_insertKey (enumerator_4885.current_mVarName (HERE), var_bitIndex_4806.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GALGAS_uint (uint32_t (1U)), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 141)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
                   }
-                  var_bitIndex_4801.plusAssign_operation(GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
+                  var_bitIndex_4806.plusAssign_operation(GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
                 }
                 break ;
               case GALGAS_bddType::kEnum_boolArray:
                 {
-                  const cEnumAssociatedValues_bddType_boolArray * extractPtr_5191 = (const cEnumAssociatedValues_bddType_boolArray *) (enumerator_4880.current_mType (HERE).unsafePointer ()) ;
-                  const GALGAS_uint extractedValue_5091_size = extractPtr_5191->mAssociatedValue0 ;
+                  const cEnumAssociatedValues_bddType_boolArray * extractPtr_5200 = (const cEnumAssociatedValues_bddType_boolArray *) (enumerator_4885.current_mType (HERE).unsafePointer ()) ;
+                  const GALGAS_uint extractedValue_5098_size = extractPtr_5200->mAssociatedValue0 ;
                   {
-                  var_recordMap_4842.setter_insertKey (enumerator_4880.current_mVarName (HERE), var_bitIndex_4801.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_5091_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 144)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
+                  var_recordMap_4847.setter_insertKey (enumerator_4885.current_mVarName (HERE), var_bitIndex_4806.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_5098_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 144)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
                   }
-                  var_bitIndex_4801 = var_bitIndex_4801.add_operation (extractedValue_5091_size.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
+                  var_bitIndex_4806 = var_bitIndex_4806.add_operation (extractedValue_5098_size.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
                 }
                 break ;
               case GALGAS_bddType::kEnum_namedType:
                 {
-                  const cEnumAssociatedValues_bddType_namedType * extractPtr_5412 = (const cEnumAssociatedValues_bddType_namedType *) (enumerator_4880.current_mType (HERE).unsafePointer ()) ;
-                  const GALGAS_lstring extractedValue_5233_typeName = extractPtr_5412->mAssociatedValue0 ;
-                  GALGAS_uint var_size_5290 ;
-                  GALGAS_recordDomainMap var_subdomain_5305 ;
-                  outArgument_outDomainMap.method_searchKey (extractedValue_5233_typeName, var_size_5290, var_subdomain_5305, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
+                  const cEnumAssociatedValues_bddType_namedType * extractPtr_5425 = (const cEnumAssociatedValues_bddType_namedType *) (enumerator_4885.current_mType (HERE).unsafePointer ()) ;
+                  const GALGAS_lstring extractedValue_5242_typeName = extractPtr_5425->mAssociatedValue0 ;
+                  GALGAS_uint var_size_5300 ;
+                  GALGAS_recordDomainMap var_subdomain_5316 ;
+                  outArgument_outDomainMap.method_searchKey (extractedValue_5242_typeName, var_size_5300, var_subdomain_5316, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
                   {
-                  var_recordMap_4842.setter_insertKey (enumerator_4880.current_mVarName (HERE), var_bitIndex_4801.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5290, var_subdomain_5305, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
+                  var_recordMap_4847.setter_insertKey (enumerator_4885.current_mVarName (HERE), var_bitIndex_4806.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5300, var_subdomain_5316, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
                   }
-                  var_bitIndex_4801 = var_bitIndex_4801.add_operation (var_size_5290.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
+                  var_bitIndex_4806 = var_bitIndex_4806.add_operation (var_size_5300.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
                 }
                 break ;
               }
-              enumerator_4880.gotoNextObject () ;
-              if (enumerator_4880.hasCurrentObject ()) {
+              enumerator_4885.gotoNextObject () ;
+              if (enumerator_4885.hasCurrentObject ()) {
                 bool_2 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GALGAS_uint (uint32_t (0U)))).isValidAndTrue () ;
               }
             }
           }
           {
-          outArgument_outDomainMap.setter_insertKey (enumerator_4285.current_mDomainName (HERE), var_bitIndex_4801.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4842, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
+          outArgument_outDomainMap.setter_insertKey (enumerator_4285.current_mDomainName (HERE), var_bitIndex_4806.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4847, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
           }
         }
         break ;
@@ -4120,7 +4146,6 @@ mProperty_mRecordDomainMap (in_mRecordDomainMap) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_varMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordDomainMap.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -4227,6 +4252,20 @@ void GALGAS_varMap::addAssign_operation (const GALGAS_lstring & inKey,
   const char * kInsertErrorMessage = "@varMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_varMap GALGAS_varMap::add_operation (const GALGAS_varMap & inOperand,
+                                            C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_varMap result = *this ;
+  cEnumerator_varMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), enumerator.current_mBitCount (HERE), enumerator.current_mRecordDomainMap (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4498,53 +4537,53 @@ void extensionMethod_analyze (const GALGAS_domainFieldList inObject,
                               C_Compiler * inCompiler
                               COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_domainFieldList temp_0 = inObject ;
-  cEnumerator_domainFieldList enumerator_6668 (temp_0, kENUMERATION_DOWN) ;
-  while (enumerator_6668.hasCurrentObject ()) {
-    switch (enumerator_6668.current_mType (HERE).enumValue ()) {
+  cEnumerator_domainFieldList enumerator_6683 (temp_0, kENUMERATION_DOWN) ;
+  while (enumerator_6683.hasCurrentObject ()) {
+    switch (enumerator_6683.current_mType (HERE).enumValue ()) {
     case GALGAS_bddType::kNotBuilt:
       break ;
     case GALGAS_bddType::kEnum_bool:
       {
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6668.current_mVarName (HERE), ioArgument_ioTotalBitCount, GALGAS_uint (uint32_t (1U)), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 189)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6683.current_mVarName (HERE), ioArgument_ioTotalBitCount, GALGAS_uint (uint32_t (1U)), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 189)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6668.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GALGAS_uint (uint32_t (1U)), GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6683.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GALGAS_uint (uint32_t (1U)), GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
         }
         ioArgument_ioTotalBitCount.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 191)) ;
       }
       break ;
     case GALGAS_bddType::kEnum_boolArray:
       {
-        const cEnumAssociatedValues_bddType_boolArray * extractPtr_7080 = (const cEnumAssociatedValues_bddType_boolArray *) (enumerator_6668.current_mType (HERE).unsafePointer ()) ;
-        const GALGAS_uint extractedValue_6897_size = extractPtr_7080->mAssociatedValue0 ;
+        const cEnumAssociatedValues_bddType_boolArray * extractPtr_7103 = (const cEnumAssociatedValues_bddType_boolArray *) (enumerator_6683.current_mType (HERE).unsafePointer ()) ;
+        const GALGAS_uint extractedValue_6916_size = extractPtr_7103->mAssociatedValue0 ;
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6668.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6897_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 193)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6683.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6916_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 193)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6668.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6897_size, GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6683.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6916_size, GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
         }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6897_size, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6916_size, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
       }
       break ;
     case GALGAS_bddType::kEnum_namedType:
       {
-        const cEnumAssociatedValues_bddType_namedType * extractPtr_7381 = (const cEnumAssociatedValues_bddType_namedType *) (enumerator_6668.current_mType (HERE).unsafePointer ()) ;
-        const GALGAS_lstring extractedValue_7118_typeName = extractPtr_7381->mAssociatedValue0 ;
-        GALGAS_uint var_size_7170 ;
-        GALGAS_recordDomainMap var_subDomainMap_7188 ;
-        constinArgument_inDomainMap.method_searchKey (extractedValue_7118_typeName, var_size_7170, var_subDomainMap_7188, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
+        const cEnumAssociatedValues_bddType_namedType * extractPtr_7410 = (const cEnumAssociatedValues_bddType_namedType *) (enumerator_6683.current_mType (HERE).unsafePointer ()) ;
+        const GALGAS_lstring extractedValue_7141_typeName = extractPtr_7410->mAssociatedValue0 ;
+        GALGAS_uint var_size_7194 ;
+        GALGAS_recordDomainMap var_subDomainMap_7213 ;
+        constinArgument_inDomainMap.method_searchKey (extractedValue_7141_typeName, var_size_7194, var_subDomainMap_7213, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6668.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_7170, var_subDomainMap_7188, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6683.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_7194, var_subDomainMap_7213, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6668.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_7170, GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6683.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_7194, GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
         }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_7170, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_7194, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
       }
       break ;
     }
-    enumerator_6668.gotoNextObject () ;
+    enumerator_6683.gotoNextObject () ;
   }
 }
 
@@ -5046,7 +5085,6 @@ mProperty_mValue (in_mValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_computedFormulaMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -5153,6 +5191,20 @@ void GALGAS_computedFormulaMap::addAssign_operation (const GALGAS_lstring & inKe
   const char * kInsertErrorMessage = "@computedFormulaMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap GALGAS_computedFormulaMap::add_operation (const GALGAS_computedFormulaMap & inOperand,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GALGAS_computedFormulaMap result = *this ;
+  cEnumerator_computedFormulaMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mVarList (HERE), enumerator.current_mBitCount (HERE), enumerator.current_mValue (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10448,7 +10500,7 @@ GALGAS_binaryset callExtensionGetter_computeExpression (const cPtr_expression * 
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_start_5F_symbol_i0_ (GALGAS_ast & outArgument_outAST,
                                                                           C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outAST.drop () ; // Release 'out' argument
-  outArgument_outAST = GALGAS_ast::constructor_default (SOURCE_FILE ("grammar.ggs", 39)) ;
+  outArgument_outAST = GALGAS_ast::constructor_new (SOURCE_FILE ("grammar.ggs", 39)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_kerbdd_5F_syntax_0 (inCompiler)) {
@@ -10961,9 +11013,9 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_expression_i9_ (GALGAS_expr
   } break ;
   case 3: {
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.ggs", 153)) ;
-    GALGAS_expression var_rightExpression_5586 ;
-    nt_comparison_ (var_rightExpression_5586, inCompiler) ;
-    outArgument_outExpression = GALGAS_notEqualExpression::constructor_new (outArgument_outExpression, var_rightExpression_5586  COMMA_SOURCE_FILE ("expression.ggs", 155)) ;
+    GALGAS_expression var_rightExpression_5587 ;
+    nt_comparison_ (var_rightExpression_5587, inCompiler) ;
+    outArgument_outExpression = GALGAS_notEqualExpression::constructor_new (outArgument_outExpression, var_rightExpression_5587  COMMA_SOURCE_FILE ("expression.ggs", 155)) ;
   } break ;
   default:
     break ;
@@ -11022,15 +11074,15 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_comparison_i10_ (GALGAS_exp
     switch (select_kerbdd_5F_syntax_8 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__7C_ COMMA_SOURCE_FILE ("expression.ggs", 165)) ;
-      GALGAS_expression var_rightExpression_5941 ;
-      nt_term_ (var_rightExpression_5941, inCompiler) ;
-      outArgument_outExpression = GALGAS_orExpression::constructor_new (outArgument_outExpression, var_rightExpression_5941  COMMA_SOURCE_FILE ("expression.ggs", 167)) ;
+      GALGAS_expression var_rightExpression_5943 ;
+      nt_term_ (var_rightExpression_5943, inCompiler) ;
+      outArgument_outExpression = GALGAS_orExpression::constructor_new (outArgument_outExpression, var_rightExpression_5943  COMMA_SOURCE_FILE ("expression.ggs", 167)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__5E_ COMMA_SOURCE_FILE ("expression.ggs", 169)) ;
-      GALGAS_expression var_rightExpression_6075 ;
-      nt_term_ (var_rightExpression_6075, inCompiler) ;
-      outArgument_outExpression = GALGAS_xorExpression::constructor_new (outArgument_outExpression, var_rightExpression_6075  COMMA_SOURCE_FILE ("expression.ggs", 171)) ;
+      GALGAS_expression var_rightExpression_6078 ;
+      nt_term_ (var_rightExpression_6078, inCompiler) ;
+      outArgument_outExpression = GALGAS_xorExpression::constructor_new (outArgument_outExpression, var_rightExpression_6078  COMMA_SOURCE_FILE ("expression.ggs", 171)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -11095,15 +11147,15 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i11_ (GALGAS_expressio
     switch (select_kerbdd_5F_syntax_9 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__26_ COMMA_SOURCE_FILE ("expression.ggs", 181)) ;
-      GALGAS_expression var_rightExpression_6423 ;
-      nt_factor_ (var_rightExpression_6423, inCompiler) ;
-      outArgument_outExpression = GALGAS_andExpression::constructor_new (outArgument_outExpression, var_rightExpression_6423  COMMA_SOURCE_FILE ("expression.ggs", 183)) ;
+      GALGAS_expression var_rightExpression_6427 ;
+      nt_factor_ (var_rightExpression_6427, inCompiler) ;
+      outArgument_outExpression = GALGAS_andExpression::constructor_new (outArgument_outExpression, var_rightExpression_6427  COMMA_SOURCE_FILE ("expression.ggs", 183)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2D__3E_ COMMA_SOURCE_FILE ("expression.ggs", 185)) ;
-      GALGAS_expression var_rightExpression_6561 ;
-      nt_factor_ (var_rightExpression_6561, inCompiler) ;
-      outArgument_outExpression = GALGAS_impliesExpression::constructor_new (outArgument_outExpression, var_rightExpression_6561  COMMA_SOURCE_FILE ("expression.ggs", 187)) ;
+      GALGAS_expression var_rightExpression_6566 ;
+      nt_factor_ (var_rightExpression_6566, inCompiler) ;
+      outArgument_outExpression = GALGAS_impliesExpression::constructor_new (outArgument_outExpression, var_rightExpression_6566  COMMA_SOURCE_FILE ("expression.ggs", 187)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -11162,17 +11214,17 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i11_indexing (C_Lexiqu
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i12_ (GALGAS_expression & outArgument_outExpression,
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_lstring var_varName_6844 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_varName_6850 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 194)) ;
   switch (select_kerbdd_5F_syntax_10 (inCompiler)) {
   case 1: {
-    outArgument_outExpression = GALGAS_varInExpression::constructor_new (var_varName_6844  COMMA_SOURCE_FILE ("expression.ggs", 196)) ;
+    outArgument_outExpression = GALGAS_varInExpression::constructor_new (var_varName_6850  COMMA_SOURCE_FILE ("expression.ggs", 196)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 198)) ;
-    GALGAS_luint var_varBit_6946 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+    GALGAS_luint var_varBit_6952 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.ggs", 199)) ;
-    outArgument_outExpression = GALGAS_varBitInExpression::constructor_new (var_varName_6844, var_varBit_6946  COMMA_SOURCE_FILE ("expression.ggs", 200)) ;
+    outArgument_outExpression = GALGAS_varBitInExpression::constructor_new (var_varName_6850, var_varBit_6952  COMMA_SOURCE_FILE ("expression.ggs", 200)) ;
   } break ;
   default:
     break ;
@@ -11245,9 +11297,9 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i14_ (GALGAS_express
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__7E_ COMMA_SOURCE_FILE ("expression.ggs", 215)) ;
-  GALGAS_expression var_expression_7434 ;
-  nt_factor_ (var_expression_7434, inCompiler) ;
-  outArgument_outExpression = GALGAS_complementExpression::constructor_new (var_expression_7434  COMMA_SOURCE_FILE ("expression.ggs", 217)) ;
+  GALGAS_expression var_expression_7437 ;
+  nt_factor_ (var_expression_7437, inCompiler) ;
+  outArgument_outExpression = GALGAS_complementExpression::constructor_new (var_expression_7437  COMMA_SOURCE_FILE ("expression.ggs", 217)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11314,9 +11366,9 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i16_indexing (C_Lexi
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i17_ (GALGAS_expression & outArgument_outExpression,
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_lstring var_formulaName_8132 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_formulaName_8135 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 237)) ;
-  GALGAS_formulaParameterListInExpression var_parameterList_8187 = GALGAS_formulaParameterListInExpression::constructor_emptyList (SOURCE_FILE ("expression.ggs", 238)) ;
+  GALGAS_formulaParameterListInExpression var_parameterList_8190 = GALGAS_formulaParameterListInExpression::constructor_emptyList (SOURCE_FILE ("expression.ggs", 238)) ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 239)) ;
   switch (select_kerbdd_5F_syntax_11 (inCompiler)) {
   case 1: {
@@ -11324,24 +11376,24 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i17_ (GALGAS_express
   case 2: {
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      GALGAS_lstring var_parameterName_8262 = inCompiler->synthetizedAttribute_tokenString () ;
+      GALGAS_lstring var_parameterName_8265 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 243)) ;
-      GALGAS_lstringlist var_fieldNames_8297 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("expression.ggs", 244)) ;
+      GALGAS_lstringlist var_fieldNames_8300 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("expression.ggs", 244)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
         switch (select_kerbdd_5F_syntax_13 (inCompiler)) {
         case 2: {
           inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 247)) ;
-          GALGAS_lstring var_fieldName_8376 = inCompiler->synthetizedAttribute_tokenString () ;
+          GALGAS_lstring var_fieldName_8379 = inCompiler->synthetizedAttribute_tokenString () ;
           inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 248)) ;
-          var_fieldNames_8297.addAssign_operation (var_fieldName_8376  COMMA_SOURCE_FILE ("expression.ggs", 249)) ;
+          var_fieldNames_8300.addAssign_operation (var_fieldName_8379  COMMA_SOURCE_FILE ("expression.ggs", 249)) ;
         } break ;
         default:
           repeatFlag_1 = false ;
           break ;
         }
       }
-      var_parameterList_8187.addAssign_operation (var_parameterName_8262, var_fieldNames_8297  COMMA_SOURCE_FILE ("expression.ggs", 251)) ;
+      var_parameterList_8190.addAssign_operation (var_parameterName_8265, var_fieldNames_8300  COMMA_SOURCE_FILE ("expression.ggs", 251)) ;
       switch (select_kerbdd_5F_syntax_12 (inCompiler)) {
       case 2: {
         inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("expression.ggs", 253)) ;
@@ -11356,7 +11408,7 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i17_ (GALGAS_express
     break ;
   }
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 256)) ;
-  outArgument_outExpression = GALGAS_formulaInExpression::constructor_new (var_formulaName_8132, var_parameterList_8187  COMMA_SOURCE_FILE ("expression.ggs", 257)) ;
+  outArgument_outExpression = GALGAS_formulaInExpression::constructor_new (var_formulaName_8135, var_parameterList_8190  COMMA_SOURCE_FILE ("expression.ggs", 257)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11446,13 +11498,13 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i18_ (GALGAS_express
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3F_ COMMA_SOURCE_FILE ("expression.ggs", 263)) ;
-  GALGAS_domainFieldList var_domainFieldList_8815 ;
-  nt_recordFields_ (var_domainFieldList_8815, inCompiler) ;
+  GALGAS_domainFieldList var_domainFieldList_8819 ;
+  nt_recordFields_ (var_domainFieldList_8819, inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 265)) ;
-  GALGAS_expression var_expression_8854 ;
-  nt_expression_ (var_expression_8854, inCompiler) ;
+  GALGAS_expression var_expression_8858 ;
+  nt_expression_ (var_expression_8858, inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 267)) ;
-  outArgument_outExpression = GALGAS_existInExpression::constructor_new (var_domainFieldList_8815, var_expression_8854  COMMA_SOURCE_FILE ("expression.ggs", 268)) ;
+  outArgument_outExpression = GALGAS_existInExpression::constructor_new (var_domainFieldList_8819, var_expression_8858  COMMA_SOURCE_FILE ("expression.ggs", 268)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11482,13 +11534,13 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i19_ (GALGAS_express
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__21_ COMMA_SOURCE_FILE ("expression.ggs", 274)) ;
-  GALGAS_domainFieldList var_domainFieldList_9165 ;
-  nt_recordFields_ (var_domainFieldList_9165, inCompiler) ;
+  GALGAS_domainFieldList var_domainFieldList_9170 ;
+  nt_recordFields_ (var_domainFieldList_9170, inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 276)) ;
-  GALGAS_expression var_expression_9204 ;
-  nt_expression_ (var_expression_9204, inCompiler) ;
+  GALGAS_expression var_expression_9209 ;
+  nt_expression_ (var_expression_9209, inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 278)) ;
-  outArgument_outExpression = GALGAS_forAllInExpression::constructor_new (var_domainFieldList_9165, var_expression_9204  COMMA_SOURCE_FILE ("expression.ggs", 279)) ;
+  outArgument_outExpression = GALGAS_forAllInExpression::constructor_new (var_domainFieldList_9170, var_expression_9209  COMMA_SOURCE_FILE ("expression.ggs", 279)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11518,77 +11570,77 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i20_ (GALGAS_express
                                                                   C_Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__7B_ COMMA_SOURCE_FILE ("expression.ggs", 284)) ;
-  GALGAS_lstring var_varName_9488 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_varName_9494 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 285)) ;
-  GALGAS_lstringlist var_leftFieldNames_9523 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("expression.ggs", 286)) ;
+  GALGAS_lstringlist var_leftFieldNames_9529 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("expression.ggs", 286)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_kerbdd_5F_syntax_14 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 289)) ;
-      GALGAS_lstring var_fieldName_9586 = inCompiler->synthetizedAttribute_tokenString () ;
+      GALGAS_lstring var_fieldName_9592 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 290)) ;
-      var_leftFieldNames_9523.addAssign_operation (var_fieldName_9586  COMMA_SOURCE_FILE ("expression.ggs", 291)) ;
+      var_leftFieldNames_9529.addAssign_operation (var_fieldName_9592  COMMA_SOURCE_FILE ("expression.ggs", 291)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  GALGAS_comparison var_comparison_9655 ;
+  GALGAS_comparison var_comparison_9661 ;
   switch (select_kerbdd_5F_syntax_15 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.ggs", 295)) ;
-    var_comparison_9655 = GALGAS_comparison::constructor_equal (SOURCE_FILE ("expression.ggs", 296)) ;
+    var_comparison_9661 = GALGAS_comparison::constructor_equal (SOURCE_FILE ("expression.ggs", 296)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.ggs", 298)) ;
-    var_comparison_9655 = GALGAS_comparison::constructor_notEqual (SOURCE_FILE ("expression.ggs", 299)) ;
+    var_comparison_9661 = GALGAS_comparison::constructor_notEqual (SOURCE_FILE ("expression.ggs", 299)) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3C__3D_ COMMA_SOURCE_FILE ("expression.ggs", 301)) ;
-    var_comparison_9655 = GALGAS_comparison::constructor_lowerOrEqual (SOURCE_FILE ("expression.ggs", 302)) ;
+    var_comparison_9661 = GALGAS_comparison::constructor_lowerOrEqual (SOURCE_FILE ("expression.ggs", 302)) ;
   } break ;
   case 4: {
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3C_ COMMA_SOURCE_FILE ("expression.ggs", 304)) ;
-    var_comparison_9655 = GALGAS_comparison::constructor_lowerThan (SOURCE_FILE ("expression.ggs", 305)) ;
+    var_comparison_9661 = GALGAS_comparison::constructor_lowerThan (SOURCE_FILE ("expression.ggs", 305)) ;
   } break ;
   case 5: {
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3E__3D_ COMMA_SOURCE_FILE ("expression.ggs", 307)) ;
-    var_comparison_9655 = GALGAS_comparison::constructor_greaterOrEqual (SOURCE_FILE ("expression.ggs", 308)) ;
+    var_comparison_9661 = GALGAS_comparison::constructor_greaterOrEqual (SOURCE_FILE ("expression.ggs", 308)) ;
   } break ;
   case 6: {
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__3E_ COMMA_SOURCE_FILE ("expression.ggs", 310)) ;
-    var_comparison_9655 = GALGAS_comparison::constructor_greaterThan (SOURCE_FILE ("expression.ggs", 311)) ;
+    var_comparison_9661 = GALGAS_comparison::constructor_greaterThan (SOURCE_FILE ("expression.ggs", 311)) ;
   } break ;
   default:
     break ;
   }
   switch (select_kerbdd_5F_syntax_16 (inCompiler)) {
   case 1: {
-    GALGAS_luint var_constant_9957 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+    GALGAS_luint var_constant_9963 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.ggs", 314)) ;
-    outArgument_outExpression = GALGAS_comparisonWithConstantInExpression::constructor_new (var_varName_9488, var_leftFieldNames_9523, var_comparison_9655, var_constant_9957  COMMA_SOURCE_FILE ("expression.ggs", 315)) ;
+    outArgument_outExpression = GALGAS_comparisonWithConstantInExpression::constructor_new (var_varName_9494, var_leftFieldNames_9529, var_comparison_9661, var_constant_9963  COMMA_SOURCE_FILE ("expression.ggs", 315)) ;
   } break ;
   case 2: {
-    GALGAS_lstring var_rightVarName_10108 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_rightVarName_10117 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 317)) ;
-    GALGAS_lstringlist var_rightFieldNames_10146 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("expression.ggs", 318)) ;
+    GALGAS_lstringlist var_rightFieldNames_10155 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("expression.ggs", 318)) ;
     bool repeatFlag_1 = true ;
     while (repeatFlag_1) {
       switch (select_kerbdd_5F_syntax_17 (inCompiler)) {
       case 2: {
         inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 321)) ;
-        GALGAS_lstring var_fieldName_10217 = inCompiler->synthetizedAttribute_tokenString () ;
+        GALGAS_lstring var_fieldName_10226 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (C_Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 322)) ;
-        var_rightFieldNames_10146.addAssign_operation (var_fieldName_10217  COMMA_SOURCE_FILE ("expression.ggs", 323)) ;
+        var_rightFieldNames_10155.addAssign_operation (var_fieldName_10226  COMMA_SOURCE_FILE ("expression.ggs", 323)) ;
       } break ;
       default:
         repeatFlag_1 = false ;
         break ;
       }
     }
-    outArgument_outExpression = GALGAS_variableComparisonInExpression::constructor_new (var_varName_9488, var_leftFieldNames_9523, var_comparison_9655, var_rightVarName_10108, var_rightFieldNames_10146  COMMA_SOURCE_FILE ("expression.ggs", 325)) ;
+    outArgument_outExpression = GALGAS_variableComparisonInExpression::constructor_new (var_varName_9494, var_leftFieldNames_9529, var_comparison_9661, var_rightVarName_10117, var_rightFieldNames_10155  COMMA_SOURCE_FILE ("expression.ggs", 325)) ;
   } break ;
   default:
     break ;
@@ -12171,9 +12223,9 @@ GALGAS_ast GALGAS_ast::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_ast GALGAS_ast::constructor_new (const GALGAS_domainDeclarationList & in_mDomainList,
-                                        const GALGAS_formulaList & in_mFormulaList 
-                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_ast GALGAS_ast::constructor_new (UNUSED_LOCATION_ARGS) {
+  const GALGAS_domainDeclarationList in_mDomainList = GALGAS_domainDeclarationList::constructor_emptyList (SOURCE_FILE ("grammar.ggs", 25)) ;
+  const GALGAS_formulaList in_mFormulaList = GALGAS_formulaList::constructor_emptyList (SOURCE_FILE ("grammar.ggs", 26)) ;
   GALGAS_ast result ;
   if (in_mDomainList.isValid () && in_mFormulaList.isValid ()) {
     result = GALGAS_ast (in_mDomainList, in_mFormulaList) ;
@@ -16954,151 +17006,6 @@ GALGAS_domainMap_2D_element GALGAS_domainMap_2D_element::extractObject (const GA
       result = *p ;
     }else{
       inCompiler->castError ("domainMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element::GALGAS_varMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mIndex (),
-mProperty_mBitCount (),
-mProperty_mRecordDomainMap () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element::~ GALGAS_varMap_2D_element (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element::GALGAS_varMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                    const GALGAS_uint & inOperand1,
-                                                    const GALGAS_uint & inOperand2,
-                                                    const GALGAS_recordDomainMap & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mIndex (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mRecordDomainMap (inOperand3) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element GALGAS_varMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_varMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                   GALGAS_uint::constructor_default (HERE),
-                                   GALGAS_uint::constructor_default (HERE),
-                                   GALGAS_recordDomainMap::constructor_emptyMap (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element GALGAS_varMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                    const GALGAS_uint & in_mIndex,
-                                                                    const GALGAS_uint & in_mBitCount,
-                                                                    const GALGAS_recordDomainMap & in_mRecordDomainMap 
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_varMap_2D_element result ;
-  if (in_lkey.isValid () && in_mIndex.isValid () && in_mBitCount.isValid () && in_mRecordDomainMap.isValid ()) {
-    result = GALGAS_varMap_2D_element (in_lkey, in_mIndex, in_mBitCount, in_mRecordDomainMap) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_varMap_2D_element::objectCompare (const GALGAS_varMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mIndex.objectCompare (inOperand.mProperty_mIndex) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mRecordDomainMap.objectCompare (inOperand.mProperty_mRecordDomainMap) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_varMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordDomainMap.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_varMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mIndex.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mRecordDomainMap.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_varMap_2D_element::description (C_String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString << "<struct @varMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mIndex.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mRecordDomainMap.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//     @varMap-element generic code implementation
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_varMap_2D_element ("varMap-element",
-                                          NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_varMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varMap_2D_element ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_varMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_varMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element GALGAS_varMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_varMap_2D_element result ;
-  const GALGAS_varMap_2D_element * p = (const GALGAS_varMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_varMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("varMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
