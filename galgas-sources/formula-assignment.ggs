@@ -77,7 +77,7 @@ override proc @assignmentFormula. analyzeFormula(
   var @uint totalBitCount = 0
   var @varList varList = []
   var @varMap varMap = []
-  [self.mFormulaArgumentList analyze !inDomainMap, !?varMap, !?varList, !?totalBitCount]
+  self.mFormulaArgumentList.analyze (!inDomainMap, !?varMap, !?varList, !?totalBitCount)
 #--- Compute expression
   switch self.mKind
   case assignment :
@@ -110,7 +110,6 @@ override proc @assignmentFormula. analyzeFormula(
       end
     end
     let @uint64 valueCount = result.valueCount (totalBitCount)
-#    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
     let @uint64 nodeCount = result.nodeCount ()
     print (" "
       + iterationCount + " iteration" + if iterationCount > 1 then "s" else "" end

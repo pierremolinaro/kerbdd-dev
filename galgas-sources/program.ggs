@@ -16,11 +16,11 @@ grammar kerbdd_grammar
 #--- Parse
   grammar kerbdd_grammar (?let @ast ast) in inSourceFile
 #--- Analyze domaines
-  [ast.mDomainList analyze ?let @domainMap domainMap]
+  ast.mDomainList.analyze (?let @domainMap domainMap)
 #--- Analyze formulas
   var @computedFormulaMap computedFormulaMap = []
   for (formula) in ast.mFormulaList while @uint.errorCount == 0 do
-    [formula analyzeFormula !inSourceFile.string, !domainMap, !?computedFormulaMap]
+    formula.analyzeFormula (!inSourceFile.string, !domainMap, !?computedFormulaMap)
   end
 }
 

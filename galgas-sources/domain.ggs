@@ -129,7 +129,7 @@ proc @domainDeclarationList.analyze( !@domainMap outDomainMap) {
       case boolArray (@uint size) :
         !?outDomainMap.insertKey (name, !size, ![])
       case namedType (@lstring typeName) :
-        [outDomainMap searchKey !typeName, ?let size, ?let subdomain] ;
+        outDomainMap.searchKey (!typeName, ?let size, ?let subdomain)
         !?outDomainMap.insertKey (name, !size, !subdomain)
       end
     case record (@domainFieldList fieldList) :
@@ -144,7 +144,7 @@ proc @domainDeclarationList.analyze( !@domainMap outDomainMap) {
           !?recordMap.insertKey (name, !bitIndex, !size, ![])
           bitIndex = bitIndex + size
         case namedType (@lstring typeName) :
-          [outDomainMap searchKey !typeName, ?let size, ?let subdomain] ;
+          outDomainMap.searchKey (!typeName, ?let size, ?let subdomain) ;
           !?recordMap.insertKey (name, !bitIndex, !size, !subdomain)
           bitIndex = bitIndex + size
         end
@@ -194,7 +194,7 @@ proc @domainFieldList. analyze(
       !?ioVarList.insertAtIndex (idf.string, !ioTotalBitCount, !size, !0)
       ioTotalBitCount = ioTotalBitCount + size
     case namedType (@lstring typeName) :
-      [inDomainMap searchKey !typeName, ?let size, ?let subDomainMap] ;
+      inDomainMap.searchKey (!typeName, ?let size, ?let subDomainMap) ;
       !?ioVarMap.insertKey (idf, !ioTotalBitCount, !size, !subDomainMap)
       !?ioVarList.insertAtIndex (idf.string, !ioTotalBitCount, !size, !0)
       ioTotalBitCount = ioTotalBitCount + size

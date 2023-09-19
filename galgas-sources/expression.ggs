@@ -351,7 +351,7 @@ override func @varInExpression. computeExpression(
   ?let @computedFormulaMap unused inComputedFormulaMap)
   -> @binaryset outResult
 {
-  [inVarMap searchKey !self.mVarName, ?let idx, ?let bitCount, ?let subdomainMap]
+  inVarMap.searchKey (!self.mVarName, ?let idx, ?let bitCount, ?let subdomainMap)
   if subdomainMap.count () > 0 then
     error self.mVarName : "variable is a record; use dot notation"
   elsif bitCount != 1 then
@@ -369,7 +369,7 @@ override func @varBitInExpression. computeExpression(
   ?let @computedFormulaMap unused inComputedFormulaMap)
   -> @binaryset outResult
 {
-  [inVarMap searchKey !self.mVarName, ?let idx, ?let bitCount, ?let subdomainMap]
+  inVarMap.searchKey (!self.mVarName, ?let idx, ?let bitCount, ?let subdomainMap)
   if subdomainMap.count () > 0 then
     error self.mVarName : "variable is a record; use dot notation"
   elsif bitCount <= self.mVarBit.uint then
@@ -508,7 +508,7 @@ override func @formulaInExpression. computeExpression(
   -> @binaryset outResult
 {
 #--- Read formula
-  [inComputedFormulaMap searchKey !self.mFormulaName, ?let varList, ?let unused totalBitCount, ?let formulaValue]
+  inComputedFormulaMap.searchKey (!self.mFormulaName, ?let varList, ?let unused totalBitCount, ?let formulaValue)
 #--- Check parameter list
   if self.mParameterList.length () != varList.length () then
     error self.mFormulaName : "the $" + self.mFormulaName + " names "
@@ -519,9 +519,9 @@ override func @formulaInExpression. computeExpression(
   else
     var @uintlist transformationList = []
     for > (formalName * formalBitCount) in varList, > (parameterName fieldNameList) in self.mParameterList do
-      [inVarMap searchKey !parameterName, ?@uint parameterIndex, ?@uint parameterBitCount, ?@recordDomainMap subdomainMap]
+      inVarMap.searchKey (!parameterName, ?@uint parameterIndex, ?@uint parameterBitCount, ?@recordDomainMap subdomainMap)
       for (fieldName) in fieldNameList do
-        [subdomainMap searchKey !fieldName, ?let fieldRelativeBitIndex, ?parameterBitCount, ?let fieldSubdomainMap]
+        subdomainMap.searchKey (!fieldName, ?let fieldRelativeBitIndex, ?parameterBitCount, ?let fieldSubdomainMap)
         parameterIndex = parameterIndex + fieldRelativeBitIndex
         subdomainMap = fieldSubdomainMap
       end
@@ -550,7 +550,7 @@ override func @existInExpression. computeExpression(
 {
   var @varMap varMap = inVarMap
   var @uint totalBitCount = inTotalBitCount 
-  [self.mArgumentList analyze !inDomainMap, !?varMap, !?*, !?totalBitCount]
+  self.mArgumentList.analyze (!inDomainMap, !?varMap, !?*, !?totalBitCount)
   let r = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !inComputedFormulaMap)
   outResult = r.existOnBitIndexAndBeyond (!inTotalBitCount)
 }
@@ -566,7 +566,7 @@ override func @forAllInExpression. computeExpression(
 {
   var @varMap varMap = inVarMap
   var @uint totalBitCount = inTotalBitCount 
-  [self.mArgumentList analyze !inDomainMap, !?varMap, !?*, !?totalBitCount]
+  self.mArgumentList.analyze (!inDomainMap, !?varMap, !?*, !?totalBitCount)
   let r = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !inComputedFormulaMap)
   outResult = r.forAllOnBitIndexAndBeyond (inTotalBitCount)
 }
@@ -580,9 +580,9 @@ override func @comparisonWithConstantInExpression. computeExpression(
   ?let @computedFormulaMap unused inComputedFormulaMap)
   -> @binaryset outResult
 {
-  [inVarMap searchKey !self.mVarName, ?@uint idx, ?@uint bitCount, ?@recordDomainMap subDomainMap]
+  inVarMap.searchKey (!self.mVarName, ?@uint idx, ?@uint bitCount, ?@recordDomainMap subDomainMap)
   for (fieldName) in self.mFieldNames do
-    [subDomainMap searchKey !fieldName, ?let fieldRelativeBitIndex, ?bitCount, ?let fieldSubdomainMap]
+    subDomainMap.searchKey (!fieldName, ?let fieldRelativeBitIndex, ?bitCount, ?let fieldSubdomainMap)
     idx = idx + fieldRelativeBitIndex
     subDomainMap = fieldSubdomainMap
   end
@@ -617,15 +617,15 @@ override func @variableComparisonInExpression. computeExpression(
   ?let @computedFormulaMap unused inComputedFormulaMap)
   -> @binaryset outResult
 {
-  [inVarMap searchKey !self.mLeftVarName, ?@uint leftIdx, ?@uint  leftBitCount, ?@recordDomainMap  leftSubDomainMap]
+  inVarMap.searchKey (!self.mLeftVarName, ?@uint leftIdx, ?@uint  leftBitCount, ?@recordDomainMap  leftSubDomainMap)
   for (fieldName) in self.mLeftFieldNames do
-    [leftSubDomainMap searchKey !fieldName, ?let fieldRelativeBitIndex, ?leftBitCount, ?let fieldSubdomainMap]
+    leftSubDomainMap.searchKey (!fieldName, ?let fieldRelativeBitIndex, ?leftBitCount, ?let fieldSubdomainMap)
     leftIdx = leftIdx + fieldRelativeBitIndex
     leftSubDomainMap = fieldSubdomainMap
   end
-  [inVarMap searchKey !self.mRightVarName, ?@uint rightIdx, ?@uint rightBitCount, ?@recordDomainMap rightSubDomainMap]
+  inVarMap.searchKey (!self.mRightVarName, ?@uint rightIdx, ?@uint rightBitCount, ?@recordDomainMap rightSubDomainMap)
   for (fieldName) in self.mRightFieldNames do
-    [rightSubDomainMap searchKey !fieldName, ?let fieldRelativeBitIndex, ?rightBitCount, ?let fieldSubdomainMap]
+    rightSubDomainMap.searchKey (!fieldName, ?let fieldRelativeBitIndex, ?rightBitCount, ?let fieldSubdomainMap)
     rightIdx = rightIdx + fieldRelativeBitIndex
     rightSubDomainMap = fieldSubdomainMap
   end

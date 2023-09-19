@@ -34,7 +34,7 @@ override proc @dumpFormula. analyzeFormula(
   ?let @domainMap unused inDomainMap,
   ?!@computedFormulaMap ioComputedFormulaMap)
 {
-  [ioComputedFormulaMap searchKey !self.mFormulaName, ?let @varList varList, ?let bitCount, ?let result]
+  ioComputedFormulaMap.searchKey (!self.mFormulaName, ?let @varList varList, ?let bitCount, ?let result)
   let @uint64 valueCount = result.valueCount (!bitCount)
   print ("Dump $" + self.mFormulaName + " (" + valueCount + " value" + if valueCount > 1 then "s" else "" end + ")")
   var @stringlist nameList = []
