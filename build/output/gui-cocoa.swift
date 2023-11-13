@@ -130,7 +130,7 @@ class SWIFT_Tokenizer_0_kerbdd_lexique : SWIFT_Lexique_kerbdd_lexique, SWIFT_Tok
 
 - (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {
   static NSString * kTextMacroTitle [1] = {
-    NULL
+    nullptr
   } ;
   return kTextMacroTitle [inIndex] ;
 }
@@ -139,7 +139,7 @@ class SWIFT_Tokenizer_0_kerbdd_lexique : SWIFT_Lexique_kerbdd_lexique, SWIFT_Tok
 
 - (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
   static NSString * kTextMacroContent [1] = {
-    NULL
+    nullptr
   } ;
   return kTextMacroContent [inIndex] ;
 }
