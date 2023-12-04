@@ -518,7 +518,7 @@ override func @formulaInExpression. computeExpression(
     spoil (outResult)
   else
     var @uintlist transformationList = []
-    for > (formalName * formalBitCount) in varList, > (parameterName fieldNameList) in self.mParameterList do
+    for > (formalName, *, formalBitCount) in varList, > (parameterName, fieldNameList) in self.mParameterList do
       inVarMap.searchKey (!parameterName, ?@uint parameterIndex, ?@uint parameterBitCount, ?@recordDomainMap subdomainMap)
       for (fieldName) in fieldNameList do
         subdomainMap.searchKey (!fieldName, ?let fieldRelativeBitIndex, ?parameterBitCount, ?let fieldSubdomainMap)

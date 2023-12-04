@@ -39,7 +39,7 @@ override proc @dumpFormula. analyzeFormula(
   print ("Dump $" + self.mFormulaName + " (" + valueCount + " value" + if valueCount > 1 then "s" else "" end + ")")
   var @stringlist nameList = []
   var @uintlist bitCountList = []
-  for (mVarName * mBitCount) in varList do
+  for (mVarName, *, mBitCount) in varList do
     nameList += !mVarName
     bitCountList += !mBitCount
   end

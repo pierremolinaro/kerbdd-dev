@@ -120,7 +120,7 @@ map @domainMap {
 
 proc @domainDeclarationList.analyze( !@domainMap outDomainMap) {
   outDomainMap = []
-  for (name typeDefinition) in self while @uint.errorCount == 0 do
+  for (name, typeDefinition) in self while @uint.errorCount == 0 do
     switch typeDefinition
     case type (@bddType type) :
       switch type
@@ -135,7 +135,7 @@ proc @domainDeclarationList.analyze( !@domainMap outDomainMap) {
     case record (@domainFieldList fieldList) :
       var bitIndex = 0
       var @recordDomainMap recordMap = []
-      for > (name typeDefinition) in fieldList while @uint.errorCount == 0 do
+      for > (name, typeDefinition) in fieldList while @uint.errorCount == 0 do
         switch typeDefinition
         case bool :
           !?recordMap.insertKey (name, !bitIndex, !1, ![])
@@ -183,7 +183,7 @@ proc @domainFieldList. analyze(
   ?!@uint ioTotalBitCount)
 {
 #--- Build variable map
-  for > (idf type) in self do
+  for > (idf, type) in self do
     switch type
     case bool :
       !?ioVarMap.insertKey (idf, !ioTotalBitCount, !1, ![])

@@ -328,7 +328,8 @@ class GALGAS_domainFieldList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_domainFieldList_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
+                                               class GALGAS_bddType constinArgument1,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -686,7 +687,8 @@ class GALGAS_domainDeclarationList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_domainDeclarationList_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
+                                               class GALGAS_domainDeclarationType constinArgument1,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -1467,7 +1469,9 @@ class GALGAS_varList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_varList_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_string constinArgument0,
+                                               class GALGAS_uint constinArgument1,
+                                               class GALGAS_uint constinArgument2,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -4989,7 +4993,8 @@ class GALGAS_formulaParameterListInExpression : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_formulaParameterListInExpression_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
+                                               class GALGAS_lstringlist constinArgument1,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -6546,7 +6551,7 @@ class GALGAS_formulaList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_formulaList_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_abstractFormula constinArgument0,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 

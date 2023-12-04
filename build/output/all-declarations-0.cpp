@@ -1526,35 +1526,28 @@ void GALGAS_domainFieldList::addAssign_operation (const GALGAS_lstring & inOpera
                                                   const GALGAS_bddType & inOperand1
                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_domainFieldList (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_domainFieldList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_domainFieldList::setter_append (GALGAS_domainFieldList_2D_element inElement,
+void GALGAS_domainFieldList::setter_append (const GALGAS_lstring inOperand0,
+                                            const GALGAS_bddType inOperand1,
                                             C_Compiler * /* inCompiler */
                                             COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_domainFieldList (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_domainFieldList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -2245,35 +2238,28 @@ void GALGAS_domainDeclarationList::addAssign_operation (const GALGAS_lstring & i
                                                         const GALGAS_domainDeclarationType & inOperand1
                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_domainDeclarationList (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_domainDeclarationList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_domainDeclarationList::setter_append (GALGAS_domainDeclarationList_2D_element inElement,
+void GALGAS_domainDeclarationList::setter_append (const GALGAS_lstring inOperand0,
+                                                  const GALGAS_domainDeclarationType inOperand1,
                                                   C_Compiler * /* inCompiler */
                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_domainDeclarationList (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_domainDeclarationList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -3341,45 +3327,45 @@ void extensionMethod_analyze (const GALGAS_domainDeclarationList inObject,
   outArgument_outDomainMap.drop () ; // Release 'out' argument
   outArgument_outDomainMap = GALGAS_domainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 122)) ;
   const GALGAS_domainDeclarationList temp_0 = inObject ;
-  cEnumerator_domainDeclarationList enumerator_4272 (temp_0, kENUMERATION_UP) ;
+  cEnumerator_domainDeclarationList enumerator_4273 (temp_0, kENUMERATION_UP) ;
   bool bool_1 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GALGAS_uint (uint32_t (0U)))).isValidAndTrue () ;
-  if (enumerator_4272.hasCurrentObject () && bool_1) {
-    while (enumerator_4272.hasCurrentObject () && bool_1) {
-      switch (enumerator_4272.current_mType (HERE).enumValue ()) {
+  if (enumerator_4273.hasCurrentObject () && bool_1) {
+    while (enumerator_4273.hasCurrentObject () && bool_1) {
+      switch (enumerator_4273.current_mType (HERE).enumValue ()) {
       case GALGAS_domainDeclarationType::kNotBuilt:
         break ;
       case GALGAS_domainDeclarationType::kEnum_type:
         {
-          const cEnumAssociatedValues_domainDeclarationType_type * extractPtr_4736 = (const cEnumAssociatedValues_domainDeclarationType_type *) (enumerator_4272.current_mType (HERE).unsafePointer ()) ;
-          const GALGAS_bddType extractedValue_4377_type = extractPtr_4736->mAssociatedValue0 ;
-          switch (extractedValue_4377_type.enumValue ()) {
+          const cEnumAssociatedValues_domainDeclarationType_type * extractPtr_4737 = (const cEnumAssociatedValues_domainDeclarationType_type *) (enumerator_4273.current_mType (HERE).unsafePointer ()) ;
+          const GALGAS_bddType extractedValue_4378_type = extractPtr_4737->mAssociatedValue0 ;
+          switch (extractedValue_4378_type.enumValue ()) {
           case GALGAS_bddType::kNotBuilt:
             break ;
           case GALGAS_bddType::kEnum_bool:
             {
               {
-              outArgument_outDomainMap.setter_insertKey (enumerator_4272.current_mDomainName (HERE), GALGAS_uint (uint32_t (1U)), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 128)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_4273.current_mDomainName (HERE), GALGAS_uint (uint32_t (1U)), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 128)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
               }
             }
             break ;
           case GALGAS_bddType::kEnum_boolArray:
             {
-              const cEnumAssociatedValues_bddType_boolArray * extractPtr_4556 = (const cEnumAssociatedValues_bddType_boolArray *) (extractedValue_4377_type.unsafePointer ()) ;
-              const GALGAS_uint extractedValue_4498_size = extractPtr_4556->mAssociatedValue0 ;
+              const cEnumAssociatedValues_bddType_boolArray * extractPtr_4557 = (const cEnumAssociatedValues_bddType_boolArray *) (extractedValue_4378_type.unsafePointer ()) ;
+              const GALGAS_uint extractedValue_4499_size = extractPtr_4557->mAssociatedValue0 ;
               {
-              outArgument_outDomainMap.setter_insertKey (enumerator_4272.current_mDomainName (HERE), extractedValue_4498_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 130)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_4273.current_mDomainName (HERE), extractedValue_4499_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 130)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
               }
             }
             break ;
           case GALGAS_bddType::kEnum_namedType:
             {
-              const cEnumAssociatedValues_bddType_namedType * extractPtr_4728 = (const cEnumAssociatedValues_bddType_namedType *) (extractedValue_4377_type.unsafePointer ()) ;
-              const GALGAS_lstring extractedValue_4589_typeName = extractPtr_4728->mAssociatedValue0 ;
-              GALGAS_uint var_size_4649 ;
-              GALGAS_recordDomainMap var_subdomain_4660 ;
-              outArgument_outDomainMap.method_searchKey (extractedValue_4589_typeName, var_size_4649, var_subdomain_4660, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
+              const cEnumAssociatedValues_bddType_namedType * extractPtr_4729 = (const cEnumAssociatedValues_bddType_namedType *) (extractedValue_4378_type.unsafePointer ()) ;
+              const GALGAS_lstring extractedValue_4590_typeName = extractPtr_4729->mAssociatedValue0 ;
+              GALGAS_uint var_size_4650 ;
+              GALGAS_recordDomainMap var_subdomain_4661 ;
+              outArgument_outDomainMap.method_searchKey (extractedValue_4590_typeName, var_size_4650, var_subdomain_4661, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
               {
-              outArgument_outDomainMap.setter_insertKey (enumerator_4272.current_mDomainName (HERE), var_size_4649, var_subdomain_4660, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_4273.current_mDomainName (HERE), var_size_4650, var_subdomain_4661, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
               }
             }
             break ;
@@ -3388,63 +3374,63 @@ void extensionMethod_analyze (const GALGAS_domainDeclarationList inObject,
         break ;
       case GALGAS_domainDeclarationType::kEnum_record:
         {
-          const cEnumAssociatedValues_domainDeclarationType_record * extractPtr_5506 = (const cEnumAssociatedValues_domainDeclarationType_record *) (enumerator_4272.current_mType (HERE).unsafePointer ()) ;
-          const GALGAS_domainFieldList extractedValue_4774_fieldList = extractPtr_5506->mAssociatedValue0 ;
-          GALGAS_bigint var_bitIndex_4797 = GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
-          GALGAS_recordDomainMap var_recordMap_4837 = GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 137)) ;
-          cEnumerator_domainFieldList enumerator_4870 (extractedValue_4774_fieldList, kENUMERATION_DOWN) ;
+          const cEnumAssociatedValues_domainDeclarationType_record * extractPtr_5508 = (const cEnumAssociatedValues_domainDeclarationType_record *) (enumerator_4273.current_mType (HERE).unsafePointer ()) ;
+          const GALGAS_domainFieldList extractedValue_4775_fieldList = extractPtr_5508->mAssociatedValue0 ;
+          GALGAS_bigint var_bitIndex_4798 = GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
+          GALGAS_recordDomainMap var_recordMap_4838 = GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 137)) ;
+          cEnumerator_domainFieldList enumerator_4872 (extractedValue_4775_fieldList, kENUMERATION_DOWN) ;
           bool bool_2 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GALGAS_uint (uint32_t (0U)))).isValidAndTrue () ;
-          if (enumerator_4870.hasCurrentObject () && bool_2) {
-            while (enumerator_4870.hasCurrentObject () && bool_2) {
-              switch (enumerator_4870.current_mType (HERE).enumValue ()) {
+          if (enumerator_4872.hasCurrentObject () && bool_2) {
+            while (enumerator_4872.hasCurrentObject () && bool_2) {
+              switch (enumerator_4872.current_mType (HERE).enumValue ()) {
               case GALGAS_bddType::kNotBuilt:
                 break ;
               case GALGAS_bddType::kEnum_bool:
                 {
                   {
-                  var_recordMap_4837.setter_insertKey (enumerator_4870.current_mVarName (HERE), var_bitIndex_4797.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GALGAS_uint (uint32_t (1U)), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 141)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
+                  var_recordMap_4838.setter_insertKey (enumerator_4872.current_mVarName (HERE), var_bitIndex_4798.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GALGAS_uint (uint32_t (1U)), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 141)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
                   }
-                  var_bitIndex_4797.plusAssign_operation(GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
+                  var_bitIndex_4798.plusAssign_operation(GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
                 }
                 break ;
               case GALGAS_bddType::kEnum_boolArray:
                 {
-                  const cEnumAssociatedValues_bddType_boolArray * extractPtr_5195 = (const cEnumAssociatedValues_bddType_boolArray *) (enumerator_4870.current_mType (HERE).unsafePointer ()) ;
-                  const GALGAS_uint extractedValue_5093_size = extractPtr_5195->mAssociatedValue0 ;
+                  const cEnumAssociatedValues_bddType_boolArray * extractPtr_5197 = (const cEnumAssociatedValues_bddType_boolArray *) (enumerator_4872.current_mType (HERE).unsafePointer ()) ;
+                  const GALGAS_uint extractedValue_5095_size = extractPtr_5197->mAssociatedValue0 ;
                   {
-                  var_recordMap_4837.setter_insertKey (enumerator_4870.current_mVarName (HERE), var_bitIndex_4797.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_5093_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 144)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
+                  var_recordMap_4838.setter_insertKey (enumerator_4872.current_mVarName (HERE), var_bitIndex_4798.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_5095_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 144)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
                   }
-                  var_bitIndex_4797 = var_bitIndex_4797.add_operation (extractedValue_5093_size.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
+                  var_bitIndex_4798 = var_bitIndex_4798.add_operation (extractedValue_5095_size.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
                 }
                 break ;
               case GALGAS_bddType::kEnum_namedType:
                 {
-                  const cEnumAssociatedValues_bddType_namedType * extractPtr_5420 = (const cEnumAssociatedValues_bddType_namedType *) (enumerator_4870.current_mType (HERE).unsafePointer ()) ;
-                  const GALGAS_lstring extractedValue_5233_typeName = extractPtr_5420->mAssociatedValue0 ;
-                  GALGAS_uint var_size_5295 ;
-                  GALGAS_recordDomainMap var_subdomain_5306 ;
-                  outArgument_outDomainMap.method_searchKey (extractedValue_5233_typeName, var_size_5295, var_subdomain_5306, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
+                  const cEnumAssociatedValues_bddType_namedType * extractPtr_5422 = (const cEnumAssociatedValues_bddType_namedType *) (enumerator_4872.current_mType (HERE).unsafePointer ()) ;
+                  const GALGAS_lstring extractedValue_5235_typeName = extractPtr_5422->mAssociatedValue0 ;
+                  GALGAS_uint var_size_5297 ;
+                  GALGAS_recordDomainMap var_subdomain_5308 ;
+                  outArgument_outDomainMap.method_searchKey (extractedValue_5235_typeName, var_size_5297, var_subdomain_5308, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
                   {
-                  var_recordMap_4837.setter_insertKey (enumerator_4870.current_mVarName (HERE), var_bitIndex_4797.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5295, var_subdomain_5306, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
+                  var_recordMap_4838.setter_insertKey (enumerator_4872.current_mVarName (HERE), var_bitIndex_4798.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5297, var_subdomain_5308, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
                   }
-                  var_bitIndex_4797 = var_bitIndex_4797.add_operation (var_size_5295.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
+                  var_bitIndex_4798 = var_bitIndex_4798.add_operation (var_size_5297.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
                 }
                 break ;
               }
-              enumerator_4870.gotoNextObject () ;
-              if (enumerator_4870.hasCurrentObject ()) {
+              enumerator_4872.gotoNextObject () ;
+              if (enumerator_4872.hasCurrentObject ()) {
                 bool_2 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GALGAS_uint (uint32_t (0U)))).isValidAndTrue () ;
               }
             }
           }
           {
-          outArgument_outDomainMap.setter_insertKey (enumerator_4272.current_mDomainName (HERE), var_bitIndex_4797.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4837, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
+          outArgument_outDomainMap.setter_insertKey (enumerator_4273.current_mDomainName (HERE), var_bitIndex_4798.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4838, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
           }
         }
         break ;
       }
-      enumerator_4272.gotoNextObject () ;
-      if (enumerator_4272.hasCurrentObject ()) {
+      enumerator_4273.gotoNextObject () ;
+      if (enumerator_4273.hasCurrentObject ()) {
         bool_1 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GALGAS_uint (uint32_t (0U)))).isValidAndTrue () ;
       }
     }
@@ -3593,35 +3579,29 @@ void GALGAS_varList::addAssign_operation (const GALGAS_string & inOperand0,
                                           const GALGAS_uint & inOperand2
                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_varList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_varList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_varList::setter_append (GALGAS_varList_2D_element inElement,
+void GALGAS_varList::setter_append (const GALGAS_string inOperand0,
+                                    const GALGAS_uint inOperand1,
+                                    const GALGAS_uint inOperand2,
                                     C_Compiler * /* inCompiler */
                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_varList (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_varList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -4406,53 +4386,53 @@ void extensionMethod_analyze (const GALGAS_domainFieldList inObject,
                               C_Compiler * inCompiler
                               COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_domainFieldList temp_0 = inObject ;
-  cEnumerator_domainFieldList enumerator_6678 (temp_0, kENUMERATION_DOWN) ;
-  while (enumerator_6678.hasCurrentObject ()) {
-    switch (enumerator_6678.current_mType (HERE).enumValue ()) {
+  cEnumerator_domainFieldList enumerator_6681 (temp_0, kENUMERATION_DOWN) ;
+  while (enumerator_6681.hasCurrentObject ()) {
+    switch (enumerator_6681.current_mType (HERE).enumValue ()) {
     case GALGAS_bddType::kNotBuilt:
       break ;
     case GALGAS_bddType::kEnum_bool:
       {
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6678.current_mVarName (HERE), ioArgument_ioTotalBitCount, GALGAS_uint (uint32_t (1U)), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 189)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6681.current_mVarName (HERE), ioArgument_ioTotalBitCount, GALGAS_uint (uint32_t (1U)), GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 189)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6678.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GALGAS_uint (uint32_t (1U)), GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6681.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GALGAS_uint (uint32_t (1U)), GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
         }
         ioArgument_ioTotalBitCount.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 191)) ;
       }
       break ;
     case GALGAS_bddType::kEnum_boolArray:
       {
-        const cEnumAssociatedValues_bddType_boolArray * extractPtr_7098 = (const cEnumAssociatedValues_bddType_boolArray *) (enumerator_6678.current_mType (HERE).unsafePointer ()) ;
-        const GALGAS_uint extractedValue_6911_size = extractPtr_7098->mAssociatedValue0 ;
+        const cEnumAssociatedValues_bddType_boolArray * extractPtr_7101 = (const cEnumAssociatedValues_bddType_boolArray *) (enumerator_6681.current_mType (HERE).unsafePointer ()) ;
+        const GALGAS_uint extractedValue_6914_size = extractPtr_7101->mAssociatedValue0 ;
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6678.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6911_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 193)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6681.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6914_size, GALGAS_recordDomainMap::constructor_emptyMap (SOURCE_FILE ("domain.ggs", 193)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6678.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6911_size, GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6681.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6914_size, GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
         }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6911_size, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6914_size, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
       }
       break ;
     case GALGAS_bddType::kEnum_namedType:
       {
-        const cEnumAssociatedValues_bddType_namedType * extractPtr_7405 = (const cEnumAssociatedValues_bddType_namedType *) (enumerator_6678.current_mType (HERE).unsafePointer ()) ;
-        const GALGAS_lstring extractedValue_7132_typeName = extractPtr_7405->mAssociatedValue0 ;
-        GALGAS_uint var_size_7189 ;
-        GALGAS_recordDomainMap var_subDomainMap_7200 ;
-        constinArgument_inDomainMap.method_searchKey (extractedValue_7132_typeName, var_size_7189, var_subDomainMap_7200, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
+        const cEnumAssociatedValues_bddType_namedType * extractPtr_7408 = (const cEnumAssociatedValues_bddType_namedType *) (enumerator_6681.current_mType (HERE).unsafePointer ()) ;
+        const GALGAS_lstring extractedValue_7135_typeName = extractPtr_7408->mAssociatedValue0 ;
+        GALGAS_uint var_size_7192 ;
+        GALGAS_recordDomainMap var_subDomainMap_7203 ;
+        constinArgument_inDomainMap.method_searchKey (extractedValue_7135_typeName, var_size_7192, var_subDomainMap_7203, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6678.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_7189, var_subDomainMap_7200, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6681.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_7192, var_subDomainMap_7203, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6678.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_7189, GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6681.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_7192, GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
         }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_7189, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_7192, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
       }
       break ;
     }
-    enumerator_6678.gotoNextObject () ;
+    enumerator_6681.gotoNextObject () ;
   }
 }
 
@@ -8834,35 +8814,28 @@ void GALGAS_formulaParameterListInExpression::addAssign_operation (const GALGAS_
                                                                    const GALGAS_lstringlist & inOperand1
                                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_formulaParameterListInExpression (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_formulaParameterListInExpression (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_formulaParameterListInExpression::setter_append (GALGAS_formulaParameterListInExpression_2D_element inElement,
+void GALGAS_formulaParameterListInExpression::setter_append (const GALGAS_lstring inOperand0,
+                                                             const GALGAS_lstringlist inOperand1,
                                                              C_Compiler * /* inCompiler */
                                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_formulaParameterListInExpression (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_formulaParameterListInExpression (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -11712,35 +11685,27 @@ void GALGAS_formulaList::makeAttributesFromObjects (capCollectionElement & outAt
 void GALGAS_formulaList::addAssign_operation (const GALGAS_abstractFormula & inOperand0
                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_formulaList (inOperand0 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_formulaList (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_formulaList::setter_append (GALGAS_formulaList_2D_element inElement,
+void GALGAS_formulaList::setter_append (const GALGAS_abstractFormula inOperand0,
                                         C_Compiler * /* inCompiler */
                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_formulaList (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_formulaList (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
