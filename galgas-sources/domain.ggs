@@ -52,7 +52,7 @@ rule <topLevelDeClaration>( ?!@ast ioAST) {
     $)$
   end
   $;$
-  ioAST.mDomainList += !domainName !domainDeclarationType
+  !?ioAST.mDomainList.append (domainName, domainDeclarationType)
 }
 
 #·······················································································································
@@ -63,7 +63,7 @@ rule <recordFields>( !@domainFieldList outFormulaArgumentList) {
     $identifier$( ?let varName)
     $:$
     <type>( ?let @bddType type)
-    outFormulaArgumentList += !varName !type
+    !?outFormulaArgumentList.append (varName, type)
   while
     $,$
   end
@@ -103,8 +103,8 @@ map @recordDomainMap {
   public var @uint mIndex
   public var @uint mBitCount
   public var @recordDomainMap mSubDomain
-  insert insertKey error message "the '%K' field is already declared in %L"
-  search searchKey error message "there is no '%K' field"
+  %insertSetter insertKey %errorMessage "the '%K' field is already declared in %L"
+  %searchMethod searchKey %errorMessage "there is no '%K' field"
 }
 
 #·······················································································································
@@ -112,8 +112,8 @@ map @recordDomainMap {
 map @domainMap {
   public var @uint mBitCount
   public var @recordDomainMap mRecordMap
-  insert insertKey error message "the '%K' domain is already declared in %L"
-  search searchKey error message "there is no '%K' domain"
+  %insertSetter insertKey %errorMessage "the '%K' domain is already declared in %L"
+  %searchMethod searchKey %errorMessage "there is no '%K' domain"
 }
 
 #·······················································································································
@@ -170,8 +170,8 @@ map @varMap {
   public var @uint mIndex
   public var @uint mBitCount
   public var @recordDomainMap mRecordDomainMap
-  insert insertKey error message "the '%K' variable is already declared in %L"
-  search searchKey error message "there is no '%K' variable"
+  %insertSetter insertKey %errorMessage "the '%K' variable is already declared in %L"
+  %searchMethod searchKey %errorMessage "there is no '%K' variable"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -246,9 +246,9 @@ rule <factor>( !@expression outExpression) {
       while
         $.$
         $identifier$( ?let fieldName)
-        fieldNames += !fieldName
+        !?fieldNames.append (fieldName)
       end
-      parameterList += !parameterName !fieldNames
+      !?parameterList.append (parameterName, fieldNames)
     while
       $,$
     end
@@ -288,7 +288,7 @@ rule <factor>( !@expression outExpression) {
   while
     $.$
     $identifier$( ?let fieldName)
-    leftFieldNames += !fieldName
+    !?leftFieldNames.append (fieldName)
   end
   let @comparison comparison
   select
@@ -320,7 +320,7 @@ rule <factor>( !@expression outExpression) {
     while
       $.$
       $identifier$( ?let fieldName)
-      rightFieldNames += !fieldName
+      !?rightFieldNames.append (fieldName)
     end
     outExpression = @variableComparisonInExpression.new (!varName, !leftFieldNames, !comparison, !rightVarName, !rightFieldNames)
   end
@@ -532,7 +532,7 @@ override func @formulaInExpression. computeExpression(
           + formalBitCount + " bit" + if formalBitCount > 1 then "s" else "" end
       end
       for i in 0 ..< parameterBitCount do
-        transformationList += !parameterIndex + i
+        !?transformationList.append (parameterIndex + i)
       end
     end
     outResult = formulaValue.transformedBy (transformationList)

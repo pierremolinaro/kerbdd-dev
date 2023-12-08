@@ -24,7 +24,7 @@ syntax extension kerbdd_syntax {
     $nodeHashMapSize$
     $integer$( ?let setting)
     $;$
-    ioAST.mFormulaList += !@setting_nodeHashMapSize.new (!setting)
+    !?ioAST.mFormulaList.append (@setting_nodeHashMapSize.new (!setting))
   }
 
 #·······················································································································
@@ -33,7 +33,7 @@ syntax extension kerbdd_syntax {
     $andCacheMapSize$
     $integer$( ?let setting)
     $;$
-    ioAST.mFormulaList += !@setting_andCacheMapSize.new (!setting)
+    !?ioAST.mFormulaList.append (@setting_andCacheMapSize.new (!setting))
   }
 
 #·······················································································································

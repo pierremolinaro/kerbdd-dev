@@ -47,7 +47,7 @@ rule <topLevelDeClaration>( ?!@ast ioAST) {
   end
   <expression>( ?let @expression expression)
   $;$
-  ioAST.mFormulaList += !@assignmentFormula.new (!formulaName, !domainFieldList, !kind, !expression)
+  !?ioAST.mFormulaList.append (@assignmentFormula.new (!formulaName, !domainFieldList, !kind, !expression))
 }
 
 #·······················································································································
@@ -62,8 +62,8 @@ map @computedFormulaMap {
   public var @varList mVarList
   public var @uint mBitCount
   public var @binaryset mValue
-  insert insertKey error message "the '%K' formula is already declared in %L"
-  search searchKey error message "there is no '%K' formula"
+  %insertSetter insertKey %errorMessage "the '%K' formula is already declared in %L"
+  %searchMethod searchKey %errorMessage "there is no '%K' formula"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -81,14 +81,14 @@ override proc @assignmentFormula. analyzeFormula(
 #--- Compute expression
   switch self.mKind
   case assignment :
-#    print (self.mFormulaName.string + "...")
+#    println (self.mFormulaName.string + "...")
     let timer = @timer.start
     let result = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !ioComputedFormulaMap)
     !?ioComputedFormulaMap.insertKey (!self.mFormulaName, !varList, !totalBitCount, !result)
     let @uint64 valueCount = result.valueCount (totalBitCount)
 #    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
     let @uint64 nodeCount = result.nodeCount ()
-    print (" "
+    println (" "
       + valueCount + " value" + if valueCount > 1 then "s" else "" end
       + ", " + nodeCount + " node" + if nodeCount > 1 then "s" else "" end
       + " (" + timer + ")")
@@ -111,7 +111,7 @@ override proc @assignmentFormula. analyzeFormula(
     end
     let @uint64 valueCount = result.valueCount (totalBitCount)
     let @uint64 nodeCount = result.nodeCount ()
-    print (" "
+    println (" "
       + iterationCount + " iteration" + if iterationCount > 1 then "s" else "" end
       + ", " + valueCount + " value" + if valueCount > 1 then "s" else "" end
       + ", " + nodeCount + " node" + if nodeCount > 1 then "s" else "" end

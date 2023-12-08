@@ -18,7 +18,7 @@ syntax extension kerbdd_syntax {
     $graphviz$
     $identifier$( ?let formulaName)
     $;$
-    ioAST.mFormulaList += !@graphvizFormula.new (!formulaName)
+    !?ioAST.mFormulaList.append (@graphvizFormula.new (!formulaName))
   }
 
 #·······················································································································
@@ -36,14 +36,14 @@ override proc @graphvizFormula. analyzeFormula(
 {
   ioComputedFormulaMap.searchKey (!self.mFormulaName, ?let @varList varList, ?*, ?let result)
   let filePath = inSourceFilePath.stringByDeletingPathExtension () + "." + self.mFormulaName + ".dot"
-  print ("Graphviz $" + self.mFormulaName + " -> " + filePath)
+  println ("Graphviz $" + self.mFormulaName + " -> " + filePath)
   var @stringlist bitNameList = []
   for > (mVarName, *, mBitCount) in varList do
     if mBitCount == 1 then
-      bitNameList += !mVarName
+      !?bitNameList.append (mVarName)
     else
       for i in 0 ..< mBitCount do
-        bitNameList += !mVarName + "." + i
+        !?bitNameList.append (mVarName + "." + i)
       end
     end
   end

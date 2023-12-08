@@ -18,7 +18,7 @@ syntax extension kerbdd_syntax {
     $dump$
     $identifier$( ?let formulaName)
     $;$
-    ioAST.mFormulaList += !@dumpFormula.new (!formulaName)
+    !?ioAST.mFormulaList.append (@dumpFormula.new (!formulaName))
   }
 
 #·······················································································································
@@ -36,14 +36,14 @@ override proc @dumpFormula. analyzeFormula(
 {
   ioComputedFormulaMap.searchKey (!self.mFormulaName, ?let @varList varList, ?let bitCount, ?let result)
   let @uint64 valueCount = result.valueCount (!bitCount)
-  print ("Dump $" + self.mFormulaName + " (" + valueCount + " value" + if valueCount > 1 then "s" else "" end + ")")
+  println ("Dump $" + self.mFormulaName + " (" + valueCount + " value" + if valueCount > 1 then "s" else "" end + ")")
   var @stringlist nameList = []
   var @uintlist bitCountList = []
   for (mVarName, *, mBitCount) in varList do
-    nameList += !mVarName
-    bitCountList += !mBitCount
+    !?nameList.append (mVarName)
+    !?bitCountList.append (mBitCount)
   end
-  print (result.print (!nameList, !bitCountList))
+  println (result.print (!nameList, !bitCountList))
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

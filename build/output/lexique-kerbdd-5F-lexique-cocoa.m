@@ -98,14 +98,14 @@ static NSInteger search_into_kerbdd_5F_lexique_keyWordList (NSString * inSearche
   mLexicalAttribute_uint32value = 0 ;
   mTokenStartLocation = mCurrentLocation ;
   if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
-    BOOL loop901 = YES ;
+    BOOL loop903 = YES ;
     do {
       scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
       if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
       }else{
-        loop901 = NO ;
+        loop903 = NO ;
       }
-    }while (loop901 && scanningOk) ;
+    }while (loop903 && scanningOk) ;
     if (mTokenCode == 0) {
       mTokenCode = search_into_kerbdd_5F_lexique_keyWordList (mLexicalAttribute_tokenString) ;
     }
@@ -114,26 +114,26 @@ static NSInteger search_into_kerbdd_5F_lexique_keyWordList (NSString * inSearche
     }
   }else if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
     scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-    BOOL loop2577 = YES ;
+    BOOL loop1774 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
       }else if (scanningOk && ([self testForInputChar:95])) {
       }else{
-        loop2577 = NO ;
+        loop1774 = NO ;
       }
-    }while (loop2577 && scanningOk) ;
+    }while (loop1774 && scanningOk) ;
     scanner_cocoa_routine_convertDecimalStringIntoUInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint32value) ;
     mTokenCode = kerbdd_lexique_1_integer ;
   }else if (scanningOk && ([self testForInputChar:34])) {
-    BOOL loop3396 = YES ;
+    BOOL loop2601 = YES ;
     do {
       if (scanningOk && ([self testForInputChar:32] || [self testForInputChar:33] || [self testForInputFromChar:35 toChar:65533])) {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
       }else{
-        loop3396 = NO ;
+        loop2601 = NO ;
       }
-    }while (loop3396 && scanningOk) ;
+    }while (loop2601 && scanningOk) ;
     if (scanningOk && ([self testForInputChar:34])) {
       mTokenCode = kerbdd_lexique_1_literal_5F_string ;
     }else{
@@ -194,13 +194,13 @@ static NSInteger search_into_kerbdd_5F_lexique_keyWordList (NSString * inSearche
   }else if (scanningOk && [self testForInputString:@"!" advance:YES]) {
     mTokenCode = kerbdd_lexique_1__21_ ;
   }else if (scanningOk && ([self testForInputChar:35])) {
-    BOOL loop4769 = YES ;
+    BOOL loop3976 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
       }else{
-        loop4769 = NO ;
+        loop3976 = NO ;
       }
-    }while (loop4769 && scanningOk) ;
+    }while (loop3976 && scanningOk) ;
     mTokenCode = kerbdd_lexique_1_comment ;
   }else if (scanningOk && ([self testForInputFromChar:1 toChar:32])) {
   }else   if ([self testForInputChar:'\0']) { // End of source text ?

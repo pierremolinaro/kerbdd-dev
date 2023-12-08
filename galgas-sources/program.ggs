@@ -10,8 +10,8 @@ abstract proc @abstractFormula. analyzeFormula(
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "kerbdd"
-message "a source text file with the .kerbdd extension"
-grammar kerbdd_grammar
+%errorMessage "a source text file with the .kerbdd extension"
+%useGrammar kerbdd_grammar
 ?sourceFilePath:@lstring inSourceFile {
 #--- Parse
   grammar kerbdd_grammar (?let @ast ast) in inSourceFile
