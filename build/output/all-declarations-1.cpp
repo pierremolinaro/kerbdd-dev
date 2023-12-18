@@ -1,563 +1,25 @@
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "all-declarations-1.h"
 
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_recordDomainMap_2D_element::GALGAS_recordDomainMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mIndex (),
-mProperty_mBitCount (),
-mProperty_mSubDomain () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_recordDomainMap_2D_element::~ GALGAS_recordDomainMap_2D_element (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_recordDomainMap_2D_element::GALGAS_recordDomainMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                      const GALGAS_uint & inOperand1,
-                                                                      const GALGAS_uint & inOperand2,
-                                                                      const GALGAS_recordDomainMap & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mIndex (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mSubDomain (inOperand3) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_recordDomainMap_2D_element GALGAS_recordDomainMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                      const GALGAS_uint & in_mIndex,
-                                                                                      const GALGAS_uint & in_mBitCount,
-                                                                                      const GALGAS_recordDomainMap & in_mSubDomain,
-                                                                                      C_Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_recordDomainMap_2D_element result ;
-  if (in_lkey.isValid () && in_mIndex.isValid () && in_mBitCount.isValid () && in_mSubDomain.isValid ()) {
-    result = GALGAS_recordDomainMap_2D_element (in_lkey, in_mIndex, in_mBitCount, in_mSubDomain) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_recordDomainMap_2D_element::objectCompare (const GALGAS_recordDomainMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mIndex.objectCompare (inOperand.mProperty_mIndex) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mSubDomain.objectCompare (inOperand.mProperty_mSubDomain) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_recordDomainMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mSubDomain.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_recordDomainMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mIndex.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mSubDomain.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_recordDomainMap_2D_element::description (C_String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString << "<struct @recordDomainMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mIndex.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mSubDomain.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//     @recordDomainMap-element generic code implementation
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_recordDomainMap_2D_element ("recordDomainMap-element",
-                                                   nullptr) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_recordDomainMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_recordDomainMap_2D_element ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_recordDomainMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_recordDomainMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_recordDomainMap_2D_element GALGAS_recordDomainMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_recordDomainMap_2D_element result ;
-  const GALGAS_recordDomainMap_2D_element * p = (const GALGAS_recordDomainMap_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_recordDomainMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("recordDomainMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_domainMap_2D_element::GALGAS_domainMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mBitCount (),
-mProperty_mRecordMap () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_domainMap_2D_element::~ GALGAS_domainMap_2D_element (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_domainMap_2D_element::GALGAS_domainMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                          const GALGAS_uint & inOperand1,
-                                                          const GALGAS_recordDomainMap & inOperand2) :
-mProperty_lkey (inOperand0),
-mProperty_mBitCount (inOperand1),
-mProperty_mRecordMap (inOperand2) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_domainMap_2D_element GALGAS_domainMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                          const GALGAS_uint & in_mBitCount,
-                                                                          const GALGAS_recordDomainMap & in_mRecordMap,
-                                                                          C_Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_domainMap_2D_element result ;
-  if (in_lkey.isValid () && in_mBitCount.isValid () && in_mRecordMap.isValid ()) {
-    result = GALGAS_domainMap_2D_element (in_lkey, in_mBitCount, in_mRecordMap) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_domainMap_2D_element::objectCompare (const GALGAS_domainMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mRecordMap.objectCompare (inOperand.mProperty_mRecordMap) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_domainMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordMap.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_domainMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mRecordMap.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_domainMap_2D_element::description (C_String & ioString,
-                                               const int32_t inIndentation) const {
-  ioString << "<struct @domainMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mRecordMap.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//     @domainMap-element generic code implementation
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_domainMap_2D_element ("domainMap-element",
-                                             nullptr) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_domainMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_domainMap_2D_element ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_domainMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_domainMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_domainMap_2D_element GALGAS_domainMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_domainMap_2D_element result ;
-  const GALGAS_domainMap_2D_element * p = (const GALGAS_domainMap_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_domainMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("domainMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element::GALGAS_varMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mIndex (),
-mProperty_mBitCount (),
-mProperty_mRecordDomainMap () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element::~ GALGAS_varMap_2D_element (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element::GALGAS_varMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                    const GALGAS_uint & inOperand1,
-                                                    const GALGAS_uint & inOperand2,
-                                                    const GALGAS_recordDomainMap & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mIndex (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mRecordDomainMap (inOperand3) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element GALGAS_varMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                    const GALGAS_uint & in_mIndex,
-                                                                    const GALGAS_uint & in_mBitCount,
-                                                                    const GALGAS_recordDomainMap & in_mRecordDomainMap,
-                                                                    C_Compiler * /* inCompiler */
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_varMap_2D_element result ;
-  if (in_lkey.isValid () && in_mIndex.isValid () && in_mBitCount.isValid () && in_mRecordDomainMap.isValid ()) {
-    result = GALGAS_varMap_2D_element (in_lkey, in_mIndex, in_mBitCount, in_mRecordDomainMap) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_varMap_2D_element::objectCompare (const GALGAS_varMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mIndex.objectCompare (inOperand.mProperty_mIndex) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mRecordDomainMap.objectCompare (inOperand.mProperty_mRecordDomainMap) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_varMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordDomainMap.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_varMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mIndex.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mRecordDomainMap.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_varMap_2D_element::description (C_String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString << "<struct @varMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mIndex.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mRecordDomainMap.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//     @varMap-element generic code implementation
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_varMap_2D_element ("varMap-element",
-                                          nullptr) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_varMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varMap_2D_element ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_varMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_varMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element GALGAS_varMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_varMap_2D_element result ;
-  const GALGAS_varMap_2D_element * p = (const GALGAS_varMap_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_varMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("varMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element::GALGAS_computedFormulaMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mVarList (),
-mProperty_mBitCount (),
-mProperty_mValue () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element::~ GALGAS_computedFormulaMap_2D_element (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element::GALGAS_computedFormulaMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                            const GALGAS_varList & inOperand1,
-                                                                            const GALGAS_uint & inOperand2,
-                                                                            const GALGAS_binaryset & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mVarList (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mValue (inOperand3) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
-                                                                                            const GALGAS_varList & in_mVarList,
-                                                                                            const GALGAS_uint & in_mBitCount,
-                                                                                            const GALGAS_binaryset & in_mValue,
-                                                                                            C_Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_computedFormulaMap_2D_element result ;
-  if (in_lkey.isValid () && in_mVarList.isValid () && in_mBitCount.isValid () && in_mValue.isValid ()) {
-    result = GALGAS_computedFormulaMap_2D_element (in_lkey, in_mVarList, in_mBitCount, in_mValue) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_computedFormulaMap_2D_element::objectCompare (const GALGAS_computedFormulaMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mVarList.objectCompare (inOperand.mProperty_mVarList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_computedFormulaMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_computedFormulaMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mVarList.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mValue.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_computedFormulaMap_2D_element::description (C_String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString << "<struct @computedFormulaMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mVarList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mValue.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//     @computedFormulaMap-element generic code implementation
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ("computedFormulaMap-element",
-                                                      nullptr) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_computedFormulaMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_computedFormulaMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_computedFormulaMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_computedFormulaMap_2D_element result ;
-  const GALGAS_computedFormulaMap_2D_element * p = (const GALGAS_computedFormulaMap_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_computedFormulaMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("computedFormulaMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formulaParameterListInExpression_2D_element::GALGAS_formulaParameterListInExpression_2D_element (void) :
 mProperty_mParameterName (),
 mProperty_mFieldNames () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formulaParameterListInExpression_2D_element::~ GALGAS_formulaParameterListInExpression_2D_element (void) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formulaParameterListInExpression_2D_element::GALGAS_formulaParameterListInExpression_2D_element (const GALGAS_lstring & inOperand0,
                                                                                                         const GALGAS_lstringlist & inOperand1) :
@@ -565,11 +27,11 @@ mProperty_mParameterName (inOperand0),
 mProperty_mFieldNames (inOperand1) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListInExpression_2D_element::constructor_new (const GALGAS_lstring & in_mParameterName,
                                                                                                                         const GALGAS_lstringlist & in_mFieldNames,
-                                                                                                                        C_Compiler * /* inCompiler */
+                                                                                                                        Compiler * /* inCompiler */
                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formulaParameterListInExpression_2D_element result ;
   if (in_mParameterName.isValid () && in_mFieldNames.isValid ()) {
@@ -578,7 +40,7 @@ GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListIn
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_formulaParameterListInExpression_2D_element::objectCompare (const GALGAS_formulaParameterListInExpression_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
@@ -591,51 +53,51 @@ typeComparisonResult GALGAS_formulaParameterListInExpression_2D_element::objectC
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool GALGAS_formulaParameterListInExpression_2D_element::isValid (void) const {
   return mProperty_mParameterName.isValid () && mProperty_mFieldNames.isValid () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_formulaParameterListInExpression_2D_element::drop (void) {
   mProperty_mParameterName.drop () ;
   mProperty_mFieldNames.drop () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
-void GALGAS_formulaParameterListInExpression_2D_element::description (C_String & ioString,
+void GALGAS_formulaParameterListInExpression_2D_element::description (String & ioString,
                                                                       const int32_t inIndentation) const {
-  ioString << "<struct @formulaParameterListInExpression-element:" ;
+  ioString.addString ("<struct @formulaParameterListInExpression-element:") ;
   if (! isValid ()) {
-    ioString << " not built" ;
+    ioString.addString (" not built") ;
   }else{
     mProperty_mParameterName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
+    ioString.addString (", ") ;
     mProperty_mFieldNames.description (ioString, inIndentation+1) ;
   }
-  ioString << ">" ;
+  ioString.addString (">") ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @formulaParameterListInExpression-element generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_formulaParameterListInExpression_2D_element ("formulaParameterListInExpression-element",
                                                                     nullptr) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_formulaParameterListInExpression_2D_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_formulaParameterListInExpression_2D_element ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_formulaParameterListInExpression_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -645,10 +107,10 @@ AC_GALGAS_root * GALGAS_formulaParameterListInExpression_2D_element::clonedObjec
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListInExpression_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_formulaParameterListInExpression_2D_element result ;
   const GALGAS_formulaParameterListInExpression_2D_element * p = (const GALGAS_formulaParameterListInExpression_2D_element *) inObject.embeddedObject () ;
@@ -662,9 +124,9 @@ GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListIn
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @setting_5F_nodeHashMapSize reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_setting_5F_nodeHashMapSize::printNonNullClassInstanceProperties (void) const {
@@ -673,7 +135,7 @@ GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListIn
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_setting_5F_nodeHashMapSize::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -685,7 +147,7 @@ typeComparisonResult cPtr_setting_5F_nodeHashMapSize::dynamicObjectCompare (cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_setting_5F_nodeHashMapSize::objectCompare (const GALGAS_setting_5F_nodeHashMapSize & inOperand) const {
@@ -704,19 +166,19 @@ typeComparisonResult GALGAS_setting_5F_nodeHashMapSize::objectCompare (const GAL
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_setting_5F_nodeHashMapSize::GALGAS_setting_5F_nodeHashMapSize (void) :
 GALGAS_abstractFormula () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_setting_5F_nodeHashMapSize::GALGAS_setting_5F_nodeHashMapSize (const cPtr_setting_5F_nodeHashMapSize * inSourcePtr) :
 GALGAS_abstractFormula (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_setting_5F_nodeHashMapSize) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::constructor_new (const GALGAS_luint & inAttribute_mSetting
                                                                                       COMMA_LOCATION_ARGS) {
@@ -727,7 +189,7 @@ GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::constructor
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_setting_5F_nodeHashMapSize::setter_setMSetting (GALGAS_luint inValue
                                                             COMMA_UNUSED_LOCATION_ARGS) {
@@ -738,7 +200,7 @@ void GALGAS_setting_5F_nodeHashMapSize::setter_setMSetting (GALGAS_luint inValue
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_luint GALGAS_setting_5F_nodeHashMapSize::readProperty_mSetting (void) const {
   if (nullptr == mObjectPtr) {
@@ -750,9 +212,9 @@ GALGAS_luint GALGAS_setting_5F_nodeHashMapSize::readProperty_mSetting (void) con
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @setting_nodeHashMapSize class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_setting_5F_nodeHashMapSize::cPtr_setting_5F_nodeHashMapSize (const GALGAS_luint & in_mSetting
                                                                   COMMA_LOCATION_ARGS) :
@@ -760,20 +222,20 @@ cPtr_abstractFormula (THERE),
 mProperty_mSetting (in_mSetting) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_setting_5F_nodeHashMapSize::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ;
 }
 
-void cPtr_setting_5F_nodeHashMapSize::description (C_String & ioString,
+void cPtr_setting_5F_nodeHashMapSize::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString << "[@setting_nodeHashMapSize:" ;
+  ioString.addString ("[@setting_nodeHashMapSize:") ;
   mProperty_mSetting.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString.addString ("]") ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_setting_5F_nodeHashMapSize::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -782,23 +244,23 @@ acPtr_class * cPtr_setting_5F_nodeHashMapSize::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @setting_nodeHashMapSize generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ("setting_nodeHashMapSize",
                                                    & kTypeDescriptor_GALGAS_abstractFormula) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_setting_5F_nodeHashMapSize::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_setting_5F_nodeHashMapSize::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -808,10 +270,10 @@ AC_GALGAS_root * GALGAS_setting_5F_nodeHashMapSize::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_setting_5F_nodeHashMapSize result ;
   const GALGAS_setting_5F_nodeHashMapSize * p = (const GALGAS_setting_5F_nodeHashMapSize *) inObject.embeddedObject () ;
@@ -825,43 +287,43 @@ GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::extractObje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                               Bool options                                                    
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                               UInt options                                                    
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                              String options                                                   
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                              String List options                                              
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension method '@assignmentFormula analyzeFormula'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_assignmentFormula::method_analyzeFormula (const GALGAS_string /* constinArgument_inSourceFilePath */,
                                                     const GALGAS_domainMap constinArgument_inDomainMap,
                                                     GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
-                                                    C_Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint var_totalBitCount_2960 = GALGAS_uint (uint32_t (0U)) ;
   GALGAS_varList var_varList_2993 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("formula-assignment.ggs", 78)) ;
@@ -978,48 +440,48 @@ void cPtr_assignmentFormula::method_analyzeFormula (const GALGAS_string /* const
     break ;
   }
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension method '@setting_nodeHashMapSize analyzeFormula'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_setting_5F_nodeHashMapSize::method_analyzeFormula (const GALGAS_string /* constinArgument_inSourceFilePath */,
                                                              const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                                              GALGAS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
-                                                             C_Compiler * /* inCompiler */
+                                                             Compiler * /* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   {
   const GALGAS_setting_5F_nodeHashMapSize temp_0 = this ;
   GALGAS_binaryset::class_method_setNodeTableSize (temp_0.readProperty_mSetting ().readProperty_uint () COMMA_SOURCE_FILE ("setting-map.ggs", 52)) ;
   }
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension method '@setting_andCacheMapSize analyzeFormula'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_setting_5F_andCacheMapSize::method_analyzeFormula (const GALGAS_string /* constinArgument_inSourceFilePath */,
                                                              const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                                              GALGAS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
-                                                             C_Compiler * /* inCompiler */
+                                                             Compiler * /* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   {
   const GALGAS_setting_5F_andCacheMapSize temp_0 = this ;
   GALGAS_binaryset::class_method_setAndTableSize (temp_0.readProperty_mSetting ().readProperty_uint () COMMA_SOURCE_FILE ("setting-map.ggs", 62)) ;
   }
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension method '@dumpFormula analyzeFormula'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_dumpFormula::method_analyzeFormula (const GALGAS_string /* constinArgument_inSourceFilePath */,
                                               const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                               GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
-                                              C_Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_varList var_varList_1862 ;
   GALGAS_uint var_bitCount_1876 ;
@@ -1054,16 +516,16 @@ void cPtr_dumpFormula::method_analyzeFormula (const GALGAS_string /* constinArgu
   routine_println (var_result_1891.getter_print (var_nameList_2093, var_bitCountList_2123 COMMA_SOURCE_FILE ("formula-dump.ggs", 46)), inCompiler  COMMA_SOURCE_FILE ("formula-dump.ggs", 46)) ;
   }
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension method '@graphvizFormula analyzeFormula'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_graphvizFormula::method_analyzeFormula (const GALGAS_string constinArgument_inSourceFilePath,
                                                   const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                                   GALGAS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
-                                                  C_Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_varList var_varList_1870 ;
   GALGAS_binaryset var_result_1888 ;
@@ -1103,17 +565,17 @@ void cPtr_graphvizFormula::method_analyzeFormula (const GALGAS_string constinArg
   GALGAS_bool joker_2417 ; // Joker input parameter
   var_s_2333.method_writeToFileWhenDifferentContents (var_filePath_1902, joker_2417, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 51)) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@varInExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_varInExpression::getter_computeExpression (const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                                                  const GALGAS_varMap constinArgument_inVarMap,
                                                                  const GALGAS_uint /* constinArgument_inTotalBitCount */,
                                                                  const GALGAS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   GALGAS_uint var_idx_11533 ;
@@ -1147,17 +609,17 @@ GALGAS_binaryset cPtr_varInExpression::getter_computeExpression (const GALGAS_do
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@varBitInExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_varBitInExpression::getter_computeExpression (const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                                                     const GALGAS_varMap constinArgument_inVarMap,
                                                                     const GALGAS_uint /* constinArgument_inTotalBitCount */,
                                                                     const GALGAS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   GALGAS_uint var_idx_12242 ;
@@ -1193,17 +655,17 @@ GALGAS_binaryset cPtr_varBitInExpression::getter_computeExpression (const GALGAS
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@andExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_andExpression::getter_computeExpression (const GALGAS_domainMap constinArgument_inDomainMap,
                                                                const GALGAS_varMap constinArgument_inVarMap,
                                                                const GALGAS_uint constinArgument_inTotalBitCount,
                                                                const GALGAS_computedFormulaMap constinArgument_inComputedFormulaMap,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   const GALGAS_andExpression temp_0 = this ;
@@ -1216,17 +678,17 @@ GALGAS_binaryset cPtr_andExpression::getter_computeExpression (const GALGAS_doma
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@orExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_orExpression::getter_computeExpression (const GALGAS_domainMap constinArgument_inDomainMap,
                                                               const GALGAS_varMap constinArgument_inVarMap,
                                                               const GALGAS_uint constinArgument_inTotalBitCount,
                                                               const GALGAS_computedFormulaMap constinArgument_inComputedFormulaMap,
-                                                              C_Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   const GALGAS_orExpression temp_0 = this ;
@@ -1239,17 +701,17 @@ GALGAS_binaryset cPtr_orExpression::getter_computeExpression (const GALGAS_domai
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@xorExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_xorExpression::getter_computeExpression (const GALGAS_domainMap constinArgument_inDomainMap,
                                                                const GALGAS_varMap constinArgument_inVarMap,
                                                                const GALGAS_uint constinArgument_inTotalBitCount,
                                                                const GALGAS_computedFormulaMap constinArgument_inComputedFormulaMap,
-                                                               C_Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   const GALGAS_xorExpression temp_0 = this ;
@@ -1262,17 +724,17 @@ GALGAS_binaryset cPtr_xorExpression::getter_computeExpression (const GALGAS_doma
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@impliesExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_impliesExpression::getter_computeExpression (const GALGAS_domainMap constinArgument_inDomainMap,
                                                                    const GALGAS_varMap constinArgument_inVarMap,
                                                                    const GALGAS_uint constinArgument_inTotalBitCount,
                                                                    const GALGAS_computedFormulaMap constinArgument_inComputedFormulaMap,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   const GALGAS_impliesExpression temp_0 = this ;
@@ -1285,17 +747,17 @@ GALGAS_binaryset cPtr_impliesExpression::getter_computeExpression (const GALGAS_
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@equalExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_equalExpression::getter_computeExpression (const GALGAS_domainMap constinArgument_inDomainMap,
                                                                  const GALGAS_varMap constinArgument_inVarMap,
                                                                  const GALGAS_uint constinArgument_inTotalBitCount,
                                                                  const GALGAS_computedFormulaMap constinArgument_inComputedFormulaMap,
-                                                                 C_Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   const GALGAS_equalExpression temp_0 = this ;
@@ -1308,17 +770,17 @@ GALGAS_binaryset cPtr_equalExpression::getter_computeExpression (const GALGAS_do
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@notEqualExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_notEqualExpression::getter_computeExpression (const GALGAS_domainMap constinArgument_inDomainMap,
                                                                     const GALGAS_varMap constinArgument_inVarMap,
                                                                     const GALGAS_uint constinArgument_inTotalBitCount,
                                                                     const GALGAS_computedFormulaMap constinArgument_inComputedFormulaMap,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   const GALGAS_notEqualExpression temp_0 = this ;
@@ -1331,17 +793,17 @@ GALGAS_binaryset cPtr_notEqualExpression::getter_computeExpression (const GALGAS
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@complementExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_complementExpression::getter_computeExpression (const GALGAS_domainMap constinArgument_inDomainMap,
                                                                       const GALGAS_varMap constinArgument_inVarMap,
                                                                       const GALGAS_uint constinArgument_inTotalBitCount,
                                                                       const GALGAS_computedFormulaMap constinArgument_inComputedFormulaMap,
-                                                                      C_Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   const GALGAS_complementExpression temp_0 = this ;
@@ -1351,17 +813,17 @@ GALGAS_binaryset cPtr_complementExpression::getter_computeExpression (const GALG
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@trueExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_trueExpression::getter_computeExpression (const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                                                 const GALGAS_varMap /* constinArgument_inVarMap */,
                                                                 const GALGAS_uint /* constinArgument_inTotalBitCount */,
                                                                 const GALGAS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
-                                                                C_Compiler */* inCompiler */
+                                                                Compiler */* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   result_outResult = GALGAS_binaryset::constructor_fullBinarySet (SOURCE_FILE ("expression.ggs", 486)) ;
@@ -1370,17 +832,17 @@ GALGAS_binaryset cPtr_trueExpression::getter_computeExpression (const GALGAS_dom
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@falseExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_falseExpression::getter_computeExpression (const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                                                  const GALGAS_varMap /* constinArgument_inVarMap */,
                                                                  const GALGAS_uint /* constinArgument_inTotalBitCount */,
                                                                  const GALGAS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
-                                                                 C_Compiler */* inCompiler */
+                                                                 Compiler */* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   result_outResult = GALGAS_binaryset::constructor_emptyBinarySet (SOURCE_FILE ("expression.ggs", 498)) ;
@@ -1389,17 +851,17 @@ GALGAS_binaryset cPtr_falseExpression::getter_computeExpression (const GALGAS_do
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@formulaInExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                                                      const GALGAS_varMap constinArgument_inVarMap,
                                                                      const GALGAS_uint /* constinArgument_inTotalBitCount */,
                                                                      const GALGAS_computedFormulaMap constinArgument_inComputedFormulaMap,
-                                                                     C_Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   GALGAS_varList var_varList_17922 ;
@@ -1493,17 +955,17 @@ GALGAS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GALGA
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@existInExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_existInExpression::getter_computeExpression (const GALGAS_domainMap constinArgument_inDomainMap,
                                                                    const GALGAS_varMap constinArgument_inVarMap,
                                                                    const GALGAS_uint constinArgument_inTotalBitCount,
                                                                    const GALGAS_computedFormulaMap constinArgument_inComputedFormulaMap,
-                                                                   C_Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   GALGAS_varMap var_varMap_19891 = constinArgument_inVarMap ;
@@ -1519,17 +981,17 @@ GALGAS_binaryset cPtr_existInExpression::getter_computeExpression (const GALGAS_
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@forAllInExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_forAllInExpression::getter_computeExpression (const GALGAS_domainMap constinArgument_inDomainMap,
                                                                     const GALGAS_varMap constinArgument_inVarMap,
                                                                     const GALGAS_uint constinArgument_inTotalBitCount,
                                                                     const GALGAS_computedFormulaMap constinArgument_inComputedFormulaMap,
-                                                                    C_Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   GALGAS_varMap var_varMap_20554 = constinArgument_inVarMap ;
@@ -1545,17 +1007,17 @@ GALGAS_binaryset cPtr_forAllInExpression::getter_computeExpression (const GALGAS
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@comparisonWithConstantInExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression (const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                                                                     const GALGAS_varMap constinArgument_inVarMap,
                                                                                     const GALGAS_uint /* constinArgument_inTotalBitCount */,
                                                                                     const GALGAS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
-                                                                                    C_Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   GALGAS_uint var_idx_21285 ;
@@ -1644,17 +1106,17 @@ GALGAS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpressi
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension getter '@variableComparisonInExpression computeExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (const GALGAS_domainMap /* constinArgument_inDomainMap */,
                                                                                 const GALGAS_varMap constinArgument_inVarMap,
                                                                                 const GALGAS_uint /* constinArgument_inTotalBitCount */,
                                                                                 const GALGAS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
-                                                                                C_Compiler * inCompiler
+                                                                                Compiler * inCompiler
                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result_outResult ; // Returned variable
   GALGAS_uint var_leftIdx_23135 ;
@@ -1787,66 +1249,66 @@ GALGAS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (
 #include "galgas2/cLexiqueIntrospection.h"
 #include "utilities/F_DisplayException.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                      print_tool_help_message                                                  
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void print_tool_help_message (void) {
-  co << "Compiled with GALGAS revision NUMERO_REVISION_GALGAS\n" ;
+  gCout.addString ("Compiled with GALGAS revision NUMERO_REVISION_GALGAS\n") ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static const char * kSourceFileExtensions [] = {
   "kerbdd",
   nullptr
 } ;    
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static const char * kSourceFileHelpMessages [] = {
   "a source text file with the .kerbdd extension",
   nullptr
 } ;    
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const char * projectVersionString (void) {
   return "2.0.0" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'before'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
-static void routine_before (C_Compiler * /* inCompiler */
+static void routine_before (Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'after'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
-static void routine_after (C_Compiler * /* inCompiler */
+static void routine_after (Compiler * /* inCompiler */
                            COMMA_UNUSED_LOCATION_ARGS) {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'programRule_0'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
-                                         C_Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ast var_ast_837 ;
   var_ast_837.drop () ;
@@ -1868,15 +1330,15 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                      M A I N    F O R    L I B P M                                            
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int mainForLIBPM (int inArgc, const char * inArgv []) {
 //--- Analyze Command Line Options
-  TC_UniqueArray <C_String> sourceFilesArray ;
+  TC_UniqueArray <String> sourceFilesArray ;
   F_Analyze_CLI_Options (inArgc, inArgv,
                          sourceFilesArray,
                          kSourceFileExtensions,
@@ -1885,21 +1347,21 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
 //---
   int returnCode = 0 ; // No error
 //--- Set Execution mode
-  C_String executionModeOptionErrorMessage ;
+  String executionModeOptionErrorMessage ;
   setExecutionMode (executionModeOptionErrorMessage) ;
   if (executionModeOptionErrorMessage.length () > 0) {
-    co << executionModeOptionErrorMessage ;
+    gCout.addString (executionModeOptionErrorMessage) ;
     returnCode = 1 ;
   }else{
   //--- Common lexique object
-    C_Compiler * commonCompiler = nullptr ;
-    macroMyNew (commonCompiler, C_Compiler (nullptr COMMA_HERE)) ;
+    Compiler * commonCompiler = nullptr ;
+    macroMyNew (commonCompiler, Compiler (nullptr COMMA_HERE)) ;
     try{
       routine_before (commonCompiler COMMA_HERE) ;
       cLexiqueIntrospection::handleGetKeywordListOption (commonCompiler) ;
       const bool verboseOptionOn = verboseOutput () ;
       for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
-        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
+        const String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
         const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
         const GALGAS_location location = commonCompiler->here () ;
         const GALGAS_lstring sourceFilePath (sfp, location) ;
@@ -1949,23 +1411,25 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       }
     //--- Display error and warnings count
       if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
-        C_String message ;
+        String message ;
         if (totalWarningCount () == 0) {
-          message << "No warning" ;
+          message.addString ("No warning") ;
         }else if (totalWarningCount () == 1) {
-          message << "1 warning" ;
+          message.addString ("1 warning") ;
         }else{
-          message << cStringWithSigned (totalWarningCount ()) << " warnings" ;
+          message.addSigned (totalWarningCount ()) ;
+          message.addString (" warnings") ;
         }
-        message << ", " ;
+        message.addString (", ") ;
         if (totalErrorCount () == 0) {
-          message << "no error" ;
+          message.addString ("no error") ;
         }else if (totalErrorCount () == 1) {
-          message << "1 error" ;
+          message.addString ("1 error") ;
         }else{
-          message << cStringWithSigned (totalErrorCount ()) << " errors" ;
+          message.addSigned (totalErrorCount ()) ;
+          message.addString (" errors") ;
         }
-        message << ".\n" ;
+        message.addString (".\n") ;
         ggs_printMessage (message COMMA_HERE) ;
       }
     }catch (const ::std::exception & e) {
