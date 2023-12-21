@@ -29,7 +29,7 @@ rule 'a'->'z' |  'A'->'Z' {
     enterCharacterIntoString (!?tokenString !*)
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
   end
-  send %codeFor tokenString in keyWordList default $identifier$
+  send %searchString tokenString in keyWordList default $identifier$
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

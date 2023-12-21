@@ -114,26 +114,26 @@ static NSInteger search_into_kerbdd_5F_lexique_keyWordList (NSString * inSearche
     }
   }else if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
     scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-    BOOL loop1774 = YES ;
+    BOOL loop1779 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
       }else if (scanningOk && ([self testForInputChar:95])) {
       }else{
-        loop1774 = NO ;
+        loop1779 = NO ;
       }
-    }while (loop1774 && scanningOk) ;
+    }while (loop1779 && scanningOk) ;
     scanner_cocoa_routine_convertDecimalStringIntoUInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint32value) ;
     mTokenCode = kerbdd_lexique_1_integer ;
   }else if (scanningOk && ([self testForInputChar:34])) {
-    BOOL loop2601 = YES ;
+    BOOL loop2606 = YES ;
     do {
       if (scanningOk && ([self testForInputChar:32] || [self testForInputChar:33] || [self testForInputFromChar:35 toChar:65533])) {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
       }else{
-        loop2601 = NO ;
+        loop2606 = NO ;
       }
-    }while (loop2601 && scanningOk) ;
+    }while (loop2606 && scanningOk) ;
     if (scanningOk && ([self testForInputChar:34])) {
       mTokenCode = kerbdd_lexique_1_literal_5F_string ;
     }else{
@@ -194,13 +194,13 @@ static NSInteger search_into_kerbdd_5F_lexique_keyWordList (NSString * inSearche
   }else if (scanningOk && [self testForInputString:@"!" advance:YES]) {
     mTokenCode = kerbdd_lexique_1__21_ ;
   }else if (scanningOk && ([self testForInputChar:35])) {
-    BOOL loop3976 = YES ;
+    BOOL loop3981 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
       }else{
-        loop3976 = NO ;
+        loop3981 = NO ;
       }
-    }while (loop3976 && scanningOk) ;
+    }while (loop3981 && scanningOk) ;
     mTokenCode = kerbdd_lexique_1_comment ;
   }else if (scanningOk && ([self testForInputFromChar:1 toChar:32])) {
   }else   if ([self testForInputChar:'\0']) { // End of source text ?
