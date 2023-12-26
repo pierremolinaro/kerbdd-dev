@@ -1197,7 +1197,7 @@ String C_Lexique_kerbdd_5F_lexique::getCurrentTokenString (const cToken * inToke
 
 void C_Lexique_kerbdd_5F_lexique::internalParseLexicalToken (cTokenFor_kerbdd_5F_lexique & token) {
   bool loop = true ;
-  token.mLexicalAttribute_tokenString.setLengthToZero () ;
+  token.mLexicalAttribute_tokenString.removeAllKeepingCapacity () ;
   token.mLexicalAttribute_uint_33__32_value = 0 ;
   mTokenStartLocation = mCurrentLocation ;
   try{
@@ -1375,7 +1375,6 @@ void C_Lexique_kerbdd_5F_lexique::enterToken (cTokenFor_kerbdd_5F_lexique & ioTo
   cTokenFor_kerbdd_5F_lexique * ptr = nullptr ;
   macroMyNew (ptr, cTokenFor_kerbdd_5F_lexique ()) ;
   ptr->mTokenCode = ioToken.mTokenCode ;
-  // ptr->mIsOptional = ioToken.mIsOptional ;
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
   ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;
@@ -14799,7 +14798,7 @@ GALGAS_variableComparisonInExpression GALGAS_variableComparisonInExpression::ext
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -16026,7 +16025,7 @@ void cGrammar_kerbdd_5F_grammar::performIndexing (Compiler * inCompiler,
 
 void cGrammar_kerbdd_5F_grammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_kerbdd_5F_lexique * scanner = NULL ;
+  C_Lexique_kerbdd_5F_lexique * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_kerbdd_5F_lexique (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
@@ -16036,7 +16035,7 @@ void cGrammar_kerbdd_5F_grammar::performOnlyLexicalAnalysis (Compiler * inCompil
 
 void cGrammar_kerbdd_5F_grammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_kerbdd_5F_lexique * scanner = NULL ;
+  C_Lexique_kerbdd_5F_lexique * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_kerbdd_5F_lexique (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
@@ -16059,11 +16058,11 @@ void cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (Compiler * inCompil
   if (inFilePath.isValid ()) {
     const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;
     String filePath = filePathAsString.stringValue () ;
-    if (! C_FileManager::isAbsolutePath (filePath)) {
+    if (! FileManager::isAbsolutePath (filePath)) {
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
     }
-    if (C_FileManager::fileExistsAtPath (filePath)) {
-      C_Lexique_kerbdd_5F_lexique * scanner = NULL ;
+    if (FileManager::fileExistsAtPath (filePath)) {
+      C_Lexique_kerbdd_5F_lexique * scanner = nullptr ;
       macroMyNew (scanner, C_Lexique_kerbdd_5F_lexique (inCompiler, filePath COMMA_HERE)) ;
       if (scanner->sourceText ().isValid ()) {
         const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
@@ -16103,7 +16102,7 @@ void cGrammar_kerbdd_5F_grammar::_performSourceStringParsing_ (Compiler * inComp
   if (inSourceString.isValid () && inNameString.isValid ()) {
     const String sourceString = inSourceString.stringValue () ;
     const String nameString = inNameString.stringValue () ;
-    C_Lexique_kerbdd_5F_lexique * scanner = NULL ;
+    C_Lexique_kerbdd_5F_lexique * scanner = nullptr ;
     macroMyNew (scanner, C_Lexique_kerbdd_5F_lexique (inCompiler, sourceString, nameString COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,

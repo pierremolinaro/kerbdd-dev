@@ -30,7 +30,7 @@ NSDictionary * indexingDescriptorDictionary (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-// #import "option-kerbdd-5F-options-cocoa.h"
+// #import "option-kerbdd-5Foptions-cocoa.h"
 
 //--------------------------------------------------------------------------------------------------
 

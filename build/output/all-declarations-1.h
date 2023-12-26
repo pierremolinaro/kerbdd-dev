@@ -10,23 +10,23 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'println'
+//Routine 'println?'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_println (const class GALGAS_string constinArgument0,
-                      class Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) ;
+void routine_println_3F_ (const class GALGAS_string constinArgument0,
+                          class Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'print'
+//Routine 'print?'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_print (const class GALGAS_string constinArgument0,
-                    class Compiler * inCompiler
-                    COMMA_LOCATION_ARGS) ;
+void routine_print_3F_ (const class GALGAS_string constinArgument0,
+                        class Compiler * inCompiler
+                        COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------------------------------------------------------------------------

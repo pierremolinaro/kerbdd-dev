@@ -4,7 +4,7 @@
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
 
-#import "option-kerbdd-5F-options-cocoa.h"
+#import "option-kerbdd-5Foptions-cocoa.h"
 #import "OC_GGS_CommandLineOption.h"
 
 //--------------------------------------------------------------------------------------------------
