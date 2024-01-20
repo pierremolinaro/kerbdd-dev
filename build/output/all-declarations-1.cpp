@@ -113,9 +113,9 @@ const C_galgas_type_descriptor * cPtr_setting_5F_nodeHashMapSize::classDescripto
 
 void cPtr_setting_5F_nodeHashMapSize::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.addString ("[@setting_nodeHashMapSize:") ;
+  ioString.appendString ("[@setting_nodeHashMapSize:") ;
   mProperty_mSetting.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1138,7 +1138,7 @@ GALGAS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (
 //--------------------------------------------------------------------------------------------------
 
 static void print_tool_help_message (void) {
-  gCout.addString ("Compiled with GALGAS revision NUMERO_REVISION_GALGAS\n") ;
+  gCout.appendString ("Compiled with GALGAS revision NUMERO_REVISION_GALGAS\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1232,7 +1232,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
   String executionModeOptionErrorMessage ;
   setExecutionMode (executionModeOptionErrorMessage) ;
   if (executionModeOptionErrorMessage.length () > 0) {
-    gCout.addString (executionModeOptionErrorMessage) ;
+    gCout.appendString (executionModeOptionErrorMessage) ;
     returnCode = 1 ;
   }else{
   //--- Common lexique object
@@ -1267,7 +1267,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
             break ;
           }
         }else{
-          printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;
+          printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString ()) ;
           r = 1 ;
         }
         if (r != 0) {
@@ -1295,23 +1295,23 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
         String message ;
         if (totalWarningCount () == 0) {
-          message.addString ("No warning") ;
+          message.appendString ("No warning") ;
         }else if (totalWarningCount () == 1) {
-          message.addString ("1 warning") ;
+          message.appendString ("1 warning") ;
         }else{
-          message.addSigned (totalWarningCount ()) ;
-          message.addString (" warnings") ;
+          message.appendSigned (totalWarningCount ()) ;
+          message.appendString (" warnings") ;
         }
-        message.addString (", ") ;
+        message.appendString (", ") ;
         if (totalErrorCount () == 0) {
-          message.addString ("no error") ;
+          message.appendString ("no error") ;
         }else if (totalErrorCount () == 1) {
-          message.addString ("1 error") ;
+          message.appendString ("1 error") ;
         }else{
-          message.addSigned (totalErrorCount ()) ;
-          message.addString (" errors") ;
+          message.appendSigned (totalErrorCount ()) ;
+          message.appendString (" errors") ;
         }
-        message.addString (".\n") ;
+        message.appendString (".\n") ;
         ggs_printMessage (message COMMA_HERE) ;
       }
     }catch (const ::std::exception & e) {
