@@ -113,9 +113,9 @@ const C_galgas_type_descriptor * cPtr_setting_5F_nodeHashMapSize::classDescripto
 
 void cPtr_setting_5F_nodeHashMapSize::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.appendString ("[@setting_nodeHashMapSize:") ;
+  ioString.appendCString ("[@setting_nodeHashMapSize:") ;
   mProperty_mSetting.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1138,7 +1138,7 @@ GALGAS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (
 //--------------------------------------------------------------------------------------------------
 
 static void print_tool_help_message (void) {
-  gCout.appendString ("Compiled with GALGAS revision NUMERO_REVISION_GALGAS\n") ;
+  gCout.appendCString ("Compiled with GALGAS revision NUMERO_REVISION_GALGAS\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1295,23 +1295,23 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
         String message ;
         if (totalWarningCount () == 0) {
-          message.appendString ("No warning") ;
+          message.appendCString ("No warning") ;
         }else if (totalWarningCount () == 1) {
-          message.appendString ("1 warning") ;
+          message.appendCString ("1 warning") ;
         }else{
           message.appendSigned (totalWarningCount ()) ;
-          message.appendString (" warnings") ;
+          message.appendCString (" warnings") ;
         }
-        message.appendString (", ") ;
+        message.appendCString (", ") ;
         if (totalErrorCount () == 0) {
-          message.appendString ("no error") ;
+          message.appendCString ("no error") ;
         }else if (totalErrorCount () == 1) {
-          message.appendString ("1 error") ;
+          message.appendCString ("1 error") ;
         }else{
           message.appendSigned (totalErrorCount ()) ;
-          message.appendString (" errors") ;
+          message.appendCString (" errors") ;
         }
-        message.appendString (".\n") ;
+        message.appendCString (".\n") ;
         ggs_printMessage (message COMMA_HERE) ;
       }
     }catch (const ::std::exception & e) {

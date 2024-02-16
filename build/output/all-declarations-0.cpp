@@ -70,11 +70,11 @@ cCollectionElement * cCollectionElement__32_lstringlist::copy (void) {
 void cCollectionElement__32_lstringlist::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mValue0" ":") ;
+  ioString.appendCString ("mValue0" ":") ;
   mObject.mProperty_mValue_30_.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mValue1" ":") ;
+  ioString.appendCString ("mValue1" ":") ;
   mObject.mProperty_mValue_31_.description (ioString, inIndentation) ;
 }
 
@@ -584,154 +584,131 @@ String Lexique_kerbdd_5F_lexique::getMessageForTerminal (const int32_t inTermina
 //                      U N I C O D E    S T R I N G S                                           
 //--------------------------------------------------------------------------------------------------
 
-//--- Unicode string for '$_21_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__21_ [] = {
+//--- Unicode string for '$!$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__21_ = {
   TO_UNICODE ('!'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_21__3D_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__21__3D_ [] = {
+//--- Unicode string for '$!=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__21__3D_ = {
   TO_UNICODE ('!'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_26_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__26_ [] = {
+//--- Unicode string for '$&$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__26_ = {
   TO_UNICODE ('&'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_28_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__28_ [] = {
+//--- Unicode string for '$($'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__28_ = {
   TO_UNICODE ('('),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_29_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__29_ [] = {
+//--- Unicode string for '$)$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__29_ = {
   TO_UNICODE (')'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2B__3D_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__2B__3D_ [] = {
+//--- Unicode string for '$+=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2B__3D_ = {
   TO_UNICODE ('+'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2C_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__2C_ [] = {
+//--- Unicode string for '$,$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2C_ = {
   TO_UNICODE (','),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2D__3D_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__2D__3D_ [] = {
+//--- Unicode string for '$-=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2D__3D_ = {
   TO_UNICODE ('-'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2D__3E_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__2D__3E_ [] = {
+//--- Unicode string for '$->$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2D__3E_ = {
   TO_UNICODE ('-'),
   TO_UNICODE ('>'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2E_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__2E_ [] = {
+//--- Unicode string for '$.$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2E_ = {
   TO_UNICODE ('.'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2E__2E_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__2E__2E_ [] = {
+//--- Unicode string for '$..$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2E__2E_ = {
   TO_UNICODE ('.'),
   TO_UNICODE ('.'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3A_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__3A_ [] = {
+//--- Unicode string for '$:$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3A_ = {
   TO_UNICODE (':'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3A__3D_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__3A__3D_ [] = {
+//--- Unicode string for '$:=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3A__3D_ = {
   TO_UNICODE (':'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3B_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__3B_ [] = {
+//--- Unicode string for '$;$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3B_ = {
   TO_UNICODE (';'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3C_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__3C_ [] = {
+//--- Unicode string for '$<$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3C_ = {
   TO_UNICODE ('<'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3C__3D_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__3C__3D_ [] = {
+//--- Unicode string for '$<=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3C__3D_ = {
   TO_UNICODE ('<'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3D_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__3D_ [] = {
+//--- Unicode string for '$=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3D_ = {
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3E_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__3E_ [] = {
+//--- Unicode string for '$>$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3E_ = {
   TO_UNICODE ('>'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3E__3D_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__3E__3D_ [] = {
+//--- Unicode string for '$>=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3E__3D_ = {
   TO_UNICODE ('>'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3F_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__3F_ [] = {
+//--- Unicode string for '$?$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3F_ = {
   TO_UNICODE ('\?'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5B_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__5B_ [] = {
+//--- Unicode string for '$[$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5B_ = {
   TO_UNICODE ('['),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5D_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__5D_ [] = {
+//--- Unicode string for '$]$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5D_ = {
   TO_UNICODE (']'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5E_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__5E_ [] = {
+//--- Unicode string for '$^$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5E_ = {
   TO_UNICODE ('^'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$andCacheMapSize$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique_andCacheMapSize [] = {
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_andCacheMapSize = {
   TO_UNICODE ('a'),
   TO_UNICODE ('n'),
   TO_UNICODE ('d'),
@@ -747,20 +724,18 @@ static const utf32 kUnicodeString_kerbdd_5F_lexique_andCacheMapSize [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('z'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$bool$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique_bool [] = {
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_bool = {
   TO_UNICODE ('b'),
   TO_UNICODE ('o'),
   TO_UNICODE ('o'),
   TO_UNICODE ('l'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$display$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique_display [] = {
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_display = {
   TO_UNICODE ('d'),
   TO_UNICODE ('i'),
   TO_UNICODE ('s'),
@@ -768,41 +743,37 @@ static const utf32 kUnicodeString_kerbdd_5F_lexique_display [] = {
   TO_UNICODE ('l'),
   TO_UNICODE ('a'),
   TO_UNICODE ('y'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$domain$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique_domain [] = {
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_domain = {
   TO_UNICODE ('d'),
   TO_UNICODE ('o'),
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$dump$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique_dump [] = {
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_dump = {
   TO_UNICODE ('d'),
   TO_UNICODE ('u'),
   TO_UNICODE ('m'),
   TO_UNICODE ('p'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$false$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique_false [] = {
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_false = {
   TO_UNICODE ('f'),
   TO_UNICODE ('a'),
   TO_UNICODE ('l'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$graphviz$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique_graphviz [] = {
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_graphviz = {
   TO_UNICODE ('g'),
   TO_UNICODE ('r'),
   TO_UNICODE ('a'),
@@ -811,11 +782,10 @@ static const utf32 kUnicodeString_kerbdd_5F_lexique_graphviz [] = {
   TO_UNICODE ('v'),
   TO_UNICODE ('i'),
   TO_UNICODE ('z'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$include$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique_include [] = {
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_include = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('c'),
@@ -823,11 +793,10 @@ static const utf32 kUnicodeString_kerbdd_5F_lexique_include [] = {
   TO_UNICODE ('u'),
   TO_UNICODE ('d'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$nodeHashMapSize$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique_nodeHashMapSize [] = {
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_nodeHashMapSize = {
   TO_UNICODE ('n'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
@@ -843,40 +812,34 @@ static const utf32 kUnicodeString_kerbdd_5F_lexique_nodeHashMapSize [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('z'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$true$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique_true [] = {
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_true = {
   TO_UNICODE ('t'),
   TO_UNICODE ('r'),
   TO_UNICODE ('u'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7B_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__7B_ [] = {
+//--- Unicode string for '${$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7B_ = {
   TO_UNICODE ('{'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7C_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__7C_ [] = {
+//--- Unicode string for '$|$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7C_ = {
   TO_UNICODE ('|'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7D_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__7D_ [] = {
+//--- Unicode string for '$}$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7D_ = {
   TO_UNICODE ('}'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7E_$'
-static const utf32 kUnicodeString_kerbdd_5F_lexique__7E_ [] = {
+//--- Unicode string for '$~$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7E_ = {
   TO_UNICODE ('~'),
-  TO_UNICODE (0)
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -886,33 +849,33 @@ static const utf32 kUnicodeString_kerbdd_5F_lexique__7E_ [] = {
 static const int32_t ktable_size_kerbdd_5F_lexique_delimitorsList = 27 ;
 
 static const C_unicode_lexique_table_entry ktable_for_kerbdd_5F_lexique_delimitorsList [ktable_size_kerbdd_5F_lexique_delimitorsList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__21_, 1, Lexique_kerbdd_5F_lexique::kToken__21_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__26_, 1, Lexique_kerbdd_5F_lexique::kToken__26_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__28_, 1, Lexique_kerbdd_5F_lexique::kToken__28_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__29_, 1, Lexique_kerbdd_5F_lexique::kToken__29_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2C_, 1, Lexique_kerbdd_5F_lexique::kToken__2C_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2E_, 1, Lexique_kerbdd_5F_lexique::kToken__2E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3A_, 1, Lexique_kerbdd_5F_lexique::kToken__3A_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3B_, 1, Lexique_kerbdd_5F_lexique::kToken__3B_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3C_, 1, Lexique_kerbdd_5F_lexique::kToken__3C_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3D_, 1, Lexique_kerbdd_5F_lexique::kToken__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3E_, 1, Lexique_kerbdd_5F_lexique::kToken__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3F_, 1, Lexique_kerbdd_5F_lexique::kToken__3F_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5B_, 1, Lexique_kerbdd_5F_lexique::kToken__5B_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5D_, 1, Lexique_kerbdd_5F_lexique::kToken__5D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5E_, 1, Lexique_kerbdd_5F_lexique::kToken__5E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7B_, 1, Lexique_kerbdd_5F_lexique::kToken__7B_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7C_, 1, Lexique_kerbdd_5F_lexique::kToken__7C_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7D_, 1, Lexique_kerbdd_5F_lexique::kToken__7D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7E_, 1, Lexique_kerbdd_5F_lexique::kToken__7E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__21__3D_, 2, Lexique_kerbdd_5F_lexique::kToken__21__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2B__3D_, 2, Lexique_kerbdd_5F_lexique::kToken__2B__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2D__3D_, 2, Lexique_kerbdd_5F_lexique::kToken__2D__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2D__3E_, 2, Lexique_kerbdd_5F_lexique::kToken__2D__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2E__2E_, 2, Lexique_kerbdd_5F_lexique::kToken__2E__2E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3A__3D_, 2, Lexique_kerbdd_5F_lexique::kToken__3A__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3C__3D_, 2, Lexique_kerbdd_5F_lexique::kToken__3C__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3E__3D_, 2, Lexique_kerbdd_5F_lexique::kToken__3E__3D_)
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__21_, Lexique_kerbdd_5F_lexique::kToken__21_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__26_, Lexique_kerbdd_5F_lexique::kToken__26_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__28_, Lexique_kerbdd_5F_lexique::kToken__28_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__29_, Lexique_kerbdd_5F_lexique::kToken__29_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2C_, Lexique_kerbdd_5F_lexique::kToken__2C_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2E_, Lexique_kerbdd_5F_lexique::kToken__2E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3A_, Lexique_kerbdd_5F_lexique::kToken__3A_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3B_, Lexique_kerbdd_5F_lexique::kToken__3B_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3C_, Lexique_kerbdd_5F_lexique::kToken__3C_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3D_, Lexique_kerbdd_5F_lexique::kToken__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3E_, Lexique_kerbdd_5F_lexique::kToken__3E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3F_, Lexique_kerbdd_5F_lexique::kToken__3F_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5B_, Lexique_kerbdd_5F_lexique::kToken__5B_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5D_, Lexique_kerbdd_5F_lexique::kToken__5D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5E_, Lexique_kerbdd_5F_lexique::kToken__5E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7B_, Lexique_kerbdd_5F_lexique::kToken__7B_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7C_, Lexique_kerbdd_5F_lexique::kToken__7C_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7D_, Lexique_kerbdd_5F_lexique::kToken__7D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7E_, Lexique_kerbdd_5F_lexique::kToken__7E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__21__3D_, Lexique_kerbdd_5F_lexique::kToken__21__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2B__3D_, Lexique_kerbdd_5F_lexique::kToken__2B__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2D__3D_, Lexique_kerbdd_5F_lexique::kToken__2D__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2D__3E_, Lexique_kerbdd_5F_lexique::kToken__2D__3E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2E__2E_, Lexique_kerbdd_5F_lexique::kToken__2E__2E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3A__3D_, Lexique_kerbdd_5F_lexique::kToken__3A__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3C__3D_, Lexique_kerbdd_5F_lexique::kToken__3C__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3E__3D_, Lexique_kerbdd_5F_lexique::kToken__3E__3D_)
 } ;
 
 int32_t Lexique_kerbdd_5F_lexique::search_into_delimitorsList (const String & inSearchedString) {
@@ -926,16 +889,16 @@ int32_t Lexique_kerbdd_5F_lexique::search_into_delimitorsList (const String & in
 static const int32_t ktable_size_kerbdd_5F_lexique_keyWordList = 10 ;
 
 static const C_unicode_lexique_table_entry ktable_for_kerbdd_5F_lexique_keyWordList [ktable_size_kerbdd_5F_lexique_keyWordList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_bool, 4, Lexique_kerbdd_5F_lexique::kToken_bool),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_dump, 4, Lexique_kerbdd_5F_lexique::kToken_dump),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_true, 4, Lexique_kerbdd_5F_lexique::kToken_true),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_false, 5, Lexique_kerbdd_5F_lexique::kToken_false),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_domain, 6, Lexique_kerbdd_5F_lexique::kToken_domain),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_display, 7, Lexique_kerbdd_5F_lexique::kToken_display),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_include, 7, Lexique_kerbdd_5F_lexique::kToken_include),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_graphviz, 8, Lexique_kerbdd_5F_lexique::kToken_graphviz),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_andCacheMapSize, 15, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_nodeHashMapSize, 15, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize)
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_bool, Lexique_kerbdd_5F_lexique::kToken_bool),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_dump, Lexique_kerbdd_5F_lexique::kToken_dump),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_true, Lexique_kerbdd_5F_lexique::kToken_true),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_false, Lexique_kerbdd_5F_lexique::kToken_false),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_domain, Lexique_kerbdd_5F_lexique::kToken_domain),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_display, Lexique_kerbdd_5F_lexique::kToken_display),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_include, Lexique_kerbdd_5F_lexique::kToken_include),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_graphviz, Lexique_kerbdd_5F_lexique::kToken_graphviz),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_andCacheMapSize, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_nodeHashMapSize, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize)
 } ;
 
 int32_t Lexique_kerbdd_5F_lexique::search_into_keyWordList (const String & inSearchedString) {
@@ -951,222 +914,222 @@ String Lexique_kerbdd_5F_lexique::getCurrentTokenString (const cToken * inTokenP
   const cTokenFor_kerbdd_5F_lexique * ptr = (const cTokenFor_kerbdd_5F_lexique *) inTokenPtr ;
   String s ;
   if (ptr == nullptr) {
-    s.appendString ("$$") ;
+    s.appendCString ("$$") ;
   }else{
     switch (ptr->mTokenCode) {
     case kToken_:
-      s.appendString ("$$") ;
+      s.appendCString ("$$") ;
       break ;
     case kToken_identifier:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("identifier") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("identifier") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken_integer:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("integer") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("integer") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendUnsigned (ptr->mLexicalAttribute_uint_33__32_value) ;
       break ;
     case kToken_literal_5F_string:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("literal_string") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("literal_string") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken_comment:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("comment") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("comment") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_nodeHashMapSize:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("nodeHashMapSize") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("nodeHashMapSize") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_andCacheMapSize:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("andCacheMapSize") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("andCacheMapSize") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_domain:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("domain") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("domain") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_bool:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("bool") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("bool") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_true:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("true") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("true") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_false:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("false") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("false") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_display:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("display") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("display") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_include:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("include") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("include") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_graphviz:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("graphviz") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("graphviz") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_dump:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("dump") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("dump") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__28_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("(") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("(") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__29_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (")") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (")") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__5B_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("[") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("[") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__5D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("]") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("]") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7B_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("{") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("{") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("}") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("}") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3A__3D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (":=") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (":=") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3A_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (":") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (":") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2E_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (".") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (".") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2E__2E_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("..") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("..") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2B__3D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("+=") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("+=") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2D__3D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("-=") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("-=") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2D__3E_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("->") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("->") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__26_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("&") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("&") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7C_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("|") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("|") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__5E_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("^") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("^") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7E_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("~") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("~") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2C_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (",") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (",") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3F_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("\?") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("\?") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__21_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("!") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("!") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3B_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (";") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (";") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("=") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("=") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__21__3D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("!=") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("!=") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3C_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("<") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("<") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3C__3D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("<=") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("<=") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3E_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (">") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (">") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3E__3D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (">=") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (">=") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     default:
       break ;
@@ -1245,85 +1208,85 @@ void Lexique_kerbdd_5F_lexique::internalParseLexicalToken (cTokenFor_kerbdd_5F_l
       }else{
         lexicalError (gLexicalMessage_kerbdd_5F_lexique_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
       }
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3E__3D_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3E__3D_, true)) {
       token.mTokenCode = kToken__3E__3D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3C__3D_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3C__3D_, true)) {
       token.mTokenCode = kToken__3C__3D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3A__3D_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3A__3D_, true)) {
       token.mTokenCode = kToken__3A__3D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2E__2E_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2E__2E_, true)) {
       token.mTokenCode = kToken__2E__2E_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2D__3E_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2D__3E_, true)) {
       token.mTokenCode = kToken__2D__3E_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2D__3D_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2D__3D_, true)) {
       token.mTokenCode = kToken__2D__3D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2B__3D_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2B__3D_, true)) {
       token.mTokenCode = kToken__2B__3D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__21__3D_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__21__3D_, true)) {
       token.mTokenCode = kToken__21__3D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7E_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7E_, true)) {
       token.mTokenCode = kToken__7E_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7D_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7D_, true)) {
       token.mTokenCode = kToken__7D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7C_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7C_, true)) {
       token.mTokenCode = kToken__7C_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7B_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7B_, true)) {
       token.mTokenCode = kToken__7B_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5E_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5E_, true)) {
       token.mTokenCode = kToken__5E_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5D_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5D_, true)) {
       token.mTokenCode = kToken__5D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5B_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5B_, true)) {
       token.mTokenCode = kToken__5B_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3F_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3F_, true)) {
       token.mTokenCode = kToken__3F_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3E_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3E_, true)) {
       token.mTokenCode = kToken__3E_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3D_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3D_, true)) {
       token.mTokenCode = kToken__3D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3C_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3C_, true)) {
       token.mTokenCode = kToken__3C_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3B_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3B_, true)) {
       token.mTokenCode = kToken__3B_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3A_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3A_, true)) {
       token.mTokenCode = kToken__3A_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2E_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2E_, true)) {
       token.mTokenCode = kToken__2E_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2C_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2C_, true)) {
       token.mTokenCode = kToken__2C_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__29_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__29_, true)) {
       token.mTokenCode = kToken__29_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__28_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__28_, true)) {
       token.mTokenCode = kToken__28_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__26_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__26_, true)) {
       token.mTokenCode = kToken__26_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__21_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__21_, true)) {
       token.mTokenCode = kToken__21_ ;
       enterToken (token) ;
     }else if (testForInputUTF32Char (TO_UNICODE ('#'))) {
@@ -1621,9 +1584,9 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 void cEnumAssociatedValues_bddType_boolArray::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString.appendString ("(\n") ;
+  ioString.appendCString ("(\n") ;
   mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendString (")") ;
+  ioString.appendCString (")") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1650,9 +1613,9 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 void cEnumAssociatedValues_bddType_namedType::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString.appendString ("(\n") ;
+  ioString.appendCString ("(\n") ;
   mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendString (")") ;
+  ioString.appendCString (")") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1720,7 +1683,7 @@ void GALGAS_bddType::method_boolArray (GALGAS_uint & outAssociatedValue0,
   if (mEnum != kEnum_boolArray) {
     outAssociatedValue0.drop () ;
     String s ;
-    s.appendString ("method @bddType boolArray invoked with an invalid enum value") ;
+    s.appendCString ("method @bddType boolArray invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const cEnumAssociatedValues_bddType_boolArray * ptr = (const cEnumAssociatedValues_bddType_boolArray *) unsafePointer () ;
@@ -1736,7 +1699,7 @@ void GALGAS_bddType::method_namedType (GALGAS_lstring & outAssociatedValue0,
   if (mEnum != kEnum_namedType) {
     outAssociatedValue0.drop () ;
     String s ;
-    s.appendString ("method @bddType namedType invoked with an invalid enum value") ;
+    s.appendCString ("method @bddType namedType invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const cEnumAssociatedValues_bddType_namedType * ptr = (const cEnumAssociatedValues_bddType_namedType *) unsafePointer () ;
@@ -1804,10 +1767,10 @@ GALGAS_bool GALGAS_bddType::getter_isNamedType (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_bddType::description (String & ioString,
                                   const int32_t inIndentation) const {
-  ioString.appendString ("<enum @bddType: ") ;
-  ioString.appendString (gEnumNameArrayFor_bddType [mEnum]) ;
+  ioString.appendCString ("<enum @bddType: ") ;
+  ioString.appendCString (gEnumNameArrayFor_bddType [mEnum]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1931,11 +1894,11 @@ cCollectionElement * cCollectionElement_domainFieldList::copy (void) {
 void cCollectionElement_domainFieldList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mVarName" ":") ;
+  ioString.appendCString ("mVarName" ":") ;
   mObject.mProperty_mVarName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mType" ":") ;
+  ioString.appendCString ("mType" ":") ;
   mObject.mProperty_mType.description (ioString, inIndentation) ;
 }
 
@@ -2354,9 +2317,9 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 void cEnumAssociatedValues_domainDeclarationType_type::description (String & ioString,
                                                                     const int32_t inIndentation) const {
-  ioString.appendString ("(\n") ;
+  ioString.appendCString ("(\n") ;
   mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendString (")") ;
+  ioString.appendCString (")") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2383,9 +2346,9 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 void cEnumAssociatedValues_domainDeclarationType_record::description (String & ioString,
                                                                       const int32_t inIndentation) const {
-  ioString.appendString ("(\n") ;
+  ioString.appendCString ("(\n") ;
   mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendString (")") ;
+  ioString.appendCString (")") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2445,7 +2408,7 @@ void GALGAS_domainDeclarationType::method_type (GALGAS_bddType & outAssociatedVa
   if (mEnum != kEnum_type) {
     outAssociatedValue0.drop () ;
     String s ;
-    s.appendString ("method @domainDeclarationType type invoked with an invalid enum value") ;
+    s.appendCString ("method @domainDeclarationType type invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const cEnumAssociatedValues_domainDeclarationType_type * ptr = (const cEnumAssociatedValues_domainDeclarationType_type *) unsafePointer () ;
@@ -2461,7 +2424,7 @@ void GALGAS_domainDeclarationType::method_record (GALGAS_domainFieldList & outAs
   if (mEnum != kEnum_record) {
     outAssociatedValue0.drop () ;
     String s ;
-    s.appendString ("method @domainDeclarationType record invoked with an invalid enum value") ;
+    s.appendCString ("method @domainDeclarationType record invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const cEnumAssociatedValues_domainDeclarationType_record * ptr = (const cEnumAssociatedValues_domainDeclarationType_record *) unsafePointer () ;
@@ -2515,10 +2478,10 @@ GALGAS_bool GALGAS_domainDeclarationType::getter_isRecord (UNUSED_LOCATION_ARGS)
 
 void GALGAS_domainDeclarationType::description (String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString.appendString ("<enum @domainDeclarationType: ") ;
-  ioString.appendString (gEnumNameArrayFor_domainDeclarationType [mEnum]) ;
+  ioString.appendCString ("<enum @domainDeclarationType: ") ;
+  ioString.appendCString (gEnumNameArrayFor_domainDeclarationType [mEnum]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2642,11 +2605,11 @@ cCollectionElement * cCollectionElement_domainDeclarationList::copy (void) {
 void cCollectionElement_domainDeclarationList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mDomainName" ":") ;
+  ioString.appendCString ("mDomainName" ":") ;
   mObject.mProperty_mDomainName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mType" ":") ;
+  ioString.appendCString ("mType" ":") ;
   mObject.mProperty_mType.description (ioString, inIndentation) ;
 }
 
@@ -3085,15 +3048,15 @@ cMapElement * cMapElement_recordDomainMap::copy (void) {
 void cMapElement_recordDomainMap::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mIndex" ":") ;
+  ioString.appendCString ("mIndex" ":") ;
   mProperty_mIndex.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBitCount" ":") ;
+  ioString.appendCString ("mBitCount" ":") ;
   mProperty_mBitCount.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mSubDomain" ":") ;
+  ioString.appendCString ("mSubDomain" ":") ;
   mProperty_mSubDomain.description (ioString, inIndentation) ;
 }
 
@@ -3475,11 +3438,11 @@ cMapElement * cMapElement_domainMap::copy (void) {
 void cMapElement_domainMap::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBitCount" ":") ;
+  ioString.appendCString ("mBitCount" ":") ;
   mProperty_mBitCount.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mRecordMap" ":") ;
+  ioString.appendCString ("mRecordMap" ":") ;
   mProperty_mRecordMap.description (ioString, inIndentation) ;
 }
 
@@ -3972,15 +3935,15 @@ cCollectionElement * cCollectionElement_varList::copy (void) {
 void cCollectionElement_varList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mVarName" ":") ;
+  ioString.appendCString ("mVarName" ":") ;
   mObject.mProperty_mVarName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBitIndex" ":") ;
+  ioString.appendCString ("mBitIndex" ":") ;
   mObject.mProperty_mBitIndex.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBitCount" ":") ;
+  ioString.appendCString ("mBitCount" ":") ;
   mObject.mProperty_mBitCount.description (ioString, inIndentation) ;
 }
 
@@ -4479,15 +4442,15 @@ cMapElement * cMapElement_varMap::copy (void) {
 void cMapElement_varMap::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mIndex" ":") ;
+  ioString.appendCString ("mIndex" ":") ;
   mProperty_mIndex.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBitCount" ":") ;
+  ioString.appendCString ("mBitCount" ":") ;
   mProperty_mBitCount.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mRecordDomainMap" ":") ;
+  ioString.appendCString ("mRecordDomainMap" ":") ;
   mProperty_mRecordDomainMap.description (ioString, inIndentation) ;
 }
 
@@ -4916,9 +4879,9 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 void cEnumAssociatedValues_formulaKind_fixedPoint::description (String & ioString,
                                                                 const int32_t inIndentation) const {
-  ioString.appendString ("(\n") ;
+  ioString.appendCString ("(\n") ;
   mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendString (")") ;
+  ioString.appendCString (")") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4971,7 +4934,7 @@ void GALGAS_formulaKind::method_fixedPoint (GALGAS_binaryset & outAssociatedValu
   if (mEnum != kEnum_fixedPoint) {
     outAssociatedValue0.drop () ;
     String s ;
-    s.appendString ("method @formulaKind fixedPoint invoked with an invalid enum value") ;
+    s.appendCString ("method @formulaKind fixedPoint invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const cEnumAssociatedValues_formulaKind_fixedPoint * ptr = (const cEnumAssociatedValues_formulaKind_fixedPoint *) unsafePointer () ;
@@ -5021,10 +4984,10 @@ GALGAS_bool GALGAS_formulaKind::getter_isFixedPoint (UNUSED_LOCATION_ARGS) const
 
 void GALGAS_formulaKind::description (String & ioString,
                                       const int32_t inIndentation) const {
-  ioString.appendString ("<enum @formulaKind: ") ;
-  ioString.appendString (gEnumNameArrayFor_formulaKind [mEnum]) ;
+  ioString.appendCString ("<enum @formulaKind: ") ;
+  ioString.appendCString (gEnumNameArrayFor_formulaKind [mEnum]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5413,15 +5376,15 @@ cMapElement * cMapElement_computedFormulaMap::copy (void) {
 void cMapElement_computedFormulaMap::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mVarList" ":") ;
+  ioString.appendCString ("mVarList" ":") ;
   mProperty_mVarList.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mBitCount" ":") ;
+  ioString.appendCString ("mBitCount" ":") ;
   mProperty_mBitCount.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mValue" ":") ;
+  ioString.appendCString ("mValue" ":") ;
   mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -6679,11 +6642,11 @@ const C_galgas_type_descriptor * cPtr_andExpression::classDescriptor (void) cons
 
 void cPtr_andExpression::description (String & ioString,
                                       const int32_t inIndentation) const {
-  ioString.appendString ("[@andExpression:") ;
+  ioString.appendCString ("[@andExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6983,11 +6946,11 @@ const C_galgas_type_descriptor * cPtr_orExpression::classDescriptor (void) const
 
 void cPtr_orExpression::description (String & ioString,
                                      const int32_t inIndentation) const {
-  ioString.appendString ("[@orExpression:") ;
+  ioString.appendCString ("[@orExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7287,11 +7250,11 @@ const C_galgas_type_descriptor * cPtr_xorExpression::classDescriptor (void) cons
 
 void cPtr_xorExpression::description (String & ioString,
                                       const int32_t inIndentation) const {
-  ioString.appendString ("[@xorExpression:") ;
+  ioString.appendCString ("[@xorExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7591,11 +7554,11 @@ const C_galgas_type_descriptor * cPtr_equalExpression::classDescriptor (void) co
 
 void cPtr_equalExpression::description (String & ioString,
                                         const int32_t inIndentation) const {
-  ioString.appendString ("[@equalExpression:") ;
+  ioString.appendCString ("[@equalExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7895,11 +7858,11 @@ const C_galgas_type_descriptor * cPtr_notEqualExpression::classDescriptor (void)
 
 void cPtr_notEqualExpression::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString.appendString ("[@notEqualExpression:") ;
+  ioString.appendCString ("[@notEqualExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8199,11 +8162,11 @@ const C_galgas_type_descriptor * cPtr_impliesExpression::classDescriptor (void) 
 
 void cPtr_impliesExpression::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendString ("[@impliesExpression:") ;
+  ioString.appendCString ("[@impliesExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8473,9 +8436,9 @@ const C_galgas_type_descriptor * cPtr_complementExpression::classDescriptor (voi
 
 void cPtr_complementExpression::description (String & ioString,
                                              const int32_t inIndentation) const {
-  ioString.appendString ("[@complementExpression:") ;
+  ioString.appendCString ("[@complementExpression:") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8710,7 +8673,7 @@ const C_galgas_type_descriptor * cPtr_trueExpression::classDescriptor (void) con
 
 void cPtr_trueExpression::description (String & ioString,
                                        const int32_t /* inIndentation */) const {
-  ioString.appendString ("[@trueExpression]") ;
+  ioString.appendCString ("[@trueExpression]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8945,7 +8908,7 @@ const C_galgas_type_descriptor * cPtr_falseExpression::classDescriptor (void) co
 
 void cPtr_falseExpression::description (String & ioString,
                                         const int32_t /* inIndentation */) const {
-  ioString.appendString ("[@falseExpression]") ;
+  ioString.appendCString ("[@falseExpression]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9172,11 +9135,11 @@ cCollectionElement * cCollectionElement_formulaParameterListInExpression::copy (
 void cCollectionElement_formulaParameterListInExpression::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mParameterName" ":") ;
+  ioString.appendCString ("mParameterName" ":") ;
   mObject.mProperty_mParameterName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mFieldNames" ":") ;
+  ioString.appendCString ("mFieldNames" ":") ;
   mObject.mProperty_mFieldNames.description (ioString, inIndentation) ;
 }
 
@@ -9829,11 +9792,11 @@ const C_galgas_type_descriptor * cPtr_existInExpression::classDescriptor (void) 
 
 void cPtr_existInExpression::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendString ("[@existInExpression:") ;
+  ioString.appendCString ("[@existInExpression:") ;
   mProperty_mArgumentList.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10133,11 +10096,11 @@ const C_galgas_type_descriptor * cPtr_forAllInExpression::classDescriptor (void)
 
 void cPtr_forAllInExpression::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString.appendString ("[@forAllInExpression:") ;
+  ioString.appendCString ("[@forAllInExpression:") ;
   mProperty_mArgumentList.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10449,9 +10412,9 @@ GALGAS_bool GALGAS_comparison::getter_isGreaterThan (UNUSED_LOCATION_ARGS) const
 
 void GALGAS_comparison::description (String & ioString,
                                      const int32_t /* inIndentation */) const {
-  ioString.appendString ("<enum @comparison: ") ;
-  ioString.appendString (gEnumNameArrayFor_comparison [mEnum]) ;
-  ioString.appendString (">") ;
+  ioString.appendCString ("<enum @comparison: ") ;
+  ioString.appendCString (gEnumNameArrayFor_comparison [mEnum]) ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12065,7 +12028,7 @@ cCollectionElement * cCollectionElement_formulaList::copy (void) {
 void cCollectionElement_formulaList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mFormula" ":") ;
+  ioString.appendCString ("mFormula" ":") ;
   mObject.mProperty_mFormula.description (ioString, inIndentation) ;
 }
 
@@ -12475,15 +12438,15 @@ void GALGAS_ast::drop (void) {
 
 void GALGAS_ast::description (String & ioString,
                               const int32_t inIndentation) const {
-  ioString.appendString ("<struct @ast:") ;
+  ioString.appendCString ("<struct @ast:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mDomainList.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mFormulaList.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12618,17 +12581,17 @@ void GALGAS_varList_2D_element::drop (void) {
 
 void GALGAS_varList_2D_element::description (String & ioString,
                                              const int32_t inIndentation) const {
-  ioString.appendString ("<struct @varList-element:") ;
+  ioString.appendCString ("<struct @varList-element:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mVarName.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mBitIndex.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mBitCount.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12728,13 +12691,13 @@ void GALGAS_formulaList_2D_element::drop (void) {
 
 void GALGAS_formulaList_2D_element::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString.appendString ("<struct @formulaList-element:") ;
+  ioString.appendCString ("<struct @formulaList-element:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mFormula.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12975,15 +12938,15 @@ const C_galgas_type_descriptor * cPtr_assignmentFormula::classDescriptor (void) 
 
 void cPtr_assignmentFormula::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendString ("[@assignmentFormula:") ;
+  ioString.appendCString ("[@assignmentFormula:") ;
   mProperty_mFormulaName.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mFormulaArgumentList.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mKind.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13253,9 +13216,9 @@ const C_galgas_type_descriptor * cPtr_setting_5F_andCacheMapSize::classDescripto
 
 void cPtr_setting_5F_andCacheMapSize::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.appendString ("[@setting_andCacheMapSize:") ;
+  ioString.appendCString ("[@setting_andCacheMapSize:") ;
   mProperty_mSetting.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13415,9 +13378,9 @@ const C_galgas_type_descriptor * cPtr_dumpFormula::classDescriptor (void) const 
 
 void cPtr_dumpFormula::description (String & ioString,
                                     const int32_t inIndentation) const {
-  ioString.appendString ("[@dumpFormula:") ;
+  ioString.appendCString ("[@dumpFormula:") ;
   mProperty_mFormulaName.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13577,9 +13540,9 @@ const C_galgas_type_descriptor * cPtr_graphvizFormula::classDescriptor (void) co
 
 void cPtr_graphvizFormula::description (String & ioString,
                                         const int32_t inIndentation) const {
-  ioString.appendString ("[@graphvizFormula:") ;
+  ioString.appendCString ("[@graphvizFormula:") ;
   mProperty_mFormulaName.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13739,9 +13702,9 @@ const C_galgas_type_descriptor * cPtr_varInExpression::classDescriptor (void) co
 
 void cPtr_varInExpression::description (String & ioString,
                                         const int32_t inIndentation) const {
-  ioString.appendString ("[@varInExpression:") ;
+  ioString.appendCString ("[@varInExpression:") ;
   mProperty_mVarName.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13931,11 +13894,11 @@ const C_galgas_type_descriptor * cPtr_varBitInExpression::classDescriptor (void)
 
 void cPtr_varBitInExpression::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString.appendString ("[@varBitInExpression:") ;
+  ioString.appendCString ("[@varBitInExpression:") ;
   mProperty_mVarName.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mVarBit.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14125,11 +14088,11 @@ const C_galgas_type_descriptor * cPtr_formulaInExpression::classDescriptor (void
 
 void cPtr_formulaInExpression::description (String & ioString,
                                             const int32_t inIndentation) const {
-  ioString.appendString ("[@formulaInExpression:") ;
+  ioString.appendCString ("[@formulaInExpression:") ;
   mProperty_mFormulaName.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14379,15 +14342,15 @@ const C_galgas_type_descriptor * cPtr_comparisonWithConstantInExpression::classD
 
 void cPtr_comparisonWithConstantInExpression::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString.appendString ("[@comparisonWithConstantInExpression:") ;
+  ioString.appendCString ("[@comparisonWithConstantInExpression:") ;
   mProperty_mVarName.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mFieldNames.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mComparison.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mConstant.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14667,17 +14630,17 @@ const C_galgas_type_descriptor * cPtr_variableComparisonInExpression::classDescr
 
 void cPtr_variableComparisonInExpression::description (String & ioString,
                                                        const int32_t inIndentation) const {
-  ioString.appendString ("[@variableComparisonInExpression:") ;
+  ioString.appendCString ("[@variableComparisonInExpression:") ;
   mProperty_mLeftVarName.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mLeftFieldNames.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mComparison.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightVarName.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightFieldNames.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16665,15 +16628,15 @@ void GALGAS__32_lstringlist_2D_element::drop (void) {
 
 void GALGAS__32_lstringlist_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString.appendString ("<struct @2lstringlist-element:") ;
+  ioString.appendCString ("<struct @2lstringlist-element:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue_30_.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mValue_31_.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16781,15 +16744,15 @@ void GALGAS_domainFieldList_2D_element::drop (void) {
 
 void GALGAS_domainFieldList_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString.appendString ("<struct @domainFieldList-element:") ;
+  ioString.appendCString ("<struct @domainFieldList-element:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mVarName.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mType.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16897,15 +16860,15 @@ void GALGAS_domainDeclarationList_2D_element::drop (void) {
 
 void GALGAS_domainDeclarationList_2D_element::description (String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString.appendString ("<struct @domainDeclarationList-element:") ;
+  ioString.appendCString ("<struct @domainDeclarationList-element:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mDomainName.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mType.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -17029,19 +16992,19 @@ void GALGAS_recordDomainMap_2D_element::drop (void) {
 
 void GALGAS_recordDomainMap_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString.appendString ("<struct @recordDomainMap-element:") ;
+  ioString.appendCString ("<struct @recordDomainMap-element:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mIndex.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mSubDomain.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -17157,17 +17120,17 @@ void GALGAS_domainMap_2D_element::drop (void) {
 
 void GALGAS_domainMap_2D_element::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString.appendString ("<struct @domainMap-element:") ;
+  ioString.appendCString ("<struct @domainMap-element:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mRecordMap.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -17291,19 +17254,19 @@ void GALGAS_varMap_2D_element::drop (void) {
 
 void GALGAS_varMap_2D_element::description (String & ioString,
                                             const int32_t inIndentation) const {
-  ioString.appendString ("<struct @varMap-element:") ;
+  ioString.appendCString ("<struct @varMap-element:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mIndex.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mRecordDomainMap.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -17427,19 +17390,19 @@ void GALGAS_computedFormulaMap_2D_element::drop (void) {
 
 void GALGAS_computedFormulaMap_2D_element::description (String & ioString,
                                                         const int32_t inIndentation) const {
-  ioString.appendString ("<struct @computedFormulaMap-element:") ;
+  ioString.appendCString ("<struct @computedFormulaMap-element:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mVarList.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -17547,15 +17510,15 @@ void GALGAS_formulaParameterListInExpression_2D_element::drop (void) {
 
 void GALGAS_formulaParameterListInExpression_2D_element::description (String & ioString,
                                                                       const int32_t inIndentation) const {
-  ioString.appendString ("<struct @formulaParameterListInExpression-element:") ;
+  ioString.appendCString ("<struct @formulaParameterListInExpression-element:") ;
   if (! isValid ()) {
-    ioString.appendString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mParameterName.description (ioString, inIndentation+1) ;
-    ioString.appendString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mFieldNames.description (ioString, inIndentation+1) ;
   }
-  ioString.appendString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
