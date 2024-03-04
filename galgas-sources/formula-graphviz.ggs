@@ -16,7 +16,7 @@ syntax extension kerbdd_syntax {
 
   rule <topLevelDeClaration>( ?!@ast ioAST) {
     $graphviz$
-    $identifier$( ?let formulaName)
+    $identifier$ (?let formulaName)
     $;$
     !?ioAST.mFormulaList.append (@graphvizFormula.new (!formulaName))
   }
