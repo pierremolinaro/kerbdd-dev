@@ -1124,17 +1124,15 @@ GALGAS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (
 
 #include "project_header.h"
 #include "F_mainForLIBPM.h"
-#include "F_Analyze_CLI_Options.h"
-#include "C_builtin_CLI_Options.h"
+#include "analyzeCommandLineOptions.h"
+#include "builtin-command-line-options.h"
 #include "C_galgas_CLI_Options.h"
 #include "F_verbose_output.h"
 #include "cLexiqueIntrospection.h"
 #include "F_DisplayException.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //                      print_tool_help_message                                                  
-//
 //--------------------------------------------------------------------------------------------------
 
 static void print_tool_help_message (void) {
@@ -1221,11 +1219,11 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
 int mainForLIBPM (int inArgc, const char * inArgv []) {
 //--- Analyze Command Line Options
   TC_UniqueArray <String> sourceFilesArray ;
-  F_Analyze_CLI_Options (inArgc, inArgv,
-                         sourceFilesArray,
-                         kSourceFileExtensions,
-                         kSourceFileHelpMessages,
-                         print_tool_help_message) ;
+  analyzeCommandLineOptions (inArgc, inArgv,
+                             sourceFilesArray,
+                             kSourceFileExtensions,
+                             kSourceFileHelpMessages,
+                             print_tool_help_message) ;
 //---
   int returnCode = 0 ; // No error
 //--- Set Execution mode
