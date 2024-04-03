@@ -28,6 +28,8 @@ class GALGAS__32_lstringlist : public AC_GALGAS_list {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -195,14 +197,23 @@ class GALGAS__32_lstringlist_2D_element : public AC_GALGAS_root {
     mProperty_mValue_31_ = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS__32_lstringlist_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS__32_lstringlist_2D_element (const GALGAS_lstring & in_mValue_30_,
                                              const GALGAS_lstring & in_mValue_31_) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS__32_lstringlist_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                     const class GALGAS_lstring & inOperand1,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -414,6 +425,8 @@ class GALGAS_bddType : public AC_GALGAS_root {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -532,6 +545,8 @@ class GALGAS_domainFieldList : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -700,14 +715,23 @@ class GALGAS_domainFieldList_2D_element : public AC_GALGAS_root {
     mProperty_mType = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_domainFieldList_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_domainFieldList_2D_element (const GALGAS_lstring & in_mVarName,
                                              const GALGAS_bddType & in_mType) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_domainFieldList_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                     const class GALGAS_bddType & inOperand1,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -779,6 +803,8 @@ class GALGAS_domainDeclarationType : public AC_GALGAS_root {
   public: inline enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -892,6 +918,8 @@ class GALGAS_domainDeclarationList : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1060,14 +1088,23 @@ class GALGAS_domainDeclarationList_2D_element : public AC_GALGAS_root {
     mProperty_mType = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_domainDeclarationList_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_domainDeclarationList_2D_element (const GALGAS_lstring & in_mDomainName,
                                                    const GALGAS_domainDeclarationType & in_mType) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_domainDeclarationList_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                           const class GALGAS_domainDeclarationType & inOperand1,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1131,6 +1168,8 @@ class GALGAS_recordDomainMap : public AC_GALGAS_map {
   public: GALGAS_recordDomainMap & operator = (const GALGAS_recordDomainMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1334,8 +1373,11 @@ class GALGAS_recordDomainMap_2D_element : public AC_GALGAS_root {
     mProperty_mSubDomain = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_recordDomainMap_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_recordDomainMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -1344,6 +1386,14 @@ class GALGAS_recordDomainMap_2D_element : public AC_GALGAS_root {
                                              const GALGAS_recordDomainMap & in_mSubDomain) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_recordDomainMap_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_uint & inOperand1,
+                                                                             const class GALGAS_uint & inOperand2,
+                                                                             const class GALGAS_recordDomainMap & inOperand3,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1409,6 +1459,8 @@ class GALGAS_domainMap : public AC_GALGAS_map {
   public: GALGAS_domainMap & operator = (const GALGAS_domainMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1587,8 +1639,11 @@ class GALGAS_domainMap_2D_element : public AC_GALGAS_root {
     mProperty_mRecordMap = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_domainMap_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_domainMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -1596,6 +1651,13 @@ class GALGAS_domainMap_2D_element : public AC_GALGAS_root {
                                        const GALGAS_recordDomainMap & in_mRecordMap) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_domainMap_2D_element init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                   const class GALGAS_uint & inOperand1,
+                                                                   const class GALGAS_recordDomainMap & inOperand2,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1669,6 +1731,8 @@ class GALGAS_varList : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1865,8 +1929,11 @@ class GALGAS_varList_2D_element : public AC_GALGAS_root {
     mProperty_mBitCount = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_varList_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_varList_2D_element (const GALGAS_string & in_mVarName,
@@ -1874,6 +1941,13 @@ class GALGAS_varList_2D_element : public AC_GALGAS_root {
                                      const GALGAS_uint & in_mBitCount) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_varList_2D_element init_28__2C__2C__29_ (const class GALGAS_string & inOperand0,
+                                                                 const class GALGAS_uint & inOperand1,
+                                                                 const class GALGAS_uint & inOperand2,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1938,6 +2012,8 @@ class GALGAS_varMap : public AC_GALGAS_map {
   public: GALGAS_varMap & operator = (const GALGAS_varMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2141,8 +2217,11 @@ class GALGAS_varMap_2D_element : public AC_GALGAS_root {
     mProperty_mRecordDomainMap = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_varMap_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_varMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -2151,6 +2230,14 @@ class GALGAS_varMap_2D_element : public AC_GALGAS_root {
                                     const GALGAS_recordDomainMap & in_mRecordDomainMap) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_varMap_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                    const class GALGAS_uint & inOperand1,
+                                                                    const class GALGAS_uint & inOperand2,
+                                                                    const class GALGAS_recordDomainMap & inOperand3,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2239,6 +2326,8 @@ class GALGAS_formulaKind : public AC_GALGAS_root {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2326,6 +2415,10 @@ class GALGAS_abstractFormula : public AC_GALGAS_reference_class {
 //--------------------------------- Property read access
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+  public: static GALGAS_abstractFormula init_28__29_ (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2368,12 +2461,16 @@ class cPtr_abstractFormula : public acStrongPtr_class {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeFormula
-  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
-           const class GALGAS_domainMap inDomainMap,
-           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+  public: virtual void method_analyzeFormula (const class GALGAS_string arg_inSourceFilePath,
+           const class GALGAS_domainMap arg_inDomainMap,
+           class GALGAS_computedFormulaMap & arg_ioComputedFormulaMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_abstractFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_abstractFormula (LOCATION_ARGS) ;
@@ -2404,6 +2501,10 @@ class GALGAS_expression : public AC_GALGAS_reference_class {
 
 //--------------------------------- Property read access
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_expression init_28__29_ (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2455,6 +2556,10 @@ class cPtr_expression : public acStrongPtr_class {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_expression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_expression (LOCATION_ARGS) ;
 
@@ -2488,6 +2593,8 @@ class GALGAS_abstractFormula_2D_weak : public AC_GALGAS_weak_reference {
   public: GALGAS_abstractFormula bang_abstractFormula_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2545,6 +2652,8 @@ class GALGAS_computedFormulaMap : public AC_GALGAS_map {
   public: GALGAS_computedFormulaMap & operator = (const GALGAS_computedFormulaMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2748,8 +2857,11 @@ class GALGAS_computedFormulaMap_2D_element : public AC_GALGAS_root {
     mProperty_mValue = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_computedFormulaMap_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_computedFormulaMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -2758,6 +2870,14 @@ class GALGAS_computedFormulaMap_2D_element : public AC_GALGAS_root {
                                                 const GALGAS_binaryset & in_mValue) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_computedFormulaMap_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                const class GALGAS_varList & inOperand1,
+                                                                                const class GALGAS_uint & inOperand2,
+                                                                                const class GALGAS_binaryset & inOperand3,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2818,6 +2938,11 @@ class GALGAS_setting_5F_nodeHashMapSize : public GALGAS_abstractFormula {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+  public: static GALGAS_setting_5F_nodeHashMapSize init_28__29_ (const class GALGAS_luint & inOperand0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2867,13 +2992,17 @@ class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeFormula
-  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
-           const class GALGAS_domainMap inDomainMap,
-           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+  public: virtual void method_analyzeFormula (const class GALGAS_string arg_inSourceFilePath,
+           const class GALGAS_domainMap arg_inDomainMap,
+           class GALGAS_computedFormulaMap & arg_ioComputedFormulaMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_luint mProperty_mSetting ;
+
+
+//--- Default constructor
+  public: cPtr_setting_5F_nodeHashMapSize (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_setting_5F_nodeHashMapSize (const GALGAS_luint & in_mSetting
@@ -2912,6 +3041,8 @@ class GALGAS_setting_5F_nodeHashMapSize_2D_weak : public GALGAS_abstractFormula_
   public: GALGAS_setting_5F_nodeHashMapSize bang_setting_5F_nodeHashMapSize_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2964,6 +3095,11 @@ class GALGAS_setting_5F_andCacheMapSize : public GALGAS_abstractFormula {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+  public: static GALGAS_setting_5F_andCacheMapSize init_28__29_ (const class GALGAS_luint & inOperand0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3013,13 +3149,17 @@ class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeFormula
-  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
-           const class GALGAS_domainMap inDomainMap,
-           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+  public: virtual void method_analyzeFormula (const class GALGAS_string arg_inSourceFilePath,
+           const class GALGAS_domainMap arg_inDomainMap,
+           class GALGAS_computedFormulaMap & arg_ioComputedFormulaMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_luint mProperty_mSetting ;
+
+
+//--- Default constructor
+  public: cPtr_setting_5F_andCacheMapSize (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_setting_5F_andCacheMapSize (const GALGAS_luint & in_mSetting
@@ -3058,6 +3198,8 @@ class GALGAS_setting_5F_andCacheMapSize_2D_weak : public GALGAS_abstractFormula_
   public: GALGAS_setting_5F_andCacheMapSize bang_setting_5F_andCacheMapSize_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3110,6 +3252,11 @@ class GALGAS_dumpFormula : public GALGAS_abstractFormula {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+  public: static GALGAS_dumpFormula init_28__29_ (const class GALGAS_lstring & inOperand0,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3159,13 +3306,17 @@ class cPtr_dumpFormula : public cPtr_abstractFormula {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeFormula
-  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
-           const class GALGAS_domainMap inDomainMap,
-           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+  public: virtual void method_analyzeFormula (const class GALGAS_string arg_inSourceFilePath,
+           const class GALGAS_domainMap arg_inDomainMap,
+           class GALGAS_computedFormulaMap & arg_ioComputedFormulaMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
+
+
+//--- Default constructor
+  public: cPtr_dumpFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_dumpFormula (const GALGAS_lstring & in_mFormulaName
@@ -3204,6 +3355,8 @@ class GALGAS_dumpFormula_2D_weak : public GALGAS_abstractFormula_2D_weak {
   public: GALGAS_dumpFormula bang_dumpFormula_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3256,6 +3409,11 @@ class GALGAS_graphvizFormula : public GALGAS_abstractFormula {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+  public: static GALGAS_graphvizFormula init_28__29_ (const class GALGAS_lstring & inOperand0,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3305,13 +3463,17 @@ class cPtr_graphvizFormula : public cPtr_abstractFormula {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeFormula
-  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
-           const class GALGAS_domainMap inDomainMap,
-           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+  public: virtual void method_analyzeFormula (const class GALGAS_string arg_inSourceFilePath,
+           const class GALGAS_domainMap arg_inDomainMap,
+           class GALGAS_computedFormulaMap & arg_ioComputedFormulaMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
   public: GALGAS_lstring mProperty_mFormulaName ;
+
+
+//--- Default constructor
+  public: cPtr_graphvizFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_graphvizFormula (const GALGAS_lstring & in_mFormulaName
@@ -3350,6 +3512,8 @@ class GALGAS_graphvizFormula_2D_weak : public GALGAS_abstractFormula_2D_weak {
   public: GALGAS_graphvizFormula bang_graphvizFormula_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3404,6 +3568,8 @@ class GALGAS_expression_2D_weak : public AC_GALGAS_weak_reference {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3454,6 +3620,11 @@ class GALGAS_varInExpression : public GALGAS_expression {
   public: class GALGAS_lstring readProperty_mVarName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_varInExpression init_28__29_ (const class GALGAS_lstring & inOperand0,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3513,6 +3684,10 @@ class cPtr_varInExpression : public cPtr_expression {
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
 
+
+//--- Default constructor
+  public: cPtr_varInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_varInExpression (const GALGAS_lstring & in_mVarName
                                 COMMA_LOCATION_ARGS) ;
@@ -3550,6 +3725,8 @@ class GALGAS_varInExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_varInExpression bang_varInExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3603,6 +3780,12 @@ class GALGAS_varBitInExpression : public GALGAS_expression {
   public: class GALGAS_luint readProperty_mVarBit (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_varBitInExpression init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                             const class GALGAS_luint & inOperand1,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3667,6 +3850,10 @@ class cPtr_varBitInExpression : public cPtr_expression {
   public: GALGAS_lstring mProperty_mVarName ;
   public: GALGAS_luint mProperty_mVarBit ;
 
+
+//--- Default constructor
+  public: cPtr_varBitInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_varBitInExpression (const GALGAS_lstring & in_mVarName,
                                    const GALGAS_luint & in_mVarBit
@@ -3705,6 +3892,8 @@ class GALGAS_varBitInExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_varBitInExpression bang_varBitInExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3758,6 +3947,12 @@ class GALGAS_andExpression : public GALGAS_expression {
   public: class GALGAS_expression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_andExpression init_28__2C__29_ (const class GALGAS_expression & inOperand0,
+                                                        const class GALGAS_expression & inOperand1,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3822,6 +4017,10 @@ class cPtr_andExpression : public cPtr_expression {
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_andExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_andExpression (const GALGAS_expression & in_mLeftExpression,
                               const GALGAS_expression & in_mRightExpression
@@ -3860,6 +4059,8 @@ class GALGAS_andExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_andExpression bang_andExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3913,6 +4114,12 @@ class GALGAS_orExpression : public GALGAS_expression {
   public: class GALGAS_expression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_orExpression init_28__2C__29_ (const class GALGAS_expression & inOperand0,
+                                                       const class GALGAS_expression & inOperand1,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3977,6 +4184,10 @@ class cPtr_orExpression : public cPtr_expression {
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_orExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_orExpression (const GALGAS_expression & in_mLeftExpression,
                              const GALGAS_expression & in_mRightExpression
@@ -4015,6 +4226,8 @@ class GALGAS_orExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_orExpression bang_orExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4068,6 +4281,12 @@ class GALGAS_xorExpression : public GALGAS_expression {
   public: class GALGAS_expression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_xorExpression init_28__2C__29_ (const class GALGAS_expression & inOperand0,
+                                                        const class GALGAS_expression & inOperand1,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4132,6 +4351,10 @@ class cPtr_xorExpression : public cPtr_expression {
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_xorExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_xorExpression (const GALGAS_expression & in_mLeftExpression,
                               const GALGAS_expression & in_mRightExpression
@@ -4170,6 +4393,8 @@ class GALGAS_xorExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_xorExpression bang_xorExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4223,6 +4448,12 @@ class GALGAS_equalExpression : public GALGAS_expression {
   public: class GALGAS_expression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_equalExpression init_28__2C__29_ (const class GALGAS_expression & inOperand0,
+                                                          const class GALGAS_expression & inOperand1,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4287,6 +4518,10 @@ class cPtr_equalExpression : public cPtr_expression {
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_equalExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_equalExpression (const GALGAS_expression & in_mLeftExpression,
                                 const GALGAS_expression & in_mRightExpression
@@ -4325,6 +4560,8 @@ class GALGAS_equalExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_equalExpression bang_equalExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4378,6 +4615,12 @@ class GALGAS_notEqualExpression : public GALGAS_expression {
   public: class GALGAS_expression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_notEqualExpression init_28__2C__29_ (const class GALGAS_expression & inOperand0,
+                                                             const class GALGAS_expression & inOperand1,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4442,6 +4685,10 @@ class cPtr_notEqualExpression : public cPtr_expression {
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_notEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_notEqualExpression (const GALGAS_expression & in_mLeftExpression,
                                    const GALGAS_expression & in_mRightExpression
@@ -4480,6 +4727,8 @@ class GALGAS_notEqualExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_notEqualExpression bang_notEqualExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4533,6 +4782,12 @@ class GALGAS_impliesExpression : public GALGAS_expression {
   public: class GALGAS_expression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_impliesExpression init_28__2C__29_ (const class GALGAS_expression & inOperand0,
+                                                            const class GALGAS_expression & inOperand1,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4597,6 +4852,10 @@ class cPtr_impliesExpression : public cPtr_expression {
   public: GALGAS_expression mProperty_mLeftExpression ;
   public: GALGAS_expression mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_impliesExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_impliesExpression (const GALGAS_expression & in_mLeftExpression,
                                   const GALGAS_expression & in_mRightExpression
@@ -4635,6 +4894,8 @@ class GALGAS_impliesExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_impliesExpression bang_impliesExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4686,6 +4947,11 @@ class GALGAS_complementExpression : public GALGAS_expression {
   public: class GALGAS_expression readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_complementExpression init_28__29_ (const class GALGAS_expression & inOperand0,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4745,6 +5011,10 @@ class cPtr_complementExpression : public cPtr_expression {
 //--- Properties
   public: GALGAS_expression mProperty_mExpression ;
 
+
+//--- Default constructor
+  public: cPtr_complementExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_complementExpression (const GALGAS_expression & in_mExpression
                                      COMMA_LOCATION_ARGS) ;
@@ -4782,6 +5052,8 @@ class GALGAS_complementExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_complementExpression bang_complementExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4831,6 +5103,10 @@ class GALGAS_trueExpression : public GALGAS_expression {
 
 //--------------------------------- Property read access
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_trueExpression init_28__29_ (Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4885,6 +5161,10 @@ class cPtr_trueExpression : public cPtr_expression {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_trueExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_trueExpression (LOCATION_ARGS) ;
 
@@ -4921,6 +5201,8 @@ class GALGAS_trueExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_trueExpression bang_trueExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4970,6 +5252,10 @@ class GALGAS_falseExpression : public GALGAS_expression {
 
 //--------------------------------- Property read access
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_falseExpression init_28__29_ (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5024,6 +5310,10 @@ class cPtr_falseExpression : public cPtr_expression {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_falseExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_falseExpression (LOCATION_ARGS) ;
 
@@ -5060,6 +5350,8 @@ class GALGAS_falseExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_falseExpression bang_falseExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5114,6 +5406,8 @@ class GALGAS_formulaParameterListInExpression : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5282,14 +5576,23 @@ class GALGAS_formulaParameterListInExpression_2D_element : public AC_GALGAS_root
     mProperty_mFieldNames = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_formulaParameterListInExpression_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_formulaParameterListInExpression_2D_element (const GALGAS_lstring & in_mParameterName,
                                                               const GALGAS_lstringlist & in_mFieldNames) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_formulaParameterListInExpression_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                      const class GALGAS_lstringlist & inOperand1,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5349,6 +5652,12 @@ class GALGAS_formulaInExpression : public GALGAS_expression {
   public: class GALGAS_formulaParameterListInExpression readProperty_mParameterList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_formulaInExpression init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                              const class GALGAS_formulaParameterListInExpression & inOperand1,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5413,6 +5722,10 @@ class cPtr_formulaInExpression : public cPtr_expression {
   public: GALGAS_lstring mProperty_mFormulaName ;
   public: GALGAS_formulaParameterListInExpression mProperty_mParameterList ;
 
+
+//--- Default constructor
+  public: cPtr_formulaInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_formulaInExpression (const GALGAS_lstring & in_mFormulaName,
                                     const GALGAS_formulaParameterListInExpression & in_mParameterList
@@ -5451,6 +5764,8 @@ class GALGAS_formulaInExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_formulaInExpression bang_formulaInExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5504,6 +5819,12 @@ class GALGAS_existInExpression : public GALGAS_expression {
   public: class GALGAS_expression readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_existInExpression init_28__2C__29_ (const class GALGAS_domainFieldList & inOperand0,
+                                                            const class GALGAS_expression & inOperand1,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5568,6 +5889,10 @@ class cPtr_existInExpression : public cPtr_expression {
   public: GALGAS_domainFieldList mProperty_mArgumentList ;
   public: GALGAS_expression mProperty_mExpression ;
 
+
+//--- Default constructor
+  public: cPtr_existInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_existInExpression (const GALGAS_domainFieldList & in_mArgumentList,
                                   const GALGAS_expression & in_mExpression
@@ -5606,6 +5931,8 @@ class GALGAS_existInExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_existInExpression bang_existInExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5659,6 +5986,12 @@ class GALGAS_forAllInExpression : public GALGAS_expression {
   public: class GALGAS_expression readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_forAllInExpression init_28__2C__29_ (const class GALGAS_domainFieldList & inOperand0,
+                                                             const class GALGAS_expression & inOperand1,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5723,6 +6056,10 @@ class cPtr_forAllInExpression : public cPtr_expression {
   public: GALGAS_domainFieldList mProperty_mArgumentList ;
   public: GALGAS_expression mProperty_mExpression ;
 
+
+//--- Default constructor
+  public: cPtr_forAllInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_forAllInExpression (const GALGAS_domainFieldList & in_mArgumentList,
                                    const GALGAS_expression & in_mExpression
@@ -5761,6 +6098,8 @@ class GALGAS_forAllInExpression_2D_weak : public GALGAS_expression_2D_weak {
   public: GALGAS_forAllInExpression bang_forAllInExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5825,6 +6164,8 @@ class GALGAS_comparison : public AC_GALGAS_root {
   public: inline enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5920,6 +6261,14 @@ class GALGAS_comparisonWithConstantInExpression : public GALGAS_expression {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+  public: static GALGAS_comparisonWithConstantInExpression init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                     const class GALGAS_lstringlist & inOperand1,
+                                                                                     const class GALGAS_comparison & inOperand2,
+                                                                                     const class GALGAS_luint & inOperand3,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5993,6 +6342,10 @@ class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
   public: GALGAS_comparison mProperty_mComparison ;
   public: GALGAS_luint mProperty_mConstant ;
 
+
+//--- Default constructor
+  public: cPtr_comparisonWithConstantInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_comparisonWithConstantInExpression (const GALGAS_lstring & in_mVarName,
                                                    const GALGAS_lstringlist & in_mFieldNames,
@@ -6033,6 +6386,8 @@ class GALGAS_comparisonWithConstantInExpression_2D_weak : public GALGAS_expressi
   public: GALGAS_comparisonWithConstantInExpression bang_comparisonWithConstantInExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6092,6 +6447,15 @@ class GALGAS_variableComparisonInExpression : public GALGAS_expression {
   public: class GALGAS_lstringlist readProperty_mRightFieldNames (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_variableComparisonInExpression init_28__2C__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                     const class GALGAS_lstringlist & inOperand1,
+                                                                                     const class GALGAS_comparison & inOperand2,
+                                                                                     const class GALGAS_lstring & inOperand3,
+                                                                                     const class GALGAS_lstringlist & inOperand4,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6171,6 +6535,10 @@ class cPtr_variableComparisonInExpression : public cPtr_expression {
   public: GALGAS_lstring mProperty_mRightVarName ;
   public: GALGAS_lstringlist mProperty_mRightFieldNames ;
 
+
+//--- Default constructor
+  public: cPtr_variableComparisonInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_variableComparisonInExpression (const GALGAS_lstring & in_mLeftVarName,
                                                const GALGAS_lstringlist & in_mLeftFieldNames,
@@ -6212,6 +6580,8 @@ class GALGAS_variableComparisonInExpression_2D_weak : public GALGAS_expression_2
   public: GALGAS_variableComparisonInExpression bang_variableComparisonInExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6542,6 +6912,14 @@ class GALGAS_assignmentFormula : public GALGAS_abstractFormula {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+  public: static GALGAS_assignmentFormula init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                    const class GALGAS_domainFieldList & inOperand1,
+                                                                    const class GALGAS_formulaKind & inOperand2,
+                                                                    const class GALGAS_expression & inOperand3,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6603,9 +6981,9 @@ class cPtr_assignmentFormula : public cPtr_abstractFormula {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeFormula
-  public: virtual void method_analyzeFormula (const class GALGAS_string inSourceFilePath,
-           const class GALGAS_domainMap inDomainMap,
-           class GALGAS_computedFormulaMap & ioComputedFormulaMap,
+  public: virtual void method_analyzeFormula (const class GALGAS_string arg_inSourceFilePath,
+           const class GALGAS_domainMap arg_inDomainMap,
+           class GALGAS_computedFormulaMap & arg_ioComputedFormulaMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -6613,6 +6991,10 @@ class cPtr_assignmentFormula : public cPtr_abstractFormula {
   public: GALGAS_domainFieldList mProperty_mFormulaArgumentList ;
   public: GALGAS_formulaKind mProperty_mKind ;
   public: GALGAS_expression mProperty_mExpression ;
+
+
+//--- Default constructor
+  public: cPtr_assignmentFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_assignmentFormula (const GALGAS_lstring & in_mFormulaName,
@@ -6654,6 +7036,8 @@ class GALGAS_formulaList : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6803,14 +7187,21 @@ class GALGAS_ast : public AC_GALGAS_root {
     mProperty_mFormulaList = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_ast (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_ast (const GALGAS_domainDeclarationList & in_mDomainList,
                       const GALGAS_formulaList & in_mFormulaList) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_ast init_28__29_ (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6874,13 +7265,21 @@ class GALGAS_formulaList_2D_element : public AC_GALGAS_root {
     mProperty_mFormula = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_formulaList_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_formulaList_2D_element (const GALGAS_abstractFormula & in_mFormula) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_formulaList_2D_element init_28__29_ (const class GALGAS_abstractFormula & inOperand0,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6952,6 +7351,8 @@ class GALGAS_assignmentFormula_2D_weak : public GALGAS_abstractFormula_2D_weak {
   public: GALGAS_assignmentFormula bang_assignmentFormula_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

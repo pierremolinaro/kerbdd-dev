@@ -9,6 +9,767 @@
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_domainDeclarationList_2D_element::GALGAS_domainDeclarationList_2D_element (void) :
+mProperty_mDomainName (),
+mProperty_mType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_domainDeclarationList_2D_element::~ GALGAS_domainDeclarationList_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_domainDeclarationList_2D_element GALGAS_domainDeclarationList_2D_element::init_28__2C__29_ (const GALGAS_lstring & in_mDomainName,
+                                                                                                   const GALGAS_domainDeclarationType & in_mType,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_domainDeclarationList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mDomainName = in_mDomainName ;
+  result.mProperty_mType = in_mType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_domainDeclarationList_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_domainDeclarationList_2D_element::GALGAS_domainDeclarationList_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                  const GALGAS_domainDeclarationType & inOperand1) :
+mProperty_mDomainName (inOperand0),
+mProperty_mType (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_domainDeclarationList_2D_element GALGAS_domainDeclarationList_2D_element::class_func_new (const GALGAS_lstring & in_mDomainName,
+                                                                                                 const GALGAS_domainDeclarationType & in_mType,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_domainDeclarationList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mDomainName = in_mDomainName ;
+  result.mProperty_mType = in_mType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_domainDeclarationList_2D_element::objectCompare (const GALGAS_domainDeclarationList_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mDomainName.objectCompare (inOperand.mProperty_mDomainName) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mType.objectCompare (inOperand.mProperty_mType) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_domainDeclarationList_2D_element::isValid (void) const {
+  return mProperty_mDomainName.isValid () && mProperty_mType.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_domainDeclarationList_2D_element::drop (void) {
+  mProperty_mDomainName.drop () ;
+  mProperty_mType.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_domainDeclarationList_2D_element::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @domainDeclarationList-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mDomainName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mType.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @domainDeclarationList-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainDeclarationList_2D_element ("domainDeclarationList-element",
+                                                                                        nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_domainDeclarationList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_domainDeclarationList_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_domainDeclarationList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_domainDeclarationList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_domainDeclarationList_2D_element GALGAS_domainDeclarationList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_domainDeclarationList_2D_element result ;
+  const GALGAS_domainDeclarationList_2D_element * p = (const GALGAS_domainDeclarationList_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_domainDeclarationList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("domainDeclarationList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_recordDomainMap_2D_element::GALGAS_recordDomainMap_2D_element (void) :
+mProperty_lkey (),
+mProperty_mIndex (),
+mProperty_mBitCount (),
+mProperty_mSubDomain () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_recordDomainMap_2D_element::~ GALGAS_recordDomainMap_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_recordDomainMap_2D_element GALGAS_recordDomainMap_2D_element::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_lkey,
+                                                                                               const GALGAS_uint & in_mIndex,
+                                                                                               const GALGAS_uint & in_mBitCount,
+                                                                                               const GALGAS_recordDomainMap & in_mSubDomain,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_recordDomainMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mIndex = in_mIndex ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  result.mProperty_mSubDomain = in_mSubDomain ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_recordDomainMap_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_recordDomainMap_2D_element::GALGAS_recordDomainMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                                      const GALGAS_uint & inOperand1,
+                                                                      const GALGAS_uint & inOperand2,
+                                                                      const GALGAS_recordDomainMap & inOperand3) :
+mProperty_lkey (inOperand0),
+mProperty_mIndex (inOperand1),
+mProperty_mBitCount (inOperand2),
+mProperty_mSubDomain (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_recordDomainMap_2D_element GALGAS_recordDomainMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                     const GALGAS_uint & in_mIndex,
+                                                                                     const GALGAS_uint & in_mBitCount,
+                                                                                     const GALGAS_recordDomainMap & in_mSubDomain,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_recordDomainMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mIndex = in_mIndex ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  result.mProperty_mSubDomain = in_mSubDomain ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_recordDomainMap_2D_element::objectCompare (const GALGAS_recordDomainMap_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mIndex.objectCompare (inOperand.mProperty_mIndex) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mSubDomain.objectCompare (inOperand.mProperty_mSubDomain) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_recordDomainMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mSubDomain.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_recordDomainMap_2D_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mIndex.drop () ;
+  mProperty_mBitCount.drop () ;
+  mProperty_mSubDomain.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_recordDomainMap_2D_element::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @recordDomainMap-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIndex.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mBitCount.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSubDomain.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @recordDomainMap-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_recordDomainMap_2D_element ("recordDomainMap-element",
+                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_recordDomainMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_recordDomainMap_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_recordDomainMap_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_recordDomainMap_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_recordDomainMap_2D_element GALGAS_recordDomainMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_recordDomainMap_2D_element result ;
+  const GALGAS_recordDomainMap_2D_element * p = (const GALGAS_recordDomainMap_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_recordDomainMap_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("recordDomainMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_domainMap_2D_element::GALGAS_domainMap_2D_element (void) :
+mProperty_lkey (),
+mProperty_mBitCount (),
+mProperty_mRecordMap () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_domainMap_2D_element::~ GALGAS_domainMap_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_domainMap_2D_element GALGAS_domainMap_2D_element::init_28__2C__2C__29_ (const GALGAS_lstring & in_lkey,
+                                                                               const GALGAS_uint & in_mBitCount,
+                                                                               const GALGAS_recordDomainMap & in_mRecordMap,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_domainMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  result.mProperty_mRecordMap = in_mRecordMap ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_domainMap_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_domainMap_2D_element::GALGAS_domainMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                          const GALGAS_uint & inOperand1,
+                                                          const GALGAS_recordDomainMap & inOperand2) :
+mProperty_lkey (inOperand0),
+mProperty_mBitCount (inOperand1),
+mProperty_mRecordMap (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_domainMap_2D_element GALGAS_domainMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                         const GALGAS_uint & in_mBitCount,
+                                                                         const GALGAS_recordDomainMap & in_mRecordMap,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_domainMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  result.mProperty_mRecordMap = in_mRecordMap ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_domainMap_2D_element::objectCompare (const GALGAS_domainMap_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mRecordMap.objectCompare (inOperand.mProperty_mRecordMap) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_domainMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordMap.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_domainMap_2D_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mBitCount.drop () ;
+  mProperty_mRecordMap.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_domainMap_2D_element::description (String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @domainMap-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mBitCount.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mRecordMap.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @domainMap-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainMap_2D_element ("domainMap-element",
+                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_domainMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_domainMap_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_domainMap_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_domainMap_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_domainMap_2D_element GALGAS_domainMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_domainMap_2D_element result ;
+  const GALGAS_domainMap_2D_element * p = (const GALGAS_domainMap_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_domainMap_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("domainMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_varMap_2D_element::GALGAS_varMap_2D_element (void) :
+mProperty_lkey (),
+mProperty_mIndex (),
+mProperty_mBitCount (),
+mProperty_mRecordDomainMap () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_varMap_2D_element::~ GALGAS_varMap_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_varMap_2D_element GALGAS_varMap_2D_element::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_lkey,
+                                                                             const GALGAS_uint & in_mIndex,
+                                                                             const GALGAS_uint & in_mBitCount,
+                                                                             const GALGAS_recordDomainMap & in_mRecordDomainMap,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_varMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mIndex = in_mIndex ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  result.mProperty_mRecordDomainMap = in_mRecordDomainMap ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_varMap_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_varMap_2D_element::GALGAS_varMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                    const GALGAS_uint & inOperand1,
+                                                    const GALGAS_uint & inOperand2,
+                                                    const GALGAS_recordDomainMap & inOperand3) :
+mProperty_lkey (inOperand0),
+mProperty_mIndex (inOperand1),
+mProperty_mBitCount (inOperand2),
+mProperty_mRecordDomainMap (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_varMap_2D_element GALGAS_varMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                   const GALGAS_uint & in_mIndex,
+                                                                   const GALGAS_uint & in_mBitCount,
+                                                                   const GALGAS_recordDomainMap & in_mRecordDomainMap,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_varMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mIndex = in_mIndex ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  result.mProperty_mRecordDomainMap = in_mRecordDomainMap ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_varMap_2D_element::objectCompare (const GALGAS_varMap_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mIndex.objectCompare (inOperand.mProperty_mIndex) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mRecordDomainMap.objectCompare (inOperand.mProperty_mRecordDomainMap) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_varMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordDomainMap.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_varMap_2D_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mIndex.drop () ;
+  mProperty_mBitCount.drop () ;
+  mProperty_mRecordDomainMap.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_varMap_2D_element::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @varMap-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIndex.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mBitCount.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mRecordDomainMap.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @varMap-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varMap_2D_element ("varMap-element",
+                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_varMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_varMap_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_varMap_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_varMap_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_varMap_2D_element GALGAS_varMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_varMap_2D_element result ;
+  const GALGAS_varMap_2D_element * p = (const GALGAS_varMap_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_varMap_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("varMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element::GALGAS_computedFormulaMap_2D_element (void) :
+mProperty_lkey (),
+mProperty_mVarList (),
+mProperty_mBitCount (),
+mProperty_mValue () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element::~ GALGAS_computedFormulaMap_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_lkey,
+                                                                                                     const GALGAS_varList & in_mVarList,
+                                                                                                     const GALGAS_uint & in_mBitCount,
+                                                                                                     const GALGAS_binaryset & in_mValue,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_computedFormulaMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mVarList = in_mVarList ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  result.mProperty_mValue = in_mValue ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_computedFormulaMap_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element::GALGAS_computedFormulaMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                                            const GALGAS_varList & inOperand1,
+                                                                            const GALGAS_uint & inOperand2,
+                                                                            const GALGAS_binaryset & inOperand3) :
+mProperty_lkey (inOperand0),
+mProperty_mVarList (inOperand1),
+mProperty_mBitCount (inOperand2),
+mProperty_mValue (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                           const GALGAS_varList & in_mVarList,
+                                                                                           const GALGAS_uint & in_mBitCount,
+                                                                                           const GALGAS_binaryset & in_mValue,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_computedFormulaMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mVarList = in_mVarList ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  result.mProperty_mValue = in_mValue ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_computedFormulaMap_2D_element::objectCompare (const GALGAS_computedFormulaMap_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mVarList.objectCompare (inOperand.mProperty_mVarList) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_computedFormulaMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_computedFormulaMap_2D_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mVarList.drop () ;
+  mProperty_mBitCount.drop () ;
+  mProperty_mValue.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_computedFormulaMap_2D_element::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @computedFormulaMap-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mVarList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mBitCount.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @computedFormulaMap-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ("computedFormulaMap-element",
+                                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_computedFormulaMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_computedFormulaMap_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_computedFormulaMap_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_computedFormulaMap_2D_element result ;
+  const GALGAS_computedFormulaMap_2D_element * p = (const GALGAS_computedFormulaMap_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_computedFormulaMap_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("computedFormulaMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_formulaParameterListInExpression_2D_element::GALGAS_formulaParameterListInExpression_2D_element (void) :
 mProperty_mParameterName (),
 mProperty_mFieldNames () {
@@ -17,6 +778,24 @@ mProperty_mFieldNames () {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formulaParameterListInExpression_2D_element::~ GALGAS_formulaParameterListInExpression_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListInExpression_2D_element::init_28__2C__29_ (const GALGAS_lstring & in_mParameterName,
+                                                                                                                         const GALGAS_lstringlist & in_mFieldNames,
+                                                                                                                         Compiler * inCompiler
+                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_formulaParameterListInExpression_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mParameterName = in_mParameterName ;
+  result.mProperty_mFieldNames = in_mFieldNames ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_formulaParameterListInExpression_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -31,12 +810,12 @@ mProperty_mFieldNames (inOperand1) {
 
 GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListInExpression_2D_element::class_func_new (const GALGAS_lstring & in_mParameterName,
                                                                                                                        const GALGAS_lstringlist & in_mFieldNames,
-                                                                                                                       Compiler * /* inCompiler */
+                                                                                                                       Compiler * inCompiler
                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formulaParameterListInExpression_2D_element result ;
-  if (in_mParameterName.isValid () && in_mFieldNames.isValid ()) {
-    result = GALGAS_formulaParameterListInExpression_2D_element (in_mParameterName, in_mFieldNames) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mParameterName = in_mParameterName ;
+  result.mProperty_mFieldNames = in_mFieldNames ;
   return result ;
 }
 
@@ -127,6 +906,13 @@ GALGAS_formulaParameterListInExpression_2D_element GALGAS_formulaParameterListIn
 // @setting_5F_nodeHashMapSize reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_setting_5F_nodeHashMapSize::cPtr_setting_5F_nodeHashMapSize (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (inCompiler COMMA_THERE),
+mProperty_mSetting () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_setting_5F_nodeHashMapSize::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
@@ -170,6 +956,19 @@ ComparisonResult GALGAS_setting_5F_nodeHashMapSize::objectCompare (const GALGAS_
 GALGAS_setting_5F_nodeHashMapSize::GALGAS_setting_5F_nodeHashMapSize (void) :
 GALGAS_abstractFormula () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_setting_5F_nodeHashMapSize GALGAS_setting_5F_nodeHashMapSize::init_28__29_ (const GALGAS_luint & in_mSetting,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  cPtr_setting_5F_nodeHashMapSize * object = nullptr ;
+  macroMyNew (object, cPtr_setting_5F_nodeHashMapSize (inCompiler COMMA_THERE)) ;
+  object->mProperty_mSetting = in_mSetting ;
+  const GALGAS_setting_5F_nodeHashMapSize result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 

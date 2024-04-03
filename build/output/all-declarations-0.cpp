@@ -5052,6 +5052,12 @@ GALGAS_formulaKind GALGAS_formulaKind::extractObject (const GALGAS_object & inOb
 // @abstractFormula reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_abstractFormula::cPtr_abstractFormula (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_abstractFormula::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
@@ -5083,6 +5089,17 @@ ComparisonResult GALGAS_abstractFormula::objectCompare (const GALGAS_abstractFor
 GALGAS_abstractFormula::GALGAS_abstractFormula (void) :
 AC_GALGAS_reference_class () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_abstractFormula GALGAS_abstractFormula::init_28__29_ (Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cPtr_abstractFormula * object = nullptr ;
+  macroMyNew (object, cPtr_abstractFormula (inCompiler COMMA_THERE)) ;
+  const GALGAS_abstractFormula result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5145,6 +5162,12 @@ GALGAS_abstractFormula GALGAS_abstractFormula::extractObject (const GALGAS_objec
 // @expression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_expression::cPtr_expression (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_expression::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
@@ -5176,6 +5199,17 @@ ComparisonResult GALGAS_expression::objectCompare (const GALGAS_expression & inO
 GALGAS_expression::GALGAS_expression (void) :
 AC_GALGAS_reference_class () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_expression GALGAS_expression::init_28__29_ (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  cPtr_expression * object = nullptr ;
+  macroMyNew (object, cPtr_expression (inCompiler COMMA_THERE)) ;
+  const GALGAS_expression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6510,6 +6544,14 @@ GALGAS_varBitInExpression_2D_weak GALGAS_varBitInExpression_2D_weak::extractObje
 // @andExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_andExpression::cPtr_andExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_andExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -6557,6 +6599,21 @@ ComparisonResult GALGAS_andExpression::objectCompare (const GALGAS_andExpression
 GALGAS_andExpression::GALGAS_andExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_andExpression GALGAS_andExpression::init_28__2C__29_ (const GALGAS_expression & in_mLeftExpression,
+                                                                const GALGAS_expression & in_mRightExpression,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cPtr_andExpression * object = nullptr ;
+  macroMyNew (object, cPtr_andExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mLeftExpression = in_mLeftExpression ;
+  object->mProperty_mRightExpression = in_mRightExpression ;
+  const GALGAS_andExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6814,6 +6871,14 @@ GALGAS_andExpression_2D_weak GALGAS_andExpression_2D_weak::extractObject (const 
 // @orExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_orExpression::cPtr_orExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_orExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -6861,6 +6926,21 @@ ComparisonResult GALGAS_orExpression::objectCompare (const GALGAS_orExpression &
 GALGAS_orExpression::GALGAS_orExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_orExpression GALGAS_orExpression::init_28__2C__29_ (const GALGAS_expression & in_mLeftExpression,
+                                                              const GALGAS_expression & in_mRightExpression,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  cPtr_orExpression * object = nullptr ;
+  macroMyNew (object, cPtr_orExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mLeftExpression = in_mLeftExpression ;
+  object->mProperty_mRightExpression = in_mRightExpression ;
+  const GALGAS_orExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7118,6 +7198,14 @@ GALGAS_orExpression_2D_weak GALGAS_orExpression_2D_weak::extractObject (const GA
 // @xorExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_xorExpression::cPtr_xorExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_xorExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -7165,6 +7253,21 @@ ComparisonResult GALGAS_xorExpression::objectCompare (const GALGAS_xorExpression
 GALGAS_xorExpression::GALGAS_xorExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_xorExpression GALGAS_xorExpression::init_28__2C__29_ (const GALGAS_expression & in_mLeftExpression,
+                                                                const GALGAS_expression & in_mRightExpression,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cPtr_xorExpression * object = nullptr ;
+  macroMyNew (object, cPtr_xorExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mLeftExpression = in_mLeftExpression ;
+  object->mProperty_mRightExpression = in_mRightExpression ;
+  const GALGAS_xorExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7422,6 +7525,14 @@ GALGAS_xorExpression_2D_weak GALGAS_xorExpression_2D_weak::extractObject (const 
 // @equalExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_equalExpression::cPtr_equalExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_equalExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -7469,6 +7580,21 @@ ComparisonResult GALGAS_equalExpression::objectCompare (const GALGAS_equalExpres
 GALGAS_equalExpression::GALGAS_equalExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_equalExpression GALGAS_equalExpression::init_28__2C__29_ (const GALGAS_expression & in_mLeftExpression,
+                                                                    const GALGAS_expression & in_mRightExpression,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  cPtr_equalExpression * object = nullptr ;
+  macroMyNew (object, cPtr_equalExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mLeftExpression = in_mLeftExpression ;
+  object->mProperty_mRightExpression = in_mRightExpression ;
+  const GALGAS_equalExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7726,6 +7852,14 @@ GALGAS_equalExpression_2D_weak GALGAS_equalExpression_2D_weak::extractObject (co
 // @notEqualExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_notEqualExpression::cPtr_notEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_notEqualExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -7773,6 +7907,21 @@ ComparisonResult GALGAS_notEqualExpression::objectCompare (const GALGAS_notEqual
 GALGAS_notEqualExpression::GALGAS_notEqualExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_notEqualExpression GALGAS_notEqualExpression::init_28__2C__29_ (const GALGAS_expression & in_mLeftExpression,
+                                                                          const GALGAS_expression & in_mRightExpression,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  cPtr_notEqualExpression * object = nullptr ;
+  macroMyNew (object, cPtr_notEqualExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mLeftExpression = in_mLeftExpression ;
+  object->mProperty_mRightExpression = in_mRightExpression ;
+  const GALGAS_notEqualExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8030,6 +8179,14 @@ GALGAS_notEqualExpression_2D_weak GALGAS_notEqualExpression_2D_weak::extractObje
 // @impliesExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_impliesExpression::cPtr_impliesExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_impliesExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -8077,6 +8234,21 @@ ComparisonResult GALGAS_impliesExpression::objectCompare (const GALGAS_impliesEx
 GALGAS_impliesExpression::GALGAS_impliesExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_impliesExpression GALGAS_impliesExpression::init_28__2C__29_ (const GALGAS_expression & in_mLeftExpression,
+                                                                        const GALGAS_expression & in_mRightExpression,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  cPtr_impliesExpression * object = nullptr ;
+  macroMyNew (object, cPtr_impliesExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mLeftExpression = in_mLeftExpression ;
+  object->mProperty_mRightExpression = in_mRightExpression ;
+  const GALGAS_impliesExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8334,6 +8506,13 @@ GALGAS_impliesExpression_2D_weak GALGAS_impliesExpression_2D_weak::extractObject
 // @complementExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_complementExpression::cPtr_complementExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_complementExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -8377,6 +8556,19 @@ ComparisonResult GALGAS_complementExpression::objectCompare (const GALGAS_comple
 GALGAS_complementExpression::GALGAS_complementExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_complementExpression GALGAS_complementExpression::init_28__29_ (const GALGAS_expression & in_mExpression,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  cPtr_complementExpression * object = nullptr ;
+  macroMyNew (object, cPtr_complementExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mExpression = in_mExpression ;
+  const GALGAS_complementExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8606,6 +8798,12 @@ GALGAS_complementExpression_2D_weak GALGAS_complementExpression_2D_weak::extract
 // @trueExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_trueExpression::cPtr_trueExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_trueExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -8642,6 +8840,17 @@ ComparisonResult GALGAS_trueExpression::objectCompare (const GALGAS_trueExpressi
 GALGAS_trueExpression::GALGAS_trueExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_trueExpression GALGAS_trueExpression::init_28__29_ (Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  cPtr_trueExpression * object = nullptr ;
+  macroMyNew (object, cPtr_trueExpression (inCompiler COMMA_THERE)) ;
+  const GALGAS_trueExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8841,6 +9050,12 @@ GALGAS_trueExpression_2D_weak GALGAS_trueExpression_2D_weak::extractObject (cons
 // @falseExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_falseExpression::cPtr_falseExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_falseExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -8877,6 +9092,17 @@ ComparisonResult GALGAS_falseExpression::objectCompare (const GALGAS_falseExpres
 GALGAS_falseExpression::GALGAS_falseExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_falseExpression GALGAS_falseExpression::init_28__29_ (Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cPtr_falseExpression * object = nullptr ;
+  macroMyNew (object, cPtr_falseExpression (inCompiler COMMA_THERE)) ;
+  const GALGAS_falseExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9660,6 +9886,14 @@ GALGAS_formulaInExpression_2D_weak GALGAS_formulaInExpression_2D_weak::extractOb
 // @existInExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_existInExpression::cPtr_existInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mArgumentList (),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_existInExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -9707,6 +9941,21 @@ ComparisonResult GALGAS_existInExpression::objectCompare (const GALGAS_existInEx
 GALGAS_existInExpression::GALGAS_existInExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_existInExpression GALGAS_existInExpression::init_28__2C__29_ (const GALGAS_domainFieldList & in_mArgumentList,
+                                                                        const GALGAS_expression & in_mExpression,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  cPtr_existInExpression * object = nullptr ;
+  macroMyNew (object, cPtr_existInExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mArgumentList = in_mArgumentList ;
+  object->mProperty_mExpression = in_mExpression ;
+  const GALGAS_existInExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9964,6 +10213,14 @@ GALGAS_existInExpression_2D_weak GALGAS_existInExpression_2D_weak::extractObject
 // @forAllInExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_forAllInExpression::cPtr_forAllInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mArgumentList (),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_forAllInExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -10011,6 +10268,21 @@ ComparisonResult GALGAS_forAllInExpression::objectCompare (const GALGAS_forAllIn
 GALGAS_forAllInExpression::GALGAS_forAllInExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_forAllInExpression GALGAS_forAllInExpression::init_28__2C__29_ (const GALGAS_domainFieldList & in_mArgumentList,
+                                                                          const GALGAS_expression & in_mExpression,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  cPtr_forAllInExpression * object = nullptr ;
+  macroMyNew (object, cPtr_forAllInExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mArgumentList = in_mArgumentList ;
+  object->mProperty_mExpression = in_mExpression ;
+  const GALGAS_forAllInExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12387,6 +12659,22 @@ mProperty_mFormulaList () {
 GALGAS_ast::~ GALGAS_ast (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_ast GALGAS_ast::init_28__29_ (Compiler * inCompiler
+                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_ast result ;
+  result.setInitializedProperties (inCompiler) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ast::setInitializedProperties (Compiler * /* inCompiler */) {
+  mProperty_mDomainList = GALGAS_domainDeclarationList::class_func_emptyList (SOURCE_FILE ("grammar.ggs", 25)) ;
+  mProperty_mFormulaList = GALGAS_formulaList::class_func_emptyList (SOURCE_FILE ("grammar.ggs", 26)) ;
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_ast::GALGAS_ast (const GALGAS_domainDeclarationList & inOperand0,
@@ -12397,14 +12685,10 @@ mProperty_mFormulaList (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ast GALGAS_ast::class_func_new (Compiler * /* inCompiler */
+GALGAS_ast GALGAS_ast::class_func_new (Compiler * inCompiler
                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_domainDeclarationList in_mDomainList = GALGAS_domainDeclarationList::class_func_emptyList (SOURCE_FILE ("grammar.ggs", 25)) ;
-  const GALGAS_formulaList in_mFormulaList = GALGAS_formulaList::class_func_emptyList (SOURCE_FILE ("grammar.ggs", 26)) ;
   GALGAS_ast result ;
-  if (in_mDomainList.isValid () && in_mFormulaList.isValid ()) {
-    result = GALGAS_ast (in_mDomainList, in_mFormulaList) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
   return result ;
 }
 
@@ -12523,6 +12807,26 @@ mProperty_mBitCount () {
 GALGAS_varList_2D_element::~ GALGAS_varList_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_varList_2D_element GALGAS_varList_2D_element::init_28__2C__2C__29_ (const GALGAS_string & in_mVarName,
+                                                                           const GALGAS_uint & in_mBitIndex,
+                                                                           const GALGAS_uint & in_mBitCount,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_varList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mVarName = in_mVarName ;
+  result.mProperty_mBitIndex = in_mBitIndex ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_varList_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_varList_2D_element::GALGAS_varList_2D_element (const GALGAS_string & inOperand0,
@@ -12538,12 +12842,13 @@ mProperty_mBitCount (inOperand2) {
 GALGAS_varList_2D_element GALGAS_varList_2D_element::class_func_new (const GALGAS_string & in_mVarName,
                                                                      const GALGAS_uint & in_mBitIndex,
                                                                      const GALGAS_uint & in_mBitCount,
-                                                                     Compiler * /* inCompiler */
+                                                                     Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_varList_2D_element result ;
-  if (in_mVarName.isValid () && in_mBitIndex.isValid () && in_mBitCount.isValid ()) {
-    result = GALGAS_varList_2D_element (in_mVarName, in_mBitIndex, in_mBitCount) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mVarName = in_mVarName ;
+  result.mProperty_mBitIndex = in_mBitIndex ;
+  result.mProperty_mBitCount = in_mBitCount ;
   return result ;
 }
 
@@ -12647,6 +12952,22 @@ mProperty_mFormula () {
 GALGAS_formulaList_2D_element::~ GALGAS_formulaList_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_formulaList_2D_element GALGAS_formulaList_2D_element::init_28__29_ (const GALGAS_abstractFormula & in_mFormula,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_formulaList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mFormula = in_mFormula ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_formulaList_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formulaList_2D_element::GALGAS_formulaList_2D_element (const GALGAS_abstractFormula & inOperand0) :
@@ -12656,12 +12977,11 @@ mProperty_mFormula (inOperand0) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formulaList_2D_element GALGAS_formulaList_2D_element::class_func_new (const GALGAS_abstractFormula & in_mFormula,
-                                                                             Compiler * /* inCompiler */
+                                                                             Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formulaList_2D_element result ;
-  if (in_mFormula.isValid ()) {
-    result = GALGAS_formulaList_2D_element (in_mFormula) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mFormula = in_mFormula ;
   return result ;
 }
 
@@ -12746,6 +13066,16 @@ GALGAS_formulaList_2D_element GALGAS_formulaList_2D_element::extractObject (cons
 // @assignmentFormula reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_assignmentFormula::cPtr_assignmentFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (inCompiler COMMA_THERE),
+mProperty_mFormulaName (),
+mProperty_mFormulaArgumentList (),
+mProperty_mKind (),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_assignmentFormula::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
@@ -12801,6 +13131,25 @@ ComparisonResult GALGAS_assignmentFormula::objectCompare (const GALGAS_assignmen
 GALGAS_assignmentFormula::GALGAS_assignmentFormula (void) :
 GALGAS_abstractFormula () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_assignmentFormula GALGAS_assignmentFormula::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_mFormulaName,
+                                                                                const GALGAS_domainFieldList & in_mFormulaArgumentList,
+                                                                                const GALGAS_formulaKind & in_mKind,
+                                                                                const GALGAS_expression & in_mExpression,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  cPtr_assignmentFormula * object = nullptr ;
+  macroMyNew (object, cPtr_assignmentFormula (inCompiler COMMA_THERE)) ;
+  object->mProperty_mFormulaName = in_mFormulaName ;
+  object->mProperty_mFormulaArgumentList = in_mFormulaArgumentList ;
+  object->mProperty_mKind = in_mKind ;
+  object->mProperty_mExpression = in_mExpression ;
+  const GALGAS_assignmentFormula result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13114,6 +13463,13 @@ GALGAS_assignmentFormula_2D_weak GALGAS_assignmentFormula_2D_weak::extractObject
 // @setting_5F_andCacheMapSize reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_setting_5F_andCacheMapSize::cPtr_setting_5F_andCacheMapSize (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (inCompiler COMMA_THERE),
+mProperty_mSetting () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_setting_5F_andCacheMapSize::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
@@ -13157,6 +13513,19 @@ ComparisonResult GALGAS_setting_5F_andCacheMapSize::objectCompare (const GALGAS_
 GALGAS_setting_5F_andCacheMapSize::GALGAS_setting_5F_andCacheMapSize (void) :
 GALGAS_abstractFormula () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_setting_5F_andCacheMapSize GALGAS_setting_5F_andCacheMapSize::init_28__29_ (const GALGAS_luint & in_mSetting,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  cPtr_setting_5F_andCacheMapSize * object = nullptr ;
+  macroMyNew (object, cPtr_setting_5F_andCacheMapSize (inCompiler COMMA_THERE)) ;
+  object->mProperty_mSetting = in_mSetting ;
+  const GALGAS_setting_5F_andCacheMapSize result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13276,6 +13645,13 @@ GALGAS_setting_5F_andCacheMapSize GALGAS_setting_5F_andCacheMapSize::extractObje
 // @dumpFormula reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_dumpFormula::cPtr_dumpFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (inCompiler COMMA_THERE),
+mProperty_mFormulaName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_dumpFormula::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
@@ -13319,6 +13695,19 @@ ComparisonResult GALGAS_dumpFormula::objectCompare (const GALGAS_dumpFormula & i
 GALGAS_dumpFormula::GALGAS_dumpFormula (void) :
 GALGAS_abstractFormula () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_dumpFormula GALGAS_dumpFormula::init_28__29_ (const GALGAS_lstring & in_mFormulaName,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  cPtr_dumpFormula * object = nullptr ;
+  macroMyNew (object, cPtr_dumpFormula (inCompiler COMMA_THERE)) ;
+  object->mProperty_mFormulaName = in_mFormulaName ;
+  const GALGAS_dumpFormula result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13438,6 +13827,13 @@ GALGAS_dumpFormula GALGAS_dumpFormula::extractObject (const GALGAS_object & inOb
 // @graphvizFormula reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_graphvizFormula::cPtr_graphvizFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (inCompiler COMMA_THERE),
+mProperty_mFormulaName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_graphvizFormula::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
@@ -13481,6 +13877,19 @@ ComparisonResult GALGAS_graphvizFormula::objectCompare (const GALGAS_graphvizFor
 GALGAS_graphvizFormula::GALGAS_graphvizFormula (void) :
 GALGAS_abstractFormula () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_graphvizFormula GALGAS_graphvizFormula::init_28__29_ (const GALGAS_lstring & in_mFormulaName,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cPtr_graphvizFormula * object = nullptr ;
+  macroMyNew (object, cPtr_graphvizFormula (inCompiler COMMA_THERE)) ;
+  object->mProperty_mFormulaName = in_mFormulaName ;
+  const GALGAS_graphvizFormula result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13600,6 +14009,13 @@ GALGAS_graphvizFormula GALGAS_graphvizFormula::extractObject (const GALGAS_objec
 // @varInExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_varInExpression::cPtr_varInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mVarName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_varInExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -13643,6 +14059,19 @@ ComparisonResult GALGAS_varInExpression::objectCompare (const GALGAS_varInExpres
 GALGAS_varInExpression::GALGAS_varInExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_varInExpression GALGAS_varInExpression::init_28__29_ (const GALGAS_lstring & in_mVarName,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cPtr_varInExpression * object = nullptr ;
+  macroMyNew (object, cPtr_varInExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVarName = in_mVarName ;
+  const GALGAS_varInExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13762,6 +14191,14 @@ GALGAS_varInExpression GALGAS_varInExpression::extractObject (const GALGAS_objec
 // @varBitInExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_varBitInExpression::cPtr_varBitInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVarBit () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_varBitInExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -13809,6 +14246,21 @@ ComparisonResult GALGAS_varBitInExpression::objectCompare (const GALGAS_varBitIn
 GALGAS_varBitInExpression::GALGAS_varBitInExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_varBitInExpression GALGAS_varBitInExpression::init_28__2C__29_ (const GALGAS_lstring & in_mVarName,
+                                                                          const GALGAS_luint & in_mVarBit,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  cPtr_varBitInExpression * object = nullptr ;
+  macroMyNew (object, cPtr_varBitInExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVarName = in_mVarName ;
+  object->mProperty_mVarBit = in_mVarBit ;
+  const GALGAS_varBitInExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13956,6 +14408,14 @@ GALGAS_varBitInExpression GALGAS_varBitInExpression::extractObject (const GALGAS
 // @formulaInExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_formulaInExpression::cPtr_formulaInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mFormulaName (),
+mProperty_mParameterList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_formulaInExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -14003,6 +14463,21 @@ ComparisonResult GALGAS_formulaInExpression::objectCompare (const GALGAS_formula
 GALGAS_formulaInExpression::GALGAS_formulaInExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_formulaInExpression GALGAS_formulaInExpression::init_28__2C__29_ (const GALGAS_lstring & in_mFormulaName,
+                                                                            const GALGAS_formulaParameterListInExpression & in_mParameterList,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  cPtr_formulaInExpression * object = nullptr ;
+  macroMyNew (object, cPtr_formulaInExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mFormulaName = in_mFormulaName ;
+  object->mProperty_mParameterList = in_mParameterList ;
+  const GALGAS_formulaInExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14150,6 +14625,16 @@ GALGAS_formulaInExpression GALGAS_formulaInExpression::extractObject (const GALG
 // @comparisonWithConstantInExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_comparisonWithConstantInExpression::cPtr_comparisonWithConstantInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mFieldNames (),
+mProperty_mComparison (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_comparisonWithConstantInExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -14205,6 +14690,25 @@ ComparisonResult GALGAS_comparisonWithConstantInExpression::objectCompare (const
 GALGAS_comparisonWithConstantInExpression::GALGAS_comparisonWithConstantInExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_comparisonWithConstantInExpression GALGAS_comparisonWithConstantInExpression::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_mVarName,
+                                                                                                                  const GALGAS_lstringlist & in_mFieldNames,
+                                                                                                                  const GALGAS_comparison & in_mComparison,
+                                                                                                                  const GALGAS_luint & in_mConstant,
+                                                                                                                  Compiler * inCompiler
+                                                                                                                  COMMA_LOCATION_ARGS) {
+  cPtr_comparisonWithConstantInExpression * object = nullptr ;
+  macroMyNew (object, cPtr_comparisonWithConstantInExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVarName = in_mVarName ;
+  object->mProperty_mFieldNames = in_mFieldNames ;
+  object->mProperty_mComparison = in_mComparison ;
+  object->mProperty_mConstant = in_mConstant ;
+  const GALGAS_comparisonWithConstantInExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14408,6 +14912,17 @@ GALGAS_comparisonWithConstantInExpression GALGAS_comparisonWithConstantInExpress
 // @variableComparisonInExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_variableComparisonInExpression::cPtr_variableComparisonInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_expression (inCompiler COMMA_THERE),
+mProperty_mLeftVarName (),
+mProperty_mLeftFieldNames (),
+mProperty_mComparison (),
+mProperty_mRightVarName (),
+mProperty_mRightFieldNames () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_variableComparisonInExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_expression::printNonNullClassInstanceProperties () ;
@@ -14467,6 +14982,27 @@ ComparisonResult GALGAS_variableComparisonInExpression::objectCompare (const GAL
 GALGAS_variableComparisonInExpression::GALGAS_variableComparisonInExpression (void) :
 GALGAS_expression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_variableComparisonInExpression GALGAS_variableComparisonInExpression::init_28__2C__2C__2C__2C__29_ (const GALGAS_lstring & in_mLeftVarName,
+                                                                                                              const GALGAS_lstringlist & in_mLeftFieldNames,
+                                                                                                              const GALGAS_comparison & in_mComparison,
+                                                                                                              const GALGAS_lstring & in_mRightVarName,
+                                                                                                              const GALGAS_lstringlist & in_mRightFieldNames,
+                                                                                                              Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) {
+  cPtr_variableComparisonInExpression * object = nullptr ;
+  macroMyNew (object, cPtr_variableComparisonInExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mLeftVarName = in_mLeftVarName ;
+  object->mProperty_mLeftFieldNames = in_mLeftFieldNames ;
+  object->mProperty_mComparison = in_mComparison ;
+  object->mProperty_mRightVarName = in_mRightVarName ;
+  object->mProperty_mRightFieldNames = in_mRightFieldNames ;
+  const GALGAS_variableComparisonInExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16577,6 +17113,24 @@ mProperty_mValue_31_ () {
 GALGAS__32_lstringlist_2D_element::~ GALGAS__32_lstringlist_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::init_28__2C__29_ (const GALGAS_lstring & in_mValue_30_,
+                                                                                       const GALGAS_lstring & in_mValue_31_,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS__32_lstringlist_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mValue_30_ = in_mValue_30_ ;
+  result.mProperty_mValue_31_ = in_mValue_31_ ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS__32_lstringlist_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS__32_lstringlist_2D_element::GALGAS__32_lstringlist_2D_element (const GALGAS_lstring & inOperand0,
@@ -16589,12 +17143,12 @@ mProperty_mValue_31_ (inOperand1) {
 
 GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::class_func_new (const GALGAS_lstring & in_mValue0,
                                                                                      const GALGAS_lstring & in_mValue1,
-                                                                                     Compiler * /* inCompiler */
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS__32_lstringlist_2D_element result ;
-  if (in_mValue0.isValid () && in_mValue1.isValid ()) {
-    result = GALGAS__32_lstringlist_2D_element (in_mValue0, in_mValue1) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mValue_30_ = in_mValue0 ;
+  result.mProperty_mValue_31_ = in_mValue1 ;
   return result ;
 }
 
@@ -16693,6 +17247,24 @@ mProperty_mType () {
 GALGAS_domainFieldList_2D_element::~ GALGAS_domainFieldList_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_domainFieldList_2D_element GALGAS_domainFieldList_2D_element::init_28__2C__29_ (const GALGAS_lstring & in_mVarName,
+                                                                                       const GALGAS_bddType & in_mType,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_domainFieldList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mVarName = in_mVarName ;
+  result.mProperty_mType = in_mType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_domainFieldList_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_domainFieldList_2D_element::GALGAS_domainFieldList_2D_element (const GALGAS_lstring & inOperand0,
@@ -16705,12 +17277,12 @@ mProperty_mType (inOperand1) {
 
 GALGAS_domainFieldList_2D_element GALGAS_domainFieldList_2D_element::class_func_new (const GALGAS_lstring & in_mVarName,
                                                                                      const GALGAS_bddType & in_mType,
-                                                                                     Compiler * /* inCompiler */
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_domainFieldList_2D_element result ;
-  if (in_mVarName.isValid () && in_mType.isValid ()) {
-    result = GALGAS_domainFieldList_2D_element (in_mVarName, in_mType) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mVarName = in_mVarName ;
+  result.mProperty_mType = in_mType ;
   return result ;
 }
 
@@ -16792,656 +17364,6 @@ GALGAS_domainFieldList_2D_element GALGAS_domainFieldList_2D_element::extractObje
       result = *p ;
     }else{
       inCompiler->castError ("domainFieldList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_domainDeclarationList_2D_element::GALGAS_domainDeclarationList_2D_element (void) :
-mProperty_mDomainName (),
-mProperty_mType () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_domainDeclarationList_2D_element::~ GALGAS_domainDeclarationList_2D_element (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_domainDeclarationList_2D_element::GALGAS_domainDeclarationList_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                  const GALGAS_domainDeclarationType & inOperand1) :
-mProperty_mDomainName (inOperand0),
-mProperty_mType (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_domainDeclarationList_2D_element GALGAS_domainDeclarationList_2D_element::class_func_new (const GALGAS_lstring & in_mDomainName,
-                                                                                                 const GALGAS_domainDeclarationType & in_mType,
-                                                                                                 Compiler * /* inCompiler */
-                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_domainDeclarationList_2D_element result ;
-  if (in_mDomainName.isValid () && in_mType.isValid ()) {
-    result = GALGAS_domainDeclarationList_2D_element (in_mDomainName, in_mType) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_domainDeclarationList_2D_element::objectCompare (const GALGAS_domainDeclarationList_2D_element & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mDomainName.objectCompare (inOperand.mProperty_mDomainName) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mType.objectCompare (inOperand.mProperty_mType) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_domainDeclarationList_2D_element::isValid (void) const {
-  return mProperty_mDomainName.isValid () && mProperty_mType.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_domainDeclarationList_2D_element::drop (void) {
-  mProperty_mDomainName.drop () ;
-  mProperty_mType.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_domainDeclarationList_2D_element::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @domainDeclarationList-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mDomainName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mType.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @domainDeclarationList-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainDeclarationList_2D_element ("domainDeclarationList-element",
-                                                                                        nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_domainDeclarationList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_domainDeclarationList_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_domainDeclarationList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_domainDeclarationList_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_domainDeclarationList_2D_element GALGAS_domainDeclarationList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_domainDeclarationList_2D_element result ;
-  const GALGAS_domainDeclarationList_2D_element * p = (const GALGAS_domainDeclarationList_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_domainDeclarationList_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("domainDeclarationList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_recordDomainMap_2D_element::GALGAS_recordDomainMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mIndex (),
-mProperty_mBitCount (),
-mProperty_mSubDomain () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_recordDomainMap_2D_element::~ GALGAS_recordDomainMap_2D_element (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_recordDomainMap_2D_element::GALGAS_recordDomainMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                      const GALGAS_uint & inOperand1,
-                                                                      const GALGAS_uint & inOperand2,
-                                                                      const GALGAS_recordDomainMap & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mIndex (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mSubDomain (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_recordDomainMap_2D_element GALGAS_recordDomainMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
-                                                                                     const GALGAS_uint & in_mIndex,
-                                                                                     const GALGAS_uint & in_mBitCount,
-                                                                                     const GALGAS_recordDomainMap & in_mSubDomain,
-                                                                                     Compiler * /* inCompiler */
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_recordDomainMap_2D_element result ;
-  if (in_lkey.isValid () && in_mIndex.isValid () && in_mBitCount.isValid () && in_mSubDomain.isValid ()) {
-    result = GALGAS_recordDomainMap_2D_element (in_lkey, in_mIndex, in_mBitCount, in_mSubDomain) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_recordDomainMap_2D_element::objectCompare (const GALGAS_recordDomainMap_2D_element & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mIndex.objectCompare (inOperand.mProperty_mIndex) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mSubDomain.objectCompare (inOperand.mProperty_mSubDomain) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_recordDomainMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mSubDomain.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_recordDomainMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mIndex.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mSubDomain.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_recordDomainMap_2D_element::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @recordDomainMap-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mIndex.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mSubDomain.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @recordDomainMap-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_recordDomainMap_2D_element ("recordDomainMap-element",
-                                                                                  nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_recordDomainMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_recordDomainMap_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_recordDomainMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_recordDomainMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_recordDomainMap_2D_element GALGAS_recordDomainMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_recordDomainMap_2D_element result ;
-  const GALGAS_recordDomainMap_2D_element * p = (const GALGAS_recordDomainMap_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_recordDomainMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("recordDomainMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_domainMap_2D_element::GALGAS_domainMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mBitCount (),
-mProperty_mRecordMap () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_domainMap_2D_element::~ GALGAS_domainMap_2D_element (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_domainMap_2D_element::GALGAS_domainMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                          const GALGAS_uint & inOperand1,
-                                                          const GALGAS_recordDomainMap & inOperand2) :
-mProperty_lkey (inOperand0),
-mProperty_mBitCount (inOperand1),
-mProperty_mRecordMap (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_domainMap_2D_element GALGAS_domainMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
-                                                                         const GALGAS_uint & in_mBitCount,
-                                                                         const GALGAS_recordDomainMap & in_mRecordMap,
-                                                                         Compiler * /* inCompiler */
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_domainMap_2D_element result ;
-  if (in_lkey.isValid () && in_mBitCount.isValid () && in_mRecordMap.isValid ()) {
-    result = GALGAS_domainMap_2D_element (in_lkey, in_mBitCount, in_mRecordMap) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_domainMap_2D_element::objectCompare (const GALGAS_domainMap_2D_element & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mRecordMap.objectCompare (inOperand.mProperty_mRecordMap) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_domainMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordMap.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_domainMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mRecordMap.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_domainMap_2D_element::description (String & ioString,
-                                               const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @domainMap-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mRecordMap.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @domainMap-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainMap_2D_element ("domainMap-element",
-                                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_domainMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_domainMap_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_domainMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_domainMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_domainMap_2D_element GALGAS_domainMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_domainMap_2D_element result ;
-  const GALGAS_domainMap_2D_element * p = (const GALGAS_domainMap_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_domainMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("domainMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element::GALGAS_varMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mIndex (),
-mProperty_mBitCount (),
-mProperty_mRecordDomainMap () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element::~ GALGAS_varMap_2D_element (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element::GALGAS_varMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                    const GALGAS_uint & inOperand1,
-                                                    const GALGAS_uint & inOperand2,
-                                                    const GALGAS_recordDomainMap & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mIndex (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mRecordDomainMap (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element GALGAS_varMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
-                                                                   const GALGAS_uint & in_mIndex,
-                                                                   const GALGAS_uint & in_mBitCount,
-                                                                   const GALGAS_recordDomainMap & in_mRecordDomainMap,
-                                                                   Compiler * /* inCompiler */
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_varMap_2D_element result ;
-  if (in_lkey.isValid () && in_mIndex.isValid () && in_mBitCount.isValid () && in_mRecordDomainMap.isValid ()) {
-    result = GALGAS_varMap_2D_element (in_lkey, in_mIndex, in_mBitCount, in_mRecordDomainMap) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_varMap_2D_element::objectCompare (const GALGAS_varMap_2D_element & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mIndex.objectCompare (inOperand.mProperty_mIndex) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mRecordDomainMap.objectCompare (inOperand.mProperty_mRecordDomainMap) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_varMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordDomainMap.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_varMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mIndex.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mRecordDomainMap.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_varMap_2D_element::description (String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @varMap-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mIndex.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mRecordDomainMap.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @varMap-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varMap_2D_element ("varMap-element",
-                                                                         nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_varMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varMap_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_varMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_varMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_varMap_2D_element GALGAS_varMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_varMap_2D_element result ;
-  const GALGAS_varMap_2D_element * p = (const GALGAS_varMap_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_varMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("varMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element::GALGAS_computedFormulaMap_2D_element (void) :
-mProperty_lkey (),
-mProperty_mVarList (),
-mProperty_mBitCount (),
-mProperty_mValue () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element::~ GALGAS_computedFormulaMap_2D_element (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element::GALGAS_computedFormulaMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                            const GALGAS_varList & inOperand1,
-                                                                            const GALGAS_uint & inOperand2,
-                                                                            const GALGAS_binaryset & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mVarList (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mValue (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
-                                                                                           const GALGAS_varList & in_mVarList,
-                                                                                           const GALGAS_uint & in_mBitCount,
-                                                                                           const GALGAS_binaryset & in_mValue,
-                                                                                           Compiler * /* inCompiler */
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_computedFormulaMap_2D_element result ;
-  if (in_lkey.isValid () && in_mVarList.isValid () && in_mBitCount.isValid () && in_mValue.isValid ()) {
-    result = GALGAS_computedFormulaMap_2D_element (in_lkey, in_mVarList, in_mBitCount, in_mValue) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_computedFormulaMap_2D_element::objectCompare (const GALGAS_computedFormulaMap_2D_element & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mVarList.objectCompare (inOperand.mProperty_mVarList) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mBitCount.objectCompare (inOperand.mProperty_mBitCount) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_computedFormulaMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_computedFormulaMap_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mVarList.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mValue.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_computedFormulaMap_2D_element::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @computedFormulaMap-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mVarList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mValue.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @computedFormulaMap-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ("computedFormulaMap-element",
-                                                                                     nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_computedFormulaMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_computedFormulaMap_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_computedFormulaMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_computedFormulaMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_computedFormulaMap_2D_element GALGAS_computedFormulaMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_computedFormulaMap_2D_element result ;
-  const GALGAS_computedFormulaMap_2D_element * p = (const GALGAS_computedFormulaMap_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_computedFormulaMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("computedFormulaMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
