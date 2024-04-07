@@ -18,7 +18,7 @@ syntax extension kerbdd_syntax {
     $dump$
     $identifier$( ?let formulaName)
     $;$
-    !?ioAST.mFormulaList.append (@dumpFormula.new (!formulaName))
+    !?ioAST.mFormulaList.append (@dumpFormula.init (!formulaName))
   }
 
 #·······················································································································

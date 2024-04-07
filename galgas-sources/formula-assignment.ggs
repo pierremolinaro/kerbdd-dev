@@ -47,7 +47,7 @@ rule <topLevelDeClaration>( ?!@ast ioAST) {
   end
   <expression>( ?let @expression expression)
   $;$
-  !?ioAST.mFormulaList.append (@assignmentFormula.new (!formulaName, !domainFieldList, !kind, !expression))
+  !?ioAST.mFormulaList.append (@assignmentFormula.init (!formulaName, !domainFieldList, !kind, !expression))
 }
 
 #·······················································································································

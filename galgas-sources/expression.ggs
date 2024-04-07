@@ -148,11 +148,11 @@ rule <expression>( !@expression outExpression) {
   or
     $=$
     <comparison>( ?let @expression rightExpression)
-    outExpression = @equalExpression.new (!outExpression, !rightExpression)
+    outExpression = @equalExpression.init (!outExpression, !rightExpression)
   or
     $!=$
     <comparison>( ?let @expression rightExpression)
-    outExpression = @notEqualExpression.new (!outExpression, !rightExpression)
+    outExpression = @notEqualExpression.init (!outExpression, !rightExpression)
   end
 }
 
@@ -164,11 +164,11 @@ rule <comparison>( !@expression outExpression) {
   while
     $|$
     <term>( ?let @expression rightExpression)
-    outExpression = @orExpression.new (!outExpression, !rightExpression)
+    outExpression = @orExpression.init (!outExpression, !rightExpression)
   while
     $^$
     <term>( ?let @expression rightExpression)
-    outExpression = @xorExpression.new (!outExpression, !rightExpression)
+    outExpression = @xorExpression.init (!outExpression, !rightExpression)
   end
 }
 
@@ -180,11 +180,11 @@ rule <term>( !@expression outExpression) {
   while
     $&$
     <factor>( ?let @expression rightExpression)
-    outExpression = @andExpression.new (!outExpression, !rightExpression)
+    outExpression = @andExpression.init (!outExpression, !rightExpression)
   while
     $->$
     <factor>( ?let @expression rightExpression)
-    outExpression = @impliesExpression.new (!outExpression, !rightExpression)
+    outExpression = @impliesExpression.init (!outExpression, !rightExpression)
   end
 }
 
@@ -193,7 +193,7 @@ rule <term>( !@expression outExpression) {
 rule <factor>( !@expression outExpression) {
   $identifier$( ?let varName)
   select
-    outExpression = @varInExpression.new (!varName)
+    outExpression = @varInExpression.init (!varName)
   or
     $.$
     $integer$( ?let varBit)
@@ -214,21 +214,21 @@ rule <factor>( !@expression outExpression) {
 rule <factor>( !@expression outExpression) {
   $~$
   <factor>( ?let expression)
-  outExpression = @complementExpression.new (!expression)
+  outExpression = @complementExpression.init (!expression)
 }
 
 #·······················································································································
 
 rule <factor>( !@expression outExpression) {
   $true$
-  outExpression = @trueExpression.new
+  outExpression = @trueExpression.init
 }
 
 #·······················································································································
 
 rule <factor>( !@expression outExpression) {
   $false$
-  outExpression = @falseExpression.new
+  outExpression = @falseExpression.init
 }
 
 #·······················································································································
@@ -254,7 +254,7 @@ rule <factor>( !@expression outExpression) {
     end
   end
   $)$
-  outExpression = @formulaInExpression.new (!formulaName, !parameterList)
+  outExpression = @formulaInExpression.init (!formulaName, !parameterList)
 }
 
 #·······················································································································
@@ -265,7 +265,7 @@ rule <factor>( !@expression outExpression) {
   $($
   <expression>( ?let expression)
   $)$
-  outExpression = @existInExpression.new (!domainFieldList, !expression)
+  outExpression = @existInExpression.init (!domainFieldList, !expression)
 }
 
 #·······················································································································
@@ -276,7 +276,7 @@ rule <factor>( !@expression outExpression) {
   $($
   <expression>( ?let expression)
   $)$
-  outExpression = @forAllInExpression.new (!domainFieldList, !expression)
+  outExpression = @forAllInExpression.init (!domainFieldList, !expression)
 }
 #·······················································································································
 
@@ -312,7 +312,7 @@ rule <factor>( !@expression outExpression) {
   end
   select
     $integer$( ?let constant)
-    outExpression = @comparisonWithConstantInExpression.new (!varName, !leftFieldNames, !comparison, !constant)
+    outExpression = @comparisonWithConstantInExpression.init (!varName, !leftFieldNames, !comparison, !constant)
   or
     $identifier$( ?let rightVarName)
     var @lstringlist rightFieldNames = []
@@ -322,7 +322,7 @@ rule <factor>( !@expression outExpression) {
       $identifier$( ?let fieldName)
       !?rightFieldNames.append (fieldName)
     end
-    outExpression = @variableComparisonInExpression.new (!varName, !leftFieldNames, !comparison, !rightVarName, !rightFieldNames)
+    outExpression = @variableComparisonInExpression.init (!varName, !leftFieldNames, !comparison, !rightVarName, !rightFieldNames)
   end
   $}$
 }
@@ -510,11 +510,11 @@ override func @formulaInExpression. computeExpression(
 #--- Read formula
   inComputedFormulaMap.searchKey (!self.mFormulaName, ?let varList, ?let unused totalBitCount, ?let formulaValue)
 #--- Check parameter list
-  if self.mParameterList.length () != varList.length () then
+  if self.mParameterList.count () != varList.count () then
     error self.mFormulaName : "the $" + self.mFormulaName + " names "
-      + varList.length () + " variable" + if varList.length () > 1 then "s" else "" end
+      + varList.count () + " variable" + if varList.count () > 1 then "s" else "" end
       + ", but this call names "
-      + self.mParameterList.length () + " variable" + if self.mParameterList.length () > 1 then "s" else "" end
+      + self.mParameterList.count () + " variable" + if self.mParameterList.count () > 1 then "s" else "" end
     spoil (outResult)
   else
     var @uintlist transformationList = []
