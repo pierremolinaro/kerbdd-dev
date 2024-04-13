@@ -550,7 +550,8 @@ override func @existInExpression. computeExpression(
 {
   var @varMap varMap = inVarMap
   var @uint totalBitCount = inTotalBitCount 
-  self.mArgumentList.analyze (!inDomainMap, !?varMap, !?*, !?totalBitCount)
+  var unusedVarList = @varList ()
+  self.mArgumentList.analyze (!inDomainMap, !?varMap, !?unusedVarList, !?totalBitCount)
   let r = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !inComputedFormulaMap)
   outResult = r.existOnBitIndexAndBeyond (!inTotalBitCount)
 }
@@ -566,7 +567,8 @@ override func @forAllInExpression. computeExpression(
 {
   var @varMap varMap = inVarMap
   var @uint totalBitCount = inTotalBitCount 
-  self.mArgumentList.analyze (!inDomainMap, !?varMap, !?*, !?totalBitCount)
+  var unusedVarList = @varList ()
+  self.mArgumentList.analyze (!inDomainMap, !?varMap, !?unusedVarList, !?totalBitCount)
   let r = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !inComputedFormulaMap)
   outResult = r.forAllOnBitIndexAndBeyond (inTotalBitCount)
 }
