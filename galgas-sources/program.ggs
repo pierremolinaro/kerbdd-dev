@@ -11,7 +11,7 @@ abstract proc @abstractFormula. analyzeFormula(
 
 case . "kerbdd"
 %errorMessage "a source text file with the .kerbdd extension"
-%useGrammar kerbdd_grammar
+grammar kerbdd_grammar
 ?sourceFilePath:@lstring inSourceFile {
 #--- Parse
   grammar kerbdd_grammar (?let @ast ast) in inSourceFile
