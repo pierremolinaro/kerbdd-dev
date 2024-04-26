@@ -1630,9 +1630,9 @@ GALGAS_bddType GALGAS_bddType::class_func_namedType (const GALGAS_lstring & inAs
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bddType::method_boolArray (GALGAS_uint & outAssociatedValue_size,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const {
+void GALGAS_bddType::method_extractBoolArray (GALGAS_uint & outAssociatedValue_size,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_boolArray) {
     outAssociatedValue_size.drop () ;
     String s ;
@@ -1646,9 +1646,9 @@ void GALGAS_bddType::method_boolArray (GALGAS_uint & outAssociatedValue_size,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bddType::method_namedType (GALGAS_lstring & outAssociatedValue_typeName,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const {
+void GALGAS_bddType::method_extractNamedType (GALGAS_lstring & outAssociatedValue_typeName,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_namedType) {
     outAssociatedValue_typeName.drop () ;
     String s ;
@@ -1662,13 +1662,9 @@ void GALGAS_bddType::method_namedType (GALGAS_lstring & outAssociatedValue_typeN
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_bddType::getter_bool (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_bool == mEnum) ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bddType_2D_boolArray_3F_ GALGAS_bddType::getter_boolArray (UNUSED_LOCATION_ARGS) const {
+GALGAS_bddType_2D_boolArray_3F_ GALGAS_bddType::getter_getBoolArray (UNUSED_LOCATION_ARGS) const {
   GALGAS_bddType_2D_boolArray_3F_ result ;
   if (mEnum == Enumeration::enum_boolArray) {
     const auto ptr = (const GALGAS_bddType_2D_boolArray *) mAssociatedValues.associatedValuesPointer () ;
@@ -1686,7 +1682,7 @@ void GALGAS_bddType::getAssociatedValuesFor_boolArray (GALGAS_uint & out_size) c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bddType_2D_namedType_3F_ GALGAS_bddType::getter_namedType (UNUSED_LOCATION_ARGS) const {
+GALGAS_bddType_2D_namedType_3F_ GALGAS_bddType::getter_getNamedType (UNUSED_LOCATION_ARGS) const {
   GALGAS_bddType_2D_namedType_3F_ result ;
   if (mEnum == Enumeration::enum_namedType) {
     const auto ptr = (const GALGAS_bddType_2D_namedType *) mAssociatedValues.associatedValuesPointer () ;
@@ -1710,6 +1706,24 @@ static const char * gEnumNameArrayFor_bddType [4] = {
   "boolArray",
   "namedType"
 } ;
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_bddType::getter_isBool (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_bool == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_bddType::getter_isBoolArray (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_boolArray == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_bddType::getter_isNamedType (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_namedType == mEnum) ;
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2288,9 +2302,9 @@ GALGAS_domainDeclarationType GALGAS_domainDeclarationType::class_func_record (co
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_domainDeclarationType::method_type (GALGAS_bddType & outAssociatedValue_type,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
+void GALGAS_domainDeclarationType::method_extractType (GALGAS_bddType & outAssociatedValue_type,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_type) {
     outAssociatedValue_type.drop () ;
     String s ;
@@ -2304,9 +2318,9 @@ void GALGAS_domainDeclarationType::method_type (GALGAS_bddType & outAssociatedVa
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_domainDeclarationType::method_record (GALGAS_domainFieldList & outAssociatedValue_fieldList,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
+void GALGAS_domainDeclarationType::method_extractRecord (GALGAS_domainFieldList & outAssociatedValue_fieldList,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_record) {
     outAssociatedValue_fieldList.drop () ;
     String s ;
@@ -2320,7 +2334,7 @@ void GALGAS_domainDeclarationType::method_record (GALGAS_domainFieldList & outAs
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_domainDeclarationType_2D_type_3F_ GALGAS_domainDeclarationType::getter_type (UNUSED_LOCATION_ARGS) const {
+GALGAS_domainDeclarationType_2D_type_3F_ GALGAS_domainDeclarationType::getter_getType (UNUSED_LOCATION_ARGS) const {
   GALGAS_domainDeclarationType_2D_type_3F_ result ;
   if (mEnum == Enumeration::enum_type) {
     const auto ptr = (const GALGAS_domainDeclarationType_2D_type *) mAssociatedValues.associatedValuesPointer () ;
@@ -2338,7 +2352,7 @@ void GALGAS_domainDeclarationType::getAssociatedValuesFor_type (GALGAS_bddType &
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_domainDeclarationType_2D_record_3F_ GALGAS_domainDeclarationType::getter_record (UNUSED_LOCATION_ARGS) const {
+GALGAS_domainDeclarationType_2D_record_3F_ GALGAS_domainDeclarationType::getter_getRecord (UNUSED_LOCATION_ARGS) const {
   GALGAS_domainDeclarationType_2D_record_3F_ result ;
   if (mEnum == Enumeration::enum_record) {
     const auto ptr = (const GALGAS_domainDeclarationType_2D_record *) mAssociatedValues.associatedValuesPointer () ;
@@ -2361,6 +2375,18 @@ static const char * gEnumNameArrayFor_domainDeclarationType [3] = {
   "type",
   "record"
 } ;
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_domainDeclarationType::getter_isType (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_type == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_domainDeclarationType::getter_isRecord (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_record == mEnum) ;
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4859,9 +4885,9 @@ GALGAS_formulaKind GALGAS_formulaKind::class_func_fixedPoint (const GALGAS_binar
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_formulaKind::method_fixedPoint (GALGAS_binaryset & outAssociatedValue_startValue,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
+void GALGAS_formulaKind::method_extractFixedPoint (GALGAS_binaryset & outAssociatedValue_startValue,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_fixedPoint) {
     outAssociatedValue_startValue.drop () ;
     String s ;
@@ -4875,13 +4901,9 @@ void GALGAS_formulaKind::method_fixedPoint (GALGAS_binaryset & outAssociatedValu
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_formulaKind::getter_assignment (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_assignment == mEnum) ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_formulaKind_2D_fixedPoint_3F_ GALGAS_formulaKind::getter_fixedPoint (UNUSED_LOCATION_ARGS) const {
+GALGAS_formulaKind_2D_fixedPoint_3F_ GALGAS_formulaKind::getter_getFixedPoint (UNUSED_LOCATION_ARGS) const {
   GALGAS_formulaKind_2D_fixedPoint_3F_ result ;
   if (mEnum == Enumeration::enum_fixedPoint) {
     const auto ptr = (const GALGAS_formulaKind_2D_fixedPoint *) mAssociatedValues.associatedValuesPointer () ;
@@ -4904,6 +4926,18 @@ static const char * gEnumNameArrayFor_formulaKind [3] = {
   "assignment",
   "fixedPoint"
 } ;
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_formulaKind::getter_isAssignment (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_assignment == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_formulaKind::getter_isFixedPoint (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixedPoint == mEnum) ;
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10437,39 +10471,15 @@ GALGAS_comparison GALGAS_comparison::class_func_greaterThan (UNUSED_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_comparison::getter_equal (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_equal == mEnum) ;
-}
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_comparison::getter_notEqual (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_notEqual == mEnum) ;
-}
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_comparison::getter_lowerOrEqual (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lowerOrEqual == mEnum) ;
-}
-
 //--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_comparison::getter_lowerThan (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lowerThan == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_comparison::getter_greaterOrEqual (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_greaterOrEqual == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_comparison::getter_greaterThan (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_greaterThan == mEnum) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10482,6 +10492,42 @@ static const char * gEnumNameArrayFor_comparison [7] = {
   "greaterOrEqual",
   "greaterThan"
 } ;
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isEqual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_equal == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isNotEqual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_notEqual == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isLowerOrEqual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lowerOrEqual == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isLowerThan (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lowerThan == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isGreaterOrEqual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_greaterOrEqual == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_comparison::getter_isGreaterThan (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_greaterThan == mEnum) ;
+}
 
 //--------------------------------------------------------------------------------------------------
 
