@@ -14,7 +14,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_println_3F_ (const class GALGAS_string constinArgument0,
+void routine_println_3F_ (const class GGS_string constinArgument0,
                           class Compiler * inCompiler
                           COMMA_LOCATION_ARGS) ;
 
@@ -24,7 +24,7 @@ void routine_println_3F_ (const class GALGAS_string constinArgument0,
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_print_3F_ (const class GALGAS_string constinArgument0,
+void routine_print_3F_ (const class GGS_string constinArgument0,
                         class Compiler * inCompiler
                         COMMA_LOCATION_ARGS) ;
 
