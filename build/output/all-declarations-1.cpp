@@ -8,6 +8,117 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType::GGS_bddType_2E_namedType (void) :
+mProperty_typeName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType::~ GGS_bddType_2E_namedType (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_bddType_2E_namedType GGS_bddType_2E_namedType::init_21_ (const GGS_lstring & in_typeName,
+                                                             Compiler * inCompiler
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bddType_2E_namedType result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_typeName = in_typeName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType_2E_namedType::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType::GGS_bddType_2E_namedType (const GGS_lstring & inOperand0) :
+mProperty_typeName (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType GGS_bddType_2E_namedType::class_func_new (const GGS_lstring & in_typeName,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bddType_2E_namedType result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_typeName = in_typeName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_bddType_2E_namedType::isValid (void) const {
+  return mProperty_typeName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType_2E_namedType::drop (void) {
+  mProperty_typeName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType_2E_namedType::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @bddType.namedType:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_typeName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @bddType.namedType generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bddType_2E_namedType ("bddType.namedType",
+                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_bddType_2E_namedType::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_bddType_2E_namedType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_bddType_2E_namedType::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_bddType_2E_namedType (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType GGS_bddType_2E_namedType::extractObject (const GGS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GGS_bddType_2E_namedType result ;
+  const GGS_bddType_2E_namedType * p = (const GGS_bddType_2E_namedType *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_bddType_2E_namedType *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("bddType.namedType", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //
 //Optional @bddType_2E_namedType_3F_
 //
@@ -1538,22 +1649,6 @@ GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpres
 // @setting_5F_nodeHashMapSize reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_setting_5F_nodeHashMapSize::cPtr_setting_5F_nodeHashMapSize (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_abstractFormula (inCompiler COMMA_THERE),
-mProperty_mSetting () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_setting_5F_nodeHashMapSize::printNonNullClassInstanceProperties (void) const {
-    cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
-    mProperty_mSetting.printNonNullClassInstanceProperties ("mSetting") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_setting_5F_nodeHashMapSize::objectCompare (const GGS_setting_5F_nodeHashMapSize & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -1606,10 +1701,11 @@ GGS_abstractFormula (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_nodeHashMapSize GGS_setting_5F_nodeHashMapSize::class_func_new (const GGS_luint & in_mSetting
+GGS_setting_5F_nodeHashMapSize GGS_setting_5F_nodeHashMapSize::class_func_new (const GGS_luint & in_mSetting,
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   GGS_setting_5F_nodeHashMapSize result ;
-  macroMyNew (result.mObjectPtr, cPtr_setting_5F_nodeHashMapSize (in_mSetting COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_setting_5F_nodeHashMapSize (in_mSetting,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -1639,9 +1735,17 @@ void GGS_setting_5F_nodeHashMapSize::setProperty_mSetting (const GGS_luint & inV
 //Pointer class for @setting_nodeHashMapSize class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_setting_5F_nodeHashMapSize::cPtr_setting_5F_nodeHashMapSize (const GGS_luint & in_mSetting
+cPtr_setting_5F_nodeHashMapSize::cPtr_setting_5F_nodeHashMapSize (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (inCompiler COMMA_THERE),
+mProperty_mSetting () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_setting_5F_nodeHashMapSize::cPtr_setting_5F_nodeHashMapSize (const GGS_luint & in_mSetting,
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) :
-cPtr_abstractFormula (THERE),
+cPtr_abstractFormula (inCompiler COMMA_THERE),
 mProperty_mSetting () {
   mProperty_mSetting = in_mSetting ;
 }
@@ -1661,12 +1765,21 @@ void cPtr_setting_5F_nodeHashMapSize::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_setting_5F_nodeHashMapSize::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_setting_5F_nodeHashMapSize::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_setting_5F_nodeHashMapSize (mProperty_mSetting COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_setting_5F_nodeHashMapSize (mProperty_mSetting, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_setting_5F_nodeHashMapSize::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
+    mProperty_mSetting.printNonNullClassInstanceProperties ("mSetting") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
