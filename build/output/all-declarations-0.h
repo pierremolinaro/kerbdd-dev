@@ -314,48 +314,48 @@ class Lexique_kerbdd_5F_lexique : public Lexique {
 
 
 //--- Terminal symbols enumeration
-  public: enum {kToken_,
-   kToken_identifier /* 1 */ ,
-   kToken_integer /* 2 */ ,
-   kToken_literal_5F_string /* 3 */ ,
-   kToken_comment /* 4 */ ,
-   kToken_nodeHashMapSize /* 5 */ ,
-   kToken_andCacheMapSize /* 6 */ ,
-   kToken_domain /* 7 */ ,
-   kToken_bool /* 8 */ ,
-   kToken_true /* 9 */ ,
-   kToken_false /* 10 */ ,
-   kToken_display /* 11 */ ,
-   kToken_include /* 12 */ ,
-   kToken_graphviz /* 13 */ ,
-   kToken_dump /* 14 */ ,
-   kToken__28_ /* 15 */ ,
-   kToken__29_ /* 16 */ ,
-   kToken__5B_ /* 17 */ ,
-   kToken__5D_ /* 18 */ ,
-   kToken__7B_ /* 19 */ ,
-   kToken__7D_ /* 20 */ ,
-   kToken__3A__3D_ /* 21 */ ,
-   kToken__3A_ /* 22 */ ,
-   kToken__2E_ /* 23 */ ,
-   kToken__2E__2E_ /* 24 */ ,
-   kToken__2B__3D_ /* 25 */ ,
-   kToken__2D__3D_ /* 26 */ ,
-   kToken__2D__3E_ /* 27 */ ,
-   kToken__26_ /* 28 */ ,
-   kToken__7C_ /* 29 */ ,
-   kToken__5E_ /* 30 */ ,
-   kToken__7E_ /* 31 */ ,
-   kToken__2C_ /* 32 */ ,
-   kToken__3F_ /* 33 */ ,
-   kToken__21_ /* 34 */ ,
-   kToken__3B_ /* 35 */ ,
-   kToken__3D_ /* 36 */ ,
-   kToken__21__3D_ /* 37 */ ,
-   kToken__3C_ /* 38 */ ,
-   kToken__3C__3D_ /* 39 */ ,
-   kToken__3E_ /* 40 */ ,
-   kToken__3E__3D_ /* 41 */ } ;
+  public: const static int32_t kToken_ = 0 ;
+  public: static const int32_t kToken_identifier = 1 ;
+  public: static const int32_t kToken_integer = 2 ;
+  public: static const int32_t kToken_literal_5F_string = 3 ;
+  public: static const int32_t kToken_comment = 4 ;
+  public: static const int32_t kToken_nodeHashMapSize = 5 ;
+  public: static const int32_t kToken_andCacheMapSize = 6 ;
+  public: static const int32_t kToken_domain = 7 ;
+  public: static const int32_t kToken_bool = 8 ;
+  public: static const int32_t kToken_true = 9 ;
+  public: static const int32_t kToken_false = 10 ;
+  public: static const int32_t kToken_display = 11 ;
+  public: static const int32_t kToken_include = 12 ;
+  public: static const int32_t kToken_graphviz = 13 ;
+  public: static const int32_t kToken_dump = 14 ;
+  public: static const int32_t kToken__28_ = 15 ;
+  public: static const int32_t kToken__29_ = 16 ;
+  public: static const int32_t kToken__5B_ = 17 ;
+  public: static const int32_t kToken__5D_ = 18 ;
+  public: static const int32_t kToken__7B_ = 19 ;
+  public: static const int32_t kToken__7D_ = 20 ;
+  public: static const int32_t kToken__3A__3D_ = 21 ;
+  public: static const int32_t kToken__3A_ = 22 ;
+  public: static const int32_t kToken__2E_ = 23 ;
+  public: static const int32_t kToken__2E__2E_ = 24 ;
+  public: static const int32_t kToken__2B__3D_ = 25 ;
+  public: static const int32_t kToken__2D__3D_ = 26 ;
+  public: static const int32_t kToken__2D__3E_ = 27 ;
+  public: static const int32_t kToken__26_ = 28 ;
+  public: static const int32_t kToken__7C_ = 29 ;
+  public: static const int32_t kToken__5E_ = 30 ;
+  public: static const int32_t kToken__7E_ = 31 ;
+  public: static const int32_t kToken__2C_ = 32 ;
+  public: static const int32_t kToken__3F_ = 33 ;
+  public: static const int32_t kToken__21_ = 34 ;
+  public: static const int32_t kToken__3B_ = 35 ;
+  public: static const int32_t kToken__3D_ = 36 ;
+  public: static const int32_t kToken__21__3D_ = 37 ;
+  public: static const int32_t kToken__3C_ = 38 ;
+  public: static const int32_t kToken__3C__3D_ = 39 ;
+  public: static const int32_t kToken__3E_ = 40 ;
+  public: static const int32_t kToken__3E__3D_ = 41 ;
 
 //--- Key words table 'keyWordList'
   public: static int32_t search_into_keyWordList (const String & inSearchedString) ;
