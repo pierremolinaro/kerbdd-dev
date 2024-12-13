@@ -1,27 +1,27 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract proc @abstractFormula. analyzeFormula(
   ?let @string inSourceFilePath,
   ?let @domainMap inDomainMap,
   ?!@computedFormulaMap ioComputedFormulaMap)
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#    MAIN                                                                                                               
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
+//    MAIN                                                                                                               
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "kerbdd"
 %errorMessage "a source text file with the .kerbdd extension"
 grammar kerbdd_grammar
 ?sourceFilePath:@lstring inSourceFile {
-#--- Parse
+//--- Parse
   grammar kerbdd_grammar (?let @ast ast) in inSourceFile
-#--- Analyze domaines
+//--- Analyze domaines
   ast.mDomainList.analyze (?let @domainMap domainMap)
-#--- Analyze formulas
+//--- Analyze formulas
   var @computedFormulaMap computedFormulaMap = []
   for (formula) in ast.mFormulaList while @uint.errorCount == 0 do
     formula.analyzeFormula (!inSourceFile.string, !domainMap, !?computedFormulaMap)
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

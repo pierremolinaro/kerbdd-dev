@@ -3680,47 +3680,47 @@ void extensionMethod_analyze (const GGS_domainDeclarationList inObject,
   GGS_domainMap temp_0 = GGS_domainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 122)) ;
   outArgument_outDomainMap = temp_0 ;
   const GGS_domainDeclarationList temp_1 = inObject ;
-  cEnumerator_domainDeclarationList enumerator_4315 (temp_1, EnumerationOrder::up) ;
+  cEnumerator_domainDeclarationList enumerator_3988 (temp_1, EnumerationOrder::up) ;
   bool bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-  if (enumerator_4315.hasCurrentObject () && bool_2) {
-    while (enumerator_4315.hasCurrentObject () && bool_2) {
-      switch (enumerator_4315.current_mType (HERE).enumValue ()) {
+  if (enumerator_3988.hasCurrentObject () && bool_2) {
+    while (enumerator_3988.hasCurrentObject () && bool_2) {
+      switch (enumerator_3988.current_mType (HERE).enumValue ()) {
       case GGS_domainDeclarationType::Enumeration::invalid:
         break ;
       case GGS_domainDeclarationType::Enumeration::enum_type:
         {
-          GGS_bddType extractedValue_4420_type_0 ;
-          enumerator_4315.current_mType (HERE).getAssociatedValuesFor_type (extractedValue_4420_type_0) ;
-          switch (extractedValue_4420_type_0.enumValue ()) {
+          GGS_bddType extractedValue_4093_type_0 ;
+          enumerator_3988.current_mType (HERE).getAssociatedValuesFor_type (extractedValue_4093_type_0) ;
+          switch (extractedValue_4093_type_0.enumValue ()) {
           case GGS_bddType::Enumeration::invalid:
             break ;
           case GGS_bddType::Enumeration::enum_bool:
             {
               {
               GGS_recordDomainMap temp_3 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
-              outArgument_outDomainMap.setter_insertKey (enumerator_4315.current_mDomainName (HERE), GGS_uint (uint32_t (1U)), temp_3, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), GGS_uint (uint32_t (1U)), temp_3, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
               }
             }
             break ;
           case GGS_bddType::Enumeration::enum_boolArray:
             {
-              GGS_uint extractedValue_4541_size_0 ;
-              extractedValue_4420_type_0.getAssociatedValuesFor_boolArray (extractedValue_4541_size_0) ;
+              GGS_uint extractedValue_4214_size_0 ;
+              extractedValue_4093_type_0.getAssociatedValuesFor_boolArray (extractedValue_4214_size_0) ;
               {
               GGS_recordDomainMap temp_4 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
-              outArgument_outDomainMap.setter_insertKey (enumerator_4315.current_mDomainName (HERE), extractedValue_4541_size_0, temp_4, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), extractedValue_4214_size_0, temp_4, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
               }
             }
             break ;
           case GGS_bddType::Enumeration::enum_namedType:
             {
-              GGS_lstring extractedValue_4632_typeName_0 ;
-              extractedValue_4420_type_0.getAssociatedValuesFor_namedType (extractedValue_4632_typeName_0) ;
-              GGS_uint var_size_4692 ;
-              GGS_recordDomainMap var_subdomain_4703 ;
-              outArgument_outDomainMap.method_searchKey (extractedValue_4632_typeName_0, var_size_4692, var_subdomain_4703, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
+              GGS_lstring extractedValue_4305_typeName_0 ;
+              extractedValue_4093_type_0.getAssociatedValuesFor_namedType (extractedValue_4305_typeName_0) ;
+              GGS_uint var_size_4365 ;
+              GGS_recordDomainMap var_subdomain_4376 ;
+              outArgument_outDomainMap.method_searchKey (extractedValue_4305_typeName_0, var_size_4365, var_subdomain_4376, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
               {
-              outArgument_outDomainMap.setter_insertKey (enumerator_4315.current_mDomainName (HERE), var_size_4692, var_subdomain_4703, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), var_size_4365, var_subdomain_4376, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
               }
             }
             break ;
@@ -3729,66 +3729,66 @@ void extensionMethod_analyze (const GGS_domainDeclarationList inObject,
         break ;
       case GGS_domainDeclarationType::Enumeration::enum_record:
         {
-          GGS_domainFieldList extractedValue_4817_fieldList_0 ;
-          enumerator_4315.current_mType (HERE).getAssociatedValuesFor_record (extractedValue_4817_fieldList_0) ;
-          GGS_bigint var_bitIndex_4840 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
+          GGS_domainFieldList extractedValue_4490_fieldList_0 ;
+          enumerator_3988.current_mType (HERE).getAssociatedValuesFor_record (extractedValue_4490_fieldList_0) ;
+          GGS_bigint var_bitIndex_4513 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
           GGS_recordDomainMap temp_5 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 137)) ;
-          GGS_recordDomainMap var_recordMap_4880 = temp_5 ;
-          cEnumerator_domainFieldList enumerator_4914 (extractedValue_4817_fieldList_0, EnumerationOrder::down) ;
+          GGS_recordDomainMap var_recordMap_4553 = temp_5 ;
+          cEnumerator_domainFieldList enumerator_4587 (extractedValue_4490_fieldList_0, EnumerationOrder::down) ;
           bool bool_6 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-          if (enumerator_4914.hasCurrentObject () && bool_6) {
-            while (enumerator_4914.hasCurrentObject () && bool_6) {
-              switch (enumerator_4914.current_mType (HERE).enumValue ()) {
+          if (enumerator_4587.hasCurrentObject () && bool_6) {
+            while (enumerator_4587.hasCurrentObject () && bool_6) {
+              switch (enumerator_4587.current_mType (HERE).enumValue ()) {
               case GGS_bddType::Enumeration::invalid:
                 break ;
               case GGS_bddType::Enumeration::enum_bool:
                 {
                   {
                   GGS_recordDomainMap temp_7 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
-                  var_recordMap_4880.setter_insertKey (enumerator_4914.current_mVarName (HERE), var_bitIndex_4840.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GGS_uint (uint32_t (1U)), temp_7, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
+                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GGS_uint (uint32_t (1U)), temp_7, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
                   }
-                  var_bitIndex_4840.plusAssign_operation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
+                  var_bitIndex_4513.plusAssign_operation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
                 }
                 break ;
               case GGS_bddType::Enumeration::enum_boolArray:
                 {
-                  GGS_uint extractedValue_5137_size_0 ;
-                  enumerator_4914.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_5137_size_0) ;
+                  GGS_uint extractedValue_4810_size_0 ;
+                  enumerator_4587.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_4810_size_0) ;
                   {
                   GGS_recordDomainMap temp_8 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
-                  var_recordMap_4880.setter_insertKey (enumerator_4914.current_mVarName (HERE), var_bitIndex_4840.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_5137_size_0, temp_8, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
+                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_4810_size_0, temp_8, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
                   }
-                  var_bitIndex_4840 = var_bitIndex_4840.add_operation (extractedValue_5137_size_0.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
+                  var_bitIndex_4513 = var_bitIndex_4513.add_operation (extractedValue_4810_size_0.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
                 }
                 break ;
               case GGS_bddType::Enumeration::enum_namedType:
                 {
-                  GGS_lstring extractedValue_5277_typeName_0 ;
-                  enumerator_4914.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_5277_typeName_0) ;
-                  GGS_uint var_size_5339 ;
-                  GGS_recordDomainMap var_subdomain_5350 ;
-                  outArgument_outDomainMap.method_searchKey (extractedValue_5277_typeName_0, var_size_5339, var_subdomain_5350, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
+                  GGS_lstring extractedValue_4950_typeName_0 ;
+                  enumerator_4587.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_4950_typeName_0) ;
+                  GGS_uint var_size_5012 ;
+                  GGS_recordDomainMap var_subdomain_5023 ;
+                  outArgument_outDomainMap.method_searchKey (extractedValue_4950_typeName_0, var_size_5012, var_subdomain_5023, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
                   {
-                  var_recordMap_4880.setter_insertKey (enumerator_4914.current_mVarName (HERE), var_bitIndex_4840.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5339, var_subdomain_5350, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
+                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5012, var_subdomain_5023, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
                   }
-                  var_bitIndex_4840 = var_bitIndex_4840.add_operation (var_size_5339.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
+                  var_bitIndex_4513 = var_bitIndex_4513.add_operation (var_size_5012.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
                 }
                 break ;
               }
-              enumerator_4914.gotoNextObject () ;
-              if (enumerator_4914.hasCurrentObject ()) {
+              enumerator_4587.gotoNextObject () ;
+              if (enumerator_4587.hasCurrentObject ()) {
                 bool_6 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
               }
             }
           }
           {
-          outArgument_outDomainMap.setter_insertKey (enumerator_4315.current_mDomainName (HERE), var_bitIndex_4840.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4880, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
+          outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4553, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
           }
         }
         break ;
       }
-      enumerator_4315.gotoNextObject () ;
-      if (enumerator_4315.hasCurrentObject ()) {
+      enumerator_3988.gotoNextObject () ;
+      if (enumerator_3988.hasCurrentObject ()) {
         bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
       }
     }
@@ -4757,55 +4757,55 @@ void extensionMethod_analyze (const GGS_domainFieldList inObject,
                               Compiler * inCompiler
                               COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_domainFieldList temp_0 = inObject ;
-  cEnumerator_domainFieldList enumerator_6737 (temp_0, EnumerationOrder::down) ;
-  while (enumerator_6737.hasCurrentObject ()) {
-    switch (enumerator_6737.current_mType (HERE).enumValue ()) {
+  cEnumerator_domainFieldList enumerator_6324 (temp_0, EnumerationOrder::down) ;
+  while (enumerator_6324.hasCurrentObject ()) {
+    switch (enumerator_6324.current_mType (HERE).enumValue ()) {
     case GGS_bddType::Enumeration::invalid:
       break ;
     case GGS_bddType::Enumeration::enum_bool:
       {
         {
         GGS_recordDomainMap temp_1 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6737.current_mVarName (HERE), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), temp_1, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6324.current_mVarName (HERE), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), temp_1, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6737.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6324.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
         }
         ioArgument_ioTotalBitCount.plusAssign_operation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 191)) ;
       }
       break ;
     case GGS_bddType::Enumeration::enum_boolArray:
       {
-        GGS_uint extractedValue_6970_size_0 ;
-        enumerator_6737.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_6970_size_0) ;
+        GGS_uint extractedValue_6557_size_0 ;
+        enumerator_6324.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_6557_size_0) ;
         {
         GGS_recordDomainMap temp_2 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6737.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6970_size_0, temp_2, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6324.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6557_size_0, temp_2, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6737.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6970_size_0, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6324.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6557_size_0, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
         }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6970_size_0, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6557_size_0, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
       }
       break ;
     case GGS_bddType::Enumeration::enum_namedType:
       {
-        GGS_lstring extractedValue_7191_typeName_0 ;
-        enumerator_6737.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_7191_typeName_0) ;
-        GGS_uint var_size_7248 ;
-        GGS_recordDomainMap var_subDomainMap_7259 ;
-        constinArgument_inDomainMap.method_searchKey (extractedValue_7191_typeName_0, var_size_7248, var_subDomainMap_7259, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
+        GGS_lstring extractedValue_6778_typeName_0 ;
+        enumerator_6324.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_6778_typeName_0) ;
+        GGS_uint var_size_6835 ;
+        GGS_recordDomainMap var_subDomainMap_6846 ;
+        constinArgument_inDomainMap.method_searchKey (extractedValue_6778_typeName_0, var_size_6835, var_subDomainMap_6846, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6737.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_7248, var_subDomainMap_7259, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6324.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_6835, var_subDomainMap_6846, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6737.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_7248, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6324.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_6835, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
         }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_7248, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_6835, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
       }
       break ;
     }
-    enumerator_6737.gotoNextObject () ;
+    enumerator_6324.gotoNextObject () ;
   }
 }
 
@@ -10854,21 +10854,21 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_start_5F_symbol_i0_indexing
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i1_ (GGS_ast & ioArgument_ioAST,
                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_domain COMMA_SOURCE_FILE ("domain.ggs", 41)) ;
-  GGS_lstring var_domainName_1723 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_domainName_1549 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 42)) ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.ggs", 43)) ;
-  GGS_domainDeclarationType var_domainDeclarationType_1770 ;
+  GGS_domainDeclarationType var_domainDeclarationType_1596 ;
   switch (select_kerbdd_5F_syntax_1 (inCompiler)) {
   case 1: {
-    GGS_bddType var_type_1827 ;
-    nt_type_ (var_type_1827, inCompiler) ;
-    var_domainDeclarationType_1770 = GGS_domainDeclarationType::class_func_type (var_type_1827  COMMA_SOURCE_FILE ("domain.ggs", 47)) ;
+    GGS_bddType var_type_1653 ;
+    nt_type_ (var_type_1653, inCompiler) ;
+    var_domainDeclarationType_1596 = GGS_domainDeclarationType::class_func_type (var_type_1653  COMMA_SOURCE_FILE ("domain.ggs", 47)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("domain.ggs", 49)) ;
-    GGS_domainFieldList var_fieldList_1935 ;
-    nt_recordFields_ (var_fieldList_1935, inCompiler) ;
-    var_domainDeclarationType_1770 = GGS_domainDeclarationType::class_func_record (var_fieldList_1935  COMMA_SOURCE_FILE ("domain.ggs", 51)) ;
+    GGS_domainFieldList var_fieldList_1761 ;
+    nt_recordFields_ (var_fieldList_1761, inCompiler) ;
+    var_domainDeclarationType_1596 = GGS_domainDeclarationType::class_func_record (var_fieldList_1761  COMMA_SOURCE_FILE ("domain.ggs", 51)) ;
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("domain.ggs", 52)) ;
   } break ;
   default:
@@ -10876,7 +10876,7 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i1_ (GG
   }
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("domain.ggs", 54)) ;
   {
-  ioArgument_ioAST.mProperty_mDomainList.setter_append (var_domainName_1723, var_domainDeclarationType_1770, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 55)) ;
+  ioArgument_ioAST.mProperty_mDomainList.setter_append (var_domainName_1549, var_domainDeclarationType_1596, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 55)) ;
   }
 }
 
@@ -10932,13 +10932,13 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_recordFields_i2_ (GGS_domai
   outArgument_outFormulaArgumentList = temp_0 ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    GGS_lstring var_varName_2342 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_varName_2146 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 63)) ;
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.ggs", 64)) ;
-    GGS_bddType var_type_2385 ;
-    nt_type_ (var_type_2385, inCompiler) ;
+    GGS_bddType var_type_2189 ;
+    nt_type_ (var_type_2189, inCompiler) ;
     {
-    outArgument_outFormulaArgumentList.setter_append (var_varName_2342, var_type_2385, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 66)) ;
+    outArgument_outFormulaArgumentList.setter_append (var_varName_2146, var_type_2189, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 66)) ;
     }
     if (select_kerbdd_5F_syntax_2 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("domain.ggs", 68)) ;
@@ -10988,9 +10988,9 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i3_ (GGS_bddType & out
   outArgument_outType.drop () ; // Release 'out' argument
   switch (select_kerbdd_5F_syntax_3 (inCompiler)) {
   case 1: {
-    GGS_lstring var_typeName_2656 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_typeName_2438 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 76)) ;
-    outArgument_outType = GGS_bddType::class_func_namedType (var_typeName_2656  COMMA_SOURCE_FILE ("domain.ggs", 77)) ;
+    outArgument_outType = GGS_bddType::class_func_namedType (var_typeName_2438  COMMA_SOURCE_FILE ("domain.ggs", 77)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_bool COMMA_SOURCE_FILE ("domain.ggs", 79)) ;
@@ -11000,18 +11000,18 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i3_ (GGS_bddType & out
     } break ;
     case 2: {
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5B_ COMMA_SOURCE_FILE ("domain.ggs", 83)) ;
-      GGS_luint var_bitCount_2800 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+      GGS_luint var_bitCount_2582 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("domain.ggs", 84)) ;
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5D_ COMMA_SOURCE_FILE ("domain.ggs", 85)) ;
       enumGalgasBool test_0 = kBoolTrue ;
       if (kBoolTrue == test_0) {
-        test_0 = GGS_bool (ComparisonKind::equal, var_bitCount_2800.readProperty_uint ().objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+        test_0 = GGS_bool (ComparisonKind::equal, var_bitCount_2582.readProperty_uint ().objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_0) {
           TC_Array <FixItDescription> fixItArray1 ;
-          inCompiler->emitSemanticError (var_bitCount_2800.readProperty_location (), GGS_string ("size should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("domain.ggs", 87)) ;
+          inCompiler->emitSemanticError (var_bitCount_2582.readProperty_location (), GGS_string ("size should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("domain.ggs", 87)) ;
         }
       }
-      outArgument_outType = GGS_bddType::class_func_boolArray (var_bitCount_2800.readProperty_uint ()  COMMA_SOURCE_FILE ("domain.ggs", 89)) ;
+      outArgument_outType = GGS_bddType::class_func_boolArray (var_bitCount_2582.readProperty_uint ()  COMMA_SOURCE_FILE ("domain.ggs", 89)) ;
     } break ;
     default:
       break ;
@@ -11079,44 +11079,44 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i3_indexing (Lexique_k
 
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i4_ (GGS_ast & ioArgument_ioAST,
                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
-  GGS_lstring var_formulaName_1358 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_formulaName_1228 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-assignment.ggs", 28)) ;
-  GGS_domainFieldList var_domainFieldList_1394 ;
+  GGS_domainFieldList var_domainFieldList_1264 ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 30)) ;
   switch (select_kerbdd_5F_syntax_5 (inCompiler)) {
   case 1: {
     GGS_domainFieldList temp_0 = GGS_domainFieldList::init (inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 32)) ;
-    var_domainFieldList_1394 = temp_0 ;
+    var_domainFieldList_1264 = temp_0 ;
   } break ;
   case 2: {
-    nt_recordFields_ (var_domainFieldList_1394, inCompiler) ;
+    nt_recordFields_ (var_domainFieldList_1264, inCompiler) ;
   } break ;
   default:
     break ;
   }
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 36)) ;
-  GGS_formulaKind var_kind_1524 ;
+  GGS_formulaKind var_kind_1394 ;
   switch (select_kerbdd_5F_syntax_6 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 39)) ;
-    var_kind_1524 = GGS_formulaKind::class_func_assignment (SOURCE_FILE ("formula-assignment.ggs", 40)) ;
+    var_kind_1394 = GGS_formulaKind::class_func_assignment (SOURCE_FILE ("formula-assignment.ggs", 40)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2B__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 42)) ;
-    var_kind_1524 = GGS_formulaKind::class_func_fixedPoint (GGS_binaryset::class_func_emptyBinarySet (SOURCE_FILE ("formula-assignment.ggs", 43))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 43)) ;
+    var_kind_1394 = GGS_formulaKind::class_func_fixedPoint (GGS_binaryset::class_func_emptyBinarySet (SOURCE_FILE ("formula-assignment.ggs", 43))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 43)) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2D__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 45)) ;
-    var_kind_1524 = GGS_formulaKind::class_func_fixedPoint (GGS_binaryset::class_func_fullBinarySet (SOURCE_FILE ("formula-assignment.ggs", 46))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 46)) ;
+    var_kind_1394 = GGS_formulaKind::class_func_fixedPoint (GGS_binaryset::class_func_fullBinarySet (SOURCE_FILE ("formula-assignment.ggs", 46))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 46)) ;
   } break ;
   default:
     break ;
   }
-  GGS_expression var_expression_1742 ;
-  nt_expression_ (var_expression_1742, inCompiler) ;
+  GGS_expression var_expression_1612 ;
+  nt_expression_ (var_expression_1612, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 49)) ;
   {
-  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_assignmentFormula::init_21__21__21__21_ (var_formulaName_1358, var_domainFieldList_1394, var_kind_1524, var_expression_1742, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 50)) ;
+  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_assignmentFormula::init_21__21__21__21_ (var_formulaName_1228, var_domainFieldList_1264, var_kind_1394, var_expression_1612, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 50)) ;
   }
 }
 
@@ -11190,11 +11190,11 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i4_inde
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i5_ (GGS_ast & ioArgument_ioAST,
                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize COMMA_SOURCE_FILE ("setting-map.ggs", 24)) ;
-  GGS_luint var_setting_1262 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+  GGS_luint var_setting_1132 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.ggs", 25)) ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.ggs", 26)) ;
   {
-  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_setting_5F_nodeHashMapSize::init_21_ (var_setting_1262, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("setting-map.ggs", 27)) ;
+  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_setting_5F_nodeHashMapSize::init_21_ (var_setting_1132, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("setting-map.ggs", 27)) ;
   }
 }
 
@@ -11220,11 +11220,11 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i5_inde
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i6_ (GGS_ast & ioArgument_ioAST,
                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize COMMA_SOURCE_FILE ("setting-map.ggs", 33)) ;
-  GGS_luint var_setting_1569 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+  GGS_luint var_setting_1412 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.ggs", 34)) ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.ggs", 35)) ;
   {
-  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_setting_5F_andCacheMapSize::init_21_ (var_setting_1569, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("setting-map.ggs", 36)) ;
+  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_setting_5F_andCacheMapSize::init_21_ (var_setting_1412, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("setting-map.ggs", 36)) ;
   }
 }
 
@@ -11250,11 +11250,11 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i6_inde
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i7_ (GGS_ast & ioArgument_ioAST,
                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_dump COMMA_SOURCE_FILE ("formula-dump.ggs", 18)) ;
-  GGS_lstring var_formulaName_1042 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_formulaName_934 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-dump.ggs", 19)) ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-dump.ggs", 20)) ;
   {
-  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_dumpFormula::init_21_ (var_formulaName_1042, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 21)) ;
+  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_dumpFormula::init_21_ (var_formulaName_934, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 21)) ;
   }
 }
 
@@ -11280,11 +11280,11 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i7_inde
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i8_ (GGS_ast & ioArgument_ioAST,
                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_graphviz COMMA_SOURCE_FILE ("formula-graphviz.ggs", 18)) ;
-  GGS_lstring var_formulaName_1050 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_formulaName_942 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-graphviz.ggs", 19)) ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-graphviz.ggs", 20)) ;
   {
-  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_graphvizFormula::init_21_ (var_formulaName_1050, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 21)) ;
+  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_graphvizFormula::init_21_ (var_formulaName_942, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 21)) ;
   }
 }
 
@@ -11316,15 +11316,15 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_expression_i9_ (GGS_express
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.ggs", 149)) ;
-    GGS_expression var_rightExpression_5431 ;
-    nt_comparison_ (var_rightExpression_5431, inCompiler) ;
-    outArgument_outExpression = GGS_equalExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5431, inCompiler COMMA_HERE) ;
+    GGS_expression var_rightExpression_4927 ;
+    nt_comparison_ (var_rightExpression_4927, inCompiler) ;
+    outArgument_outExpression = GGS_equalExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_4927, inCompiler COMMA_HERE) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.ggs", 153)) ;
-    GGS_expression var_rightExpression_5574 ;
-    nt_comparison_ (var_rightExpression_5574, inCompiler) ;
-    outArgument_outExpression = GGS_notEqualExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5574, inCompiler COMMA_HERE) ;
+    GGS_expression var_rightExpression_5065 ;
+    nt_comparison_ (var_rightExpression_5065, inCompiler) ;
+    outArgument_outExpression = GGS_notEqualExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5065, inCompiler COMMA_HERE) ;
   } break ;
   default:
     break ;
@@ -11383,15 +11383,15 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_comparison_i10_ (GGS_expres
     switch (select_kerbdd_5F_syntax_8 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7C_ COMMA_SOURCE_FILE ("expression.ggs", 165)) ;
-      GGS_expression var_rightExpression_5931 ;
-      nt_term_ (var_rightExpression_5931, inCompiler) ;
-      outArgument_outExpression = GGS_orExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5931, inCompiler COMMA_HERE) ;
+      GGS_expression var_rightExpression_5395 ;
+      nt_term_ (var_rightExpression_5395, inCompiler) ;
+      outArgument_outExpression = GGS_orExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5395, inCompiler COMMA_HERE) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5E_ COMMA_SOURCE_FILE ("expression.ggs", 169)) ;
-      GGS_expression var_rightExpression_6067 ;
-      nt_term_ (var_rightExpression_6067, inCompiler) ;
-      outArgument_outExpression = GGS_xorExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_6067, inCompiler COMMA_HERE) ;
+      GGS_expression var_rightExpression_5526 ;
+      nt_term_ (var_rightExpression_5526, inCompiler) ;
+      outArgument_outExpression = GGS_xorExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5526, inCompiler COMMA_HERE) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -11456,15 +11456,15 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i11_ (GGS_expression &
     switch (select_kerbdd_5F_syntax_9 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__26_ COMMA_SOURCE_FILE ("expression.ggs", 181)) ;
-      GGS_expression var_rightExpression_6417 ;
-      nt_factor_ (var_rightExpression_6417, inCompiler) ;
-      outArgument_outExpression = GGS_andExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_6417, inCompiler COMMA_HERE) ;
+      GGS_expression var_rightExpression_5849 ;
+      nt_factor_ (var_rightExpression_5849, inCompiler) ;
+      outArgument_outExpression = GGS_andExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5849, inCompiler COMMA_HERE) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2D__3E_ COMMA_SOURCE_FILE ("expression.ggs", 185)) ;
-      GGS_expression var_rightExpression_6557 ;
-      nt_factor_ (var_rightExpression_6557, inCompiler) ;
-      outArgument_outExpression = GGS_impliesExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_6557, inCompiler COMMA_HERE) ;
+      GGS_expression var_rightExpression_5984 ;
+      nt_factor_ (var_rightExpression_5984, inCompiler) ;
+      outArgument_outExpression = GGS_impliesExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5984, inCompiler COMMA_HERE) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -11523,17 +11523,17 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i11_indexing (Lexique_
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i12_ (GGS_expression & outArgument_outExpression,
                                                                   Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GGS_lstring var_varName_6850 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_varName_6250 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 194)) ;
   switch (select_kerbdd_5F_syntax_10 (inCompiler)) {
   case 1: {
-    outArgument_outExpression = GGS_varInExpression::init_21_ (var_varName_6850, inCompiler COMMA_HERE) ;
+    outArgument_outExpression = GGS_varInExpression::init_21_ (var_varName_6250, inCompiler COMMA_HERE) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 198)) ;
-    GGS_luint var_varBit_6954 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+    GGS_luint var_varBit_6349 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.ggs", 199)) ;
-    outArgument_outExpression = GGS_varBitInExpression::init_21__21_ (var_varName_6850, var_varBit_6954, inCompiler COMMA_HERE) ;
+    outArgument_outExpression = GGS_varBitInExpression::init_21__21_ (var_varName_6250, var_varBit_6349, inCompiler COMMA_HERE) ;
   } break ;
   default:
     break ;
@@ -11606,9 +11606,9 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i14_ (GGS_expression
                                                                   Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7E_ COMMA_SOURCE_FILE ("expression.ggs", 215)) ;
-  GGS_expression var_expression_7435 ;
-  nt_factor_ (var_expression_7435, inCompiler) ;
-  outArgument_outExpression = GGS_complementExpression::init_21_ (var_expression_7435, inCompiler COMMA_HERE) ;
+  GGS_expression var_expression_6786 ;
+  nt_factor_ (var_expression_6786, inCompiler) ;
+  outArgument_outExpression = GGS_complementExpression::init_21_ (var_expression_6786, inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -11675,10 +11675,10 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i16_indexing (Lexiqu
 void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i17_ (GGS_expression & outArgument_outExpression,
                                                                   Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GGS_lstring var_formulaName_8135 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_formulaName_7411 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 237)) ;
   GGS_formulaParameterListInExpression temp_0 = GGS_formulaParameterListInExpression::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 238)) ;
-  GGS_formulaParameterListInExpression var_parameterList_8188 = temp_0 ;
+  GGS_formulaParameterListInExpression var_parameterList_7464 = temp_0 ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 239)) ;
   switch (select_kerbdd_5F_syntax_11 (inCompiler)) {
   case 1: {
@@ -11686,25 +11686,25 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i17_ (GGS_expression
   case 2: {
     bool repeatFlag_1 = true ;
     while (repeatFlag_1) {
-      GGS_lstring var_parameterName_8263 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_parameterName_7539 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 243)) ;
       GGS_lstringlist temp_2 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 244)) ;
-      GGS_lstringlist var_fieldNames_8301 = temp_2 ;
+      GGS_lstringlist var_fieldNames_7577 = temp_2 ;
       bool repeatFlag_3 = true ;
       while (repeatFlag_3) {
         if (select_kerbdd_5F_syntax_13 (inCompiler) == 2) {
           inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 247)) ;
-          GGS_lstring var_fieldName_8381 = inCompiler->synthetizedAttribute_tokenString () ;
+          GGS_lstring var_fieldName_7657 = inCompiler->synthetizedAttribute_tokenString () ;
           inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 248)) ;
           {
-          var_fieldNames_8301.setter_append (var_fieldName_8381, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 249)) ;
+          var_fieldNames_7577.setter_append (var_fieldName_7657, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 249)) ;
           }
         }else{
           repeatFlag_3 = false ;
         }
       }
       {
-      var_parameterList_8188.setter_append (var_parameterName_8263, var_fieldNames_8301, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 251)) ;
+      var_parameterList_7464.setter_append (var_parameterName_7539, var_fieldNames_7577, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 251)) ;
       }
       if (select_kerbdd_5F_syntax_12 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("expression.ggs", 253)) ;
@@ -11717,7 +11717,7 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i17_ (GGS_expression
     break ;
   }
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 256)) ;
-  outArgument_outExpression = GGS_formulaInExpression::init_21__21_ (var_formulaName_8135, var_parameterList_8188, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_formulaInExpression::init_21__21_ (var_formulaName_7411, var_parameterList_7464, inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -11795,13 +11795,13 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i18_ (GGS_expression
                                                                   Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3F_ COMMA_SOURCE_FILE ("expression.ggs", 263)) ;
-  GGS_domainFieldList var_domainFieldList_8830 ;
-  nt_recordFields_ (var_domainFieldList_8830, inCompiler) ;
+  GGS_domainFieldList var_domainFieldList_8079 ;
+  nt_recordFields_ (var_domainFieldList_8079, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 265)) ;
-  GGS_expression var_expression_8874 ;
-  nt_expression_ (var_expression_8874, inCompiler) ;
+  GGS_expression var_expression_8123 ;
+  nt_expression_ (var_expression_8123, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 267)) ;
-  outArgument_outExpression = GGS_existInExpression::init_21__21_ (var_domainFieldList_8830, var_expression_8874, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_existInExpression::init_21__21_ (var_domainFieldList_8079, var_expression_8123, inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -11831,13 +11831,13 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i19_ (GGS_expression
                                                                   Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21_ COMMA_SOURCE_FILE ("expression.ggs", 274)) ;
-  GGS_domainFieldList var_domainFieldList_9182 ;
-  nt_recordFields_ (var_domainFieldList_9182, inCompiler) ;
+  GGS_domainFieldList var_domainFieldList_8404 ;
+  nt_recordFields_ (var_domainFieldList_8404, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 276)) ;
-  GGS_expression var_expression_9226 ;
-  nt_expression_ (var_expression_9226, inCompiler) ;
+  GGS_expression var_expression_8448 ;
+  nt_expression_ (var_expression_8448, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 278)) ;
-  outArgument_outExpression = GGS_forAllInExpression::init_21__21_ (var_domainFieldList_9182, var_expression_9226, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_forAllInExpression::init_21__21_ (var_domainFieldList_8404, var_expression_8448, inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -11867,77 +11867,77 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i20_ (GGS_expression
                                                                   Lexique_kerbdd_5F_lexique * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7B_ COMMA_SOURCE_FILE ("expression.ggs", 284)) ;
-  GGS_lstring var_varName_9515 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_varName_8710 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 285)) ;
   GGS_lstringlist temp_0 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 286)) ;
-  GGS_lstringlist var_leftFieldNames_9543 = temp_0 ;
+  GGS_lstringlist var_leftFieldNames_8738 = temp_0 ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
     if (select_kerbdd_5F_syntax_14 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 289)) ;
-      GGS_lstring var_fieldName_9611 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_fieldName_8806 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 290)) ;
       {
-      var_leftFieldNames_9543.setter_append (var_fieldName_9611, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 291)) ;
+      var_leftFieldNames_8738.setter_append (var_fieldName_8806, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 291)) ;
       }
     }else{
       repeatFlag_1 = false ;
     }
   }
-  GGS_comparison var_comparison_9686 ;
+  GGS_comparison var_comparison_8881 ;
   switch (select_kerbdd_5F_syntax_15 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.ggs", 295)) ;
-    var_comparison_9686 = GGS_comparison::class_func_equal (SOURCE_FILE ("expression.ggs", 296)) ;
+    var_comparison_8881 = GGS_comparison::class_func_equal (SOURCE_FILE ("expression.ggs", 296)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.ggs", 298)) ;
-    var_comparison_9686 = GGS_comparison::class_func_notEqual (SOURCE_FILE ("expression.ggs", 299)) ;
+    var_comparison_8881 = GGS_comparison::class_func_notEqual (SOURCE_FILE ("expression.ggs", 299)) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3C__3D_ COMMA_SOURCE_FILE ("expression.ggs", 301)) ;
-    var_comparison_9686 = GGS_comparison::class_func_lowerOrEqual (SOURCE_FILE ("expression.ggs", 302)) ;
+    var_comparison_8881 = GGS_comparison::class_func_lowerOrEqual (SOURCE_FILE ("expression.ggs", 302)) ;
   } break ;
   case 4: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3C_ COMMA_SOURCE_FILE ("expression.ggs", 304)) ;
-    var_comparison_9686 = GGS_comparison::class_func_lowerThan (SOURCE_FILE ("expression.ggs", 305)) ;
+    var_comparison_8881 = GGS_comparison::class_func_lowerThan (SOURCE_FILE ("expression.ggs", 305)) ;
   } break ;
   case 5: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3E__3D_ COMMA_SOURCE_FILE ("expression.ggs", 307)) ;
-    var_comparison_9686 = GGS_comparison::class_func_greaterOrEqual (SOURCE_FILE ("expression.ggs", 308)) ;
+    var_comparison_8881 = GGS_comparison::class_func_greaterOrEqual (SOURCE_FILE ("expression.ggs", 308)) ;
   } break ;
   case 6: {
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3E_ COMMA_SOURCE_FILE ("expression.ggs", 310)) ;
-    var_comparison_9686 = GGS_comparison::class_func_greaterThan (SOURCE_FILE ("expression.ggs", 311)) ;
+    var_comparison_8881 = GGS_comparison::class_func_greaterThan (SOURCE_FILE ("expression.ggs", 311)) ;
   } break ;
   default:
     break ;
   }
   switch (select_kerbdd_5F_syntax_16 (inCompiler)) {
   case 1: {
-    GGS_luint var_constant_9990 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+    GGS_luint var_constant_9185 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.ggs", 314)) ;
-    outArgument_outExpression = GGS_comparisonWithConstantInExpression::init_21__21__21__21_ (var_varName_9515, var_leftFieldNames_9543, var_comparison_9686, var_constant_9990, inCompiler COMMA_HERE) ;
+    outArgument_outExpression = GGS_comparisonWithConstantInExpression::init_21__21__21__21_ (var_varName_8710, var_leftFieldNames_8738, var_comparison_8881, var_constant_9185, inCompiler COMMA_HERE) ;
   } break ;
   case 2: {
-    GGS_lstring var_rightVarName_10141 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_rightVarName_9331 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 317)) ;
     GGS_lstringlist temp_2 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 318)) ;
-    GGS_lstringlist var_rightFieldNames_10176 = temp_2 ;
+    GGS_lstringlist var_rightFieldNames_9366 = temp_2 ;
     bool repeatFlag_3 = true ;
     while (repeatFlag_3) {
       if (select_kerbdd_5F_syntax_17 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 321)) ;
-        GGS_lstring var_fieldName_10253 = inCompiler->synthetizedAttribute_tokenString () ;
+        GGS_lstring var_fieldName_9443 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 322)) ;
         {
-        var_rightFieldNames_10176.setter_append (var_fieldName_10253, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 323)) ;
+        var_rightFieldNames_9366.setter_append (var_fieldName_9443, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 323)) ;
         }
       }else{
         repeatFlag_3 = false ;
       }
     }
-    outArgument_outExpression = GGS_variableComparisonInExpression::init_21__21__21__21__21_ (var_varName_9515, var_leftFieldNames_9543, var_comparison_9686, var_rightVarName_10141, var_rightFieldNames_10176, inCompiler COMMA_HERE) ;
+    outArgument_outExpression = GGS_variableComparisonInExpression::init_21__21__21__21__21_ (var_varName_8710, var_leftFieldNames_8738, var_comparison_8881, var_rightVarName_9331, var_rightFieldNames_9366, inCompiler COMMA_HERE) ;
   } break ;
   default:
     break ;

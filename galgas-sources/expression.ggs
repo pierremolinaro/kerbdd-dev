@@ -1,110 +1,110 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#    AST                                                                                                                
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
+//    AST                                                                                                                
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @expression {
 }
 
-#·······················································································································
+//································································································
 
 class @varInExpression : @expression {
   public var @lstring mVarName
 }
 
-#·······················································································································
+//································································································
 
 class @varBitInExpression : @expression {
   public var @lstring mVarName
   public var @luint mVarBit
 }
 
-#·······················································································································
+//································································································
 
 class @andExpression : @expression {
   public var @expression mLeftExpression
   public var @expression mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @orExpression : @expression {
   public var @expression mLeftExpression
   public var @expression mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @xorExpression : @expression {
   public var @expression mLeftExpression
   public var @expression mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @equalExpression : @expression {
   public var @expression mLeftExpression
   public var @expression mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @notEqualExpression : @expression {
   public var @expression mLeftExpression
   public var @expression mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @impliesExpression : @expression {
   public var @expression mLeftExpression
   public var @expression mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @complementExpression : @expression {
   public var @expression mExpression
 }
 
-#·······················································································································
+//································································································
 
 class @trueExpression : @expression {
 }
 
-#·······················································································································
+//································································································
 
 class @falseExpression : @expression {
 }
 
-#·······················································································································
+//································································································
 
 list @formulaParameterListInExpression {
   public var @lstring mParameterName
   public var @lstringlist mFieldNames
 }
 
-#·······················································································································
+//································································································
 
 class @formulaInExpression : @expression {
   public var @lstring mFormulaName
   public var @formulaParameterListInExpression mParameterList
 }
 
-#·······················································································································
+//································································································
 
 class @existInExpression : @expression {
   public var @domainFieldList mArgumentList
   public var @expression mExpression
 }
 
-#·······················································································································
+//································································································
 
 class @forAllInExpression : @expression {
   public var @domainFieldList mArgumentList
   public var @expression mExpression
 }
 
-#·······················································································································
+//································································································
 
 enum @comparison {
   case equal
@@ -115,7 +115,7 @@ enum @comparison {
   case greaterThan
 }
 
-#·······················································································································
+//································································································
 
 class @comparisonWithConstantInExpression : @expression {
   public var @lstring mVarName
@@ -124,7 +124,7 @@ class @comparisonWithConstantInExpression : @expression {
   public var @luint mConstant
 }
 
-#·······················································································································
+//································································································
 
 class @variableComparisonInExpression : @expression {
   public var @lstring mLeftVarName
@@ -134,13 +134,13 @@ class @variableComparisonInExpression : @expression {
   public var @lstringlist mRightFieldNames
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#    SYNTAX                                                                                                             
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
+//    SYNTAX                                                                                                             
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension kerbdd_syntax {
 
-#·······················································································································
+//································································································
 
 rule <expression>( !@expression outExpression) {
   <comparison>( ?outExpression)
@@ -148,15 +148,15 @@ rule <expression>( !@expression outExpression) {
   or
     $=$
     <comparison>( ?let @expression rightExpression)
-    outExpression = @equalExpression.init (!outExpression, !rightExpression)
+    outExpression = @equalExpression (!outExpression, !rightExpression)
   or
     $!=$
     <comparison>( ?let @expression rightExpression)
-    outExpression = @notEqualExpression.init (!outExpression, !rightExpression)
+    outExpression = @notEqualExpression (!outExpression, !rightExpression)
   end
 }
 
-#·······················································································································
+//································································································
 
 rule <comparison>( !@expression outExpression) {
   <term>( ?outExpression)
@@ -164,15 +164,15 @@ rule <comparison>( !@expression outExpression) {
   while
     $|$
     <term>( ?let @expression rightExpression)
-    outExpression = @orExpression.init (!outExpression, !rightExpression)
+    outExpression = @orExpression (!outExpression, !rightExpression)
   while
     $^$
     <term>( ?let @expression rightExpression)
-    outExpression = @xorExpression.init (!outExpression, !rightExpression)
+    outExpression = @xorExpression (!outExpression, !rightExpression)
   end
 }
 
-#·······················································································································
+//································································································
 
 rule <term>( !@expression outExpression) {
   <factor>( ?outExpression)
@@ -180,20 +180,20 @@ rule <term>( !@expression outExpression) {
   while
     $&$
     <factor>( ?let @expression rightExpression)
-    outExpression = @andExpression.init (!outExpression, !rightExpression)
+    outExpression = @andExpression (!outExpression, !rightExpression)
   while
     $->$
     <factor>( ?let @expression rightExpression)
-    outExpression = @impliesExpression.init (!outExpression, !rightExpression)
+    outExpression = @impliesExpression (!outExpression, !rightExpression)
   end
 }
 
-#·······················································································································
+//································································································
 
 rule <factor>( !@expression outExpression) {
   $identifier$( ?let varName)
   select
-    outExpression = @varInExpression.init (!varName)
+    outExpression = @varInExpression (!varName)
   or
     $.$
     $integer$( ?let varBit)
@@ -201,7 +201,7 @@ rule <factor>( !@expression outExpression) {
   end
 }
 
-#·······················································································································
+//································································································
 
 rule <factor>( !@expression outExpression) {
   $($
@@ -209,29 +209,29 @@ rule <factor>( !@expression outExpression) {
   $)$
 }
 
-#·······················································································································
+//································································································
 
 rule <factor>( !@expression outExpression) {
   $~$
   <factor>( ?let expression)
-  outExpression = @complementExpression.init (!expression)
+  outExpression = @complementExpression (!expression)
 }
 
-#·······················································································································
+//································································································
 
 rule <factor>( !@expression outExpression) {
   $true$
-  outExpression = @trueExpression.init
+  outExpression = @trueExpression ()
 }
 
-#·······················································································································
+//································································································
 
 rule <factor>( !@expression outExpression) {
   $false$
-  outExpression = @falseExpression.init
+  outExpression = @falseExpression ()
 }
 
-#·······················································································································
+//································································································
 
 rule <factor>( !@expression outExpression) {
   $identifier$( ?let formulaName)
@@ -254,10 +254,10 @@ rule <factor>( !@expression outExpression) {
     end
   end
   $)$
-  outExpression = @formulaInExpression.init (!formulaName, !parameterList)
+  outExpression = @formulaInExpression (!formulaName, !parameterList)
 }
 
-#·······················································································································
+//································································································
 
 rule <factor>( !@expression outExpression) {
   $?$
@@ -265,10 +265,10 @@ rule <factor>( !@expression outExpression) {
   $($
   <expression>( ?let expression)
   $)$
-  outExpression = @existInExpression.init (!domainFieldList, !expression)
+  outExpression = @existInExpression (!domainFieldList, !expression)
 }
 
-#·······················································································································
+//································································································
 
 rule <factor>( !@expression outExpression) {
   $!$
@@ -276,9 +276,9 @@ rule <factor>( !@expression outExpression) {
   $($
   <expression>( ?let expression)
   $)$
-  outExpression = @forAllInExpression.init (!domainFieldList, !expression)
+  outExpression = @forAllInExpression (!domainFieldList, !expression)
 }
-#·······················································································································
+//································································································
 
 rule <factor>( !@expression outExpression) {
   ${$
@@ -312,7 +312,7 @@ rule <factor>( !@expression outExpression) {
   end
   select
     $integer$( ?let constant)
-    outExpression = @comparisonWithConstantInExpression.init (!varName, !leftFieldNames, !comparison, !constant)
+    outExpression = @comparisonWithConstantInExpression (!varName, !leftFieldNames, !comparison, !constant)
   or
     $identifier$( ?let rightVarName)
     var @lstringlist rightFieldNames = []
@@ -322,18 +322,18 @@ rule <factor>( !@expression outExpression) {
       $identifier$( ?let fieldName)
       !?rightFieldNames.append (fieldName)
     end
-    outExpression = @variableComparisonInExpression.init (!varName, !leftFieldNames, !comparison, !rightVarName, !rightFieldNames)
+    outExpression = @variableComparisonInExpression (!varName, !leftFieldNames, !comparison, !rightVarName, !rightFieldNames)
   end
   $}$
 }
 
-#·······················································································································
+//································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#    ANALYZE EXPRESSION                                                                                                 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
+//    ANALYZE EXPRESSION                                                                                                 
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract func @expression. computeExpression(
   ?let @domainMap inDomainMap,
@@ -342,7 +342,7 @@ abstract func @expression. computeExpression(
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @varInExpression. computeExpression(
   ?let @domainMap unused inDomainMap,
@@ -360,7 +360,7 @@ override func @varInExpression. computeExpression(
   outResult = @binaryset.binarySetWithBit (!idx)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @varBitInExpression. computeExpression(
   ?let @domainMap unused inDomainMap,
@@ -378,7 +378,7 @@ override func @varBitInExpression. computeExpression(
   outResult = @binaryset.binarySetWithBit (!idx + self.mVarBit.uint)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @andExpression. computeExpression(
   ?let @domainMap inDomainMap,
@@ -392,7 +392,7 @@ override func @andExpression. computeExpression(
   outResult = left & right
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @orExpression. computeExpression(
   ?let @domainMap inDomainMap,
@@ -406,7 +406,7 @@ override func @orExpression. computeExpression(
   outResult = left | right
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @xorExpression. computeExpression(
   ?let @domainMap inDomainMap,
@@ -420,7 +420,7 @@ override func @xorExpression. computeExpression(
   outResult = left ^ right
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @impliesExpression. computeExpression(
   ?let @domainMap inDomainMap,
@@ -434,7 +434,7 @@ override func @impliesExpression. computeExpression(
   outResult = left.implies (right)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @equalExpression. computeExpression(
   ?let @domainMap inDomainMap,
@@ -448,7 +448,7 @@ override func @equalExpression. computeExpression(
   outResult = ~(left ^ right)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @notEqualExpression. computeExpression(
   ?let @domainMap inDomainMap,
@@ -462,7 +462,7 @@ override func @notEqualExpression. computeExpression(
   outResult = left ^ right
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @complementExpression. computeExpression(
   ?let @domainMap inDomainMap,
@@ -474,7 +474,7 @@ override func @complementExpression. computeExpression(
   outResult = ~ self.mExpression.computeExpression (!inDomainMap, !inVarMap, !inTotalBitCount, !inComputedFormulaMap)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @trueExpression. computeExpression(
   ?let @domainMap unused inDomainMap,
@@ -486,7 +486,7 @@ override func @trueExpression. computeExpression(
   outResult = @binaryset.fullBinarySet
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @falseExpression. computeExpression(
   ?let @domainMap unused inDomainMap,
@@ -498,7 +498,7 @@ override func @falseExpression. computeExpression(
   outResult = @binaryset.emptyBinarySet
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @formulaInExpression. computeExpression(
   ?let @domainMap unused inDomainMap,
@@ -507,9 +507,9 @@ override func @formulaInExpression. computeExpression(
   ?let @computedFormulaMap inComputedFormulaMap)
   -> @binaryset outResult
 {
-#--- Read formula
+//--- Read formula
   inComputedFormulaMap.searchKey (!self.mFormulaName, ?let varList, ?let unused totalBitCount, ?let formulaValue)
-#--- Check parameter list
+//--- Check parameter list
   if self.mParameterList.count () != varList.count () then
     error self.mFormulaName : "the $" + self.mFormulaName + " names "
       + varList.count () + " variable" + if varList.count () > 1 then "s" else "" end
@@ -539,7 +539,7 @@ override func @formulaInExpression. computeExpression(
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @existInExpression. computeExpression(
   ?let @domainMap inDomainMap,
@@ -556,7 +556,7 @@ override func @existInExpression. computeExpression(
   outResult = r.existOnBitIndexAndBeyond (!inTotalBitCount)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @forAllInExpression. computeExpression(
   ?let @domainMap inDomainMap,
@@ -573,7 +573,7 @@ override func @forAllInExpression. computeExpression(
   outResult = r.forAllOnBitIndexAndBeyond (inTotalBitCount)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @comparisonWithConstantInExpression. computeExpression(
   ?let @domainMap unused inDomainMap,
@@ -610,7 +610,7 @@ override func @comparisonWithConstantInExpression. computeExpression(
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override func @variableComparisonInExpression. computeExpression(
   ?let @domainMap unused inDomainMap,
@@ -659,4 +659,4 @@ override func @variableComparisonInExpression. computeExpression(
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

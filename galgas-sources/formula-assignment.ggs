@@ -1,13 +1,13 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#    AST                                                                                                                
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
+//    AST                                                                                                                
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @formulaKind {
   case assignment
   case fixedPoint (@binaryset startValue)
 }
 
-#·······················································································································
+//································································································
 
 class @assignmentFormula : @abstractFormula {
   public var @lstring mFormulaName
@@ -16,13 +16,13 @@ class @assignmentFormula : @abstractFormula {
   public var @expression mExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#    SYNTAX                                                                                                             
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
+//    SYNTAX                                                                                                             
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension kerbdd_syntax {
 
-#·······················································································································
+//································································································
 
 rule <topLevelDeClaration>( ?!@ast ioAST) {
   $identifier$( ?let formulaName)
@@ -47,16 +47,16 @@ rule <topLevelDeClaration>( ?!@ast ioAST) {
   end
   <expression>( ?let @expression expression)
   $;$
-  !?ioAST.mFormulaList.append (@assignmentFormula.init (!formulaName, !domainFieldList, !kind, !expression))
+  !?ioAST.mFormulaList.append (@assignmentFormula (!formulaName, !domainFieldList, !kind, !expression))
 }
 
-#·······················································································································
+//································································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#    ANALYZE FORMULA                                                                                                    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
+//    ANALYZE FORMULA                                                                                                    
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @computedFormulaMap {
   public var @varList mVarList
@@ -66,34 +66,34 @@ map @computedFormulaMap {
   %searchMethod searchKey %errorMessage "there is no '%K' formula"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override proc @assignmentFormula. analyzeFormula( 
   ?let @string unused inSourceFilePath,
   ?let @domainMap inDomainMap,
   ?!@computedFormulaMap ioComputedFormulaMap)
 {
-#--- Build variable map
+//--- Build variable map
   var @uint totalBitCount = 0
   var @varList varList = []
   var @varMap varMap = []
   self.mFormulaArgumentList.analyze (!inDomainMap, !?varMap, !?varList, !?totalBitCount)
-#--- Compute expression
+//--- Compute expression
   switch self.mKind
   case assignment :
-#    println (self.mFormulaName.string + "...")
+//    println (self.mFormulaName.string + "...")
     let timer = @timer.start
     let result = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !ioComputedFormulaMap)
     !?ioComputedFormulaMap.insertKey (!self.mFormulaName, !varList, !totalBitCount, !result)
     let @uint64 valueCount = result.valueCount (totalBitCount)
-#    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
+//    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
     let @uint64 nodeCount = result.nodeCount ()
     println (" "
       + valueCount + " value" + if valueCount > 1 then "s" else "" end
       + ", " + nodeCount + " node" + if nodeCount > 1 then "s" else "" end
       + " (" + timer + ")")
   case fixedPoint (@binaryset startValue) :
-#    message self.mFormulaName.string + "..."
+//    message self.mFormulaName.string + "..."
     let timer = @timer.start
     var @binaryset result = startValue
     !?ioComputedFormulaMap.insertKey (!self.mFormulaName, !varList, !totalBitCount, !result)
@@ -119,4 +119,4 @@ override proc @assignmentFormula. analyzeFormula(
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
