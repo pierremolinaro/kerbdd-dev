@@ -13,8 +13,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "quiet_output",
     commandChar: "q",
     commandString: "quiet",
-    comment: "Quiet output",
-    defaultValue: ""
+    comment: "Quiet output"
   ))
   return array
 }

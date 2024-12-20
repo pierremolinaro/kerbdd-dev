@@ -4,60 +4,61 @@
 //--- END OF USER ZONE 1
 
 import AppKit
+import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 //   LEXIQUE kerbdd_lexique
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gFont_kerbdd_lexique = EBGenericPreferenceProperty <NSFont> (
+@MainActor fileprivate let gFont_kerbdd_lexique = EBPreferenceProperty <NSFont> (
   defaultValue: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular),
   prefKey: "FontFor_" + kerbdd_lexique_lexiqueIdentifier ()
 )
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gLineHeight_kerbdd_lexique = EBGenericPreferenceProperty <Int> (
+@MainActor fileprivate let gLineHeight_kerbdd_lexique = EBPreferenceProperty <Int> (
   defaultValue: 12,
   prefKey: "LineHeightFor_" + kerbdd_lexique_lexiqueIdentifier ()
 )
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gColors_kerbdd_lexique : [EBGenericPreferenceProperty <NSColor>] = [
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique-keywordsStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique-integerStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique-stringStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique-delimitersStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique-commentStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_kerbdd_lexique_lexical_error"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .gray, prefKey: "ColorFor_kerbdd_lexique_template")
+@MainActor fileprivate let gColors_kerbdd_lexique : [EBPreferenceProperty <NSColor>] = [
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique-keywordsStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique-integerStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique-stringStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique-delimitersStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_kerbdd_lexique-commentStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_kerbdd_lexique_lexical_error"),
+  EBPreferenceProperty <NSColor> (defaultValue: .gray, prefKey: "ColorFor_kerbdd_lexique_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gBoldStyle_kerbdd_lexique : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique-keywordsStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique-integerStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique-stringStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique-delimitersStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique-commentStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: true, prefKey: "BoldFor_kerbdd_lexique_lexical_error"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique_template")
+@MainActor fileprivate let gBoldStyle_kerbdd_lexique : [EBPreferenceProperty <Bool>] = [
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique-keywordsStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique-integerStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique-stringStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique-delimitersStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique-commentStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: true, prefKey: "BoldFor_kerbdd_lexique_lexical_error"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_kerbdd_lexique_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gItalicStyle_kerbdd_lexique : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique-keywordsStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique-integerStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique-stringStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique-delimitersStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique-commentStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique_lexical_error"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique_template")
+@MainActor fileprivate let gItalicStyle_kerbdd_lexique : [EBPreferenceProperty <Bool>] = [
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique-keywordsStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique-integerStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique-stringStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique-delimitersStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique-commentStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique_lexical_error"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_kerbdd_lexique_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
@@ -190,27 +191,27 @@ class SWIFT_Lexique_kerbdd_lexique : SWIFT_Lexique {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var font : EBGenericPreferenceProperty <NSFont> { return gFont_kerbdd_lexique }
+  var font : EBPreferenceProperty <NSFont> { return gFont_kerbdd_lexique }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var lineHeight : EBGenericPreferenceProperty <Int> { return gLineHeight_kerbdd_lexique }
+  var lineHeight : EBPreferenceProperty <Int> { return gLineHeight_kerbdd_lexique }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func color (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <NSColor> {
+  func color (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <NSColor> {
     return gColors_kerbdd_lexique [Int (inStyleIndex)]
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func bold (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+  func bold (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {
     return gBoldStyle_kerbdd_lexique [Int (inStyleIndex)]
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func italic (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+  func italic (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {
     return gItalicStyle_kerbdd_lexique [Int (inStyleIndex)]
   }
 
@@ -428,7 +429,7 @@ class SWIFT_Lexique_kerbdd_lexique : SWIFT_Lexique {
       tokenCode = kerbdd_lexique_1__5D_
     }else if scanningOk && self.testForInputString ("[", advance: true) {
       tokenCode = kerbdd_lexique_1__5B_
-    }else if scanningOk && self.testForInputString ("\?", advance: true) {
+    }else if scanningOk && self.testForInputString ("?", advance: true) {
       tokenCode = kerbdd_lexique_1__3F_
     }else if scanningOk && self.testForInputString (">", advance: true) {
       tokenCode = kerbdd_lexique_1__3E_
@@ -478,6 +479,7 @@ class SWIFT_Lexique_kerbdd_lexique : SWIFT_Lexique {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
+
 
 //--------------------------------------------------------------------------------------------------
 
