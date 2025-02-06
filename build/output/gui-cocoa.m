@@ -150,7 +150,8 @@ static const UInt16 * gPopUpData_0_kerbdd_5F_lexique [1] = {
 
 OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
   OC_Lexique * result = nil ;
-  if ([inExtension isEqualToString:@"kerbdd"]) {
+  NSString * uppercasedExtension = [inExtension uppercaseString] ;
+  if ([uppercasedExtension isEqualToString:@"KERBDD"]) {
     result = [OC_Tokenizer_0_kerbdd_lexique new] ;
   }
   return result ;
