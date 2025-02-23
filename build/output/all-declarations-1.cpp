@@ -1885,17 +1885,17 @@ void cPtr_assignmentFormula::method_analyzeFormula (const GGS_string /* constinA
       GGS_uint_36__34_ var_nodeCount_3403 = var_result_3052.getter_nodeCount (SOURCE_FILE ("formula-assignment.ggs", 90)) ;
       {
       GGS_string temp_6 ;
-      const enumGalgasBool test_7 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_3268.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (kBoolTrue == test_7) {
+      const GalgasBool test_7 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_3268.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_7) {
         temp_6 = GGS_string ("s") ;
-      }else if (kBoolFalse == test_7) {
+      }else if (GalgasBool::boolFalse == test_7) {
         temp_6 = GGS_string::makeEmptyString () ;
       }
       GGS_string temp_8 ;
-      const enumGalgasBool test_9 = GGS_bool (ComparisonKind::greaterThan, var_nodeCount_3403.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (kBoolTrue == test_9) {
+      const GalgasBool test_9 = GGS_bool (ComparisonKind::greaterThan, var_nodeCount_3403.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_9) {
         temp_8 = GGS_string ("s") ;
-      }else if (kBoolFalse == test_9) {
+      }else if (GalgasBool::boolFalse == test_9) {
         temp_8 = GGS_string::makeEmptyString () ;
       }
       routine_println_3F_ (GGS_string (" ").add_operation (var_valueCount_3268.getter_string (SOURCE_FILE ("formula-assignment.ggs", 91)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 91)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 92)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 92)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 92)).add_operation (var_nodeCount_3403.getter_string (SOURCE_FILE ("formula-assignment.ggs", 93)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (GGS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (temp_8, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 93)).add_operation (var_timer_3023.getter_string (SOURCE_FILE ("formula-assignment.ggs", 94)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 94)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 94)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 91)) ;
@@ -1931,14 +1931,14 @@ void cPtr_assignmentFormula::method_analyzeFormula (const GGS_string /* constinA
             var_iterationCount_3911.plusAssign_operation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)) ;
             const GGS_assignmentFormula temp_11 = this ;
             GGS_binaryset var_r_4004 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_11.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_2800, var_totalBitCount_2740, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 104)) ;
-            enumGalgasBool test_12 = kBoolTrue ;
-            if (kBoolTrue == test_12) {
+            GalgasBool test_12 = GalgasBool::boolTrue ;
+            if (GalgasBool::boolTrue == test_12) {
               test_12 = GGS_bool (ComparisonKind::equal, var_result_3765.objectCompare (var_r_4004)).boolEnum () ;
-              if (kBoolTrue == test_12) {
+              if (GalgasBool::boolTrue == test_12) {
                 var_iterate_3886 = GGS_bool (false) ;
               }
             }
-            if (kBoolFalse == test_12) {
+            if (GalgasBool::boolFalse == test_12) {
               var_result_3765 = var_r_4004 ;
               {
               const GGS_assignmentFormula temp_13 = this ;
@@ -1952,24 +1952,24 @@ void cPtr_assignmentFormula::method_analyzeFormula (const GGS_string /* constinA
       GGS_uint_36__34_ var_nodeCount_4367 = var_result_3765.getter_nodeCount (SOURCE_FILE ("formula-assignment.ggs", 113)) ;
       {
       GGS_string temp_14 ;
-      const enumGalgasBool test_15 = GGS_bool (ComparisonKind::greaterThan, var_iterationCount_3911.objectCompare (GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)))).boolEnum () ;
-      if (kBoolTrue == test_15) {
+      const GalgasBool test_15 = GGS_bool (ComparisonKind::greaterThan, var_iterationCount_3911.objectCompare (GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_15) {
         temp_14 = GGS_string ("s") ;
-      }else if (kBoolFalse == test_15) {
+      }else if (GalgasBool::boolFalse == test_15) {
         temp_14 = GGS_string::makeEmptyString () ;
       }
       GGS_string temp_16 ;
-      const enumGalgasBool test_17 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_4304.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (kBoolTrue == test_17) {
+      const GalgasBool test_17 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_4304.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_17) {
         temp_16 = GGS_string ("s") ;
-      }else if (kBoolFalse == test_17) {
+      }else if (GalgasBool::boolFalse == test_17) {
         temp_16 = GGS_string::makeEmptyString () ;
       }
       GGS_string temp_18 ;
-      const enumGalgasBool test_19 = GGS_bool (ComparisonKind::greaterThan, var_nodeCount_4367.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (kBoolTrue == test_19) {
+      const GalgasBool test_19 = GGS_bool (ComparisonKind::greaterThan, var_nodeCount_4367.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_19) {
         temp_18 = GGS_string ("s") ;
-      }else if (kBoolFalse == test_19) {
+      }else if (GalgasBool::boolFalse == test_19) {
         temp_18 = GGS_string::makeEmptyString () ;
       }
       routine_println_3F_ (GGS_string (" ").add_operation (var_iterationCount_3911.getter_string (SOURCE_FILE ("formula-assignment.ggs", 114)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 114)).add_operation (GGS_string (" iteration"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (temp_14, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (var_valueCount_4304.getter_string (SOURCE_FILE ("formula-assignment.ggs", 116)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (temp_16, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (var_nodeCount_4367.getter_string (SOURCE_FILE ("formula-assignment.ggs", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (GGS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (temp_18, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (var_timer_3725.getter_string (SOURCE_FILE ("formula-assignment.ggs", 118)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 114)) ;
@@ -2030,10 +2030,10 @@ void cPtr_dumpFormula::method_analyzeFormula (const GGS_string /* constinArgumen
   {
   const GGS_dumpFormula temp_1 = this ;
   GGS_string temp_2 ;
-  const enumGalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_1736.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-  if (kBoolTrue == test_3) {
+  const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_1736.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+  if (GalgasBool::boolTrue == test_3) {
     temp_2 = GGS_string ("s") ;
-  }else if (kBoolFalse == test_3) {
+  }else if (GalgasBool::boolFalse == test_3) {
     temp_2 = GGS_string::makeEmptyString () ;
   }
   routine_println_3F_ (GGS_string ("Dump $").add_operation (temp_1.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (var_valueCount_1736.getter_string (SOURCE_FILE ("formula-dump.ggs", 39)), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)), inCompiler  COMMA_SOURCE_FILE ("formula-dump.ggs", 39)) ;
@@ -2082,16 +2082,16 @@ void cPtr_graphvizFormula::method_analyzeFormula (const GGS_string constinArgume
   GGS_stringlist var_bitNameList_1904 = temp_3 ;
   cEnumerator_varList enumerator_1943 (var_varList_1693, EnumerationOrder::down) ;
   while (enumerator_1943.hasCurrentObject ()) {
-    enumGalgasBool test_4 = kBoolTrue ;
-    if (kBoolTrue == test_4) {
+    GalgasBool test_4 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_4) {
       test_4 = GGS_bool (ComparisonKind::equal, enumerator_1943.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
-      if (kBoolTrue == test_4) {
+      if (GalgasBool::boolTrue == test_4) {
         {
         var_bitNameList_1904.setter_append (enumerator_1943.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 43)) ;
         }
       }
     }
-    if (kBoolFalse == test_4) {
+    if (GalgasBool::boolFalse == test_4) {
       cEnumerator_range enumerator_2063 (GGS_range (GGS_uint (uint32_t (0U)), enumerator_1943.current_mBitCount (HERE).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 45))), EnumerationOrder::up) ;
       while (enumerator_2063.hasCurrentObject ()) {
         {
@@ -2124,20 +2124,20 @@ GGS_binaryset cPtr_varInExpression::getter_computeExpression (const GGS_domainMa
   GGS_recordDomainMap var_subdomainMap_10671 ;
   const GGS_varInExpression temp_0 = this ;
   constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_10646, var_bitCount_10656, var_subdomainMap_10671, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 354)) ;
-  enumGalgasBool test_1 = kBoolTrue ;
-  if (kBoolTrue == test_1) {
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
     test_1 = GGS_bool (ComparisonKind::greaterThan, var_subdomainMap_10671.getter_count (SOURCE_FILE ("expression.ggs", 355)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-    if (kBoolTrue == test_1) {
+    if (GalgasBool::boolTrue == test_1) {
       const GGS_varInExpression temp_2 = this ;
       TC_Array <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (temp_2.readProperty_mVarName ().readProperty_location (), GGS_string ("variable is a record; use dot notation"), fixItArray3  COMMA_SOURCE_FILE ("expression.ggs", 356)) ;
     }
   }
-  if (kBoolFalse == test_1) {
-    enumGalgasBool test_4 = kBoolTrue ;
-    if (kBoolTrue == test_4) {
+  if (GalgasBool::boolFalse == test_1) {
+    GalgasBool test_4 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_4) {
       test_4 = GGS_bool (ComparisonKind::notEqual, var_bitCount_10656.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
-      if (kBoolTrue == test_4) {
+      if (GalgasBool::boolTrue == test_4) {
         const GGS_varInExpression temp_5 = this ;
         TC_Array <FixItDescription> fixItArray6 ;
         inCompiler->emitSemanticError (temp_5.readProperty_mVarName ().readProperty_location (), GGS_string ("variable is not boolean; use {...} or dot notation"), fixItArray6  COMMA_SOURCE_FILE ("expression.ggs", 358)) ;
@@ -2168,21 +2168,21 @@ GGS_binaryset cPtr_varBitInExpression::getter_computeExpression (const GGS_domai
   GGS_recordDomainMap var_subdomainMap_11358 ;
   const GGS_varBitInExpression temp_0 = this ;
   constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_11333, var_bitCount_11343, var_subdomainMap_11358, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 372)) ;
-  enumGalgasBool test_1 = kBoolTrue ;
-  if (kBoolTrue == test_1) {
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
     test_1 = GGS_bool (ComparisonKind::greaterThan, var_subdomainMap_11358.getter_count (SOURCE_FILE ("expression.ggs", 373)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-    if (kBoolTrue == test_1) {
+    if (GalgasBool::boolTrue == test_1) {
       const GGS_varBitInExpression temp_2 = this ;
       TC_Array <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (temp_2.readProperty_mVarName ().readProperty_location (), GGS_string ("variable is a record; use dot notation"), fixItArray3  COMMA_SOURCE_FILE ("expression.ggs", 374)) ;
     }
   }
-  if (kBoolFalse == test_1) {
-    enumGalgasBool test_4 = kBoolTrue ;
-    if (kBoolTrue == test_4) {
+  if (GalgasBool::boolFalse == test_1) {
+    GalgasBool test_4 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_4) {
       const GGS_varBitInExpression temp_5 = this ;
       test_4 = GGS_bool (ComparisonKind::lowerOrEqual, var_bitCount_11343.objectCompare (temp_5.readProperty_mVarBit ().readProperty_uint ())).boolEnum () ;
-      if (kBoolTrue == test_4) {
+      if (GalgasBool::boolTrue == test_4) {
         const GGS_varBitInExpression temp_6 = this ;
         TC_Array <FixItDescription> fixItArray7 ;
         inCompiler->emitSemanticError (temp_6.readProperty_mVarBit ().readProperty_location (), GGS_string ("bit index should be < ").add_operation (var_bitCount_11343.getter_string (SOURCE_FILE ("expression.ggs", 376)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 376)), fixItArray7  COMMA_SOURCE_FILE ("expression.ggs", 376)) ;
@@ -2410,27 +2410,27 @@ GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_doma
   GGS_binaryset var_formulaValue_16835 ;
   const GGS_formulaInExpression temp_0 = this ;
   constinArgument_inComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_16794, var_totalBitCount_16815, var_formulaValue_16835, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 511)) ;
-  enumGalgasBool test_1 = kBoolTrue ;
-  if (kBoolTrue == test_1) {
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
     const GGS_formulaInExpression temp_2 = this ;
     test_1 = GGS_bool (ComparisonKind::notEqual, temp_2.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.ggs", 513)).objectCompare (var_varList_16794.getter_count (SOURCE_FILE ("expression.ggs", 513)))).boolEnum () ;
-    if (kBoolTrue == test_1) {
+    if (GalgasBool::boolTrue == test_1) {
       const GGS_formulaInExpression temp_3 = this ;
       const GGS_formulaInExpression temp_4 = this ;
       GGS_string temp_5 ;
-      const enumGalgasBool test_6 = GGS_bool (ComparisonKind::greaterThan, var_varList_16794.getter_count (SOURCE_FILE ("expression.ggs", 515)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
-      if (kBoolTrue == test_6) {
+      const GalgasBool test_6 = GGS_bool (ComparisonKind::greaterThan, var_varList_16794.getter_count (SOURCE_FILE ("expression.ggs", 515)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_6) {
         temp_5 = GGS_string ("s") ;
-      }else if (kBoolFalse == test_6) {
+      }else if (GalgasBool::boolFalse == test_6) {
         temp_5 = GGS_string::makeEmptyString () ;
       }
       const GGS_formulaInExpression temp_7 = this ;
       const GGS_formulaInExpression temp_8 = this ;
       GGS_string temp_9 ;
-      const enumGalgasBool test_10 = GGS_bool (ComparisonKind::greaterThan, temp_8.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.ggs", 517)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
-      if (kBoolTrue == test_10) {
+      const GalgasBool test_10 = GGS_bool (ComparisonKind::greaterThan, temp_8.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.ggs", 517)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_10) {
         temp_9 = GGS_string ("s") ;
-      }else if (kBoolFalse == test_10) {
+      }else if (GalgasBool::boolFalse == test_10) {
         temp_9 = GGS_string::makeEmptyString () ;
       }
       TC_Array <FixItDescription> fixItArray11 ;
@@ -2438,7 +2438,7 @@ GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_doma
       result_outResult.drop () ; // Release error dropped variable
     }
   }
-  if (kBoolFalse == test_1) {
+  if (GalgasBool::boolFalse == test_1) {
     GGS_uintlist temp_12 = GGS_uintlist::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 520)) ;
     GGS_uintlist var_transformationList_17281 = temp_12 ;
     const GGS_formulaInExpression temp_13 = this ;
@@ -2458,22 +2458,22 @@ GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_doma
         var_subdomainMap_17527 = var_fieldSubdomainMap_17680 ;
         enumerator_17552.gotoNextObject () ;
       }
-      enumGalgasBool test_14 = kBoolTrue ;
-      if (kBoolTrue == test_14) {
+      GalgasBool test_14 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_14) {
         test_14 = GGS_bool (ComparisonKind::notEqual, enumerator_17331.current_mBitCount (HERE).objectCompare (var_parameterBitCount_17490)).boolEnum () ;
-        if (kBoolTrue == test_14) {
+        if (GalgasBool::boolTrue == test_14) {
           GGS_string temp_15 ;
-          const enumGalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_parameterBitCount_17490.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
-          if (kBoolTrue == test_16) {
+          const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_parameterBitCount_17490.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          if (GalgasBool::boolTrue == test_16) {
             temp_15 = GGS_string ("s") ;
-          }else if (kBoolFalse == test_16) {
+          }else if (GalgasBool::boolFalse == test_16) {
             temp_15 = GGS_string::makeEmptyString () ;
           }
           GGS_string temp_17 ;
-          const enumGalgasBool test_18 = GGS_bool (ComparisonKind::greaterThan, enumerator_17331.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
-          if (kBoolTrue == test_18) {
+          const GalgasBool test_18 = GGS_bool (ComparisonKind::greaterThan, enumerator_17331.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          if (GalgasBool::boolTrue == test_18) {
             temp_17 = GGS_string ("s") ;
-          }else if (kBoolFalse == test_18) {
+          }else if (GalgasBool::boolFalse == test_18) {
             temp_17 = GGS_string::makeEmptyString () ;
           }
           TC_Array <FixItDescription> fixItArray19 ;
@@ -2577,29 +2577,29 @@ GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression 
     var_subDomainMap_20218 = var_fieldSubdomainMap_20357 ;
     enumerator_20239.gotoNextObject () ;
   }
-  enumGalgasBool test_2 = kBoolTrue ;
-  if (kBoolTrue == test_2) {
+  GalgasBool test_2 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_2) {
     test_2 = GGS_bool (ComparisonKind::greaterThan, var_subDomainMap_20218.getter_count (SOURCE_FILE ("expression.ggs", 591)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-    if (kBoolTrue == test_2) {
+    if (GalgasBool::boolTrue == test_2) {
       const GGS_comparisonWithConstantInExpression temp_3 = this ;
       TC_Array <FixItDescription> fixItArray4 ;
       inCompiler->emitSemanticError (temp_3.readProperty_mVarName ().readProperty_location (), GGS_string ("variable is a record; use dot notation"), fixItArray4  COMMA_SOURCE_FILE ("expression.ggs", 592)) ;
       result_outResult.drop () ; // Release error dropped variable
     }
   }
-  if (kBoolFalse == test_2) {
-    enumGalgasBool test_5 = kBoolTrue ;
-    if (kBoolTrue == test_5) {
+  if (GalgasBool::boolFalse == test_2) {
+    GalgasBool test_5 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_5) {
       const GGS_comparisonWithConstantInExpression temp_6 = this ;
       test_5 = GGS_bool (ComparisonKind::greaterThan, temp_6.readProperty_mConstant ().readProperty_uint ().getter_significantBitCount (SOURCE_FILE ("expression.ggs", 593)).objectCompare (var_bitCount_20190)).boolEnum () ;
-      if (kBoolTrue == test_5) {
+      if (GalgasBool::boolTrue == test_5) {
         const GGS_comparisonWithConstantInExpression temp_7 = this ;
         TC_Array <FixItDescription> fixItArray8 ;
         inCompiler->emitSemanticError (temp_7.readProperty_mConstant ().readProperty_location (), GGS_string ("Constant too large (should be < 2**").add_operation (var_bitCount_20190.getter_string (SOURCE_FILE ("expression.ggs", 594)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 594)), fixItArray8  COMMA_SOURCE_FILE ("expression.ggs", 594)) ;
         result_outResult.drop () ; // Release error dropped variable
       }
     }
-    if (kBoolFalse == test_5) {
+    if (GalgasBool::boolFalse == test_5) {
       const GGS_comparisonWithConstantInExpression temp_9 = this ;
       switch (temp_9.readProperty_mComparison ().enumValue ()) {
       case GGS_comparison::Enumeration::invalid:
@@ -2691,46 +2691,46 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
     var_rightSubDomainMap_22423 = var_fieldSubdomainMap_22582 ;
     enumerator_22449.gotoNextObject () ;
   }
-  enumGalgasBool test_4 = kBoolTrue ;
-  if (kBoolTrue == test_4) {
+  GalgasBool test_4 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_4) {
     test_4 = GGS_bool (ComparisonKind::greaterThan, var_leftSubDomainMap_22056.getter_count (SOURCE_FILE ("expression.ggs", 634)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-    if (kBoolTrue == test_4) {
+    if (GalgasBool::boolTrue == test_4) {
       const GGS_variableComparisonInExpression temp_5 = this ;
       TC_Array <FixItDescription> fixItArray6 ;
       inCompiler->emitSemanticError (temp_5.readProperty_mLeftVarName ().readProperty_location (), GGS_string ("variable is a record; use dot notation"), fixItArray6  COMMA_SOURCE_FILE ("expression.ggs", 635)) ;
       result_outResult.drop () ; // Release error dropped variable
     }
   }
-  if (kBoolFalse == test_4) {
-    enumGalgasBool test_7 = kBoolTrue ;
-    if (kBoolTrue == test_7) {
+  if (GalgasBool::boolFalse == test_4) {
+    GalgasBool test_7 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_7) {
       test_7 = GGS_bool (ComparisonKind::greaterThan, var_rightSubDomainMap_22423.getter_count (SOURCE_FILE ("expression.ggs", 636)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_7) {
+      if (GalgasBool::boolTrue == test_7) {
         const GGS_variableComparisonInExpression temp_8 = this ;
         TC_Array <FixItDescription> fixItArray9 ;
         inCompiler->emitSemanticError (temp_8.readProperty_mRightVarName ().readProperty_location (), GGS_string ("variable is a record; use dot notation"), fixItArray9  COMMA_SOURCE_FILE ("expression.ggs", 637)) ;
         result_outResult.drop () ; // Release error dropped variable
       }
     }
-    if (kBoolFalse == test_7) {
-      enumGalgasBool test_10 = kBoolTrue ;
-      if (kBoolTrue == test_10) {
+    if (GalgasBool::boolFalse == test_7) {
+      GalgasBool test_10 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_10) {
         test_10 = GGS_bool (ComparisonKind::notEqual, var_leftBitCount_22023.objectCompare (var_rightBitCount_22390)).boolEnum () ;
-        if (kBoolTrue == test_10) {
+        if (GalgasBool::boolTrue == test_10) {
           const GGS_variableComparisonInExpression temp_11 = this ;
           const GGS_variableComparisonInExpression temp_12 = this ;
           GGS_string temp_13 ;
-          const enumGalgasBool test_14 = GGS_bool (ComparisonKind::greaterThan, var_leftBitCount_22023.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
-          if (kBoolTrue == test_14) {
+          const GalgasBool test_14 = GGS_bool (ComparisonKind::greaterThan, var_leftBitCount_22023.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          if (GalgasBool::boolTrue == test_14) {
             temp_13 = GGS_string ("s") ;
-          }else if (kBoolFalse == test_14) {
+          }else if (GalgasBool::boolFalse == test_14) {
             temp_13 = GGS_string::makeEmptyString () ;
           }
           GGS_string temp_15 ;
-          const enumGalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_rightBitCount_22390.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
-          if (kBoolTrue == test_16) {
+          const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_rightBitCount_22390.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          if (GalgasBool::boolTrue == test_16) {
             temp_15 = GGS_string ("s") ;
-          }else if (kBoolFalse == test_16) {
+          }else if (GalgasBool::boolFalse == test_16) {
             temp_15 = GGS_string::makeEmptyString () ;
           }
           TC_Array <FixItDescription> fixItArray17 ;
@@ -2738,7 +2738,7 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
           result_outResult.drop () ; // Release error dropped variable
         }
       }
-      if (kBoolFalse == test_10) {
+      if (GalgasBool::boolFalse == test_10) {
         const GGS_variableComparisonInExpression temp_18 = this ;
         switch (temp_18.readProperty_mComparison ().enumValue ()) {
         case GGS_comparison::Enumeration::invalid:
