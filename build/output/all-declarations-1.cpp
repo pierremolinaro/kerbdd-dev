@@ -9,13 +9,150 @@
 
 //--------------------------------------------------------------------------------------------------
 
+GGS__32_lstringlist_2E_element::GGS__32_lstringlist_2E_element (void) :
+mProperty_mValue_30_ (),
+mProperty_mValue_31_ () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_lstringlist_2E_element::GGS__32_lstringlist_2E_element (const GGS__32_lstringlist_2E_element & inSource) :
+mProperty_mValue_30_ (inSource.mProperty_mValue_30_),
+mProperty_mValue_31_ (inSource.mProperty_mValue_31_) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_lstringlist_2E_element & GGS__32_lstringlist_2E_element::operator = (const GGS__32_lstringlist_2E_element & inSource) {
+  mProperty_mValue_30_ = inSource.mProperty_mValue_30_ ;
+  mProperty_mValue_31_ = inSource.mProperty_mValue_31_ ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::init_21__21_ (const GGS_lstring & in_mValue_30_,
+                                                                             const GGS_lstring & in_mValue_31_,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__32_lstringlist_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mValue_30_ = in_mValue_30_ ;
+  result.mProperty_mValue_31_ = in_mValue_31_ ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__32_lstringlist_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_lstringlist_2E_element::GGS__32_lstringlist_2E_element (const GGS_lstring & inOperand0,
+                                                                const GGS_lstring & inOperand1) :
+mProperty_mValue_30_ (inOperand0),
+mProperty_mValue_31_ (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::class_func_new (const GGS_lstring & in_mValue0,
+                                                                               const GGS_lstring & in_mValue1,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__32_lstringlist_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mValue_30_ = in_mValue0 ;
+  result.mProperty_mValue_31_ = in_mValue1 ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS__32_lstringlist_2E_element::isValid (void) const {
+  return mProperty_mValue_30_.isValid () && mProperty_mValue_31_.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__32_lstringlist_2E_element::drop (void) {
+  mProperty_mValue_30_.drop () ;
+  mProperty_mValue_31_.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__32_lstringlist_2E_element::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @2lstringlist.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mValue_30_.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mValue_31_.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @2lstringlist.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_lstringlist_2E_element ("2lstringlist.element",
+                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS__32_lstringlist_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__32_lstringlist_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS__32_lstringlist_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS__32_lstringlist_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS__32_lstringlist_2E_element result ;
+  const GGS__32_lstringlist_2E_element * p = (const GGS__32_lstringlist_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS__32_lstringlist_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("2lstringlist.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_bddType_2E_namedType::GGS_bddType_2E_namedType (void) :
 mProperty_typeName () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bddType_2E_namedType::~ GGS_bddType_2E_namedType (void) {
+GGS_bddType_2E_namedType::GGS_bddType_2E_namedType (const GGS_bddType_2E_namedType & inSource) :
+mProperty_typeName (inSource.mProperty_typeName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType & GGS_bddType_2E_namedType::operator = (const GGS_bddType_2E_namedType & inSource) {
+  mProperty_typeName = inSource.mProperty_typeName ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -77,9 +214,7 @@ void GGS_bddType_2E_namedType::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bddType.namedType generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bddType_2E_namedType ("bddType.namedType",
@@ -199,9 +334,7 @@ void GGS_bddType_2E_namedType_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bddType.namedType? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bddType_2E_namedType_3F_ ("bddType.namedType?",
@@ -249,7 +382,17 @@ mProperty_mType () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_domainFieldList_2E_element::~ GGS_domainFieldList_2E_element (void) {
+GGS_domainFieldList_2E_element::GGS_domainFieldList_2E_element (const GGS_domainFieldList_2E_element & inSource) :
+mProperty_mVarName (inSource.mProperty_mVarName),
+mProperty_mType (inSource.mProperty_mType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList_2E_element & GGS_domainFieldList_2E_element::operator = (const GGS_domainFieldList_2E_element & inSource) {
+  mProperty_mVarName = inSource.mProperty_mVarName ;
+  mProperty_mType = inSource.mProperty_mType ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -320,9 +463,7 @@ void GGS_domainFieldList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @domainFieldList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainFieldList_2E_element ("domainFieldList.element",
@@ -370,7 +511,17 @@ mProperty_mType () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_domainDeclarationList_2E_element::~ GGS_domainDeclarationList_2E_element (void) {
+GGS_domainDeclarationList_2E_element::GGS_domainDeclarationList_2E_element (const GGS_domainDeclarationList_2E_element & inSource) :
+mProperty_mDomainName (inSource.mProperty_mDomainName),
+mProperty_mType (inSource.mProperty_mType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainDeclarationList_2E_element & GGS_domainDeclarationList_2E_element::operator = (const GGS_domainDeclarationList_2E_element & inSource) {
+  mProperty_mDomainName = inSource.mProperty_mDomainName ;
+  mProperty_mType = inSource.mProperty_mType ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -441,9 +592,7 @@ void GGS_domainDeclarationList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @domainDeclarationList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainDeclarationList_2E_element ("domainDeclarationList.element",
@@ -493,7 +642,21 @@ mProperty_mSubDomain () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_recordDomainMap_2E_element::~ GGS_recordDomainMap_2E_element (void) {
+GGS_recordDomainMap_2E_element::GGS_recordDomainMap_2E_element (const GGS_recordDomainMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mIndex (inSource.mProperty_mIndex),
+mProperty_mBitCount (inSource.mProperty_mBitCount),
+mProperty_mSubDomain (inSource.mProperty_mSubDomain) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap_2E_element & GGS_recordDomainMap_2E_element::operator = (const GGS_recordDomainMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mIndex = inSource.mProperty_mIndex ;
+  mProperty_mBitCount = inSource.mProperty_mBitCount ;
+  mProperty_mSubDomain = inSource.mProperty_mSubDomain ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -582,9 +745,7 @@ void GGS_recordDomainMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @recordDomainMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_recordDomainMap_2E_element ("recordDomainMap.element",
@@ -704,9 +865,7 @@ void GGS_recordDomainMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @recordDomainMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_recordDomainMap_2E_element_3F_ ("recordDomainMap.element?",
@@ -755,7 +914,19 @@ mProperty_mRecordMap () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_domainMap_2E_element::~ GGS_domainMap_2E_element (void) {
+GGS_domainMap_2E_element::GGS_domainMap_2E_element (const GGS_domainMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mBitCount (inSource.mProperty_mBitCount),
+mProperty_mRecordMap (inSource.mProperty_mRecordMap) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element & GGS_domainMap_2E_element::operator = (const GGS_domainMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mBitCount = inSource.mProperty_mBitCount ;
+  mProperty_mRecordMap = inSource.mProperty_mRecordMap ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -835,9 +1006,7 @@ void GGS_domainMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @domainMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainMap_2E_element ("domainMap.element",
@@ -957,9 +1126,7 @@ void GGS_domainMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @domainMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainMap_2E_element_3F_ ("domainMap.element?",
@@ -1009,7 +1176,21 @@ mProperty_mRecordDomainMap () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_varMap_2E_element::~ GGS_varMap_2E_element (void) {
+GGS_varMap_2E_element::GGS_varMap_2E_element (const GGS_varMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mIndex (inSource.mProperty_mIndex),
+mProperty_mBitCount (inSource.mProperty_mBitCount),
+mProperty_mRecordDomainMap (inSource.mProperty_mRecordDomainMap) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element & GGS_varMap_2E_element::operator = (const GGS_varMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mIndex = inSource.mProperty_mIndex ;
+  mProperty_mBitCount = inSource.mProperty_mBitCount ;
+  mProperty_mRecordDomainMap = inSource.mProperty_mRecordDomainMap ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -1098,9 +1279,7 @@ void GGS_varMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @varMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varMap_2E_element ("varMap.element",
@@ -1220,9 +1399,7 @@ void GGS_varMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @varMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varMap_2E_element_3F_ ("varMap.element?",
@@ -1272,7 +1449,21 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_computedFormulaMap_2E_element::~ GGS_computedFormulaMap_2E_element (void) {
+GGS_computedFormulaMap_2E_element::GGS_computedFormulaMap_2E_element (const GGS_computedFormulaMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mVarList (inSource.mProperty_mVarList),
+mProperty_mBitCount (inSource.mProperty_mBitCount),
+mProperty_mValue (inSource.mProperty_mValue) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap_2E_element & GGS_computedFormulaMap_2E_element::operator = (const GGS_computedFormulaMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mVarList = inSource.mProperty_mVarList ;
+  mProperty_mBitCount = inSource.mProperty_mBitCount ;
+  mProperty_mValue = inSource.mProperty_mValue ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -1361,9 +1552,7 @@ void GGS_computedFormulaMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @computedFormulaMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_computedFormulaMap_2E_element ("computedFormulaMap.element",
@@ -1483,9 +1672,7 @@ void GGS_computedFormulaMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @computedFormulaMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_computedFormulaMap_2E_element_3F_ ("computedFormulaMap.element?",
@@ -1533,7 +1720,17 @@ mProperty_mFieldNames () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formulaParameterListInExpression_2E_element::~ GGS_formulaParameterListInExpression_2E_element (void) {
+GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_formulaParameterListInExpression_2E_element & inSource) :
+mProperty_mParameterName (inSource.mProperty_mParameterName),
+mProperty_mFieldNames (inSource.mProperty_mFieldNames) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaParameterListInExpression_2E_element & GGS_formulaParameterListInExpression_2E_element::operator = (const GGS_formulaParameterListInExpression_2E_element & inSource) {
+  mProperty_mParameterName = inSource.mProperty_mParameterName ;
+  mProperty_mFieldNames = inSource.mProperty_mFieldNames ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -1604,9 +1801,7 @@ void GGS_formulaParameterListInExpression_2E_element::description (String & ioSt
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @formulaParameterListInExpression.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ("formulaParameterListInExpression.element",
@@ -1782,9 +1977,7 @@ acPtr_class * cPtr_setting_5F_nodeHashMapSize::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @setting_nodeHashMapSize generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ("setting_nodeHashMapSize",
@@ -2042,7 +2235,7 @@ void cPtr_dumpFormula::method_analyzeFormula (const GGS_string /* constinArgumen
   GGS_stringlist var_nameList_1916 = temp_4 ;
   GGS_uintlist temp_5 = GGS_uintlist::init (inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 41)) ;
   GGS_uintlist var_bitCountList_1946 = temp_5 ;
-  cEnumerator_varList enumerator_1984 (var_varList_1685, EnumerationOrder::up) ;
+  UpEnumerator_varList enumerator_1984 (var_varList_1685) ;
   while (enumerator_1984.hasCurrentObject ()) {
     {
     var_nameList_1916.setter_append (enumerator_1984.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 43)) ;
@@ -2080,7 +2273,7 @@ void cPtr_graphvizFormula::method_analyzeFormula (const GGS_string constinArgume
   }
   GGS_stringlist temp_3 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 40)) ;
   GGS_stringlist var_bitNameList_1904 = temp_3 ;
-  cEnumerator_varList enumerator_1943 (var_varList_1693, EnumerationOrder::down) ;
+  DownEnumerator_varList enumerator_1943 (var_varList_1693) ;
   while (enumerator_1943.hasCurrentObject ()) {
     GalgasBool test_4 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_4) {
@@ -2092,7 +2285,7 @@ void cPtr_graphvizFormula::method_analyzeFormula (const GGS_string constinArgume
       }
     }
     if (GalgasBool::boolFalse == test_4) {
-      cEnumerator_range enumerator_2063 (GGS_range (GGS_uint (uint32_t (0U)), enumerator_1943.current_mBitCount (HERE).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 45))), EnumerationOrder::up) ;
+      UpEnumerator_range enumerator_2063 (GGS_range (GGS_uint (uint32_t (0U)), enumerator_1943.current_mBitCount (HERE).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 45)))) ;
       while (enumerator_2063.hasCurrentObject ()) {
         {
         var_bitNameList_1904.setter_append (enumerator_1943.current_mVarName (HERE).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)).add_operation (enumerator_2063.current (HERE).getter_string (SOURCE_FILE ("formula-graphviz.ggs", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)) ;
@@ -2442,14 +2635,14 @@ GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_doma
     GGS_uintlist temp_12 = GGS_uintlist::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 520)) ;
     GGS_uintlist var_transformationList_17281 = temp_12 ;
     const GGS_formulaInExpression temp_13 = this ;
-    cEnumerator_varList enumerator_17331 (var_varList_16794, EnumerationOrder::down) ;
-    cEnumerator_formulaParameterListInExpression enumerator_17377 (temp_13.readProperty_mParameterList (), EnumerationOrder::down) ;
+    DownEnumerator_varList enumerator_17331 (var_varList_16794) ;
+    DownEnumerator_formulaParameterListInExpression enumerator_17377 (temp_13.readProperty_mParameterList ()) ;
     while (enumerator_17331.hasCurrentObject () && enumerator_17377.hasCurrentObject ()) {
       GGS_uint var_parameterIndex_17467 ;
       GGS_uint var_parameterBitCount_17490 ;
       GGS_recordDomainMap var_subdomainMap_17527 ;
       constinArgument_inVarMap.method_searchKey (enumerator_17377.current_mParameterName (HERE), var_parameterIndex_17467, var_parameterBitCount_17490, var_subdomainMap_17527, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 522)) ;
-      cEnumerator_lstringlist enumerator_17552 (enumerator_17377.current_mFieldNames (HERE), EnumerationOrder::up) ;
+      UpEnumerator_lstringlist enumerator_17552 (enumerator_17377.current_mFieldNames (HERE)) ;
       while (enumerator_17552.hasCurrentObject ()) {
         GGS_uint var_fieldRelativeBitIndex_17632 ;
         GGS_recordDomainMap var_fieldSubdomainMap_17680 ;
@@ -2480,7 +2673,7 @@ GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_doma
           inCompiler->emitSemanticError (enumerator_17377.current_mParameterName (HERE).readProperty_location (), GGS_string ("this parameter is declared with a size of ").add_operation (var_parameterBitCount_17490.getter_string (SOURCE_FILE ("expression.ggs", 529)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 529)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 530)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 530)).add_operation (GGS_string (", but corresponding formal argument '"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 530)).add_operation (enumerator_17331.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 531)).add_operation (GGS_string ("' is declared with a size of "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 531)).add_operation (enumerator_17331.current_mBitCount (HERE).getter_string (SOURCE_FILE ("expression.ggs", 531)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 531)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 532)).add_operation (temp_17, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 532)), fixItArray19  COMMA_SOURCE_FILE ("expression.ggs", 529)) ;
         }
       }
-      cEnumerator_range enumerator_18237 (GGS_range (GGS_uint (uint32_t (0U)), var_parameterBitCount_17490.substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 534))), EnumerationOrder::up) ;
+      UpEnumerator_range enumerator_18237 (GGS_range (GGS_uint (uint32_t (0U)), var_parameterBitCount_17490.substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 534)))) ;
       while (enumerator_18237.hasCurrentObject ()) {
         {
         var_transformationList_17281.setter_append (var_parameterIndex_17467.add_operation (enumerator_18237.current (HERE), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 535)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 535)) ;
@@ -2568,7 +2761,7 @@ GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression 
   const GGS_comparisonWithConstantInExpression temp_0 = this ;
   constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_20178, var_bitCount_20190, var_subDomainMap_20218, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 585)) ;
   const GGS_comparisonWithConstantInExpression temp_1 = this ;
-  cEnumerator_lstringlist enumerator_20239 (temp_1.readProperty_mFieldNames (), EnumerationOrder::up) ;
+  UpEnumerator_lstringlist enumerator_20239 (temp_1.readProperty_mFieldNames ()) ;
   while (enumerator_20239.hasCurrentObject ()) {
     GGS_uint var_fieldRelativeBitIndex_20318 ;
     GGS_recordDomainMap var_fieldSubdomainMap_20357 ;
@@ -2667,7 +2860,7 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
   const GGS_variableComparisonInExpression temp_0 = this ;
   constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mLeftVarName (), var_leftIdx_22006, var_leftBitCount_22023, var_leftSubDomainMap_22056, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 622)) ;
   const GGS_variableComparisonInExpression temp_1 = this ;
-  cEnumerator_lstringlist enumerator_22081 (temp_1.readProperty_mLeftFieldNames (), EnumerationOrder::up) ;
+  UpEnumerator_lstringlist enumerator_22081 (temp_1.readProperty_mLeftFieldNames ()) ;
   while (enumerator_22081.hasCurrentObject ()) {
     GGS_uint var_fieldRelativeBitIndex_22168 ;
     GGS_recordDomainMap var_fieldSubdomainMap_22211 ;
@@ -2682,7 +2875,7 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
   const GGS_variableComparisonInExpression temp_2 = this ;
   constinArgument_inVarMap.method_searchKey (temp_2.readProperty_mRightVarName (), var_rightIdx_22373, var_rightBitCount_22390, var_rightSubDomainMap_22423, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 628)) ;
   const GGS_variableComparisonInExpression temp_3 = this ;
-  cEnumerator_lstringlist enumerator_22449 (temp_3.readProperty_mRightFieldNames (), EnumerationOrder::up) ;
+  UpEnumerator_lstringlist enumerator_22449 (temp_3.readProperty_mRightFieldNames ()) ;
   while (enumerator_22449.hasCurrentObject ()) {
     GGS_uint var_fieldRelativeBitIndex_22538 ;
     GGS_recordDomainMap var_fieldSubdomainMap_22582 ;
@@ -2857,7 +3050,7 @@ static void routine_programRule_5F__30_ (const GGS_lstring constinArgument_inSou
   extensionMethod_analyze (var_ast_769.readProperty_mDomainList (), var_domainMap_856, inCompiler COMMA_SOURCE_FILE ("program.ggs", 19)) ;
   GGS_computedFormulaMap temp_0 = GGS_computedFormulaMap::init (inCompiler COMMA_SOURCE_FILE ("program.ggs", 21)) ;
   GGS_computedFormulaMap var_computedFormulaMap_916 = temp_0 ;
-  cEnumerator_formulaList enumerator_947 (var_ast_769.readProperty_mFormulaList (), EnumerationOrder::up) ;
+  UpEnumerator_formulaList enumerator_947 (var_ast_769.readProperty_mFormulaList ()) ;
   bool bool_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("program.ggs", 22)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
   if (enumerator_947.hasCurrentObject () && bool_1) {
     while (enumerator_947.hasCurrentObject () && bool_1) {
