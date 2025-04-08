@@ -8,9 +8,7 @@
 #include "all-declarations-0.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@_32_lstringlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement__32_lstringlist : public cCollectionElement {
@@ -103,9 +101,8 @@ GGS__32_lstringlist GGS__32_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist::enterElement (const GGS__32_lstringlist_2E_element & inValue,
-                                        Compiler * /* inCompiler */
-                                        COMMA_LOCATION_ARGS) {
+void GGS__32_lstringlist::plusPlusAssignOperation (const GGS__32_lstringlist_2E_element & inValue
+                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement__32_lstringlist (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -144,9 +141,9 @@ void GGS__32_lstringlist::makeAttributesFromObjects (capCollectionElement & outA
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist::addAssign_operation (const GGS_lstring & inOperand0,
-                                               const GGS_lstring & inOperand1
-                                               COMMA_LOCATION_ARGS) {
+void GGS__32_lstringlist::addAssignOperation (const GGS_lstring & inOperand0,
+                                              const GGS_lstring & inOperand1
+                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement__32_lstringlist (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -336,9 +333,9 @@ GGS__32_lstringlist GGS__32_lstringlist::getter_subListToIndex (const GGS_uint &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist::plusAssign_operation (const GGS__32_lstringlist inOperand,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__32_lstringlist::plusAssignOperation (const GGS__32_lstringlist inOperand,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -1426,47 +1423,47 @@ GGS_luint Lexique_kerbdd_5F_lexique::synthetizedAttribute_uint_33__32_value (voi
 
 GGS_stringlist Lexique_kerbdd_5F_lexique::symbols (LOCATION_ARGS) {
   GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
-  result.addAssign_operation (GGS_string ("identifier") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("integer") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("literal_string") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("comment") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("nodeHashMapSize") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("andCacheMapSize") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("domain") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("bool") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("true") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("false") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("display") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("include") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("graphviz") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("dump") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("(") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (")") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("[") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("]") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("{") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("}") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (":=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (":") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (".") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("..") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("+=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("-=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("->") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("|") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("^") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("~") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (",") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("\?") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (";") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("<") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("<=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (">") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (">=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("integer") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("literal_string") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("comment") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("nodeHashMapSize") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("andCacheMapSize") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("domain") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("bool") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("true") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("false") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("display") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("include") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("graphviz") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("dump") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("(") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (")") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("[") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("]") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("{") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("}") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (":=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (":") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (".") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("..") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("+=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("-=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("->") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("|") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("^") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("~") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (",") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("\?") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (";") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("<") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("<=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (">") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (">=") COMMA_HERE) ;
   return result ;
 }
 
@@ -1803,9 +1800,7 @@ GGS_bddType GGS_bddType::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@domainFieldList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_domainFieldList : public cCollectionElement {
@@ -1898,9 +1893,8 @@ GGS_domainFieldList GGS_domainFieldList::init (Compiler * COMMA_UNUSED_LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_domainFieldList::enterElement (const GGS_domainFieldList_2E_element & inValue,
-                                        Compiler * /* inCompiler */
-                                        COMMA_LOCATION_ARGS) {
+void GGS_domainFieldList::plusPlusAssignOperation (const GGS_domainFieldList_2E_element & inValue
+                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_domainFieldList (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -1939,9 +1933,9 @@ void GGS_domainFieldList::makeAttributesFromObjects (capCollectionElement & outA
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_domainFieldList::addAssign_operation (const GGS_lstring & inOperand0,
-                                               const GGS_bddType & inOperand1
-                                               COMMA_LOCATION_ARGS) {
+void GGS_domainFieldList::addAssignOperation (const GGS_lstring & inOperand0,
+                                              const GGS_bddType & inOperand1
+                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_domainFieldList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -2131,9 +2125,9 @@ GGS_domainFieldList GGS_domainFieldList::getter_subListToIndex (const GGS_uint &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_domainFieldList::plusAssign_operation (const GGS_domainFieldList inOperand,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_domainFieldList::plusAssignOperation (const GGS_domainFieldList inOperand,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2490,9 +2484,7 @@ GGS_domainDeclarationType GGS_domainDeclarationType::extractObject (const GGS_ob
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@domainDeclarationList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_domainDeclarationList : public cCollectionElement {
@@ -2585,9 +2577,8 @@ GGS_domainDeclarationList GGS_domainDeclarationList::init (Compiler * COMMA_UNUS
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_domainDeclarationList::enterElement (const GGS_domainDeclarationList_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) {
+void GGS_domainDeclarationList::plusPlusAssignOperation (const GGS_domainDeclarationList_2E_element & inValue
+                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_domainDeclarationList (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -2626,9 +2617,9 @@ void GGS_domainDeclarationList::makeAttributesFromObjects (capCollectionElement 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_domainDeclarationList::addAssign_operation (const GGS_lstring & inOperand0,
-                                                     const GGS_domainDeclarationType & inOperand1
-                                                     COMMA_LOCATION_ARGS) {
+void GGS_domainDeclarationList::addAssignOperation (const GGS_lstring & inOperand0,
+                                                    const GGS_domainDeclarationType & inOperand1
+                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_domainDeclarationList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -2818,9 +2809,9 @@ GGS_domainDeclarationList GGS_domainDeclarationList::getter_subListToIndex (cons
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_domainDeclarationList::plusAssign_operation (const GGS_domainDeclarationList inOperand,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_domainDeclarationList::plusAssignOperation (const GGS_domainDeclarationList inOperand,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -3124,53 +3115,6 @@ GGS_recordDomainMap GGS_recordDomainMap::getter_overriddenMap (Compiler * inComp
                                                                COMMA_LOCATION_ARGS) const {
   GGS_recordDomainMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::enterElement (const GGS_recordDomainMap_2E_element & inValue,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  cMapElement_recordDomainMap * p = nullptr ;
-  macroMyNew (p, cMapElement_recordDomainMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@recordDomainMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::addAssign_operation (const GGS_lstring & inKey,
-                                               const GGS_uint & inArgument0,
-                                               const GGS_uint & inArgument1,
-                                               const GGS_recordDomainMap & inArgument2,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  cMapElement_recordDomainMap * p = nullptr ;
-  macroMyNew (p, cMapElement_recordDomainMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@recordDomainMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap GGS_recordDomainMap::add_operation (const GGS_recordDomainMap & inOperand,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  GGS_recordDomainMap result = *this ;
-  UpEnumerator_recordDomainMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), enumerator.current_mBitCount (HERE), enumerator.current_mSubDomain (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
   return result ;
 }
 
@@ -3580,52 +3524,6 @@ GGS_domainMap GGS_domainMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_domainMap::enterElement (const GGS_domainMap_2E_element & inValue,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  cMapElement_domainMap * p = nullptr ;
-  macroMyNew (p, cMapElement_domainMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@domainMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainMap::addAssign_operation (const GGS_lstring & inKey,
-                                         const GGS_uint & inArgument0,
-                                         const GGS_recordDomainMap & inArgument1,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) {
-  cMapElement_domainMap * p = nullptr ;
-  macroMyNew (p, cMapElement_domainMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@domainMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap GGS_domainMap::add_operation (const GGS_domainMap & inOperand,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
-  GGS_domainMap result = *this ;
-  UpEnumerator_domainMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mBitCount (HERE), enumerator.current_mRecordMap (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_domainMap::setter_insertKey (GGS_lstring inKey,
                                       GGS_uint inArgument0,
                                       GGS_recordDomainMap inArgument1,
@@ -3868,13 +3766,12 @@ void extensionMethod_analyze (const GGS_domainDeclarationList inObject,
                               Compiler * inCompiler
                               COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outDomainMap.drop () ; // Release 'out' argument
-  GGS_domainMap temp_0 = GGS_domainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 122)) ;
-  outArgument_outDomainMap = temp_0 ;
-  const GGS_domainDeclarationList temp_1 = inObject ;
-  UpEnumerator_domainDeclarationList enumerator_3988 (temp_1) ;
-  bool bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-  if (enumerator_3988.hasCurrentObject () && bool_2) {
-    while (enumerator_3988.hasCurrentObject () && bool_2) {
+  outArgument_outDomainMap = GGS_domainMap::init (inCompiler COMMA_HERE) ;
+  const GGS_domainDeclarationList temp_0 = inObject ;
+  UpEnumerator_domainDeclarationList enumerator_3988 (temp_0) ;
+  bool bool_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
+  if (enumerator_3988.hasCurrentObject () && bool_1) {
+    while (enumerator_3988.hasCurrentObject () && bool_1) {
       switch (enumerator_3988.current_mType (HERE).enumValue ()) {
       case GGS_domainDeclarationType::Enumeration::invalid:
         break ;
@@ -3888,30 +3785,28 @@ void extensionMethod_analyze (const GGS_domainDeclarationList inObject,
           case GGS_bddType::Enumeration::enum_bool:
             {
               {
-              GGS_recordDomainMap temp_3 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
-              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), GGS_uint (uint32_t (1U)), temp_3, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
               }
             }
             break ;
           case GGS_bddType::Enumeration::enum_boolArray:
             {
-              GGS_uint extractedValue_4214_size_0 ;
-              extractedValue_4093_type_0.getAssociatedValuesFor_boolArray (extractedValue_4214_size_0) ;
+              GGS_uint extractedValue_4213_size_0 ;
+              extractedValue_4093_type_0.getAssociatedValuesFor_boolArray (extractedValue_4213_size_0) ;
               {
-              GGS_recordDomainMap temp_4 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
-              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), extractedValue_4214_size_0, temp_4, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), extractedValue_4213_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
               }
             }
             break ;
           case GGS_bddType::Enumeration::enum_namedType:
             {
-              GGS_lstring extractedValue_4305_typeName_0 ;
-              extractedValue_4093_type_0.getAssociatedValuesFor_namedType (extractedValue_4305_typeName_0) ;
-              GGS_uint var_size_4365 ;
-              GGS_recordDomainMap var_subdomain_4376 ;
-              outArgument_outDomainMap.method_searchKey (extractedValue_4305_typeName_0, var_size_4365, var_subdomain_4376, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
+              GGS_lstring extractedValue_4303_typeName_0 ;
+              extractedValue_4093_type_0.getAssociatedValuesFor_namedType (extractedValue_4303_typeName_0) ;
+              GGS_uint var_size_4363 ;
+              GGS_recordDomainMap var_subdomain_4374 ;
+              outArgument_outDomainMap.method_searchKey (extractedValue_4303_typeName_0, var_size_4363, var_subdomain_4374, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
               {
-              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), var_size_4365, var_subdomain_4376, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), var_size_4363, var_subdomain_4374, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
               }
             }
             break ;
@@ -3920,67 +3815,64 @@ void extensionMethod_analyze (const GGS_domainDeclarationList inObject,
         break ;
       case GGS_domainDeclarationType::Enumeration::enum_record:
         {
-          GGS_domainFieldList extractedValue_4490_fieldList_0 ;
-          enumerator_3988.current_mType (HERE).getAssociatedValuesFor_record (extractedValue_4490_fieldList_0) ;
-          GGS_bigint var_bitIndex_4513 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
-          GGS_recordDomainMap temp_5 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 137)) ;
-          GGS_recordDomainMap var_recordMap_4553 = temp_5 ;
-          DownEnumerator_domainFieldList enumerator_4587 (extractedValue_4490_fieldList_0) ;
-          bool bool_6 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-          if (enumerator_4587.hasCurrentObject () && bool_6) {
-            while (enumerator_4587.hasCurrentObject () && bool_6) {
-              switch (enumerator_4587.current_mType (HERE).enumValue ()) {
+          GGS_domainFieldList extractedValue_4488_fieldList_0 ;
+          enumerator_3988.current_mType (HERE).getAssociatedValuesFor_record (extractedValue_4488_fieldList_0) ;
+          GGS_bigint var_bitIndex_4511 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
+          GGS_recordDomainMap var_recordMap_4551 = GGS_recordDomainMap::init (inCompiler COMMA_HERE) ;
+          DownEnumerator_domainFieldList enumerator_4585 (extractedValue_4488_fieldList_0) ;
+          bool bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
+          if (enumerator_4585.hasCurrentObject () && bool_2) {
+            while (enumerator_4585.hasCurrentObject () && bool_2) {
+              switch (enumerator_4585.current_mType (HERE).enumValue ()) {
               case GGS_bddType::Enumeration::invalid:
                 break ;
               case GGS_bddType::Enumeration::enum_bool:
                 {
                   {
-                  GGS_recordDomainMap temp_7 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
-                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GGS_uint (uint32_t (1U)), temp_7, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
+                  var_recordMap_4551.setter_insertKey (enumerator_4585.current_mVarName (HERE), var_bitIndex_4511.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
                   }
-                  var_bitIndex_4513.plusAssign_operation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
+                  var_bitIndex_4511.plusAssignOperation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
                 }
                 break ;
               case GGS_bddType::Enumeration::enum_boolArray:
                 {
-                  GGS_uint extractedValue_4810_size_0 ;
-                  enumerator_4587.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_4810_size_0) ;
+                  GGS_uint extractedValue_4807_size_0 ;
+                  enumerator_4585.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_4807_size_0) ;
                   {
-                  GGS_recordDomainMap temp_8 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
-                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_4810_size_0, temp_8, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
+                  var_recordMap_4551.setter_insertKey (enumerator_4585.current_mVarName (HERE), var_bitIndex_4511.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_4807_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
                   }
-                  var_bitIndex_4513 = var_bitIndex_4513.add_operation (extractedValue_4810_size_0.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
+                  var_bitIndex_4511 = var_bitIndex_4511.add_operation (extractedValue_4807_size_0.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
                 }
                 break ;
               case GGS_bddType::Enumeration::enum_namedType:
                 {
-                  GGS_lstring extractedValue_4950_typeName_0 ;
-                  enumerator_4587.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_4950_typeName_0) ;
-                  GGS_uint var_size_5012 ;
-                  GGS_recordDomainMap var_subdomain_5023 ;
-                  outArgument_outDomainMap.method_searchKey (extractedValue_4950_typeName_0, var_size_5012, var_subdomain_5023, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
+                  GGS_lstring extractedValue_4946_typeName_0 ;
+                  enumerator_4585.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_4946_typeName_0) ;
+                  GGS_uint var_size_5008 ;
+                  GGS_recordDomainMap var_subdomain_5019 ;
+                  outArgument_outDomainMap.method_searchKey (extractedValue_4946_typeName_0, var_size_5008, var_subdomain_5019, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
                   {
-                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5012, var_subdomain_5023, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
+                  var_recordMap_4551.setter_insertKey (enumerator_4585.current_mVarName (HERE), var_bitIndex_4511.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5008, var_subdomain_5019, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
                   }
-                  var_bitIndex_4513 = var_bitIndex_4513.add_operation (var_size_5012.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
+                  var_bitIndex_4511 = var_bitIndex_4511.add_operation (var_size_5008.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
                 }
                 break ;
               }
-              enumerator_4587.gotoNextObject () ;
-              if (enumerator_4587.hasCurrentObject ()) {
-                bool_6 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
+              enumerator_4585.gotoNextObject () ;
+              if (enumerator_4585.hasCurrentObject ()) {
+                bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
               }
             }
           }
           {
-          outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4553, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
+          outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), var_bitIndex_4511.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4551, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
           }
         }
         break ;
       }
       enumerator_3988.gotoNextObject () ;
       if (enumerator_3988.hasCurrentObject ()) {
-        bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
+        bool_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
       }
     }
   }
@@ -3988,9 +3880,7 @@ void extensionMethod_analyze (const GGS_domainDeclarationList inObject,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@varList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_varList : public cCollectionElement {
@@ -4089,9 +3979,8 @@ GGS_varList GGS_varList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_varList::enterElement (const GGS_varList_2E_element & inValue,
-                                Compiler * /* inCompiler */
-                                COMMA_LOCATION_ARGS) {
+void GGS_varList::plusPlusAssignOperation (const GGS_varList_2E_element & inValue
+                                           COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_varList (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -4133,10 +4022,10 @@ void GGS_varList::makeAttributesFromObjects (capCollectionElement & outAttribute
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_varList::addAssign_operation (const GGS_string & inOperand0,
-                                       const GGS_uint & inOperand1,
-                                       const GGS_uint & inOperand2
-                                       COMMA_LOCATION_ARGS) {
+void GGS_varList::addAssignOperation (const GGS_string & inOperand0,
+                                      const GGS_uint & inOperand1,
+                                      const GGS_uint & inOperand2
+                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_varList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -4343,9 +4232,9 @@ GGS_varList GGS_varList::getter_subListToIndex (const GGS_uint & inIndex,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_varList::plusAssign_operation (const GGS_varList inOperand,
-                                        Compiler * /* inCompiler */
-                                        COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_varList::plusAssignOperation (const GGS_varList inOperand,
+                                       Compiler * /* inCompiler */
+                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -4699,53 +4588,6 @@ GGS_varMap GGS_varMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_varMap::enterElement (const GGS_varMap_2E_element & inValue,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) {
-  cMapElement_varMap * p = nullptr ;
-  macroMyNew (p, cMapElement_varMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@varMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::addAssign_operation (const GGS_lstring & inKey,
-                                      const GGS_uint & inArgument0,
-                                      const GGS_uint & inArgument1,
-                                      const GGS_recordDomainMap & inArgument2,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  cMapElement_varMap * p = nullptr ;
-  macroMyNew (p, cMapElement_varMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@varMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap GGS_varMap::add_operation (const GGS_varMap & inOperand,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) const {
-  GGS_varMap result = *this ;
-  UpEnumerator_varMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), enumerator.current_mBitCount (HERE), enumerator.current_mRecordDomainMap (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_varMap::setter_insertKey (GGS_lstring inKey,
                                    GGS_uint inArgument0,
                                    GGS_uint inArgument1,
@@ -5040,55 +4882,53 @@ void extensionMethod_analyze (const GGS_domainFieldList inObject,
                               Compiler * inCompiler
                               COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_domainFieldList temp_0 = inObject ;
-  DownEnumerator_domainFieldList enumerator_6324 (temp_0) ;
-  while (enumerator_6324.hasCurrentObject ()) {
-    switch (enumerator_6324.current_mType (HERE).enumValue ()) {
+  DownEnumerator_domainFieldList enumerator_6320 (temp_0) ;
+  while (enumerator_6320.hasCurrentObject ()) {
+    switch (enumerator_6320.current_mType (HERE).enumValue ()) {
     case GGS_bddType::Enumeration::invalid:
       break ;
     case GGS_bddType::Enumeration::enum_bool:
       {
         {
-        GGS_recordDomainMap temp_1 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6324.current_mVarName (HERE), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), temp_1, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6320.current_mVarName (HERE), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6324.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6320.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
         }
-        ioArgument_ioTotalBitCount.plusAssign_operation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 191)) ;
+        ioArgument_ioTotalBitCount.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 191)) ;
       }
       break ;
     case GGS_bddType::Enumeration::enum_boolArray:
       {
-        GGS_uint extractedValue_6557_size_0 ;
-        enumerator_6324.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_6557_size_0) ;
+        GGS_uint extractedValue_6552_size_0 ;
+        enumerator_6320.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_6552_size_0) ;
         {
-        GGS_recordDomainMap temp_2 = GGS_recordDomainMap::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6324.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6557_size_0, temp_2, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6320.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6552_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6324.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6557_size_0, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6320.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6552_size_0, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
         }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6557_size_0, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6552_size_0, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
       }
       break ;
     case GGS_bddType::Enumeration::enum_namedType:
       {
-        GGS_lstring extractedValue_6778_typeName_0 ;
-        enumerator_6324.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_6778_typeName_0) ;
-        GGS_uint var_size_6835 ;
-        GGS_recordDomainMap var_subDomainMap_6846 ;
-        constinArgument_inDomainMap.method_searchKey (extractedValue_6778_typeName_0, var_size_6835, var_subDomainMap_6846, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
+        GGS_lstring extractedValue_6772_typeName_0 ;
+        enumerator_6320.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_6772_typeName_0) ;
+        GGS_uint var_size_6829 ;
+        GGS_recordDomainMap var_subDomainMap_6840 ;
+        constinArgument_inDomainMap.method_searchKey (extractedValue_6772_typeName_0, var_size_6829, var_subDomainMap_6840, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6324.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_6835, var_subDomainMap_6846, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6320.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_6829, var_subDomainMap_6840, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6324.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_6835, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6320.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_6829, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
         }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_6835, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_6829, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
       }
       break ;
     }
-    enumerator_6324.gotoNextObject () ;
+    enumerator_6320.gotoNextObject () ;
   }
 }
 
@@ -5259,6 +5099,11 @@ GGS_abstractFormula::GGS_abstractFormula (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_abstractFormula::
+abstractFormula_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractFormula::GGS_abstractFormula (const cPtr_abstractFormula * inSourcePtr) :
@@ -5350,6 +5195,11 @@ ComparisonResult GGS_expression::objectCompare (const GGS_expression & inOperand
 
 GGS_expression::GGS_expression (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_expression::
+expression_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5655,53 +5505,6 @@ GGS_computedFormulaMap GGS_computedFormulaMap::getter_overriddenMap (Compiler * 
                                                                      COMMA_LOCATION_ARGS) const {
   GGS_computedFormulaMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::enterElement (const GGS_computedFormulaMap_2E_element & inValue,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
-  cMapElement_computedFormulaMap * p = nullptr ;
-  macroMyNew (p, cMapElement_computedFormulaMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@computedFormulaMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::addAssign_operation (const GGS_lstring & inKey,
-                                                  const GGS_varList & inArgument0,
-                                                  const GGS_uint & inArgument1,
-                                                  const GGS_binaryset & inArgument2,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  cMapElement_computedFormulaMap * p = nullptr ;
-  macroMyNew (p, cMapElement_computedFormulaMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@computedFormulaMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap GGS_computedFormulaMap::add_operation (const GGS_computedFormulaMap & inOperand,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
-  GGS_computedFormulaMap result = *this ;
-  UpEnumerator_computedFormulaMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mVarList (HERE), enumerator.current_mBitCount (HERE), enumerator.current_mValue (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
   return result ;
 }
 
@@ -9440,9 +9243,7 @@ GGS_falseExpression_2E_weak GGS_falseExpression_2E_weak::extractObject (const GG
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@formulaParameterListInExpression' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_formulaParameterListInExpression : public cCollectionElement {
@@ -9535,9 +9336,8 @@ GGS_formulaParameterListInExpression GGS_formulaParameterListInExpression::init 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formulaParameterListInExpression::enterElement (const GGS_formulaParameterListInExpression_2E_element & inValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) {
+void GGS_formulaParameterListInExpression::plusPlusAssignOperation (const GGS_formulaParameterListInExpression_2E_element & inValue
+                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_formulaParameterListInExpression (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -9576,9 +9376,9 @@ void GGS_formulaParameterListInExpression::makeAttributesFromObjects (capCollect
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formulaParameterListInExpression::addAssign_operation (const GGS_lstring & inOperand0,
-                                                                const GGS_lstringlist & inOperand1
-                                                                COMMA_LOCATION_ARGS) {
+void GGS_formulaParameterListInExpression::addAssignOperation (const GGS_lstring & inOperand0,
+                                                               const GGS_lstringlist & inOperand1
+                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_formulaParameterListInExpression (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -9768,9 +9568,9 @@ GGS_formulaParameterListInExpression GGS_formulaParameterListInExpression::gette
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formulaParameterListInExpression::plusAssign_operation (const GGS_formulaParameterListInExpression inOperand,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_formulaParameterListInExpression::plusAssignOperation (const GGS_formulaParameterListInExpression inOperand,
+                                                                Compiler * /* inCompiler */
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -12356,9 +12156,7 @@ void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i20_indexing (Lexiqu
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@formulaList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_formulaList : public cCollectionElement {
@@ -12445,9 +12243,8 @@ GGS_formulaList GGS_formulaList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formulaList::enterElement (const GGS_formulaList_2E_element & inValue,
-                                    Compiler * /* inCompiler */
-                                    COMMA_LOCATION_ARGS) {
+void GGS_formulaList::plusPlusAssignOperation (const GGS_formulaList_2E_element & inValue
+                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_formulaList (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -12483,8 +12280,8 @@ void GGS_formulaList::makeAttributesFromObjects (capCollectionElement & outAttri
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formulaList::addAssign_operation (const GGS_abstractFormula & inOperand0
-                                           COMMA_LOCATION_ARGS) {
+void GGS_formulaList::addAssignOperation (const GGS_abstractFormula & inOperand0
+                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_formulaList (inOperand0 COMMA_THERE)) ;
@@ -12657,9 +12454,9 @@ GGS_formulaList GGS_formulaList::getter_subListToIndex (const GGS_uint & inIndex
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formulaList::plusAssign_operation (const GGS_formulaList inOperand,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_formulaList::plusAssignOperation (const GGS_formulaList inOperand,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13053,9 +12850,7 @@ GGS_bddType_2E_boolArray GGS_bddType_2E_boolArray::extractObject (const GGS_obje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @bddType_2E_boolArray_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_bddType_2E_boolArray_3F_::GGS_bddType_2E_boolArray_3F_ (void) :
@@ -13290,9 +13085,7 @@ GGS_domainDeclarationType_2E_type GGS_domainDeclarationType_2E_type::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @domainDeclarationType_2E_type_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_domainDeclarationType_2E_type_3F_::GGS_domainDeclarationType_2E_type_3F_ (void) :
@@ -13527,9 +13320,7 @@ GGS_domainDeclarationType_2E_record GGS_domainDeclarationType_2E_record::extract
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @domainDeclarationType_2E_record_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_domainDeclarationType_2E_record_3F_::GGS_domainDeclarationType_2E_record_3F_ (void) :
@@ -13905,9 +13696,7 @@ GGS_formulaKind_2E_fixedPoint GGS_formulaKind_2E_fixedPoint::extractObject (cons
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @formulaKind_2E_fixedPoint_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_formulaKind_2E_fixedPoint_3F_::GGS_formulaKind_2E_fixedPoint_3F_ (void) :

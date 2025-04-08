@@ -119,29 +119,29 @@ map @domainMap {
 //································································································
 
 proc @domainDeclarationList.analyze( !@domainMap outDomainMap) {
-  outDomainMap = []
+  outDomainMap = ()
   for (name, typeDefinition) in self while @uint.errorCount == 0 do
     switch typeDefinition
     case type (@bddType type) :
       switch type
       case bool :
-        !?outDomainMap.insertKey (name, !1, ![])
+        !?outDomainMap.insertKey (name, !1, ())
       case boolArray (@uint size) :
-        !?outDomainMap.insertKey (name, !size, ![])
+        !?outDomainMap.insertKey (name, !size, ())
       case namedType (@lstring typeName) :
         outDomainMap.searchKey (!typeName, ?let size, ?let subdomain)
         !?outDomainMap.insertKey (name, !size, !subdomain)
       end
     case record (@domainFieldList fieldList) :
       var bitIndex = 0
-      var @recordDomainMap recordMap = []
+      var @recordDomainMap recordMap = ()
       for > (name, typeDefinition) in fieldList while @uint.errorCount == 0 do
         switch typeDefinition
         case bool :
-          !?recordMap.insertKey (name, !bitIndex, !1, ![])
+          !?recordMap.insertKey (name, !bitIndex, !1, ())
           bitIndex += 1
         case boolArray (@uint size) :
-          !?recordMap.insertKey (name, !bitIndex, !size, ![])
+          !?recordMap.insertKey (name, !bitIndex, !size, ())
           bitIndex = bitIndex + size
         case namedType (@lstring typeName) :
           outDomainMap.searchKey (!typeName, ?let size, ?let subdomain) ;
@@ -186,11 +186,11 @@ proc @domainFieldList. analyze(
   for > (idf, type) in self do
     switch type
     case bool :
-      !?ioVarMap.insertKey (idf, !ioTotalBitCount, !1, ![])
+      !?ioVarMap.insertKey (idf, !ioTotalBitCount, !1, ())
       !?ioVarList.insertAtIndex (idf.string, !ioTotalBitCount, !1, !0)
       ioTotalBitCount += 1
     case boolArray (@uint size) :
-      !?ioVarMap.insertKey (idf, !ioTotalBitCount, !size, ![])
+      !?ioVarMap.insertKey (idf, !ioTotalBitCount, !size, ())
       !?ioVarList.insertAtIndex (idf.string, !ioTotalBitCount, !size, !0)
       ioTotalBitCount = ioTotalBitCount + size
     case namedType (@lstring typeName) :

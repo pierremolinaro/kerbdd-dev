@@ -76,7 +76,7 @@ override proc @assignmentFormula. analyzeFormula(
 //--- Build variable map
   var @uint totalBitCount = 0
   var @varList varList = []
-  var @varMap varMap = []
+  var @varMap varMap = ()
   self.mFormulaArgumentList.analyze (!inDomainMap, !?varMap, !?varList, !?totalBitCount)
 //--- Compute expression
   switch self.mKind

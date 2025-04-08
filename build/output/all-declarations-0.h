@@ -78,14 +78,18 @@ class GGS__32_lstringlist : public AC_GALGAS_list {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS__32_lstringlist inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS__32_lstringlist inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_lstring & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_lstring & inOperand1
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS__32_lstringlist_2E_element & inOperand
+                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS__32_lstringlist add_operation (const GGS__32_lstringlist & inOperand,
                                                               Compiler * inCompiler
@@ -168,14 +172,9 @@ class GGS__32_lstringlist : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS__32_lstringlist_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator__32_lstringlist ;
   friend class DownEnumerator__32_lstringlist ;
@@ -265,6 +264,7 @@ class GGS__32_lstringlist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -503,6 +503,7 @@ class GGS_bddType : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -580,6 +581,7 @@ class GGS_bddType_2E_boolArray : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -590,9 +592,7 @@ class GGS_bddType_2E_boolArray : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bddType_2E_boolArray ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: bddType.boolArray? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bddType_2E_boolArray_3F_ : public AC_GALGAS_root {
@@ -657,6 +657,7 @@ class GGS_bddType_2E_boolArray_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -735,6 +736,7 @@ class GGS_bddType_2E_namedType : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -745,9 +747,7 @@ class GGS_bddType_2E_namedType : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bddType_2E_namedType ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: bddType.namedType? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bddType_2E_namedType_3F_ : public AC_GALGAS_root {
@@ -812,6 +812,7 @@ class GGS_bddType_2E_namedType_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -893,14 +894,18 @@ class GGS_domainFieldList : public AC_GALGAS_list {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_domainFieldList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_domainFieldList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_bddType & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_bddType & inOperand1
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_domainFieldList_2E_element & inOperand
+                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_domainFieldList add_operation (const GGS_domainFieldList & inOperand,
                                                               Compiler * inCompiler
@@ -983,14 +988,9 @@ class GGS_domainFieldList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_domainFieldList_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_domainFieldList ;
   friend class DownEnumerator_domainFieldList ;
@@ -1080,6 +1080,7 @@ class GGS_domainFieldList_2E_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1175,6 +1176,7 @@ class GGS_domainDeclarationType : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1252,6 +1254,7 @@ class GGS_domainDeclarationType_2E_record : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1262,9 +1265,7 @@ class GGS_domainDeclarationType_2E_record : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainDeclarationType_2E_record ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: domainDeclarationType.record? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_domainDeclarationType_2E_record_3F_ : public AC_GALGAS_root {
@@ -1329,6 +1330,7 @@ class GGS_domainDeclarationType_2E_record_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1407,6 +1409,7 @@ class GGS_domainDeclarationType_2E_type : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1417,9 +1420,7 @@ class GGS_domainDeclarationType_2E_type : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainDeclarationType_2E_type ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: domainDeclarationType.type? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_domainDeclarationType_2E_type_3F_ : public AC_GALGAS_root {
@@ -1484,6 +1485,7 @@ class GGS_domainDeclarationType_2E_type_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1565,14 +1567,18 @@ class GGS_domainDeclarationList : public AC_GALGAS_list {
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_domainDeclarationList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_domainDeclarationList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_domainDeclarationType & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_domainDeclarationType & inOperand1
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_domainDeclarationList_2E_element & inOperand
+                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_domainDeclarationList add_operation (const GGS_domainDeclarationList & inOperand,
                                                                     Compiler * inCompiler
@@ -1655,14 +1661,9 @@ class GGS_domainDeclarationList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_domainDeclarationList_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_domainDeclarationList ;
   friend class DownEnumerator_domainDeclarationList ;
@@ -1753,6 +1754,7 @@ class GGS_domainDeclarationList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1838,18 +1840,6 @@ class GGS_recordDomainMap : public AC_GALGAS_map {
   public: static class GGS_recordDomainMap class_func_mapWithMapToOverride (const class GGS_recordDomainMap & inOperand0
                                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_uint & inOperand1,
-                                                     const class GGS_uint & inOperand2,
-                                                     const class GGS_recordDomainMap & inOperand3,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_recordDomainMap add_operation (const GGS_recordDomainMap & inOperand,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
@@ -1908,17 +1898,12 @@ class GGS_recordDomainMap : public AC_GALGAS_map {
                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
   public: VIRTUAL_IN_DEBUG cMapElement_recordDomainMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                             const GGS_string & inKey
                                                                                             COMMA_LOCATION_ARGS) ;
-
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_recordDomainMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class UpEnumerator_recordDomainMap ;
@@ -1931,9 +1916,7 @@ class GGS_recordDomainMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_recordDomainMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@recordDomainMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_recordDomainMap : public cMapElement {
@@ -2068,6 +2051,7 @@ class GGS_recordDomainMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2078,9 +2062,7 @@ class GGS_recordDomainMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_recordDomainMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: recordDomainMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_recordDomainMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -2145,6 +2127,7 @@ class GGS_recordDomainMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2229,17 +2212,6 @@ class GGS_domainMap : public AC_GALGAS_map {
   public: static class GGS_domainMap class_func_mapWithMapToOverride (const class GGS_domainMap & inOperand0
                                                                       COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_uint & inOperand1,
-                                                     const class GGS_recordDomainMap & inOperand2,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_domainMap add_operation (const GGS_domainMap & inOperand,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
@@ -2287,17 +2259,12 @@ class GGS_domainMap : public AC_GALGAS_map {
                                                                                   COMMA_LOCATION_ARGS) const ;
 
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
   public: VIRTUAL_IN_DEBUG cMapElement_domainMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                       const GGS_string & inKey
                                                                                       COMMA_LOCATION_ARGS) ;
-
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_domainMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class UpEnumerator_domainMap ;
@@ -2310,9 +2277,7 @@ class GGS_domainMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@domainMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_domainMap : public cMapElement {
@@ -2433,6 +2398,7 @@ class GGS_domainMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2443,9 +2409,7 @@ class GGS_domainMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_domainMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: domainMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_domainMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -2510,6 +2474,7 @@ class GGS_domainMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2606,15 +2571,19 @@ class GGS_varList : public AC_GALGAS_list {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_varList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_varList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_string & inOperand0,
-                                                     const class GGS_uint & inOperand1,
-                                                     const class GGS_uint & inOperand2
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_string & inOperand0,
+                                                    const class GGS_uint & inOperand1,
+                                                    const class GGS_uint & inOperand2
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_varList_2E_element & inOperand
+                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_varList add_operation (const GGS_varList & inOperand,
                                                       Compiler * inCompiler
@@ -2713,14 +2682,9 @@ class GGS_varList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_varList_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_varList ;
   friend class DownEnumerator_varList ;
@@ -2823,6 +2787,7 @@ class GGS_varList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2908,18 +2873,6 @@ class GGS_varMap : public AC_GALGAS_map {
   public: static class GGS_varMap class_func_mapWithMapToOverride (const class GGS_varMap & inOperand0
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_uint & inOperand1,
-                                                     const class GGS_uint & inOperand2,
-                                                     const class GGS_recordDomainMap & inOperand3,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_varMap add_operation (const GGS_varMap & inOperand,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
@@ -2978,17 +2931,12 @@ class GGS_varMap : public AC_GALGAS_map {
                                                                                COMMA_LOCATION_ARGS) const ;
 
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
   public: VIRTUAL_IN_DEBUG cMapElement_varMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                    const GGS_string & inKey
                                                                                    COMMA_LOCATION_ARGS) ;
-
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_varMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class UpEnumerator_varMap ;
@@ -3001,9 +2949,7 @@ class GGS_varMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@varMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_varMap : public cMapElement {
@@ -3138,6 +3084,7 @@ class GGS_varMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3148,9 +3095,7 @@ class GGS_varMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: varMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_varMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -3215,6 +3160,7 @@ class GGS_varMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3316,6 +3262,7 @@ class GGS_formulaKind : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3393,6 +3340,7 @@ class GGS_formulaKind_2E_fixedPoint : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3403,9 +3351,7 @@ class GGS_formulaKind_2E_fixedPoint : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaKind_2E_fixedPoint ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: formulaKind.fixedPoint? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_formulaKind_2E_fixedPoint_3F_ : public AC_GALGAS_root {
@@ -3471,6 +3417,7 @@ class GGS_formulaKind_2E_fixedPoint_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3481,9 +3428,7 @@ class GGS_formulaKind_2E_fixedPoint_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaKind_2E_fixedPoint_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractFormula reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractFormula : public AC_GALGAS_reference_class {
@@ -3520,6 +3465,7 @@ class GGS_abstractFormula : public AC_GALGAS_reference_class {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3530,9 +3476,7 @@ class GGS_abstractFormula : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractFormula ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @abstractFormula class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_abstractFormula : public acStrongPtr_class {
@@ -3570,9 +3514,7 @@ class cPtr_abstractFormula : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @expression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_expression : public AC_GALGAS_reference_class {
@@ -3609,6 +3551,7 @@ class GGS_expression : public AC_GALGAS_reference_class {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3619,9 +3562,7 @@ class GGS_expression : public AC_GALGAS_reference_class {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @expression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_expression : public acStrongPtr_class {
@@ -3660,9 +3601,7 @@ class cPtr_expression : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @abstractFormula_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_abstractFormula_2E_weak : public AC_GALGAS_weak_reference {
@@ -3738,6 +3677,7 @@ class GGS_abstractFormula_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3824,18 +3764,6 @@ class GGS_computedFormulaMap : public AC_GALGAS_map {
   public: static class GGS_computedFormulaMap class_func_mapWithMapToOverride (const class GGS_computedFormulaMap & inOperand0
                                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_varList & inOperand1,
-                                                     const class GGS_uint & inOperand2,
-                                                     const class GGS_binaryset & inOperand3,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_computedFormulaMap add_operation (const GGS_computedFormulaMap & inOperand,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
@@ -3894,17 +3822,12 @@ class GGS_computedFormulaMap : public AC_GALGAS_map {
                                                                                            COMMA_LOCATION_ARGS) const ;
 
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
   public: VIRTUAL_IN_DEBUG cMapElement_computedFormulaMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                                const GGS_string & inKey
                                                                                                COMMA_LOCATION_ARGS) ;
-
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_computedFormulaMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class UpEnumerator_computedFormulaMap ;
@@ -3917,9 +3840,7 @@ class GGS_computedFormulaMap : public AC_GALGAS_map {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_computedFormulaMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: class for element of '@computedFormulaMap' map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_computedFormulaMap : public cMapElement {
@@ -4054,6 +3975,7 @@ class GGS_computedFormulaMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4064,9 +3986,7 @@ class GGS_computedFormulaMap_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_computedFormulaMap_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: computedFormulaMap.element? optional
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_computedFormulaMap_2E_element_3F_ : public AC_GALGAS_root {
@@ -4132,6 +4052,7 @@ class GGS_computedFormulaMap_2E_element_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4142,9 +4063,7 @@ class GGS_computedFormulaMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_computedFormulaMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @setting_5F_nodeHashMapSize reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_setting_5F_nodeHashMapSize : public GGS_abstractFormula {
@@ -4190,6 +4109,7 @@ class GGS_setting_5F_nodeHashMapSize : public GGS_abstractFormula {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4200,9 +4120,7 @@ class GGS_setting_5F_nodeHashMapSize : public GGS_abstractFormula {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @setting_nodeHashMapSize class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
@@ -4248,9 +4166,7 @@ class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @setting_5F_nodeHashMapSize_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_setting_5F_nodeHashMapSize_2E_weak : public GGS_abstractFormula_2E_weak {
@@ -4327,6 +4243,7 @@ class GGS_setting_5F_nodeHashMapSize_2E_weak : public GGS_abstractFormula_2E_wea
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4337,9 +4254,7 @@ class GGS_setting_5F_nodeHashMapSize_2E_weak : public GGS_abstractFormula_2E_wea
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @setting_5F_andCacheMapSize reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_setting_5F_andCacheMapSize : public GGS_abstractFormula {
@@ -4385,6 +4300,7 @@ class GGS_setting_5F_andCacheMapSize : public GGS_abstractFormula {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4395,9 +4311,7 @@ class GGS_setting_5F_andCacheMapSize : public GGS_abstractFormula {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @setting_andCacheMapSize class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
@@ -4443,9 +4357,7 @@ class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @setting_5F_andCacheMapSize_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_setting_5F_andCacheMapSize_2E_weak : public GGS_abstractFormula_2E_weak {
@@ -4522,6 +4434,7 @@ class GGS_setting_5F_andCacheMapSize_2E_weak : public GGS_abstractFormula_2E_wea
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4532,9 +4445,7 @@ class GGS_setting_5F_andCacheMapSize_2E_weak : public GGS_abstractFormula_2E_wea
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @dumpFormula reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_dumpFormula : public GGS_abstractFormula {
@@ -4580,6 +4491,7 @@ class GGS_dumpFormula : public GGS_abstractFormula {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4590,9 +4502,7 @@ class GGS_dumpFormula : public GGS_abstractFormula {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dumpFormula ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @dumpFormula class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_dumpFormula : public cPtr_abstractFormula {
@@ -4638,9 +4548,7 @@ class cPtr_dumpFormula : public cPtr_abstractFormula {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @dumpFormula_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_dumpFormula_2E_weak : public GGS_abstractFormula_2E_weak {
@@ -4717,6 +4625,7 @@ class GGS_dumpFormula_2E_weak : public GGS_abstractFormula_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4727,9 +4636,7 @@ class GGS_dumpFormula_2E_weak : public GGS_abstractFormula_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dumpFormula_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @graphvizFormula reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_graphvizFormula : public GGS_abstractFormula {
@@ -4775,6 +4682,7 @@ class GGS_graphvizFormula : public GGS_abstractFormula {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4785,9 +4693,7 @@ class GGS_graphvizFormula : public GGS_abstractFormula {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphvizFormula ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @graphvizFormula class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_graphvizFormula : public cPtr_abstractFormula {
@@ -4833,9 +4739,7 @@ class cPtr_graphvizFormula : public cPtr_abstractFormula {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @graphvizFormula_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_graphvizFormula_2E_weak : public GGS_abstractFormula_2E_weak {
@@ -4912,6 +4816,7 @@ class GGS_graphvizFormula_2E_weak : public GGS_abstractFormula_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4922,9 +4827,7 @@ class GGS_graphvizFormula_2E_weak : public GGS_abstractFormula_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphvizFormula_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @expression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_expression_2E_weak : public AC_GALGAS_weak_reference {
@@ -5001,6 +4904,7 @@ class GGS_expression_2E_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5011,9 +4915,7 @@ class GGS_expression_2E_weak : public AC_GALGAS_weak_reference {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @varInExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_varInExpression : public GGS_expression {
@@ -5059,6 +4961,7 @@ class GGS_varInExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5069,9 +4972,7 @@ class GGS_varInExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @varInExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_varInExpression : public cPtr_expression {
@@ -5118,9 +5019,7 @@ class cPtr_varInExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @varInExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_varInExpression_2E_weak : public GGS_expression_2E_weak {
@@ -5197,6 +5096,7 @@ class GGS_varInExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5207,9 +5107,7 @@ class GGS_varInExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @varBitInExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_varBitInExpression : public GGS_expression {
@@ -5260,6 +5158,7 @@ class GGS_varBitInExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5270,9 +5169,7 @@ class GGS_varBitInExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varBitInExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @varBitInExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_varBitInExpression : public cPtr_expression {
@@ -5322,9 +5219,7 @@ class cPtr_varBitInExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @varBitInExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_varBitInExpression_2E_weak : public GGS_expression_2E_weak {
@@ -5401,6 +5296,7 @@ class GGS_varBitInExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5411,9 +5307,7 @@ class GGS_varBitInExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varBitInExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @andExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_andExpression : public GGS_expression {
@@ -5464,6 +5358,7 @@ class GGS_andExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5474,9 +5369,7 @@ class GGS_andExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @andExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_andExpression : public cPtr_expression {
@@ -5526,9 +5419,7 @@ class cPtr_andExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @andExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_andExpression_2E_weak : public GGS_expression_2E_weak {
@@ -5605,6 +5496,7 @@ class GGS_andExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5615,9 +5507,7 @@ class GGS_andExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @orExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_orExpression : public GGS_expression {
@@ -5668,6 +5558,7 @@ class GGS_orExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5678,9 +5569,7 @@ class GGS_orExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @orExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_orExpression : public cPtr_expression {
@@ -5730,9 +5619,7 @@ class cPtr_orExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @orExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_orExpression_2E_weak : public GGS_expression_2E_weak {
@@ -5809,6 +5696,7 @@ class GGS_orExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5819,9 +5707,7 @@ class GGS_orExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @xorExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_xorExpression : public GGS_expression {
@@ -5872,6 +5758,7 @@ class GGS_xorExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5882,9 +5769,7 @@ class GGS_xorExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @xorExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_xorExpression : public cPtr_expression {
@@ -5934,9 +5819,7 @@ class cPtr_xorExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @xorExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_xorExpression_2E_weak : public GGS_expression_2E_weak {
@@ -6013,6 +5896,7 @@ class GGS_xorExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6023,9 +5907,7 @@ class GGS_xorExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @equalExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_equalExpression : public GGS_expression {
@@ -6076,6 +5958,7 @@ class GGS_equalExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6086,9 +5969,7 @@ class GGS_equalExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equalExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @equalExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_equalExpression : public cPtr_expression {
@@ -6138,9 +6019,7 @@ class cPtr_equalExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @equalExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_equalExpression_2E_weak : public GGS_expression_2E_weak {
@@ -6217,6 +6096,7 @@ class GGS_equalExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6227,9 +6107,7 @@ class GGS_equalExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equalExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @notEqualExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_notEqualExpression : public GGS_expression {
@@ -6280,6 +6158,7 @@ class GGS_notEqualExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6290,9 +6169,7 @@ class GGS_notEqualExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notEqualExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @notEqualExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_notEqualExpression : public cPtr_expression {
@@ -6342,9 +6219,7 @@ class cPtr_notEqualExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @notEqualExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_notEqualExpression_2E_weak : public GGS_expression_2E_weak {
@@ -6421,6 +6296,7 @@ class GGS_notEqualExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6431,9 +6307,7 @@ class GGS_notEqualExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notEqualExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @impliesExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_impliesExpression : public GGS_expression {
@@ -6484,6 +6358,7 @@ class GGS_impliesExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6494,9 +6369,7 @@ class GGS_impliesExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_impliesExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @impliesExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_impliesExpression : public cPtr_expression {
@@ -6546,9 +6419,7 @@ class cPtr_impliesExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @impliesExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_impliesExpression_2E_weak : public GGS_expression_2E_weak {
@@ -6625,6 +6496,7 @@ class GGS_impliesExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6635,9 +6507,7 @@ class GGS_impliesExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_impliesExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @complementExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_complementExpression : public GGS_expression {
@@ -6683,6 +6553,7 @@ class GGS_complementExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6693,9 +6564,7 @@ class GGS_complementExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_complementExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @complementExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_complementExpression : public cPtr_expression {
@@ -6742,9 +6611,7 @@ class cPtr_complementExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @complementExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_complementExpression_2E_weak : public GGS_expression_2E_weak {
@@ -6821,6 +6688,7 @@ class GGS_complementExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6831,9 +6699,7 @@ class GGS_complementExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_complementExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @trueExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_trueExpression : public GGS_expression {
@@ -6874,6 +6740,7 @@ class GGS_trueExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6884,9 +6751,7 @@ class GGS_trueExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @trueExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_trueExpression : public cPtr_expression {
@@ -6928,9 +6793,7 @@ class cPtr_trueExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @trueExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_trueExpression_2E_weak : public GGS_expression_2E_weak {
@@ -7007,6 +6870,7 @@ class GGS_trueExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7017,9 +6881,7 @@ class GGS_trueExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @falseExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_falseExpression : public GGS_expression {
@@ -7060,6 +6922,7 @@ class GGS_falseExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7070,9 +6933,7 @@ class GGS_falseExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @falseExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_falseExpression : public cPtr_expression {
@@ -7114,9 +6975,7 @@ class cPtr_falseExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @falseExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_falseExpression_2E_weak : public GGS_expression_2E_weak {
@@ -7192,6 +7051,7 @@ class GGS_falseExpression_2E_weak : public GGS_expression_2E_weak {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7273,14 +7133,18 @@ class GGS_formulaParameterListInExpression : public AC_GALGAS_list {
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_formulaParameterListInExpression inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_formulaParameterListInExpression inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_lstringlist & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_lstring & inOperand0,
+                                                    const class GGS_lstringlist & inOperand1
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_formulaParameterListInExpression_2E_element & inOperand
+                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_formulaParameterListInExpression add_operation (const GGS_formulaParameterListInExpression & inOperand,
                                                                                Compiler * inCompiler
@@ -7363,14 +7227,9 @@ class GGS_formulaParameterListInExpression : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_formulaParameterListInExpression_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_formulaParameterListInExpression ;
   friend class DownEnumerator_formulaParameterListInExpression ;
@@ -7461,6 +7320,7 @@ class GGS_formulaParameterListInExpression_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7471,9 +7331,7 @@ class GGS_formulaParameterListInExpression_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @formulaInExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_formulaInExpression : public GGS_expression {
@@ -7524,6 +7382,7 @@ class GGS_formulaInExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7534,9 +7393,7 @@ class GGS_formulaInExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaInExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @formulaInExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_formulaInExpression : public cPtr_expression {
@@ -7586,9 +7443,7 @@ class cPtr_formulaInExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @formulaInExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_formulaInExpression_2E_weak : public GGS_expression_2E_weak {
@@ -7665,6 +7520,7 @@ class GGS_formulaInExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7675,9 +7531,7 @@ class GGS_formulaInExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formulaInExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @existInExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_existInExpression : public GGS_expression {
@@ -7728,6 +7582,7 @@ class GGS_existInExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7738,9 +7593,7 @@ class GGS_existInExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_existInExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @existInExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_existInExpression : public cPtr_expression {
@@ -7790,9 +7643,7 @@ class cPtr_existInExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @existInExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_existInExpression_2E_weak : public GGS_expression_2E_weak {
@@ -7869,6 +7720,7 @@ class GGS_existInExpression_2E_weak : public GGS_expression_2E_weak {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7879,9 +7731,7 @@ class GGS_existInExpression_2E_weak : public GGS_expression_2E_weak {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_existInExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @forAllInExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_forAllInExpression : public GGS_expression {
@@ -7932,6 +7782,7 @@ class GGS_forAllInExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7942,9 +7793,7 @@ class GGS_forAllInExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forAllInExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @forAllInExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_forAllInExpression : public cPtr_expression {
@@ -7994,9 +7843,7 @@ class cPtr_forAllInExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @forAllInExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_forAllInExpression_2E_weak : public GGS_expression_2E_weak {
@@ -8072,6 +7919,7 @@ class GGS_forAllInExpression_2E_weak : public GGS_expression_2E_weak {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8169,6 +8017,7 @@ class GGS_comparison : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8179,9 +8028,7 @@ class GGS_comparison : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparison ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @comparisonWithConstantInExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_comparisonWithConstantInExpression : public GGS_expression {
@@ -8242,6 +8089,7 @@ class GGS_comparisonWithConstantInExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8252,9 +8100,7 @@ class GGS_comparisonWithConstantInExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonWithConstantInExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @comparisonWithConstantInExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
@@ -8310,9 +8156,7 @@ class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @comparisonWithConstantInExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_comparisonWithConstantInExpression_2E_weak : public GGS_expression_2E_weak {
@@ -8389,6 +8233,7 @@ class GGS_comparisonWithConstantInExpression_2E_weak : public GGS_expression_2E_
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8399,9 +8244,7 @@ class GGS_comparisonWithConstantInExpression_2E_weak : public GGS_expression_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonWithConstantInExpression_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @variableComparisonInExpression reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_variableComparisonInExpression : public GGS_expression {
@@ -8467,6 +8310,7 @@ class GGS_variableComparisonInExpression : public GGS_expression {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8477,9 +8321,7 @@ class GGS_variableComparisonInExpression : public GGS_expression {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableComparisonInExpression ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @variableComparisonInExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_variableComparisonInExpression : public cPtr_expression {
@@ -8538,9 +8380,7 @@ class cPtr_variableComparisonInExpression : public cPtr_expression {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @variableComparisonInExpression_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_variableComparisonInExpression_2E_weak : public GGS_expression_2E_weak {
@@ -8616,6 +8456,7 @@ class GGS_variableComparisonInExpression_2E_weak : public GGS_expression_2E_weak
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8899,9 +8740,7 @@ class cParser_kerbdd_5F_syntax {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @assignmentFormula reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_assignmentFormula : public GGS_abstractFormula {
@@ -8962,6 +8801,7 @@ class GGS_assignmentFormula : public GGS_abstractFormula {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8972,9 +8812,7 @@ class GGS_assignmentFormula : public GGS_abstractFormula {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentFormula ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @assignmentFormula class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_assignmentFormula : public cPtr_abstractFormula {
@@ -9095,13 +8933,17 @@ class GGS_formulaList : public AC_GALGAS_list {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_formulaList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void plusAssignOperation (const GGS_formulaList inOperand,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_abstractFormula & inOperand0
-                                                     COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void addAssignOperation (const class GGS_abstractFormula & inOperand0
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: VIRTUAL_IN_DEBUG void plusPlusAssignOperation (const GGS_formulaList_2E_element & inOperand
+                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GGS_formulaList add_operation (const GGS_formulaList & inOperand,
                                                           Compiler * inCompiler
@@ -9168,14 +9010,9 @@ class GGS_formulaList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_formulaList_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_formulaList ;
   friend class DownEnumerator_formulaList ;
@@ -9262,6 +9099,7 @@ class GGS_ast : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9339,6 +9177,7 @@ class GGS_formulaList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
+
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9362,9 +9201,7 @@ void callExtensionMethod_analyzeFormula (class cPtr_abstractFormula * inObject,
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @assignmentFormula_2E_weak weak reference class
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_assignmentFormula_2E_weak : public GGS_abstractFormula_2E_weak {
@@ -9440,6 +9277,7 @@ class GGS_assignmentFormula_2E_weak : public GGS_abstractFormula_2E_weak {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
