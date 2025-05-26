@@ -2249,38 +2249,38 @@ void cPtr_graphvizFormula::method_analyzeFormula (const GGS_string constinArgume
   GGS_uint joker_1702 ; // Joker input parameter
   ioArgument_ioComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_1693, joker_1702, var_result_1711, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 37)) ;
   const GGS_graphvizFormula temp_1 = this ;
-  GGS_string var_filePath_1725 = constinArgument_inSourceFilePath.getter_stringByDeletingPathExtension (SOURCE_FILE ("formula-graphviz.ggs", 38)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 38)).add_operation (temp_1.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 38)).add_operation (GGS_string (".dot"), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 38)) ;
+  GGS_string var_filePath_1725 = constinArgument_inSourceFilePath.getter_deletingPathExtension (SOURCE_FILE ("formula-graphviz.ggs", 38)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 38)).add_operation (temp_1.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 38)).add_operation (GGS_string (".dot"), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 38)) ;
   {
   const GGS_graphvizFormula temp_2 = this ;
   routine_println_3F_ (GGS_string ("Graphviz $").add_operation (temp_2.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 39)).add_operation (GGS_string (" -> "), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 39)).add_operation (var_filePath_1725, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 39)), inCompiler  COMMA_SOURCE_FILE ("formula-graphviz.ggs", 39)) ;
   }
   GGS_stringlist temp_3 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 40)) ;
-  GGS_stringlist var_bitNameList_1904 = temp_3 ;
-  DownEnumerator_varList enumerator_1943 (var_varList_1693) ;
-  while (enumerator_1943.hasCurrentObject ()) {
+  GGS_stringlist var_bitNameList_1896 = temp_3 ;
+  DownEnumerator_varList enumerator_1935 (var_varList_1693) ;
+  while (enumerator_1935.hasCurrentObject ()) {
     GalgasBool test_4 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_4) {
-      test_4 = GGS_bool (ComparisonKind::equal, enumerator_1943.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      test_4 = GGS_bool (ComparisonKind::equal, enumerator_1935.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_4) {
         {
-        var_bitNameList_1904.setter_append (enumerator_1943.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 43)) ;
+        var_bitNameList_1896.setter_append (enumerator_1935.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 43)) ;
         }
       }
     }
     if (GalgasBool::boolFalse == test_4) {
-      UpEnumerator_range enumerator_2063 (GGS_range (GGS_uint (uint32_t (0U)), enumerator_1943.current_mBitCount (HERE).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 45)))) ;
-      while (enumerator_2063.hasCurrentObject ()) {
+      UpEnumerator_range enumerator_2055 (GGS_range (GGS_uint (uint32_t (0U)), enumerator_1935.current_mBitCount (HERE).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 45)))) ;
+      while (enumerator_2055.hasCurrentObject ()) {
         {
-        var_bitNameList_1904.setter_append (enumerator_1943.current_mVarName (HERE).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)).add_operation (enumerator_2063.current (HERE).getter_string (SOURCE_FILE ("formula-graphviz.ggs", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)) ;
+        var_bitNameList_1896.setter_append (enumerator_1935.current_mVarName (HERE).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)).add_operation (enumerator_2055.current (HERE).getter_string (SOURCE_FILE ("formula-graphviz.ggs", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)) ;
         }
-        enumerator_2063.gotoNextObject () ;
+        enumerator_2055.gotoNextObject () ;
       }
     }
-    enumerator_1943.gotoNextObject () ;
+    enumerator_1935.gotoNextObject () ;
   }
-  GGS_string var_s_2156 = var_result_1711.getter_graphviz (var_bitNameList_1904 COMMA_SOURCE_FILE ("formula-graphviz.ggs", 50)) ;
-  GGS_bool joker_2240 ; // Joker input parameter
-  var_s_2156.method_writeToFileWhenDifferentContents (var_filePath_1725, joker_2240, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 51)) ;
+  GGS_string var_s_2148 = var_result_1711.getter_graphviz (var_bitNameList_1896 COMMA_SOURCE_FILE ("formula-graphviz.ggs", 50)) ;
+  GGS_bool joker_2232 ; // Joker input parameter
+  var_s_2148.method_writeToFileWhenDifferentContents (var_filePath_1725, joker_2232, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 51)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
