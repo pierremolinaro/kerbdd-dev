@@ -2107,7 +2107,7 @@ void cPtr_assignmentFormula::method_analyzeFormula (const GGS_string /* constinA
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("formula-assignment.ggs", 102)) ;
           }
           if (loop_3934) {
-            variant_3934 -- ;
+            variant_3934 -= 1 ;
             var_iterationCount_3911.plusAssignOperation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)) ;
             const GGS_assignmentFormula temp_10 = this ;
             GGS_binaryset var_r_4004 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_10.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_2800, var_totalBitCount_2740, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 104)) ;
