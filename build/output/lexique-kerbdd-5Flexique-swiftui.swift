@@ -7,7 +7,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
-import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
@@ -166,7 +165,7 @@ struct SettingViewFor_kerbdd_lexique : View {
 
 //--------------------------------------------------------------------------------------------------
 
-final class ScannerFor_kerbdd_lexique : SWIFT_Scanner {
+class ScannerFor_kerbdd_lexique : SWIFT_Scanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -373,50 +372,50 @@ final class ScannerFor_kerbdd_lexique : SWIFT_Scanner {
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
-  private var mLineHeight : Int = 12
-  private var mDefaultColor : Color = .black
-  private var mColorFor_keywordsStyle : Color = .black
-  private var mBoldFor_keywordsStyle : Bool = false
-  private var mItalicFor_keywordsStyle : Bool = false
-  private var mColorFor_integerStyle : Color = .black
-  private var mBoldFor_integerStyle : Bool = false
-  private var mItalicFor_integerStyle : Bool = false
-  private var mColorFor_stringStyle : Color = .black
-  private var mBoldFor_stringStyle : Bool = false
-  private var mItalicFor_stringStyle : Bool = false
-  private var mColorFor_delimitersStyle : Color = .black
-  private var mBoldFor_delimitersStyle : Bool = false
-  private var mItalicFor_delimitersStyle : Bool = false
-  private var mColorFor_commentStyle : Color = .black
-  private var mBoldFor_commentStyle : Bool = false
-  private var mItalicFor_commentStyle : Bool = false
-  private var mColorFor_lexical_error : Color = .red
-  private var mBoldFor_lexical_error : Bool = false
-  private var mItalicFor_lexical_error : Bool = false
-  private var mColorFor_template : Color = .gray
-  private var mBoldFor_template : Bool = false
-  private var mItalicFor_template : Bool = false
-  private var mTokenAttributeArray = [[NSAttributedString.Key : Any]?] ()
+  final var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
+  final var mLineHeight : Int = 12
+  final var mDefaultColor : Color = .black
+  final var mColorFor_keywordsStyle : Color = .black
+  final var mBoldFor_keywordsStyle : Bool = false
+  final var mItalicFor_keywordsStyle : Bool = false
+  final var mColorFor_integerStyle : Color = .black
+  final var mBoldFor_integerStyle : Bool = false
+  final var mItalicFor_integerStyle : Bool = false
+  final var mColorFor_stringStyle : Color = .black
+  final var mBoldFor_stringStyle : Bool = false
+  final var mItalicFor_stringStyle : Bool = false
+  final var mColorFor_delimitersStyle : Color = .black
+  final var mBoldFor_delimitersStyle : Bool = false
+  final var mItalicFor_delimitersStyle : Bool = false
+  final var mColorFor_commentStyle : Color = .black
+  final var mBoldFor_commentStyle : Bool = false
+  final var mItalicFor_commentStyle : Bool = false
+  final var mColorFor_lexical_error : Color = .red
+  final var mBoldFor_lexical_error : Bool = false
+  final var mItalicFor_lexical_error : Bool = false
+  final var mColorFor_template : Color = .gray
+  final var mBoldFor_template : Bool = false
+  final var mItalicFor_template : Bool = false
+  final var mTokenAttributeArray = [[NSAttributedString.Key : Any]?] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
+  func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
     ioStyleDidChange = false
     let ud = UserDefaults.standard
-    if let s = ud.string (forKey: "FontFor_galgasScanner3"), let v = CustomFont (rawValue: s) {
+    if let s = ud.string (forKey: "FontFor_kerbdd_lexique"), let v = CustomFont (rawValue: s) {
       if self.mFont != v {
         self.mFont = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "LineHeightFor_galgasScanner3"), let v = Int (s) {
+    if let s = ud.string (forKey: "LineHeightFor_kerbdd_lexique"), let v = Int (s) {
       if self.mLineHeight != v {
         self.mLineHeight = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_galgasScanner3"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_kerbdd_lexique"), let v = Color (rawValue: s) {
       if self.mDefaultColor != v {
         self.mDefaultColor = v
         ioStyleDidChange = true
@@ -674,7 +673,7 @@ final class ScannerFor_kerbdd_lexique : SWIFT_Scanner {
       let nsString = inTextStorage.string as NSString
       let fullRange = NSRange (location: 0, length: nsString.length)
     //---- Apply default attributes
-      let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
+      let tsDelegate : (any NSTextStorageDelegate)? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
       inTextStorage.beginEditing ()
       let defaultFont = self.mFont.nsFont
@@ -795,7 +794,7 @@ final class ScannerFor_kerbdd_lexique : SWIFT_Scanner {
     let start2 = Date ()
     if modificationStart < modificationEnd {
       let modifiedRange = NSRange (location: modificationStart, length: modificationEnd - modificationStart)
-      let tsDelegate : NSTextStorageDelegate? = inTextStorage.delegate
+      let tsDelegate : (any NSTextStorageDelegate)? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
       inTextStorage.beginEditing ()
       let defaultFont = self.mFont.nsFont

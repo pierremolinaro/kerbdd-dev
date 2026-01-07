@@ -628,7 +628,7 @@ GGS__32_lstringlist GGS__32_lstringlist::extractObject (const GGS_object & inObj
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "unicode_character_cpp.h"
+#include "utf32.h"
 #include "scanner_actions.h"
 #include "LexiqueIntrospection.h"
 
@@ -727,260 +727,260 @@ String Lexique_kerbdd_5F_lexique::getMessageForTerminal (const int32_t inTermina
 
 //--- Unicode string for '$!$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__21_ = {
-  TO_UNICODE ('!'),
+  utf32 ('!'),
 } ;
 
 //--- Unicode string for '$!=$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__21__3D_ = {
-  TO_UNICODE ('!'),
-  TO_UNICODE ('='),
+  utf32 ('!'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$&$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__26_ = {
-  TO_UNICODE ('&'),
+  utf32 ('&'),
 } ;
 
 //--- Unicode string for '$($'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__28_ = {
-  TO_UNICODE ('('),
+  utf32 ('('),
 } ;
 
 //--- Unicode string for '$)$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__29_ = {
-  TO_UNICODE (')'),
+  utf32 (')'),
 } ;
 
 //--- Unicode string for '$+=$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2B__3D_ = {
-  TO_UNICODE ('+'),
-  TO_UNICODE ('='),
+  utf32 ('+'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$,$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2C_ = {
-  TO_UNICODE (','),
+  utf32 (','),
 } ;
 
 //--- Unicode string for '$-=$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2D__3D_ = {
-  TO_UNICODE ('-'),
-  TO_UNICODE ('='),
+  utf32 ('-'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$->$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2D__3E_ = {
-  TO_UNICODE ('-'),
-  TO_UNICODE ('>'),
+  utf32 ('-'),
+  utf32 ('>'),
 } ;
 
 //--- Unicode string for '$.$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2E_ = {
-  TO_UNICODE ('.'),
+  utf32 ('.'),
 } ;
 
 //--- Unicode string for '$..$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2E__2E_ = {
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
+  utf32 ('.'),
+  utf32 ('.'),
 } ;
 
 //--- Unicode string for '$:$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3A_ = {
-  TO_UNICODE (':'),
+  utf32 (':'),
 } ;
 
 //--- Unicode string for '$:=$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3A__3D_ = {
-  TO_UNICODE (':'),
-  TO_UNICODE ('='),
+  utf32 (':'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$;$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3B_ = {
-  TO_UNICODE (';'),
+  utf32 (';'),
 } ;
 
 //--- Unicode string for '$<$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3C_ = {
-  TO_UNICODE ('<'),
+  utf32 ('<'),
 } ;
 
 //--- Unicode string for '$<=$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3C__3D_ = {
-  TO_UNICODE ('<'),
-  TO_UNICODE ('='),
+  utf32 ('<'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$=$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3D_ = {
-  TO_UNICODE ('='),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$>$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3E_ = {
-  TO_UNICODE ('>'),
+  utf32 ('>'),
 } ;
 
 //--- Unicode string for '$>=$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3E__3D_ = {
-  TO_UNICODE ('>'),
-  TO_UNICODE ('='),
+  utf32 ('>'),
+  utf32 ('='),
 } ;
 
 //--- Unicode string for '$?$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3F_ = {
-  TO_UNICODE ('\?'),
+  utf32 ('\?'),
 } ;
 
 //--- Unicode string for '$[$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5B_ = {
-  TO_UNICODE ('['),
+  utf32 ('['),
 } ;
 
 //--- Unicode string for '$]$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5D_ = {
-  TO_UNICODE (']'),
+  utf32 (']'),
 } ;
 
 //--- Unicode string for '$^$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5E_ = {
-  TO_UNICODE ('^'),
+  utf32 ('^'),
 } ;
 
 //--- Unicode string for '$andCacheMapSize$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_andCacheMapSize = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('C'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('M'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('z'),
-  TO_UNICODE ('e'),
+  utf32 ('a'),
+  utf32 ('n'),
+  utf32 ('d'),
+  utf32 ('C'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('h'),
+  utf32 ('e'),
+  utf32 ('M'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('S'),
+  utf32 ('i'),
+  utf32 ('z'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$bool$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_bool = {
-  TO_UNICODE ('b'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
+  utf32 ('b'),
+  utf32 ('o'),
+  utf32 ('o'),
+  utf32 ('l'),
 } ;
 
 //--- Unicode string for '$display$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_display = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('y'),
+  utf32 ('d'),
+  utf32 ('i'),
+  utf32 ('s'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('y'),
 } ;
 
 //--- Unicode string for '$domain$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_domain = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
+  utf32 ('d'),
+  utf32 ('o'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('i'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$dump$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_dump = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
+  utf32 ('d'),
+  utf32 ('u'),
+  utf32 ('m'),
+  utf32 ('p'),
 } ;
 
 //--- Unicode string for '$false$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_false = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
+  utf32 ('f'),
+  utf32 ('a'),
+  utf32 ('l'),
+  utf32 ('s'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$graphviz$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_graphviz = {
-  TO_UNICODE ('g'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('z'),
+  utf32 ('g'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('h'),
+  utf32 ('v'),
+  utf32 ('i'),
+  utf32 ('z'),
 } ;
 
 //--- Unicode string for '$include$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_include = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('c'),
+  utf32 ('l'),
+  utf32 ('u'),
+  utf32 ('d'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$nodeHashMapSize$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_nodeHashMapSize = {
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('H'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('M'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('z'),
-  TO_UNICODE ('e'),
+  utf32 ('n'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('H'),
+  utf32 ('a'),
+  utf32 ('s'),
+  utf32 ('h'),
+  utf32 ('M'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('S'),
+  utf32 ('i'),
+  utf32 ('z'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '$true$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_true = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
+  utf32 ('t'),
+  utf32 ('r'),
+  utf32 ('u'),
+  utf32 ('e'),
 } ;
 
 //--- Unicode string for '${$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7B_ = {
-  TO_UNICODE ('{'),
+  utf32 ('{'),
 } ;
 
 //--- Unicode string for '$|$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7C_ = {
-  TO_UNICODE ('|'),
+  utf32 ('|'),
 } ;
 
 //--- Unicode string for '$}$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7D_ = {
-  TO_UNICODE ('}'),
+  utf32 ('}'),
 } ;
 
 //--- Unicode string for '$~$'
 static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7E_ = {
-  TO_UNICODE ('~'),
+  utf32 ('~'),
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1062,215 +1062,215 @@ String Lexique_kerbdd_5F_lexique::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("$$") ;
       break ;
     case kToken_identifier:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("identifier") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendChar (TO_UNICODE (' ')) ;
+      s.appendChar (utf32 ('$')) ;
+      s.appendChar (utf32 (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken_integer:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("integer") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendChar (TO_UNICODE (' ')) ;
+      s.appendChar (utf32 ('$')) ;
+      s.appendChar (utf32 (' ')) ;
       s.appendUnsigned (ptr->mLexicalAttribute_uint_33__32_value) ;
       break ;
     case kToken_literal_5F_string:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("literal_string") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendChar (TO_UNICODE (' ')) ;
+      s.appendChar (utf32 ('$')) ;
+      s.appendChar (utf32 (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken_comment:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("comment") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_nodeHashMapSize:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("nodeHashMapSize") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_andCacheMapSize:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("andCacheMapSize") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_domain:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("domain") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_bool:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("bool") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_true:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("true") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_false:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("false") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_display:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("display") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_include:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("include") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_graphviz:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("graphviz") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_dump:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("dump") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__28_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("(") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__29_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString (")") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__5B_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("[") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__5D_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("]") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__7B_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("{") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__7D_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("}") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__3A__3D_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString (":=") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__3A_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString (":") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__2E_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString (".") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__2E__2E_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("..") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__2B__3D_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("+=") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__2D__3D_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("-=") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__2D__3E_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("->") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__26_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("&") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__7C_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("|") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__5E_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("^") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__7E_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("~") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__2C_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString (",") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__3F_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("\?") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__21_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("!") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__3B_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString (";") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__3D_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("=") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__21__3D_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("!=") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__3C_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("<") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__3C__3D_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString ("<=") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__3E_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString (">") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__3E__3D_:
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       s.appendCString (">=") ;
-      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (utf32 ('$')) ;
       break ;
     default:
       break ;
@@ -1304,10 +1304,10 @@ void Lexique_kerbdd_5F_lexique::internalParseLexicalToken (cTokenFor_kerbdd_5F_l
   token.mLexicalAttribute_uint_33__32_value = 0 ;
   mTokenStartLocation = mCurrentLocation ;
   try{
-    if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
+    if (testForInputUTF32CharRange (utf32 ('a'), utf32 ('z')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('Z'))) {
       do {
         ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+        if (testForInputUTF32CharRange (utf32 ('a'), utf32 ('z')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('Z')) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
         }else{
           loop = false ;
         }
@@ -1320,12 +1320,12 @@ void Lexique_kerbdd_5F_lexique::internalParseLexicalToken (cTokenFor_kerbdd_5F_l
         token.mTokenCode = kToken_identifier ;
       }
       enterToken (token) ;
-    }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+    }else if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
       ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
       do {
-        if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
+        }else if (testForInputUTF32Char (utf32 ('_'))) {
         }else{
           loop = false ;
         }
@@ -1334,16 +1334,16 @@ void Lexique_kerbdd_5F_lexique::internalParseLexicalToken (cTokenFor_kerbdd_5F_l
       ::scanner_routine_convertDecimalStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_kerbdd_5F_lexique_decimalNumberTooLarge, gLexicalMessage_kerbdd_5F_lexique_internalError) ;
       token.mTokenCode = kToken_integer ;
       enterToken (token) ;
-    }else if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
+    }else if (testForInputUTF32Char (utf32 ('\"'))) {
       do {
-        if (testForInputUTF32Char (TO_UNICODE (' ')) || testForInputUTF32Char (TO_UNICODE ('!')) || testForInputUTF32CharRange (TO_UNICODE ('#'), TO_UNICODE (65533))) {
+        if (testForInputUTF32Char (utf32 (' ')) || testForInputUTF32Char (utf32 ('!')) || testForInputUTF32CharRange (utf32 ('#'), utf32 (65533))) {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
         }else{
           loop = false ;
         }
       }while (loop) ;
       loop = true ;
-      if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
+      if (testForInputUTF32Char (utf32 ('\"'))) {
         token.mTokenCode = kToken_literal_5F_string ;
         enterToken (token) ;
       }else{
@@ -1430,17 +1430,17 @@ void Lexique_kerbdd_5F_lexique::internalParseLexicalToken (cTokenFor_kerbdd_5F_l
     }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__21_, true)) {
       token.mTokenCode = kToken__21_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32Char (TO_UNICODE ('#'))) {
+    }else if (testForInputUTF32Char (utf32 ('#'))) {
       do {
-        if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (65533))) {
+        if (testForInputUTF32CharRange (utf32 (1), utf32 ('\t')) || testForInputUTF32Char (utf32 ('\v')) || testForInputUTF32Char (utf32 ('\f')) || testForInputUTF32CharRange (utf32 (14), utf32 (65533))) {
         }else{
           loop = false ;
         }
       }while (loop) ;
       loop = true ;
       enterDroppedTerminal (kToken_comment) ;
-    }else if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
-    }else if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
+    }else if (testForInputUTF32CharRange (utf32 (1), utf32 (' '))) {
+    }else if (testForInputUTF32Char (utf32 ('\0'))) { // End of source text ? 
       token.mTokenCode = kToken_ ; // Empty string code
     }else{ // Unknown input character
       unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
@@ -1460,10 +1460,10 @@ void Lexique_kerbdd_5F_lexique::internalParseLexicalToken (cTokenFor_kerbdd_5F_l
 bool Lexique_kerbdd_5F_lexique::parseLexicalToken (void) {
   cTokenFor_kerbdd_5F_lexique token ;
   token.mTokenCode = -1 ;
-  while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
     internalParseLexicalToken (token) ;
   }
-  if (UNICODE_VALUE (mCurrentChar) == '\0') {
+  if (mCurrentChar.u32 () == '\0') {
     token.mTokenCode = 0 ;
     enterToken (token) ;
   }
