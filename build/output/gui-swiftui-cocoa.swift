@@ -14,46 +14,55 @@ func indexingDescriptorDictionary () -> [String : String] {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   Global functions
+//   Scanner for a given extension
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func scannerFor (extension inExtension : String) -> SWIFT_Scanner? {
   var result : SWIFT_Scanner? = nil
-  if inExtension == "kerbdd" {
+  if inExtension.compare ("kerbdd", options: .caseInsensitive) == .orderedSame {
     result = ScannerFor_kerbdd_lexique ()
   }
   return result
 }
 
 //--------------------------------------------------------------------------------------------------
-
-/* @MainActor func tokenizers () -> [any SWIFT_Tokenizer_Protocol] {
-  return [
-    SettingViewFor_kerbdd_lexique ()
-  ]
-} */
-
+// Setting View
 //--------------------------------------------------------------------------------------------------
 
 struct SettingsView : View {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  enum SidebarItem {
+    case commandLineOptions
+    case kerbdd_lexique
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @State private var mSelection : SidebarItem = .commandLineOptions
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ViewBuilder var body : some View {
-    TabView {
-      SettingViewFor_kerbdd_lexique ().tabItem { Text ("Source") }
+    NavigationSplitView {
+      List(selection: self.$mSelection) {
+        Text ("Options").tag (SidebarItem.commandLineOptions)
+
+        Text ("Source").tag (SidebarItem.kerbdd_lexique)
+      }
+      .toolbar (removing: .sidebarToggle)
+    } detail: {
+      switch self.mSelection {
+        case .commandLineOptions : OptionView ()
+        case .kerbdd_lexique : SettingViewFor_kerbdd_lexique ()
+      }
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
-
-
-//--------------------------------------------------------------------------------------------------
-
-/* func buildRunOption () -> String {
-  return ""
-} */
 
 //--------------------------------------------------------------------------------------------------
 
