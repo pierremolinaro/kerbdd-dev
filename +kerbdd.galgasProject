@@ -4,24 +4,24 @@ project (2:0:0) -> "kerbdd" {
   %makefile-x86linux32-on-macosx
   %makefile-x86linux64-on-macosx
   %makefile-win32-on-macosx
-  %MacOS
+  %MacSwiftApp
   %applicationBundleBase : "fr.irccyn.molinaro"
   %codeblocks-windows
   %codeblocks-linux32
   %codeblocks-linux64
 
 #--- Source files
-  "galgas-sources/lexique.ggs"
-  "galgas-sources/kerbdd-options.ggs"
-  "galgas-sources/kerbdd-semantics.ggs"
-  "galgas-sources/domain.ggs"
-  "galgas-sources/formula-assignment.ggs"
-  "galgas-sources/setting-map.ggs"
-  "galgas-sources/formula-dump.ggs"
-  "galgas-sources/formula-graphviz.ggs"
-  "galgas-sources/expression.ggs"
-  "galgas-sources/grammar.ggs"
-  "galgas-sources/kerbdd-cocoa.ggs"
-  "galgas-sources/program.ggs"
+  "sources/lexique.ggs"
+  "sources/kerbdd-options.ggs"
+  "sources/kerbdd-semantics.ggs"
+  "sources/domain.ggs"
+  "sources/formula-assignment.ggs"
+  "sources/setting-map.ggs"
+  "sources/formula-dump.ggs"
+  "sources/formula-graphviz.ggs"
+  "sources/expression.ggs"
+  "sources/grammar.ggs"
+  "sources/kerbdd-cocoa.ggs"
+  "sources/program.ggs"
 }
 
