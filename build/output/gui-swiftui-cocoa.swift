@@ -4,9 +4,28 @@
 //--- END OF USER ZONE 1
 
 import SwiftUI
+import UniformTypeIdentifiers
+
+//--------------------------------------------------------------------------------------------------
+
+extension UTType {
+  nonisolated static let kerbdd = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".kerbdd")
+}
+
+//--------------------------------------------------------------------------------------------------
+
+extension ProjectDocument {
+  static let readableContentTypes : [UTType] = [.kerbdd]
+}
 
 //--------------------------------------------------------------------------------------------------
 //    Project file extensions
+//--------------------------------------------------------------------------------------------------
+
+let projectFileExtensions = Set (["kerbdd"])
+
+//--------------------------------------------------------------------------------------------------
+//    Indexing dictionary
 //--------------------------------------------------------------------------------------------------
 
 func indexingDescriptorDictionary () -> [String : String] {
@@ -17,9 +36,10 @@ func indexingDescriptorDictionary () -> [String : String] {
 //   Scanner for a given extension
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func scannerFor (extension inExtension : String) -> SWIFT_Scanner? {
-  var result : SWIFT_Scanner? = nil
-  if inExtension.compare ("kerbdd", options: .caseInsensitive) == .orderedSame {
+@MainActor func scannerFor (extension inExtension : String) -> AbstractScanner? {
+  var result : AbstractScanner? = nil
+  let fileExtension = inExtension.lowercased ()
+  if fileExtension == "kerbdd" {
     result = ScannerFor_kerbdd_lexique ()
   }
   return result
@@ -35,7 +55,7 @@ struct SettingsView : View {
 
   enum SidebarItem {
     case commandLineOptions
-    case kerbdd_lexique
+    case kerbdd_lexique_0
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,13 +69,13 @@ struct SettingsView : View {
       List(selection: self.$mSelection) {
         Text ("Options").tag (SidebarItem.commandLineOptions)
 
-        Text ("Source").tag (SidebarItem.kerbdd_lexique)
+        Text ("Source").tag (SidebarItem.kerbdd_lexique_0)
       }
       .toolbar (removing: .sidebarToggle)
     } detail: {
       switch self.mSelection {
         case .commandLineOptions : OptionView ()
-        case .kerbdd_lexique : SettingViewFor_kerbdd_lexique ()
+        case .kerbdd_lexique_0 : SettingViewFor_kerbdd_lexique ()
       }
     }
   }
@@ -63,6 +83,22 @@ struct SettingsView : View {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
+
+
+//--------------------------------------------------------------------------------------------------
+//   Popup list data for 'kerbdd_lexique' lexique
+//--------------------------------------------------------------------------------------------------
+
+let gPopUpData_kerbdd_lexique : [[UInt16]] = [
+
+]
+
+//--------------------------------------------------------------------------------------------------
+//   Block Comment for 'kerbdd_lexique' lexique
+//--------------------------------------------------------------------------------------------------
+
+let gBlockComment_kerbdd_lexique : String? = "#"
+
 
 //--------------------------------------------------------------------------------------------------
 

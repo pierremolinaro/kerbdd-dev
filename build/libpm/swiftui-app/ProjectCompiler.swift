@@ -1,9 +1,5 @@
-//
-//  ProjectDocumentView+compile.swift
-//  galgas-ide-swiftui
-//
+//--------------------------------------------------------------------------------------------------
 //  Created by Pierre Molinaro on 08/01/2026.
-//
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
@@ -25,11 +21,6 @@ final class ProjectCompiler : ObservableObject  {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  @Published private var mIssueArray = [SWIFT_Issue] ()
-//  @ObservationTracked var issueArray : [SWIFT_Issue] { self.mIssueArray }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   @Published private var mErrorCount = 0
   @ObservationTracked var errorCount : Int { self.mErrorCount }
 
@@ -47,18 +38,17 @@ final class ProjectCompiler : ObservableObject  {
   private var mBuildHasBeenAborted = false
   private var mBuildOutputCurrentColor = NSColor.black
   private var mBuildOutputIsBold : Bool = false
-  private var mAppendIssueCallBack : ((SWIFT_Issue) -> Void)? = nil
+  private var mAppendIssueCallBack : ((CompilationIssue) -> Void)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func compile (projectURL inProjectURL : URL,
-                appendIssueCallBack inAppendIssueCallBack : @escaping (SWIFT_Issue) -> Void ) {
+                appendIssueCallBack inAppendIssueCallBack : @escaping (CompilationIssue) -> Void ) {
     self.mIsCompilingProject = true
     self.mAppendIssueCallBack = inAppendIssueCallBack
     self.mCompileLog = NSAttributedString ("")
     self.mBuildHasBeenAborted = false
     self.mBuildOutputCurrentColor = .black
-//    self.mIssueArray.removeAll ()
     self.mErrorCount = 0
     self.mWarningCount = 0
  //--- Create task
@@ -88,7 +78,7 @@ final class ProjectCompiler : ObservableObject  {
       object: process
     )
   //--- Start process
-    process.launch ()
+    try? process.run ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -249,7 +239,7 @@ final class ProjectCompiler : ObservableObject  {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendIssue (jsonString inString : String) {
-    if let issue = SWIFT_Issue (jsonString: inString) {
+    if let issue = CompilationIssue (jsonString: inString) {
       self.appendMessageString (
         string: "\(issue.fileURL.path):\(issue.mLine):\(issue.mStartColumn)\n",
         color: issue.color,

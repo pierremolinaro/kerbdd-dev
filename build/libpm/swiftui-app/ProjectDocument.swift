@@ -1,9 +1,5 @@
-//
-//  ProjectDocument.swift
-//  galgas-ide-swiftui
-//
+//--------------------------------------------------------------------------------------------------
 //  Created by Pierre Molinaro on 11/09/2025.
-//
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
@@ -11,18 +7,7 @@ import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
-extension UTType {
-  nonisolated static let galgas3Project = UTType (exportedAs: "name.pcmolinaro.pierre.galgas-ide.galgas3Project")
-  nonisolated static let galgas4Project = UTType (exportedAs: "name.pcmolinaro.pierre.galgas-ide.galgas4Project")
-}
-
-//--------------------------------------------------------------------------------------------------
-
 struct ProjectDocument : FileDocument {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  static let readableContentTypes : [UTType] = [.galgas3Project, .galgas4Project]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MODEL
