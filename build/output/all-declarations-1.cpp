@@ -9,128 +9,128 @@
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element::GGS__32_lstringlist_2E_element (void) :
-mProperty_mValue_30_ (),
-mProperty_mValue_31_ () {
+GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (void) :
+mProperty_mParameterName (),
+mProperty_mFieldNames () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element::GGS__32_lstringlist_2E_element (const GGS__32_lstringlist_2E_element & inSource) :
-mProperty_mValue_30_ (inSource.mProperty_mValue_30_),
-mProperty_mValue_31_ (inSource.mProperty_mValue_31_) {
+GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_formulaParameterListInExpression_2E_element & inSource) :
+mProperty_mParameterName (inSource.mProperty_mParameterName),
+mProperty_mFieldNames (inSource.mProperty_mFieldNames) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element & GGS__32_lstringlist_2E_element::operator = (const GGS__32_lstringlist_2E_element & inSource) {
-  mProperty_mValue_30_ = inSource.mProperty_mValue_30_ ;
-  mProperty_mValue_31_ = inSource.mProperty_mValue_31_ ;
+GGS_formulaParameterListInExpression_2E_element & GGS_formulaParameterListInExpression_2E_element::operator = (const GGS_formulaParameterListInExpression_2E_element & inSource) {
+  mProperty_mParameterName = inSource.mProperty_mParameterName ;
+  mProperty_mFieldNames = inSource.mProperty_mFieldNames ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::init_21__21_ (const GGS_lstring & in_mValue_30_,
-                                                                             const GGS_lstring & in_mValue_31_,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__32_lstringlist_2E_element result ;
+GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::init_21__21_ (const GGS_lstring & in_mParameterName,
+                                                                                                               const GGS_lstringlist & in_mFieldNames,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formulaParameterListInExpression_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue_30_ = in_mValue_30_ ;
-  result.mProperty_mValue_31_ = in_mValue_31_ ;
+  result.mProperty_mParameterName = in_mParameterName ;
+  result.mProperty_mFieldNames = in_mFieldNames ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+void GGS_formulaParameterListInExpression_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element::GGS__32_lstringlist_2E_element (const GGS_lstring & inOperand0,
-                                                                const GGS_lstring & inOperand1) :
-mProperty_mValue_30_ (inOperand0),
-mProperty_mValue_31_ (inOperand1) {
+GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_lstring & inOperand0,
+                                                                                                  const GGS_lstringlist & inOperand1) :
+mProperty_mParameterName (inOperand0),
+mProperty_mFieldNames (inOperand1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::class_func_new (const GGS_lstring & in_mValue0,
-                                                                               const GGS_lstring & in_mValue1,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__32_lstringlist_2E_element result ;
+GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::class_func_new (const GGS_lstring & in_mParameterName,
+                                                                                                                 const GGS_lstringlist & in_mFieldNames,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formulaParameterListInExpression_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue_30_ = in_mValue0 ;
-  result.mProperty_mValue_31_ = in_mValue1 ;
+  result.mProperty_mParameterName = in_mParameterName ;
+  result.mProperty_mFieldNames = in_mFieldNames ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS__32_lstringlist_2E_element::isValid (void) const {
-  return mProperty_mValue_30_.isValid () && mProperty_mValue_31_.isValid () ;
+bool GGS_formulaParameterListInExpression_2E_element::isValid (void) const {
+  return mProperty_mParameterName.isValid () && mProperty_mFieldNames.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist_2E_element::drop (void) {
-  mProperty_mValue_30_.drop () ;
-  mProperty_mValue_31_.drop () ;
+void GGS_formulaParameterListInExpression_2E_element::drop (void) {
+  mProperty_mParameterName.drop () ;
+  mProperty_mFieldNames.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist_2E_element::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @2lstringlist.element:") ;
+void GGS_formulaParameterListInExpression_2E_element::description (String & ioString,
+                                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @formulaParameterListInExpression.element:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
-    mProperty_mValue_30_.description (ioString, inIndentation+1) ;
+    mProperty_mParameterName.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mValue_31_.description (ioString, inIndentation+1) ;
+    mProperty_mFieldNames.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @2lstringlist.element generic code implementation
+//     @formulaParameterListInExpression.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_lstringlist_2E_element ("2lstringlist.element",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ("formulaParameterListInExpression.element",
+                                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS__32_lstringlist_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__32_lstringlist_2E_element ;
+const GALGAS_TypeDescriptor * GGS_formulaParameterListInExpression_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS__32_lstringlist_2E_element::clonedObject (void) const {
+AC_GALGAS_root * GGS_formulaParameterListInExpression_2E_element::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS__32_lstringlist_2E_element (*this)) ;
+    macroMyNew (result, GGS_formulaParameterListInExpression_2E_element (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GGS__32_lstringlist_2E_element result ;
-  const GGS__32_lstringlist_2E_element * p = (const GGS__32_lstringlist_2E_element *) inObject.embeddedObject () ;
+GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                                Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GGS_formulaParameterListInExpression_2E_element result ;
+  const GGS_formulaParameterListInExpression_2E_element * p = (const GGS_formulaParameterListInExpression_2E_element *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS__32_lstringlist_2E_element *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_formulaParameterListInExpression_2E_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("2lstringlist.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("formulaParameterListInExpression.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -1432,403 +1432,1874 @@ GGS_varMap_2E_element_3F_ GGS_varMap_2E_element_3F_::extractObject (const GGS_ob
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_computedFormulaMap_2E_element::GGS_computedFormulaMap_2E_element (void) :
-mProperty_lkey (),
-mProperty_mVarList (),
-mProperty_mBitCount (),
-mProperty_mValue () {
-}
+#include "MF_MemoryControl.h"
+#include "C_galgas_CLI_Options.h"
+
+#include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_computedFormulaMap_2E_element::GGS_computedFormulaMap_2E_element (const GGS_computedFormulaMap_2E_element & inSource) :
-mProperty_lkey (inSource.mProperty_lkey),
-mProperty_mVarList (inSource.mProperty_mVarList),
-mProperty_mBitCount (inSource.mProperty_mBitCount),
-mProperty_mValue (inSource.mProperty_mValue) {
-}
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element & GGS_computedFormulaMap_2E_element::operator = (const GGS_computedFormulaMap_2E_element & inSource) {
-  mProperty_lkey = inSource.mProperty_lkey ;
-  mProperty_mVarList = inSource.mProperty_mVarList ;
-  mProperty_mBitCount = inSource.mProperty_mBitCount ;
-  mProperty_mValue = inSource.mProperty_mValue ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element GGS_computedFormulaMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                           const GGS_varList & in_mVarList,
-                                                                                           const GGS_uint & in_mBitCount,
-                                                                                           const GGS_binaryset & in_mValue,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mVarList = in_mVarList ;
-  result.mProperty_mBitCount = in_mBitCount ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
-}
-
+//
+//                             N O N    T E R M I N A L    N A M E S                                
+//
 //--------------------------------------------------------------------------------------------------
 
-void GGS_computedFormulaMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
+static const char * gNonTerminalNames_kerbdd_grammar [27] = {
+  "<start_symbol>",// Index 0
+  "<topLevelDeClaration>",// Index 1
+  "<expression>",// Index 2
+  "<comparison>",// Index 3
+  "<term>",// Index 4
+  "<factor>",// Index 5
+  "<recordFields>",// Index 6
+  "<type>",// Index 7
+  "<select_kerbdd_5F_syntax_0>",// Index 8
+  "<select_kerbdd_5F_syntax_1>",// Index 9
+  "<select_kerbdd_5F_syntax_2>",// Index 10
+  "<select_kerbdd_5F_syntax_3>",// Index 11
+  "<select_kerbdd_5F_syntax_4>",// Index 12
+  "<select_kerbdd_5F_syntax_5>",// Index 13
+  "<select_kerbdd_5F_syntax_6>",// Index 14
+  "<select_kerbdd_5F_syntax_7>",// Index 15
+  "<select_kerbdd_5F_syntax_8>",// Index 16
+  "<select_kerbdd_5F_syntax_9>",// Index 17
+  "<select_kerbdd_5F_syntax_10>",// Index 18
+  "<select_kerbdd_5F_syntax_11>",// Index 19
+  "<select_kerbdd_5F_syntax_12>",// Index 20
+  "<select_kerbdd_5F_syntax_13>",// Index 21
+  "<select_kerbdd_5F_syntax_14>",// Index 22
+  "<select_kerbdd_5F_syntax_15>",// Index 23
+  "<select_kerbdd_5F_syntax_16>",// Index 24
+  "<select_kerbdd_5F_syntax_17>",// Index 25
+  "<>"// Index 26
+} ;
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element::GGS_computedFormulaMap_2E_element (const GGS_lstring & inOperand0,
-                                                                      const GGS_varList & inOperand1,
-                                                                      const GGS_uint & inOperand2,
-                                                                      const GGS_binaryset & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mVarList (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mValue (inOperand3) {
-}
-
+//
+//                      S L R    A N A L Y Z E R    A C T I O N    T A B L E                        
+//
 //--------------------------------------------------------------------------------------------------
 
-GGS_computedFormulaMap_2E_element GGS_computedFormulaMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                                                     const GGS_varList & in_mVarList,
-                                                                                     const GGS_uint & in_mBitCount,
-                                                                                     const GGS_binaryset & in_mValue,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mVarList = in_mVarList ;
-  result.mProperty_mBitCount = in_mBitCount ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
-}
+// Action tables handle shift and reduce actions:
+//  - a shift action is (terminal_symbol, SHIFT (n)): if shifts to state n;
+//  - the accept action is (terminal_symbol, ACCEPT);
+//  - a reduce action is (terminal_symbol, REDUCE (n)); if reduces to state n.
+
+static const int32_t gActionTable_kerbdd_grammar [] = {
+// State S0 (index = 0)
+  Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (1)
+, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_SHIFT (2)
+, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_SHIFT (3)
+, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_SHIFT (4)
+, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_SHIFT (5)
+, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_SHIFT (6)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (21)
+, BOTTOM_UP_END
+// State S1 (index = 15)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (10)
+, BOTTOM_UP_END
+// State S2 (index = 18)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (11)
+, BOTTOM_UP_END
+// State S3 (index = 21)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_SHIFT (12)
+, BOTTOM_UP_END
+// State S4 (index = 24)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_SHIFT (13)
+, BOTTOM_UP_END
+// State S5 (index = 27)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (14)
+, BOTTOM_UP_END
+// State S6 (index = 30)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (15)
+, BOTTOM_UP_END
+// State S7 (index = 33)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_ACCEPT
+, BOTTOM_UP_END
+// State S8 (index = 36)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (1)
+, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_SHIFT (2)
+, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_SHIFT (3)
+, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_SHIFT (4)
+, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_SHIFT (5)
+, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_SHIFT (6)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (21)
+, BOTTOM_UP_END
+// State S9 (index = 51)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (0)
+, BOTTOM_UP_END
+// State S10 (index = 54)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (17)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (23)
+, BOTTOM_UP_END
+// State S11 (index = 59)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (20)
+, BOTTOM_UP_END
+// State S12 (index = 62)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (21)
+, BOTTOM_UP_END
+// State S13 (index = 65)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (22)
+, BOTTOM_UP_END
+// State S14 (index = 68)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (23)
+, BOTTOM_UP_END
+// State S15 (index = 71)
+, Lexique_kerbdd_5F_lexique::kToken__3A_, BOTTOM_UP_SHIFT (24)
+, BOTTOM_UP_END
+// State S16 (index = 74)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (22)
+, BOTTOM_UP_END
+// State S17 (index = 77)
+, Lexique_kerbdd_5F_lexique::kToken__3A_, BOTTOM_UP_SHIFT (25)
+, BOTTOM_UP_END
+// State S18 (index = 80)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (24)
+, BOTTOM_UP_END
+// State S19 (index = 83)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (26)
+, BOTTOM_UP_END
+// State S20 (index = 86)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (2)
+, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (2)
+, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (2)
+, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (2)
+, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (2)
+, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (2)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (2)
+, BOTTOM_UP_END
+// State S21 (index = 101)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (3)
+, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (3)
+, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (3)
+, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (3)
+, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (3)
+, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (3)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (3)
+, BOTTOM_UP_END
+// State S22 (index = 116)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (4)
+, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (4)
+, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (4)
+, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (4)
+, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (4)
+, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (4)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (4)
+, BOTTOM_UP_END
+// State S23 (index = 131)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (17)
+, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (17)
+, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (17)
+, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (17)
+, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (17)
+, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (17)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (17)
+, BOTTOM_UP_END
+// State S24 (index = 146)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (27)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (28)
+, Lexique_kerbdd_5F_lexique::kToken_bool, BOTTOM_UP_SHIFT (29)
+, BOTTOM_UP_END
+// State S25 (index = 153)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (27)
+, Lexique_kerbdd_5F_lexique::kToken_bool, BOTTOM_UP_SHIFT (29)
+, BOTTOM_UP_END
+// State S26 (index = 158)
+, Lexique_kerbdd_5F_lexique::kToken__3A__3D_, BOTTOM_UP_SHIFT (34)
+, Lexique_kerbdd_5F_lexique::kToken__2B__3D_, BOTTOM_UP_SHIFT (35)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3D_, BOTTOM_UP_SHIFT (36)
+, BOTTOM_UP_END
+// State S27 (index = 165)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (61)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (61)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (61)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (61)
+, BOTTOM_UP_END
+// State S28 (index = 174)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (17)
+, BOTTOM_UP_END
+// State S29 (index = 177)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (63)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (63)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (63)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (63)
+, Lexique_kerbdd_5F_lexique::kToken__5B_, BOTTOM_UP_SHIFT (39)
+, BOTTOM_UP_END
+// State S30 (index = 188)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (57)
+, BOTTOM_UP_END
+// State S31 (index = 191)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (41)
+, BOTTOM_UP_END
+// State S32 (index = 194)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (20)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (20)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (20)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (20)
+, BOTTOM_UP_END
+// State S33 (index = 203)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (59)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (59)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_SHIFT (42)
+, BOTTOM_UP_END
+// State S34 (index = 210)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (25)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (25)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_REDUCE (25)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_REDUCE (25)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_REDUCE (25)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_REDUCE (25)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_REDUCE (25)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_REDUCE (25)
+, BOTTOM_UP_END
+// State S35 (index = 227)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (26)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (26)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_REDUCE (26)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_REDUCE (26)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_REDUCE (26)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_REDUCE (26)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_REDUCE (26)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_REDUCE (26)
+, BOTTOM_UP_END
+// State S36 (index = 244)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (27)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (27)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_REDUCE (27)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_REDUCE (27)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_REDUCE (27)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_REDUCE (27)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_REDUCE (27)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_REDUCE (27)
+, BOTTOM_UP_END
+// State S37 (index = 261)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S38 (index = 278)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (56)
+, BOTTOM_UP_END
+// State S39 (index = 281)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_SHIFT (57)
+, BOTTOM_UP_END
+// State S40 (index = 284)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (62)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (62)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (62)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (62)
+, BOTTOM_UP_END
+// State S41 (index = 293)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (18)
+, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (18)
+, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (18)
+, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (18)
+, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (18)
+, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (18)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (18)
+, BOTTOM_UP_END
+// State S42 (index = 308)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (58)
+, BOTTOM_UP_END
+// State S43 (index = 311)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (19)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (19)
+, BOTTOM_UP_END
+// State S44 (index = 316)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (59)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (37)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (37)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (37)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (37)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (37)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (37)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (37)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (37)
+, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (60)
+, BOTTOM_UP_END
+// State S45 (index = 337)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S46 (index = 354)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S47 (index = 371)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (11)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (11)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (11)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (11)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (11)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (11)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (11)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (11)
+, BOTTOM_UP_END
+// State S48 (index = 388)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (12)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (12)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (12)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (12)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (12)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (12)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (12)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (12)
+, BOTTOM_UP_END
+// State S49 (index = 405)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (17)
+, BOTTOM_UP_END
+// State S50 (index = 408)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (17)
+, BOTTOM_UP_END
+// State S51 (index = 411)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (66)
+, BOTTOM_UP_END
+// State S52 (index = 414)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (67)
+, BOTTOM_UP_END
+// State S53 (index = 417)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (28)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (28)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_SHIFT (68)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_SHIFT (69)
+, BOTTOM_UP_END
+// State S54 (index = 426)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_SHIFT (71)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_SHIFT (72)
+, BOTTOM_UP_END
+// State S55 (index = 439)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_SHIFT (74)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_SHIFT (75)
+, BOTTOM_UP_END
+// State S56 (index = 456)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (58)
+, BOTTOM_UP_END
+// State S57 (index = 459)
+, Lexique_kerbdd_5F_lexique::kToken__5D_, BOTTOM_UP_SHIFT (77)
+, BOTTOM_UP_END
+// State S58 (index = 462)
+, Lexique_kerbdd_5F_lexique::kToken__3A_, BOTTOM_UP_SHIFT (78)
+, BOTTOM_UP_END
+// State S59 (index = 465)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (79)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (39)
+, BOTTOM_UP_END
+// State S60 (index = 470)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_SHIFT (81)
+, BOTTOM_UP_END
+// State S61 (index = 473)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (8)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (8)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (8)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (8)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (8)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (8)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (8)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (8)
+, BOTTOM_UP_END
+// State S62 (index = 490)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (82)
+, BOTTOM_UP_END
+// State S63 (index = 493)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (10)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (10)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (10)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (10)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (10)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (10)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (10)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (10)
+, BOTTOM_UP_END
+// State S64 (index = 510)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (83)
+, BOTTOM_UP_END
+// State S65 (index = 513)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (84)
+, BOTTOM_UP_END
+// State S66 (index = 516)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (45)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (45)
+, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (85)
+, Lexique_kerbdd_5F_lexique::kToken__3C__3D_, BOTTOM_UP_REDUCE (45)
+, Lexique_kerbdd_5F_lexique::kToken__3C_, BOTTOM_UP_REDUCE (45)
+, Lexique_kerbdd_5F_lexique::kToken__3E__3D_, BOTTOM_UP_REDUCE (45)
+, Lexique_kerbdd_5F_lexique::kToken__3E_, BOTTOM_UP_REDUCE (45)
+, BOTTOM_UP_END
+// State S67 (index = 531)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (1)
+, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (1)
+, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (1)
+, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (1)
+, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (1)
+, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (1)
+, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (1)
+, BOTTOM_UP_END
+// State S68 (index = 546)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S69 (index = 563)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S70 (index = 580)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (5)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (5)
+, BOTTOM_UP_END
+// State S71 (index = 585)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S72 (index = 602)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S73 (index = 619)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (6)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (6)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (6)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (6)
+, BOTTOM_UP_END
+// State S74 (index = 628)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S75 (index = 645)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S76 (index = 662)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (7)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (7)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (7)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (7)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (7)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (7)
+, BOTTOM_UP_END
+// State S77 (index = 675)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (64)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (64)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (64)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (64)
+, BOTTOM_UP_END
+// State S78 (index = 684)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (27)
+, Lexique_kerbdd_5F_lexique::kToken_bool, BOTTOM_UP_SHIFT (29)
+, BOTTOM_UP_END
+// State S79 (index = 689)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (43)
+, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (94)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (43)
+, BOTTOM_UP_END
+// State S80 (index = 696)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (96)
+, BOTTOM_UP_END
+// State S81 (index = 699)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (38)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (38)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (38)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (38)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (38)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (38)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (38)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (38)
+, BOTTOM_UP_END
+// State S82 (index = 716)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (9)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (9)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (9)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (9)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (9)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (9)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (9)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (9)
+, BOTTOM_UP_END
+// State S83 (index = 733)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S84 (index = 750)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (44)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (45)
+, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (46)
+, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (47)
+, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (48)
+, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (49)
+, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (50)
+, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (51)
+, BOTTOM_UP_END
+// State S85 (index = 767)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (99)
+, BOTTOM_UP_END
+// State S86 (index = 770)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_SHIFT (100)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_SHIFT (101)
+, Lexique_kerbdd_5F_lexique::kToken__3C__3D_, BOTTOM_UP_SHIFT (102)
+, Lexique_kerbdd_5F_lexique::kToken__3C_, BOTTOM_UP_SHIFT (103)
+, Lexique_kerbdd_5F_lexique::kToken__3E__3D_, BOTTOM_UP_SHIFT (104)
+, Lexique_kerbdd_5F_lexique::kToken__3E_, BOTTOM_UP_SHIFT (105)
+, BOTTOM_UP_END
+// State S87 (index = 783)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (29)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (29)
+, BOTTOM_UP_END
+// State S88 (index = 788)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (30)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (30)
+, BOTTOM_UP_END
+// State S89 (index = 793)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_SHIFT (71)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_SHIFT (72)
+, BOTTOM_UP_END
+// State S90 (index = 806)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (31)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_SHIFT (71)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_SHIFT (72)
+, BOTTOM_UP_END
+// State S91 (index = 819)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_SHIFT (74)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_SHIFT (75)
+, BOTTOM_UP_END
+// State S92 (index = 836)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (34)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_SHIFT (74)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_SHIFT (75)
+, BOTTOM_UP_END
+// State S93 (index = 853)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (59)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (59)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_SHIFT (42)
+, BOTTOM_UP_END
+// State S94 (index = 860)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (112)
+, BOTTOM_UP_END
+// State S95 (index = 863)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (41)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_SHIFT (113)
+, BOTTOM_UP_END
+// State S96 (index = 868)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (13)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (13)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (13)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (13)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (13)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (13)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (13)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (13)
+, BOTTOM_UP_END
+// State S97 (index = 885)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (115)
+, BOTTOM_UP_END
+// State S98 (index = 888)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (116)
+, BOTTOM_UP_END
+// State S99 (index = 891)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (45)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (45)
+, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (85)
+, Lexique_kerbdd_5F_lexique::kToken__3C__3D_, BOTTOM_UP_REDUCE (45)
+, Lexique_kerbdd_5F_lexique::kToken__3C_, BOTTOM_UP_REDUCE (45)
+, Lexique_kerbdd_5F_lexique::kToken__3E__3D_, BOTTOM_UP_REDUCE (45)
+, Lexique_kerbdd_5F_lexique::kToken__3E_, BOTTOM_UP_REDUCE (45)
+, BOTTOM_UP_END
+// State S100 (index = 906)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (47)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (47)
+, BOTTOM_UP_END
+// State S101 (index = 911)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (48)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (48)
+, BOTTOM_UP_END
+// State S102 (index = 916)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (49)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (49)
+, BOTTOM_UP_END
+// State S103 (index = 921)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (50)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (50)
+, BOTTOM_UP_END
+// State S104 (index = 926)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (51)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (51)
+, BOTTOM_UP_END
+// State S105 (index = 931)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (52)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (52)
+, BOTTOM_UP_END
+// State S106 (index = 936)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (118)
+, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_SHIFT (119)
+, BOTTOM_UP_END
+// State S107 (index = 941)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (32)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (32)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (32)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (32)
+, BOTTOM_UP_END
+// State S108 (index = 950)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (33)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (33)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (33)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (33)
+, BOTTOM_UP_END
+// State S109 (index = 959)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (35)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (35)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (35)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (35)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (35)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (35)
+, BOTTOM_UP_END
+// State S110 (index = 972)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (36)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (36)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (36)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (36)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (36)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (36)
+, BOTTOM_UP_END
+// State S111 (index = 985)
+, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (60)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (60)
+, BOTTOM_UP_END
+// State S112 (index = 990)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (43)
+, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (94)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (43)
+, BOTTOM_UP_END
+// State S113 (index = 997)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (122)
+, BOTTOM_UP_END
+// State S114 (index = 1000)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (40)
+, BOTTOM_UP_END
+// State S115 (index = 1003)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (14)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (14)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (14)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (14)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (14)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (14)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (14)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (14)
+, BOTTOM_UP_END
+// State S116 (index = 1020)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (15)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (15)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (15)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (15)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (15)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (15)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (15)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (15)
+, BOTTOM_UP_END
+// State S117 (index = 1037)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_kerbdd_5F_lexique::kToken__3C__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_kerbdd_5F_lexique::kToken__3C_, BOTTOM_UP_REDUCE (46)
+, Lexique_kerbdd_5F_lexique::kToken__3E__3D_, BOTTOM_UP_REDUCE (46)
+, Lexique_kerbdd_5F_lexique::kToken__3E_, BOTTOM_UP_REDUCE (46)
+, BOTTOM_UP_END
+// State S118 (index = 1050)
+, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (123)
+, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_REDUCE (55)
+, BOTTOM_UP_END
+// State S119 (index = 1055)
+, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_REDUCE (53)
+, BOTTOM_UP_END
+// State S120 (index = 1058)
+, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_SHIFT (125)
+, BOTTOM_UP_END
+// State S121 (index = 1061)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (44)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (44)
+, BOTTOM_UP_END
+// State S122 (index = 1066)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (43)
+, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (94)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (43)
+, BOTTOM_UP_END
+// State S123 (index = 1073)
+, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (127)
+, BOTTOM_UP_END
+// State S124 (index = 1076)
+, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_REDUCE (54)
+, BOTTOM_UP_END
+// State S125 (index = 1079)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (16)
+, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (16)
+, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (16)
+, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (16)
+, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (16)
+, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (16)
+, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (16)
+, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (16)
+, BOTTOM_UP_END
+// State S126 (index = 1096)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (41)
+, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_SHIFT (113)
+, BOTTOM_UP_END
+// State S127 (index = 1101)
+, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (123)
+, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_REDUCE (55)
+, BOTTOM_UP_END
+// State S128 (index = 1106)
+, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (42)
+, BOTTOM_UP_END
+// State S129 (index = 1109)
+, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_REDUCE (56)
+, BOTTOM_UP_END} ;
+
+static const uint32_t gActionTableIndex_kerbdd_grammar [130] = {
+  0  // S0
+, 15  // S1
+, 18  // S2
+, 21  // S3
+, 24  // S4
+, 27  // S5
+, 30  // S6
+, 33  // S7
+, 36  // S8
+, 51  // S9
+, 54  // S10
+, 59  // S11
+, 62  // S12
+, 65  // S13
+, 68  // S14
+, 71  // S15
+, 74  // S16
+, 77  // S17
+, 80  // S18
+, 83  // S19
+, 86  // S20
+, 101  // S21
+, 116  // S22
+, 131  // S23
+, 146  // S24
+, 153  // S25
+, 158  // S26
+, 165  // S27
+, 174  // S28
+, 177  // S29
+, 188  // S30
+, 191  // S31
+, 194  // S32
+, 203  // S33
+, 210  // S34
+, 227  // S35
+, 244  // S36
+, 261  // S37
+, 278  // S38
+, 281  // S39
+, 284  // S40
+, 293  // S41
+, 308  // S42
+, 311  // S43
+, 316  // S44
+, 337  // S45
+, 354  // S46
+, 371  // S47
+, 388  // S48
+, 405  // S49
+, 408  // S50
+, 411  // S51
+, 414  // S52
+, 417  // S53
+, 426  // S54
+, 439  // S55
+, 456  // S56
+, 459  // S57
+, 462  // S58
+, 465  // S59
+, 470  // S60
+, 473  // S61
+, 490  // S62
+, 493  // S63
+, 510  // S64
+, 513  // S65
+, 516  // S66
+, 531  // S67
+, 546  // S68
+, 563  // S69
+, 580  // S70
+, 585  // S71
+, 602  // S72
+, 619  // S73
+, 628  // S74
+, 645  // S75
+, 662  // S76
+, 675  // S77
+, 684  // S78
+, 689  // S79
+, 696  // S80
+, 699  // S81
+, 716  // S82
+, 733  // S83
+, 750  // S84
+, 767  // S85
+, 770  // S86
+, 783  // S87
+, 788  // S88
+, 793  // S89
+, 806  // S90
+, 819  // S91
+, 836  // S92
+, 853  // S93
+, 860  // S94
+, 863  // S95
+, 868  // S96
+, 885  // S97
+, 888  // S98
+, 891  // S99
+, 906  // S100
+, 911  // S101
+, 916  // S102
+, 921  // S103
+, 926  // S104
+, 931  // S105
+, 936  // S106
+, 941  // S107
+, 950  // S108
+, 959  // S109
+, 972  // S110
+, 985  // S111
+, 990  // S112
+, 997  // S113
+, 1000  // S114
+, 1003  // S115
+, 1020  // S116
+, 1037  // S117
+, 1050  // S118
+, 1055  // S119
+, 1058  // S120
+, 1061  // S121
+, 1066  // S122
+, 1073  // S123
+, 1076  // S124
+, 1079  // S125
+, 1096  // S126
+, 1101  // S127
+, 1106  // S128
+, 1109  // S129
+} ;
 
 //--------------------------------------------------------------------------------------------------
-
-bool GGS_computedFormulaMap_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ;
-}
-
+//
+//                                  SLR states successors table                                     
+//
 //--------------------------------------------------------------------------------------------------
 
-void GGS_computedFormulaMap_2E_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mVarList.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mValue.drop () ;
-}
+// Successor tables handle non terminal successors ;
+// an entry is (non_terminal_symbol, n) ; successor is state n.
+
+static const int32_t gSuccessorTable_kerbdd_grammar_0 [7] = {0, 7,
+  1, 8,
+  8, 9, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_8 [5] = {1, 8,
+  8, 16, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_10 [5] = {6, 18,
+  9, 19, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_24 [7] = {7, 30,
+  22, 31,
+  24, 32, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_25 [5] = {7, 33,
+  24, 32, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_26 [3] = {10, 37, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_28 [3] = {6, 38, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_29 [3] = {25, 40, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_33 [3] = {23, 43, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_37 [9] = {2, 52,
+  3, 53,
+  4, 54,
+  5, 55, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_44 [3] = {14, 61, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_45 [9] = {2, 62,
+  3, 53,
+  4, 54,
+  5, 55, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_46 [3] = {5, 63, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_49 [3] = {6, 64, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_50 [3] = {6, 65, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_53 [3] = {11, 70, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_54 [3] = {12, 73, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_55 [3] = {13, 76, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_59 [3] = {15, 80, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_66 [3] = {18, 86, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_68 [7] = {3, 87,
+  4, 54,
+  5, 55, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_69 [7] = {3, 88,
+  4, 54,
+  5, 55, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_71 [5] = {4, 89,
+  5, 55, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_72 [5] = {4, 90,
+  5, 55, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_74 [3] = {5, 91, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_75 [3] = {5, 92, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_78 [5] = {7, 93,
+  24, 32, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_79 [3] = {17, 95, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_83 [9] = {2, 97,
+  3, 53,
+  4, 54,
+  5, 55, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_84 [9] = {2, 98,
+  3, 53,
+  4, 54,
+  5, 55, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_86 [3] = {19, 106, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_89 [3] = {12, 107, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_90 [3] = {12, 108, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_91 [3] = {13, 109, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_92 [3] = {13, 110, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_93 [3] = {23, 111, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_95 [3] = {16, 114, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_99 [3] = {18, 117, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_106 [3] = {20, 120, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_112 [3] = {17, 121, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_118 [3] = {21, 124, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_122 [3] = {17, 126, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_126 [3] = {16, 128, -1} ;
+
+static const int32_t gSuccessorTable_kerbdd_grammar_127 [3] = {21, 129, -1} ;
+
+static const int32_t * gSuccessorTable_kerbdd_grammar [130] = {
+gSuccessorTable_kerbdd_grammar_0, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_kerbdd_grammar_8, nullptr, gSuccessorTable_kerbdd_grammar_10, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_kerbdd_grammar_24, gSuccessorTable_kerbdd_grammar_25, gSuccessorTable_kerbdd_grammar_26, nullptr, 
+  gSuccessorTable_kerbdd_grammar_28, gSuccessorTable_kerbdd_grammar_29, nullptr, nullptr, 
+  nullptr, gSuccessorTable_kerbdd_grammar_33, nullptr, nullptr, 
+  nullptr, gSuccessorTable_kerbdd_grammar_37, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_kerbdd_grammar_44, gSuccessorTable_kerbdd_grammar_45, gSuccessorTable_kerbdd_grammar_46, nullptr, 
+  nullptr, gSuccessorTable_kerbdd_grammar_49, gSuccessorTable_kerbdd_grammar_50, nullptr, 
+  nullptr, gSuccessorTable_kerbdd_grammar_53, gSuccessorTable_kerbdd_grammar_54, gSuccessorTable_kerbdd_grammar_55, 
+  nullptr, nullptr, nullptr, gSuccessorTable_kerbdd_grammar_59, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_66, nullptr, 
+  gSuccessorTable_kerbdd_grammar_68, gSuccessorTable_kerbdd_grammar_69, nullptr, gSuccessorTable_kerbdd_grammar_71, 
+  gSuccessorTable_kerbdd_grammar_72, nullptr, gSuccessorTable_kerbdd_grammar_74, gSuccessorTable_kerbdd_grammar_75, 
+  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_78, gSuccessorTable_kerbdd_grammar_79, 
+  nullptr, nullptr, nullptr, gSuccessorTable_kerbdd_grammar_83, 
+  gSuccessorTable_kerbdd_grammar_84, nullptr, gSuccessorTable_kerbdd_grammar_86, nullptr, 
+  nullptr, gSuccessorTable_kerbdd_grammar_89, gSuccessorTable_kerbdd_grammar_90, gSuccessorTable_kerbdd_grammar_91, 
+  gSuccessorTable_kerbdd_grammar_92, gSuccessorTable_kerbdd_grammar_93, nullptr, gSuccessorTable_kerbdd_grammar_95, 
+  nullptr, nullptr, nullptr, gSuccessorTable_kerbdd_grammar_99, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_106, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_kerbdd_grammar_112, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_118, nullptr, 
+  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_122, nullptr, 
+  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_126, gSuccessorTable_kerbdd_grammar_127, 
+  nullptr, nullptr} ;
 
 //--------------------------------------------------------------------------------------------------
+//
+//                Production rules infos (left non terminal, size of right string)                  
+//
+//--------------------------------------------------------------------------------------------------
 
-void GGS_computedFormulaMap_2E_element::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @computedFormulaMap.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
+static const int32_t gProductionsTable_kerbdd_grammar [66 * 2] = {
+  0, 1,
+  1, 7,
+  1, 3,
+  1, 3,
+  1, 3,
+  2, 2,
+  3, 2,
+  4, 2,
+  5, 2,
+  5, 3,
+  5, 2,
+  5, 1,
+  5, 1,
+  5, 4,
+  5, 5,
+  5, 5,
+  5, 6,
+  1, 3,
+  1, 5,
+  6, 4,
+  7, 1,
+  8, 0,
+  8, 2,
+  9, 0,
+  9, 1,
+  10, 1,
+  10, 1,
+  10, 1,
+  11, 0,
+  11, 2,
+  11, 2,
+  12, 0,
+  12, 3,
+  12, 3,
+  13, 0,
+  13, 3,
+  13, 3,
+  14, 0,
+  14, 2,
+  15, 0,
+  15, 3,
+  16, 0,
+  16, 4,
+  17, 0,
+  17, 3,
+  18, 0,
+  18, 3,
+  19, 1,
+  19, 1,
+  19, 1,
+  19, 1,
+  19, 1,
+  19, 1,
+  20, 1,
+  20, 2,
+  21, 0,
+  21, 3,
+  22, 1,
+  22, 3,
+  23, 0,
+  23, 5,
+  24, 1,
+  24, 2,
+  25, 0,
+  25, 3,
+  26, 1
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                           'start_symbol' non terminal implementation                             
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_parse (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 0) {
+  rule_kerbdd_5F_syntax_start_5F_symbol_i0_parse(inLexique) ;
   }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mVarList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mValue.description (ioString, inIndentation+1) ;
+    inLexique->internalBottomUpParserError (HERE) ;
   }
-  ioString.appendCString (">") ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//     @computedFormulaMap.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_computedFormulaMap_2E_element ("computedFormulaMap.element",
-                                                                                  nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_computedFormulaMap_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_computedFormulaMap_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_computedFormulaMap_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_computedFormulaMap_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element GGS_computedFormulaMap_2E_element::extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element result ;
-  const GGS_computedFormulaMap_2E_element * p = (const GGS_computedFormulaMap_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_computedFormulaMap_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("computedFormulaMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Optional @computedFormulaMap_2E_element_3F_
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_::GGS_computedFormulaMap_2E_element_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_::GGS_computedFormulaMap_2E_element_3F_ (const GGS_computedFormulaMap_2E_element & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_ GGS_computedFormulaMap_2E_element_3F_::init_nil (void) {
-  GGS_computedFormulaMap_2E_element_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_computedFormulaMap_2E_element_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_computedFormulaMap_2E_element_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GGS_computedFormulaMap_2E_element () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element_3F_::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @computedFormulaMap.element? generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_computedFormulaMap_2E_element_3F_ ("computedFormulaMap.element?",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_computedFormulaMap_2E_element_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_computedFormulaMap_2E_element_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_computedFormulaMap_2E_element_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_computedFormulaMap_2E_element_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_ GGS_computedFormulaMap_2E_element_3F_::extractObject (const GGS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element_3F_ result ;
-  const GGS_computedFormulaMap_2E_element_3F_ * p = (const GGS_computedFormulaMap_2E_element_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_computedFormulaMap_2E_element_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("computedFormulaMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (void) :
-mProperty_mParameterName (),
-mProperty_mFieldNames () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_formulaParameterListInExpression_2E_element & inSource) :
-mProperty_mParameterName (inSource.mProperty_mParameterName),
-mProperty_mFieldNames (inSource.mProperty_mFieldNames) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element & GGS_formulaParameterListInExpression_2E_element::operator = (const GGS_formulaParameterListInExpression_2E_element & inSource) {
-  mProperty_mParameterName = inSource.mProperty_mParameterName ;
-  mProperty_mFieldNames = inSource.mProperty_mFieldNames ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::init_21__21_ (const GGS_lstring & in_mParameterName,
-                                                                                                               const GGS_lstringlist & in_mFieldNames,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mParameterName = in_mParameterName ;
-  result.mProperty_mFieldNames = in_mFieldNames ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_lstring & inOperand0,
-                                                                                                  const GGS_lstringlist & inOperand1) :
-mProperty_mParameterName (inOperand0),
-mProperty_mFieldNames (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::class_func_new (const GGS_lstring & in_mParameterName,
-                                                                                                                 const GGS_lstringlist & in_mFieldNames,
-                                                                                                                 Compiler * inCompiler
-                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mParameterName = in_mParameterName ;
-  result.mProperty_mFieldNames = in_mFieldNames ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_formulaParameterListInExpression_2E_element::isValid (void) const {
-  return mProperty_mParameterName.isValid () && mProperty_mFieldNames.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::drop (void) {
-  mProperty_mParameterName.drop () ;
-  mProperty_mFieldNames.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::description (String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @formulaParameterListInExpression.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
+void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 0) {
+  rule_kerbdd_5F_syntax_start_5F_symbol_i0_indexing(inLexique) ;
   }else{
-    mProperty_mParameterName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFieldNames.description (ioString, inIndentation+1) ;
+    inLexique->internalBottomUpParserError (HERE) ;
   }
-  ioString.appendCString (">") ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//     @formulaParameterListInExpression.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ("formulaParameterListInExpression.element",
-                                                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_formulaParameterListInExpression_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_formulaParameterListInExpression_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_formulaParameterListInExpression_2E_element (*this)) ;
+void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_ (GGS_ast &  parameter_1,
+                                Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 0) {
+  rule_kerbdd_5F_syntax_start_5F_symbol_i0_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
   }
-  return result ;
+}
+
+void cGrammar_kerbdd_5F_grammar::performIndexing (Compiler * inCompiler,
+             const String & inSourceFilePath) {
+  Lexique_kerbdd_5F_lexique * scanner = nullptr ;
+  macroMyNew (scanner, Lexique_kerbdd_5F_lexique (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  scanner->enableIndexing () ;
+  if (scanner->sourceText ().isValid ()) {
+    const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
+                                                     gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
+                                                     gProductionsTable_kerbdd_grammar) ;
+    if (ok) {
+      cGrammar_kerbdd_5F_grammar grammar ;
+      grammar.nt_start_5F_symbol_indexing (scanner) ;
+    }
+    scanner->generateIndexFile () ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_kerbdd_5F_grammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
+             const String & inSourceFilePath) {
+  Lexique_kerbdd_5F_lexique * scanner = nullptr ;
+  macroMyNew (scanner, Lexique_kerbdd_5F_lexique (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText ().isValid ()) {
+    scanner->performLexicalAnalysis () ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_kerbdd_5F_grammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
+             const String & inSourceFilePath) {
+  Lexique_kerbdd_5F_lexique * scanner = nullptr ;
+  macroMyNew (scanner, Lexique_kerbdd_5F_lexique (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText ().isValid ()) {
+    scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
+                                     gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
+                                     gProductionsTable_kerbdd_grammar) ;
+  }
+  macroDetachSharedObject (scanner) ;
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//                              Grammar start symbol implementation                                 
+//
+//--------------------------------------------------------------------------------------------------
 
-GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression_2E_element result ;
-  const GGS_formulaParameterListInExpression_2E_element * p = (const GGS_formulaParameterListInExpression_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_formulaParameterListInExpression_2E_element *> (p)) {
-      result = *p ;
+void cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (Compiler * inCompiler,
+                                GGS_lstring inFilePath,
+                                GGS_ast &  parameter_1
+                                COMMA_LOCATION_ARGS) {
+  if (inFilePath.isValid ()) {
+    const GGS_string filePathAsString = inFilePath.readProperty_string () ;
+    String filePath = filePathAsString.stringValue () ;
+    if (! FileManager::isAbsolutePath (filePath)) {
+      filePath = inCompiler->sourceFilePath ().deletingLastPathComponent ().appendingPathComponent (filePath) ;
+    }
+    if (FileManager::fileExistsAtPath (filePath)) {
+      Lexique_kerbdd_5F_lexique * scanner = nullptr ;
+      macroMyNew (scanner, Lexique_kerbdd_5F_lexique (inCompiler, filePath COMMA_HERE)) ;
+      if (scanner->sourceText ().isValid ()) {
+        const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
+                                                         gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
+                                                         gProductionsTable_kerbdd_grammar) ;
+        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
+          cGrammar_kerbdd_5F_grammar grammar ;
+          grammar.nt_start_5F_symbol_ (parameter_1, scanner) ;
+        }
+      }else{
+        String message ;
+        message.appendString ("the '") ;
+        message.appendString (filePath) ;
+        message.appendString ("' file exists, but cannot be read") ;
+        const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
+        inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
+      }
+      macroDetachSharedObject (scanner) ;
     }else{
-      inCompiler->castError ("formulaParameterListInExpression.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
+      String message ;
+      message.appendString ("the '") ;
+      message.appendString (filePath) ;
+      message.appendString ("' file does not exist") ;
+      const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
+      inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
+    }
   }
-  return result ;
 }
+
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_kerbdd_5F_grammar::_performSourceStringParsing_ (Compiler * inCompiler,
+                                GGS_string inSourceString,
+                                GGS_string inNameString,
+                                GGS_ast &  parameter_1
+                                COMMA_UNUSED_LOCATION_ARGS) {
+  if (inSourceString.isValid () && inNameString.isValid ()) {
+    const String sourceString = inSourceString.stringValue () ;
+    const String nameString = inNameString.stringValue () ;
+    Lexique_kerbdd_5F_lexique * scanner = nullptr ;
+    macroMyNew (scanner, Lexique_kerbdd_5F_lexique (inCompiler, sourceString, nameString COMMA_HERE)) ;
+    if (scanner->sourceText ().isValid ()) {
+      const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
+                                                       gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
+                                                       gProductionsTable_kerbdd_grammar) ;
+      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
+        cGrammar_kerbdd_5F_grammar grammar ;
+        grammar.nt_start_5F_symbol_ (parameter_1, scanner) ;
+      }
+    }
+    macroDetachSharedObject (scanner) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                       'topLevelDeClaration' non terminal implementation                          
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_parse (Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 1 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i1_parse(inLexique) ;
+    break ;
+  case 2 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i2_parse(inLexique) ;
+    break ;
+  case 3 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i3_parse(inLexique) ;
+    break ;
+  case 4 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i4_parse(inLexique) ;
+    break ;
+  case 17 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i17_parse(inLexique) ;
+    break ;
+  case 18 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i18_parse(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 1 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i1_indexing(inLexique) ;
+    break ;
+  case 2 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i2_indexing(inLexique) ;
+    break ;
+  case 3 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i3_indexing(inLexique) ;
+    break ;
+  case 4 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i4_indexing(inLexique) ;
+    break ;
+  case 17 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i17_indexing(inLexique) ;
+    break ;
+  case 18 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i18_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_ (GGS_ast &  parameter_1,
+                                Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 1 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i1_(parameter_1, inLexique) ;
+    break ;
+  case 2 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i2_(parameter_1, inLexique) ;
+    break ;
+  case 3 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i3_(parameter_1, inLexique) ;
+    break ;
+  case 4 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i4_(parameter_1, inLexique) ;
+    break ;
+  case 17 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i17_(parameter_1, inLexique) ;
+    break ;
+  case 18 :
+      rule_kerbdd_5F_syntax_topLevelDeClaration_i18_(parameter_1, inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                            'expression' non terminal implementation                              
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_kerbdd_5F_grammar::nt_expression_parse (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 5) {
+  rule_kerbdd_5F_syntax_expression_i5_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_expression_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 5) {
+  rule_kerbdd_5F_syntax_expression_i5_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_expression_ (GGS_expression &  parameter_1,
+                                Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 5) {
+  rule_kerbdd_5F_syntax_expression_i5_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                            'comparison' non terminal implementation                              
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_kerbdd_5F_grammar::nt_comparison_parse (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 6) {
+  rule_kerbdd_5F_syntax_comparison_i6_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_comparison_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 6) {
+  rule_kerbdd_5F_syntax_comparison_i6_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_comparison_ (GGS_expression &  parameter_1,
+                                Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 6) {
+  rule_kerbdd_5F_syntax_comparison_i6_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                               'term' non terminal implementation                                 
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_kerbdd_5F_grammar::nt_term_parse (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 7) {
+  rule_kerbdd_5F_syntax_term_i7_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_term_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 7) {
+  rule_kerbdd_5F_syntax_term_i7_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_term_ (GGS_expression &  parameter_1,
+                                Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 7) {
+  rule_kerbdd_5F_syntax_term_i7_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                              'factor' non terminal implementation                                
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_kerbdd_5F_grammar::nt_factor_parse (Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 8 :
+      rule_kerbdd_5F_syntax_factor_i8_parse(inLexique) ;
+    break ;
+  case 9 :
+      rule_kerbdd_5F_syntax_factor_i9_parse(inLexique) ;
+    break ;
+  case 10 :
+      rule_kerbdd_5F_syntax_factor_i10_parse(inLexique) ;
+    break ;
+  case 11 :
+      rule_kerbdd_5F_syntax_factor_i11_parse(inLexique) ;
+    break ;
+  case 12 :
+      rule_kerbdd_5F_syntax_factor_i12_parse(inLexique) ;
+    break ;
+  case 13 :
+      rule_kerbdd_5F_syntax_factor_i13_parse(inLexique) ;
+    break ;
+  case 14 :
+      rule_kerbdd_5F_syntax_factor_i14_parse(inLexique) ;
+    break ;
+  case 15 :
+      rule_kerbdd_5F_syntax_factor_i15_parse(inLexique) ;
+    break ;
+  case 16 :
+      rule_kerbdd_5F_syntax_factor_i16_parse(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_factor_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 8 :
+      rule_kerbdd_5F_syntax_factor_i8_indexing(inLexique) ;
+    break ;
+  case 9 :
+      rule_kerbdd_5F_syntax_factor_i9_indexing(inLexique) ;
+    break ;
+  case 10 :
+      rule_kerbdd_5F_syntax_factor_i10_indexing(inLexique) ;
+    break ;
+  case 11 :
+      rule_kerbdd_5F_syntax_factor_i11_indexing(inLexique) ;
+    break ;
+  case 12 :
+      rule_kerbdd_5F_syntax_factor_i12_indexing(inLexique) ;
+    break ;
+  case 13 :
+      rule_kerbdd_5F_syntax_factor_i13_indexing(inLexique) ;
+    break ;
+  case 14 :
+      rule_kerbdd_5F_syntax_factor_i14_indexing(inLexique) ;
+    break ;
+  case 15 :
+      rule_kerbdd_5F_syntax_factor_i15_indexing(inLexique) ;
+    break ;
+  case 16 :
+      rule_kerbdd_5F_syntax_factor_i16_indexing(inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_factor_ (GGS_expression &  parameter_1,
+                                Lexique_kerbdd_5F_lexique * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 8 :
+      rule_kerbdd_5F_syntax_factor_i8_(parameter_1, inLexique) ;
+    break ;
+  case 9 :
+      rule_kerbdd_5F_syntax_factor_i9_(parameter_1, inLexique) ;
+    break ;
+  case 10 :
+      rule_kerbdd_5F_syntax_factor_i10_(parameter_1, inLexique) ;
+    break ;
+  case 11 :
+      rule_kerbdd_5F_syntax_factor_i11_(parameter_1, inLexique) ;
+    break ;
+  case 12 :
+      rule_kerbdd_5F_syntax_factor_i12_(parameter_1, inLexique) ;
+    break ;
+  case 13 :
+      rule_kerbdd_5F_syntax_factor_i13_(parameter_1, inLexique) ;
+    break ;
+  case 14 :
+      rule_kerbdd_5F_syntax_factor_i14_(parameter_1, inLexique) ;
+    break ;
+  case 15 :
+      rule_kerbdd_5F_syntax_factor_i15_(parameter_1, inLexique) ;
+    break ;
+  case 16 :
+      rule_kerbdd_5F_syntax_factor_i16_(parameter_1, inLexique) ;
+    break ;
+  default :
+    inLexique->internalBottomUpParserError (HERE) ;
+    break ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                           'recordFields' non terminal implementation                             
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_kerbdd_5F_grammar::nt_recordFields_parse (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 19) {
+  rule_kerbdd_5F_syntax_recordFields_i19_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_recordFields_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 19) {
+  rule_kerbdd_5F_syntax_recordFields_i19_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_recordFields_ (GGS_domainFieldList &  parameter_1,
+                                Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 19) {
+  rule_kerbdd_5F_syntax_recordFields_i19_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                               'type' non terminal implementation                                 
+//
+//--------------------------------------------------------------------------------------------------
+
+void cGrammar_kerbdd_5F_grammar::nt_type_parse (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 20) {
+  rule_kerbdd_5F_syntax_type_i20_parse(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_type_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 20) {
+  rule_kerbdd_5F_syntax_type_i20_indexing(inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+void cGrammar_kerbdd_5F_grammar::nt_type_ (GGS_bddType &  parameter_1,
+                                Lexique_kerbdd_5F_lexique * inLexique) {
+  if (inLexique->nextProductionIndex () == 20) {
+  rule_kerbdd_5F_syntax_type_i20_(parameter_1, inLexique) ;
+  }else{
+    inLexique->internalBottomUpParserError (HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_0' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_0 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  21 22
+  return inLexique->nextProductionIndex () - 20 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_1' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_1 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  23 24
+  return inLexique->nextProductionIndex () - 22 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_2' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_2 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  25 26 27
+  return inLexique->nextProductionIndex () - 24 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_3' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_3 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  28 29 30
+  return inLexique->nextProductionIndex () - 27 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_4' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_4 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  31 32 33
+  return inLexique->nextProductionIndex () - 30 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_5' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_5 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  34 35 36
+  return inLexique->nextProductionIndex () - 33 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_6' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_6 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  37 38
+  return inLexique->nextProductionIndex () - 36 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_7' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_7 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  39 40
+  return inLexique->nextProductionIndex () - 38 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_8' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_8 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  41 42
+  return inLexique->nextProductionIndex () - 40 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_9' non terminal implementation                       
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_9 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  43 44
+  return inLexique->nextProductionIndex () - 42 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_10' non terminal implementation                      
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_10 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  45 46
+  return inLexique->nextProductionIndex () - 44 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_11' non terminal implementation                      
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_11 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  47 48 49 50 51 52
+  return inLexique->nextProductionIndex () - 46 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_12' non terminal implementation                      
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_12 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  53 54
+  return inLexique->nextProductionIndex () - 52 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_13' non terminal implementation                      
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_13 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  55 56
+  return inLexique->nextProductionIndex () - 54 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_14' non terminal implementation                      
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_14 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  57 58
+  return inLexique->nextProductionIndex () - 56 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_15' non terminal implementation                      
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_15 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  59 60
+  return inLexique->nextProductionIndex () - 58 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_16' non terminal implementation                      
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_16 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  61 62
+  return inLexique->nextProductionIndex () - 60 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                    'select_kerbdd_5F_syntax_17' non terminal implementation                      
+//
+//--------------------------------------------------------------------------------------------------
+
+int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_17 (Lexique_kerbdd_5F_lexique * inLexique) {
+// Productions numbers:  63 64
+  return inLexique->nextProductionIndex () - 62 ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 // @setting_5F_nodeHashMapSize reference class
@@ -2160,81 +3631,6 @@ void cPtr_assignmentFormula::method_analyzeFormula (const GGS_string /* constinA
 }
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@setting_nodeHashMapSize analyzeFormula'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_setting_5F_nodeHashMapSize::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
-                                                             const GGS_domainMap /* constinArgument_inDomainMap */,
-                                                             GGS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  const GGS_setting_5F_nodeHashMapSize temp_0 = this ;
-  GGS_binaryset::class_method_setNodeTableSize (temp_0.readProperty_mSetting ().readProperty_uint () COMMA_SOURCE_FILE ("setting-map.ggs", 52)) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@setting_andCacheMapSize analyzeFormula'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_setting_5F_andCacheMapSize::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
-                                                             const GGS_domainMap /* constinArgument_inDomainMap */,
-                                                             GGS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  const GGS_setting_5F_andCacheMapSize temp_0 = this ;
-  GGS_binaryset::class_method_setAndTableSize (temp_0.readProperty_mSetting ().readProperty_uint () COMMA_SOURCE_FILE ("setting-map.ggs", 62)) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension method '@dumpFormula analyzeFormula'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_dumpFormula::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
-                                              const GGS_domainMap /* constinArgument_inDomainMap */,
-                                              GGS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
-                                              Compiler * inCompiler
-                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_varList var_varList_1685 ;
-  GGS_uint var_bitCount_1699 ;
-  GGS_binaryset var_result_1714 ;
-  const GGS_dumpFormula temp_0 = this ;
-  ioArgument_ioComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_1685, var_bitCount_1699, var_result_1714, inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 37)) ;
-  GGS_uint_36__34_ var_valueCount_1736 = var_result_1714.getter_valueCount (var_bitCount_1699, inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 38)) ;
-  {
-  const GGS_dumpFormula temp_1 = this ;
-  GGS_string temp_2 ;
-  const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_1736.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-  if (GalgasBool::boolTrue == test_3) {
-    temp_2 = GGS_string ("s") ;
-  }else if (GalgasBool::boolFalse == test_3) {
-    temp_2 = GGS_string::makeEmptyString () ;
-  }
-  routine_println_3F_ (GGS_string ("Dump $").add_operation (temp_1.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (var_valueCount_1736.getter_string (SOURCE_FILE ("formula-dump.ggs", 39)), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)), inCompiler  COMMA_SOURCE_FILE ("formula-dump.ggs", 39)) ;
-  }
-  GGS_stringlist temp_4 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 40)) ;
-  GGS_stringlist var_nameList_1916 = temp_4 ;
-  GGS_uintlist temp_5 = GGS_uintlist::init (inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 41)) ;
-  GGS_uintlist var_bitCountList_1946 = temp_5 ;
-  UpEnumerator_varList enumerator_1984 (var_varList_1685) ;
-  while (enumerator_1984.hasCurrentObject ()) {
-    {
-    var_nameList_1916.setter_append (enumerator_1984.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 43)) ;
-    }
-    {
-    var_bitCountList_1946.setter_append (enumerator_1984.current_mBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 44)) ;
-    }
-    enumerator_1984.gotoNextObject () ;
-  }
-  {
-  routine_println_3F_ (var_result_1714.getter_print (var_nameList_1916, var_bitCountList_1946 COMMA_SOURCE_FILE ("formula-dump.ggs", 46)), inCompiler  COMMA_SOURCE_FILE ("formula-dump.ggs", 46)) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension method '@graphvizFormula analyzeFormula'
 //--------------------------------------------------------------------------------------------------
 
@@ -2281,6 +3677,36 @@ void cPtr_graphvizFormula::method_analyzeFormula (const GGS_string constinArgume
   GGS_string var_s_2148 = var_result_1711.getter_graphviz (var_bitNameList_1896 COMMA_SOURCE_FILE ("formula-graphviz.ggs", 50)) ;
   GGS_bool joker_2232 ; // Joker input parameter
   var_s_2148.method_writeToFileWhenDifferentContents (var_filePath_1725, joker_2232, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 51)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@setting_nodeHashMapSize analyzeFormula'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_setting_5F_nodeHashMapSize::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
+                                                             const GGS_domainMap /* constinArgument_inDomainMap */,
+                                                             GGS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  {
+  const GGS_setting_5F_nodeHashMapSize temp_0 = this ;
+  GGS_binaryset::class_method_setNodeTableSize (temp_0.readProperty_mSetting ().readProperty_uint () COMMA_SOURCE_FILE ("setting-map.ggs", 52)) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@setting_andCacheMapSize analyzeFormula'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_setting_5F_andCacheMapSize::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
+                                                             const GGS_domainMap /* constinArgument_inDomainMap */,
+                                                             GGS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  {
+  const GGS_setting_5F_andCacheMapSize temp_0 = this ;
+  GGS_binaryset::class_method_setAndTableSize (temp_0.readProperty_mSetting ().readProperty_uint () COMMA_SOURCE_FILE ("setting-map.ggs", 62)) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2958,6 +4384,51 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
   return result_outResult ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension method '@dumpFormula analyzeFormula'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_dumpFormula::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
+                                              const GGS_domainMap /* constinArgument_inDomainMap */,
+                                              GGS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
+                                              Compiler * inCompiler
+                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_varList var_varList_1685 ;
+  GGS_uint var_bitCount_1699 ;
+  GGS_binaryset var_result_1714 ;
+  const GGS_dumpFormula temp_0 = this ;
+  ioArgument_ioComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_1685, var_bitCount_1699, var_result_1714, inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 37)) ;
+  GGS_uint_36__34_ var_valueCount_1736 = var_result_1714.getter_valueCount (var_bitCount_1699, inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 38)) ;
+  {
+  const GGS_dumpFormula temp_1 = this ;
+  GGS_string temp_2 ;
+  const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_1736.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+  if (GalgasBool::boolTrue == test_3) {
+    temp_2 = GGS_string ("s") ;
+  }else if (GalgasBool::boolFalse == test_3) {
+    temp_2 = GGS_string::makeEmptyString () ;
+  }
+  routine_println_3F_ (GGS_string ("Dump $").add_operation (temp_1.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (var_valueCount_1736.getter_string (SOURCE_FILE ("formula-dump.ggs", 39)), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 39)), inCompiler  COMMA_SOURCE_FILE ("formula-dump.ggs", 39)) ;
+  }
+  GGS_stringlist temp_4 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 40)) ;
+  GGS_stringlist var_nameList_1916 = temp_4 ;
+  GGS_uintlist temp_5 = GGS_uintlist::init (inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 41)) ;
+  GGS_uintlist var_bitCountList_1946 = temp_5 ;
+  UpEnumerator_varList enumerator_1984 (var_varList_1685) ;
+  while (enumerator_1984.hasCurrentObject ()) {
+    {
+    var_nameList_1916.setter_append (enumerator_1984.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 43)) ;
+    }
+    {
+    var_bitCountList_1946.setter_append (enumerator_1984.current_mBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 44)) ;
+    }
+    enumerator_1984.gotoNextObject () ;
+  }
+  {
+  routine_println_3F_ (var_result_1714.getter_print (var_nameList_1916, var_bitCountList_1946 COMMA_SOURCE_FILE ("formula-dump.ggs", 46)), inCompiler  COMMA_SOURCE_FILE ("formula-dump.ggs", 46)) ;
+  }
+}
 
 #include "project_header.h"
 #include "F_mainForLIBPM.h"

@@ -57,46 +57,6 @@ GGS_uint GGS_uint::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @string generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ("string",
-                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_string::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_string ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_string::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_string (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_string::extractObject (const GGS_object & inObject,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  GGS_string result ;
-  const GGS_string * p = (const GGS_string *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_string *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("string", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @binaryset generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -694,6 +654,46 @@ GGS_lstring UpEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
 
 
 
+
+//--------------------------------------------------------------------------------------------------
+//     @string generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ("string",
+                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_string::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_string ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_string::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_string (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_string::extractObject (const GGS_object & inObject,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
+  GGS_string result ;
+  const GGS_string * p = (const GGS_string *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_string *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("string", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 //     @bigint generic code implementation

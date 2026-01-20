@@ -34,8 +34,8 @@
 
 class Compiler ;
 class GGS_uint ;
-class GGS_string ;
 class GGS_binaryset ;
+class GGS_string ;
 class GGS_application ;
 class GGS_bigint ;
 class GGS_bool ;
@@ -279,6 +279,329 @@ class GGS_uint : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint ;
+
+//--------------------------------------------------------------------------------------------------
+// @binaryset type
+//--------------------------------------------------------------------------------------------------
+
+#include "BinaryDecisionDiagram.h"
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_binaryset : public AC_GALGAS_root {
+//--------------------------------- Private data members
+  private: bool mIsValid ;
+  private: BinaryDecisionDiagram mBDD ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
+  public: inline BinaryDecisionDiagram bddValue (void) const { return mBDD ; }
+
+//--------------------------------- Default constructor
+  public: GGS_binaryset (void) ;
+
+//--------------------------------- Native constructor
+  public: GGS_binaryset (const BinaryDecisionDiagram & inValue) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_binaryset init (Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_binaryset extractObject (const GGS_object & inObject,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_binaryset class_func_binarySetWithBit (const class GGS_uint & inOperand0,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithEqualComparison (const class GGS_uint & inOperand0,
+                                                                              const class GGS_uint & inOperand1,
+                                                                              const class GGS_uint & inOperand2,
+                                                                              class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithEqualToConstant (const class GGS_uint & inOperand0,
+                                                                              const class GGS_uint & inOperand1,
+                                                                              const class GGS_uint_36__34_ & inOperand2,
+                                                                              class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithGreaterOrEqualComparison (const class GGS_uint & inOperand0,
+                                                                                       const class GGS_uint & inOperand1,
+                                                                                       const class GGS_uint & inOperand2,
+                                                                                       class Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithGreaterOrEqualToConstant (const class GGS_uint & inOperand0,
+                                                                                       const class GGS_uint & inOperand1,
+                                                                                       const class GGS_uint_36__34_ & inOperand2,
+                                                                                       class Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithLowerOrEqualComparison (const class GGS_uint & inOperand0,
+                                                                                     const class GGS_uint & inOperand1,
+                                                                                     const class GGS_uint & inOperand2,
+                                                                                     class Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithLowerOrEqualToConstant (const class GGS_uint & inOperand0,
+                                                                                     const class GGS_uint & inOperand1,
+                                                                                     const class GGS_uint_36__34_ & inOperand2,
+                                                                                     class Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithNotEqualComparison (const class GGS_uint & inOperand0,
+                                                                                 const class GGS_uint & inOperand1,
+                                                                                 const class GGS_uint & inOperand2,
+                                                                                 class Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithNotEqualToConstant (const class GGS_uint & inOperand0,
+                                                                                 const class GGS_uint & inOperand1,
+                                                                                 const class GGS_uint_36__34_ & inOperand2,
+                                                                                 class Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithPredicateString (const class GGS_string & inOperand0,
+                                                                              class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithStrictGreaterComparison (const class GGS_uint & inOperand0,
+                                                                                      const class GGS_uint & inOperand1,
+                                                                                      const class GGS_uint & inOperand2,
+                                                                                      class Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithStrictGreaterThanConstant (const class GGS_uint & inOperand0,
+                                                                                        const class GGS_uint & inOperand1,
+                                                                                        const class GGS_uint_36__34_ & inOperand2,
+                                                                                        class Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithStrictLowerComparison (const class GGS_uint & inOperand0,
+                                                                                    const class GGS_uint & inOperand1,
+                                                                                    const class GGS_uint & inOperand2,
+                                                                                    class Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_binarySetWithStrictLowerThanConstant (const class GGS_uint & inOperand0,
+                                                                                      const class GGS_uint & inOperand1,
+                                                                                      const class GGS_uint_36__34_ & inOperand2,
+                                                                                      class Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_emptyBinarySet (LOCATION_ARGS) ;
+
+  public: static class GGS_binaryset class_func_fullBinarySet (LOCATION_ARGS) ;
+
+//--------------------------------- << and >> shift operators
+  public: VIRTUAL_IN_DEBUG GGS_binaryset left_shift_operation (const GGS_uint inShiftOperand,
+                                                               class Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG GGS_binaryset left_shift_operation (const GGS_bigint inShiftOperand,
+                                                               class Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG GGS_binaryset right_shift_operation (const GGS_uint inShiftOperand,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG GGS_binaryset right_shift_operation (const GGS_bigint inShiftOperand,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- & operator
+  public: VIRTUAL_IN_DEBUG GGS_binaryset operator_and (const GGS_binaryset & inOperand
+                                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- | operator
+  public: VIRTUAL_IN_DEBUG GGS_binaryset operator_or (const GGS_binaryset & inOperand
+                                                      COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ^ operator
+  public: VIRTUAL_IN_DEBUG GGS_binaryset operator_xor (const GGS_binaryset & inOperand
+                                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ~ operator
+  public: VIRTUAL_IN_DEBUG GGS_binaryset operator_tilde (LOCATION_ARGS) const ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_binaryset & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+  public: static void class_method_setAndTableSize (class GGS_uint constinArgument0
+                                                    COMMA_LOCATION_ARGS) ;
+
+  public: static void class_method_setNodeTableSize (class GGS_uint constinArgument0
+                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_ITE (const class GGS_binaryset & constinOperand0,
+                                                           const class GGS_binaryset & constinOperand1
+                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_accessibleStates (const class GGS_binaryset & constinOperand0,
+                                                                        const class GGS_uint & constinOperand1
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bigint getter_bigValueCount (const class GGS_uint & constinOperand0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_binarySetByTranslatingFromIndex (const class GGS_uint & constinOperand0,
+                                                                                       const class GGS_uint & constinOperand1
+                                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_compressedStringValueList (const class GGS_uint & constinOperand0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_ getter_compressedValueCount (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_containsValue (const class GGS_uint_36__34_ & constinOperand0,
+                                                                const class GGS_uint & constinOperand1,
+                                                                const class GGS_uint & constinOperand2
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_equalTo (const class GGS_binaryset & constinOperand0
+                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_existOnBitIndex (const class GGS_uint & constinOperand0
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_existOnBitIndexAndBeyond (const class GGS_uint & constinOperand0
+                                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_existsOnBitRange (const class GGS_uint & constinOperand0,
+                                                                        const class GGS_uint & constinOperand1
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_forAllOnBitIndex (const class GGS_uint & constinOperand0
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_forAllOnBitIndexAndBeyond (const class GGS_uint & constinOperand0
+                                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_graphviz (const class GGS_stringlist & constinOperand0
+                                                             COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_graphvizDump (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_greaterOrEqualTo (const class GGS_binaryset & constinOperand0
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_implies (const class GGS_binaryset & constinOperand0
+                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isEmpty (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isFull (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_lowerOrEqualTo (const class GGS_binaryset & constinOperand0
+                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_ getter_nodeCount (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_notEqualTo (const class GGS_binaryset & constinOperand0
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_predicateStringValue (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_print (const class GGS_stringlist & constinOperand0,
+                                                          const class GGS_uintlist & constinOperand1
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint getter_significantVariableCount (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_strictGreaterThan (const class GGS_binaryset & constinOperand0
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_strictLowerThan (const class GGS_binaryset & constinOperand0
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_stringValueList (const class GGS_uint & constinOperand0
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_stringValueListWithNameList (const class GGS_uint & constinOperand0,
+                                                                                    const class GGS_stringlist & constinOperand1,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_30__32__31_ (const class GGS_uint & constinOperand0,
+                                                                        const class GGS_uint & constinOperand1,
+                                                                        const class GGS_uint & constinOperand2
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_31__30_ (const class GGS_uint & constinOperand0,
+                                                                    const class GGS_uint & constinOperand1
+                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_31__30__32_ (const class GGS_uint & constinOperand0,
+                                                                        const class GGS_uint & constinOperand1,
+                                                                        const class GGS_uint & constinOperand2
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_31__32__30_ (const class GGS_uint & constinOperand0,
+                                                                        const class GGS_uint & constinOperand1,
+                                                                        const class GGS_uint & constinOperand2
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_32__30__31_ (const class GGS_uint & constinOperand0,
+                                                                        const class GGS_uint & constinOperand1,
+                                                                        const class GGS_uint & constinOperand2
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_32__31__30_ (const class GGS_uint & constinOperand0,
+                                                                        const class GGS_uint & constinOperand1,
+                                                                        const class GGS_uint & constinOperand2
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_transformedBy (const class GGS_uintlist & constinOperand0
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_transitiveClosure (const class GGS_uint & constinOperand0
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_transposedBy (const class GGS_uintlist & constinOperand0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_list getter_uint_36__34_ValueList (const class GGS_uint & constinOperand0
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_ getter_valueCount (const class GGS_uint & constinOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_binaryset ;
 
 //--------------------------------------------------------------------------------------------------
 //   @string type
@@ -719,329 +1042,6 @@ class GGS_string : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ;
-
-//--------------------------------------------------------------------------------------------------
-// @binaryset type
-//--------------------------------------------------------------------------------------------------
-
-#include "BinaryDecisionDiagram.h"
-
-//--------------------------------------------------------------------------------------------------
-
-class GGS_binaryset : public AC_GALGAS_root {
-//--------------------------------- Private data members
-  private: bool mIsValid ;
-  private: BinaryDecisionDiagram mBDD ;
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline BinaryDecisionDiagram bddValue (void) const { return mBDD ; }
-
-//--------------------------------- Default constructor
-  public: GGS_binaryset (void) ;
-
-//--------------------------------- Native constructor
-  public: GGS_binaryset (const BinaryDecisionDiagram & inValue) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_binaryset init (Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_binaryset extractObject (const GGS_object & inObject,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_binaryset class_func_binarySetWithBit (const class GGS_uint & inOperand0,
-                                                                  class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithEqualComparison (const class GGS_uint & inOperand0,
-                                                                              const class GGS_uint & inOperand1,
-                                                                              const class GGS_uint & inOperand2,
-                                                                              class Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithEqualToConstant (const class GGS_uint & inOperand0,
-                                                                              const class GGS_uint & inOperand1,
-                                                                              const class GGS_uint_36__34_ & inOperand2,
-                                                                              class Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithGreaterOrEqualComparison (const class GGS_uint & inOperand0,
-                                                                                       const class GGS_uint & inOperand1,
-                                                                                       const class GGS_uint & inOperand2,
-                                                                                       class Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithGreaterOrEqualToConstant (const class GGS_uint & inOperand0,
-                                                                                       const class GGS_uint & inOperand1,
-                                                                                       const class GGS_uint_36__34_ & inOperand2,
-                                                                                       class Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithLowerOrEqualComparison (const class GGS_uint & inOperand0,
-                                                                                     const class GGS_uint & inOperand1,
-                                                                                     const class GGS_uint & inOperand2,
-                                                                                     class Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithLowerOrEqualToConstant (const class GGS_uint & inOperand0,
-                                                                                     const class GGS_uint & inOperand1,
-                                                                                     const class GGS_uint_36__34_ & inOperand2,
-                                                                                     class Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithNotEqualComparison (const class GGS_uint & inOperand0,
-                                                                                 const class GGS_uint & inOperand1,
-                                                                                 const class GGS_uint & inOperand2,
-                                                                                 class Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithNotEqualToConstant (const class GGS_uint & inOperand0,
-                                                                                 const class GGS_uint & inOperand1,
-                                                                                 const class GGS_uint_36__34_ & inOperand2,
-                                                                                 class Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithPredicateString (const class GGS_string & inOperand0,
-                                                                              class Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithStrictGreaterComparison (const class GGS_uint & inOperand0,
-                                                                                      const class GGS_uint & inOperand1,
-                                                                                      const class GGS_uint & inOperand2,
-                                                                                      class Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithStrictGreaterThanConstant (const class GGS_uint & inOperand0,
-                                                                                        const class GGS_uint & inOperand1,
-                                                                                        const class GGS_uint_36__34_ & inOperand2,
-                                                                                        class Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithStrictLowerComparison (const class GGS_uint & inOperand0,
-                                                                                    const class GGS_uint & inOperand1,
-                                                                                    const class GGS_uint & inOperand2,
-                                                                                    class Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_binarySetWithStrictLowerThanConstant (const class GGS_uint & inOperand0,
-                                                                                      const class GGS_uint & inOperand1,
-                                                                                      const class GGS_uint_36__34_ & inOperand2,
-                                                                                      class Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_emptyBinarySet (LOCATION_ARGS) ;
-
-  public: static class GGS_binaryset class_func_fullBinarySet (LOCATION_ARGS) ;
-
-//--------------------------------- << and >> shift operators
-  public: VIRTUAL_IN_DEBUG GGS_binaryset left_shift_operation (const GGS_uint inShiftOperand,
-                                                               class Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG GGS_binaryset left_shift_operation (const GGS_bigint inShiftOperand,
-                                                               class Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG GGS_binaryset right_shift_operation (const GGS_uint inShiftOperand,
-                                                                class Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG GGS_binaryset right_shift_operation (const GGS_bigint inShiftOperand,
-                                                                class Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- & operator
-  public: VIRTUAL_IN_DEBUG GGS_binaryset operator_and (const GGS_binaryset & inOperand
-                                                       COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- | operator
-  public: VIRTUAL_IN_DEBUG GGS_binaryset operator_or (const GGS_binaryset & inOperand
-                                                      COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- ^ operator
-  public: VIRTUAL_IN_DEBUG GGS_binaryset operator_xor (const GGS_binaryset & inOperand
-                                                       COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- ~ operator
-  public: VIRTUAL_IN_DEBUG GGS_binaryset operator_tilde (LOCATION_ARGS) const ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_binaryset & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-  public: static void class_method_setAndTableSize (class GGS_uint constinArgument0
-                                                    COMMA_LOCATION_ARGS) ;
-
-  public: static void class_method_setNodeTableSize (class GGS_uint constinArgument0
-                                                     COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_ITE (const class GGS_binaryset & constinOperand0,
-                                                           const class GGS_binaryset & constinOperand1
-                                                           COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_accessibleStates (const class GGS_binaryset & constinOperand0,
-                                                                        const class GGS_uint & constinOperand1
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bigint getter_bigValueCount (const class GGS_uint & constinOperand0,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_binarySetByTranslatingFromIndex (const class GGS_uint & constinOperand0,
-                                                                                       const class GGS_uint & constinOperand1
-                                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_compressedStringValueList (const class GGS_uint & constinOperand0,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_ getter_compressedValueCount (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_containsValue (const class GGS_uint_36__34_ & constinOperand0,
-                                                                const class GGS_uint & constinOperand1,
-                                                                const class GGS_uint & constinOperand2
-                                                                COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_equalTo (const class GGS_binaryset & constinOperand0
-                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_existOnBitIndex (const class GGS_uint & constinOperand0
-                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_existOnBitIndexAndBeyond (const class GGS_uint & constinOperand0
-                                                                                COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_existsOnBitRange (const class GGS_uint & constinOperand0,
-                                                                        const class GGS_uint & constinOperand1
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_forAllOnBitIndex (const class GGS_uint & constinOperand0
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_forAllOnBitIndexAndBeyond (const class GGS_uint & constinOperand0
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_graphviz (const class GGS_stringlist & constinOperand0
-                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_graphvizDump (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_greaterOrEqualTo (const class GGS_binaryset & constinOperand0
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_implies (const class GGS_binaryset & constinOperand0
-                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isEmpty (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isFull (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_lowerOrEqualTo (const class GGS_binaryset & constinOperand0
-                                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_ getter_nodeCount (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_notEqualTo (const class GGS_binaryset & constinOperand0
-                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_predicateStringValue (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_print (const class GGS_stringlist & constinOperand0,
-                                                          const class GGS_uintlist & constinOperand1
-                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_significantVariableCount (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_strictGreaterThan (const class GGS_binaryset & constinOperand0
-                                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_strictLowerThan (const class GGS_binaryset & constinOperand0
-                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_stringValueList (const class GGS_uint & constinOperand0
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_stringValueListWithNameList (const class GGS_uint & constinOperand0,
-                                                                                    const class GGS_stringlist & constinOperand1,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_30__32__31_ (const class GGS_uint & constinOperand0,
-                                                                        const class GGS_uint & constinOperand1,
-                                                                        const class GGS_uint & constinOperand2
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_31__30_ (const class GGS_uint & constinOperand0,
-                                                                    const class GGS_uint & constinOperand1
-                                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_31__30__32_ (const class GGS_uint & constinOperand0,
-                                                                        const class GGS_uint & constinOperand1,
-                                                                        const class GGS_uint & constinOperand2
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_31__32__30_ (const class GGS_uint & constinOperand0,
-                                                                        const class GGS_uint & constinOperand1,
-                                                                        const class GGS_uint & constinOperand2
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_32__30__31_ (const class GGS_uint & constinOperand0,
-                                                                        const class GGS_uint & constinOperand1,
-                                                                        const class GGS_uint & constinOperand2
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_swap_32__31__30_ (const class GGS_uint & constinOperand0,
-                                                                        const class GGS_uint & constinOperand1,
-                                                                        const class GGS_uint & constinOperand2
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_transformedBy (const class GGS_uintlist & constinOperand0
-                                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_transitiveClosure (const class GGS_uint & constinOperand0
-                                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_binaryset getter_transposedBy (const class GGS_uintlist & constinOperand0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_list getter_uint_36__34_ValueList (const class GGS_uint & constinOperand0
-                                                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_uint_36__34_ getter_valueCount (const class GGS_uint & constinOperand0,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_binaryset ;
 
 //--------------------------------------------------------------------------------------------------
 //@application package
