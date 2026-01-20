@@ -9,19 +9,5 @@ project (2:0:0) -> "kerbdd" {
   %codeblocks-windows
   %codeblocks-linux32
   %codeblocks-linux64
-
-#--- Source files
-  "sources/lexique.ggs"
-  "sources/kerbdd-options.ggs"
-  "sources/kerbdd-semantics.ggs"
-  "sources/domain.ggs"
-  "sources/formula-assignment.ggs"
-  "sources/setting-map.ggs"
-  "sources/formula-dump.ggs"
-  "sources/formula-graphviz.ggs"
-  "sources/expression.ggs"
-  "sources/grammar.ggs"
-  "sources/kerbdd-cocoa.ggs"
-  "sources/program.ggs"
 }
 
