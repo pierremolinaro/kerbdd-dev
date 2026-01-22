@@ -9,499 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (void) :
-mProperty_mParameterName (),
-mProperty_mFieldNames () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_formulaParameterListInExpression_2E_element & inSource) :
-mProperty_mParameterName (inSource.mProperty_mParameterName),
-mProperty_mFieldNames (inSource.mProperty_mFieldNames) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element & GGS_formulaParameterListInExpression_2E_element::operator = (const GGS_formulaParameterListInExpression_2E_element & inSource) {
-  mProperty_mParameterName = inSource.mProperty_mParameterName ;
-  mProperty_mFieldNames = inSource.mProperty_mFieldNames ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::init_21__21_ (const GGS_lstring & in_mParameterName,
-                                                                                                               const GGS_lstringlist & in_mFieldNames,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mParameterName = in_mParameterName ;
-  result.mProperty_mFieldNames = in_mFieldNames ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_lstring & inOperand0,
-                                                                                                  const GGS_lstringlist & inOperand1) :
-mProperty_mParameterName (inOperand0),
-mProperty_mFieldNames (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::class_func_new (const GGS_lstring & in_mParameterName,
-                                                                                                                 const GGS_lstringlist & in_mFieldNames,
-                                                                                                                 Compiler * inCompiler
-                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mParameterName = in_mParameterName ;
-  result.mProperty_mFieldNames = in_mFieldNames ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_formulaParameterListInExpression_2E_element::isValid (void) const {
-  return mProperty_mParameterName.isValid () && mProperty_mFieldNames.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::drop (void) {
-  mProperty_mParameterName.drop () ;
-  mProperty_mFieldNames.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::description (String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @formulaParameterListInExpression.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mParameterName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFieldNames.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @formulaParameterListInExpression.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ("formulaParameterListInExpression.element",
-                                                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_formulaParameterListInExpression_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_formulaParameterListInExpression_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_formulaParameterListInExpression_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression_2E_element result ;
-  const GGS_formulaParameterListInExpression_2E_element * p = (const GGS_formulaParameterListInExpression_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_formulaParameterListInExpression_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("formulaParameterListInExpression.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType::GGS_bddType_2E_namedType (void) :
-mProperty_typeName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType::GGS_bddType_2E_namedType (const GGS_bddType_2E_namedType & inSource) :
-mProperty_typeName (inSource.mProperty_typeName) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType & GGS_bddType_2E_namedType::operator = (const GGS_bddType_2E_namedType & inSource) {
-  mProperty_typeName = inSource.mProperty_typeName ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_bddType_2E_namedType GGS_bddType_2E_namedType::init_21_ (const GGS_lstring & in_typeName,
-                                                             Compiler * inCompiler
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_bddType_2E_namedType result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_typeName = in_typeName ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bddType_2E_namedType::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType::GGS_bddType_2E_namedType (const GGS_lstring & inOperand0) :
-mProperty_typeName (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType GGS_bddType_2E_namedType::class_func_new (const GGS_lstring & in_typeName,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_bddType_2E_namedType result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_typeName = in_typeName ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_bddType_2E_namedType::isValid (void) const {
-  return mProperty_typeName.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bddType_2E_namedType::drop (void) {
-  mProperty_typeName.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bddType_2E_namedType::description (String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @bddType.namedType:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_typeName.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @bddType.namedType generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bddType_2E_namedType ("bddType.namedType",
-                                                                         nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_bddType_2E_namedType::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_bddType_2E_namedType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_bddType_2E_namedType::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_bddType_2E_namedType (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType GGS_bddType_2E_namedType::extractObject (const GGS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GGS_bddType_2E_namedType result ;
-  const GGS_bddType_2E_namedType * p = (const GGS_bddType_2E_namedType *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_bddType_2E_namedType *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("bddType.namedType", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Optional @bddType_2E_namedType_3F_
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType_3F_::GGS_bddType_2E_namedType_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType_3F_::GGS_bddType_2E_namedType_3F_ (const GGS_bddType_2E_namedType & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType_3F_ GGS_bddType_2E_namedType_3F_::init_nil (void) {
-  GGS_bddType_2E_namedType_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_bddType_2E_namedType_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_bddType_2E_namedType_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bddType_2E_namedType_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GGS_bddType_2E_namedType () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bddType_2E_namedType_3F_::description (String & ioString,
-                                                const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @bddType.namedType? generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bddType_2E_namedType_3F_ ("bddType.namedType?",
-                                                                             nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_bddType_2E_namedType_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_bddType_2E_namedType_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_bddType_2E_namedType_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_bddType_2E_namedType_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType_3F_ GGS_bddType_2E_namedType_3F_::extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GGS_bddType_2E_namedType_3F_ result ;
-  const GGS_bddType_2E_namedType_3F_ * p = (const GGS_bddType_2E_namedType_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_bddType_2E_namedType_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("bddType.namedType?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList_2E_element::GGS_domainFieldList_2E_element (void) :
-mProperty_mVarName (),
-mProperty_mType () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList_2E_element::GGS_domainFieldList_2E_element (const GGS_domainFieldList_2E_element & inSource) :
-mProperty_mVarName (inSource.mProperty_mVarName),
-mProperty_mType (inSource.mProperty_mType) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList_2E_element & GGS_domainFieldList_2E_element::operator = (const GGS_domainFieldList_2E_element & inSource) {
-  mProperty_mVarName = inSource.mProperty_mVarName ;
-  mProperty_mType = inSource.mProperty_mType ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_domainFieldList_2E_element GGS_domainFieldList_2E_element::init_21__21_ (const GGS_lstring & in_mVarName,
-                                                                             const GGS_bddType & in_mType,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_domainFieldList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mVarName = in_mVarName ;
-  result.mProperty_mType = in_mType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList_2E_element::GGS_domainFieldList_2E_element (const GGS_lstring & inOperand0,
-                                                                const GGS_bddType & inOperand1) :
-mProperty_mVarName (inOperand0),
-mProperty_mType (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList_2E_element GGS_domainFieldList_2E_element::class_func_new (const GGS_lstring & in_mVarName,
-                                                                               const GGS_bddType & in_mType,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_domainFieldList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mVarName = in_mVarName ;
-  result.mProperty_mType = in_mType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_domainFieldList_2E_element::isValid (void) const {
-  return mProperty_mVarName.isValid () && mProperty_mType.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList_2E_element::drop (void) {
-  mProperty_mVarName.drop () ;
-  mProperty_mType.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList_2E_element::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @domainFieldList.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mVarName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mType.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @domainFieldList.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainFieldList_2E_element ("domainFieldList.element",
-                                                                               nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_domainFieldList_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_domainFieldList_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_domainFieldList_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_domainFieldList_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList_2E_element GGS_domainFieldList_2E_element::extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GGS_domainFieldList_2E_element result ;
-  const GGS_domainFieldList_2E_element * p = (const GGS_domainFieldList_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_domainFieldList_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("domainFieldList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_domainDeclarationList_2E_element::GGS_domainDeclarationList_2E_element (void) :
 mProperty_mDomainName (),
 mProperty_mType () {
@@ -546,19 +53,6 @@ GGS_domainDeclarationList_2E_element::GGS_domainDeclarationList_2E_element (cons
                                                                             const GGS_domainDeclarationType & inOperand1) :
 mProperty_mDomainName (inOperand0),
 mProperty_mType (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationList_2E_element GGS_domainDeclarationList_2E_element::class_func_new (const GGS_lstring & in_mDomainName,
-                                                                                           const GGS_domainDeclarationType & in_mType,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_domainDeclarationList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mDomainName = in_mDomainName ;
-  result.mProperty_mType = in_mType ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -689,23 +183,6 @@ mProperty_lkey (inOperand0),
 mProperty_mIndex (inOperand1),
 mProperty_mBitCount (inOperand2),
 mProperty_mSubDomain (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element GGS_recordDomainMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                                               const GGS_uint & in_mIndex,
-                                                                               const GGS_uint & in_mBitCount,
-                                                                               const GGS_recordDomainMap & in_mSubDomain,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_recordDomainMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mIndex = in_mIndex ;
-  result.mProperty_mBitCount = in_mBitCount ;
-  result.mProperty_mSubDomain = in_mSubDomain ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -957,21 +434,6 @@ mProperty_mRecordMap (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_domainMap_2E_element GGS_domainMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                                   const GGS_uint & in_mBitCount,
-                                                                   const GGS_recordDomainMap & in_mRecordMap,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_domainMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mBitCount = in_mBitCount ;
-  result.mProperty_mRecordMap = in_mRecordMap ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_domainMap_2E_element::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordMap.isValid () ;
 }
@@ -1219,23 +681,6 @@ mProperty_lkey (inOperand0),
 mProperty_mIndex (inOperand1),
 mProperty_mBitCount (inOperand2),
 mProperty_mRecordDomainMap (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap_2E_element GGS_varMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                             const GGS_uint & in_mIndex,
-                                                             const GGS_uint & in_mBitCount,
-                                                             const GGS_recordDomainMap & in_mRecordDomainMap,
-                                                             Compiler * inCompiler
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_varMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mIndex = in_mIndex ;
-  result.mProperty_mBitCount = in_mBitCount ;
-  result.mProperty_mRecordDomainMap = in_mRecordDomainMap ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3357,16 +2802,6 @@ GGS_abstractFormula (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_nodeHashMapSize GGS_setting_5F_nodeHashMapSize::class_func_new (const GGS_luint & in_mSetting,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) {
-  GGS_setting_5F_nodeHashMapSize result ;
-  macroMyNew (result.mObjectPtr, cPtr_setting_5F_nodeHashMapSize (in_mSetting,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_luint GGS_setting_5F_nodeHashMapSize::readProperty_mSetting (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_luint () ;
@@ -3555,75 +2990,75 @@ void cPtr_assignmentFormula::method_analyzeFormula (const GGS_string /* constinA
     break ;
   case GGS_formulaKind::Enumeration::enum_fixedPoint:
     {
-      GGS_binaryset extractedValue_3656_startValue_0 ;
-      temp_2.readProperty_mKind ().getAssociatedValuesFor_fixedPoint (extractedValue_3656_startValue_0) ;
-      GGS_timer var_timer_3725 = GGS_timer::class_func_start (SOURCE_FILE ("formula-assignment.ggs", 97)) ;
-      GGS_binaryset var_result_3765 = extractedValue_3656_startValue_0 ;
+      GGS_binaryset extractedValue_3653_startValue_0 ;
+      temp_2.readProperty_mKind ().getAssociatedValuesFor_fixedPoint (extractedValue_3653_startValue_0) ;
+      GGS_timer var_timer_3722 = GGS_timer::class_func_start (SOURCE_FILE ("formula-assignment.ggs", 97)) ;
+      GGS_binaryset var_result_3762 = extractedValue_3653_startValue_0 ;
       {
       const GGS_assignmentFormula temp_9 = this ;
-      ioArgument_ioComputedFormulaMap.setter_insertKey (temp_9.readProperty_mFormulaName (), var_varList_2773, var_totalBitCount_2740, var_result_3765, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 99)) ;
+      ioArgument_ioComputedFormulaMap.setter_insertKey (temp_9.readProperty_mFormulaName (), var_varList_2773, var_totalBitCount_2740, var_result_3762, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 99)) ;
       }
-      GGS_bool var_iterate_3886 = GGS_bool (true) ;
-      GGS_bigint var_iterationCount_3911 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 101)) ;
+      GGS_bool var_iterate_3883 = GGS_bool (true) ;
+      GGS_bigint var_iterationCount_3908 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 101)) ;
       if (GGS_uint::class_func_max (SOURCE_FILE ("formula-assignment.ggs", 102)).isValid ()) {
-        uint32_t variant_3934 = GGS_uint::class_func_max (SOURCE_FILE ("formula-assignment.ggs", 102)).uintValue () ;
-        bool loop_3934 = true ;
-        while (loop_3934) {
-          loop_3934 = var_iterate_3886.isValid () ;
-          if (loop_3934) {
-            loop_3934 = var_iterate_3886.boolValue () ;
+        uint32_t variant_3931 = GGS_uint::class_func_max (SOURCE_FILE ("formula-assignment.ggs", 102)).uintValue () ;
+        bool loop_3931 = true ;
+        while (loop_3931) {
+          loop_3931 = var_iterate_3883.isValid () ;
+          if (loop_3931) {
+            loop_3931 = var_iterate_3883.boolValue () ;
           }
-          if (loop_3934 && (0 == variant_3934)) {
-            loop_3934 = false ;
+          if (loop_3931 && (0 == variant_3931)) {
+            loop_3931 = false ;
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("formula-assignment.ggs", 102)) ;
           }
-          if (loop_3934) {
-            variant_3934 -= 1 ;
-            var_iterationCount_3911.plusAssignOperation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)) ;
+          if (loop_3931) {
+            variant_3931 -= 1 ;
+            var_iterationCount_3908.plusAssignOperation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 103)) ;
             const GGS_assignmentFormula temp_10 = this ;
-            GGS_binaryset var_r_4004 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_10.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_2800, var_totalBitCount_2740, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 104)) ;
+            GGS_binaryset var_r_4001 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_10.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_2800, var_totalBitCount_2740, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 104)) ;
             GalgasBool test_11 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_11) {
-              test_11 = GGS_bool (ComparisonKind::equal, var_result_3765.objectCompare (var_r_4004)).boolEnum () ;
+              test_11 = GGS_bool (ComparisonKind::equal, var_result_3762.objectCompare (var_r_4001)).boolEnum () ;
               if (GalgasBool::boolTrue == test_11) {
-                var_iterate_3886 = GGS_bool (false) ;
+                var_iterate_3883 = GGS_bool (false) ;
               }
             }
             if (GalgasBool::boolFalse == test_11) {
-              var_result_3765 = var_r_4004 ;
+              var_result_3762 = var_r_4001 ;
               {
               const GGS_assignmentFormula temp_12 = this ;
-              ioArgument_ioComputedFormulaMap.setter_setMValueForKey (var_result_3765, temp_12.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 109)) ;
+              ioArgument_ioComputedFormulaMap.setter_setMValueForKey (var_result_3762, temp_12.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 109)) ;
               }
             }
           }
         }
       }
-      GGS_uint_36__34_ var_valueCount_4304 = var_result_3765.getter_valueCount (var_totalBitCount_2740, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 112)) ;
-      GGS_uint_36__34_ var_nodeCount_4367 = var_result_3765.getter_nodeCount (SOURCE_FILE ("formula-assignment.ggs", 113)) ;
+      GGS_uint_36__34_ var_valueCount_4301 = var_result_3762.getter_valueCount (var_totalBitCount_2740, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 112)) ;
+      GGS_uint_36__34_ var_nodeCount_4364 = var_result_3762.getter_nodeCount (SOURCE_FILE ("formula-assignment.ggs", 113)) ;
       {
       GGS_string temp_13 ;
-      const GalgasBool test_14 = GGS_bool (ComparisonKind::greaterThan, var_iterationCount_3911.objectCompare (GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)))).boolEnum () ;
+      const GalgasBool test_14 = GGS_bool (ComparisonKind::greaterThan, var_iterationCount_3908.objectCompare (GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_14) {
         temp_13 = GGS_string ("s") ;
       }else if (GalgasBool::boolFalse == test_14) {
         temp_13 = GGS_string::makeEmptyString () ;
       }
       GGS_string temp_15 ;
-      const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_4304.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+      const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_4301.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_16) {
         temp_15 = GGS_string ("s") ;
       }else if (GalgasBool::boolFalse == test_16) {
         temp_15 = GGS_string::makeEmptyString () ;
       }
       GGS_string temp_17 ;
-      const GalgasBool test_18 = GGS_bool (ComparisonKind::greaterThan, var_nodeCount_4367.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
+      const GalgasBool test_18 = GGS_bool (ComparisonKind::greaterThan, var_nodeCount_4364.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_18) {
         temp_17 = GGS_string ("s") ;
       }else if (GalgasBool::boolFalse == test_18) {
         temp_17 = GGS_string::makeEmptyString () ;
       }
-      routine_println_3F_ (GGS_string (" ").add_operation (var_iterationCount_3911.getter_string (SOURCE_FILE ("formula-assignment.ggs", 114)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 114)).add_operation (GGS_string (" iteration"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (temp_13, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (var_valueCount_4304.getter_string (SOURCE_FILE ("formula-assignment.ggs", 116)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (var_nodeCount_4367.getter_string (SOURCE_FILE ("formula-assignment.ggs", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (GGS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (temp_17, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (var_timer_3725.getter_string (SOURCE_FILE ("formula-assignment.ggs", 118)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 114)) ;
+      routine_println_3F_ (GGS_string (" ").add_operation (var_iterationCount_3908.getter_string (SOURCE_FILE ("formula-assignment.ggs", 114)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 114)).add_operation (GGS_string (" iteration"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (temp_13, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 115)).add_operation (var_valueCount_4301.getter_string (SOURCE_FILE ("formula-assignment.ggs", 116)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 116)).add_operation (var_nodeCount_4364.getter_string (SOURCE_FILE ("formula-assignment.ggs", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (GGS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (temp_17, inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 117)).add_operation (var_timer_3722.getter_string (SOURCE_FILE ("formula-assignment.ggs", 118)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 118)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.ggs", 114)) ;
       }
     }
     break ;
@@ -3651,32 +3086,32 @@ void cPtr_graphvizFormula::method_analyzeFormula (const GGS_string constinArgume
   routine_println_3F_ (GGS_string ("Graphviz $").add_operation (temp_2.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 39)).add_operation (GGS_string (" -> "), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 39)).add_operation (var_filePath_1725, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 39)), inCompiler  COMMA_SOURCE_FILE ("formula-graphviz.ggs", 39)) ;
   }
   GGS_stringlist temp_3 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 40)) ;
-  GGS_stringlist var_bitNameList_1896 = temp_3 ;
-  DownEnumerator_varList enumerator_1935 (var_varList_1693) ;
-  while (enumerator_1935.hasCurrentObject ()) {
+  GGS_stringlist var_bitNameList_1893 = temp_3 ;
+  DownEnumerator_varList enumerator_1932 (var_varList_1693) ;
+  while (enumerator_1932.hasCurrentObject ()) {
     GalgasBool test_4 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_4) {
-      test_4 = GGS_bool (ComparisonKind::equal, enumerator_1935.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      test_4 = GGS_bool (ComparisonKind::equal, enumerator_1932.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_4) {
         {
-        var_bitNameList_1896.setter_append (enumerator_1935.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 43)) ;
+        var_bitNameList_1893.setter_append (enumerator_1932.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 43)) ;
         }
       }
     }
     if (GalgasBool::boolFalse == test_4) {
-      UpEnumerator_range enumerator_2055 (GGS_range (GGS_uint (uint32_t (0U)), enumerator_1935.current_mBitCount (HERE).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 45)))) ;
-      while (enumerator_2055.hasCurrentObject ()) {
+      UpEnumerator_range enumerator_2052 (GGS_range (GGS_uint (uint32_t (0U)), enumerator_1932.current_mBitCount (HERE).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 45)))) ;
+      while (enumerator_2052.hasCurrentObject ()) {
         {
-        var_bitNameList_1896.setter_append (enumerator_1935.current_mVarName (HERE).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)).add_operation (enumerator_2055.current (HERE).getter_string (SOURCE_FILE ("formula-graphviz.ggs", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)) ;
+        var_bitNameList_1893.setter_append (enumerator_1932.current_mVarName (HERE).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)).add_operation (enumerator_2052.current (HERE).getter_string (SOURCE_FILE ("formula-graphviz.ggs", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 46)) ;
         }
-        enumerator_2055.gotoNextObject () ;
+        enumerator_2052.gotoNextObject () ;
       }
     }
-    enumerator_1935.gotoNextObject () ;
+    enumerator_1932.gotoNextObject () ;
   }
-  GGS_string var_s_2148 = var_result_1711.getter_graphviz (var_bitNameList_1896 COMMA_SOURCE_FILE ("formula-graphviz.ggs", 50)) ;
-  GGS_bool joker_2232 ; // Joker input parameter
-  var_s_2148.method_writeToFileWhenDifferentContents (var_filePath_1725, joker_2232, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 51)) ;
+  GGS_string var_s_2145 = var_result_1711.getter_graphviz (var_bitNameList_1893 COMMA_SOURCE_FILE ("formula-graphviz.ggs", 50)) ;
+  GGS_bool joker_2229 ; // Joker input parameter
+  var_s_2145.method_writeToFileWhenDifferentContents (var_filePath_1725, joker_2229, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 51)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3766,14 +3201,14 @@ GGS_binaryset cPtr_varBitInExpression::getter_computeExpression (const GGS_domai
                                                                  Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_uint var_idx_11333 ;
-  GGS_uint var_bitCount_11343 ;
-  GGS_recordDomainMap var_subdomainMap_11358 ;
+  GGS_uint var_idx_11330 ;
+  GGS_uint var_bitCount_11340 ;
+  GGS_recordDomainMap var_subdomainMap_11355 ;
   const GGS_varBitInExpression temp_0 = this ;
-  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_11333, var_bitCount_11343, var_subdomainMap_11358, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 372)) ;
+  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_11330, var_bitCount_11340, var_subdomainMap_11355, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 372)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::greaterThan, var_subdomainMap_11358.getter_count (SOURCE_FILE ("expression.ggs", 373)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::greaterThan, var_subdomainMap_11355.getter_count (SOURCE_FILE ("expression.ggs", 373)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
       const GGS_varBitInExpression temp_2 = this ;
       GenericArray <FixItDescription> fixItArray3 ;
@@ -3784,16 +3219,16 @@ GGS_binaryset cPtr_varBitInExpression::getter_computeExpression (const GGS_domai
     GalgasBool test_4 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_4) {
       const GGS_varBitInExpression temp_5 = this ;
-      test_4 = GGS_bool (ComparisonKind::lowerOrEqual, var_bitCount_11343.objectCompare (temp_5.readProperty_mVarBit ().readProperty_uint ())).boolEnum () ;
+      test_4 = GGS_bool (ComparisonKind::lowerOrEqual, var_bitCount_11340.objectCompare (temp_5.readProperty_mVarBit ().readProperty_uint ())).boolEnum () ;
       if (GalgasBool::boolTrue == test_4) {
         const GGS_varBitInExpression temp_6 = this ;
         GenericArray <FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (temp_6.readProperty_mVarBit ().readProperty_location (), GGS_string ("bit index should be < ").add_operation (var_bitCount_11343.getter_string (SOURCE_FILE ("expression.ggs", 376)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 376)), fixItArray7  COMMA_SOURCE_FILE ("expression.ggs", 376)) ;
+        inCompiler->emitSemanticError (temp_6.readProperty_mVarBit ().readProperty_location (), GGS_string ("bit index should be < ").add_operation (var_bitCount_11340.getter_string (SOURCE_FILE ("expression.ggs", 376)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 376)), fixItArray7  COMMA_SOURCE_FILE ("expression.ggs", 376)) ;
       }
     }
   }
   const GGS_varBitInExpression temp_8 = this ;
-  result_outResult = GGS_binaryset::class_func_binarySetWithBit (var_idx_11333.add_operation (temp_8.readProperty_mVarBit ().readProperty_uint (), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 378)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 378)) ;
+  result_outResult = GGS_binaryset::class_func_binarySetWithBit (var_idx_11330.add_operation (temp_8.readProperty_mVarBit ().readProperty_uint (), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 378)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 378)) ;
 //---
   return result_outResult ;
 }
@@ -3813,10 +3248,10 @@ GGS_binaryset cPtr_andExpression::getter_computeExpression (const GGS_domainMap 
                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_andExpression temp_0 = this ;
-  GGS_binaryset var_left_11975 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 390)) ;
+  GGS_binaryset var_left_11969 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 390)) ;
   const GGS_andExpression temp_1 = this ;
-  GGS_binaryset var_right_12095 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 391)) ;
-  result_outResult = var_left_11975.operator_and (var_right_12095 COMMA_SOURCE_FILE ("expression.ggs", 392)) ;
+  GGS_binaryset var_right_12089 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 391)) ;
+  result_outResult = var_left_11969.operator_and (var_right_12089 COMMA_SOURCE_FILE ("expression.ggs", 392)) ;
 //---
   return result_outResult ;
 }
@@ -3836,10 +3271,10 @@ GGS_binaryset cPtr_orExpression::getter_computeExpression (const GGS_domainMap c
                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_orExpression temp_0 = this ;
-  GGS_binaryset var_left_12557 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 404)) ;
+  GGS_binaryset var_left_12551 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 404)) ;
   const GGS_orExpression temp_1 = this ;
-  GGS_binaryset var_right_12677 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 405)) ;
-  result_outResult = var_left_12557.operator_or (var_right_12677 COMMA_SOURCE_FILE ("expression.ggs", 406)) ;
+  GGS_binaryset var_right_12671 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 405)) ;
+  result_outResult = var_left_12551.operator_or (var_right_12671 COMMA_SOURCE_FILE ("expression.ggs", 406)) ;
 //---
   return result_outResult ;
 }
@@ -3859,10 +3294,10 @@ GGS_binaryset cPtr_xorExpression::getter_computeExpression (const GGS_domainMap 
                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_xorExpression temp_0 = this ;
-  GGS_binaryset var_left_13140 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 418)) ;
+  GGS_binaryset var_left_13134 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 418)) ;
   const GGS_xorExpression temp_1 = this ;
-  GGS_binaryset var_right_13260 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 419)) ;
-  result_outResult = var_left_13140.operator_xor (var_right_13260 COMMA_SOURCE_FILE ("expression.ggs", 420)) ;
+  GGS_binaryset var_right_13254 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 419)) ;
+  result_outResult = var_left_13134.operator_xor (var_right_13254 COMMA_SOURCE_FILE ("expression.ggs", 420)) ;
 //---
   return result_outResult ;
 }
@@ -3882,10 +3317,10 @@ GGS_binaryset cPtr_impliesExpression::getter_computeExpression (const GGS_domain
                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_impliesExpression temp_0 = this ;
-  GGS_binaryset var_left_13727 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 432)) ;
+  GGS_binaryset var_left_13721 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 432)) ;
   const GGS_impliesExpression temp_1 = this ;
-  GGS_binaryset var_right_13847 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 433)) ;
-  result_outResult = var_left_13727.getter_implies (var_right_13847 COMMA_SOURCE_FILE ("expression.ggs", 434)) ;
+  GGS_binaryset var_right_13841 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 433)) ;
+  result_outResult = var_left_13721.getter_implies (var_right_13841 COMMA_SOURCE_FILE ("expression.ggs", 434)) ;
 //---
   return result_outResult ;
 }
@@ -3905,10 +3340,10 @@ GGS_binaryset cPtr_equalExpression::getter_computeExpression (const GGS_domainMa
                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_equalExpression temp_0 = this ;
-  GGS_binaryset var_left_14320 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 446)) ;
+  GGS_binaryset var_left_14314 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 446)) ;
   const GGS_equalExpression temp_1 = this ;
-  GGS_binaryset var_right_14440 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 447)) ;
-  result_outResult = var_left_14320.operator_xor (var_right_14440 COMMA_SOURCE_FILE ("expression.ggs", 448)).operator_tilde (SOURCE_FILE ("expression.ggs", 448)) ;
+  GGS_binaryset var_right_14434 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 447)) ;
+  result_outResult = var_left_14314.operator_xor (var_right_14434 COMMA_SOURCE_FILE ("expression.ggs", 448)).operator_tilde (SOURCE_FILE ("expression.ggs", 448)) ;
 //---
   return result_outResult ;
 }
@@ -3928,10 +3363,10 @@ GGS_binaryset cPtr_notEqualExpression::getter_computeExpression (const GGS_domai
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_notEqualExpression temp_0 = this ;
-  GGS_binaryset var_left_14911 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 460)) ;
+  GGS_binaryset var_left_14905 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 460)) ;
   const GGS_notEqualExpression temp_1 = this ;
-  GGS_binaryset var_right_15031 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 461)) ;
-  result_outResult = var_left_14911.operator_xor (var_right_15031 COMMA_SOURCE_FILE ("expression.ggs", 462)) ;
+  GGS_binaryset var_right_15025 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 461)) ;
+  result_outResult = var_left_14905.operator_xor (var_right_15025 COMMA_SOURCE_FILE ("expression.ggs", 462)) ;
 //---
   return result_outResult ;
 }
@@ -4008,20 +3443,20 @@ GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_doma
                                                                   Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_varList var_varList_16794 ;
-  GGS_uint var_totalBitCount_16815 ;
-  GGS_binaryset var_formulaValue_16835 ;
+  GGS_varList var_varList_16788 ;
+  GGS_uint var_totalBitCount_16809 ;
+  GGS_binaryset var_formulaValue_16829 ;
   const GGS_formulaInExpression temp_0 = this ;
-  constinArgument_inComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_16794, var_totalBitCount_16815, var_formulaValue_16835, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 511)) ;
+  constinArgument_inComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_16788, var_totalBitCount_16809, var_formulaValue_16829, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 511)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
     const GGS_formulaInExpression temp_2 = this ;
-    test_1 = GGS_bool (ComparisonKind::notEqual, temp_2.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.ggs", 513)).objectCompare (var_varList_16794.getter_count (SOURCE_FILE ("expression.ggs", 513)))).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::notEqual, temp_2.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.ggs", 513)).objectCompare (var_varList_16788.getter_count (SOURCE_FILE ("expression.ggs", 513)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
       const GGS_formulaInExpression temp_3 = this ;
       const GGS_formulaInExpression temp_4 = this ;
       GGS_string temp_5 ;
-      const GalgasBool test_6 = GGS_bool (ComparisonKind::greaterThan, var_varList_16794.getter_count (SOURCE_FILE ("expression.ggs", 515)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      const GalgasBool test_6 = GGS_bool (ComparisonKind::greaterThan, var_varList_16788.getter_count (SOURCE_FILE ("expression.ggs", 515)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_6) {
         temp_5 = GGS_string ("s") ;
       }else if (GalgasBool::boolFalse == test_6) {
@@ -4037,63 +3472,63 @@ GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_doma
         temp_9 = GGS_string::makeEmptyString () ;
       }
       GenericArray <FixItDescription> fixItArray11 ;
-      inCompiler->emitSemanticError (temp_3.readProperty_mFormulaName ().readProperty_location (), GGS_string ("the $").add_operation (temp_4.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 514)).add_operation (GGS_string (" names "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 514)).add_operation (var_varList_16794.getter_count (SOURCE_FILE ("expression.ggs", 515)).getter_string (SOURCE_FILE ("expression.ggs", 514)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 514)).add_operation (GGS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 515)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 515)).add_operation (GGS_string (", but this call names "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 515)).add_operation (temp_7.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.ggs", 517)).getter_string (SOURCE_FILE ("expression.ggs", 516)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 516)).add_operation (GGS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 517)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 517)), fixItArray11  COMMA_SOURCE_FILE ("expression.ggs", 514)) ;
+      inCompiler->emitSemanticError (temp_3.readProperty_mFormulaName ().readProperty_location (), GGS_string ("the $").add_operation (temp_4.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 514)).add_operation (GGS_string (" names "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 514)).add_operation (var_varList_16788.getter_count (SOURCE_FILE ("expression.ggs", 515)).getter_string (SOURCE_FILE ("expression.ggs", 514)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 514)).add_operation (GGS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 515)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 515)).add_operation (GGS_string (", but this call names "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 515)).add_operation (temp_7.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.ggs", 517)).getter_string (SOURCE_FILE ("expression.ggs", 516)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 516)).add_operation (GGS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 517)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 517)), fixItArray11  COMMA_SOURCE_FILE ("expression.ggs", 514)) ;
       result_outResult.drop () ; // Release error dropped variable
     }
   }
   if (GalgasBool::boolFalse == test_1) {
     GGS_uintlist temp_12 = GGS_uintlist::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 520)) ;
-    GGS_uintlist var_transformationList_17281 = temp_12 ;
+    GGS_uintlist var_transformationList_17257 = temp_12 ;
     const GGS_formulaInExpression temp_13 = this ;
-    DownEnumerator_varList enumerator_17331 (var_varList_16794) ;
-    DownEnumerator_formulaParameterListInExpression enumerator_17377 (temp_13.readProperty_mParameterList ()) ;
-    while (enumerator_17331.hasCurrentObject () && enumerator_17377.hasCurrentObject ()) {
-      GGS_uint var_parameterIndex_17467 ;
-      GGS_uint var_parameterBitCount_17490 ;
-      GGS_recordDomainMap var_subdomainMap_17527 ;
-      constinArgument_inVarMap.method_searchKey (enumerator_17377.current_mParameterName (HERE), var_parameterIndex_17467, var_parameterBitCount_17490, var_subdomainMap_17527, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 522)) ;
-      UpEnumerator_lstringlist enumerator_17552 (enumerator_17377.current_mFieldNames (HERE)) ;
-      while (enumerator_17552.hasCurrentObject ()) {
-        GGS_uint var_fieldRelativeBitIndex_17632 ;
-        GGS_recordDomainMap var_fieldSubdomainMap_17680 ;
-        var_subdomainMap_17527.method_searchKey (enumerator_17552.current_mValue (HERE), var_fieldRelativeBitIndex_17632, var_parameterBitCount_17490, var_fieldSubdomainMap_17680, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 524)) ;
-        var_parameterIndex_17467 = var_parameterIndex_17467.add_operation (var_fieldRelativeBitIndex_17632, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 525)) ;
-        var_subdomainMap_17527 = var_fieldSubdomainMap_17680 ;
-        enumerator_17552.gotoNextObject () ;
+    DownEnumerator_varList enumerator_17307 (var_varList_16788) ;
+    DownEnumerator_formulaParameterListInExpression enumerator_17353 (temp_13.readProperty_mParameterList ()) ;
+    while (enumerator_17307.hasCurrentObject () && enumerator_17353.hasCurrentObject ()) {
+      GGS_uint var_parameterIndex_17443 ;
+      GGS_uint var_parameterBitCount_17466 ;
+      GGS_recordDomainMap var_subdomainMap_17503 ;
+      constinArgument_inVarMap.method_searchKey (enumerator_17353.current_mParameterName (HERE), var_parameterIndex_17443, var_parameterBitCount_17466, var_subdomainMap_17503, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 522)) ;
+      UpEnumerator_lstringlist enumerator_17528 (enumerator_17353.current_mFieldNames (HERE)) ;
+      while (enumerator_17528.hasCurrentObject ()) {
+        GGS_uint var_fieldRelativeBitIndex_17608 ;
+        GGS_recordDomainMap var_fieldSubdomainMap_17656 ;
+        var_subdomainMap_17503.method_searchKey (enumerator_17528.current_mValue (HERE), var_fieldRelativeBitIndex_17608, var_parameterBitCount_17466, var_fieldSubdomainMap_17656, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 524)) ;
+        var_parameterIndex_17443 = var_parameterIndex_17443.add_operation (var_fieldRelativeBitIndex_17608, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 525)) ;
+        var_subdomainMap_17503 = var_fieldSubdomainMap_17656 ;
+        enumerator_17528.gotoNextObject () ;
       }
       GalgasBool test_14 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_14) {
-        test_14 = GGS_bool (ComparisonKind::notEqual, enumerator_17331.current_mBitCount (HERE).objectCompare (var_parameterBitCount_17490)).boolEnum () ;
+        test_14 = GGS_bool (ComparisonKind::notEqual, enumerator_17307.current_mBitCount (HERE).objectCompare (var_parameterBitCount_17466)).boolEnum () ;
         if (GalgasBool::boolTrue == test_14) {
           GGS_string temp_15 ;
-          const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_parameterBitCount_17490.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_parameterBitCount_17466.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_16) {
             temp_15 = GGS_string ("s") ;
           }else if (GalgasBool::boolFalse == test_16) {
             temp_15 = GGS_string::makeEmptyString () ;
           }
           GGS_string temp_17 ;
-          const GalgasBool test_18 = GGS_bool (ComparisonKind::greaterThan, enumerator_17331.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          const GalgasBool test_18 = GGS_bool (ComparisonKind::greaterThan, enumerator_17307.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_18) {
             temp_17 = GGS_string ("s") ;
           }else if (GalgasBool::boolFalse == test_18) {
             temp_17 = GGS_string::makeEmptyString () ;
           }
           GenericArray <FixItDescription> fixItArray19 ;
-          inCompiler->emitSemanticError (enumerator_17377.current_mParameterName (HERE).readProperty_location (), GGS_string ("this parameter is declared with a size of ").add_operation (var_parameterBitCount_17490.getter_string (SOURCE_FILE ("expression.ggs", 529)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 529)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 530)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 530)).add_operation (GGS_string (", but corresponding formal argument '"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 530)).add_operation (enumerator_17331.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 531)).add_operation (GGS_string ("' is declared with a size of "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 531)).add_operation (enumerator_17331.current_mBitCount (HERE).getter_string (SOURCE_FILE ("expression.ggs", 531)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 531)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 532)).add_operation (temp_17, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 532)), fixItArray19  COMMA_SOURCE_FILE ("expression.ggs", 529)) ;
+          inCompiler->emitSemanticError (enumerator_17353.current_mParameterName (HERE).readProperty_location (), GGS_string ("this parameter is declared with a size of ").add_operation (var_parameterBitCount_17466.getter_string (SOURCE_FILE ("expression.ggs", 529)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 529)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 530)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 530)).add_operation (GGS_string (", but corresponding formal argument '"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 530)).add_operation (enumerator_17307.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 531)).add_operation (GGS_string ("' is declared with a size of "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 531)).add_operation (enumerator_17307.current_mBitCount (HERE).getter_string (SOURCE_FILE ("expression.ggs", 531)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 531)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 532)).add_operation (temp_17, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 532)), fixItArray19  COMMA_SOURCE_FILE ("expression.ggs", 529)) ;
         }
       }
-      UpEnumerator_range enumerator_18237 (GGS_range (GGS_uint (uint32_t (0U)), var_parameterBitCount_17490.substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 534)))) ;
-      while (enumerator_18237.hasCurrentObject ()) {
+      UpEnumerator_range enumerator_18213 (GGS_range (GGS_uint (uint32_t (0U)), var_parameterBitCount_17466.substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 534)))) ;
+      while (enumerator_18213.hasCurrentObject ()) {
         {
-        var_transformationList_17281.setter_append (var_parameterIndex_17467.add_operation (enumerator_18237.current (HERE), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 535)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 535)) ;
+        var_transformationList_17257.setter_append (var_parameterIndex_17443.add_operation (enumerator_18213.current (HERE), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 535)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 535)) ;
         }
-        enumerator_18237.gotoNextObject () ;
+        enumerator_18213.gotoNextObject () ;
       }
-      enumerator_17331.gotoNextObject () ;
-      enumerator_17377.gotoNextObject () ;
+      enumerator_17307.gotoNextObject () ;
+      enumerator_17353.gotoNextObject () ;
     }
-    result_outResult = var_formulaValue_16835.getter_transformedBy (var_transformationList_17281 COMMA_SOURCE_FILE ("expression.ggs", 538)) ;
+    result_outResult = var_formulaValue_16829.getter_transformedBy (var_transformationList_17257 COMMA_SOURCE_FILE ("expression.ggs", 538)) ;
   }
 //---
   return result_outResult ;
@@ -4113,14 +3548,14 @@ GGS_binaryset cPtr_existInExpression::getter_computeExpression (const GGS_domain
                                                                 Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_varMap var_varMap_18736 = constinArgument_inVarMap ;
-  GGS_uint var_totalBitCount_18766 = constinArgument_inTotalBitCount ;
-  GGS_varList var_unusedVarList_18805 = GGS_varList::init (inCompiler COMMA_HERE) ;
+  GGS_varMap var_varMap_18712 = constinArgument_inVarMap ;
+  GGS_uint var_totalBitCount_18742 = constinArgument_inTotalBitCount ;
+  GGS_varList var_unusedVarList_18781 = GGS_varList::init (inCompiler COMMA_HERE) ;
   const GGS_existInExpression temp_0 = this ;
-  extensionMethod_analyze (temp_0.readProperty_mArgumentList (), constinArgument_inDomainMap, var_varMap_18736, var_unusedVarList_18805, var_totalBitCount_18766, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 554)) ;
+  extensionMethod_analyze (temp_0.readProperty_mArgumentList (), constinArgument_inDomainMap, var_varMap_18712, var_unusedVarList_18781, var_totalBitCount_18742, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 554)) ;
   const GGS_existInExpression temp_1 = this ;
-  GGS_binaryset var_r_18927 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_18736, var_totalBitCount_18766, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 555)) ;
-  result_outResult = var_r_18927.getter_existOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.ggs", 556)) ;
+  GGS_binaryset var_r_18903 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_18712, var_totalBitCount_18742, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 555)) ;
+  result_outResult = var_r_18903.getter_existOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.ggs", 556)) ;
 //---
   return result_outResult ;
 }
@@ -4139,14 +3574,14 @@ GGS_binaryset cPtr_forAllInExpression::getter_computeExpression (const GGS_domai
                                                                  Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_varMap var_varMap_19423 = constinArgument_inVarMap ;
-  GGS_uint var_totalBitCount_19453 = constinArgument_inTotalBitCount ;
-  GGS_varList var_unusedVarList_19492 = GGS_varList::init (inCompiler COMMA_HERE) ;
+  GGS_varMap var_varMap_19399 = constinArgument_inVarMap ;
+  GGS_uint var_totalBitCount_19429 = constinArgument_inTotalBitCount ;
+  GGS_varList var_unusedVarList_19468 = GGS_varList::init (inCompiler COMMA_HERE) ;
   const GGS_forAllInExpression temp_0 = this ;
-  extensionMethod_analyze (temp_0.readProperty_mArgumentList (), constinArgument_inDomainMap, var_varMap_19423, var_unusedVarList_19492, var_totalBitCount_19453, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 571)) ;
+  extensionMethod_analyze (temp_0.readProperty_mArgumentList (), constinArgument_inDomainMap, var_varMap_19399, var_unusedVarList_19468, var_totalBitCount_19429, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 571)) ;
   const GGS_forAllInExpression temp_1 = this ;
-  GGS_binaryset var_r_19614 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_19423, var_totalBitCount_19453, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 572)) ;
-  result_outResult = var_r_19614.getter_forAllOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.ggs", 573)) ;
+  GGS_binaryset var_r_19590 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_19399, var_totalBitCount_19429, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 572)) ;
+  result_outResult = var_r_19590.getter_forAllOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.ggs", 573)) ;
 //---
   return result_outResult ;
 }
@@ -4165,24 +3600,24 @@ GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression 
                                                                                  Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_uint var_idx_20178 ;
-  GGS_uint var_bitCount_20190 ;
-  GGS_recordDomainMap var_subDomainMap_20218 ;
+  GGS_uint var_idx_20154 ;
+  GGS_uint var_bitCount_20166 ;
+  GGS_recordDomainMap var_subDomainMap_20194 ;
   const GGS_comparisonWithConstantInExpression temp_0 = this ;
-  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_20178, var_bitCount_20190, var_subDomainMap_20218, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 585)) ;
+  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_20154, var_bitCount_20166, var_subDomainMap_20194, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 585)) ;
   const GGS_comparisonWithConstantInExpression temp_1 = this ;
-  UpEnumerator_lstringlist enumerator_20239 (temp_1.readProperty_mFieldNames ()) ;
-  while (enumerator_20239.hasCurrentObject ()) {
-    GGS_uint var_fieldRelativeBitIndex_20318 ;
-    GGS_recordDomainMap var_fieldSubdomainMap_20357 ;
-    var_subDomainMap_20218.method_searchKey (enumerator_20239.current_mValue (HERE), var_fieldRelativeBitIndex_20318, var_bitCount_20190, var_fieldSubdomainMap_20357, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 587)) ;
-    var_idx_20178 = var_idx_20178.add_operation (var_fieldRelativeBitIndex_20318, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 588)) ;
-    var_subDomainMap_20218 = var_fieldSubdomainMap_20357 ;
-    enumerator_20239.gotoNextObject () ;
+  UpEnumerator_lstringlist enumerator_20215 (temp_1.readProperty_mFieldNames ()) ;
+  while (enumerator_20215.hasCurrentObject ()) {
+    GGS_uint var_fieldRelativeBitIndex_20294 ;
+    GGS_recordDomainMap var_fieldSubdomainMap_20333 ;
+    var_subDomainMap_20194.method_searchKey (enumerator_20215.current_mValue (HERE), var_fieldRelativeBitIndex_20294, var_bitCount_20166, var_fieldSubdomainMap_20333, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 587)) ;
+    var_idx_20154 = var_idx_20154.add_operation (var_fieldRelativeBitIndex_20294, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 588)) ;
+    var_subDomainMap_20194 = var_fieldSubdomainMap_20333 ;
+    enumerator_20215.gotoNextObject () ;
   }
   GalgasBool test_2 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_2) {
-    test_2 = GGS_bool (ComparisonKind::greaterThan, var_subDomainMap_20218.getter_count (SOURCE_FILE ("expression.ggs", 591)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    test_2 = GGS_bool (ComparisonKind::greaterThan, var_subDomainMap_20194.getter_count (SOURCE_FILE ("expression.ggs", 591)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_2) {
       const GGS_comparisonWithConstantInExpression temp_3 = this ;
       GenericArray <FixItDescription> fixItArray4 ;
@@ -4194,11 +3629,11 @@ GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression 
     GalgasBool test_5 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_5) {
       const GGS_comparisonWithConstantInExpression temp_6 = this ;
-      test_5 = GGS_bool (ComparisonKind::greaterThan, temp_6.readProperty_mConstant ().readProperty_uint ().getter_significantBitCount (SOURCE_FILE ("expression.ggs", 593)).objectCompare (var_bitCount_20190)).boolEnum () ;
+      test_5 = GGS_bool (ComparisonKind::greaterThan, temp_6.readProperty_mConstant ().readProperty_uint ().getter_significantBitCount (SOURCE_FILE ("expression.ggs", 593)).objectCompare (var_bitCount_20166)).boolEnum () ;
       if (GalgasBool::boolTrue == test_5) {
         const GGS_comparisonWithConstantInExpression temp_7 = this ;
         GenericArray <FixItDescription> fixItArray8 ;
-        inCompiler->emitSemanticError (temp_7.readProperty_mConstant ().readProperty_location (), GGS_string ("Constant too large (should be < 2**").add_operation (var_bitCount_20190.getter_string (SOURCE_FILE ("expression.ggs", 594)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 594)), fixItArray8  COMMA_SOURCE_FILE ("expression.ggs", 594)) ;
+        inCompiler->emitSemanticError (temp_7.readProperty_mConstant ().readProperty_location (), GGS_string ("Constant too large (should be < 2**").add_operation (var_bitCount_20166.getter_string (SOURCE_FILE ("expression.ggs", 594)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 594)), fixItArray8  COMMA_SOURCE_FILE ("expression.ggs", 594)) ;
         result_outResult.drop () ; // Release error dropped variable
       }
     }
@@ -4210,37 +3645,37 @@ GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression 
       case GGS_comparison::Enumeration::enum_equal:
         {
           const GGS_comparisonWithConstantInExpression temp_10 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithEqualToConstant (var_idx_20178, var_bitCount_20190, temp_10.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 598)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 598)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithEqualToConstant (var_idx_20154, var_bitCount_20166, temp_10.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 598)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 598)) ;
         }
         break ;
       case GGS_comparison::Enumeration::enum_notEqual:
         {
           const GGS_comparisonWithConstantInExpression temp_11 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithNotEqualToConstant (var_idx_20178, var_bitCount_20190, temp_11.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 600)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 600)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithNotEqualToConstant (var_idx_20154, var_bitCount_20166, temp_11.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 600)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 600)) ;
         }
         break ;
       case GGS_comparison::Enumeration::enum_lowerOrEqual:
         {
           const GGS_comparisonWithConstantInExpression temp_12 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithLowerOrEqualToConstant (var_idx_20178, var_bitCount_20190, temp_12.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 602)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 602)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithLowerOrEqualToConstant (var_idx_20154, var_bitCount_20166, temp_12.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 602)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 602)) ;
         }
         break ;
       case GGS_comparison::Enumeration::enum_lowerThan:
         {
           const GGS_comparisonWithConstantInExpression temp_13 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithStrictLowerThanConstant (var_idx_20178, var_bitCount_20190, temp_13.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 604)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 604)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithStrictLowerThanConstant (var_idx_20154, var_bitCount_20166, temp_13.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 604)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 604)) ;
         }
         break ;
       case GGS_comparison::Enumeration::enum_greaterOrEqual:
         {
           const GGS_comparisonWithConstantInExpression temp_14 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithGreaterOrEqualToConstant (var_idx_20178, var_bitCount_20190, temp_14.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 606)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 606)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithGreaterOrEqualToConstant (var_idx_20154, var_bitCount_20166, temp_14.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 606)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 606)) ;
         }
         break ;
       case GGS_comparison::Enumeration::enum_greaterThan:
         {
           const GGS_comparisonWithConstantInExpression temp_15 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithStrictGreaterThanConstant (var_idx_20178, var_bitCount_20190, temp_15.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 608)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 608)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithStrictGreaterThanConstant (var_idx_20154, var_bitCount_20166, temp_15.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.ggs", 608)), inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 608)) ;
         }
         break ;
       }
@@ -4264,39 +3699,39 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_uint var_leftIdx_22006 ;
-  GGS_uint var_leftBitCount_22023 ;
-  GGS_recordDomainMap var_leftSubDomainMap_22056 ;
+  GGS_uint var_leftIdx_21958 ;
+  GGS_uint var_leftBitCount_21975 ;
+  GGS_recordDomainMap var_leftSubDomainMap_22008 ;
   const GGS_variableComparisonInExpression temp_0 = this ;
-  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mLeftVarName (), var_leftIdx_22006, var_leftBitCount_22023, var_leftSubDomainMap_22056, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 622)) ;
+  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mLeftVarName (), var_leftIdx_21958, var_leftBitCount_21975, var_leftSubDomainMap_22008, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 622)) ;
   const GGS_variableComparisonInExpression temp_1 = this ;
-  UpEnumerator_lstringlist enumerator_22081 (temp_1.readProperty_mLeftFieldNames ()) ;
-  while (enumerator_22081.hasCurrentObject ()) {
-    GGS_uint var_fieldRelativeBitIndex_22168 ;
-    GGS_recordDomainMap var_fieldSubdomainMap_22211 ;
-    var_leftSubDomainMap_22056.method_searchKey (enumerator_22081.current_mValue (HERE), var_fieldRelativeBitIndex_22168, var_leftBitCount_22023, var_fieldSubdomainMap_22211, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 624)) ;
-    var_leftIdx_22006 = var_leftIdx_22006.add_operation (var_fieldRelativeBitIndex_22168, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 625)) ;
-    var_leftSubDomainMap_22056 = var_fieldSubdomainMap_22211 ;
-    enumerator_22081.gotoNextObject () ;
+  UpEnumerator_lstringlist enumerator_22033 (temp_1.readProperty_mLeftFieldNames ()) ;
+  while (enumerator_22033.hasCurrentObject ()) {
+    GGS_uint var_fieldRelativeBitIndex_22120 ;
+    GGS_recordDomainMap var_fieldSubdomainMap_22163 ;
+    var_leftSubDomainMap_22008.method_searchKey (enumerator_22033.current_mValue (HERE), var_fieldRelativeBitIndex_22120, var_leftBitCount_21975, var_fieldSubdomainMap_22163, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 624)) ;
+    var_leftIdx_21958 = var_leftIdx_21958.add_operation (var_fieldRelativeBitIndex_22120, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 625)) ;
+    var_leftSubDomainMap_22008 = var_fieldSubdomainMap_22163 ;
+    enumerator_22033.gotoNextObject () ;
   }
-  GGS_uint var_rightIdx_22373 ;
-  GGS_uint var_rightBitCount_22390 ;
-  GGS_recordDomainMap var_rightSubDomainMap_22423 ;
+  GGS_uint var_rightIdx_22325 ;
+  GGS_uint var_rightBitCount_22342 ;
+  GGS_recordDomainMap var_rightSubDomainMap_22375 ;
   const GGS_variableComparisonInExpression temp_2 = this ;
-  constinArgument_inVarMap.method_searchKey (temp_2.readProperty_mRightVarName (), var_rightIdx_22373, var_rightBitCount_22390, var_rightSubDomainMap_22423, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 628)) ;
+  constinArgument_inVarMap.method_searchKey (temp_2.readProperty_mRightVarName (), var_rightIdx_22325, var_rightBitCount_22342, var_rightSubDomainMap_22375, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 628)) ;
   const GGS_variableComparisonInExpression temp_3 = this ;
-  UpEnumerator_lstringlist enumerator_22449 (temp_3.readProperty_mRightFieldNames ()) ;
-  while (enumerator_22449.hasCurrentObject ()) {
-    GGS_uint var_fieldRelativeBitIndex_22538 ;
-    GGS_recordDomainMap var_fieldSubdomainMap_22582 ;
-    var_rightSubDomainMap_22423.method_searchKey (enumerator_22449.current_mValue (HERE), var_fieldRelativeBitIndex_22538, var_rightBitCount_22390, var_fieldSubdomainMap_22582, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 630)) ;
-    var_rightIdx_22373 = var_rightIdx_22373.add_operation (var_fieldRelativeBitIndex_22538, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 631)) ;
-    var_rightSubDomainMap_22423 = var_fieldSubdomainMap_22582 ;
-    enumerator_22449.gotoNextObject () ;
+  UpEnumerator_lstringlist enumerator_22401 (temp_3.readProperty_mRightFieldNames ()) ;
+  while (enumerator_22401.hasCurrentObject ()) {
+    GGS_uint var_fieldRelativeBitIndex_22490 ;
+    GGS_recordDomainMap var_fieldSubdomainMap_22534 ;
+    var_rightSubDomainMap_22375.method_searchKey (enumerator_22401.current_mValue (HERE), var_fieldRelativeBitIndex_22490, var_rightBitCount_22342, var_fieldSubdomainMap_22534, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 630)) ;
+    var_rightIdx_22325 = var_rightIdx_22325.add_operation (var_fieldRelativeBitIndex_22490, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 631)) ;
+    var_rightSubDomainMap_22375 = var_fieldSubdomainMap_22534 ;
+    enumerator_22401.gotoNextObject () ;
   }
   GalgasBool test_4 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_4) {
-    test_4 = GGS_bool (ComparisonKind::greaterThan, var_leftSubDomainMap_22056.getter_count (SOURCE_FILE ("expression.ggs", 634)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    test_4 = GGS_bool (ComparisonKind::greaterThan, var_leftSubDomainMap_22008.getter_count (SOURCE_FILE ("expression.ggs", 634)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_4) {
       const GGS_variableComparisonInExpression temp_5 = this ;
       GenericArray <FixItDescription> fixItArray6 ;
@@ -4307,7 +3742,7 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
   if (GalgasBool::boolFalse == test_4) {
     GalgasBool test_7 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_7) {
-      test_7 = GGS_bool (ComparisonKind::greaterThan, var_rightSubDomainMap_22423.getter_count (SOURCE_FILE ("expression.ggs", 636)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      test_7 = GGS_bool (ComparisonKind::greaterThan, var_rightSubDomainMap_22375.getter_count (SOURCE_FILE ("expression.ggs", 636)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_7) {
         const GGS_variableComparisonInExpression temp_8 = this ;
         GenericArray <FixItDescription> fixItArray9 ;
@@ -4318,26 +3753,26 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
     if (GalgasBool::boolFalse == test_7) {
       GalgasBool test_10 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_10) {
-        test_10 = GGS_bool (ComparisonKind::notEqual, var_leftBitCount_22023.objectCompare (var_rightBitCount_22390)).boolEnum () ;
+        test_10 = GGS_bool (ComparisonKind::notEqual, var_leftBitCount_21975.objectCompare (var_rightBitCount_22342)).boolEnum () ;
         if (GalgasBool::boolTrue == test_10) {
           const GGS_variableComparisonInExpression temp_11 = this ;
           const GGS_variableComparisonInExpression temp_12 = this ;
           GGS_string temp_13 ;
-          const GalgasBool test_14 = GGS_bool (ComparisonKind::greaterThan, var_leftBitCount_22023.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          const GalgasBool test_14 = GGS_bool (ComparisonKind::greaterThan, var_leftBitCount_21975.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_14) {
             temp_13 = GGS_string ("s") ;
           }else if (GalgasBool::boolFalse == test_14) {
             temp_13 = GGS_string::makeEmptyString () ;
           }
           GGS_string temp_15 ;
-          const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_rightBitCount_22390.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_rightBitCount_22342.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_16) {
             temp_15 = GGS_string ("s") ;
           }else if (GalgasBool::boolFalse == test_16) {
             temp_15 = GGS_string::makeEmptyString () ;
           }
           GenericArray <FixItDescription> fixItArray17 ;
-          inCompiler->emitSemanticError (temp_11.readProperty_mRightVarName ().readProperty_location (), GGS_string ("'").add_operation (temp_12.readProperty_mLeftVarName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 639)).add_operation (GGS_string ("' variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 639)).add_operation (var_leftBitCount_22023.getter_string (SOURCE_FILE ("expression.ggs", 639)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 639)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 640)).add_operation (temp_13, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 640)).add_operation (GGS_string (", but this variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 640)).add_operation (var_rightBitCount_22390.getter_string (SOURCE_FILE ("expression.ggs", 641)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 641)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 642)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 642)), fixItArray17  COMMA_SOURCE_FILE ("expression.ggs", 639)) ;
+          inCompiler->emitSemanticError (temp_11.readProperty_mRightVarName ().readProperty_location (), GGS_string ("'").add_operation (temp_12.readProperty_mLeftVarName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 639)).add_operation (GGS_string ("' variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 639)).add_operation (var_leftBitCount_21975.getter_string (SOURCE_FILE ("expression.ggs", 639)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 639)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 640)).add_operation (temp_13, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 640)).add_operation (GGS_string (", but this variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 640)).add_operation (var_rightBitCount_22342.getter_string (SOURCE_FILE ("expression.ggs", 641)), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 641)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.ggs", 642)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 642)), fixItArray17  COMMA_SOURCE_FILE ("expression.ggs", 639)) ;
           result_outResult.drop () ; // Release error dropped variable
         }
       }
@@ -4348,32 +3783,32 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
           break ;
         case GGS_comparison::Enumeration::enum_equal:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithEqualComparison (var_leftIdx_22006, var_leftBitCount_22023, var_rightIdx_22373, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 647)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithEqualComparison (var_leftIdx_21958, var_leftBitCount_21975, var_rightIdx_22325, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 647)) ;
           }
           break ;
         case GGS_comparison::Enumeration::enum_notEqual:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithNotEqualComparison (var_leftIdx_22006, var_leftBitCount_22023, var_rightIdx_22373, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 649)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithNotEqualComparison (var_leftIdx_21958, var_leftBitCount_21975, var_rightIdx_22325, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 649)) ;
           }
           break ;
         case GGS_comparison::Enumeration::enum_lowerOrEqual:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithLowerOrEqualComparison (var_leftIdx_22006, var_leftBitCount_22023, var_rightIdx_22373, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 651)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithLowerOrEqualComparison (var_leftIdx_21958, var_leftBitCount_21975, var_rightIdx_22325, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 651)) ;
           }
           break ;
         case GGS_comparison::Enumeration::enum_lowerThan:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithStrictLowerComparison (var_leftIdx_22006, var_leftBitCount_22023, var_rightIdx_22373, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 653)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithStrictLowerComparison (var_leftIdx_21958, var_leftBitCount_21975, var_rightIdx_22325, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 653)) ;
           }
           break ;
         case GGS_comparison::Enumeration::enum_greaterOrEqual:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithGreaterOrEqualComparison (var_leftIdx_22006, var_leftBitCount_22023, var_rightIdx_22373, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 655)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithGreaterOrEqualComparison (var_leftIdx_21958, var_leftBitCount_21975, var_rightIdx_22325, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 655)) ;
           }
           break ;
         case GGS_comparison::Enumeration::enum_greaterThan:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithStrictGreaterComparison (var_leftIdx_22006, var_leftBitCount_22023, var_rightIdx_22373, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 657)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithStrictGreaterComparison (var_leftIdx_21958, var_leftBitCount_21975, var_rightIdx_22325, inCompiler  COMMA_SOURCE_FILE ("expression.ggs", 657)) ;
           }
           break ;
         }

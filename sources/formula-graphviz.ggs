@@ -35,7 +35,7 @@ override proc @graphvizFormula. analyzeFormula(
   ?!@computedFormulaMap ioComputedFormulaMap)
 {
   ioComputedFormulaMap.searchKey (!self.mFormulaName, ?let @varList varList, ?*, ?let result)
-  let filePath = inSourceFilePath.deletingPathExtension () + "." + self.mFormulaName + ".dot"
+  let filePath = inSourceFilePath.deletingPathExtension + "." + self.mFormulaName + ".dot"
   println ("Graphviz $" + self.mFormulaName + " -> " + filePath)
   var @stringlist bitNameList = []
   for > (mVarName, *, mBitCount) in varList do

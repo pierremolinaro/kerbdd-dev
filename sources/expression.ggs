@@ -352,7 +352,7 @@ override func @varInExpression. computeExpression(
   -> @binaryset outResult
 {
   inVarMap.searchKey (!self.mVarName, ?let idx, ?let bitCount, ?let subdomainMap)
-  if subdomainMap.count () > 0 then
+  if subdomainMap.count > 0 then
     error self.mVarName : "variable is a record; use dot notation"
   elsif bitCount != 1 then
     error self.mVarName : "variable is not boolean; use {...} or dot notation"
@@ -370,7 +370,7 @@ override func @varBitInExpression. computeExpression(
   -> @binaryset outResult
 {
   inVarMap.searchKey (!self.mVarName, ?let idx, ?let bitCount, ?let subdomainMap)
-  if subdomainMap.count () > 0 then
+  if subdomainMap.count > 0 then
     error self.mVarName : "variable is a record; use dot notation"
   elsif bitCount <= self.mVarBit.uint then
     error self.mVarBit : "bit index should be < " + bitCount
@@ -510,11 +510,11 @@ override func @formulaInExpression. computeExpression(
 //--- Read formula
   inComputedFormulaMap.searchKey (!self.mFormulaName, ?let varList, ?let unused totalBitCount, ?let formulaValue)
 //--- Check parameter list
-  if self.mParameterList.count () != varList.count () then
+  if self.mParameterList.count != varList.count then
     error self.mFormulaName : "the $" + self.mFormulaName + " names "
-      + varList.count () + " variable" + if varList.count () > 1 then "s" else "" end
+      + varList.count + " variable" + if varList.count > 1 then "s" else "" end
       + ", but this call names "
-      + self.mParameterList.count () + " variable" + if self.mParameterList.count () > 1 then "s" else "" end
+      + self.mParameterList.count + " variable" + if self.mParameterList.count > 1 then "s" else "" end
     spoil (outResult)
   else
     var @uintlist transformationList = []
@@ -588,24 +588,24 @@ override func @comparisonWithConstantInExpression. computeExpression(
     idx = idx + fieldRelativeBitIndex
     subDomainMap = fieldSubdomainMap
   end
-  if subDomainMap.count () > 0 then
+  if subDomainMap.count > 0 then
     error self.mVarName : "variable is a record; use dot notation" spoil (outResult)
-  elsif self.mConstant.uint.significantBitCount () > bitCount then
+  elsif self.mConstant.uint.significantBitCount > bitCount then
     error self.mConstant : "Constant too large (should be < 2**" + bitCount spoil (outResult)
   else
     switch self.mComparison
     case equal :
-      outResult = @binaryset.binarySetWithEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
+      outResult = @binaryset.binarySetWithEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64)
     case notEqual :
-      outResult = @binaryset.binarySetWithNotEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
+      outResult = @binaryset.binarySetWithNotEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64)
     case lowerOrEqual :
-      outResult = @binaryset.binarySetWithLowerOrEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
+      outResult = @binaryset.binarySetWithLowerOrEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64)
     case lowerThan :
-      outResult = @binaryset.binarySetWithStrictLowerThanConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
+      outResult = @binaryset.binarySetWithStrictLowerThanConstant (!idx, !bitCount, !self.mConstant.uint.uint64)
     case greaterOrEqual :
-      outResult = @binaryset.binarySetWithGreaterOrEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
+      outResult = @binaryset.binarySetWithGreaterOrEqualToConstant (!idx, !bitCount, !self.mConstant.uint.uint64)
     case greaterThan :
-      outResult = @binaryset.binarySetWithStrictGreaterThanConstant (!idx, !bitCount, !self.mConstant.uint.uint64 ())
+      outResult = @binaryset.binarySetWithStrictGreaterThanConstant (!idx, !bitCount, !self.mConstant.uint.uint64)
     end
   end
 }
@@ -631,9 +631,9 @@ override func @variableComparisonInExpression. computeExpression(
     rightIdx = rightIdx + fieldRelativeBitIndex
     rightSubDomainMap = fieldSubdomainMap
   end
-  if leftSubDomainMap.count () > 0 then
+  if leftSubDomainMap.count > 0 then
     error self.mLeftVarName : "variable is a record; use dot notation" spoil (outResult)
-  elsif rightSubDomainMap.count () > 0 then
+  elsif rightSubDomainMap.count > 0 then
     error self.mRightVarName : "variable is a record; use dot notation" spoil (outResult)
   elsif leftBitCount != rightBitCount then
     error self.mRightVarName : "'" + self.mLeftVarName + "' variable uses "

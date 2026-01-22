@@ -87,7 +87,7 @@ override proc @assignmentFormula. analyzeFormula(
     !?ioComputedFormulaMap.insertKey (!self.mFormulaName, !varList, !totalBitCount, !result)
     let @uint64 valueCount = result.valueCount (totalBitCount)
 //    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
-    let @uint64 nodeCount = result.nodeCount ()
+    let @uint64 nodeCount = result.nodeCount
     println (" "
       + valueCount + " value" + if valueCount > 1 then "s" else "" end
       + ", " + nodeCount + " node" + if nodeCount > 1 then "s" else "" end
@@ -110,7 +110,7 @@ override proc @assignmentFormula. analyzeFormula(
       end
     end
     let @uint64 valueCount = result.valueCount (totalBitCount)
-    let @uint64 nodeCount = result.nodeCount ()
+    let @uint64 nodeCount = result.nodeCount
     println (" "
       + iterationCount + " iteration" + if iterationCount > 1 then "s" else "" end
       + ", " + valueCount + " value" + if valueCount > 1 then "s" else "" end

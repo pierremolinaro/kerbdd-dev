@@ -145,14 +145,6 @@ void GGS__32_lstringlist::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist GGS__32_lstringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS__32_lstringlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS__32_lstringlist GGS__32_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__32_lstringlist result ;
   result.mArray.setCapacity (16) ; // Build
@@ -998,14 +990,6 @@ void GGS_domainFieldList::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_domainFieldList GGS_domainFieldList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_domainFieldList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_domainFieldList GGS_domainFieldList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_domainFieldList result ;
   result.mArray.setCapacity (16) ; // Build
@@ -1735,14 +1719,6 @@ GGS_computedFormulaMap GGS_computedFormulaMap::init (Compiler * COMMA_LOCATION_A
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_computedFormulaMap GGS_computedFormulaMap::class_func_emptyMap (LOCATION_ARGS) {
-  GGS_computedFormulaMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_bool GGS_computedFormulaMap::getter_hasKey (const GGS_string & inKey
                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
@@ -2453,14 +2429,6 @@ void GGS_varList::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList GGS_varList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_varList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3257,14 +3225,6 @@ void GGS_formulaList::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formulaList GGS_formulaList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_formulaList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_formulaList GGS_formulaList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_formulaList result ;
   result.mArray.setCapacity (16) ; // Build
@@ -3798,14 +3758,6 @@ void GGS_domainDeclarationList::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationList GGS_domainDeclarationList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_domainDeclarationList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4948,17 +4900,6 @@ GGS_expression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_andExpression GGS_andExpression::class_func_new (const GGS_expression & in_mLeftExpression,
-                                                     const GGS_expression & in_mRightExpression,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  GGS_andExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_andExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_expression GGS_andExpression::readProperty_mLeftExpression (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_expression () ;
@@ -5277,17 +5218,6 @@ GGS_orExpression::GGS_orExpression (const cPtr_orExpression * inSourcePtr) :
 GGS_expression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_orExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_orExpression GGS_orExpression::class_func_new (const GGS_expression & in_mLeftExpression,
-                                                   const GGS_expression & in_mRightExpression,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  GGS_orExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_orExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_expression GGS_orExpression::readProperty_mLeftExpression (void) const {
@@ -5610,17 +5540,6 @@ GGS_expression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_xorExpression GGS_xorExpression::class_func_new (const GGS_expression & in_mLeftExpression,
-                                                     const GGS_expression & in_mRightExpression,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  GGS_xorExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_xorExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_expression GGS_xorExpression::readProperty_mLeftExpression (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_expression () ;
@@ -5939,17 +5858,6 @@ GGS_equalExpression::GGS_equalExpression (const cPtr_equalExpression * inSourceP
 GGS_expression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_equalExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_equalExpression GGS_equalExpression::class_func_new (const GGS_expression & in_mLeftExpression,
-                                                         const GGS_expression & in_mRightExpression,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  GGS_equalExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_equalExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_expression GGS_equalExpression::readProperty_mLeftExpression (void) const {
@@ -6272,17 +6180,6 @@ GGS_expression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_notEqualExpression GGS_notEqualExpression::class_func_new (const GGS_expression & in_mLeftExpression,
-                                                               const GGS_expression & in_mRightExpression,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  GGS_notEqualExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_notEqualExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_expression GGS_notEqualExpression::readProperty_mLeftExpression (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_expression () ;
@@ -6603,17 +6500,6 @@ GGS_expression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_impliesExpression GGS_impliesExpression::class_func_new (const GGS_expression & in_mLeftExpression,
-                                                             const GGS_expression & in_mRightExpression,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  GGS_impliesExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_impliesExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_expression GGS_impliesExpression::readProperty_mLeftExpression (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_expression () ;
@@ -6931,16 +6817,6 @@ GGS_expression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_complementExpression GGS_complementExpression::class_func_new (const GGS_expression & in_mExpression,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
-  GGS_complementExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_complementExpression (in_mExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_expression GGS_complementExpression::readProperty_mExpression (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_expression () ;
@@ -7225,14 +7101,6 @@ GGS_expression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_trueExpression) ;
 }
 //--------------------------------------------------------------------------------------------------
-
-GGS_trueExpression GGS_trueExpression::class_func_new (Compiler * inCompiler COMMA_LOCATION_ARGS) {
-  GGS_trueExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_trueExpression (inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Pointer class for @trueExpression class
 //--------------------------------------------------------------------------------------------------
 
@@ -7485,14 +7353,6 @@ GGS_falseExpression::GGS_falseExpression (const cPtr_falseExpression * inSourceP
 GGS_expression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_falseExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_falseExpression GGS_falseExpression::class_func_new (Compiler * inCompiler COMMA_LOCATION_ARGS) {
-  GGS_falseExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_falseExpression (inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //Pointer class for @falseExpression class
 //--------------------------------------------------------------------------------------------------
@@ -7829,14 +7689,6 @@ void GGS_formulaParameterListInExpression::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression GGS_formulaParameterListInExpression::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8491,17 +8343,6 @@ GGS_expression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_existInExpression GGS_existInExpression::class_func_new (const GGS_domainFieldList & in_mArgumentList,
-                                                             const GGS_expression & in_mExpression,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  GGS_existInExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_existInExpression (in_mArgumentList, in_mExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_domainFieldList GGS_existInExpression::readProperty_mArgumentList (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_domainFieldList () ;
@@ -8820,17 +8661,6 @@ GGS_forAllInExpression::GGS_forAllInExpression (const cPtr_forAllInExpression * 
 GGS_expression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_forAllInExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_forAllInExpression GGS_forAllInExpression::class_func_new (const GGS_domainFieldList & in_mArgumentList,
-                                                               const GGS_expression & in_mExpression,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  GGS_forAllInExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_forAllInExpression (in_mArgumentList, in_mExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_domainFieldList GGS_forAllInExpression::readProperty_mArgumentList (void) const {
@@ -10062,14 +9892,6 @@ GGS_recordDomainMap GGS_recordDomainMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_recordDomainMap GGS_recordDomainMap::class_func_emptyMap (LOCATION_ARGS) {
-  GGS_recordDomainMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_bool GGS_recordDomainMap::getter_hasKey (const GGS_string & inKey
                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
@@ -10672,14 +10494,6 @@ GGS_domainMap & GGS_domainMap::operator = (const GGS_domainMap & inSource) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_domainMap GGS_domainMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_domainMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap GGS_domainMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_domainMap result ;
   result.build (THERE) ;
   return result ;
@@ -11352,14 +11166,6 @@ GGS_varMap & GGS_varMap::operator = (const GGS_varMap & inSource) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_varMap GGS_varMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_varMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap GGS_varMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_varMap result ;
   result.build (THERE) ;
   return result ;
@@ -12910,8 +12716,8 @@ GGS_luint Lexique_kerbdd_5F_lexique::synthetizedAttribute_uint_33__32_value (voi
 //                         I N T R O S P E C T I O N                                             
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist Lexique_kerbdd_5F_lexique::symbols (LOCATION_ARGS) {
-  GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
+ GGS_stringlist Lexique_kerbdd_5F_lexique::symbols (LOCATION_ARGS) {
+  GGS_stringlist result = GGS_stringlist::init (nullptr COMMA_THERE) ;
   result.addAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("integer") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("literal_string") COMMA_HERE) ;
@@ -13131,17 +12937,6 @@ void GGS_formulaKind_2E_fixedPoint::setInitializedProperties (Compiler * /* inCo
 
 GGS_formulaKind_2E_fixedPoint::GGS_formulaKind_2E_fixedPoint (const GGS_binaryset & inOperand0) :
 mProperty_startValue (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind_2E_fixedPoint GGS_formulaKind_2E_fixedPoint::class_func_new (const GGS_binaryset & in_startValue,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formulaKind_2E_fixedPoint result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_startValue = in_startValue ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13370,17 +13165,6 @@ mProperty_mFormula (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formulaList_2E_element GGS_formulaList_2E_element::class_func_new (const GGS_abstractFormula & in_mFormula,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formulaList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mFormula = in_mFormula ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_formulaList_2E_element::isValid (void) const {
   return mProperty_mFormula.isValid () ;
 }
@@ -13483,17 +13267,6 @@ void GGS_bddType_2E_boolArray::setInitializedProperties (Compiler * /* inCompile
 
 GGS_bddType_2E_boolArray::GGS_bddType_2E_boolArray (const GGS_uint & inOperand0) :
 mProperty_size (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_boolArray GGS_bddType_2E_boolArray::class_func_new (const GGS_uint & in_size,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_bddType_2E_boolArray result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_size = in_size ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13722,17 +13495,6 @@ mProperty_type (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_domainDeclarationType_2E_type GGS_domainDeclarationType_2E_type::class_func_new (const GGS_bddType & in_type,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_domainDeclarationType_2E_type result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_type = in_type ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_domainDeclarationType_2E_type::isValid (void) const {
   return mProperty_type.isValid () ;
 }
@@ -13953,17 +13715,6 @@ void GGS_domainDeclarationType_2E_record::setInitializedProperties (Compiler * /
 
 GGS_domainDeclarationType_2E_record::GGS_domainDeclarationType_2E_record (const GGS_domainFieldList & inOperand0) :
 mProperty_fieldList (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationType_2E_record GGS_domainDeclarationType_2E_record::class_func_new (const GGS_domainFieldList & in_fieldList,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_domainDeclarationType_2E_record result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_fieldList = in_fieldList ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14206,21 +13957,6 @@ mProperty_mBitCount (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_varList_2E_element GGS_varList_2E_element::class_func_new (const GGS_string & in_mVarName,
-                                                               const GGS_uint & in_mBitIndex,
-                                                               const GGS_uint & in_mBitCount,
-                                                               Compiler * inCompiler
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_varList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mVarName = in_mVarName ;
-  result.mProperty_mBitIndex = in_mBitIndex ;
-  result.mProperty_mBitCount = in_mBitCount ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_varList_2E_element::isValid (void) const {
   return mProperty_mVarName.isValid () && mProperty_mBitIndex.isValid () && mProperty_mBitCount.isValid () ;
 }
@@ -14372,19 +14108,6 @@ GGS_assignmentFormula::GGS_assignmentFormula (const cPtr_assignmentFormula * inS
 GGS_abstractFormula (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_assignmentFormula) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_assignmentFormula GGS_assignmentFormula::class_func_new (const GGS_lstring & in_mFormulaName,
-                                                             const GGS_domainFieldList & in_mFormulaArgumentList,
-                                                             const GGS_formulaKind & in_mKind,
-                                                             const GGS_expression & in_mExpression,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  GGS_assignmentFormula result ;
-  macroMyNew (result.mObjectPtr, cPtr_assignmentFormula (in_mFormulaName, in_mFormulaArgumentList, in_mKind, in_mExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_assignmentFormula::readProperty_mFormulaName (void) const {
@@ -14760,16 +14483,6 @@ GGS_graphvizFormula::GGS_graphvizFormula (const cPtr_graphvizFormula * inSourceP
 GGS_abstractFormula (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_graphvizFormula) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphvizFormula GGS_graphvizFormula::class_func_new (const GGS_lstring & in_mFormulaName,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  GGS_graphvizFormula result ;
-  macroMyNew (result.mObjectPtr, cPtr_graphvizFormula (in_mFormulaName,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_graphvizFormula::readProperty_mFormulaName (void) const {
@@ -16190,15 +15903,6 @@ mProperty_mFormulaList (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ast GGS_ast::class_func_new (Compiler * inCompiler
-                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ast result ;
-  result.setInitializedProperties (inCompiler) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_ast::isValid (void) const {
   return mProperty_mDomainList.isValid () && mProperty_mFormulaList.isValid () ;
 }
@@ -16319,16 +16023,6 @@ GGS_setting_5F_andCacheMapSize::GGS_setting_5F_andCacheMapSize (const cPtr_setti
 GGS_abstractFormula (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_setting_5F_andCacheMapSize) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_setting_5F_andCacheMapSize GGS_setting_5F_andCacheMapSize::class_func_new (const GGS_luint & in_mSetting,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) {
-  GGS_setting_5F_andCacheMapSize result ;
-  macroMyNew (result.mObjectPtr, cPtr_setting_5F_andCacheMapSize (in_mSetting,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_luint GGS_setting_5F_andCacheMapSize::readProperty_mSetting (void) const {
@@ -16495,16 +16189,6 @@ GGS_varInExpression::GGS_varInExpression (const cPtr_varInExpression * inSourceP
 GGS_expression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_varInExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_varInExpression GGS_varInExpression::class_func_new (const GGS_lstring & in_mVarName,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  GGS_varInExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_varInExpression (in_mVarName,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_varInExpression::readProperty_mVarName (void) const {
@@ -16674,17 +16358,6 @@ GGS_varBitInExpression::GGS_varBitInExpression (const cPtr_varBitInExpression * 
 GGS_expression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_varBitInExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_varBitInExpression GGS_varBitInExpression::class_func_new (const GGS_lstring & in_mVarName,
-                                                               const GGS_luint & in_mVarBit,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  GGS_varBitInExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_varBitInExpression (in_mVarName, in_mVarBit,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_varBitInExpression::readProperty_mVarName (void) const {
@@ -16883,17 +16556,6 @@ GGS_formulaInExpression::GGS_formulaInExpression (const cPtr_formulaInExpression
 GGS_expression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_formulaInExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaInExpression GGS_formulaInExpression::class_func_new (const GGS_lstring & in_mFormulaName,
-                                                                 const GGS_formulaParameterListInExpression & in_mParameterList,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-  GGS_formulaInExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_formulaInExpression (in_mFormulaName, in_mParameterList,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_formulaInExpression::readProperty_mFormulaName (void) const {
@@ -17098,19 +16760,6 @@ GGS_comparisonWithConstantInExpression::GGS_comparisonWithConstantInExpression (
 GGS_expression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_comparisonWithConstantInExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_comparisonWithConstantInExpression GGS_comparisonWithConstantInExpression::class_func_new (const GGS_lstring & in_mVarName,
-                                                                                               const GGS_lstringlist & in_mFieldNames,
-                                                                                               const GGS_comparison & in_mComparison,
-                                                                                               const GGS_luint & in_mConstant,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) {
-  GGS_comparisonWithConstantInExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_comparisonWithConstantInExpression (in_mVarName, in_mFieldNames, in_mComparison, in_mConstant,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_comparisonWithConstantInExpression::readProperty_mVarName (void) const {
@@ -17376,20 +17025,6 @@ GGS_variableComparisonInExpression::GGS_variableComparisonInExpression (const cP
 GGS_expression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_variableComparisonInExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_variableComparisonInExpression GGS_variableComparisonInExpression::class_func_new (const GGS_lstring & in_mLeftVarName,
-                                                                                       const GGS_lstringlist & in_mLeftFieldNames,
-                                                                                       const GGS_comparison & in_mComparison,
-                                                                                       const GGS_lstring & in_mRightVarName,
-                                                                                       const GGS_lstringlist & in_mRightFieldNames,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) {
-  GGS_variableComparisonInExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_variableComparisonInExpression (in_mLeftVarName, in_mLeftFieldNames, in_mComparison, in_mRightVarName, in_mRightFieldNames,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_variableComparisonInExpression::readProperty_mLeftVarName (void) const {
@@ -17674,16 +17309,6 @@ GGS_abstractFormula (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula GGS_dumpFormula::class_func_new (const GGS_lstring & in_mFormulaName,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  GGS_dumpFormula result ;
-  macroMyNew (result.mObjectPtr, cPtr_dumpFormula (in_mFormulaName,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring GGS_dumpFormula::readProperty_mFormulaName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
@@ -17844,19 +17469,6 @@ mProperty_mValue_31_ (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::class_func_new (const GGS_lstring & in_mValue0,
-                                                                               const GGS_lstring & in_mValue1,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__32_lstringlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue_30_ = in_mValue0 ;
-  result.mProperty_mValue_31_ = in_mValue1 ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS__32_lstringlist_2E_element::isValid (void) const {
   return mProperty_mValue_30_.isValid () && mProperty_mValue_31_.isValid () ;
 }
@@ -17983,23 +17595,6 @@ mProperty_lkey (inOperand0),
 mProperty_mVarList (inOperand1),
 mProperty_mBitCount (inOperand2),
 mProperty_mValue (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element GGS_computedFormulaMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                                                     const GGS_varList & in_mVarList,
-                                                                                     const GGS_uint & in_mBitCount,
-                                                                                     const GGS_binaryset & in_mValue,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mVarList = in_mVarList ;
-  result.mProperty_mBitCount = in_mBitCount ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -18189,6 +17784,462 @@ GGS_computedFormulaMap_2E_element_3F_ GGS_computedFormulaMap_2E_element_3F_::ext
       result = *p ;
     }else{
       inCompiler->castError ("computedFormulaMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (void) :
+mProperty_mParameterName (),
+mProperty_mFieldNames () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_formulaParameterListInExpression_2E_element & inSource) :
+mProperty_mParameterName (inSource.mProperty_mParameterName),
+mProperty_mFieldNames (inSource.mProperty_mFieldNames) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaParameterListInExpression_2E_element & GGS_formulaParameterListInExpression_2E_element::operator = (const GGS_formulaParameterListInExpression_2E_element & inSource) {
+  mProperty_mParameterName = inSource.mProperty_mParameterName ;
+  mProperty_mFieldNames = inSource.mProperty_mFieldNames ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::init_21__21_ (const GGS_lstring & in_mParameterName,
+                                                                                                               const GGS_lstringlist & in_mFieldNames,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formulaParameterListInExpression_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mParameterName = in_mParameterName ;
+  result.mProperty_mFieldNames = in_mFieldNames ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaParameterListInExpression_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_lstring & inOperand0,
+                                                                                                  const GGS_lstringlist & inOperand1) :
+mProperty_mParameterName (inOperand0),
+mProperty_mFieldNames (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_formulaParameterListInExpression_2E_element::isValid (void) const {
+  return mProperty_mParameterName.isValid () && mProperty_mFieldNames.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaParameterListInExpression_2E_element::drop (void) {
+  mProperty_mParameterName.drop () ;
+  mProperty_mFieldNames.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaParameterListInExpression_2E_element::description (String & ioString,
+                                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @formulaParameterListInExpression.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mParameterName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFieldNames.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @formulaParameterListInExpression.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ("formulaParameterListInExpression.element",
+                                                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_formulaParameterListInExpression_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_formulaParameterListInExpression_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_formulaParameterListInExpression_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                                Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GGS_formulaParameterListInExpression_2E_element result ;
+  const GGS_formulaParameterListInExpression_2E_element * p = (const GGS_formulaParameterListInExpression_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_formulaParameterListInExpression_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("formulaParameterListInExpression.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType::GGS_bddType_2E_namedType (void) :
+mProperty_typeName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType::GGS_bddType_2E_namedType (const GGS_bddType_2E_namedType & inSource) :
+mProperty_typeName (inSource.mProperty_typeName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType & GGS_bddType_2E_namedType::operator = (const GGS_bddType_2E_namedType & inSource) {
+  mProperty_typeName = inSource.mProperty_typeName ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_bddType_2E_namedType GGS_bddType_2E_namedType::init_21_ (const GGS_lstring & in_typeName,
+                                                             Compiler * inCompiler
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bddType_2E_namedType result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_typeName = in_typeName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType_2E_namedType::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType::GGS_bddType_2E_namedType (const GGS_lstring & inOperand0) :
+mProperty_typeName (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_bddType_2E_namedType::isValid (void) const {
+  return mProperty_typeName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType_2E_namedType::drop (void) {
+  mProperty_typeName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType_2E_namedType::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @bddType.namedType:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_typeName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @bddType.namedType generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bddType_2E_namedType ("bddType.namedType",
+                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_bddType_2E_namedType::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_bddType_2E_namedType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_bddType_2E_namedType::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_bddType_2E_namedType (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType GGS_bddType_2E_namedType::extractObject (const GGS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GGS_bddType_2E_namedType result ;
+  const GGS_bddType_2E_namedType * p = (const GGS_bddType_2E_namedType *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_bddType_2E_namedType *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("bddType.namedType", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @bddType_2E_namedType_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType_3F_::GGS_bddType_2E_namedType_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType_3F_::GGS_bddType_2E_namedType_3F_ (const GGS_bddType_2E_namedType & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType_3F_ GGS_bddType_2E_namedType_3F_::init_nil (void) {
+  GGS_bddType_2E_namedType_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_bddType_2E_namedType_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_bddType_2E_namedType_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType_2E_namedType_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_bddType_2E_namedType () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType_2E_namedType_3F_::description (String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @bddType.namedType? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bddType_2E_namedType_3F_ ("bddType.namedType?",
+                                                                             nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_bddType_2E_namedType_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_bddType_2E_namedType_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_bddType_2E_namedType_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_bddType_2E_namedType_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType_3F_ GGS_bddType_2E_namedType_3F_::extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GGS_bddType_2E_namedType_3F_ result ;
+  const GGS_bddType_2E_namedType_3F_ * p = (const GGS_bddType_2E_namedType_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_bddType_2E_namedType_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("bddType.namedType?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList_2E_element::GGS_domainFieldList_2E_element (void) :
+mProperty_mVarName (),
+mProperty_mType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList_2E_element::GGS_domainFieldList_2E_element (const GGS_domainFieldList_2E_element & inSource) :
+mProperty_mVarName (inSource.mProperty_mVarName),
+mProperty_mType (inSource.mProperty_mType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList_2E_element & GGS_domainFieldList_2E_element::operator = (const GGS_domainFieldList_2E_element & inSource) {
+  mProperty_mVarName = inSource.mProperty_mVarName ;
+  mProperty_mType = inSource.mProperty_mType ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_domainFieldList_2E_element GGS_domainFieldList_2E_element::init_21__21_ (const GGS_lstring & in_mVarName,
+                                                                             const GGS_bddType & in_mType,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_domainFieldList_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mVarName = in_mVarName ;
+  result.mProperty_mType = in_mType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList_2E_element::GGS_domainFieldList_2E_element (const GGS_lstring & inOperand0,
+                                                                const GGS_bddType & inOperand1) :
+mProperty_mVarName (inOperand0),
+mProperty_mType (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_domainFieldList_2E_element::isValid (void) const {
+  return mProperty_mVarName.isValid () && mProperty_mType.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList_2E_element::drop (void) {
+  mProperty_mVarName.drop () ;
+  mProperty_mType.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList_2E_element::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @domainFieldList.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mVarName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mType.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @domainFieldList.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainFieldList_2E_element ("domainFieldList.element",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_domainFieldList_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_domainFieldList_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_domainFieldList_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_domainFieldList_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList_2E_element GGS_domainFieldList_2E_element::extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS_domainFieldList_2E_element result ;
+  const GGS_domainFieldList_2E_element * p = (const GGS_domainFieldList_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_domainFieldList_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("domainFieldList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
