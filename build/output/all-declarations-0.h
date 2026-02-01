@@ -9071,56 +9071,40 @@ class cParser_kerbdd_5F_syntax {
   protected: virtual void nt_comparison_ (class GGS_expression & outArgument0,
                                           class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
-  protected: virtual void nt_comparison_parse (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
-
   protected: virtual void nt_comparison_indexing (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_expression_ (class GGS_expression & outArgument0,
                                           class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
-
-  protected: virtual void nt_expression_parse (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_expression_indexing (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_factor_ (class GGS_expression & outArgument0,
                                       class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
-  protected: virtual void nt_factor_parse (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
-
   protected: virtual void nt_factor_indexing (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_recordFields_ (class GGS_domainFieldList & outArgument0,
                                             class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
-
-  protected: virtual void nt_recordFields_parse (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_recordFields_indexing (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_start_5F_symbol_ (class GGS_ast & outArgument0,
                                                class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
-  protected: virtual void nt_start_5F_symbol_parse (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
-
   protected: virtual void nt_start_5F_symbol_indexing (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_term_ (class GGS_expression & outArgument0,
                                     class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
-
-  protected: virtual void nt_term_parse (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_term_indexing (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_topLevelDeClaration_ (class GGS_ast & ioArgument0,
                                                    class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
-  protected: virtual void nt_topLevelDeClaration_parse (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
-
   protected: virtual void nt_topLevelDeClaration_indexing (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_type_ (class GGS_bddType & outArgument0,
                                     class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
-
-  protected: virtual void nt_type_parse (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
   protected: virtual void nt_type_indexing (class Lexique_kerbdd_5F_lexique * inLexique) = 0 ;
 
@@ -9129,147 +9113,147 @@ class cParser_kerbdd_5F_syntax {
   protected: void rule_kerbdd_5F_syntax_start_5F_symbol_i0_ (GGS_ast & outArgument0,
                                                              Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_start_5F_symbol_i0_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_start_5F_symbol_i0_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_start_5F_symbol_i0_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i1_ (GGS_ast & ioArgument0,
                                                                  Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i1_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i1_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i1_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i2_ (GGS_ast & ioArgument0,
                                                                  Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i2_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i2_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i2_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i3_ (GGS_ast & ioArgument0,
                                                                  Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i3_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i3_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i3_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i4_ (GGS_ast & ioArgument0,
                                                                  Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i4_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i4_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i4_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_expression_i5_ (GGS_expression & outArgument0,
                                                         Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_expression_i5_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_expression_i5_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_expression_i5_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_comparison_i6_ (GGS_expression & outArgument0,
                                                         Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_comparison_i6_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_comparison_i6_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_comparison_i6_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_term_i7_ (GGS_expression & outArgument0,
                                                   Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_term_i7_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_term_i7_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_term_i7_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_factor_i8_ (GGS_expression & outArgument0,
                                                     Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_factor_i8_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_factor_i8_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_factor_i8_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_factor_i9_ (GGS_expression & outArgument0,
                                                     Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_factor_i9_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_factor_i9_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_factor_i9_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_factor_i10_ (GGS_expression & outArgument0,
                                                      Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_factor_i10_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_factor_i10_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_factor_i10_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_factor_i11_ (GGS_expression & outArgument0,
                                                      Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_factor_i11_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_factor_i11_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_factor_i11_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_factor_i12_ (GGS_expression & outArgument0,
                                                      Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_factor_i12_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_factor_i12_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_factor_i12_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_factor_i13_ (GGS_expression & outArgument0,
                                                      Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_factor_i13_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_factor_i13_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_factor_i13_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_factor_i14_ (GGS_expression & outArgument0,
                                                      Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_factor_i14_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_factor_i14_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_factor_i14_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_factor_i15_ (GGS_expression & outArgument0,
                                                      Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_factor_i15_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_factor_i15_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_factor_i15_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_factor_i16_ (GGS_expression & outArgument0,
                                                      Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_factor_i16_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_factor_i16_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_factor_i16_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i17_ (GGS_ast & ioArgument0,
                                                                   Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i17_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i17_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i17_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i18_ (GGS_ast & ioArgument0,
                                                                   Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i18_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i18_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_topLevelDeClaration_i18_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_recordFields_i19_ (GGS_domainFieldList & outArgument0,
                                                            Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_recordFields_i19_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_recordFields_i19_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_recordFields_i19_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 
   protected: void rule_kerbdd_5F_syntax_type_i20_ (GGS_bddType & outArgument0,
                                                    Lexique_kerbdd_5F_lexique * inLexique) ;
 
-  protected: void rule_kerbdd_5F_syntax_type_i20_parse (Lexique_kerbdd_5F_lexique * inLexique) ;
+/*  protected: void rule_kerbdd_5F_syntax_type_i20_parse (Lexique_kerbdd_5F_lexique * inLexique) ; */
 
   protected: void rule_kerbdd_5F_syntax_type_i20_indexing (Lexique_kerbdd_5F_lexique * inLexique) ;
 

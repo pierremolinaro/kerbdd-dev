@@ -15,7 +15,7 @@
 class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 //------------------------------------- 'comparison' non terminal
 //--- 'parse' label
-  public: virtual void nt_comparison_parse (Lexique_kerbdd_5F_lexique * inCompiler) ;
+ /*  public: virtual void nt_comparison_parse (Lexique_kerbdd_5F_lexique * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_comparison_indexing (Lexique_kerbdd_5F_lexique * inCompiler) ;
@@ -26,7 +26,7 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 
 //------------------------------------- 'expression' non terminal
 //--- 'parse' label
-  public: virtual void nt_expression_parse (Lexique_kerbdd_5F_lexique * inCompiler) ;
+ /*  public: virtual void nt_expression_parse (Lexique_kerbdd_5F_lexique * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_expression_indexing (Lexique_kerbdd_5F_lexique * inCompiler) ;
@@ -37,7 +37,7 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 
 //------------------------------------- 'factor' non terminal
 //--- 'parse' label
-  public: virtual void nt_factor_parse (Lexique_kerbdd_5F_lexique * inCompiler) ;
+ /*  public: virtual void nt_factor_parse (Lexique_kerbdd_5F_lexique * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_factor_indexing (Lexique_kerbdd_5F_lexique * inCompiler) ;
@@ -48,7 +48,7 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 
 //------------------------------------- 'recordFields' non terminal
 //--- 'parse' label
-  public: virtual void nt_recordFields_parse (Lexique_kerbdd_5F_lexique * inCompiler) ;
+ /*  public: virtual void nt_recordFields_parse (Lexique_kerbdd_5F_lexique * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_recordFields_indexing (Lexique_kerbdd_5F_lexique * inCompiler) ;
@@ -59,7 +59,7 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 
 //------------------------------------- 'start_symbol' non terminal
 //--- 'parse' label
-  public: virtual void nt_start_5F_symbol_parse (Lexique_kerbdd_5F_lexique * inCompiler) ;
+ /*  public: virtual void nt_start_5F_symbol_parse (Lexique_kerbdd_5F_lexique * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_start_5F_symbol_indexing (Lexique_kerbdd_5F_lexique * inCompiler) ;
@@ -94,7 +94,7 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 
 //------------------------------------- 'term' non terminal
 //--- 'parse' label
-  public: virtual void nt_term_parse (Lexique_kerbdd_5F_lexique * inCompiler) ;
+ /*  public: virtual void nt_term_parse (Lexique_kerbdd_5F_lexique * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_term_indexing (Lexique_kerbdd_5F_lexique * inCompiler) ;
@@ -105,7 +105,7 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 
 //------------------------------------- 'topLevelDeClaration' non terminal
 //--- 'parse' label
-  public: virtual void nt_topLevelDeClaration_parse (Lexique_kerbdd_5F_lexique * inCompiler) ;
+ /*  public: virtual void nt_topLevelDeClaration_parse (Lexique_kerbdd_5F_lexique * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_topLevelDeClaration_indexing (Lexique_kerbdd_5F_lexique * inCompiler) ;
@@ -116,7 +116,7 @@ class cGrammar_kerbdd_5F_grammar : public cParser_kerbdd_5F_syntax {
 
 //------------------------------------- 'type' non terminal
 //--- 'parse' label
-  public: virtual void nt_type_parse (Lexique_kerbdd_5F_lexique * inCompiler) ;
+ /*  public: virtual void nt_type_parse (Lexique_kerbdd_5F_lexique * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_type_indexing (Lexique_kerbdd_5F_lexique * inCompiler) ;

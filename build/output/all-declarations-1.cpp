@@ -9,376 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_domainDeclarationList_2E_element::GGS_domainDeclarationList_2E_element (void) :
-mProperty_mDomainName (),
-mProperty_mType () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationList_2E_element::GGS_domainDeclarationList_2E_element (const GGS_domainDeclarationList_2E_element & inSource) :
-mProperty_mDomainName (inSource.mProperty_mDomainName),
-mProperty_mType (inSource.mProperty_mType) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationList_2E_element & GGS_domainDeclarationList_2E_element::operator = (const GGS_domainDeclarationList_2E_element & inSource) {
-  mProperty_mDomainName = inSource.mProperty_mDomainName ;
-  mProperty_mType = inSource.mProperty_mType ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_domainDeclarationList_2E_element GGS_domainDeclarationList_2E_element::init_21__21_ (const GGS_lstring & in_mDomainName,
-                                                                                         const GGS_domainDeclarationType & in_mType,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_domainDeclarationList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mDomainName = in_mDomainName ;
-  result.mProperty_mType = in_mType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainDeclarationList_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationList_2E_element::GGS_domainDeclarationList_2E_element (const GGS_lstring & inOperand0,
-                                                                            const GGS_domainDeclarationType & inOperand1) :
-mProperty_mDomainName (inOperand0),
-mProperty_mType (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_domainDeclarationList_2E_element::isValid (void) const {
-  return mProperty_mDomainName.isValid () && mProperty_mType.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainDeclarationList_2E_element::drop (void) {
-  mProperty_mDomainName.drop () ;
-  mProperty_mType.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainDeclarationList_2E_element::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @domainDeclarationList.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mDomainName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mType.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @domainDeclarationList.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainDeclarationList_2E_element ("domainDeclarationList.element",
-                                                                                     nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_domainDeclarationList_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_domainDeclarationList_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_domainDeclarationList_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_domainDeclarationList_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationList_2E_element GGS_domainDeclarationList_2E_element::extractObject (const GGS_object & inObject,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GGS_domainDeclarationList_2E_element result ;
-  const GGS_domainDeclarationList_2E_element * p = (const GGS_domainDeclarationList_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_domainDeclarationList_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("domainDeclarationList.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element::GGS_recordDomainMap_2E_element (void) :
-mProperty_lkey (),
-mProperty_mIndex (),
-mProperty_mBitCount (),
-mProperty_mSubDomain () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element::GGS_recordDomainMap_2E_element (const GGS_recordDomainMap_2E_element & inSource) :
-mProperty_lkey (inSource.mProperty_lkey),
-mProperty_mIndex (inSource.mProperty_mIndex),
-mProperty_mBitCount (inSource.mProperty_mBitCount),
-mProperty_mSubDomain (inSource.mProperty_mSubDomain) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element & GGS_recordDomainMap_2E_element::operator = (const GGS_recordDomainMap_2E_element & inSource) {
-  mProperty_lkey = inSource.mProperty_lkey ;
-  mProperty_mIndex = inSource.mProperty_mIndex ;
-  mProperty_mBitCount = inSource.mProperty_mBitCount ;
-  mProperty_mSubDomain = inSource.mProperty_mSubDomain ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element GGS_recordDomainMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                     const GGS_uint & in_mIndex,
-                                                                                     const GGS_uint & in_mBitCount,
-                                                                                     const GGS_recordDomainMap & in_mSubDomain,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_recordDomainMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mIndex = in_mIndex ;
-  result.mProperty_mBitCount = in_mBitCount ;
-  result.mProperty_mSubDomain = in_mSubDomain ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element::GGS_recordDomainMap_2E_element (const GGS_lstring & inOperand0,
-                                                                const GGS_uint & inOperand1,
-                                                                const GGS_uint & inOperand2,
-                                                                const GGS_recordDomainMap & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mIndex (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mSubDomain (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_recordDomainMap_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mSubDomain.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap_2E_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mIndex.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mSubDomain.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap_2E_element::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @recordDomainMap.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mIndex.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mSubDomain.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @recordDomainMap.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_recordDomainMap_2E_element ("recordDomainMap.element",
-                                                                               nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_recordDomainMap_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_recordDomainMap_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_recordDomainMap_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_recordDomainMap_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element GGS_recordDomainMap_2E_element::extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GGS_recordDomainMap_2E_element result ;
-  const GGS_recordDomainMap_2E_element * p = (const GGS_recordDomainMap_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_recordDomainMap_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("recordDomainMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Optional @recordDomainMap_2E_element_3F_
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element_3F_::GGS_recordDomainMap_2E_element_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element_3F_::GGS_recordDomainMap_2E_element_3F_ (const GGS_recordDomainMap_2E_element & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element_3F_ GGS_recordDomainMap_2E_element_3F_::init_nil (void) {
-  GGS_recordDomainMap_2E_element_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_recordDomainMap_2E_element_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_recordDomainMap_2E_element_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap_2E_element_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GGS_recordDomainMap_2E_element () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap_2E_element_3F_::description (String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @recordDomainMap.element? generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_recordDomainMap_2E_element_3F_ ("recordDomainMap.element?",
-                                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_recordDomainMap_2E_element_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_recordDomainMap_2E_element_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_recordDomainMap_2E_element_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_recordDomainMap_2E_element_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element_3F_ GGS_recordDomainMap_2E_element_3F_::extractObject (const GGS_object & inObject,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GGS_recordDomainMap_2E_element_3F_ result ;
-  const GGS_recordDomainMap_2E_element_3F_ * p = (const GGS_recordDomainMap_2E_element_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_recordDomainMap_2E_element_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("recordDomainMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_domainMap_2E_element::GGS_domainMap_2E_element (void) :
 mProperty_lkey (),
 mProperty_mBitCount (),
@@ -2057,14 +1687,6 @@ static const int32_t gProductionsTable_kerbdd_grammar [66 * 2] = {
 //
 //--------------------------------------------------------------------------------------------------
 
-void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_parse (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 0) {
-  rule_kerbdd_5F_syntax_start_5F_symbol_i0_parse(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
 void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
   if (inLexique->nextProductionIndex () == 0) {
   rule_kerbdd_5F_syntax_start_5F_symbol_i0_indexing(inLexique) ;
@@ -2200,32 +1822,6 @@ void cGrammar_kerbdd_5F_grammar::_performSourceStringParsing_ (Compiler * inComp
 //
 //--------------------------------------------------------------------------------------------------
 
-void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_parse (Lexique_kerbdd_5F_lexique * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 1 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i1_parse(inLexique) ;
-    break ;
-  case 2 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i2_parse(inLexique) ;
-    break ;
-  case 3 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i3_parse(inLexique) ;
-    break ;
-  case 4 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i4_parse(inLexique) ;
-    break ;
-  case 17 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i17_parse(inLexique) ;
-    break ;
-  case 18 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i18_parse(inLexique) ;
-    break ;
-  default :
-    inLexique->internalBottomUpParserError (HERE) ;
-    break ;
-  }
-}
-
 void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 1 :
@@ -2285,14 +1881,6 @@ void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_ (GGS_ast &  parameter_1
 //
 //--------------------------------------------------------------------------------------------------
 
-void cGrammar_kerbdd_5F_grammar::nt_expression_parse (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 5) {
-  rule_kerbdd_5F_syntax_expression_i5_parse(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
 void cGrammar_kerbdd_5F_grammar::nt_expression_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
   if (inLexique->nextProductionIndex () == 5) {
   rule_kerbdd_5F_syntax_expression_i5_indexing(inLexique) ;
@@ -2315,14 +1903,6 @@ void cGrammar_kerbdd_5F_grammar::nt_expression_ (GGS_expression &  parameter_1,
 //                            'comparison' non terminal implementation                              
 //
 //--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_comparison_parse (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 6) {
-  rule_kerbdd_5F_syntax_comparison_i6_parse(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
 
 void cGrammar_kerbdd_5F_grammar::nt_comparison_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
   if (inLexique->nextProductionIndex () == 6) {
@@ -2347,14 +1927,6 @@ void cGrammar_kerbdd_5F_grammar::nt_comparison_ (GGS_expression &  parameter_1,
 //
 //--------------------------------------------------------------------------------------------------
 
-void cGrammar_kerbdd_5F_grammar::nt_term_parse (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 7) {
-  rule_kerbdd_5F_syntax_term_i7_parse(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
 void cGrammar_kerbdd_5F_grammar::nt_term_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
   if (inLexique->nextProductionIndex () == 7) {
   rule_kerbdd_5F_syntax_term_i7_indexing(inLexique) ;
@@ -2377,41 +1949,6 @@ void cGrammar_kerbdd_5F_grammar::nt_term_ (GGS_expression &  parameter_1,
 //                              'factor' non terminal implementation                                
 //
 //--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_factor_parse (Lexique_kerbdd_5F_lexique * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 8 :
-      rule_kerbdd_5F_syntax_factor_i8_parse(inLexique) ;
-    break ;
-  case 9 :
-      rule_kerbdd_5F_syntax_factor_i9_parse(inLexique) ;
-    break ;
-  case 10 :
-      rule_kerbdd_5F_syntax_factor_i10_parse(inLexique) ;
-    break ;
-  case 11 :
-      rule_kerbdd_5F_syntax_factor_i11_parse(inLexique) ;
-    break ;
-  case 12 :
-      rule_kerbdd_5F_syntax_factor_i12_parse(inLexique) ;
-    break ;
-  case 13 :
-      rule_kerbdd_5F_syntax_factor_i13_parse(inLexique) ;
-    break ;
-  case 14 :
-      rule_kerbdd_5F_syntax_factor_i14_parse(inLexique) ;
-    break ;
-  case 15 :
-      rule_kerbdd_5F_syntax_factor_i15_parse(inLexique) ;
-    break ;
-  case 16 :
-      rule_kerbdd_5F_syntax_factor_i16_parse(inLexique) ;
-    break ;
-  default :
-    inLexique->internalBottomUpParserError (HERE) ;
-    break ;
-  }
-}
 
 void cGrammar_kerbdd_5F_grammar::nt_factor_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
@@ -2490,14 +2027,6 @@ void cGrammar_kerbdd_5F_grammar::nt_factor_ (GGS_expression &  parameter_1,
 //
 //--------------------------------------------------------------------------------------------------
 
-void cGrammar_kerbdd_5F_grammar::nt_recordFields_parse (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 19) {
-  rule_kerbdd_5F_syntax_recordFields_i19_parse(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
 void cGrammar_kerbdd_5F_grammar::nt_recordFields_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
   if (inLexique->nextProductionIndex () == 19) {
   rule_kerbdd_5F_syntax_recordFields_i19_indexing(inLexique) ;
@@ -2520,14 +2049,6 @@ void cGrammar_kerbdd_5F_grammar::nt_recordFields_ (GGS_domainFieldList &  parame
 //                               'type' non terminal implementation                                 
 //
 //--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_type_parse (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 20) {
-  rule_kerbdd_5F_syntax_type_i20_parse(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
 
 void cGrammar_kerbdd_5F_grammar::nt_type_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
   if (inLexique->nextProductionIndex () == 20) {

@@ -175,8 +175,8 @@ class ScannerFor_kerbdd_lexique : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func blockComment () -> String? {
-    return gBlockComment_kerbdd_lexique
+  final override func lineComment () -> String? {
+    return gLineComment_kerbdd_lexique
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

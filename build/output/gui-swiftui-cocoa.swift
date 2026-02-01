@@ -89,7 +89,7 @@ let gPopUpData_kerbdd_lexique : [[UInt16]] = [
 //   Block Comment for 'kerbdd_lexique' lexique
 //--------------------------------------------------------------------------------------------------
 
-let gBlockComment_kerbdd_lexique : String? = "#"
+let gLineComment_kerbdd_lexique : String? = "#"
 
 
 //--------------------------------------------------------------------------------------------------
