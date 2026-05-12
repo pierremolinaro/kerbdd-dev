@@ -11022,45 +11022,45 @@ void extensionMethod_analyze (const GGS_domainDeclarationList inObject,
   outArgument_outDomainMap.drop () ; // Release 'out' argument
   outArgument_outDomainMap = GGS_domainMap::init (inCompiler COMMA_HERE) ;
   const GGS_domainDeclarationList temp_0 = inObject ;
-  UpEnumerator_domainDeclarationList enumerator_3988 (temp_0) ;
+  UpEnumerator_domainDeclarationList enumerator_3990 (temp_0) ;
   bool bool_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-  if (enumerator_3988.hasCurrentObject () && bool_1) {
-    while (enumerator_3988.hasCurrentObject () && bool_1) {
-      switch (enumerator_3988.current_mType (HERE).enumValue ()) {
+  if (enumerator_3990.hasCurrentObject () && bool_1) {
+    while (enumerator_3990.hasCurrentObject () && bool_1) {
+      switch (enumerator_3990.current_mType (HERE).enumValue ()) {
       case GGS_domainDeclarationType::Enumeration::invalid:
         break ;
       case GGS_domainDeclarationType::Enumeration::enum_type:
         {
-          GGS_bddType extractedValue_4093_type_0 ;
-          enumerator_3988.current_mType (HERE).getAssociatedValuesFor_type (extractedValue_4093_type_0) ;
-          switch (extractedValue_4093_type_0.enumValue ()) {
+          GGS_bddType extractedValue_4095_type_0 ;
+          enumerator_3990.current_mType (HERE).getAssociatedValuesFor_type (extractedValue_4095_type_0) ;
+          switch (extractedValue_4095_type_0.enumValue ()) {
           case GGS_bddType::Enumeration::invalid:
             break ;
           case GGS_bddType::Enumeration::enum_bool:
             {
               {
-              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
               }
             }
             break ;
           case GGS_bddType::Enumeration::enum_boolArray:
             {
-              GGS_uint extractedValue_4213_size_0 ;
-              extractedValue_4093_type_0.getAssociatedValuesFor_boolArray (extractedValue_4213_size_0) ;
+              GGS_uint extractedValue_4215_size_0 ;
+              extractedValue_4095_type_0.getAssociatedValuesFor_boolArray (extractedValue_4215_size_0) ;
               {
-              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), extractedValue_4213_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), extractedValue_4215_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
               }
             }
             break ;
           case GGS_bddType::Enumeration::enum_namedType:
             {
-              GGS_lstring extractedValue_4303_typeName_0 ;
-              extractedValue_4093_type_0.getAssociatedValuesFor_namedType (extractedValue_4303_typeName_0) ;
-              GGS_uint var_size_4363 ;
-              GGS_recordDomainMap var_subdomain_4374 ;
-              outArgument_outDomainMap.method_searchKey (extractedValue_4303_typeName_0, var_size_4363, var_subdomain_4374, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
+              GGS_lstring extractedValue_4305_typeName_0 ;
+              extractedValue_4095_type_0.getAssociatedValuesFor_namedType (extractedValue_4305_typeName_0) ;
+              GGS_uint var_size_4365 ;
+              GGS_recordDomainMap var_subdomain_4376 ;
+              outArgument_outDomainMap.method_searchKey (extractedValue_4305_typeName_0, var_size_4365, var_subdomain_4376, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
               {
-              outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), var_size_4363, var_subdomain_4374, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
+              outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), var_size_4365, var_subdomain_4376, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
               }
             }
             break ;
@@ -11069,63 +11069,63 @@ void extensionMethod_analyze (const GGS_domainDeclarationList inObject,
         break ;
       case GGS_domainDeclarationType::Enumeration::enum_record:
         {
-          GGS_domainFieldList extractedValue_4488_fieldList_0 ;
-          enumerator_3988.current_mType (HERE).getAssociatedValuesFor_record (extractedValue_4488_fieldList_0) ;
-          GGS_bigint var_bitIndex_4511 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
-          GGS_recordDomainMap var_recordMap_4551 = GGS_recordDomainMap::init (inCompiler COMMA_HERE) ;
-          DownEnumerator_domainFieldList enumerator_4585 (extractedValue_4488_fieldList_0) ;
+          GGS_domainFieldList extractedValue_4490_fieldList_0 ;
+          enumerator_3990.current_mType (HERE).getAssociatedValuesFor_record (extractedValue_4490_fieldList_0) ;
+          GGS_bigint var_bitIndex_4513 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
+          GGS_recordDomainMap var_recordMap_4553 = GGS_recordDomainMap::init (inCompiler COMMA_HERE) ;
+          DownEnumerator_domainFieldList enumerator_4587 (extractedValue_4490_fieldList_0) ;
           bool bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-          if (enumerator_4585.hasCurrentObject () && bool_2) {
-            while (enumerator_4585.hasCurrentObject () && bool_2) {
-              switch (enumerator_4585.current_mType (HERE).enumValue ()) {
+          if (enumerator_4587.hasCurrentObject () && bool_2) {
+            while (enumerator_4587.hasCurrentObject () && bool_2) {
+              switch (enumerator_4587.current_mType (HERE).enumValue ()) {
               case GGS_bddType::Enumeration::invalid:
                 break ;
               case GGS_bddType::Enumeration::enum_bool:
                 {
                   {
-                  var_recordMap_4551.setter_insertKey (enumerator_4585.current_mVarName (HERE), var_bitIndex_4511.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
+                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
                   }
-                  var_bitIndex_4511.plusAssignOperation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
+                  var_bitIndex_4513.plusAssignOperation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
                 }
                 break ;
               case GGS_bddType::Enumeration::enum_boolArray:
                 {
-                  GGS_uint extractedValue_4807_size_0 ;
-                  enumerator_4585.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_4807_size_0) ;
+                  GGS_uint extractedValue_4809_size_0 ;
+                  enumerator_4587.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_4809_size_0) ;
                   {
-                  var_recordMap_4551.setter_insertKey (enumerator_4585.current_mVarName (HERE), var_bitIndex_4511.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_4807_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
+                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_4809_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
                   }
-                  var_bitIndex_4511 = var_bitIndex_4511.add_operation (extractedValue_4807_size_0.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
+                  var_bitIndex_4513 = var_bitIndex_4513.add_operation (extractedValue_4809_size_0.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
                 }
                 break ;
               case GGS_bddType::Enumeration::enum_namedType:
                 {
-                  GGS_lstring extractedValue_4946_typeName_0 ;
-                  enumerator_4585.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_4946_typeName_0) ;
-                  GGS_uint var_size_5008 ;
-                  GGS_recordDomainMap var_subdomain_5019 ;
-                  outArgument_outDomainMap.method_searchKey (extractedValue_4946_typeName_0, var_size_5008, var_subdomain_5019, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
+                  GGS_lstring extractedValue_4948_typeName_0 ;
+                  enumerator_4587.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_4948_typeName_0) ;
+                  GGS_uint var_size_5010 ;
+                  GGS_recordDomainMap var_subdomain_5021 ;
+                  outArgument_outDomainMap.method_searchKey (extractedValue_4948_typeName_0, var_size_5010, var_subdomain_5021, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
                   {
-                  var_recordMap_4551.setter_insertKey (enumerator_4585.current_mVarName (HERE), var_bitIndex_4511.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5008, var_subdomain_5019, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
+                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5010, var_subdomain_5021, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
                   }
-                  var_bitIndex_4511 = var_bitIndex_4511.add_operation (var_size_5008.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
+                  var_bitIndex_4513 = var_bitIndex_4513.add_operation (var_size_5010.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
                 }
                 break ;
               }
-              enumerator_4585.gotoNextObject () ;
-              if (enumerator_4585.hasCurrentObject ()) {
+              enumerator_4587.gotoNextObject () ;
+              if (enumerator_4587.hasCurrentObject ()) {
                 bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
               }
             }
           }
           {
-          outArgument_outDomainMap.setter_insertKey (enumerator_3988.current_mDomainName (HERE), var_bitIndex_4511.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4551, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
+          outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4553, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
           }
         }
         break ;
       }
-      enumerator_3988.gotoNextObject () ;
-      if (enumerator_3988.hasCurrentObject ()) {
+      enumerator_3990.gotoNextObject () ;
+      if (enumerator_3990.hasCurrentObject ()) {
         bool_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
       }
     }
@@ -11756,53 +11756,53 @@ void extensionMethod_analyze (const GGS_domainFieldList inObject,
                               Compiler * inCompiler
                               COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_domainFieldList temp_0 = inObject ;
-  DownEnumerator_domainFieldList enumerator_6320 (temp_0) ;
-  while (enumerator_6320.hasCurrentObject ()) {
-    switch (enumerator_6320.current_mType (HERE).enumValue ()) {
+  DownEnumerator_domainFieldList enumerator_6322 (temp_0) ;
+  while (enumerator_6322.hasCurrentObject ()) {
+    switch (enumerator_6322.current_mType (HERE).enumValue ()) {
     case GGS_bddType::Enumeration::invalid:
       break ;
     case GGS_bddType::Enumeration::enum_bool:
       {
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6320.current_mVarName (HERE), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6322.current_mVarName (HERE), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6320.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6322.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
         }
         ioArgument_ioTotalBitCount.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 191)) ;
       }
       break ;
     case GGS_bddType::Enumeration::enum_boolArray:
       {
-        GGS_uint extractedValue_6552_size_0 ;
-        enumerator_6320.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_6552_size_0) ;
+        GGS_uint extractedValue_6554_size_0 ;
+        enumerator_6322.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_6554_size_0) ;
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6320.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6552_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6322.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6554_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6320.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6552_size_0, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6322.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6554_size_0, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
         }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6552_size_0, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6554_size_0, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
       }
       break ;
     case GGS_bddType::Enumeration::enum_namedType:
       {
-        GGS_lstring extractedValue_6772_typeName_0 ;
-        enumerator_6320.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_6772_typeName_0) ;
-        GGS_uint var_size_6829 ;
-        GGS_recordDomainMap var_subDomainMap_6840 ;
-        constinArgument_inDomainMap.method_searchKey (extractedValue_6772_typeName_0, var_size_6829, var_subDomainMap_6840, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
+        GGS_lstring extractedValue_6774_typeName_0 ;
+        enumerator_6322.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_6774_typeName_0) ;
+        GGS_uint var_size_6831 ;
+        GGS_recordDomainMap var_subDomainMap_6842 ;
+        constinArgument_inDomainMap.method_searchKey (extractedValue_6774_typeName_0, var_size_6831, var_subDomainMap_6842, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
         {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6320.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_6829, var_subDomainMap_6840, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6322.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_6831, var_subDomainMap_6842, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
         }
         {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6320.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_6829, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6322.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_6831, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
         }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_6829, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_6831, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
       }
       break ;
     }
-    enumerator_6320.gotoNextObject () ;
+    enumerator_6322.gotoNextObject () ;
   }
 }
 

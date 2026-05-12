@@ -84,7 +84,7 @@ rule <type>( !@bddType outType) {
       $integer$( ?let bitCount)
       $]$
       if bitCount.uint == 0 then
-        error bitCount : "size should be > 0"
+        error (bitCount : "size should be > 0")
       end
       outType = .boolArray (!size:bitCount.uint)
     end

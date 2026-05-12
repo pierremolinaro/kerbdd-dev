@@ -353,9 +353,9 @@ override func @varInExpression. computeExpression(
 {
   inVarMap.searchKey (!self.mVarName, ?let idx, ?let bitCount, ?let subdomainMap)
   if subdomainMap.count > 0 then
-    error self.mVarName : "variable is a record; use dot notation"
+    error (self.mVarName : "variable is a record; use dot notation")
   elsif bitCount != 1 then
-    error self.mVarName : "variable is not boolean; use {...} or dot notation"
+    error (self.mVarName : "variable is not boolean; use {...} or dot notation")
   end
   outResult = @binaryset.binarySetWithBit (!idx)
 }
@@ -371,9 +371,9 @@ override func @varBitInExpression. computeExpression(
 {
   inVarMap.searchKey (!self.mVarName, ?let idx, ?let bitCount, ?let subdomainMap)
   if subdomainMap.count > 0 then
-    error self.mVarName : "variable is a record; use dot notation"
+    error (self.mVarName : "variable is a record; use dot notation")
   elsif bitCount <= self.mVarBit.uint then
-    error self.mVarBit : "bit index should be < " + bitCount
+    error (self.mVarBit : "bit index should be < " + bitCount)
   end
   outResult = @binaryset.binarySetWithBit (!idx + self.mVarBit.uint)
 }
@@ -511,11 +511,11 @@ override func @formulaInExpression. computeExpression(
   inComputedFormulaMap.searchKey (!self.mFormulaName, ?let varList, ?let unused totalBitCount, ?let formulaValue)
 //--- Check parameter list
   if self.mParameterList.count != varList.count then
-    error self.mFormulaName : "the $" + self.mFormulaName + " names "
+    error (self.mFormulaName : "the $" + self.mFormulaName + " names "
       + varList.count + " variable" + if varList.count > 1 then "s" else "" end
       + ", but this call names "
       + self.mParameterList.count + " variable" + if self.mParameterList.count > 1 then "s" else "" end
-    spoil (outResult)
+    spoil outResult)
   else
     var @uintlist transformationList = []
     for > (formalName, *, formalBitCount) in varList, > (parameterName, fieldNameList) in self.mParameterList do
@@ -526,10 +526,11 @@ override func @formulaInExpression. computeExpression(
         subdomainMap = fieldSubdomainMap
       end
       if formalBitCount != parameterBitCount then
-        error parameterName : "this parameter is declared with a size of "
+        error (parameterName : "this parameter is declared with a size of "
           + parameterBitCount + " bit" + if parameterBitCount > 1 then "s" else "" end
           + ", but corresponding formal argument '" + formalName + "' is declared with a size of "
           + formalBitCount + " bit" + if formalBitCount > 1 then "s" else "" end
+        )
       end
       for i in 0 ..< parameterBitCount do
         !?transformationList.append (parameterIndex + i)
@@ -589,9 +590,9 @@ override func @comparisonWithConstantInExpression. computeExpression(
     subDomainMap = fieldSubdomainMap
   end
   if subDomainMap.count > 0 then
-    error self.mVarName : "variable is a record; use dot notation" spoil (outResult)
+    error (self.mVarName : "variable is a record; use dot notation" spoil outResult)
   elsif self.mConstant.uint.significantBitCount > bitCount then
-    error self.mConstant : "Constant too large (should be < 2**" + bitCount spoil (outResult)
+    error (self.mConstant : "Constant too large (should be < 2**" + bitCount spoil outResult)
   else
     switch self.mComparison
     case equal :
@@ -632,15 +633,15 @@ override func @variableComparisonInExpression. computeExpression(
     rightSubDomainMap = fieldSubdomainMap
   end
   if leftSubDomainMap.count > 0 then
-    error self.mLeftVarName : "variable is a record; use dot notation" spoil (outResult)
+    error (self.mLeftVarName : "variable is a record; use dot notation" spoil outResult)
   elsif rightSubDomainMap.count > 0 then
-    error self.mRightVarName : "variable is a record; use dot notation" spoil (outResult)
+    error (self.mRightVarName : "variable is a record; use dot notation" spoil outResult)
   elsif leftBitCount != rightBitCount then
-    error self.mRightVarName : "'" + self.mLeftVarName + "' variable uses "
+    error (self.mRightVarName : "'" + self.mLeftVarName + "' variable uses "
       + leftBitCount + " bit" + if leftBitCount > 1 then "s" else "" end
       + ", but this variable uses "
       + rightBitCount + " bit" + if rightBitCount > 1 then "s" else "" end
-    spoil (outResult)
+    spoil outResult)
   else
     switch self.mComparison
     case equal :
