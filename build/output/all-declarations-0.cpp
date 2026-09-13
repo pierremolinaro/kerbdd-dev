@@ -713,851 +713,6 @@ GGS_abstractFormula GGS_abstractFormula::extractObject (const GGS_object & inObj
 }
 
 //--------------------------------------------------------------------------------------------------
-//  Enum formulaKind
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind::GGS_formulaKind (void) :
-mAssociatedValues (),
-mEnum (Enumeration::invalid) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind GGS_formulaKind::class_func_assignment (UNUSED_LOCATION_ARGS) {
-  GGS_formulaKind result ;
-  result.mEnum = Enumeration::enum_assignment ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind GGS_formulaKind::class_func_fixedPoint (const GGS_binaryset & inAssociatedValue0
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formulaKind result ;
-  result.mEnum = Enumeration::enum_fixedPoint ;
-  AC_GALGAS_root * p = nullptr ;
-  macroMyNew (p, GGS_formulaKind_2E_fixedPoint (inAssociatedValue0)) ;
-  EnumerationAssociatedValues * eav = nullptr ;
-  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
-  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
-  macroDetachSharedObject (eav) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaKind::method_extractFixedPoint (GGS_binaryset & outAssociatedValue_startValue,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  if (mEnum != Enumeration::enum_fixedPoint) {
-    outAssociatedValue_startValue.drop () ;
-    String s ;
-    s.appendCString ("method @formulaKind.fixedPoint invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const auto ptr = (GGS_formulaKind_2E_fixedPoint *) mAssociatedValues.associatedValuesPointer () ;
-    outAssociatedValue_startValue = ptr->mProperty_startValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind_2E_fixedPoint_3F_ GGS_formulaKind::getter_getFixedPoint (UNUSED_LOCATION_ARGS) const {
-  GGS_formulaKind_2E_fixedPoint_3F_ result ;
-  if (mEnum == Enumeration::enum_fixedPoint) {
-    const auto ptr = (const GGS_formulaKind_2E_fixedPoint *) mAssociatedValues.associatedValuesPointer () ;
-    result = GGS_formulaKind_2E_fixedPoint (*ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaKind::getAssociatedValuesFor_fixedPoint (GGS_binaryset & out_startValue) const {
-  const auto ptr = (const GGS_formulaKind_2E_fixedPoint *) mAssociatedValues.associatedValuesPointer () ;
-  out_startValue = ptr->mProperty_startValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_formulaKind [3] = {
-  "(not built)",
-  "assignment",
-  "fixedPoint"
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_formulaKind::getter_isAssignment (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_assignment == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_formulaKind::getter_isFixedPoint (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixedPoint == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaKind::description (String & ioString,
-                                   const int32_t inIndentation) const {
-  ioString.appendCString ("<enum @formulaKind: ") ;
-  ioString.appendCString (gEnumNameArrayFor_formulaKind [size_t (mEnum)]) ;
-  mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendCString (">") ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @formulaKind generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaKind ("formulaKind",
-                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_formulaKind::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_formulaKind ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_formulaKind::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_formulaKind (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind GGS_formulaKind::extractObject (const GGS_object & inObject,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  GGS_formulaKind result ;
-  const GGS_formulaKind * p = (const GGS_formulaKind *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_formulaKind *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("formulaKind", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@domainFieldList' list
-//--------------------------------------------------------------------------------------------------
-
-class CollectionElementPtr_domainFieldList : public CollectionElementPtr {
-  public: GGS_domainFieldList_2E_element mObject ;
-
-//--- Class functions
-  public: CollectionElementPtr_domainFieldList (const GGS_lstring & in_mVarName,
-                                                const GGS_bddType & in_mType
-                                                COMMA_LOCATION_ARGS) ;
-  public: CollectionElementPtr_domainFieldList (const GGS_domainFieldList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual CollectionElementPtr * copy (void) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_domainFieldList::CollectionElementPtr_domainFieldList (const GGS_lstring & in_mVarName,
-                                                                            const GGS_bddType & in_mType
-                                                                            COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (in_mVarName, in_mType) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_domainFieldList::CollectionElementPtr_domainFieldList (const GGS_domainFieldList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (inElement.mProperty_mVarName, inElement.mProperty_mType) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool CollectionElementPtr_domainFieldList::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr * CollectionElementPtr_domainFieldList::copy (void) {
-  CollectionElementPtr * result = nullptr ;
-  macroMyNew (result, CollectionElementPtr_domainFieldList (mObject.mProperty_mVarName, mObject.mProperty_mType COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// List type @domainFieldList
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList::GGS_domainFieldList (void) :
-mArray () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList::GGS_domainFieldList (const CollectionElementArray & inArray) :
-mArray () {
-  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
-  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElementPtr_domainFieldList * p = (CollectionElementPtr_domainFieldList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElementPtr_domainFieldList) ;
-    const GGS_domainFieldList_2E_element element (p->mObject.mProperty_mVarName, p->mObject.mProperty_mType) ;
-    mArray.appendObject (element) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                     const GGS_lstring & in_mVarName,
-                                                     const GGS_bddType & in_mType
-                                                     COMMA_LOCATION_ARGS) {
-  CollectionElementPtr_domainFieldList * p = nullptr ;
-  macroMyNew (p, CollectionElementPtr_domainFieldList (in_mVarName, in_mType COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_domainFieldList::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_range GGS_domainFieldList::getter_range (UNUSED_LOCATION_ARGS) const {
-  GGS_range result ;
-  if (isValid ()) {
-    result = GGS_range (0, count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::description (String & ioString,
-                                       const int32_t inIndentation) const {
-  ioString.appendCString ("<list @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (" (") ;
-  ioString.appendUnsigned (count()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((count() > 1) ? "s" : "") ;
-  ioString.appendCString ("):") ;
-  if (isValid ()) {
-    for (uint32_t i = 0 ; i < count () ; i++) {
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation) ;
-      ioString.appendString ("|-at ") ;
-      ioString.appendUnsigned (i) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mVarName:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mVarName.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mType:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mType.description (ioString, inIndentation + 1) ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList GGS_domainFieldList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_domainFieldList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::plusPlusAssignOperation (const GGS_domainFieldList_2E_element & inValue
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()) {
-    mArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList GGS_domainFieldList::class_func_listWithValue (const GGS_lstring & inOperand0,
-                                                                   const GGS_bddType & inOperand1
-                                                                   COMMA_LOCATION_ARGS) {
-  const GGS_domainFieldList_2E_element element (inOperand0, inOperand1) ;
-  GGS_domainFieldList result ;
-  if (element.isValid ()) {
-    result.mArray.setCapacity (16) ; // Build
-    result.plusPlusAssignOperation (element COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::addAssignOperation (const GGS_lstring & inOperand0,
-                                              const GGS_bddType & inOperand1
-                                              COMMA_LOCATION_ARGS) {
-  const GGS_domainFieldList_2E_element newElement (inOperand0, inOperand1) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::setter_append (const GGS_lstring inOperand0,
-                                         const GGS_bddType inOperand1,
-                                         Compiler * /* inCompiler */
-                                         COMMA_LOCATION_ARGS) {
-  const GGS_domainFieldList_2E_element newElement (inOperand0, inOperand1) ;
-  if (isValid () && newElement.isValid ()) {
-    plusPlusAssignOperation (newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::setter_insertAtIndex (const GGS_lstring inOperand0,
-                                                const GGS_bddType inOperand1,
-                                                const GGS_uint inInsertionIndex,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  const GGS_domainFieldList_2E_element newElement (inOperand0, inOperand1) ;
-  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx <= mArray.count ()) {
-      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
-    }else{
-      String message = "cannot insert at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::setter_removeAtIndex (GGS_lstring & outOperand0,
-                                                GGS_bddType & outOperand1,
-                                                const GGS_uint inRemoveIndex,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx < mArray.count ()) {
-      removed = true ;
-      outOperand0 = mArray (idx COMMA_HERE).mProperty_mVarName ;
-      outOperand1 = mArray (idx COMMA_HERE).mProperty_mType ;
-      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
-    }else{
-      String message = "cannot remove at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::setter_popFirst (GGS_lstring & outOperand0,
-                                           GGS_bddType & outOperand1,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mVarName ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mType ;
-      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
-    }else{
-      const String message = "cannot remove first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::setter_popLast (GGS_lstring & outOperand0,
-                                          GGS_bddType & outOperand1,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mVarName ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mType ;
-      mArray.removeLastObject (HERE) ;
-    }else{
-      const String message = "cannot remove last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::method_first (GGS_lstring & outOperand0,
-                                        GGS_bddType & outOperand1,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mVarName ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mType ;
-    }else{
-      const String message = "cannot get first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::method_last (GGS_lstring & outOperand0,
-                                       GGS_bddType & outOperand1,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mVarName ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mType ;
-    }else{
-      const String message = "cannot get last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList GGS_domainFieldList::add_operation (const GGS_domainFieldList & inOperand,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_domainFieldList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
-      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList GGS_domainFieldList::subList (const int32_t inStart,
-                                                  const int32_t inLength,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
-  GGS_domainFieldList result ;
-  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
-  if (ok) {
-    result.mArray.setCapacity (std::max (16, inLength)) ;
-    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
-      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-    }
-  }else{
-    String message = "cannot get sublist [start: " ;
-    message.appendSigned (inStart) ;
-    message.appendCString (", length: ") ;
-    message.appendSigned (inLength) ;
-    message.appendCString ("], list count is ") ;
-    message.appendSigned (mArray.count ()) ;
-    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList GGS_domainFieldList::getter_subListWithRange (const GGS_range & inRange,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_domainFieldList result ;
-  if (isValid () && inRange.isValid ()) {
-    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
-    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList GGS_domainFieldList::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_domainFieldList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = int32_t (inIndex.uintValue ()) ;
-    const int32_t length = int32_t (count ()) - start ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList GGS_domainFieldList::getter_subListToIndex (const GGS_uint & inIndex,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  GGS_domainFieldList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = 0 ;
-    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::plusAssignOperation (const GGS_domainFieldList inList,
-                                               Compiler * /* inCompiler */
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inList.isValid ()) {
-    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
-    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
-      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::setter_setMVarNameAtIndex (GGS_lstring inOperand,
-                                                     GGS_uint inIndex,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mVarName = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-  
-GGS_lstring GGS_domainFieldList::getter_mVarNameAtIndex (const GGS_uint & inIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_lstring result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mVarName ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainFieldList::setter_setMTypeAtIndex (GGS_bddType inOperand,
-                                                  GGS_uint inIndex,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mType = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-  
-GGS_bddType GGS_domainFieldList::getter_mTypeAtIndex (const GGS_uint & inIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
-  GGS_bddType result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mType ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @domainFieldList
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_domainFieldList::DownEnumerator_domainFieldList (const GGS_domainFieldList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList_2E_element DownEnumerator_domainFieldList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_domainFieldList::current_mVarName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mVarName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType DownEnumerator_domainFieldList::current_mType (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mType ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @domainFieldList
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_domainFieldList::UpEnumerator_domainFieldList (const GGS_domainFieldList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList_2E_element UpEnumerator_domainFieldList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_domainFieldList::current_mVarName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mVarName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType UpEnumerator_domainFieldList::current_mType (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mType ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//     @domainFieldList generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainFieldList ("domainFieldList",
-                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_domainFieldList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_domainFieldList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_domainFieldList::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_domainFieldList (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainFieldList GGS_domainFieldList::extractObject (const GGS_object & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  GGS_domainFieldList result ;
-  const GGS_domainFieldList * p = (const GGS_domainFieldList *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_domainFieldList *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("domainFieldList", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @expression reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_expression::objectCompare (const GGS_expression & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_expression::GGS_expression (void) :
-AC_GALGAS_reference_class () {
-}
-
-
-void cPtr_expression::
-expression_init (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_expression::GGS_expression (const cPtr_expression * inSourcePtr) :
-AC_GALGAS_reference_class (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_expression) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @expression class
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_expression::cPtr_expression (Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) :
-AbstractStrongPtrClass (inCompiler COMMA_THERE) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_expression::printNonNullClassInstanceProperties (void) const {
-    AbstractStrongPtrClass::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @expression generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_expression ("expression",
-                                                               nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_expression::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_expression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_expression::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_expression (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_expression GGS_expression::extractObject (const GGS_object & inObject,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  GGS_expression result ;
-  const GGS_expression * p = (const GGS_expression *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_expression *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("expression", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_abstractFormula_2E_weak::objectCompare (const GGS_abstractFormula_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -1674,1421 +829,6 @@ GGS_abstractFormula_2E_weak GGS_abstractFormula_2E_weak::extractObject (const GG
       result = *p ;
     }else{
       inCompiler->castError ("abstractFormula.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Map type @computedFormulaMap
-//--------------------------------------------------------------------------------------------------
-
-#include "GALGAS_GenericMapRoot.h"
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap::GGS_computedFormulaMap (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap::~ GGS_computedFormulaMap (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap::GGS_computedFormulaMap (const GGS_computedFormulaMap & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap & GGS_computedFormulaMap::operator = (const GGS_computedFormulaMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap GGS_computedFormulaMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_computedFormulaMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_computedFormulaMap::getter_hasKey (const GGS_string & inKey
-                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_computedFormulaMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                       const GGS_uint & inLevel
-                                                       COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_computedFormulaMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_computedFormulaMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_computedFormulaMap::getter_locationForKey (const GGS_string & inKey,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_location result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      String message = "'locationForKey' map reader run-time error: the '" ;
-      message.appendString (inKey.stringValue ()) ;
-      message.appendCString ("' does not exist in map") ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_lkey.mProperty_location ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_computedFormulaMap::getter_keyList (Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
-  if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_computedFormulaMap::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_computedFormulaMap_2E_element>>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::performInsert (const GGS_computedFormulaMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GenericMapNode <GGS_computedFormulaMap_2E_element>> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot.insulate (THERE) ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
-      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
-      if (existingInfo.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element>
-GGS_computedFormulaMap::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->infoForKey (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t GGS_computedFormulaMap::count (void) const  {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->count () ;
-  }else{
-    return 0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GenericArray <SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element>>
-GGS_computedFormulaMap::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_computedFormulaMap::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_ GGS_computedFormulaMap
-::readSubscript__3F_ (const class GGS_string & inKey,
-                      Compiler * /* inCompiler */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_computedFormulaMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      result = GGS_computedFormulaMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_computedFormulaMap_2E_element element ;
-      element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mVarList = info->mProperty_mVarList ;
-      element.mProperty_mBitCount = info->mProperty_mBitCount ;
-      element.mProperty_mValue = info->mProperty_mValue ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap GGS_computedFormulaMap::class_func_mapWithMapToOverride (const GGS_computedFormulaMap & inMapToOverride
-                                                                                COMMA_LOCATION_ARGS) {
-  GGS_computedFormulaMap result ;
-  if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_computedFormulaMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap GGS_computedFormulaMap::getter_overriddenMap (Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
-  GGS_computedFormulaMap result ;
-  if (isValid ()) {
-    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
-    if (result.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::setter_insertKey (GGS_lstring inLKey,
-                                               GGS_varList inArgument0,
-                                               GGS_uint inArgument1,
-                                               GGS_binaryset inArgument2,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  const GGS_computedFormulaMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
-  const char * kInsertErrorMessage = "the '%K' formula is already declared in %L" ;
-  const char * kShadowErrorMessage = nullptr ;
-  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::method_searchKey (GGS_lstring inLKey,
-                                               GGS_varList & outArgument0,
-                                               GGS_uint & outArgument1,
-                                               GGS_binaryset & outArgument2,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
-  SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info ;
-  if (isValid () && inLKey.isValid ()) {
-    const String key = inLKey.mProperty_string.stringValue () ;
-    info = infoForKey (key) ;
-    if (info.isNil ()) {
-      GenericUniqueArray <String> nearestKeyArray ;
-      findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "there is no '%K' formula" ;
-      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
-    }
-  }
-  if (info.isNil ()) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-  }else{
-    outArgument0 = info->mProperty_mVarList ;
-    outArgument1 = info->mProperty_mBitCount ;
-    outArgument2 = info->mProperty_mValue ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList GGS_computedFormulaMap::getter_mVarListForKey (const GGS_string & inKey,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
-  GGS_varList result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mVarList ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_computedFormulaMap::getter_mBitCountForKey (const GGS_string & inKey,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mBitCount ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_binaryset GGS_computedFormulaMap::getter_mValueForKey (const GGS_string & inKey,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
-  GGS_binaryset result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mValue ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::setter_setMVarListForKey (GGS_varList inValue,
-                                                       GGS_string inKey,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_computedFormulaMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mVarList = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::setter_setMBitCountForKey (GGS_uint inValue,
-                                                        GGS_string inKey,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_computedFormulaMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mBitCount = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::setter_setMValueForKey (GGS_binaryset inValue,
-                                                     GGS_string inKey,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_computedFormulaMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mValue = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-static void GGS_computedFormulaMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element>> & inArray,
-                                                        String & ioString,
-                                                        const int32_t inIndentation) {
-  const int32_t n = inArray.count () ;
-  ioString.appendString (" (") ;
-  ioString.appendSigned (n) ;
-  ioString.appendString (" object") ;
-  if (n > 1) {
-    ioString.appendString ("s") ;
-  }
-  ioString.appendString ("):") ;
-  for (int32_t i = 0 ; i < n ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
-    ioString.appendSigned (i) ;
-    ioString.appendString (": key '") ;
-    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
-    ioString.appendString ("'") ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mVarList:") ;
-    inArray (i COMMA_HERE)->mProperty_mVarList.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mBitCount:") ;
-    inArray (i COMMA_HERE)->mProperty_mBitCount.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mValue:") ;
-    inArray (i COMMA_HERE)->mProperty_mValue.description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  if (isValid ()) {
-    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element>> array = sortedInfoArray () ;
-    GGS_computedFormulaMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GenericMapRoot <GGS_computedFormulaMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
-    uint32_t idx = 0 ;
-    while (subRoot.isNotNil ()) {
-     idx += 1 ;
-     ioString.appendNewLine () ;
-     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-     ioString.appendString (" override #") ;
-     ioString.appendUnsigned (idx) ;
-     const auto subRootArray = subRoot->sortedInfoArray () ;
-     GGS_computedFormulaMap_internalDescription (subRootArray, ioString, inIndentation) ;
-     subRoot = subRoot->overriddenRoot () ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Down Enumerator for @computedFormulaMap
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_computedFormulaMap::DownEnumerator_computedFormulaMap (const GGS_computedFormulaMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-  mIndex = mInfoArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element DownEnumerator_computedFormulaMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_computedFormulaMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList DownEnumerator_computedFormulaMap::current_mVarList (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mVarList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_computedFormulaMap::current_mBitCount (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_binaryset DownEnumerator_computedFormulaMap::current_mValue (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Up Enumerator for @computedFormulaMap
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_computedFormulaMap::UpEnumerator_computedFormulaMap (const GGS_computedFormulaMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element UpEnumerator_computedFormulaMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_computedFormulaMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList UpEnumerator_computedFormulaMap::current_mVarList (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mVarList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_computedFormulaMap::current_mBitCount (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_binaryset UpEnumerator_computedFormulaMap::current_mValue (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mValue ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @computedFormulaMap generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_computedFormulaMap ("computedFormulaMap",
-                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_computedFormulaMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_computedFormulaMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_computedFormulaMap::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_computedFormulaMap (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap GGS_computedFormulaMap::extractObject (const GGS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  GGS_computedFormulaMap result ;
-  const GGS_computedFormulaMap * p = (const GGS_computedFormulaMap *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_computedFormulaMap *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("computedFormulaMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@varList' list
-//--------------------------------------------------------------------------------------------------
-
-class CollectionElementPtr_varList : public CollectionElementPtr {
-  public: GGS_varList_2E_element mObject ;
-
-//--- Class functions
-  public: CollectionElementPtr_varList (const GGS_string & in_mVarName,
-                                        const GGS_uint & in_mBitIndex,
-                                        const GGS_uint & in_mBitCount
-                                        COMMA_LOCATION_ARGS) ;
-  public: CollectionElementPtr_varList (const GGS_varList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual CollectionElementPtr * copy (void) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_varList::CollectionElementPtr_varList (const GGS_string & in_mVarName,
-                                                            const GGS_uint & in_mBitIndex,
-                                                            const GGS_uint & in_mBitCount
-                                                            COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (in_mVarName, in_mBitIndex, in_mBitCount) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_varList::CollectionElementPtr_varList (const GGS_varList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (inElement.mProperty_mVarName, inElement.mProperty_mBitIndex, inElement.mProperty_mBitCount) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool CollectionElementPtr_varList::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr * CollectionElementPtr_varList::copy (void) {
-  CollectionElementPtr * result = nullptr ;
-  macroMyNew (result, CollectionElementPtr_varList (mObject.mProperty_mVarName, mObject.mProperty_mBitIndex, mObject.mProperty_mBitCount COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// List type @varList
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList::GGS_varList (void) :
-mArray () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList::GGS_varList (const CollectionElementArray & inArray) :
-mArray () {
-  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
-  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElementPtr_varList * p = (CollectionElementPtr_varList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElementPtr_varList) ;
-    const GGS_varList_2E_element element (p->mObject.mProperty_mVarName, p->mObject.mProperty_mBitIndex, p->mObject.mProperty_mBitCount) ;
-    mArray.appendObject (element) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::makeAttributesFromObjects (CollectionElement & outAttributes,
-                                             const GGS_string & in_mVarName,
-                                             const GGS_uint & in_mBitIndex,
-                                             const GGS_uint & in_mBitCount
-                                             COMMA_LOCATION_ARGS) {
-  CollectionElementPtr_varList * p = nullptr ;
-  macroMyNew (p, CollectionElementPtr_varList (in_mVarName, in_mBitIndex, in_mBitCount COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_varList::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_range GGS_varList::getter_range (UNUSED_LOCATION_ARGS) const {
-  GGS_range result ;
-  if (isValid ()) {
-    result = GGS_range (0, count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::description (String & ioString,
-                               const int32_t inIndentation) const {
-  ioString.appendCString ("<list @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (" (") ;
-  ioString.appendUnsigned (count()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((count() > 1) ? "s" : "") ;
-  ioString.appendCString ("):") ;
-  if (isValid ()) {
-    for (uint32_t i = 0 ; i < count () ; i++) {
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation) ;
-      ioString.appendString ("|-at ") ;
-      ioString.appendUnsigned (i) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mVarName:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mVarName.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mBitIndex:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mBitIndex.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mBitCount:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mBitCount.description (ioString, inIndentation + 1) ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList GGS_varList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_varList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::plusPlusAssignOperation (const GGS_varList_2E_element & inValue
-                                           COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()) {
-    mArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList GGS_varList::class_func_listWithValue (const GGS_string & inOperand0,
-                                                   const GGS_uint & inOperand1,
-                                                   const GGS_uint & inOperand2
-                                                   COMMA_LOCATION_ARGS) {
-  const GGS_varList_2E_element element (inOperand0, inOperand1, inOperand2) ;
-  GGS_varList result ;
-  if (element.isValid ()) {
-    result.mArray.setCapacity (16) ; // Build
-    result.plusPlusAssignOperation (element COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::addAssignOperation (const GGS_string & inOperand0,
-                                      const GGS_uint & inOperand1,
-                                      const GGS_uint & inOperand2
-                                      COMMA_LOCATION_ARGS) {
-  const GGS_varList_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::setter_append (const GGS_string inOperand0,
-                                 const GGS_uint inOperand1,
-                                 const GGS_uint inOperand2,
-                                 Compiler * /* inCompiler */
-                                 COMMA_LOCATION_ARGS) {
-  const GGS_varList_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  if (isValid () && newElement.isValid ()) {
-    plusPlusAssignOperation (newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::setter_insertAtIndex (const GGS_string inOperand0,
-                                        const GGS_uint inOperand1,
-                                        const GGS_uint inOperand2,
-                                        const GGS_uint inInsertionIndex,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  const GGS_varList_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx <= mArray.count ()) {
-      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
-    }else{
-      String message = "cannot insert at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::setter_removeAtIndex (GGS_string & outOperand0,
-                                        GGS_uint & outOperand1,
-                                        GGS_uint & outOperand2,
-                                        const GGS_uint inRemoveIndex,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx < mArray.count ()) {
-      removed = true ;
-      outOperand0 = mArray (idx COMMA_HERE).mProperty_mVarName ;
-      outOperand1 = mArray (idx COMMA_HERE).mProperty_mBitIndex ;
-      outOperand2 = mArray (idx COMMA_HERE).mProperty_mBitCount ;
-      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
-    }else{
-      String message = "cannot remove at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::setter_popFirst (GGS_string & outOperand0,
-                                   GGS_uint & outOperand1,
-                                   GGS_uint & outOperand2,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mVarName ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mBitIndex ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mBitCount ;
-      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
-    }else{
-      const String message = "cannot remove first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::setter_popLast (GGS_string & outOperand0,
-                                  GGS_uint & outOperand1,
-                                  GGS_uint & outOperand2,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mVarName ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mBitIndex ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mBitCount ;
-      mArray.removeLastObject (HERE) ;
-    }else{
-      const String message = "cannot remove last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::method_first (GGS_string & outOperand0,
-                                GGS_uint & outOperand1,
-                                GGS_uint & outOperand2,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mVarName ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mBitIndex ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mBitCount ;
-    }else{
-      const String message = "cannot get first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::method_last (GGS_string & outOperand0,
-                               GGS_uint & outOperand1,
-                               GGS_uint & outOperand2,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mVarName ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mBitIndex ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mBitCount ;
-    }else{
-      const String message = "cannot get last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList GGS_varList::add_operation (const GGS_varList & inOperand,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_varList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
-      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList GGS_varList::subList (const int32_t inStart,
-                                  const int32_t inLength,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) const {
-  GGS_varList result ;
-  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
-  if (ok) {
-    result.mArray.setCapacity (std::max (16, inLength)) ;
-    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
-      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-    }
-  }else{
-    String message = "cannot get sublist [start: " ;
-    message.appendSigned (inStart) ;
-    message.appendCString (", length: ") ;
-    message.appendSigned (inLength) ;
-    message.appendCString ("], list count is ") ;
-    message.appendSigned (mArray.count ()) ;
-    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList GGS_varList::getter_subListWithRange (const GGS_range & inRange,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
-  GGS_varList result ;
-  if (isValid () && inRange.isValid ()) {
-    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
-    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList GGS_varList::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
-  GGS_varList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = int32_t (inIndex.uintValue ()) ;
-    const int32_t length = int32_t (count ()) - start ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList GGS_varList::getter_subListToIndex (const GGS_uint & inIndex,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  GGS_varList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = 0 ;
-    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::plusAssignOperation (const GGS_varList inList,
-                                       Compiler * /* inCompiler */
-                                       COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inList.isValid ()) {
-    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
-    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
-      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::setter_setMVarNameAtIndex (GGS_string inOperand,
-                                             GGS_uint inIndex,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mVarName = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-  
-GGS_string GGS_varList::getter_mVarNameAtIndex (const GGS_uint & inIndex,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mVarName ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::setter_setMBitIndexAtIndex (GGS_uint inOperand,
-                                              GGS_uint inIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mBitIndex = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-  
-GGS_uint GGS_varList::getter_mBitIndexAtIndex (const GGS_uint & inIndex,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mBitIndex ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varList::setter_setMBitCountAtIndex (GGS_uint inOperand,
-                                              GGS_uint inIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mBitCount = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-  
-GGS_uint GGS_varList::getter_mBitCountAtIndex (const GGS_uint & inIndex,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mBitCount ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @varList
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_varList::DownEnumerator_varList (const GGS_varList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList_2E_element DownEnumerator_varList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_varList::current_mVarName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mVarName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_varList::current_mBitIndex (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBitIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_varList::current_mBitCount (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBitCount ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @varList
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_varList::UpEnumerator_varList (const GGS_varList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList_2E_element UpEnumerator_varList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_varList::current_mVarName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mVarName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_varList::current_mBitIndex (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBitIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_varList::current_mBitCount (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBitCount ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//     @varList generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varList ("varList",
-                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_varList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_varList::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_varList (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varList GGS_varList::extractObject (const GGS_object & inObject,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  GGS_varList result ;
-  const GGS_varList * p = (const GGS_varList *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_varList *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("varList", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_graphvizFormula_2E_weak::objectCompare (const GGS_graphvizFormula_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphvizFormula_2E_weak::GGS_graphvizFormula_2E_weak (void) :
-GGS_abstractFormula_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphvizFormula_2E_weak & GGS_graphvizFormula_2E_weak::operator = (const GGS_graphvizFormula & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphvizFormula_2E_weak::GGS_graphvizFormula_2E_weak (const GGS_graphvizFormula & inSource) :
-GGS_abstractFormula_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphvizFormula_2E_weak GGS_graphvizFormula_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_graphvizFormula_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphvizFormula GGS_graphvizFormula_2E_weak::unwrappedValue (void) const {
-  GGS_graphvizFormula result ;
-  if (isValid ()) {
-    const cPtr_graphvizFormula * p = (cPtr_graphvizFormula *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_graphvizFormula (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphvizFormula GGS_graphvizFormula_2E_weak::bang_graphvizFormula_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_graphvizFormula result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_graphvizFormula) ;
-      result = GGS_graphvizFormula ((cPtr_graphvizFormula *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @graphvizFormula.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphvizFormula_2E_weak ("graphvizFormula.weak",
-                                                                            & kTypeDescriptor_GALGAS_abstractFormula_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_graphvizFormula_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_graphvizFormula_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_graphvizFormula_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_graphvizFormula_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_graphvizFormula_2E_weak GGS_graphvizFormula_2E_weak::extractObject (const GGS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  GGS_graphvizFormula_2E_weak result ;
-  const GGS_graphvizFormula_2E_weak * p = (const GGS_graphvizFormula_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_graphvizFormula_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("graphvizFormula.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -4232,8 +1972,4958 @@ GGS_domainDeclarationList GGS_domainDeclarationList::extractObject (const GGS_ob
 }
 
 //--------------------------------------------------------------------------------------------------
+//  Enum bddType
+//--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_setting_5F_nodeHashMapSize_2E_weak::objectCompare (const GGS_setting_5F_nodeHashMapSize_2E_weak & inOperand) const {
+GGS_bddType::GGS_bddType (void) :
+mAssociatedValues (),
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType GGS_bddType::class_func_bool (UNUSED_LOCATION_ARGS) {
+  GGS_bddType result ;
+  result.mEnum = Enumeration::enum_bool ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType GGS_bddType::class_func_boolArray (const GGS_uint & inAssociatedValue0
+                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bddType result ;
+  result.mEnum = Enumeration::enum_boolArray ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_bddType_2E_boolArray (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType GGS_bddType::class_func_namedType (const GGS_lstring & inAssociatedValue0
+                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bddType result ;
+  result.mEnum = Enumeration::enum_namedType ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_bddType_2E_namedType (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType::method_extractBoolArray (GGS_uint & outAssociatedValue_size,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_boolArray) {
+    outAssociatedValue_size.drop () ;
+    String s ;
+    s.appendCString ("method @bddType.boolArray invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_bddType_2E_boolArray *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_size = ptr->mProperty_size ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType::method_extractNamedType (GGS_lstring & outAssociatedValue_typeName,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_namedType) {
+    outAssociatedValue_typeName.drop () ;
+    String s ;
+    s.appendCString ("method @bddType.namedType invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_bddType_2E_namedType *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_typeName = ptr->mProperty_typeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_boolArray_3F_ GGS_bddType::getter_getBoolArray (UNUSED_LOCATION_ARGS) const {
+  GGS_bddType_2E_boolArray_3F_ result ;
+  if (mEnum == Enumeration::enum_boolArray) {
+    const auto ptr = (const GGS_bddType_2E_boolArray *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_bddType_2E_boolArray (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType::getAssociatedValuesFor_boolArray (GGS_uint & out_size) const {
+  const auto ptr = (const GGS_bddType_2E_boolArray *) mAssociatedValues.associatedValuesPointer () ;
+  out_size = ptr->mProperty_size ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType_2E_namedType_3F_ GGS_bddType::getter_getNamedType (UNUSED_LOCATION_ARGS) const {
+  GGS_bddType_2E_namedType_3F_ result ;
+  if (mEnum == Enumeration::enum_namedType) {
+    const auto ptr = (const GGS_bddType_2E_namedType *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_bddType_2E_namedType (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType::getAssociatedValuesFor_namedType (GGS_lstring & out_typeName) const {
+  const auto ptr = (const GGS_bddType_2E_namedType *) mAssociatedValues.associatedValuesPointer () ;
+  out_typeName = ptr->mProperty_typeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_bddType [4] = {
+  "(not built)",
+  "bool",
+  "boolArray",
+  "namedType"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_bddType::getter_isBool (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_bool == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_bddType::getter_isBoolArray (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_boolArray == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_bddType::getter_isNamedType (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_namedType == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bddType::description (String & ioString,
+                               const int32_t inIndentation) const {
+  ioString.appendCString ("<enum @bddType: ") ;
+  ioString.appendCString (gEnumNameArrayFor_bddType [size_t (mEnum)]) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
+  ioString.appendCString (">") ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @bddType generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bddType ("bddType",
+                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_bddType::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_bddType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_bddType::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_bddType (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType GGS_bddType::extractObject (const GGS_object & inObject,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
+  GGS_bddType result ;
+  const GGS_bddType * p = (const GGS_bddType *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_bddType *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("bddType", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@domainFieldList' list
+//--------------------------------------------------------------------------------------------------
+
+class CollectionElementPtr_domainFieldList : public CollectionElementPtr {
+  public: GGS_domainFieldList_2E_element mObject ;
+
+//--- Class functions
+  public: CollectionElementPtr_domainFieldList (const GGS_lstring & in_mVarName,
+                                                const GGS_bddType & in_mType
+                                                COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_domainFieldList (const GGS_domainFieldList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual CollectionElementPtr * copy (void) ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr_domainFieldList::CollectionElementPtr_domainFieldList (const GGS_lstring & in_mVarName,
+                                                                            const GGS_bddType & in_mType
+                                                                            COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
+mObject (in_mVarName, in_mType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr_domainFieldList::CollectionElementPtr_domainFieldList (const GGS_domainFieldList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
+mObject (inElement.mProperty_mVarName, inElement.mProperty_mType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool CollectionElementPtr_domainFieldList::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr * CollectionElementPtr_domainFieldList::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_domainFieldList (mObject.mProperty_mVarName, mObject.mProperty_mType COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// List type @domainFieldList
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList::GGS_domainFieldList (void) :
+mArray () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList::GGS_domainFieldList (const CollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_domainFieldList * p = (CollectionElementPtr_domainFieldList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_domainFieldList) ;
+    const GGS_domainFieldList_2E_element element (p->mObject.mProperty_mVarName, p->mObject.mProperty_mType) ;
+    mArray.appendObject (element) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::makeAttributesFromObjects (CollectionElement & outAttributes,
+                                                     const GGS_lstring & in_mVarName,
+                                                     const GGS_bddType & in_mType
+                                                     COMMA_LOCATION_ARGS) {
+  CollectionElementPtr_domainFieldList * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_domainFieldList (in_mVarName, in_mType COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_domainFieldList::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_domainFieldList::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::description (String & ioString,
+                                       const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mVarName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mVarName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mType:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mType.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList GGS_domainFieldList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_domainFieldList result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::plusPlusAssignOperation (const GGS_domainFieldList_2E_element & inValue
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList GGS_domainFieldList::class_func_listWithValue (const GGS_lstring & inOperand0,
+                                                                   const GGS_bddType & inOperand1
+                                                                   COMMA_LOCATION_ARGS) {
+  const GGS_domainFieldList_2E_element element (inOperand0, inOperand1) ;
+  GGS_domainFieldList result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::addAssignOperation (const GGS_lstring & inOperand0,
+                                              const GGS_bddType & inOperand1
+                                              COMMA_LOCATION_ARGS) {
+  const GGS_domainFieldList_2E_element newElement (inOperand0, inOperand1) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::setter_append (const GGS_lstring inOperand0,
+                                         const GGS_bddType inOperand1,
+                                         Compiler * /* inCompiler */
+                                         COMMA_LOCATION_ARGS) {
+  const GGS_domainFieldList_2E_element newElement (inOperand0, inOperand1) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::setter_insertAtIndex (const GGS_lstring inOperand0,
+                                                const GGS_bddType inOperand1,
+                                                const GGS_uint inInsertionIndex,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  const GGS_domainFieldList_2E_element newElement (inOperand0, inOperand1) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::setter_removeAtIndex (GGS_lstring & outOperand0,
+                                                GGS_bddType & outOperand1,
+                                                const GGS_uint inRemoveIndex,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mVarName ;
+      outOperand1 = mArray (idx COMMA_HERE).mProperty_mType ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
+    }else{
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::setter_popFirst (GGS_lstring & outOperand0,
+                                           GGS_bddType & outOperand1,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mVarName ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_mType ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::setter_popLast (GGS_lstring & outOperand0,
+                                          GGS_bddType & outOperand1,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mVarName ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_mType ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::method_first (GGS_lstring & outOperand0,
+                                        GGS_bddType & outOperand1,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) const {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mVarName ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_mType ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::method_last (GGS_lstring & outOperand0,
+                                       GGS_bddType & outOperand1,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mVarName ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_mType ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList GGS_domainFieldList::add_operation (const GGS_domainFieldList & inOperand,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_domainFieldList result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList GGS_domainFieldList::subList (const int32_t inStart,
+                                                  const int32_t inLength,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  GGS_domainFieldList result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList GGS_domainFieldList::getter_subListWithRange (const GGS_range & inRange,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_domainFieldList result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList GGS_domainFieldList::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_domainFieldList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList GGS_domainFieldList::getter_subListToIndex (const GGS_uint & inIndex,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
+  GGS_domainFieldList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::plusAssignOperation (const GGS_domainFieldList inList,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::setter_setMVarNameAtIndex (GGS_lstring inOperand,
+                                                     GGS_uint inIndex,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mVarName = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+  
+GGS_lstring GGS_domainFieldList::getter_mVarNameAtIndex (const GGS_uint & inIndex,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GGS_lstring result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mVarName ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainFieldList::setter_setMTypeAtIndex (GGS_bddType inOperand,
+                                                  GGS_uint inIndex,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mType = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+  
+GGS_bddType GGS_domainFieldList::getter_mTypeAtIndex (const GGS_uint & inIndex,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  GGS_bddType result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mType ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @domainFieldList
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_domainFieldList::DownEnumerator_domainFieldList (const GGS_domainFieldList & inEnumeratedObject) :
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList_2E_element DownEnumerator_domainFieldList::current (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_domainFieldList::current_mVarName (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mVarName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType DownEnumerator_domainFieldList::current_mType (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mType ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @domainFieldList
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_domainFieldList::UpEnumerator_domainFieldList (const GGS_domainFieldList & inEnumeratedObject) :
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList_2E_element UpEnumerator_domainFieldList::current (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_domainFieldList::current_mVarName (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mVarName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bddType UpEnumerator_domainFieldList::current_mType (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mType ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//     @domainFieldList generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainFieldList ("domainFieldList",
+                                                                    nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_domainFieldList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_domainFieldList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_domainFieldList::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_domainFieldList (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainFieldList GGS_domainFieldList::extractObject (const GGS_object & inObject,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  GGS_domainFieldList result ;
+  const GGS_domainFieldList * p = (const GGS_domainFieldList *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_domainFieldList *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("domainFieldList", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Enum domainDeclarationType
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainDeclarationType::GGS_domainDeclarationType (void) :
+mAssociatedValues (),
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainDeclarationType GGS_domainDeclarationType::class_func_type (const GGS_bddType & inAssociatedValue0
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_domainDeclarationType result ;
+  result.mEnum = Enumeration::enum_type ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_domainDeclarationType_2E_type (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainDeclarationType GGS_domainDeclarationType::class_func_record (const GGS_domainFieldList & inAssociatedValue0
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_domainDeclarationType result ;
+  result.mEnum = Enumeration::enum_record ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_domainDeclarationType_2E_record (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainDeclarationType::method_extractType (GGS_bddType & outAssociatedValue_type,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_type) {
+    outAssociatedValue_type.drop () ;
+    String s ;
+    s.appendCString ("method @domainDeclarationType.type invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_domainDeclarationType_2E_type *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_type = ptr->mProperty_type ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainDeclarationType::method_extractRecord (GGS_domainFieldList & outAssociatedValue_fieldList,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_record) {
+    outAssociatedValue_fieldList.drop () ;
+    String s ;
+    s.appendCString ("method @domainDeclarationType.record invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_domainDeclarationType_2E_record *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_fieldList = ptr->mProperty_fieldList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainDeclarationType_2E_type_3F_ GGS_domainDeclarationType::getter_getType (UNUSED_LOCATION_ARGS) const {
+  GGS_domainDeclarationType_2E_type_3F_ result ;
+  if (mEnum == Enumeration::enum_type) {
+    const auto ptr = (const GGS_domainDeclarationType_2E_type *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_domainDeclarationType_2E_type (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainDeclarationType::getAssociatedValuesFor_type (GGS_bddType & out_type) const {
+  const auto ptr = (const GGS_domainDeclarationType_2E_type *) mAssociatedValues.associatedValuesPointer () ;
+  out_type = ptr->mProperty_type ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainDeclarationType_2E_record_3F_ GGS_domainDeclarationType::getter_getRecord (UNUSED_LOCATION_ARGS) const {
+  GGS_domainDeclarationType_2E_record_3F_ result ;
+  if (mEnum == Enumeration::enum_record) {
+    const auto ptr = (const GGS_domainDeclarationType_2E_record *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_domainDeclarationType_2E_record (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainDeclarationType::getAssociatedValuesFor_record (GGS_domainFieldList & out_fieldList) const {
+  const auto ptr = (const GGS_domainDeclarationType_2E_record *) mAssociatedValues.associatedValuesPointer () ;
+  out_fieldList = ptr->mProperty_fieldList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_domainDeclarationType [3] = {
+  "(not built)",
+  "type",
+  "record"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_domainDeclarationType::getter_isType (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_type == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_domainDeclarationType::getter_isRecord (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_record == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainDeclarationType::description (String & ioString,
+                                             const int32_t inIndentation) const {
+  ioString.appendCString ("<enum @domainDeclarationType: ") ;
+  ioString.appendCString (gEnumNameArrayFor_domainDeclarationType [size_t (mEnum)]) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
+  ioString.appendCString (">") ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @domainDeclarationType generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainDeclarationType ("domainDeclarationType",
+                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_domainDeclarationType::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_domainDeclarationType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_domainDeclarationType::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_domainDeclarationType (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainDeclarationType GGS_domainDeclarationType::extractObject (const GGS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GGS_domainDeclarationType result ;
+  const GGS_domainDeclarationType * p = (const GGS_domainDeclarationType *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_domainDeclarationType *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("domainDeclarationType", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Map type @recordDomainMap
+//--------------------------------------------------------------------------------------------------
+
+#include "GALGAS_GenericMapRoot.h"
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap::GGS_recordDomainMap (void) :
+mSharedRoot () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap::~ GGS_recordDomainMap (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap::GGS_recordDomainMap (const GGS_recordDomainMap & inSource) :
+mSharedRoot (inSource.mSharedRoot) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap & GGS_recordDomainMap::operator = (const GGS_recordDomainMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap GGS_recordDomainMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_recordDomainMap result ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_recordDomainMap::getter_hasKey (const GGS_string & inKey
+                                             COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_recordDomainMap::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                                    const GGS_uint & inLevel
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_recordDomainMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_recordDomainMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (mSharedRoot->levels ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_recordDomainMap::getter_locationForKey (const GGS_string & inKey,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_recordDomainMap::getter_keyList (Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeyList (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_recordDomainMap::isValid (void) const {
+  return mSharedRoot.isNotNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_recordDomainMap::drop (void)  {
+  mSharedRoot.setToNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_recordDomainMap::build (LOCATION_ARGS) {
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_recordDomainMap_2E_element>>::make (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_recordDomainMap::performInsert (const GGS_recordDomainMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.mProperty_lkey.isValid ()) {
+    OptionalSharedRef <GenericMapNode <GGS_recordDomainMap_2E_element>> existingNode ;
+    const bool allowReplacing = false ;
+    mSharedRoot.insulate (THERE) ;
+    mSharedRoot->insertOrReplaceInfo (
+      inElement,
+      allowReplacing,
+      existingNode
+      COMMA_THERE
+    ) ;
+    const GGS_lstring lkey = inElement.mProperty_lkey ;
+    if (existingNode.isNotNil ()) {
+      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
+      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
+      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
+      if (existingInfo.isNotNil ()) {
+        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
+        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element>
+GGS_recordDomainMap::infoForKey (const String & inKey) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->infoForKey (inKey) ;
+  }else{
+    return SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t GGS_recordDomainMap::count (void) const  {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->count () ;
+  }else{
+    return 0 ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element>>
+GGS_recordDomainMap::sortedInfoArray (void) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->sortedInfoArray () ;
+  }else{
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element>> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_recordDomainMap::getter_keySet (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_stringset result ;
+  if (isValid ()) {
+    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeySet (result, inCompiler) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_recordDomainMap::findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
+  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap_2E_element_3F_ GGS_recordDomainMap
+::readSubscript__3F_ (const class GGS_string & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_recordDomainMap_2E_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      result = GGS_recordDomainMap_2E_element_3F_::init_nil () ;
+    }else{
+      GGS_recordDomainMap_2E_element element ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mIndex = info->mProperty_mIndex ;
+      element.mProperty_mBitCount = info->mProperty_mBitCount ;
+      element.mProperty_mSubDomain = info->mProperty_mSubDomain ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap GGS_recordDomainMap::class_func_mapWithMapToOverride (const GGS_recordDomainMap & inMapToOverride
+                                                                          COMMA_LOCATION_ARGS) {
+  GGS_recordDomainMap result ;
+  if (inMapToOverride.isValid ()) {
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_recordDomainMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap GGS_recordDomainMap::getter_overriddenMap (Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
+  GGS_recordDomainMap result ;
+  if (isValid ()) {
+    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
+    if (result.mSharedRoot.isNil ()) {
+      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_recordDomainMap::setter_insertKey (GGS_lstring inLKey,
+                                            GGS_uint inArgument0,
+                                            GGS_uint inArgument1,
+                                            GGS_recordDomainMap inArgument2,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  const GGS_recordDomainMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
+  const char * kInsertErrorMessage = "the '%K' field is already declared in %L" ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_recordDomainMap::method_searchKey (GGS_lstring inLKey,
+                                            GGS_uint & outArgument0,
+                                            GGS_uint & outArgument1,
+                                            GGS_recordDomainMap & outArgument2,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
+  SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      GenericUniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "there is no '%K' field" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+    outArgument2.drop () ;
+  }else{
+    outArgument0 = info->mProperty_mIndex ;
+    outArgument1 = info->mProperty_mBitCount ;
+    outArgument2 = info->mProperty_mSubDomain ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_recordDomainMap::getter_mIndexForKey (const GGS_string & inKey,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mIndex ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_recordDomainMap::getter_mBitCountForKey (const GGS_string & inKey,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mBitCount ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap GGS_recordDomainMap::getter_mSubDomainForKey (const GGS_string & inKey,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_recordDomainMap result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mSubDomain ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_recordDomainMap::setter_setMIndexForKey (GGS_uint inValue,
+                                                  GGS_string inKey,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_recordDomainMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mIndex = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_recordDomainMap::setter_setMBitCountForKey (GGS_uint inValue,
+                                                     GGS_string inKey,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_recordDomainMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mBitCount = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_recordDomainMap::setter_setMSubDomainForKey (GGS_recordDomainMap inValue,
+                                                      GGS_string inKey,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_recordDomainMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mSubDomain = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+static void GGS_recordDomainMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element>> & inArray,
+                                                        String & ioString,
+                                                        const int32_t inIndentation) {
+  const int32_t n = inArray.count () ;
+  ioString.appendString (" (") ;
+  ioString.appendSigned (n) ;
+  ioString.appendString (" object") ;
+  if (n > 1) {
+    ioString.appendString ("s") ;
+  }
+  ioString.appendString ("):") ;
+  for (int32_t i = 0 ; i < n ; i++) {
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendString ("|-at ") ;
+    ioString.appendSigned (i) ;
+    ioString.appendString (": key '") ;
+    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
+    ioString.appendString ("'") ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mIndex:") ;
+    inArray (i COMMA_HERE)->mProperty_mIndex.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mBitCount:") ;
+    inArray (i COMMA_HERE)->mProperty_mBitCount.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mSubDomain:") ;
+    inArray (i COMMA_HERE)->mProperty_mSubDomain.description (ioString, inIndentation + 1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_recordDomainMap::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element>> array = sortedInfoArray () ;
+    GGS_recordDomainMap_internalDescription (array, ioString, inIndentation) ;
+    OptionalSharedRef <GenericMapRoot <GGS_recordDomainMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    uint32_t idx = 0 ;
+    while (subRoot.isNotNil ()) {
+     idx += 1 ;
+     ioString.appendNewLine () ;
+     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+     ioString.appendString (" override #") ;
+     ioString.appendUnsigned (idx) ;
+     const auto subRootArray = subRoot->sortedInfoArray () ;
+     GGS_recordDomainMap_internalDescription (subRootArray, ioString, inIndentation) ;
+     subRoot = subRoot->overriddenRoot () ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @recordDomainMap
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_recordDomainMap::DownEnumerator_recordDomainMap (const GGS_recordDomainMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap_2E_element DownEnumerator_recordDomainMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_recordDomainMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_recordDomainMap::current_mIndex (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_recordDomainMap::current_mBitCount (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap DownEnumerator_recordDomainMap::current_mSubDomain (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mSubDomain ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Up Enumerator for @recordDomainMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_recordDomainMap::UpEnumerator_recordDomainMap (const GGS_recordDomainMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap_2E_element UpEnumerator_recordDomainMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_recordDomainMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_recordDomainMap::current_mIndex (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_recordDomainMap::current_mBitCount (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap UpEnumerator_recordDomainMap::current_mSubDomain (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mSubDomain ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @recordDomainMap generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_recordDomainMap ("recordDomainMap",
+                                                                    nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_recordDomainMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_recordDomainMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_recordDomainMap::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_recordDomainMap (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap GGS_recordDomainMap::extractObject (const GGS_object & inObject,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  GGS_recordDomainMap result ;
+  const GGS_recordDomainMap * p = (const GGS_recordDomainMap *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_recordDomainMap *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("recordDomainMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Map type @domainMap
+//--------------------------------------------------------------------------------------------------
+
+#include "GALGAS_GenericMapRoot.h"
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap::GGS_domainMap (void) :
+mSharedRoot () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap::~ GGS_domainMap (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap::GGS_domainMap (const GGS_domainMap & inSource) :
+mSharedRoot (inSource.mSharedRoot) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap & GGS_domainMap::operator = (const GGS_domainMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap GGS_domainMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_domainMap result ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_domainMap::getter_hasKey (const GGS_string & inKey
+                                       COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_domainMap::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                              const GGS_uint & inLevel
+                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_domainMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_domainMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (mSharedRoot->levels ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_domainMap::getter_locationForKey (const GGS_string & inKey,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_domainMap::getter_keyList (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeyList (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_domainMap::isValid (void) const {
+  return mSharedRoot.isNotNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap::drop (void)  {
+  mSharedRoot.setToNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap::build (LOCATION_ARGS) {
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_domainMap_2E_element>>::make (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap::performInsert (const GGS_domainMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.mProperty_lkey.isValid ()) {
+    OptionalSharedRef <GenericMapNode <GGS_domainMap_2E_element>> existingNode ;
+    const bool allowReplacing = false ;
+    mSharedRoot.insulate (THERE) ;
+    mSharedRoot->insertOrReplaceInfo (
+      inElement,
+      allowReplacing,
+      existingNode
+      COMMA_THERE
+    ) ;
+    const GGS_lstring lkey = inElement.mProperty_lkey ;
+    if (existingNode.isNotNil ()) {
+      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
+      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
+      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
+      if (existingInfo.isNotNil ()) {
+        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
+        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element>
+GGS_domainMap::infoForKey (const String & inKey) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->infoForKey (inKey) ;
+  }else{
+    return SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t GGS_domainMap::count (void) const  {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->count () ;
+  }else{
+    return 0 ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element>>
+GGS_domainMap::sortedInfoArray (void) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->sortedInfoArray () ;
+  }else{
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element>> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_domainMap::getter_keySet (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_stringset result ;
+  if (isValid ()) {
+    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeySet (result, inCompiler) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap::findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
+  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element_3F_ GGS_domainMap
+::readSubscript__3F_ (const class GGS_string & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_domainMap_2E_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      result = GGS_domainMap_2E_element_3F_::init_nil () ;
+    }else{
+      GGS_domainMap_2E_element element ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mBitCount = info->mProperty_mBitCount ;
+      element.mProperty_mRecordMap = info->mProperty_mRecordMap ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap GGS_domainMap::class_func_mapWithMapToOverride (const GGS_domainMap & inMapToOverride
+                                                              COMMA_LOCATION_ARGS) {
+  GGS_domainMap result ;
+  if (inMapToOverride.isValid ()) {
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_domainMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap GGS_domainMap::getter_overriddenMap (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  GGS_domainMap result ;
+  if (isValid ()) {
+    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
+    if (result.mSharedRoot.isNil ()) {
+      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap::setter_insertKey (GGS_lstring inLKey,
+                                      GGS_uint inArgument0,
+                                      GGS_recordDomainMap inArgument1,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
+  const GGS_domainMap_2E_element element (inLKey, inArgument0, inArgument1) ;
+  const char * kInsertErrorMessage = "the '%K' domain is already declared in %L" ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap::method_searchKey (GGS_lstring inLKey,
+                                      GGS_uint & outArgument0,
+                                      GGS_recordDomainMap & outArgument1,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const {
+  SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      GenericUniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "there is no '%K' domain" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+  }else{
+    outArgument0 = info->mProperty_mBitCount ;
+    outArgument1 = info->mProperty_mRecordMap ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_domainMap::getter_mBitCountForKey (const GGS_string & inKey,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mBitCount ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap GGS_domainMap::getter_mRecordMapForKey (const GGS_string & inKey,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  GGS_recordDomainMap result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mRecordMap ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap::setter_setMBitCountForKey (GGS_uint inValue,
+                                               GGS_string inKey,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_domainMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mBitCount = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap::setter_setMRecordMapForKey (GGS_recordDomainMap inValue,
+                                                GGS_string inKey,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_domainMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mRecordMap = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+static void GGS_domainMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element>> & inArray,
+                                                        String & ioString,
+                                                        const int32_t inIndentation) {
+  const int32_t n = inArray.count () ;
+  ioString.appendString (" (") ;
+  ioString.appendSigned (n) ;
+  ioString.appendString (" object") ;
+  if (n > 1) {
+    ioString.appendString ("s") ;
+  }
+  ioString.appendString ("):") ;
+  for (int32_t i = 0 ; i < n ; i++) {
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendString ("|-at ") ;
+    ioString.appendSigned (i) ;
+    ioString.appendString (": key '") ;
+    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
+    ioString.appendString ("'") ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mBitCount:") ;
+    inArray (i COMMA_HERE)->mProperty_mBitCount.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mRecordMap:") ;
+    inArray (i COMMA_HERE)->mProperty_mRecordMap.description (ioString, inIndentation + 1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element>> array = sortedInfoArray () ;
+    GGS_domainMap_internalDescription (array, ioString, inIndentation) ;
+    OptionalSharedRef <GenericMapRoot <GGS_domainMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    uint32_t idx = 0 ;
+    while (subRoot.isNotNil ()) {
+     idx += 1 ;
+     ioString.appendNewLine () ;
+     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+     ioString.appendString (" override #") ;
+     ioString.appendUnsigned (idx) ;
+     const auto subRootArray = subRoot->sortedInfoArray () ;
+     GGS_domainMap_internalDescription (subRootArray, ioString, inIndentation) ;
+     subRoot = subRoot->overriddenRoot () ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @domainMap
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_domainMap::DownEnumerator_domainMap (const GGS_domainMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element DownEnumerator_domainMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_domainMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_domainMap::current_mBitCount (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap DownEnumerator_domainMap::current_mRecordMap (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRecordMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Up Enumerator for @domainMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_domainMap::UpEnumerator_domainMap (const GGS_domainMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element UpEnumerator_domainMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_domainMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_domainMap::current_mBitCount (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap UpEnumerator_domainMap::current_mRecordMap (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRecordMap ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @domainMap generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainMap ("domainMap",
+                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_domainMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_domainMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_domainMap::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_domainMap (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap GGS_domainMap::extractObject (const GGS_object & inObject,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  GGS_domainMap result ;
+  const GGS_domainMap * p = (const GGS_domainMap *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_domainMap *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("domainMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@domainDeclarationList analyze'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_analyze (const GGS_domainDeclarationList inObject,
+                              GGS_domainMap & outArgument_outDomainMap,
+                              Compiler * inCompiler
+                              COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outDomainMap.drop () ; // Release 'out' argument
+  outArgument_outDomainMap = GGS_domainMap::init (inCompiler COMMA_HERE) ;
+  const GGS_domainDeclarationList temp_0 = inObject ;
+  UpEnumerator_domainDeclarationList enumerator_3990 (temp_0) ;
+  bool bool_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.galgas4", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
+  if (enumerator_3990.hasCurrentObject () && bool_1) {
+    while (enumerator_3990.hasCurrentObject () && bool_1) {
+      switch (enumerator_3990.current_mType (HERE).enumValue ()) {
+      case GGS_domainDeclarationType::Enumeration::invalid:
+        break ;
+      case GGS_domainDeclarationType::Enumeration::enum_type:
+        {
+          GGS_bddType extractedValue_4095_type_0 ;
+          enumerator_3990.current_mType (HERE).getAssociatedValuesFor_type (extractedValue_4095_type_0) ;
+          switch (extractedValue_4095_type_0.enumValue ()) {
+          case GGS_bddType::Enumeration::invalid:
+            break ;
+          case GGS_bddType::Enumeration::enum_bool:
+            {
+              {
+              outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 128)) ;
+              }
+            }
+            break ;
+          case GGS_bddType::Enumeration::enum_boolArray:
+            {
+              GGS_uint extractedValue_4215_size_0 ;
+              extractedValue_4095_type_0.getAssociatedValuesFor_boolArray (extractedValue_4215_size_0) ;
+              {
+              outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), extractedValue_4215_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 130)) ;
+              }
+            }
+            break ;
+          case GGS_bddType::Enumeration::enum_namedType:
+            {
+              GGS_lstring extractedValue_4305_typeName_0 ;
+              extractedValue_4095_type_0.getAssociatedValuesFor_namedType (extractedValue_4305_typeName_0) ;
+              GGS_uint var_size_4365 ;
+              GGS_recordDomainMap var_subdomain_4376 ;
+              outArgument_outDomainMap.method_searchKey (extractedValue_4305_typeName_0, var_size_4365, var_subdomain_4376, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 132)) ;
+              {
+              outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), var_size_4365, var_subdomain_4376, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 133)) ;
+              }
+            }
+            break ;
+          }
+        }
+        break ;
+      case GGS_domainDeclarationType::Enumeration::enum_record:
+        {
+          GGS_domainFieldList extractedValue_4490_fieldList_0 ;
+          enumerator_3990.current_mType (HERE).getAssociatedValuesFor_record (extractedValue_4490_fieldList_0) ;
+          GGS_bigint var_bitIndex_4513 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.galgas4", 136)) ;
+          GGS_recordDomainMap var_recordMap_4553 = GGS_recordDomainMap::init (inCompiler COMMA_HERE) ;
+          DownEnumerator_domainFieldList enumerator_4587 (extractedValue_4490_fieldList_0) ;
+          bool bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.galgas4", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
+          if (enumerator_4587.hasCurrentObject () && bool_2) {
+            while (enumerator_4587.hasCurrentObject () && bool_2) {
+              switch (enumerator_4587.current_mType (HERE).enumValue ()) {
+              case GGS_bddType::Enumeration::invalid:
+                break ;
+              case GGS_bddType::Enumeration::enum_bool:
+                {
+                  {
+                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 141)), GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 141)) ;
+                  }
+                  var_bitIndex_4513.plusAssignOperation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.galgas4", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.galgas4", 142)) ;
+                }
+                break ;
+              case GGS_bddType::Enumeration::enum_boolArray:
+                {
+                  GGS_uint extractedValue_4809_size_0 ;
+                  enumerator_4587.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_4809_size_0) ;
+                  {
+                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 144)), extractedValue_4809_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 144)) ;
+                  }
+                  var_bitIndex_4513 = var_bitIndex_4513.add_operation (extractedValue_4809_size_0.getter_bigint (SOURCE_FILE ("domain.galgas4", 145)), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 145)) ;
+                }
+                break ;
+              case GGS_bddType::Enumeration::enum_namedType:
+                {
+                  GGS_lstring extractedValue_4948_typeName_0 ;
+                  enumerator_4587.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_4948_typeName_0) ;
+                  GGS_uint var_size_5010 ;
+                  GGS_recordDomainMap var_subdomain_5021 ;
+                  outArgument_outDomainMap.method_searchKey (extractedValue_4948_typeName_0, var_size_5010, var_subdomain_5021, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 147)) ;
+                  {
+                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 148)), var_size_5010, var_subdomain_5021, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 148)) ;
+                  }
+                  var_bitIndex_4513 = var_bitIndex_4513.add_operation (var_size_5010.getter_bigint (SOURCE_FILE ("domain.galgas4", 149)), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 149)) ;
+                }
+                break ;
+              }
+              enumerator_4587.gotoNextObject () ;
+              if (enumerator_4587.hasCurrentObject ()) {
+                bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.galgas4", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
+              }
+            }
+          }
+          {
+          outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 152)), var_recordMap_4553, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 152)) ;
+          }
+        }
+        break ;
+      }
+      enumerator_3990.gotoNextObject () ;
+      if (enumerator_3990.hasCurrentObject ()) {
+        bool_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.galgas4", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
+      }
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@varList' list
+//--------------------------------------------------------------------------------------------------
+
+class CollectionElementPtr_varList : public CollectionElementPtr {
+  public: GGS_varList_2E_element mObject ;
+
+//--- Class functions
+  public: CollectionElementPtr_varList (const GGS_string & in_mVarName,
+                                        const GGS_uint & in_mBitIndex,
+                                        const GGS_uint & in_mBitCount
+                                        COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_varList (const GGS_varList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual CollectionElementPtr * copy (void) ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr_varList::CollectionElementPtr_varList (const GGS_string & in_mVarName,
+                                                            const GGS_uint & in_mBitIndex,
+                                                            const GGS_uint & in_mBitCount
+                                                            COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
+mObject (in_mVarName, in_mBitIndex, in_mBitCount) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr_varList::CollectionElementPtr_varList (const GGS_varList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
+mObject (inElement.mProperty_mVarName, inElement.mProperty_mBitIndex, inElement.mProperty_mBitCount) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool CollectionElementPtr_varList::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr * CollectionElementPtr_varList::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_varList (mObject.mProperty_mVarName, mObject.mProperty_mBitIndex, mObject.mProperty_mBitCount COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// List type @varList
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList::GGS_varList (void) :
+mArray () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList::GGS_varList (const CollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_varList * p = (CollectionElementPtr_varList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_varList) ;
+    const GGS_varList_2E_element element (p->mObject.mProperty_mVarName, p->mObject.mProperty_mBitIndex, p->mObject.mProperty_mBitCount) ;
+    mArray.appendObject (element) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::makeAttributesFromObjects (CollectionElement & outAttributes,
+                                             const GGS_string & in_mVarName,
+                                             const GGS_uint & in_mBitIndex,
+                                             const GGS_uint & in_mBitCount
+                                             COMMA_LOCATION_ARGS) {
+  CollectionElementPtr_varList * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_varList (in_mVarName, in_mBitIndex, in_mBitCount COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_varList::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_varList::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::description (String & ioString,
+                               const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mVarName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mVarName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mBitIndex:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mBitIndex.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mBitCount:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mBitCount.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList GGS_varList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_varList result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::plusPlusAssignOperation (const GGS_varList_2E_element & inValue
+                                           COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList GGS_varList::class_func_listWithValue (const GGS_string & inOperand0,
+                                                   const GGS_uint & inOperand1,
+                                                   const GGS_uint & inOperand2
+                                                   COMMA_LOCATION_ARGS) {
+  const GGS_varList_2E_element element (inOperand0, inOperand1, inOperand2) ;
+  GGS_varList result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::addAssignOperation (const GGS_string & inOperand0,
+                                      const GGS_uint & inOperand1,
+                                      const GGS_uint & inOperand2
+                                      COMMA_LOCATION_ARGS) {
+  const GGS_varList_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::setter_append (const GGS_string inOperand0,
+                                 const GGS_uint inOperand1,
+                                 const GGS_uint inOperand2,
+                                 Compiler * /* inCompiler */
+                                 COMMA_LOCATION_ARGS) {
+  const GGS_varList_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::setter_insertAtIndex (const GGS_string inOperand0,
+                                        const GGS_uint inOperand1,
+                                        const GGS_uint inOperand2,
+                                        const GGS_uint inInsertionIndex,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
+  const GGS_varList_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::setter_removeAtIndex (GGS_string & outOperand0,
+                                        GGS_uint & outOperand1,
+                                        GGS_uint & outOperand2,
+                                        const GGS_uint inRemoveIndex,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mVarName ;
+      outOperand1 = mArray (idx COMMA_HERE).mProperty_mBitIndex ;
+      outOperand2 = mArray (idx COMMA_HERE).mProperty_mBitCount ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
+    }else{
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::setter_popFirst (GGS_string & outOperand0,
+                                   GGS_uint & outOperand1,
+                                   GGS_uint & outOperand2,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mVarName ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_mBitIndex ;
+      outOperand2 = mArray (0 COMMA_THERE).mProperty_mBitCount ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::setter_popLast (GGS_string & outOperand0,
+                                  GGS_uint & outOperand1,
+                                  GGS_uint & outOperand2,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mVarName ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_mBitIndex ;
+      outOperand2 = mArray.lastObject (HERE).mProperty_mBitCount ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::method_first (GGS_string & outOperand0,
+                                GGS_uint & outOperand1,
+                                GGS_uint & outOperand2,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) const {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mVarName ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_mBitIndex ;
+      outOperand2 = mArray (0 COMMA_THERE).mProperty_mBitCount ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::method_last (GGS_string & outOperand0,
+                               GGS_uint & outOperand1,
+                               GGS_uint & outOperand2,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mVarName ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_mBitIndex ;
+      outOperand2 = mArray.lastObject (HERE).mProperty_mBitCount ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList GGS_varList::add_operation (const GGS_varList & inOperand,
+                                            Compiler * /* inCompiler */
+                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_varList result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList GGS_varList::subList (const int32_t inStart,
+                                  const int32_t inLength,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) const {
+  GGS_varList result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList GGS_varList::getter_subListWithRange (const GGS_range & inRange,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  GGS_varList result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList GGS_varList::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  GGS_varList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList GGS_varList::getter_subListToIndex (const GGS_uint & inIndex,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  GGS_varList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::plusAssignOperation (const GGS_varList inList,
+                                       Compiler * /* inCompiler */
+                                       COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::setter_setMVarNameAtIndex (GGS_string inOperand,
+                                             GGS_uint inIndex,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mVarName = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+  
+GGS_string GGS_varList::getter_mVarNameAtIndex (const GGS_uint & inIndex,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  GGS_string result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mVarName ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::setter_setMBitIndexAtIndex (GGS_uint inOperand,
+                                              GGS_uint inIndex,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mBitIndex = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+  
+GGS_uint GGS_varList::getter_mBitIndexAtIndex (const GGS_uint & inIndex,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mBitIndex ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varList::setter_setMBitCountAtIndex (GGS_uint inOperand,
+                                              GGS_uint inIndex,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mBitCount = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+  
+GGS_uint GGS_varList::getter_mBitCountAtIndex (const GGS_uint & inIndex,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mBitCount ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @varList
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_varList::DownEnumerator_varList (const GGS_varList & inEnumeratedObject) :
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList_2E_element DownEnumerator_varList::current (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string DownEnumerator_varList::current_mVarName (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mVarName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_varList::current_mBitIndex (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mBitIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_varList::current_mBitCount (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mBitCount ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @varList
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_varList::UpEnumerator_varList (const GGS_varList & inEnumeratedObject) :
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList_2E_element UpEnumerator_varList::current (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string UpEnumerator_varList::current_mVarName (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mVarName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_varList::current_mBitIndex (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mBitIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_varList::current_mBitCount (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mBitCount ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//     @varList generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varList ("varList",
+                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_varList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_varList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_varList::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_varList (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList GGS_varList::extractObject (const GGS_object & inObject,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
+  GGS_varList result ;
+  const GGS_varList * p = (const GGS_varList *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_varList *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("varList", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Map type @varMap
+//--------------------------------------------------------------------------------------------------
+
+#include "GALGAS_GenericMapRoot.h"
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap::GGS_varMap (void) :
+mSharedRoot () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap::~ GGS_varMap (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap::GGS_varMap (const GGS_varMap & inSource) :
+mSharedRoot (inSource.mSharedRoot) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap & GGS_varMap::operator = (const GGS_varMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap GGS_varMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_varMap result ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_varMap::getter_hasKey (const GGS_string & inKey
+                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_varMap::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                           const GGS_uint & inLevel
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_varMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_varMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (mSharedRoot->levels ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_varMap::getter_locationForKey (const GGS_string & inKey,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_varMap::getter_keyList (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeyList (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_varMap::isValid (void) const {
+  return mSharedRoot.isNotNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap::drop (void)  {
+  mSharedRoot.setToNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap::build (LOCATION_ARGS) {
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_varMap_2E_element>>::make (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap::performInsert (const GGS_varMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.mProperty_lkey.isValid ()) {
+    OptionalSharedRef <GenericMapNode <GGS_varMap_2E_element>> existingNode ;
+    const bool allowReplacing = false ;
+    mSharedRoot.insulate (THERE) ;
+    mSharedRoot->insertOrReplaceInfo (
+      inElement,
+      allowReplacing,
+      existingNode
+      COMMA_THERE
+    ) ;
+    const GGS_lstring lkey = inElement.mProperty_lkey ;
+    if (existingNode.isNotNil ()) {
+      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
+      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
+      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
+      if (existingInfo.isNotNil ()) {
+        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
+        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element>
+GGS_varMap::infoForKey (const String & inKey) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->infoForKey (inKey) ;
+  }else{
+    return SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t GGS_varMap::count (void) const  {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->count () ;
+  }else{
+    return 0 ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element>>
+GGS_varMap::sortedInfoArray (void) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->sortedInfoArray () ;
+  }else{
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element>> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_varMap::getter_keySet (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_stringset result ;
+  if (isValid ()) {
+    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeySet (result, inCompiler) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap::findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
+  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element_3F_ GGS_varMap
+::readSubscript__3F_ (const class GGS_string & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_varMap_2E_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      result = GGS_varMap_2E_element_3F_::init_nil () ;
+    }else{
+      GGS_varMap_2E_element element ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mIndex = info->mProperty_mIndex ;
+      element.mProperty_mBitCount = info->mProperty_mBitCount ;
+      element.mProperty_mRecordDomainMap = info->mProperty_mRecordDomainMap ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap GGS_varMap::class_func_mapWithMapToOverride (const GGS_varMap & inMapToOverride
+                                                        COMMA_LOCATION_ARGS) {
+  GGS_varMap result ;
+  if (inMapToOverride.isValid ()) {
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_varMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap GGS_varMap::getter_overriddenMap (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
+  GGS_varMap result ;
+  if (isValid ()) {
+    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
+    if (result.mSharedRoot.isNil ()) {
+      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap::setter_insertKey (GGS_lstring inLKey,
+                                   GGS_uint inArgument0,
+                                   GGS_uint inArgument1,
+                                   GGS_recordDomainMap inArgument2,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) {
+  const GGS_varMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
+  const char * kInsertErrorMessage = "the '%K' variable is already declared in %L" ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap::method_searchKey (GGS_lstring inLKey,
+                                   GGS_uint & outArgument0,
+                                   GGS_uint & outArgument1,
+                                   GGS_recordDomainMap & outArgument2,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const {
+  SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      GenericUniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "there is no '%K' variable" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+    outArgument2.drop () ;
+  }else{
+    outArgument0 = info->mProperty_mIndex ;
+    outArgument1 = info->mProperty_mBitCount ;
+    outArgument2 = info->mProperty_mRecordDomainMap ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_varMap::getter_mIndexForKey (const GGS_string & inKey,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mIndex ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_varMap::getter_mBitCountForKey (const GGS_string & inKey,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mBitCount ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap GGS_varMap::getter_mRecordDomainMapForKey (const GGS_string & inKey,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
+  GGS_recordDomainMap result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mRecordDomainMap ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap::setter_setMIndexForKey (GGS_uint inValue,
+                                         GGS_string inKey,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_varMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mIndex = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap::setter_setMBitCountForKey (GGS_uint inValue,
+                                            GGS_string inKey,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_varMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mBitCount = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap::setter_setMRecordDomainMapForKey (GGS_recordDomainMap inValue,
+                                                   GGS_string inKey,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_varMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mRecordDomainMap = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+static void GGS_varMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element>> & inArray,
+                                                        String & ioString,
+                                                        const int32_t inIndentation) {
+  const int32_t n = inArray.count () ;
+  ioString.appendString (" (") ;
+  ioString.appendSigned (n) ;
+  ioString.appendString (" object") ;
+  if (n > 1) {
+    ioString.appendString ("s") ;
+  }
+  ioString.appendString ("):") ;
+  for (int32_t i = 0 ; i < n ; i++) {
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendString ("|-at ") ;
+    ioString.appendSigned (i) ;
+    ioString.appendString (": key '") ;
+    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
+    ioString.appendString ("'") ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mIndex:") ;
+    inArray (i COMMA_HERE)->mProperty_mIndex.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mBitCount:") ;
+    inArray (i COMMA_HERE)->mProperty_mBitCount.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mRecordDomainMap:") ;
+    inArray (i COMMA_HERE)->mProperty_mRecordDomainMap.description (ioString, inIndentation + 1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element>> array = sortedInfoArray () ;
+    GGS_varMap_internalDescription (array, ioString, inIndentation) ;
+    OptionalSharedRef <GenericMapRoot <GGS_varMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    uint32_t idx = 0 ;
+    while (subRoot.isNotNil ()) {
+     idx += 1 ;
+     ioString.appendNewLine () ;
+     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+     ioString.appendString (" override #") ;
+     ioString.appendUnsigned (idx) ;
+     const auto subRootArray = subRoot->sortedInfoArray () ;
+     GGS_varMap_internalDescription (subRootArray, ioString, inIndentation) ;
+     subRoot = subRoot->overriddenRoot () ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @varMap
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_varMap::DownEnumerator_varMap (const GGS_varMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element DownEnumerator_varMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_varMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_varMap::current_mIndex (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_varMap::current_mBitCount (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap DownEnumerator_varMap::current_mRecordDomainMap (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRecordDomainMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Up Enumerator for @varMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_varMap::UpEnumerator_varMap (const GGS_varMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element UpEnumerator_varMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_varMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_varMap::current_mIndex (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_varMap::current_mBitCount (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_recordDomainMap UpEnumerator_varMap::current_mRecordDomainMap (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRecordDomainMap ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @varMap generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varMap ("varMap",
+                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_varMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_varMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_varMap::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_varMap (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap GGS_varMap::extractObject (const GGS_object & inObject,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
+  GGS_varMap result ;
+  const GGS_varMap * p = (const GGS_varMap *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_varMap *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("varMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@domainFieldList analyze'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_analyze (const GGS_domainFieldList inObject,
+                              const GGS_domainMap constinArgument_inDomainMap,
+                              GGS_varMap & ioArgument_ioVarMap,
+                              GGS_varList & ioArgument_ioVarList,
+                              GGS_uint & ioArgument_ioTotalBitCount,
+                              Compiler * inCompiler
+                              COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_domainFieldList temp_0 = inObject ;
+  DownEnumerator_domainFieldList enumerator_6322 (temp_0) ;
+  while (enumerator_6322.hasCurrentObject ()) {
+    switch (enumerator_6322.current_mType (HERE).enumValue ()) {
+    case GGS_bddType::Enumeration::invalid:
+      break ;
+    case GGS_bddType::Enumeration::enum_bool:
+      {
+        {
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6322.current_mVarName (HERE), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 189)) ;
+        }
+        {
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6322.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 190)) ;
+        }
+        ioArgument_ioTotalBitCount.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("domain.galgas4", 191)) ;
+      }
+      break ;
+    case GGS_bddType::Enumeration::enum_boolArray:
+      {
+        GGS_uint extractedValue_6554_size_0 ;
+        enumerator_6322.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_6554_size_0) ;
+        {
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6322.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6554_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 193)) ;
+        }
+        {
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6322.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6554_size_0, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 194)) ;
+        }
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6554_size_0, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 195)) ;
+      }
+      break ;
+    case GGS_bddType::Enumeration::enum_namedType:
+      {
+        GGS_lstring extractedValue_6774_typeName_0 ;
+        enumerator_6322.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_6774_typeName_0) ;
+        GGS_uint var_size_6831 ;
+        GGS_recordDomainMap var_subDomainMap_6842 ;
+        constinArgument_inDomainMap.method_searchKey (extractedValue_6774_typeName_0, var_size_6831, var_subDomainMap_6842, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 197)) ;
+        {
+        ioArgument_ioVarMap.setter_insertKey (enumerator_6322.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_6831, var_subDomainMap_6842, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 198)) ;
+        }
+        {
+        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6322.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_6831, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 199)) ;
+        }
+        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_6831, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 200)) ;
+      }
+      break ;
+    }
+    enumerator_6322.gotoNextObject () ;
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     L E X I Q U E                                                                             
+//
+//--------------------------------------------------------------------------------------------------
+
+#include "utf32.h"
+#include "scanner_actions.h"
+#include "LexiqueIntrospection.h"
+
+//--------------------------------------------------------------------------------------------------
+
+cTokenFor_kerbdd_5F_lexique::cTokenFor_kerbdd_5F_lexique (void) :
+mLexicalAttribute_tokenString (),
+mLexicalAttribute_uint_33__32_value () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+Lexique_kerbdd_5F_lexique::Lexique_kerbdd_5F_lexique (Compiler * inCallerCompiler,
+                                                      const String & inSourceFileName
+                                                      COMMA_LOCATION_ARGS) :
+Lexique (inCallerCompiler, inSourceFileName COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+Lexique_kerbdd_5F_lexique::Lexique_kerbdd_5F_lexique (Compiler * inCallerCompiler,
+                                                      const String & inSourceString,
+                                                      const String & inStringForError
+                                                      COMMA_LOCATION_ARGS) :
+Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+//                        Lexical error message list                                             
+//--------------------------------------------------------------------------------------------------
+
+static const char * gLexicalMessage_kerbdd_5F_lexique_decimalNumberTooLarge = "decimal number too large" ;
+
+static const char * gLexicalMessage_kerbdd_5F_lexique_incorrectStringEnd = "string does not end with '\"'" ;
+
+static const char * gLexicalMessage_kerbdd_5F_lexique_internalError = "internal error" ;
+
+//--------------------------------------------------------------------------------------------------
+//                getMessageForTerminal                                                          
+//--------------------------------------------------------------------------------------------------
+
+String Lexique_kerbdd_5F_lexique::getMessageForTerminal (const int32_t inTerminalIndex) const {
+  String result = "<unknown>" ;
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 42)) {
+    static const char * syntaxErrorMessageArray [42] = {kEndOfSourceLexicalErrorMessage,
+        "an identifier",
+        "a 32-bit unsigned decimal number",
+        "a character string constant \"...\"",
+        "a comment",
+        "the 'nodeHashMapSize' keyword",
+        "the 'andCacheMapSize' keyword",
+        "the 'domain' keyword",
+        "the 'bool' keyword",
+        "the 'true' keyword",
+        "the 'false' keyword",
+        "the 'display' keyword",
+        "the 'include' keyword",
+        "the 'graphviz' keyword",
+        "the 'dump' keyword",
+        "the '(' delimitor",
+        "the ')' delimitor",
+        "the '[' delimitor",
+        "the ']' delimitor",
+        "the '{' delimitor",
+        "the '}' delimitor",
+        "the ':=' delimitor",
+        "the ':' delimitor",
+        "the '.' delimitor",
+        "the '..' delimitor",
+        "the '+=' delimitor",
+        "the '-=' delimitor",
+        "the '->' delimitor",
+        "the '&' delimitor",
+        "the '|' delimitor",
+        "the '^' delimitor",
+        "the '~' delimitor",
+        "the ',' delimitor",
+        "the '\?' delimitor",
+        "the '!' delimitor",
+        "the ';' delimitor",
+        "the '=' delimitor",
+        "the '!=' delimitor",
+        "the '<' delimitor",
+        "the '<=' delimitor",
+        "the '>' delimitor",
+        "the '>=' delimitor"
+    } ;
+    result = syntaxErrorMessageArray [inTerminalIndex] ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                      U N I C O D E    S T R I N G S                                           
+//--------------------------------------------------------------------------------------------------
+
+//--- Unicode string for '$!$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__21_ = {
+  utf32 ('!'),
+} ;
+
+//--- Unicode string for '$!=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__21__3D_ = {
+  utf32 ('!'),
+  utf32 ('='),
+} ;
+
+//--- Unicode string for '$&$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__26_ = {
+  utf32 ('&'),
+} ;
+
+//--- Unicode string for '$($'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__28_ = {
+  utf32 ('('),
+} ;
+
+//--- Unicode string for '$)$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__29_ = {
+  utf32 (')'),
+} ;
+
+//--- Unicode string for '$+=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2B__3D_ = {
+  utf32 ('+'),
+  utf32 ('='),
+} ;
+
+//--- Unicode string for '$,$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2C_ = {
+  utf32 (','),
+} ;
+
+//--- Unicode string for '$-=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2D__3D_ = {
+  utf32 ('-'),
+  utf32 ('='),
+} ;
+
+//--- Unicode string for '$->$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2D__3E_ = {
+  utf32 ('-'),
+  utf32 ('>'),
+} ;
+
+//--- Unicode string for '$.$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2E_ = {
+  utf32 ('.'),
+} ;
+
+//--- Unicode string for '$..$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2E__2E_ = {
+  utf32 ('.'),
+  utf32 ('.'),
+} ;
+
+//--- Unicode string for '$:$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3A_ = {
+  utf32 (':'),
+} ;
+
+//--- Unicode string for '$:=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3A__3D_ = {
+  utf32 (':'),
+  utf32 ('='),
+} ;
+
+//--- Unicode string for '$;$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3B_ = {
+  utf32 (';'),
+} ;
+
+//--- Unicode string for '$<$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3C_ = {
+  utf32 ('<'),
+} ;
+
+//--- Unicode string for '$<=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3C__3D_ = {
+  utf32 ('<'),
+  utf32 ('='),
+} ;
+
+//--- Unicode string for '$=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3D_ = {
+  utf32 ('='),
+} ;
+
+//--- Unicode string for '$>$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3E_ = {
+  utf32 ('>'),
+} ;
+
+//--- Unicode string for '$>=$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3E__3D_ = {
+  utf32 ('>'),
+  utf32 ('='),
+} ;
+
+//--- Unicode string for '$?$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3F_ = {
+  utf32 ('\?'),
+} ;
+
+//--- Unicode string for '$[$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5B_ = {
+  utf32 ('['),
+} ;
+
+//--- Unicode string for '$]$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5D_ = {
+  utf32 (']'),
+} ;
+
+//--- Unicode string for '$^$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5E_ = {
+  utf32 ('^'),
+} ;
+
+//--- Unicode string for '$andCacheMapSize$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_andCacheMapSize = {
+  utf32 ('a'),
+  utf32 ('n'),
+  utf32 ('d'),
+  utf32 ('C'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('h'),
+  utf32 ('e'),
+  utf32 ('M'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('S'),
+  utf32 ('i'),
+  utf32 ('z'),
+  utf32 ('e'),
+} ;
+
+//--- Unicode string for '$bool$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_bool = {
+  utf32 ('b'),
+  utf32 ('o'),
+  utf32 ('o'),
+  utf32 ('l'),
+} ;
+
+//--- Unicode string for '$display$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_display = {
+  utf32 ('d'),
+  utf32 ('i'),
+  utf32 ('s'),
+  utf32 ('p'),
+  utf32 ('l'),
+  utf32 ('a'),
+  utf32 ('y'),
+} ;
+
+//--- Unicode string for '$domain$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_domain = {
+  utf32 ('d'),
+  utf32 ('o'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('i'),
+  utf32 ('n'),
+} ;
+
+//--- Unicode string for '$dump$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_dump = {
+  utf32 ('d'),
+  utf32 ('u'),
+  utf32 ('m'),
+  utf32 ('p'),
+} ;
+
+//--- Unicode string for '$false$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_false = {
+  utf32 ('f'),
+  utf32 ('a'),
+  utf32 ('l'),
+  utf32 ('s'),
+  utf32 ('e'),
+} ;
+
+//--- Unicode string for '$graphviz$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_graphviz = {
+  utf32 ('g'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('h'),
+  utf32 ('v'),
+  utf32 ('i'),
+  utf32 ('z'),
+} ;
+
+//--- Unicode string for '$include$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_include = {
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('c'),
+  utf32 ('l'),
+  utf32 ('u'),
+  utf32 ('d'),
+  utf32 ('e'),
+} ;
+
+//--- Unicode string for '$nodeHashMapSize$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_nodeHashMapSize = {
+  utf32 ('n'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('H'),
+  utf32 ('a'),
+  utf32 ('s'),
+  utf32 ('h'),
+  utf32 ('M'),
+  utf32 ('a'),
+  utf32 ('p'),
+  utf32 ('S'),
+  utf32 ('i'),
+  utf32 ('z'),
+  utf32 ('e'),
+} ;
+
+//--- Unicode string for '$true$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_true = {
+  utf32 ('t'),
+  utf32 ('r'),
+  utf32 ('u'),
+  utf32 ('e'),
+} ;
+
+//--- Unicode string for '${$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7B_ = {
+  utf32 ('{'),
+} ;
+
+//--- Unicode string for '$|$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7C_ = {
+  utf32 ('|'),
+} ;
+
+//--- Unicode string for '$}$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7D_ = {
+  utf32 ('}'),
+} ;
+
+//--- Unicode string for '$~$'
+static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7E_ = {
+  utf32 ('~'),
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//             Key words table 'delimitorsList'      
+//--------------------------------------------------------------------------------------------------
+
+static const int32_t ktable_size_kerbdd_5F_lexique_delimitorsList = 27 ;
+
+static const C_unicode_lexique_table_entry ktable_for_kerbdd_5F_lexique_delimitorsList [ktable_size_kerbdd_5F_lexique_delimitorsList] = {
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__21_, Lexique_kerbdd_5F_lexique::kToken__21_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__26_, Lexique_kerbdd_5F_lexique::kToken__26_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__28_, Lexique_kerbdd_5F_lexique::kToken__28_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__29_, Lexique_kerbdd_5F_lexique::kToken__29_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2C_, Lexique_kerbdd_5F_lexique::kToken__2C_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2E_, Lexique_kerbdd_5F_lexique::kToken__2E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3A_, Lexique_kerbdd_5F_lexique::kToken__3A_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3B_, Lexique_kerbdd_5F_lexique::kToken__3B_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3C_, Lexique_kerbdd_5F_lexique::kToken__3C_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3D_, Lexique_kerbdd_5F_lexique::kToken__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3E_, Lexique_kerbdd_5F_lexique::kToken__3E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3F_, Lexique_kerbdd_5F_lexique::kToken__3F_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5B_, Lexique_kerbdd_5F_lexique::kToken__5B_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5D_, Lexique_kerbdd_5F_lexique::kToken__5D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5E_, Lexique_kerbdd_5F_lexique::kToken__5E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7B_, Lexique_kerbdd_5F_lexique::kToken__7B_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7C_, Lexique_kerbdd_5F_lexique::kToken__7C_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7D_, Lexique_kerbdd_5F_lexique::kToken__7D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7E_, Lexique_kerbdd_5F_lexique::kToken__7E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__21__3D_, Lexique_kerbdd_5F_lexique::kToken__21__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2B__3D_, Lexique_kerbdd_5F_lexique::kToken__2B__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2D__3D_, Lexique_kerbdd_5F_lexique::kToken__2D__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2D__3E_, Lexique_kerbdd_5F_lexique::kToken__2D__3E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2E__2E_, Lexique_kerbdd_5F_lexique::kToken__2E__2E_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3A__3D_, Lexique_kerbdd_5F_lexique::kToken__3A__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3C__3D_, Lexique_kerbdd_5F_lexique::kToken__3C__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3E__3D_, Lexique_kerbdd_5F_lexique::kToken__3E__3D_)
+} ;
+
+int32_t Lexique_kerbdd_5F_lexique::search_into_delimitorsList (const String & inSearchedString) {
+  return searchInList (inSearchedString, ktable_for_kerbdd_5F_lexique_delimitorsList, ktable_size_kerbdd_5F_lexique_delimitorsList) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//             Key words table 'keyWordList'      
+//--------------------------------------------------------------------------------------------------
+
+static const int32_t ktable_size_kerbdd_5F_lexique_keyWordList = 10 ;
+
+static const C_unicode_lexique_table_entry ktable_for_kerbdd_5F_lexique_keyWordList [ktable_size_kerbdd_5F_lexique_keyWordList] = {
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_bool, Lexique_kerbdd_5F_lexique::kToken_bool),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_dump, Lexique_kerbdd_5F_lexique::kToken_dump),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_true, Lexique_kerbdd_5F_lexique::kToken_true),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_false, Lexique_kerbdd_5F_lexique::kToken_false),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_domain, Lexique_kerbdd_5F_lexique::kToken_domain),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_display, Lexique_kerbdd_5F_lexique::kToken_display),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_include, Lexique_kerbdd_5F_lexique::kToken_include),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_graphviz, Lexique_kerbdd_5F_lexique::kToken_graphviz),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_andCacheMapSize, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize),
+  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_nodeHashMapSize, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize)
+} ;
+
+int32_t Lexique_kerbdd_5F_lexique::search_into_keyWordList (const String & inSearchedString) {
+  return searchInList (inSearchedString, ktable_for_kerbdd_5F_lexique_keyWordList, ktable_size_kerbdd_5F_lexique_keyWordList) ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//                          getCurrentTokenString                                                
+//--------------------------------------------------------------------------------------------------
+
+String Lexique_kerbdd_5F_lexique::getCurrentTokenString (const cToken * inTokenPtr) const {
+  const cTokenFor_kerbdd_5F_lexique * ptr = (const cTokenFor_kerbdd_5F_lexique *) inTokenPtr ;
+  String s ;
+  if (ptr == nullptr) {
+    s.appendCString ("$$") ;
+  }else{
+    switch (ptr->mTokenCode) {
+    case kToken_:
+      s.appendCString ("$$") ;
+      break ;
+    case kToken_identifier:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("identifier") ;
+      s.appendChar (utf32 ('$')) ;
+      s.appendChar (utf32 (' ')) ;
+      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
+      break ;
+    case kToken_integer:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("integer") ;
+      s.appendChar (utf32 ('$')) ;
+      s.appendChar (utf32 (' ')) ;
+      s.appendUnsigned (ptr->mLexicalAttribute_uint_33__32_value) ;
+      break ;
+    case kToken_literal_5F_string:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("literal_string") ;
+      s.appendChar (utf32 ('$')) ;
+      s.appendChar (utf32 (' ')) ;
+      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
+      break ;
+    case kToken_comment:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("comment") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_nodeHashMapSize:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("nodeHashMapSize") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_andCacheMapSize:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("andCacheMapSize") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_domain:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("domain") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_bool:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("bool") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_true:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("true") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_false:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("false") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_display:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("display") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_include:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("include") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_graphviz:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("graphviz") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_dump:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("dump") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__28_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("(") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__29_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString (")") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__5B_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("[") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__5D_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("]") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__7B_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("{") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__7D_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("}") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__3A__3D_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString (":=") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__3A_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString (":") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__2E_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString (".") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__2E__2E_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("..") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__2B__3D_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("+=") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__2D__3D_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("-=") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__2D__3E_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("->") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__26_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("&") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__7C_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("|") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__5E_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("^") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__7E_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("~") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__2C_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString (",") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__3F_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("\?") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__21_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("!") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__3B_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString (";") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__3D_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("=") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__21__3D_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("!=") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__3C_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("<") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__3C__3D_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("<=") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__3E_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString (">") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__3E__3D_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString (">=") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    default:
+      break ;
+    }
+  }
+  return s ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                           Template Delimiters                                                 
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+//                           Template Replacements                                               
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+//            Terminal Symbols as end of script in template mark                                 
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+//               INTERNAL PARSE LEXICAL TOKEN                                         
+//--------------------------------------------------------------------------------------------------
+
+void Lexique_kerbdd_5F_lexique::internalParseLexicalToken (cTokenFor_kerbdd_5F_lexique & token) {
+  bool loop = true ;
+  token.mLexicalAttribute_tokenString.removeAllKeepingCapacity () ;
+  token.mLexicalAttribute_uint_33__32_value = 0 ;
+  mTokenStartLocation = mCurrentLocation ;
+  try{
+    if (testForInputUTF32CharRange (utf32 ('a'), utf32 ('z')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('Z'))) {
+      do {
+        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+        if (testForInputUTF32CharRange (utf32 ('a'), utf32 ('z')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('Z')) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
+        }else{
+          loop = false ;
+        }
+      }while (loop) ;
+      loop = true ;
+      if (token.mTokenCode == -1) {
+        token.mTokenCode = search_into_keyWordList (token.mLexicalAttribute_tokenString) ;
+      }
+      if (token.mTokenCode == -1) {
+        token.mTokenCode = kToken_identifier ;
+      }
+      enterToken (token) ;
+    }else if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
+      ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+      do {
+        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
+          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+        }else if (testForInputUTF32Char (utf32 ('_'))) {
+        }else{
+          loop = false ;
+        }
+      }while (loop) ;
+      loop = true ;
+      ::scanner_routine_convertDecimalStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_kerbdd_5F_lexique_decimalNumberTooLarge, gLexicalMessage_kerbdd_5F_lexique_internalError) ;
+      token.mTokenCode = kToken_integer ;
+      enterToken (token) ;
+    }else if (testForInputUTF32Char (utf32 ('\"'))) {
+      do {
+        if (testForInputUTF32Char (utf32 (' ')) || testForInputUTF32Char (utf32 ('!')) || testForInputUTF32CharRange (utf32 ('#'), utf32 (65533))) {
+          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+        }else{
+          loop = false ;
+        }
+      }while (loop) ;
+      loop = true ;
+      if (testForInputUTF32Char (utf32 ('\"'))) {
+        token.mTokenCode = kToken_literal_5F_string ;
+        enterToken (token) ;
+      }else{
+        lexicalError (gLexicalMessage_kerbdd_5F_lexique_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
+      }
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3E__3D_, true)) {
+      token.mTokenCode = kToken__3E__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3C__3D_, true)) {
+      token.mTokenCode = kToken__3C__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3A__3D_, true)) {
+      token.mTokenCode = kToken__3A__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2E__2E_, true)) {
+      token.mTokenCode = kToken__2E__2E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2D__3E_, true)) {
+      token.mTokenCode = kToken__2D__3E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2D__3D_, true)) {
+      token.mTokenCode = kToken__2D__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2B__3D_, true)) {
+      token.mTokenCode = kToken__2B__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__21__3D_, true)) {
+      token.mTokenCode = kToken__21__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7E_, true)) {
+      token.mTokenCode = kToken__7E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7D_, true)) {
+      token.mTokenCode = kToken__7D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7C_, true)) {
+      token.mTokenCode = kToken__7C_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7B_, true)) {
+      token.mTokenCode = kToken__7B_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5E_, true)) {
+      token.mTokenCode = kToken__5E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5D_, true)) {
+      token.mTokenCode = kToken__5D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5B_, true)) {
+      token.mTokenCode = kToken__5B_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3F_, true)) {
+      token.mTokenCode = kToken__3F_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3E_, true)) {
+      token.mTokenCode = kToken__3E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3D_, true)) {
+      token.mTokenCode = kToken__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3C_, true)) {
+      token.mTokenCode = kToken__3C_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3B_, true)) {
+      token.mTokenCode = kToken__3B_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3A_, true)) {
+      token.mTokenCode = kToken__3A_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2E_, true)) {
+      token.mTokenCode = kToken__2E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2C_, true)) {
+      token.mTokenCode = kToken__2C_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__29_, true)) {
+      token.mTokenCode = kToken__29_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__28_, true)) {
+      token.mTokenCode = kToken__28_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__26_, true)) {
+      token.mTokenCode = kToken__26_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__21_, true)) {
+      token.mTokenCode = kToken__21_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32Char (utf32 ('#'))) {
+      do {
+        if (testForInputUTF32CharRange (utf32 (1), utf32 ('\t')) || testForInputUTF32Char (utf32 ('\v')) || testForInputUTF32Char (utf32 ('\f')) || testForInputUTF32CharRange (utf32 (14), utf32 (65533))) {
+        }else{
+          loop = false ;
+        }
+      }while (loop) ;
+      loop = true ;
+      enterDroppedTerminal (kToken_comment) ;
+    }else if (testForInputUTF32CharRange (utf32 (1), utf32 (' '))) {
+    }else if (testForInputUTF32Char (utf32 ('\0'))) { // End of source text ? 
+      token.mTokenCode = kToken_ ; // Empty string code
+    }else{ // Unknown input character
+      unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
+      token.mTokenCode = -1 ; // No token
+      advance () ; // ... go throught unknown character
+    }
+  }catch (const C_lexicalErrorException &) {
+    token.mTokenCode = -1 ; // No token
+    advance () ; // ... go throught unknown character
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//               P A R S E    L E X I C A L    T O K E N                                         
+//--------------------------------------------------------------------------------------------------
+
+bool Lexique_kerbdd_5F_lexique::parseLexicalToken (void) {
+  cTokenFor_kerbdd_5F_lexique token ;
+  token.mTokenCode = -1 ;
+  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
+    internalParseLexicalToken (token) ;
+  }
+  if (mCurrentChar.u32 () == '\0') {
+    token.mTokenCode = 0 ;
+    enterToken (token) ;
+  }
+  return token.mTokenCode > 0 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                         E N T E R    T O K E N                                                
+//--------------------------------------------------------------------------------------------------
+
+void Lexique_kerbdd_5F_lexique::enterToken (cTokenFor_kerbdd_5F_lexique & ioToken) {
+  cTokenFor_kerbdd_5F_lexique * ptr = nullptr ;
+  macroMyNew (ptr, cTokenFor_kerbdd_5F_lexique ()) ;
+  ptr->mTokenCode = ioToken.mTokenCode ;
+  ptr->mStartLocation = mTokenStartLocation ;
+  ptr->mEndLocation = mTokenEndLocation ;
+  ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;
+  ioToken.mTemplateStringBeforeToken = "" ;
+  ptr->mLexicalAttribute_tokenString = ioToken.mLexicalAttribute_tokenString ;
+  ptr->mLexicalAttribute_uint_33__32_value = ioToken.mLexicalAttribute_uint_33__32_value ;
+  enterTokenFromPointer (ptr) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//               A T T R I B U T E   A C C E S S                                                 
+//--------------------------------------------------------------------------------------------------
+
+String Lexique_kerbdd_5F_lexique::attributeValue_tokenString (void) const {
+  cTokenFor_kerbdd_5F_lexique * ptr = (cTokenFor_kerbdd_5F_lexique *) currentTokenPtr (HERE) ;
+  return ptr->mLexicalAttribute_tokenString ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+uint32_t Lexique_kerbdd_5F_lexique::attributeValue_uint_33__32_value (void) const {
+  cTokenFor_kerbdd_5F_lexique * ptr = (cTokenFor_kerbdd_5F_lexique *) currentTokenPtr (HERE) ;
+  return ptr->mLexicalAttribute_uint_33__32_value ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//         A S S I G N    F R O M    A T T R I B U T E                                           
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring Lexique_kerbdd_5F_lexique::synthetizedAttribute_tokenString (void) const {
+  cTokenFor_kerbdd_5F_lexique * ptr = (cTokenFor_kerbdd_5F_lexique *) currentTokenPtr (HERE) ;
+  macroValidSharedObject (ptr, cTokenFor_kerbdd_5F_lexique) ;
+  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
+  GGS_string value (ptr->mLexicalAttribute_tokenString) ;
+  GGS_lstring result (value, currentLocation) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luint Lexique_kerbdd_5F_lexique::synthetizedAttribute_uint_33__32_value (void) const {
+  cTokenFor_kerbdd_5F_lexique * ptr = (cTokenFor_kerbdd_5F_lexique *) currentTokenPtr (HERE) ;
+  macroValidSharedObject (ptr, cTokenFor_kerbdd_5F_lexique) ;
+  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
+  GGS_uint value (ptr->mLexicalAttribute_uint_33__32_value) ;
+  GGS_luint result (value, currentLocation) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                         I N T R O S P E C T I O N                                             
+//--------------------------------------------------------------------------------------------------
+
+ GGS_stringlist Lexique_kerbdd_5F_lexique::symbols (LOCATION_ARGS) {
+  GGS_stringlist result = GGS_stringlist::init (nullptr COMMA_THERE) ;
+  result.addAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("integer") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("literal_string") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("comment") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("nodeHashMapSize") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("andCacheMapSize") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("domain") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("bool") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("true") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("false") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("display") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("include") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("graphviz") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("dump") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("(") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (")") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("[") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("]") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("{") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("}") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (":=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (":") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (".") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("..") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("+=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("-=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("->") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("|") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("^") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("~") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (",") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("\?") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (";") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("<") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("<=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (">") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (">=") COMMA_HERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void getKeywordLists_kerbdd_5F_lexique (GenericUniqueArray <String> & ioList) {
+  ioList.appendObject ("kerbdd_lexique:delimitorsList") ;
+  ioList.appendObject ("kerbdd_lexique:keyWordList") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void getKeywordsForIdentifier_kerbdd_5F_lexique (const String & inIdentifier,
+                                                        bool & ioFound,
+                                                        GenericUniqueArray <String> & ioList) {
+  if (inIdentifier == "kerbdd_lexique:delimitorsList") {
+    ioFound = true ;
+    ioList.appendObject ("!") ;
+    ioList.appendObject ("&") ;
+    ioList.appendObject ("(") ;
+    ioList.appendObject (")") ;
+    ioList.appendObject (",") ;
+    ioList.appendObject (".") ;
+    ioList.appendObject (":") ;
+    ioList.appendObject (";") ;
+    ioList.appendObject ("<") ;
+    ioList.appendObject ("=") ;
+    ioList.appendObject (">") ;
+    ioList.appendObject ("\?") ;
+    ioList.appendObject ("[") ;
+    ioList.appendObject ("]") ;
+    ioList.appendObject ("^") ;
+    ioList.appendObject ("{") ;
+    ioList.appendObject ("|") ;
+    ioList.appendObject ("}") ;
+    ioList.appendObject ("~") ;
+    ioList.appendObject ("!=") ;
+    ioList.appendObject ("+=") ;
+    ioList.appendObject ("-=") ;
+    ioList.appendObject ("->") ;
+    ioList.appendObject ("..") ;
+    ioList.appendObject (":=") ;
+    ioList.appendObject ("<=") ;
+    ioList.appendObject (">=") ;
+    ioList.sortArrayUsingCompareMethod() ;
+  }
+  if (inIdentifier == "kerbdd_lexique:keyWordList") {
+    ioFound = true ;
+    ioList.appendObject ("bool") ;
+    ioList.appendObject ("dump") ;
+    ioList.appendObject ("true") ;
+    ioList.appendObject ("false") ;
+    ioList.appendObject ("domain") ;
+    ioList.appendObject ("display") ;
+    ioList.appendObject ("include") ;
+    ioList.appendObject ("graphviz") ;
+    ioList.appendObject ("andCacheMapSize") ;
+    ioList.appendObject ("nodeHashMapSize") ;
+    ioList.sortArrayUsingCompareMethod() ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static LexiqueIntrospection lexiqueIntrospection_kerbdd_5F_lexique
+__attribute__ ((used))
+__attribute__ ((unused)) (getKeywordLists_kerbdd_5F_lexique, getKeywordsForIdentifier_kerbdd_5F_lexique) ;
+
+//--------------------------------------------------------------------------------------------------
+//   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
+//--------------------------------------------------------------------------------------------------
+
+uint32_t Lexique_kerbdd_5F_lexique::styleIndexForTerminal (const int32_t inTerminalIndex) const {
+  static const uint32_t kTerminalSymbolStyles [42] = {0,
+    0 /* kerbdd_lexique_1_identifier */,
+    2 /* kerbdd_lexique_1_integer */,
+    3 /* kerbdd_lexique_1_literal_5F_string */,
+    5 /* kerbdd_lexique_1_comment */,
+    1 /* kerbdd_lexique_1_nodeHashMapSize */,
+    1 /* kerbdd_lexique_1_andCacheMapSize */,
+    1 /* kerbdd_lexique_1_domain */,
+    1 /* kerbdd_lexique_1_bool */,
+    1 /* kerbdd_lexique_1_true */,
+    1 /* kerbdd_lexique_1_false */,
+    1 /* kerbdd_lexique_1_display */,
+    1 /* kerbdd_lexique_1_include */,
+    1 /* kerbdd_lexique_1_graphviz */,
+    1 /* kerbdd_lexique_1_dump */,
+    4 /* kerbdd_lexique_1__28_ */,
+    4 /* kerbdd_lexique_1__29_ */,
+    4 /* kerbdd_lexique_1__5B_ */,
+    4 /* kerbdd_lexique_1__5D_ */,
+    4 /* kerbdd_lexique_1__7B_ */,
+    4 /* kerbdd_lexique_1__7D_ */,
+    4 /* kerbdd_lexique_1__3A__3D_ */,
+    4 /* kerbdd_lexique_1__3A_ */,
+    4 /* kerbdd_lexique_1__2E_ */,
+    4 /* kerbdd_lexique_1__2E__2E_ */,
+    4 /* kerbdd_lexique_1__2B__3D_ */,
+    4 /* kerbdd_lexique_1__2D__3D_ */,
+    4 /* kerbdd_lexique_1__2D__3E_ */,
+    4 /* kerbdd_lexique_1__26_ */,
+    4 /* kerbdd_lexique_1__7C_ */,
+    4 /* kerbdd_lexique_1__5E_ */,
+    4 /* kerbdd_lexique_1__7E_ */,
+    4 /* kerbdd_lexique_1__2C_ */,
+    4 /* kerbdd_lexique_1__3F_ */,
+    4 /* kerbdd_lexique_1__21_ */,
+    4 /* kerbdd_lexique_1__3B_ */,
+    4 /* kerbdd_lexique_1__3D_ */,
+    4 /* kerbdd_lexique_1__21__3D_ */,
+    4 /* kerbdd_lexique_1__3C_ */,
+    4 /* kerbdd_lexique_1__3C__3D_ */,
+    4 /* kerbdd_lexique_1__3E_ */,
+    4 /* kerbdd_lexique_1__3E__3D_ */
+  } ;
+  return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                      
+//--------------------------------------------------------------------------------------------------
+
+String Lexique_kerbdd_5F_lexique::styleNameForIndex (const uint32_t inStyleIndex) const {
+  String result ;
+  if (inStyleIndex < 6) {
+    static const char * kStyleArray [6] = {
+      "",
+      "keywordsStyle",
+      "integerStyle",
+      "stringStyle",
+      "delimitersStyle",
+      "commentStyle"
+    } ;
+    result = kStyleArray [inStyleIndex] ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Enum formulaKind
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind::GGS_formulaKind (void) :
+mAssociatedValues (),
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind GGS_formulaKind::class_func_assignment (UNUSED_LOCATION_ARGS) {
+  GGS_formulaKind result ;
+  result.mEnum = Enumeration::enum_assignment ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind GGS_formulaKind::class_func_fixedPoint (const GGS_binaryset & inAssociatedValue0
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formulaKind result ;
+  result.mEnum = Enumeration::enum_fixedPoint ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_formulaKind_2E_fixedPoint (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaKind::method_extractFixedPoint (GGS_binaryset & outAssociatedValue_startValue,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_fixedPoint) {
+    outAssociatedValue_startValue.drop () ;
+    String s ;
+    s.appendCString ("method @formulaKind.fixedPoint invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_formulaKind_2E_fixedPoint *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_startValue = ptr->mProperty_startValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind_2E_fixedPoint_3F_ GGS_formulaKind::getter_getFixedPoint (UNUSED_LOCATION_ARGS) const {
+  GGS_formulaKind_2E_fixedPoint_3F_ result ;
+  if (mEnum == Enumeration::enum_fixedPoint) {
+    const auto ptr = (const GGS_formulaKind_2E_fixedPoint *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_formulaKind_2E_fixedPoint (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaKind::getAssociatedValuesFor_fixedPoint (GGS_binaryset & out_startValue) const {
+  const auto ptr = (const GGS_formulaKind_2E_fixedPoint *) mAssociatedValues.associatedValuesPointer () ;
+  out_startValue = ptr->mProperty_startValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_formulaKind [3] = {
+  "(not built)",
+  "assignment",
+  "fixedPoint"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_formulaKind::getter_isAssignment (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_assignment == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_formulaKind::getter_isFixedPoint (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixedPoint == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaKind::description (String & ioString,
+                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<enum @formulaKind: ") ;
+  ioString.appendCString (gEnumNameArrayFor_formulaKind [size_t (mEnum)]) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
+  ioString.appendCString (">") ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @formulaKind generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaKind ("formulaKind",
+                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_formulaKind::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formulaKind ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_formulaKind::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_formulaKind (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind GGS_formulaKind::extractObject (const GGS_object & inObject,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  GGS_formulaKind result ;
+  const GGS_formulaKind * p = (const GGS_formulaKind *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_formulaKind *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("formulaKind", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @expression reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_expression::objectCompare (const GGS_expression & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_expression::GGS_expression (void) :
+AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_expression::
+expression_init (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_expression::GGS_expression (const cPtr_expression * inSourcePtr) :
+AC_GALGAS_reference_class (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_expression) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @expression class
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_expression::cPtr_expression (Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) :
+AbstractStrongPtrClass (inCompiler COMMA_THERE) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_expression::printNonNullClassInstanceProperties (void) const {
+    AbstractStrongPtrClass::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @expression generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_expression ("expression",
+                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_expression::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_expression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_expression::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_expression (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_expression GGS_expression::extractObject (const GGS_object & inObject,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  GGS_expression result ;
+  const GGS_expression * p = (const GGS_expression *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_expression *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("expression", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_assignmentFormula_2E_weak::objectCompare (const GGS_assignmentFormula_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     PtrWeakReferenceProxy * myPtr = mProxyPtr ;
@@ -4253,13 +6943,13 @@ ComparisonResult GGS_setting_5F_nodeHashMapSize_2E_weak::objectCompare (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_nodeHashMapSize_2E_weak::GGS_setting_5F_nodeHashMapSize_2E_weak (void) :
+GGS_assignmentFormula_2E_weak::GGS_assignmentFormula_2E_weak (void) :
 GGS_abstractFormula_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_nodeHashMapSize_2E_weak & GGS_setting_5F_nodeHashMapSize_2E_weak::operator = (const GGS_setting_5F_nodeHashMapSize & inSource) {
+GGS_assignmentFormula_2E_weak & GGS_assignmentFormula_2E_weak::operator = (const GGS_assignmentFormula & inSource) {
   PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
@@ -4271,27 +6961,27 @@ GGS_setting_5F_nodeHashMapSize_2E_weak & GGS_setting_5F_nodeHashMapSize_2E_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_nodeHashMapSize_2E_weak::GGS_setting_5F_nodeHashMapSize_2E_weak (const GGS_setting_5F_nodeHashMapSize & inSource) :
+GGS_assignmentFormula_2E_weak::GGS_assignmentFormula_2E_weak (const GGS_assignmentFormula & inSource) :
 GGS_abstractFormula_2E_weak (inSource) {
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_nodeHashMapSize_2E_weak GGS_setting_5F_nodeHashMapSize_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_setting_5F_nodeHashMapSize_2E_weak result ;
+GGS_assignmentFormula_2E_weak GGS_assignmentFormula_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_assignmentFormula_2E_weak result ;
   macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_nodeHashMapSize GGS_setting_5F_nodeHashMapSize_2E_weak::unwrappedValue (void) const {
-  GGS_setting_5F_nodeHashMapSize result ;
+GGS_assignmentFormula GGS_assignmentFormula_2E_weak::unwrappedValue (void) const {
+  GGS_assignmentFormula result ;
   if (isValid ()) {
-    const cPtr_setting_5F_nodeHashMapSize * p = (cPtr_setting_5F_nodeHashMapSize *) ptr () ;
+    const cPtr_assignmentFormula * p = (cPtr_assignmentFormula *) ptr () ;
     if (nullptr != p) {
-      result = GGS_setting_5F_nodeHashMapSize (p) ;
+      result = GGS_assignmentFormula (p) ;
     }
   }
   return result ;
@@ -4299,55 +6989,664 @@ GGS_setting_5F_nodeHashMapSize GGS_setting_5F_nodeHashMapSize_2E_weak::unwrapped
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_nodeHashMapSize GGS_setting_5F_nodeHashMapSize_2E_weak::bang_setting_5F_nodeHashMapSize_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_setting_5F_nodeHashMapSize result ;
+GGS_assignmentFormula GGS_assignmentFormula_2E_weak::bang_assignmentFormula_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_assignmentFormula result ;
   if (mProxyPtr != nullptr) {
     AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_setting_5F_nodeHashMapSize) ;
-      result = GGS_setting_5F_nodeHashMapSize ((cPtr_setting_5F_nodeHashMapSize *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_assignmentFormula) ;
+      result = GGS_assignmentFormula ((cPtr_assignmentFormula *) strongPtr) ;
     }
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @setting_nodeHashMapSize.weak generic code implementation
+//     @assignmentFormula.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize_2E_weak ("setting_nodeHashMapSize.weak",
-                                                                                       & kTypeDescriptor_GALGAS_abstractFormula_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentFormula_2E_weak ("assignmentFormula.weak",
+                                                                              & kTypeDescriptor_GALGAS_abstractFormula_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_setting_5F_nodeHashMapSize_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize_2E_weak ;
+const GALGAS_TypeDescriptor * GGS_assignmentFormula_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_assignmentFormula_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_setting_5F_nodeHashMapSize_2E_weak::clonedObject (void) const {
+AC_GALGAS_root * GGS_assignmentFormula_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_setting_5F_nodeHashMapSize_2E_weak (*this)) ;
+    macroMyNew (result, GGS_assignmentFormula_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_nodeHashMapSize_2E_weak GGS_setting_5F_nodeHashMapSize_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_setting_5F_nodeHashMapSize_2E_weak result ;
-  const GGS_setting_5F_nodeHashMapSize_2E_weak * p = (const GGS_setting_5F_nodeHashMapSize_2E_weak *) inObject.embeddedObject () ;
+GGS_assignmentFormula_2E_weak GGS_assignmentFormula_2E_weak::extractObject (const GGS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GGS_assignmentFormula_2E_weak result ;
+  const GGS_assignmentFormula_2E_weak * p = (const GGS_assignmentFormula_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_setting_5F_nodeHashMapSize_2E_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_assignmentFormula_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("setting_nodeHashMapSize.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("assignmentFormula.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Map type @computedFormulaMap
+//--------------------------------------------------------------------------------------------------
+
+#include "GALGAS_GenericMapRoot.h"
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap::GGS_computedFormulaMap (void) :
+mSharedRoot () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap::~ GGS_computedFormulaMap (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap::GGS_computedFormulaMap (const GGS_computedFormulaMap & inSource) :
+mSharedRoot (inSource.mSharedRoot) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap & GGS_computedFormulaMap::operator = (const GGS_computedFormulaMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap GGS_computedFormulaMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_computedFormulaMap result ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_computedFormulaMap::getter_hasKey (const GGS_string & inKey
+                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_computedFormulaMap::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                                       const GGS_uint & inLevel
+                                                       COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_computedFormulaMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_computedFormulaMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (mSharedRoot->levels ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_computedFormulaMap::getter_locationForKey (const GGS_string & inKey,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_computedFormulaMap::getter_keyList (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeyList (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_computedFormulaMap::isValid (void) const {
+  return mSharedRoot.isNotNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_computedFormulaMap::drop (void)  {
+  mSharedRoot.setToNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_computedFormulaMap::build (LOCATION_ARGS) {
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_computedFormulaMap_2E_element>>::make (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_computedFormulaMap::performInsert (const GGS_computedFormulaMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.mProperty_lkey.isValid ()) {
+    OptionalSharedRef <GenericMapNode <GGS_computedFormulaMap_2E_element>> existingNode ;
+    const bool allowReplacing = false ;
+    mSharedRoot.insulate (THERE) ;
+    mSharedRoot->insertOrReplaceInfo (
+      inElement,
+      allowReplacing,
+      existingNode
+      COMMA_THERE
+    ) ;
+    const GGS_lstring lkey = inElement.mProperty_lkey ;
+    if (existingNode.isNotNil ()) {
+      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
+      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
+      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
+      if (existingInfo.isNotNil ()) {
+        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
+        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element>
+GGS_computedFormulaMap::infoForKey (const String & inKey) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->infoForKey (inKey) ;
+  }else{
+    return SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t GGS_computedFormulaMap::count (void) const  {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->count () ;
+  }else{
+    return 0 ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element>>
+GGS_computedFormulaMap::sortedInfoArray (void) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->sortedInfoArray () ;
+  }else{
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element>> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_computedFormulaMap::getter_keySet (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_stringset result ;
+  if (isValid ()) {
+    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeySet (result, inCompiler) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_computedFormulaMap::findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
+  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap_2E_element_3F_ GGS_computedFormulaMap
+::readSubscript__3F_ (const class GGS_string & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_computedFormulaMap_2E_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      result = GGS_computedFormulaMap_2E_element_3F_::init_nil () ;
+    }else{
+      GGS_computedFormulaMap_2E_element element ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mVarList = info->mProperty_mVarList ;
+      element.mProperty_mBitCount = info->mProperty_mBitCount ;
+      element.mProperty_mValue = info->mProperty_mValue ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap GGS_computedFormulaMap::class_func_mapWithMapToOverride (const GGS_computedFormulaMap & inMapToOverride
+                                                                                COMMA_LOCATION_ARGS) {
+  GGS_computedFormulaMap result ;
+  if (inMapToOverride.isValid ()) {
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_computedFormulaMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap GGS_computedFormulaMap::getter_overriddenMap (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
+  GGS_computedFormulaMap result ;
+  if (isValid ()) {
+    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
+    if (result.mSharedRoot.isNil ()) {
+      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_computedFormulaMap::setter_insertKey (GGS_lstring inLKey,
+                                               GGS_varList inArgument0,
+                                               GGS_uint inArgument1,
+                                               GGS_binaryset inArgument2,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  const GGS_computedFormulaMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
+  const char * kInsertErrorMessage = "the '%K' formula is already declared in %L" ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_computedFormulaMap::method_searchKey (GGS_lstring inLKey,
+                                               GGS_varList & outArgument0,
+                                               GGS_uint & outArgument1,
+                                               GGS_binaryset & outArgument2,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      GenericUniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "there is no '%K' formula" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+    outArgument2.drop () ;
+  }else{
+    outArgument0 = info->mProperty_mVarList ;
+    outArgument1 = info->mProperty_mBitCount ;
+    outArgument2 = info->mProperty_mValue ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList GGS_computedFormulaMap::getter_mVarListForKey (const GGS_string & inKey,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  GGS_varList result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mVarList ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_computedFormulaMap::getter_mBitCountForKey (const GGS_string & inKey,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mBitCount ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_binaryset GGS_computedFormulaMap::getter_mValueForKey (const GGS_string & inKey,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  GGS_binaryset result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mValue ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_computedFormulaMap::setter_setMVarListForKey (GGS_varList inValue,
+                                                       GGS_string inKey,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_computedFormulaMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mVarList = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_computedFormulaMap::setter_setMBitCountForKey (GGS_uint inValue,
+                                                        GGS_string inKey,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_computedFormulaMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mBitCount = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_computedFormulaMap::setter_setMValueForKey (GGS_binaryset inValue,
+                                                     GGS_string inKey,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_computedFormulaMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mValue = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+static void GGS_computedFormulaMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element>> & inArray,
+                                                        String & ioString,
+                                                        const int32_t inIndentation) {
+  const int32_t n = inArray.count () ;
+  ioString.appendString (" (") ;
+  ioString.appendSigned (n) ;
+  ioString.appendString (" object") ;
+  if (n > 1) {
+    ioString.appendString ("s") ;
+  }
+  ioString.appendString ("):") ;
+  for (int32_t i = 0 ; i < n ; i++) {
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendString ("|-at ") ;
+    ioString.appendSigned (i) ;
+    ioString.appendString (": key '") ;
+    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
+    ioString.appendString ("'") ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mVarList:") ;
+    inArray (i COMMA_HERE)->mProperty_mVarList.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mBitCount:") ;
+    inArray (i COMMA_HERE)->mProperty_mBitCount.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mValue:") ;
+    inArray (i COMMA_HERE)->mProperty_mValue.description (ioString, inIndentation + 1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_computedFormulaMap::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_computedFormulaMap_2E_element>> array = sortedInfoArray () ;
+    GGS_computedFormulaMap_internalDescription (array, ioString, inIndentation) ;
+    OptionalSharedRef <GenericMapRoot <GGS_computedFormulaMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    uint32_t idx = 0 ;
+    while (subRoot.isNotNil ()) {
+     idx += 1 ;
+     ioString.appendNewLine () ;
+     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+     ioString.appendString (" override #") ;
+     ioString.appendUnsigned (idx) ;
+     const auto subRootArray = subRoot->sortedInfoArray () ;
+     GGS_computedFormulaMap_internalDescription (subRootArray, ioString, inIndentation) ;
+     subRoot = subRoot->overriddenRoot () ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @computedFormulaMap
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_computedFormulaMap::DownEnumerator_computedFormulaMap (const GGS_computedFormulaMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap_2E_element DownEnumerator_computedFormulaMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_computedFormulaMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList DownEnumerator_computedFormulaMap::current_mVarList (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mVarList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_computedFormulaMap::current_mBitCount (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_binaryset DownEnumerator_computedFormulaMap::current_mValue (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Up Enumerator for @computedFormulaMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_computedFormulaMap::UpEnumerator_computedFormulaMap (const GGS_computedFormulaMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap_2E_element UpEnumerator_computedFormulaMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_computedFormulaMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varList UpEnumerator_computedFormulaMap::current_mVarList (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mVarList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_computedFormulaMap::current_mBitCount (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_binaryset UpEnumerator_computedFormulaMap::current_mValue (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mValue ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @computedFormulaMap generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_computedFormulaMap ("computedFormulaMap",
+                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_computedFormulaMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_computedFormulaMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_computedFormulaMap::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_computedFormulaMap (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_computedFormulaMap GGS_computedFormulaMap::extractObject (const GGS_object & inObject,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  GGS_computedFormulaMap result ;
+  const GGS_computedFormulaMap * p = (const GGS_computedFormulaMap *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_computedFormulaMap *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("computedFormulaMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -4355,7 +7654,7 @@ GGS_setting_5F_nodeHashMapSize_2E_weak GGS_setting_5F_nodeHashMapSize_2E_weak::e
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_setting_5F_andCacheMapSize_2E_weak::objectCompare (const GGS_setting_5F_andCacheMapSize_2E_weak & inOperand) const {
+ComparisonResult GGS_dumpFormula_2E_weak::objectCompare (const GGS_dumpFormula_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     PtrWeakReferenceProxy * myPtr = mProxyPtr ;
@@ -4375,13 +7674,13 @@ ComparisonResult GGS_setting_5F_andCacheMapSize_2E_weak::objectCompare (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_andCacheMapSize_2E_weak::GGS_setting_5F_andCacheMapSize_2E_weak (void) :
+GGS_dumpFormula_2E_weak::GGS_dumpFormula_2E_weak (void) :
 GGS_abstractFormula_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_andCacheMapSize_2E_weak & GGS_setting_5F_andCacheMapSize_2E_weak::operator = (const GGS_setting_5F_andCacheMapSize & inSource) {
+GGS_dumpFormula_2E_weak & GGS_dumpFormula_2E_weak::operator = (const GGS_dumpFormula & inSource) {
   PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
@@ -4393,27 +7692,27 @@ GGS_setting_5F_andCacheMapSize_2E_weak & GGS_setting_5F_andCacheMapSize_2E_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_andCacheMapSize_2E_weak::GGS_setting_5F_andCacheMapSize_2E_weak (const GGS_setting_5F_andCacheMapSize & inSource) :
+GGS_dumpFormula_2E_weak::GGS_dumpFormula_2E_weak (const GGS_dumpFormula & inSource) :
 GGS_abstractFormula_2E_weak (inSource) {
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_andCacheMapSize_2E_weak GGS_setting_5F_andCacheMapSize_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_setting_5F_andCacheMapSize_2E_weak result ;
+GGS_dumpFormula_2E_weak GGS_dumpFormula_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_dumpFormula_2E_weak result ;
   macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_andCacheMapSize GGS_setting_5F_andCacheMapSize_2E_weak::unwrappedValue (void) const {
-  GGS_setting_5F_andCacheMapSize result ;
+GGS_dumpFormula GGS_dumpFormula_2E_weak::unwrappedValue (void) const {
+  GGS_dumpFormula result ;
   if (isValid ()) {
-    const cPtr_setting_5F_andCacheMapSize * p = (cPtr_setting_5F_andCacheMapSize *) ptr () ;
+    const cPtr_dumpFormula * p = (cPtr_dumpFormula *) ptr () ;
     if (nullptr != p) {
-      result = GGS_setting_5F_andCacheMapSize (p) ;
+      result = GGS_dumpFormula (p) ;
     }
   }
   return result ;
@@ -4421,60 +7720,79 @@ GGS_setting_5F_andCacheMapSize GGS_setting_5F_andCacheMapSize_2E_weak::unwrapped
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_andCacheMapSize GGS_setting_5F_andCacheMapSize_2E_weak::bang_setting_5F_andCacheMapSize_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_setting_5F_andCacheMapSize result ;
+GGS_dumpFormula GGS_dumpFormula_2E_weak::bang_dumpFormula_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_dumpFormula result ;
   if (mProxyPtr != nullptr) {
     AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_setting_5F_andCacheMapSize) ;
-      result = GGS_setting_5F_andCacheMapSize ((cPtr_setting_5F_andCacheMapSize *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_dumpFormula) ;
+      result = GGS_dumpFormula ((cPtr_dumpFormula *) strongPtr) ;
     }
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @setting_andCacheMapSize.weak generic code implementation
+//     @dumpFormula.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize_2E_weak ("setting_andCacheMapSize.weak",
-                                                                                       & kTypeDescriptor_GALGAS_abstractFormula_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dumpFormula_2E_weak ("dumpFormula.weak",
+                                                                        & kTypeDescriptor_GALGAS_abstractFormula_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_setting_5F_andCacheMapSize_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize_2E_weak ;
+const GALGAS_TypeDescriptor * GGS_dumpFormula_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_dumpFormula_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_setting_5F_andCacheMapSize_2E_weak::clonedObject (void) const {
+AC_GALGAS_root * GGS_dumpFormula_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_setting_5F_andCacheMapSize_2E_weak (*this)) ;
+    macroMyNew (result, GGS_dumpFormula_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_setting_5F_andCacheMapSize_2E_weak GGS_setting_5F_andCacheMapSize_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_setting_5F_andCacheMapSize_2E_weak result ;
-  const GGS_setting_5F_andCacheMapSize_2E_weak * p = (const GGS_setting_5F_andCacheMapSize_2E_weak *) inObject.embeddedObject () ;
+GGS_dumpFormula_2E_weak GGS_dumpFormula_2E_weak::extractObject (const GGS_object & inObject,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  GGS_dumpFormula_2E_weak result ;
+  const GGS_dumpFormula_2E_weak * p = (const GGS_dumpFormula_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_setting_5F_andCacheMapSize_2E_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_dumpFormula_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("setting_andCacheMapSize.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("dumpFormula.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractFormula analyzeFormula'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeFormula (cPtr_abstractFormula * inObject,
+                                         const GGS_string constin_inSourceFilePath,
+                                         const GGS_domainMap constin_inDomainMap,
+                                         GGS_computedFormulaMap & io_ioComputedFormulaMap,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+//--- Find method
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_abstractFormula) ;
+    inObject->method_analyzeFormula (constin_inSourceFilePath, constin_inDomainMap, io_ioComputedFormulaMap, inCompiler COMMA_THERE) ;
+  }
+}
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_expression_2E_weak::objectCompare (const GGS_expression_2E_weak & inOperand) const {
@@ -9357,7 +12675,7 @@ GGS_binaryset callExtensionGetter_computeExpression (const cPtr_expression * inO
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_dumpFormula_2E_weak::objectCompare (const GGS_dumpFormula_2E_weak & inOperand) const {
+ComparisonResult GGS_graphvizFormula_2E_weak::objectCompare (const GGS_graphvizFormula_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     PtrWeakReferenceProxy * myPtr = mProxyPtr ;
@@ -9377,13 +12695,13 @@ ComparisonResult GGS_dumpFormula_2E_weak::objectCompare (const GGS_dumpFormula_2
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula_2E_weak::GGS_dumpFormula_2E_weak (void) :
+GGS_graphvizFormula_2E_weak::GGS_graphvizFormula_2E_weak (void) :
 GGS_abstractFormula_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula_2E_weak & GGS_dumpFormula_2E_weak::operator = (const GGS_dumpFormula & inSource) {
+GGS_graphvizFormula_2E_weak & GGS_graphvizFormula_2E_weak::operator = (const GGS_graphvizFormula & inSource) {
   PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
@@ -9395,27 +12713,27 @@ GGS_dumpFormula_2E_weak & GGS_dumpFormula_2E_weak::operator = (const GGS_dumpFor
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula_2E_weak::GGS_dumpFormula_2E_weak (const GGS_dumpFormula & inSource) :
+GGS_graphvizFormula_2E_weak::GGS_graphvizFormula_2E_weak (const GGS_graphvizFormula & inSource) :
 GGS_abstractFormula_2E_weak (inSource) {
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula_2E_weak GGS_dumpFormula_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_dumpFormula_2E_weak result ;
+GGS_graphvizFormula_2E_weak GGS_graphvizFormula_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_graphvizFormula_2E_weak result ;
   macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula GGS_dumpFormula_2E_weak::unwrappedValue (void) const {
-  GGS_dumpFormula result ;
+GGS_graphvizFormula GGS_graphvizFormula_2E_weak::unwrappedValue (void) const {
+  GGS_graphvizFormula result ;
   if (isValid ()) {
-    const cPtr_dumpFormula * p = (cPtr_dumpFormula *) ptr () ;
+    const cPtr_graphvizFormula * p = (cPtr_graphvizFormula *) ptr () ;
     if (nullptr != p) {
-      result = GGS_dumpFormula (p) ;
+      result = GGS_graphvizFormula (p) ;
     }
   }
   return result ;
@@ -9423,531 +12741,75 @@ GGS_dumpFormula GGS_dumpFormula_2E_weak::unwrappedValue (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula GGS_dumpFormula_2E_weak::bang_dumpFormula_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_dumpFormula result ;
+GGS_graphvizFormula GGS_graphvizFormula_2E_weak::bang_graphvizFormula_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_graphvizFormula result ;
   if (mProxyPtr != nullptr) {
     AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_dumpFormula) ;
-      result = GGS_dumpFormula ((cPtr_dumpFormula *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_graphvizFormula) ;
+      result = GGS_graphvizFormula ((cPtr_graphvizFormula *) strongPtr) ;
     }
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @dumpFormula.weak generic code implementation
+//     @graphvizFormula.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dumpFormula_2E_weak ("dumpFormula.weak",
-                                                                        & kTypeDescriptor_GALGAS_abstractFormula_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphvizFormula_2E_weak ("graphvizFormula.weak",
+                                                                            & kTypeDescriptor_GALGAS_abstractFormula_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_dumpFormula_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_dumpFormula_2E_weak ;
+const GALGAS_TypeDescriptor * GGS_graphvizFormula_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_graphvizFormula_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_dumpFormula_2E_weak::clonedObject (void) const {
+AC_GALGAS_root * GGS_graphvizFormula_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_dumpFormula_2E_weak (*this)) ;
+    macroMyNew (result, GGS_graphvizFormula_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula_2E_weak GGS_dumpFormula_2E_weak::extractObject (const GGS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GGS_dumpFormula_2E_weak result ;
-  const GGS_dumpFormula_2E_weak * p = (const GGS_dumpFormula_2E_weak *) inObject.embeddedObject () ;
+GGS_graphvizFormula_2E_weak GGS_graphvizFormula_2E_weak::extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GGS_graphvizFormula_2E_weak result ;
+  const GGS_graphvizFormula_2E_weak * p = (const GGS_graphvizFormula_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_dumpFormula_2E_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_graphvizFormula_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("dumpFormula.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("graphvizFormula.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//  Enum bddType
-//--------------------------------------------------------------------------------------------------
 
-GGS_bddType::GGS_bddType (void) :
-mAssociatedValues (),
-mEnum (Enumeration::invalid) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType GGS_bddType::class_func_bool (UNUSED_LOCATION_ARGS) {
-  GGS_bddType result ;
-  result.mEnum = Enumeration::enum_bool ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType GGS_bddType::class_func_boolArray (const GGS_uint & inAssociatedValue0
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_bddType result ;
-  result.mEnum = Enumeration::enum_boolArray ;
-  AC_GALGAS_root * p = nullptr ;
-  macroMyNew (p, GGS_bddType_2E_boolArray (inAssociatedValue0)) ;
-  EnumerationAssociatedValues * eav = nullptr ;
-  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
-  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
-  macroDetachSharedObject (eav) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType GGS_bddType::class_func_namedType (const GGS_lstring & inAssociatedValue0
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_bddType result ;
-  result.mEnum = Enumeration::enum_namedType ;
-  AC_GALGAS_root * p = nullptr ;
-  macroMyNew (p, GGS_bddType_2E_namedType (inAssociatedValue0)) ;
-  EnumerationAssociatedValues * eav = nullptr ;
-  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
-  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
-  macroDetachSharedObject (eav) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bddType::method_extractBoolArray (GGS_uint & outAssociatedValue_size,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
-  if (mEnum != Enumeration::enum_boolArray) {
-    outAssociatedValue_size.drop () ;
-    String s ;
-    s.appendCString ("method @bddType.boolArray invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const auto ptr = (GGS_bddType_2E_boolArray *) mAssociatedValues.associatedValuesPointer () ;
-    outAssociatedValue_size = ptr->mProperty_size ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bddType::method_extractNamedType (GGS_lstring & outAssociatedValue_typeName,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
-  if (mEnum != Enumeration::enum_namedType) {
-    outAssociatedValue_typeName.drop () ;
-    String s ;
-    s.appendCString ("method @bddType.namedType invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const auto ptr = (GGS_bddType_2E_namedType *) mAssociatedValues.associatedValuesPointer () ;
-    outAssociatedValue_typeName = ptr->mProperty_typeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_boolArray_3F_ GGS_bddType::getter_getBoolArray (UNUSED_LOCATION_ARGS) const {
-  GGS_bddType_2E_boolArray_3F_ result ;
-  if (mEnum == Enumeration::enum_boolArray) {
-    const auto ptr = (const GGS_bddType_2E_boolArray *) mAssociatedValues.associatedValuesPointer () ;
-    result = GGS_bddType_2E_boolArray (*ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bddType::getAssociatedValuesFor_boolArray (GGS_uint & out_size) const {
-  const auto ptr = (const GGS_bddType_2E_boolArray *) mAssociatedValues.associatedValuesPointer () ;
-  out_size = ptr->mProperty_size ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType_2E_namedType_3F_ GGS_bddType::getter_getNamedType (UNUSED_LOCATION_ARGS) const {
-  GGS_bddType_2E_namedType_3F_ result ;
-  if (mEnum == Enumeration::enum_namedType) {
-    const auto ptr = (const GGS_bddType_2E_namedType *) mAssociatedValues.associatedValuesPointer () ;
-    result = GGS_bddType_2E_namedType (*ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bddType::getAssociatedValuesFor_namedType (GGS_lstring & out_typeName) const {
-  const auto ptr = (const GGS_bddType_2E_namedType *) mAssociatedValues.associatedValuesPointer () ;
-  out_typeName = ptr->mProperty_typeName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_bddType [4] = {
-  "(not built)",
-  "bool",
-  "boolArray",
-  "namedType"
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_bddType::getter_isBool (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_bool == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_bddType::getter_isBoolArray (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_boolArray == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_bddType::getter_isNamedType (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_namedType == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bddType::description (String & ioString,
-                               const int32_t inIndentation) const {
-  ioString.appendCString ("<enum @bddType: ") ;
-  ioString.appendCString (gEnumNameArrayFor_bddType [size_t (mEnum)]) ;
-  mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendCString (">") ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @bddType generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bddType ("bddType",
-                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_bddType::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_bddType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_bddType::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_bddType (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bddType GGS_bddType::extractObject (const GGS_object & inObject,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  GGS_bddType result ;
-  const GGS_bddType * p = (const GGS_bddType *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_bddType *> (p)) {
-      result = *p ;
+ComparisonResult GGS_setting_5F_nodeHashMapSize_2E_weak::objectCompare (const GGS_setting_5F_nodeHashMapSize_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      inCompiler->castError ("bddType", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Enum domainDeclarationType
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationType::GGS_domainDeclarationType (void) :
-mAssociatedValues (),
-mEnum (Enumeration::invalid) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationType GGS_domainDeclarationType::class_func_type (const GGS_bddType & inAssociatedValue0
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_domainDeclarationType result ;
-  result.mEnum = Enumeration::enum_type ;
-  AC_GALGAS_root * p = nullptr ;
-  macroMyNew (p, GGS_domainDeclarationType_2E_type (inAssociatedValue0)) ;
-  EnumerationAssociatedValues * eav = nullptr ;
-  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
-  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
-  macroDetachSharedObject (eav) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationType GGS_domainDeclarationType::class_func_record (const GGS_domainFieldList & inAssociatedValue0
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_domainDeclarationType result ;
-  result.mEnum = Enumeration::enum_record ;
-  AC_GALGAS_root * p = nullptr ;
-  macroMyNew (p, GGS_domainDeclarationType_2E_record (inAssociatedValue0)) ;
-  EnumerationAssociatedValues * eav = nullptr ;
-  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
-  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
-  macroDetachSharedObject (eav) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainDeclarationType::method_extractType (GGS_bddType & outAssociatedValue_type,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  if (mEnum != Enumeration::enum_type) {
-    outAssociatedValue_type.drop () ;
-    String s ;
-    s.appendCString ("method @domainDeclarationType.type invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const auto ptr = (GGS_domainDeclarationType_2E_type *) mAssociatedValues.associatedValuesPointer () ;
-    outAssociatedValue_type = ptr->mProperty_type ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainDeclarationType::method_extractRecord (GGS_domainFieldList & outAssociatedValue_fieldList,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
-  if (mEnum != Enumeration::enum_record) {
-    outAssociatedValue_fieldList.drop () ;
-    String s ;
-    s.appendCString ("method @domainDeclarationType.record invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const auto ptr = (GGS_domainDeclarationType_2E_record *) mAssociatedValues.associatedValuesPointer () ;
-    outAssociatedValue_fieldList = ptr->mProperty_fieldList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationType_2E_type_3F_ GGS_domainDeclarationType::getter_getType (UNUSED_LOCATION_ARGS) const {
-  GGS_domainDeclarationType_2E_type_3F_ result ;
-  if (mEnum == Enumeration::enum_type) {
-    const auto ptr = (const GGS_domainDeclarationType_2E_type *) mAssociatedValues.associatedValuesPointer () ;
-    result = GGS_domainDeclarationType_2E_type (*ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainDeclarationType::getAssociatedValuesFor_type (GGS_bddType & out_type) const {
-  const auto ptr = (const GGS_domainDeclarationType_2E_type *) mAssociatedValues.associatedValuesPointer () ;
-  out_type = ptr->mProperty_type ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationType_2E_record_3F_ GGS_domainDeclarationType::getter_getRecord (UNUSED_LOCATION_ARGS) const {
-  GGS_domainDeclarationType_2E_record_3F_ result ;
-  if (mEnum == Enumeration::enum_record) {
-    const auto ptr = (const GGS_domainDeclarationType_2E_record *) mAssociatedValues.associatedValuesPointer () ;
-    result = GGS_domainDeclarationType_2E_record (*ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainDeclarationType::getAssociatedValuesFor_record (GGS_domainFieldList & out_fieldList) const {
-  const auto ptr = (const GGS_domainDeclarationType_2E_record *) mAssociatedValues.associatedValuesPointer () ;
-  out_fieldList = ptr->mProperty_fieldList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_domainDeclarationType [3] = {
-  "(not built)",
-  "type",
-  "record"
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_domainDeclarationType::getter_isType (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_type == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_domainDeclarationType::getter_isRecord (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_record == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainDeclarationType::description (String & ioString,
-                                             const int32_t inIndentation) const {
-  ioString.appendCString ("<enum @domainDeclarationType: ") ;
-  ioString.appendCString (gEnumNameArrayFor_domainDeclarationType [size_t (mEnum)]) ;
-  mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendCString (">") ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @domainDeclarationType generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainDeclarationType ("domainDeclarationType",
-                                                                          nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_domainDeclarationType::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_domainDeclarationType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_domainDeclarationType::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_domainDeclarationType (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainDeclarationType GGS_domainDeclarationType::extractObject (const GGS_object & inObject,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
-  GGS_domainDeclarationType result ;
-  const GGS_domainDeclarationType * p = (const GGS_domainDeclarationType *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_domainDeclarationType *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("domainDeclarationType", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Map type @recordDomainMap
-//--------------------------------------------------------------------------------------------------
-
-#include "GALGAS_GenericMapRoot.h"
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap::GGS_recordDomainMap (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap::~ GGS_recordDomainMap (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap::GGS_recordDomainMap (const GGS_recordDomainMap & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap & GGS_recordDomainMap::operator = (const GGS_recordDomainMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap GGS_recordDomainMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_recordDomainMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_recordDomainMap::getter_hasKey (const GGS_string & inKey
-                                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_recordDomainMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                    const GGS_uint & inLevel
-                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_recordDomainMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_recordDomainMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_recordDomainMap::getter_locationForKey (const GGS_string & inKey,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_location result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      String message = "'locationForKey' map reader run-time error: the '" ;
-      message.appendString (inKey.stringValue ()) ;
-      message.appendCString ("' does not exist in map") ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_lkey.mProperty_location ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;
@@ -9955,3168 +12817,223 @@ GGS_location GGS_recordDomainMap::getter_locationForKey (const GGS_string & inKe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_recordDomainMap::getter_keyList (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
-  if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_recordDomainMap::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_recordDomainMap_2E_element>>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::performInsert (const GGS_recordDomainMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GenericMapNode <GGS_recordDomainMap_2E_element>> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot.insulate (THERE) ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
-      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
-      if (existingInfo.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element>
-GGS_recordDomainMap::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->infoForKey (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t GGS_recordDomainMap::count (void) const  {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->count () ;
-  }else{
-    return 0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GenericArray <SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element>>
-GGS_recordDomainMap::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_recordDomainMap::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element_3F_ GGS_recordDomainMap
-::readSubscript__3F_ (const class GGS_string & inKey,
-                      Compiler * /* inCompiler */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_recordDomainMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      result = GGS_recordDomainMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_recordDomainMap_2E_element element ;
-      element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mIndex = info->mProperty_mIndex ;
-      element.mProperty_mBitCount = info->mProperty_mBitCount ;
-      element.mProperty_mSubDomain = info->mProperty_mSubDomain ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap GGS_recordDomainMap::class_func_mapWithMapToOverride (const GGS_recordDomainMap & inMapToOverride
-                                                                          COMMA_LOCATION_ARGS) {
-  GGS_recordDomainMap result ;
-  if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_recordDomainMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap GGS_recordDomainMap::getter_overriddenMap (Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
-  GGS_recordDomainMap result ;
-  if (isValid ()) {
-    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
-    if (result.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::setter_insertKey (GGS_lstring inLKey,
-                                            GGS_uint inArgument0,
-                                            GGS_uint inArgument1,
-                                            GGS_recordDomainMap inArgument2,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  const GGS_recordDomainMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
-  const char * kInsertErrorMessage = "the '%K' field is already declared in %L" ;
-  const char * kShadowErrorMessage = nullptr ;
-  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::method_searchKey (GGS_lstring inLKey,
-                                            GGS_uint & outArgument0,
-                                            GGS_uint & outArgument1,
-                                            GGS_recordDomainMap & outArgument2,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
-  SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info ;
-  if (isValid () && inLKey.isValid ()) {
-    const String key = inLKey.mProperty_string.stringValue () ;
-    info = infoForKey (key) ;
-    if (info.isNil ()) {
-      GenericUniqueArray <String> nearestKeyArray ;
-      findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "there is no '%K' field" ;
-      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
-    }
-  }
-  if (info.isNil ()) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-  }else{
-    outArgument0 = info->mProperty_mIndex ;
-    outArgument1 = info->mProperty_mBitCount ;
-    outArgument2 = info->mProperty_mSubDomain ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_recordDomainMap::getter_mIndexForKey (const GGS_string & inKey,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mIndex ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_recordDomainMap::getter_mBitCountForKey (const GGS_string & inKey,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mBitCount ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap GGS_recordDomainMap::getter_mSubDomainForKey (const GGS_string & inKey,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_recordDomainMap result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mSubDomain ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::setter_setMIndexForKey (GGS_uint inValue,
-                                                  GGS_string inKey,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_recordDomainMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mIndex = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::setter_setMBitCountForKey (GGS_uint inValue,
-                                                     GGS_string inKey,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_recordDomainMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mBitCount = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::setter_setMSubDomainForKey (GGS_recordDomainMap inValue,
-                                                      GGS_string inKey,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_recordDomainMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mSubDomain = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-static void GGS_recordDomainMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element>> & inArray,
-                                                        String & ioString,
-                                                        const int32_t inIndentation) {
-  const int32_t n = inArray.count () ;
-  ioString.appendString (" (") ;
-  ioString.appendSigned (n) ;
-  ioString.appendString (" object") ;
-  if (n > 1) {
-    ioString.appendString ("s") ;
-  }
-  ioString.appendString ("):") ;
-  for (int32_t i = 0 ; i < n ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
-    ioString.appendSigned (i) ;
-    ioString.appendString (": key '") ;
-    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
-    ioString.appendString ("'") ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mIndex:") ;
-    inArray (i COMMA_HERE)->mProperty_mIndex.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mBitCount:") ;
-    inArray (i COMMA_HERE)->mProperty_mBitCount.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mSubDomain:") ;
-    inArray (i COMMA_HERE)->mProperty_mSubDomain.description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_recordDomainMap::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  if (isValid ()) {
-    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_recordDomainMap_2E_element>> array = sortedInfoArray () ;
-    GGS_recordDomainMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GenericMapRoot <GGS_recordDomainMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
-    uint32_t idx = 0 ;
-    while (subRoot.isNotNil ()) {
-     idx += 1 ;
-     ioString.appendNewLine () ;
-     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-     ioString.appendString (" override #") ;
-     ioString.appendUnsigned (idx) ;
-     const auto subRootArray = subRoot->sortedInfoArray () ;
-     GGS_recordDomainMap_internalDescription (subRootArray, ioString, inIndentation) ;
-     subRoot = subRoot->overriddenRoot () ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Down Enumerator for @recordDomainMap
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_recordDomainMap::DownEnumerator_recordDomainMap (const GGS_recordDomainMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-  mIndex = mInfoArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element DownEnumerator_recordDomainMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_recordDomainMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_recordDomainMap::current_mIndex (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_recordDomainMap::current_mBitCount (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap DownEnumerator_recordDomainMap::current_mSubDomain (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mSubDomain ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Up Enumerator for @recordDomainMap
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_recordDomainMap::UpEnumerator_recordDomainMap (const GGS_recordDomainMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap_2E_element UpEnumerator_recordDomainMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_recordDomainMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_recordDomainMap::current_mIndex (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_recordDomainMap::current_mBitCount (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap UpEnumerator_recordDomainMap::current_mSubDomain (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mSubDomain ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @recordDomainMap generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_recordDomainMap ("recordDomainMap",
-                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_recordDomainMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_recordDomainMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_recordDomainMap::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_recordDomainMap (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap GGS_recordDomainMap::extractObject (const GGS_object & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  GGS_recordDomainMap result ;
-  const GGS_recordDomainMap * p = (const GGS_recordDomainMap *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_recordDomainMap *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("recordDomainMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Map type @domainMap
-//--------------------------------------------------------------------------------------------------
-
-#include "GALGAS_GenericMapRoot.h"
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap::GGS_domainMap (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap::~ GGS_domainMap (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap::GGS_domainMap (const GGS_domainMap & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap & GGS_domainMap::operator = (const GGS_domainMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap GGS_domainMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_domainMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_domainMap::getter_hasKey (const GGS_string & inKey
-                                       COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_domainMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                              const GGS_uint & inLevel
-                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_domainMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_domainMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_domainMap::getter_locationForKey (const GGS_string & inKey,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const {
-  GGS_location result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      String message = "'locationForKey' map reader run-time error: the '" ;
-      message.appendString (inKey.stringValue ()) ;
-      message.appendCString ("' does not exist in map") ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_lkey.mProperty_location ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_domainMap::getter_keyList (Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
-  if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_domainMap::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainMap::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_domainMap_2E_element>>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainMap::performInsert (const GGS_domainMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GenericMapNode <GGS_domainMap_2E_element>> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot.insulate (THERE) ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
-      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
-      if (existingInfo.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element>
-GGS_domainMap::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->infoForKey (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t GGS_domainMap::count (void) const  {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->count () ;
-  }else{
-    return 0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GenericArray <SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element>>
-GGS_domainMap::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_domainMap::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainMap::findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap_2E_element_3F_ GGS_domainMap
-::readSubscript__3F_ (const class GGS_string & inKey,
-                      Compiler * /* inCompiler */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_domainMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      result = GGS_domainMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_domainMap_2E_element element ;
-      element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mBitCount = info->mProperty_mBitCount ;
-      element.mProperty_mRecordMap = info->mProperty_mRecordMap ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap GGS_domainMap::class_func_mapWithMapToOverride (const GGS_domainMap & inMapToOverride
-                                                              COMMA_LOCATION_ARGS) {
-  GGS_domainMap result ;
-  if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_domainMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap GGS_domainMap::getter_overriddenMap (Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const {
-  GGS_domainMap result ;
-  if (isValid ()) {
-    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
-    if (result.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainMap::setter_insertKey (GGS_lstring inLKey,
-                                      GGS_uint inArgument0,
-                                      GGS_recordDomainMap inArgument1,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  const GGS_domainMap_2E_element element (inLKey, inArgument0, inArgument1) ;
-  const char * kInsertErrorMessage = "the '%K' domain is already declared in %L" ;
-  const char * kShadowErrorMessage = nullptr ;
-  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainMap::method_searchKey (GGS_lstring inLKey,
-                                      GGS_uint & outArgument0,
-                                      GGS_recordDomainMap & outArgument1,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) const {
-  SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> info ;
-  if (isValid () && inLKey.isValid ()) {
-    const String key = inLKey.mProperty_string.stringValue () ;
-    info = infoForKey (key) ;
-    if (info.isNil ()) {
-      GenericUniqueArray <String> nearestKeyArray ;
-      findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "there is no '%K' domain" ;
-      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
-    }
-  }
-  if (info.isNil ()) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-  }else{
-    outArgument0 = info->mProperty_mBitCount ;
-    outArgument1 = info->mProperty_mRecordMap ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_domainMap::getter_mBitCountForKey (const GGS_string & inKey,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mBitCount ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap GGS_domainMap::getter_mRecordMapForKey (const GGS_string & inKey,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_recordDomainMap result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mRecordMap ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainMap::setter_setMBitCountForKey (GGS_uint inValue,
-                                               GGS_string inKey,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_domainMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mBitCount = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainMap::setter_setMRecordMapForKey (GGS_recordDomainMap inValue,
-                                                GGS_string inKey,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_domainMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mRecordMap = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-static void GGS_domainMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element>> & inArray,
-                                                        String & ioString,
-                                                        const int32_t inIndentation) {
-  const int32_t n = inArray.count () ;
-  ioString.appendString (" (") ;
-  ioString.appendSigned (n) ;
-  ioString.appendString (" object") ;
-  if (n > 1) {
-    ioString.appendString ("s") ;
-  }
-  ioString.appendString ("):") ;
-  for (int32_t i = 0 ; i < n ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
-    ioString.appendSigned (i) ;
-    ioString.appendString (": key '") ;
-    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
-    ioString.appendString ("'") ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mBitCount:") ;
-    inArray (i COMMA_HERE)->mProperty_mBitCount.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mRecordMap:") ;
-    inArray (i COMMA_HERE)->mProperty_mRecordMap.description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_domainMap::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  if (isValid ()) {
-    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_domainMap_2E_element>> array = sortedInfoArray () ;
-    GGS_domainMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GenericMapRoot <GGS_domainMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
-    uint32_t idx = 0 ;
-    while (subRoot.isNotNil ()) {
-     idx += 1 ;
-     ioString.appendNewLine () ;
-     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-     ioString.appendString (" override #") ;
-     ioString.appendUnsigned (idx) ;
-     const auto subRootArray = subRoot->sortedInfoArray () ;
-     GGS_domainMap_internalDescription (subRootArray, ioString, inIndentation) ;
-     subRoot = subRoot->overriddenRoot () ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Down Enumerator for @domainMap
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_domainMap::DownEnumerator_domainMap (const GGS_domainMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-  mIndex = mInfoArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap_2E_element DownEnumerator_domainMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_domainMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_domainMap::current_mBitCount (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap DownEnumerator_domainMap::current_mRecordMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRecordMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Up Enumerator for @domainMap
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_domainMap::UpEnumerator_domainMap (const GGS_domainMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap_2E_element UpEnumerator_domainMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_domainMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_domainMap::current_mBitCount (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap UpEnumerator_domainMap::current_mRecordMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRecordMap ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @domainMap generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainMap ("domainMap",
-                                                              nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_domainMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_domainMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_domainMap::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_domainMap (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_domainMap GGS_domainMap::extractObject (const GGS_object & inObject,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  GGS_domainMap result ;
-  const GGS_domainMap * p = (const GGS_domainMap *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_domainMap *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("domainMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@domainDeclarationList analyze'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_analyze (const GGS_domainDeclarationList inObject,
-                              GGS_domainMap & outArgument_outDomainMap,
-                              Compiler * inCompiler
-                              COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outDomainMap.drop () ; // Release 'out' argument
-  outArgument_outDomainMap = GGS_domainMap::init (inCompiler COMMA_HERE) ;
-  const GGS_domainDeclarationList temp_0 = inObject ;
-  UpEnumerator_domainDeclarationList enumerator_3990 (temp_0) ;
-  bool bool_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-  if (enumerator_3990.hasCurrentObject () && bool_1) {
-    while (enumerator_3990.hasCurrentObject () && bool_1) {
-      switch (enumerator_3990.current_mType (HERE).enumValue ()) {
-      case GGS_domainDeclarationType::Enumeration::invalid:
-        break ;
-      case GGS_domainDeclarationType::Enumeration::enum_type:
-        {
-          GGS_bddType extractedValue_4095_type_0 ;
-          enumerator_3990.current_mType (HERE).getAssociatedValuesFor_type (extractedValue_4095_type_0) ;
-          switch (extractedValue_4095_type_0.enumValue ()) {
-          case GGS_bddType::Enumeration::invalid:
-            break ;
-          case GGS_bddType::Enumeration::enum_bool:
-            {
-              {
-              outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 128)) ;
-              }
-            }
-            break ;
-          case GGS_bddType::Enumeration::enum_boolArray:
-            {
-              GGS_uint extractedValue_4215_size_0 ;
-              extractedValue_4095_type_0.getAssociatedValuesFor_boolArray (extractedValue_4215_size_0) ;
-              {
-              outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), extractedValue_4215_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 130)) ;
-              }
-            }
-            break ;
-          case GGS_bddType::Enumeration::enum_namedType:
-            {
-              GGS_lstring extractedValue_4305_typeName_0 ;
-              extractedValue_4095_type_0.getAssociatedValuesFor_namedType (extractedValue_4305_typeName_0) ;
-              GGS_uint var_size_4365 ;
-              GGS_recordDomainMap var_subdomain_4376 ;
-              outArgument_outDomainMap.method_searchKey (extractedValue_4305_typeName_0, var_size_4365, var_subdomain_4376, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 132)) ;
-              {
-              outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), var_size_4365, var_subdomain_4376, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 133)) ;
-              }
-            }
-            break ;
-          }
-        }
-        break ;
-      case GGS_domainDeclarationType::Enumeration::enum_record:
-        {
-          GGS_domainFieldList extractedValue_4490_fieldList_0 ;
-          enumerator_3990.current_mType (HERE).getAssociatedValuesFor_record (extractedValue_4490_fieldList_0) ;
-          GGS_bigint var_bitIndex_4513 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 136)) ;
-          GGS_recordDomainMap var_recordMap_4553 = GGS_recordDomainMap::init (inCompiler COMMA_HERE) ;
-          DownEnumerator_domainFieldList enumerator_4587 (extractedValue_4490_fieldList_0) ;
-          bool bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-          if (enumerator_4587.hasCurrentObject () && bool_2) {
-            while (enumerator_4587.hasCurrentObject () && bool_2) {
-              switch (enumerator_4587.current_mType (HERE).enumValue ()) {
-              case GGS_bddType::Enumeration::invalid:
-                break ;
-              case GGS_bddType::Enumeration::enum_bool:
-                {
-                  {
-                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)), GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 141)) ;
-                  }
-                  var_bitIndex_4513.plusAssignOperation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 142)) ;
-                }
-                break ;
-              case GGS_bddType::Enumeration::enum_boolArray:
-                {
-                  GGS_uint extractedValue_4809_size_0 ;
-                  enumerator_4587.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_4809_size_0) ;
-                  {
-                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)), extractedValue_4809_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 144)) ;
-                  }
-                  var_bitIndex_4513 = var_bitIndex_4513.add_operation (extractedValue_4809_size_0.getter_bigint (SOURCE_FILE ("domain.ggs", 145)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 145)) ;
-                }
-                break ;
-              case GGS_bddType::Enumeration::enum_namedType:
-                {
-                  GGS_lstring extractedValue_4948_typeName_0 ;
-                  enumerator_4587.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_4948_typeName_0) ;
-                  GGS_uint var_size_5010 ;
-                  GGS_recordDomainMap var_subdomain_5021 ;
-                  outArgument_outDomainMap.method_searchKey (extractedValue_4948_typeName_0, var_size_5010, var_subdomain_5021, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 147)) ;
-                  {
-                  var_recordMap_4553.setter_insertKey (enumerator_4587.current_mVarName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)), var_size_5010, var_subdomain_5021, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 148)) ;
-                  }
-                  var_bitIndex_4513 = var_bitIndex_4513.add_operation (var_size_5010.getter_bigint (SOURCE_FILE ("domain.ggs", 149)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 149)) ;
-                }
-                break ;
-              }
-              enumerator_4587.gotoNextObject () ;
-              if (enumerator_4587.hasCurrentObject ()) {
-                bool_2 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 138)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-              }
-            }
-          }
-          {
-          outArgument_outDomainMap.setter_insertKey (enumerator_3990.current_mDomainName (HERE), var_bitIndex_4513.getter_uint (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)), var_recordMap_4553, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 152)) ;
-          }
-        }
-        break ;
-      }
-      enumerator_3990.gotoNextObject () ;
-      if (enumerator_3990.hasCurrentObject ()) {
-        bool_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("domain.ggs", 123)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-      }
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//  Map type @varMap
-//--------------------------------------------------------------------------------------------------
-
-#include "GALGAS_GenericMapRoot.h"
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap::GGS_varMap (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap::~ GGS_varMap (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap::GGS_varMap (const GGS_varMap & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap & GGS_varMap::operator = (const GGS_varMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap GGS_varMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_varMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_varMap::getter_hasKey (const GGS_string & inKey
-                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_varMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                           const GGS_uint & inLevel
-                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_varMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_varMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_varMap::getter_locationForKey (const GGS_string & inKey,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  GGS_location result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      String message = "'locationForKey' map reader run-time error: the '" ;
-      message.appendString (inKey.stringValue ()) ;
-      message.appendCString ("' does not exist in map") ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_lkey.mProperty_location ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_varMap::getter_keyList (Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
-  if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_varMap::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_varMap_2E_element>>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::performInsert (const GGS_varMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GenericMapNode <GGS_varMap_2E_element>> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot.insulate (THERE) ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
-      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
-      if (existingInfo.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element>
-GGS_varMap::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->infoForKey (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t GGS_varMap::count (void) const  {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->count () ;
-  }else{
-    return 0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GenericArray <SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element>>
-GGS_varMap::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_varMap::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap_2E_element_3F_ GGS_varMap
-::readSubscript__3F_ (const class GGS_string & inKey,
-                      Compiler * /* inCompiler */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_varMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      result = GGS_varMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_varMap_2E_element element ;
-      element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mIndex = info->mProperty_mIndex ;
-      element.mProperty_mBitCount = info->mProperty_mBitCount ;
-      element.mProperty_mRecordDomainMap = info->mProperty_mRecordDomainMap ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap GGS_varMap::class_func_mapWithMapToOverride (const GGS_varMap & inMapToOverride
-                                                        COMMA_LOCATION_ARGS) {
-  GGS_varMap result ;
-  if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_varMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap GGS_varMap::getter_overriddenMap (Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const {
-  GGS_varMap result ;
-  if (isValid ()) {
-    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
-    if (result.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::setter_insertKey (GGS_lstring inLKey,
-                                   GGS_uint inArgument0,
-                                   GGS_uint inArgument1,
-                                   GGS_recordDomainMap inArgument2,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) {
-  const GGS_varMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
-  const char * kInsertErrorMessage = "the '%K' variable is already declared in %L" ;
-  const char * kShadowErrorMessage = nullptr ;
-  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::method_searchKey (GGS_lstring inLKey,
-                                   GGS_uint & outArgument0,
-                                   GGS_uint & outArgument1,
-                                   GGS_recordDomainMap & outArgument2,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) const {
-  SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info ;
-  if (isValid () && inLKey.isValid ()) {
-    const String key = inLKey.mProperty_string.stringValue () ;
-    info = infoForKey (key) ;
-    if (info.isNil ()) {
-      GenericUniqueArray <String> nearestKeyArray ;
-      findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "there is no '%K' variable" ;
-      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
-    }
-  }
-  if (info.isNil ()) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-  }else{
-    outArgument0 = info->mProperty_mIndex ;
-    outArgument1 = info->mProperty_mBitCount ;
-    outArgument2 = info->mProperty_mRecordDomainMap ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_varMap::getter_mIndexForKey (const GGS_string & inKey,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mIndex ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_varMap::getter_mBitCountForKey (const GGS_string & inKey,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mBitCount ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap GGS_varMap::getter_mRecordDomainMapForKey (const GGS_string & inKey,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
-  GGS_recordDomainMap result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mRecordDomainMap ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::setter_setMIndexForKey (GGS_uint inValue,
-                                         GGS_string inKey,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_varMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mIndex = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::setter_setMBitCountForKey (GGS_uint inValue,
-                                            GGS_string inKey,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_varMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mBitCount = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::setter_setMRecordDomainMapForKey (GGS_recordDomainMap inValue,
-                                                   GGS_string inKey,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_varMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mRecordDomainMap = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-static void GGS_varMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element>> & inArray,
-                                                        String & ioString,
-                                                        const int32_t inIndentation) {
-  const int32_t n = inArray.count () ;
-  ioString.appendString (" (") ;
-  ioString.appendSigned (n) ;
-  ioString.appendString (" object") ;
-  if (n > 1) {
-    ioString.appendString ("s") ;
-  }
-  ioString.appendString ("):") ;
-  for (int32_t i = 0 ; i < n ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
-    ioString.appendSigned (i) ;
-    ioString.appendString (": key '") ;
-    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
-    ioString.appendString ("'") ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mIndex:") ;
-    inArray (i COMMA_HERE)->mProperty_mIndex.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mBitCount:") ;
-    inArray (i COMMA_HERE)->mProperty_mBitCount.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mRecordDomainMap:") ;
-    inArray (i COMMA_HERE)->mProperty_mRecordDomainMap.description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varMap::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  if (isValid ()) {
-    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_varMap_2E_element>> array = sortedInfoArray () ;
-    GGS_varMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GenericMapRoot <GGS_varMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
-    uint32_t idx = 0 ;
-    while (subRoot.isNotNil ()) {
-     idx += 1 ;
-     ioString.appendNewLine () ;
-     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-     ioString.appendString (" override #") ;
-     ioString.appendUnsigned (idx) ;
-     const auto subRootArray = subRoot->sortedInfoArray () ;
-     GGS_varMap_internalDescription (subRootArray, ioString, inIndentation) ;
-     subRoot = subRoot->overriddenRoot () ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Down Enumerator for @varMap
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_varMap::DownEnumerator_varMap (const GGS_varMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-  mIndex = mInfoArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap_2E_element DownEnumerator_varMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_varMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_varMap::current_mIndex (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_varMap::current_mBitCount (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap DownEnumerator_varMap::current_mRecordDomainMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRecordDomainMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Up Enumerator for @varMap
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_varMap::UpEnumerator_varMap (const GGS_varMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap_2E_element UpEnumerator_varMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_varMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_varMap::current_mIndex (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_varMap::current_mBitCount (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mBitCount ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_recordDomainMap UpEnumerator_varMap::current_mRecordDomainMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRecordDomainMap ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @varMap generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varMap ("varMap",
-                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_varMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_varMap::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_varMap (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varMap GGS_varMap::extractObject (const GGS_object & inObject,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  GGS_varMap result ;
-  const GGS_varMap * p = (const GGS_varMap *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_varMap *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("varMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@domainFieldList analyze'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_analyze (const GGS_domainFieldList inObject,
-                              const GGS_domainMap constinArgument_inDomainMap,
-                              GGS_varMap & ioArgument_ioVarMap,
-                              GGS_varList & ioArgument_ioVarList,
-                              GGS_uint & ioArgument_ioTotalBitCount,
-                              Compiler * inCompiler
-                              COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_domainFieldList temp_0 = inObject ;
-  DownEnumerator_domainFieldList enumerator_6322 (temp_0) ;
-  while (enumerator_6322.hasCurrentObject ()) {
-    switch (enumerator_6322.current_mType (HERE).enumValue ()) {
-    case GGS_bddType::Enumeration::invalid:
-      break ;
-    case GGS_bddType::Enumeration::enum_bool:
-      {
-        {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6322.current_mVarName (HERE), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 189)) ;
-        }
-        {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6322.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, GGS_uint (uint32_t (1U)), GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 190)) ;
-        }
-        ioArgument_ioTotalBitCount.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("domain.ggs", 191)) ;
-      }
-      break ;
-    case GGS_bddType::Enumeration::enum_boolArray:
-      {
-        GGS_uint extractedValue_6554_size_0 ;
-        enumerator_6322.current_mType (HERE).getAssociatedValuesFor_boolArray (extractedValue_6554_size_0) ;
-        {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6322.current_mVarName (HERE), ioArgument_ioTotalBitCount, extractedValue_6554_size_0, GGS_recordDomainMap::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 193)) ;
-        }
-        {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6322.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, extractedValue_6554_size_0, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 194)) ;
-        }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (extractedValue_6554_size_0, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 195)) ;
-      }
-      break ;
-    case GGS_bddType::Enumeration::enum_namedType:
-      {
-        GGS_lstring extractedValue_6774_typeName_0 ;
-        enumerator_6322.current_mType (HERE).getAssociatedValuesFor_namedType (extractedValue_6774_typeName_0) ;
-        GGS_uint var_size_6831 ;
-        GGS_recordDomainMap var_subDomainMap_6842 ;
-        constinArgument_inDomainMap.method_searchKey (extractedValue_6774_typeName_0, var_size_6831, var_subDomainMap_6842, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 197)) ;
-        {
-        ioArgument_ioVarMap.setter_insertKey (enumerator_6322.current_mVarName (HERE), ioArgument_ioTotalBitCount, var_size_6831, var_subDomainMap_6842, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 198)) ;
-        }
-        {
-        ioArgument_ioVarList.setter_insertAtIndex (enumerator_6322.current_mVarName (HERE).readProperty_string (), ioArgument_ioTotalBitCount, var_size_6831, GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("domain.ggs", 199)) ;
-        }
-        ioArgument_ioTotalBitCount = ioArgument_ioTotalBitCount.add_operation (var_size_6831, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 200)) ;
-      }
-      break ;
-    }
-    enumerator_6322.gotoNextObject () ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     L E X I Q U E                                                                             
-//
-//--------------------------------------------------------------------------------------------------
-
-#include "utf32.h"
-#include "scanner_actions.h"
-#include "LexiqueIntrospection.h"
-
-//--------------------------------------------------------------------------------------------------
-
-cTokenFor_kerbdd_5F_lexique::cTokenFor_kerbdd_5F_lexique (void) :
-mLexicalAttribute_tokenString (),
-mLexicalAttribute_uint_33__32_value () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-Lexique_kerbdd_5F_lexique::Lexique_kerbdd_5F_lexique (Compiler * inCallerCompiler,
-                                                      const String & inSourceFileName
-                                                      COMMA_LOCATION_ARGS) :
-Lexique (inCallerCompiler, inSourceFileName COMMA_THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-Lexique_kerbdd_5F_lexique::Lexique_kerbdd_5F_lexique (Compiler * inCallerCompiler,
-                                                      const String & inSourceString,
-                                                      const String & inStringForError
-                                                      COMMA_LOCATION_ARGS) :
-Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-//                        Lexical error message list                                             
-//--------------------------------------------------------------------------------------------------
-
-static const char * gLexicalMessage_kerbdd_5F_lexique_decimalNumberTooLarge = "decimal number too large" ;
-
-static const char * gLexicalMessage_kerbdd_5F_lexique_incorrectStringEnd = "string does not end with '\"'" ;
-
-static const char * gLexicalMessage_kerbdd_5F_lexique_internalError = "internal error" ;
-
-//--------------------------------------------------------------------------------------------------
-//                getMessageForTerminal                                                          
-//--------------------------------------------------------------------------------------------------
-
-String Lexique_kerbdd_5F_lexique::getMessageForTerminal (const int32_t inTerminalIndex) const {
-  String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 42)) {
-    static const char * syntaxErrorMessageArray [42] = {kEndOfSourceLexicalErrorMessage,
-        "an identifier",
-        "a 32-bit unsigned decimal number",
-        "a character string constant \"...\"",
-        "a comment",
-        "the 'nodeHashMapSize' keyword",
-        "the 'andCacheMapSize' keyword",
-        "the 'domain' keyword",
-        "the 'bool' keyword",
-        "the 'true' keyword",
-        "the 'false' keyword",
-        "the 'display' keyword",
-        "the 'include' keyword",
-        "the 'graphviz' keyword",
-        "the 'dump' keyword",
-        "the '(' delimitor",
-        "the ')' delimitor",
-        "the '[' delimitor",
-        "the ']' delimitor",
-        "the '{' delimitor",
-        "the '}' delimitor",
-        "the ':=' delimitor",
-        "the ':' delimitor",
-        "the '.' delimitor",
-        "the '..' delimitor",
-        "the '+=' delimitor",
-        "the '-=' delimitor",
-        "the '->' delimitor",
-        "the '&' delimitor",
-        "the '|' delimitor",
-        "the '^' delimitor",
-        "the '~' delimitor",
-        "the ',' delimitor",
-        "the '\?' delimitor",
-        "the '!' delimitor",
-        "the ';' delimitor",
-        "the '=' delimitor",
-        "the '!=' delimitor",
-        "the '<' delimitor",
-        "the '<=' delimitor",
-        "the '>' delimitor",
-        "the '>=' delimitor"
-    } ;
-    result = syntaxErrorMessageArray [inTerminalIndex] ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//                      U N I C O D E    S T R I N G S                                           
-//--------------------------------------------------------------------------------------------------
-
-//--- Unicode string for '$!$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__21_ = {
-  utf32 ('!'),
-} ;
-
-//--- Unicode string for '$!=$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__21__3D_ = {
-  utf32 ('!'),
-  utf32 ('='),
-} ;
-
-//--- Unicode string for '$&$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__26_ = {
-  utf32 ('&'),
-} ;
-
-//--- Unicode string for '$($'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__28_ = {
-  utf32 ('('),
-} ;
-
-//--- Unicode string for '$)$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__29_ = {
-  utf32 (')'),
-} ;
-
-//--- Unicode string for '$+=$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2B__3D_ = {
-  utf32 ('+'),
-  utf32 ('='),
-} ;
-
-//--- Unicode string for '$,$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2C_ = {
-  utf32 (','),
-} ;
-
-//--- Unicode string for '$-=$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2D__3D_ = {
-  utf32 ('-'),
-  utf32 ('='),
-} ;
-
-//--- Unicode string for '$->$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2D__3E_ = {
-  utf32 ('-'),
-  utf32 ('>'),
-} ;
-
-//--- Unicode string for '$.$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2E_ = {
-  utf32 ('.'),
-} ;
-
-//--- Unicode string for '$..$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__2E__2E_ = {
-  utf32 ('.'),
-  utf32 ('.'),
-} ;
-
-//--- Unicode string for '$:$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3A_ = {
-  utf32 (':'),
-} ;
-
-//--- Unicode string for '$:=$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3A__3D_ = {
-  utf32 (':'),
-  utf32 ('='),
-} ;
-
-//--- Unicode string for '$;$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3B_ = {
-  utf32 (';'),
-} ;
-
-//--- Unicode string for '$<$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3C_ = {
-  utf32 ('<'),
-} ;
-
-//--- Unicode string for '$<=$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3C__3D_ = {
-  utf32 ('<'),
-  utf32 ('='),
-} ;
-
-//--- Unicode string for '$=$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3D_ = {
-  utf32 ('='),
-} ;
-
-//--- Unicode string for '$>$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3E_ = {
-  utf32 ('>'),
-} ;
-
-//--- Unicode string for '$>=$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3E__3D_ = {
-  utf32 ('>'),
-  utf32 ('='),
-} ;
-
-//--- Unicode string for '$?$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__3F_ = {
-  utf32 ('\?'),
-} ;
-
-//--- Unicode string for '$[$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5B_ = {
-  utf32 ('['),
-} ;
-
-//--- Unicode string for '$]$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5D_ = {
-  utf32 (']'),
-} ;
-
-//--- Unicode string for '$^$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__5E_ = {
-  utf32 ('^'),
-} ;
-
-//--- Unicode string for '$andCacheMapSize$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_andCacheMapSize = {
-  utf32 ('a'),
-  utf32 ('n'),
-  utf32 ('d'),
-  utf32 ('C'),
-  utf32 ('a'),
-  utf32 ('c'),
-  utf32 ('h'),
-  utf32 ('e'),
-  utf32 ('M'),
-  utf32 ('a'),
-  utf32 ('p'),
-  utf32 ('S'),
-  utf32 ('i'),
-  utf32 ('z'),
-  utf32 ('e'),
-} ;
-
-//--- Unicode string for '$bool$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_bool = {
-  utf32 ('b'),
-  utf32 ('o'),
-  utf32 ('o'),
-  utf32 ('l'),
-} ;
-
-//--- Unicode string for '$display$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_display = {
-  utf32 ('d'),
-  utf32 ('i'),
-  utf32 ('s'),
-  utf32 ('p'),
-  utf32 ('l'),
-  utf32 ('a'),
-  utf32 ('y'),
-} ;
-
-//--- Unicode string for '$domain$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_domain = {
-  utf32 ('d'),
-  utf32 ('o'),
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('i'),
-  utf32 ('n'),
-} ;
-
-//--- Unicode string for '$dump$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_dump = {
-  utf32 ('d'),
-  utf32 ('u'),
-  utf32 ('m'),
-  utf32 ('p'),
-} ;
-
-//--- Unicode string for '$false$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_false = {
-  utf32 ('f'),
-  utf32 ('a'),
-  utf32 ('l'),
-  utf32 ('s'),
-  utf32 ('e'),
-} ;
-
-//--- Unicode string for '$graphviz$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_graphviz = {
-  utf32 ('g'),
-  utf32 ('r'),
-  utf32 ('a'),
-  utf32 ('p'),
-  utf32 ('h'),
-  utf32 ('v'),
-  utf32 ('i'),
-  utf32 ('z'),
-} ;
-
-//--- Unicode string for '$include$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_include = {
-  utf32 ('i'),
-  utf32 ('n'),
-  utf32 ('c'),
-  utf32 ('l'),
-  utf32 ('u'),
-  utf32 ('d'),
-  utf32 ('e'),
-} ;
-
-//--- Unicode string for '$nodeHashMapSize$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_nodeHashMapSize = {
-  utf32 ('n'),
-  utf32 ('o'),
-  utf32 ('d'),
-  utf32 ('e'),
-  utf32 ('H'),
-  utf32 ('a'),
-  utf32 ('s'),
-  utf32 ('h'),
-  utf32 ('M'),
-  utf32 ('a'),
-  utf32 ('p'),
-  utf32 ('S'),
-  utf32 ('i'),
-  utf32 ('z'),
-  utf32 ('e'),
-} ;
-
-//--- Unicode string for '$true$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique_true = {
-  utf32 ('t'),
-  utf32 ('r'),
-  utf32 ('u'),
-  utf32 ('e'),
-} ;
-
-//--- Unicode string for '${$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7B_ = {
-  utf32 ('{'),
-} ;
-
-//--- Unicode string for '$|$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7C_ = {
-  utf32 ('|'),
-} ;
-
-//--- Unicode string for '$}$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7D_ = {
-  utf32 ('}'),
-} ;
-
-//--- Unicode string for '$~$'
-static const std::initializer_list <utf32> kUnicodeString_kerbdd_5F_lexique__7E_ = {
-  utf32 ('~'),
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//             Key words table 'delimitorsList'      
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t ktable_size_kerbdd_5F_lexique_delimitorsList = 27 ;
-
-static const C_unicode_lexique_table_entry ktable_for_kerbdd_5F_lexique_delimitorsList [ktable_size_kerbdd_5F_lexique_delimitorsList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__21_, Lexique_kerbdd_5F_lexique::kToken__21_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__26_, Lexique_kerbdd_5F_lexique::kToken__26_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__28_, Lexique_kerbdd_5F_lexique::kToken__28_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__29_, Lexique_kerbdd_5F_lexique::kToken__29_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2C_, Lexique_kerbdd_5F_lexique::kToken__2C_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2E_, Lexique_kerbdd_5F_lexique::kToken__2E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3A_, Lexique_kerbdd_5F_lexique::kToken__3A_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3B_, Lexique_kerbdd_5F_lexique::kToken__3B_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3C_, Lexique_kerbdd_5F_lexique::kToken__3C_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3D_, Lexique_kerbdd_5F_lexique::kToken__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3E_, Lexique_kerbdd_5F_lexique::kToken__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3F_, Lexique_kerbdd_5F_lexique::kToken__3F_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5B_, Lexique_kerbdd_5F_lexique::kToken__5B_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5D_, Lexique_kerbdd_5F_lexique::kToken__5D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__5E_, Lexique_kerbdd_5F_lexique::kToken__5E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7B_, Lexique_kerbdd_5F_lexique::kToken__7B_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7C_, Lexique_kerbdd_5F_lexique::kToken__7C_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7D_, Lexique_kerbdd_5F_lexique::kToken__7D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__7E_, Lexique_kerbdd_5F_lexique::kToken__7E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__21__3D_, Lexique_kerbdd_5F_lexique::kToken__21__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2B__3D_, Lexique_kerbdd_5F_lexique::kToken__2B__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2D__3D_, Lexique_kerbdd_5F_lexique::kToken__2D__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2D__3E_, Lexique_kerbdd_5F_lexique::kToken__2D__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__2E__2E_, Lexique_kerbdd_5F_lexique::kToken__2E__2E_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3A__3D_, Lexique_kerbdd_5F_lexique::kToken__3A__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3C__3D_, Lexique_kerbdd_5F_lexique::kToken__3C__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique__3E__3D_, Lexique_kerbdd_5F_lexique::kToken__3E__3D_)
-} ;
-
-int32_t Lexique_kerbdd_5F_lexique::search_into_delimitorsList (const String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_kerbdd_5F_lexique_delimitorsList, ktable_size_kerbdd_5F_lexique_delimitorsList) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//             Key words table 'keyWordList'      
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t ktable_size_kerbdd_5F_lexique_keyWordList = 10 ;
-
-static const C_unicode_lexique_table_entry ktable_for_kerbdd_5F_lexique_keyWordList [ktable_size_kerbdd_5F_lexique_keyWordList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_bool, Lexique_kerbdd_5F_lexique::kToken_bool),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_dump, Lexique_kerbdd_5F_lexique::kToken_dump),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_true, Lexique_kerbdd_5F_lexique::kToken_true),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_false, Lexique_kerbdd_5F_lexique::kToken_false),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_domain, Lexique_kerbdd_5F_lexique::kToken_domain),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_display, Lexique_kerbdd_5F_lexique::kToken_display),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_include, Lexique_kerbdd_5F_lexique::kToken_include),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_graphviz, Lexique_kerbdd_5F_lexique::kToken_graphviz),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_andCacheMapSize, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize),
-  C_unicode_lexique_table_entry (kUnicodeString_kerbdd_5F_lexique_nodeHashMapSize, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize)
-} ;
-
-int32_t Lexique_kerbdd_5F_lexique::search_into_keyWordList (const String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_kerbdd_5F_lexique_keyWordList, ktable_size_kerbdd_5F_lexique_keyWordList) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//                          getCurrentTokenString                                                
-//--------------------------------------------------------------------------------------------------
-
-String Lexique_kerbdd_5F_lexique::getCurrentTokenString (const cToken * inTokenPtr) const {
-  const cTokenFor_kerbdd_5F_lexique * ptr = (const cTokenFor_kerbdd_5F_lexique *) inTokenPtr ;
-  String s ;
-  if (ptr == nullptr) {
-    s.appendCString ("$$") ;
-  }else{
-    switch (ptr->mTokenCode) {
-    case kToken_:
-      s.appendCString ("$$") ;
-      break ;
-    case kToken_identifier:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("identifier") ;
-      s.appendChar (utf32 ('$')) ;
-      s.appendChar (utf32 (' ')) ;
-      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken_integer:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("integer") ;
-      s.appendChar (utf32 ('$')) ;
-      s.appendChar (utf32 (' ')) ;
-      s.appendUnsigned (ptr->mLexicalAttribute_uint_33__32_value) ;
-      break ;
-    case kToken_literal_5F_string:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("literal_string") ;
-      s.appendChar (utf32 ('$')) ;
-      s.appendChar (utf32 (' ')) ;
-      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken_comment:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("comment") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_nodeHashMapSize:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("nodeHashMapSize") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_andCacheMapSize:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("andCacheMapSize") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_domain:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("domain") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_bool:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("bool") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_true:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("true") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_false:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("false") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_display:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("display") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_include:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("include") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_graphviz:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("graphviz") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_dump:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("dump") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__28_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("(") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__29_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString (")") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__5B_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("[") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__5D_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("]") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__7B_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("{") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__7D_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("}") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__3A__3D_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString (":=") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__3A_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString (":") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__2E_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString (".") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__2E__2E_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("..") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__2B__3D_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("+=") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__2D__3D_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("-=") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__2D__3E_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("->") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__26_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("&") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__7C_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("|") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__5E_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("^") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__7E_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("~") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__2C_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString (",") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__3F_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("\?") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__21_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("!") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__3B_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString (";") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__3D_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("=") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__21__3D_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("!=") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__3C_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("<") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__3C__3D_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("<=") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__3E_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString (">") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__3E__3D_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString (">=") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    default:
-      break ;
-    }
-  }
-  return s ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//                           Template Delimiters                                                 
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//                           Template Replacements                                               
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//            Terminal Symbols as end of script in template mark                                 
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//               INTERNAL PARSE LEXICAL TOKEN                                         
-//--------------------------------------------------------------------------------------------------
-
-void Lexique_kerbdd_5F_lexique::internalParseLexicalToken (cTokenFor_kerbdd_5F_lexique & token) {
-  bool loop = true ;
-  token.mLexicalAttribute_tokenString.removeAllKeepingCapacity () ;
-  token.mLexicalAttribute_uint_33__32_value = 0 ;
-  mTokenStartLocation = mCurrentLocation ;
-  try{
-    if (testForInputUTF32CharRange (utf32 ('a'), utf32 ('z')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('Z'))) {
-      do {
-        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        if (testForInputUTF32CharRange (utf32 ('a'), utf32 ('z')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('Z')) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
-        }else{
-          loop = false ;
-        }
-      }while (loop) ;
-      loop = true ;
-      if (token.mTokenCode == -1) {
-        token.mTokenCode = search_into_keyWordList (token.mLexicalAttribute_tokenString) ;
-      }
-      if (token.mTokenCode == -1) {
-        token.mTokenCode = kToken_identifier ;
-      }
-      enterToken (token) ;
-    }else if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
-      ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-      do {
-        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        }else if (testForInputUTF32Char (utf32 ('_'))) {
-        }else{
-          loop = false ;
-        }
-      }while (loop) ;
-      loop = true ;
-      ::scanner_routine_convertDecimalStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_kerbdd_5F_lexique_decimalNumberTooLarge, gLexicalMessage_kerbdd_5F_lexique_internalError) ;
-      token.mTokenCode = kToken_integer ;
-      enterToken (token) ;
-    }else if (testForInputUTF32Char (utf32 ('\"'))) {
-      do {
-        if (testForInputUTF32Char (utf32 (' ')) || testForInputUTF32Char (utf32 ('!')) || testForInputUTF32CharRange (utf32 ('#'), utf32 (65533))) {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        }else{
-          loop = false ;
-        }
-      }while (loop) ;
-      loop = true ;
-      if (testForInputUTF32Char (utf32 ('\"'))) {
-        token.mTokenCode = kToken_literal_5F_string ;
-        enterToken (token) ;
-      }else{
-        lexicalError (gLexicalMessage_kerbdd_5F_lexique_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
-      }
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3E__3D_, true)) {
-      token.mTokenCode = kToken__3E__3D_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3C__3D_, true)) {
-      token.mTokenCode = kToken__3C__3D_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3A__3D_, true)) {
-      token.mTokenCode = kToken__3A__3D_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2E__2E_, true)) {
-      token.mTokenCode = kToken__2E__2E_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2D__3E_, true)) {
-      token.mTokenCode = kToken__2D__3E_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2D__3D_, true)) {
-      token.mTokenCode = kToken__2D__3D_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2B__3D_, true)) {
-      token.mTokenCode = kToken__2B__3D_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__21__3D_, true)) {
-      token.mTokenCode = kToken__21__3D_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7E_, true)) {
-      token.mTokenCode = kToken__7E_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7D_, true)) {
-      token.mTokenCode = kToken__7D_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7C_, true)) {
-      token.mTokenCode = kToken__7C_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__7B_, true)) {
-      token.mTokenCode = kToken__7B_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5E_, true)) {
-      token.mTokenCode = kToken__5E_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5D_, true)) {
-      token.mTokenCode = kToken__5D_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__5B_, true)) {
-      token.mTokenCode = kToken__5B_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3F_, true)) {
-      token.mTokenCode = kToken__3F_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3E_, true)) {
-      token.mTokenCode = kToken__3E_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3D_, true)) {
-      token.mTokenCode = kToken__3D_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3C_, true)) {
-      token.mTokenCode = kToken__3C_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3B_, true)) {
-      token.mTokenCode = kToken__3B_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__3A_, true)) {
-      token.mTokenCode = kToken__3A_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2E_, true)) {
-      token.mTokenCode = kToken__2E_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__2C_, true)) {
-      token.mTokenCode = kToken__2C_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__29_, true)) {
-      token.mTokenCode = kToken__29_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__28_, true)) {
-      token.mTokenCode = kToken__28_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__26_, true)) {
-      token.mTokenCode = kToken__26_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_kerbdd_5F_lexique__21_, true)) {
-      token.mTokenCode = kToken__21_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32Char (utf32 ('#'))) {
-      do {
-        if (testForInputUTF32CharRange (utf32 (1), utf32 ('\t')) || testForInputUTF32Char (utf32 ('\v')) || testForInputUTF32Char (utf32 ('\f')) || testForInputUTF32CharRange (utf32 (14), utf32 (65533))) {
-        }else{
-          loop = false ;
-        }
-      }while (loop) ;
-      loop = true ;
-      enterDroppedTerminal (kToken_comment) ;
-    }else if (testForInputUTF32CharRange (utf32 (1), utf32 (' '))) {
-    }else if (testForInputUTF32Char (utf32 ('\0'))) { // End of source text ? 
-      token.mTokenCode = kToken_ ; // Empty string code
-    }else{ // Unknown input character
-      unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
-      token.mTokenCode = -1 ; // No token
-      advance () ; // ... go throught unknown character
-    }
-  }catch (const C_lexicalErrorException &) {
-    token.mTokenCode = -1 ; // No token
-    advance () ; // ... go throught unknown character
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//               P A R S E    L E X I C A L    T O K E N                                         
-//--------------------------------------------------------------------------------------------------
-
-bool Lexique_kerbdd_5F_lexique::parseLexicalToken (void) {
-  cTokenFor_kerbdd_5F_lexique token ;
-  token.mTokenCode = -1 ;
-  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
-    internalParseLexicalToken (token) ;
-  }
-  if (mCurrentChar.u32 () == '\0') {
-    token.mTokenCode = 0 ;
-    enterToken (token) ;
-  }
-  return token.mTokenCode > 0 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//                         E N T E R    T O K E N                                                
-//--------------------------------------------------------------------------------------------------
-
-void Lexique_kerbdd_5F_lexique::enterToken (cTokenFor_kerbdd_5F_lexique & ioToken) {
-  cTokenFor_kerbdd_5F_lexique * ptr = nullptr ;
-  macroMyNew (ptr, cTokenFor_kerbdd_5F_lexique ()) ;
-  ptr->mTokenCode = ioToken.mTokenCode ;
-  ptr->mStartLocation = mTokenStartLocation ;
-  ptr->mEndLocation = mTokenEndLocation ;
-  ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;
-  ioToken.mTemplateStringBeforeToken = "" ;
-  ptr->mLexicalAttribute_tokenString = ioToken.mLexicalAttribute_tokenString ;
-  ptr->mLexicalAttribute_uint_33__32_value = ioToken.mLexicalAttribute_uint_33__32_value ;
-  enterTokenFromPointer (ptr) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//               A T T R I B U T E   A C C E S S                                                 
-//--------------------------------------------------------------------------------------------------
-
-String Lexique_kerbdd_5F_lexique::attributeValue_tokenString (void) const {
-  cTokenFor_kerbdd_5F_lexique * ptr = (cTokenFor_kerbdd_5F_lexique *) currentTokenPtr (HERE) ;
-  return ptr->mLexicalAttribute_tokenString ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-uint32_t Lexique_kerbdd_5F_lexique::attributeValue_uint_33__32_value (void) const {
-  cTokenFor_kerbdd_5F_lexique * ptr = (cTokenFor_kerbdd_5F_lexique *) currentTokenPtr (HERE) ;
-  return ptr->mLexicalAttribute_uint_33__32_value ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//         A S S I G N    F R O M    A T T R I B U T E                                           
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring Lexique_kerbdd_5F_lexique::synthetizedAttribute_tokenString (void) const {
-  cTokenFor_kerbdd_5F_lexique * ptr = (cTokenFor_kerbdd_5F_lexique *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_kerbdd_5F_lexique) ;
-  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_string value (ptr->mLexicalAttribute_tokenString) ;
-  GGS_lstring result (value, currentLocation) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luint Lexique_kerbdd_5F_lexique::synthetizedAttribute_uint_33__32_value (void) const {
-  cTokenFor_kerbdd_5F_lexique * ptr = (cTokenFor_kerbdd_5F_lexique *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_kerbdd_5F_lexique) ;
-  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_uint value (ptr->mLexicalAttribute_uint_33__32_value) ;
-  GGS_luint result (value, currentLocation) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//                         I N T R O S P E C T I O N                                             
-//--------------------------------------------------------------------------------------------------
-
- GGS_stringlist Lexique_kerbdd_5F_lexique::symbols (LOCATION_ARGS) {
-  GGS_stringlist result = GGS_stringlist::init (nullptr COMMA_THERE) ;
-  result.addAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("integer") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("literal_string") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("comment") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("nodeHashMapSize") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("andCacheMapSize") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("domain") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("bool") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("true") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("false") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("display") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("include") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("graphviz") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("dump") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("(") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string (")") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("[") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("]") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("{") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("}") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string (":=") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string (":") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string (".") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("..") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("+=") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("-=") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("->") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("&") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("|") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("^") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("~") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string (",") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("\?") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("!") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string (";") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("=") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("!=") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("<") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("<=") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string (">") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string (">=") COMMA_HERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void getKeywordLists_kerbdd_5F_lexique (GenericUniqueArray <String> & ioList) {
-  ioList.appendObject ("kerbdd_lexique:delimitorsList") ;
-  ioList.appendObject ("kerbdd_lexique:keyWordList") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void getKeywordsForIdentifier_kerbdd_5F_lexique (const String & inIdentifier,
-                                                        bool & ioFound,
-                                                        GenericUniqueArray <String> & ioList) {
-  if (inIdentifier == "kerbdd_lexique:delimitorsList") {
-    ioFound = true ;
-    ioList.appendObject ("!") ;
-    ioList.appendObject ("&") ;
-    ioList.appendObject ("(") ;
-    ioList.appendObject (")") ;
-    ioList.appendObject (",") ;
-    ioList.appendObject (".") ;
-    ioList.appendObject (":") ;
-    ioList.appendObject (";") ;
-    ioList.appendObject ("<") ;
-    ioList.appendObject ("=") ;
-    ioList.appendObject (">") ;
-    ioList.appendObject ("\?") ;
-    ioList.appendObject ("[") ;
-    ioList.appendObject ("]") ;
-    ioList.appendObject ("^") ;
-    ioList.appendObject ("{") ;
-    ioList.appendObject ("|") ;
-    ioList.appendObject ("}") ;
-    ioList.appendObject ("~") ;
-    ioList.appendObject ("!=") ;
-    ioList.appendObject ("+=") ;
-    ioList.appendObject ("-=") ;
-    ioList.appendObject ("->") ;
-    ioList.appendObject ("..") ;
-    ioList.appendObject (":=") ;
-    ioList.appendObject ("<=") ;
-    ioList.appendObject (">=") ;
-    ioList.sortArrayUsingCompareMethod() ;
-  }
-  if (inIdentifier == "kerbdd_lexique:keyWordList") {
-    ioFound = true ;
-    ioList.appendObject ("bool") ;
-    ioList.appendObject ("dump") ;
-    ioList.appendObject ("true") ;
-    ioList.appendObject ("false") ;
-    ioList.appendObject ("domain") ;
-    ioList.appendObject ("display") ;
-    ioList.appendObject ("include") ;
-    ioList.appendObject ("graphviz") ;
-    ioList.appendObject ("andCacheMapSize") ;
-    ioList.appendObject ("nodeHashMapSize") ;
-    ioList.sortArrayUsingCompareMethod() ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static LexiqueIntrospection lexiqueIntrospection_kerbdd_5F_lexique
-__attribute__ ((used))
-__attribute__ ((unused)) (getKeywordLists_kerbdd_5F_lexique, getKeywordsForIdentifier_kerbdd_5F_lexique) ;
-
-//--------------------------------------------------------------------------------------------------
-//   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
-//--------------------------------------------------------------------------------------------------
-
-uint32_t Lexique_kerbdd_5F_lexique::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [42] = {0,
-    0 /* kerbdd_lexique_1_identifier */,
-    2 /* kerbdd_lexique_1_integer */,
-    3 /* kerbdd_lexique_1_literal_5F_string */,
-    5 /* kerbdd_lexique_1_comment */,
-    1 /* kerbdd_lexique_1_nodeHashMapSize */,
-    1 /* kerbdd_lexique_1_andCacheMapSize */,
-    1 /* kerbdd_lexique_1_domain */,
-    1 /* kerbdd_lexique_1_bool */,
-    1 /* kerbdd_lexique_1_true */,
-    1 /* kerbdd_lexique_1_false */,
-    1 /* kerbdd_lexique_1_display */,
-    1 /* kerbdd_lexique_1_include */,
-    1 /* kerbdd_lexique_1_graphviz */,
-    1 /* kerbdd_lexique_1_dump */,
-    4 /* kerbdd_lexique_1__28_ */,
-    4 /* kerbdd_lexique_1__29_ */,
-    4 /* kerbdd_lexique_1__5B_ */,
-    4 /* kerbdd_lexique_1__5D_ */,
-    4 /* kerbdd_lexique_1__7B_ */,
-    4 /* kerbdd_lexique_1__7D_ */,
-    4 /* kerbdd_lexique_1__3A__3D_ */,
-    4 /* kerbdd_lexique_1__3A_ */,
-    4 /* kerbdd_lexique_1__2E_ */,
-    4 /* kerbdd_lexique_1__2E__2E_ */,
-    4 /* kerbdd_lexique_1__2B__3D_ */,
-    4 /* kerbdd_lexique_1__2D__3D_ */,
-    4 /* kerbdd_lexique_1__2D__3E_ */,
-    4 /* kerbdd_lexique_1__26_ */,
-    4 /* kerbdd_lexique_1__7C_ */,
-    4 /* kerbdd_lexique_1__5E_ */,
-    4 /* kerbdd_lexique_1__7E_ */,
-    4 /* kerbdd_lexique_1__2C_ */,
-    4 /* kerbdd_lexique_1__3F_ */,
-    4 /* kerbdd_lexique_1__21_ */,
-    4 /* kerbdd_lexique_1__3B_ */,
-    4 /* kerbdd_lexique_1__3D_ */,
-    4 /* kerbdd_lexique_1__21__3D_ */,
-    4 /* kerbdd_lexique_1__3C_ */,
-    4 /* kerbdd_lexique_1__3C__3D_ */,
-    4 /* kerbdd_lexique_1__3E_ */,
-    4 /* kerbdd_lexique_1__3E__3D_ */
-  } ;
-  return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
+GGS_setting_5F_nodeHashMapSize_2E_weak::GGS_setting_5F_nodeHashMapSize_2E_weak (void) :
+GGS_abstractFormula_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                      
-//--------------------------------------------------------------------------------------------------
 
-String Lexique_kerbdd_5F_lexique::styleNameForIndex (const uint32_t inStyleIndex) const {
-  String result ;
-  if (inStyleIndex < 6) {
-    static const char * kStyleArray [6] = {
-      "",
-      "keywordsStyle",
-      "integerStyle",
-      "stringStyle",
-      "delimitersStyle",
-      "commentStyle"
-    } ;
-    result = kStyleArray [inStyleIndex] ;
+GGS_setting_5F_nodeHashMapSize_2E_weak & GGS_setting_5F_nodeHashMapSize_2E_weak::operator = (const GGS_setting_5F_nodeHashMapSize & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
   }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind_2E_fixedPoint::GGS_formulaKind_2E_fixedPoint (void) :
-mProperty_startValue () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind_2E_fixedPoint::GGS_formulaKind_2E_fixedPoint (const GGS_formulaKind_2E_fixedPoint & inSource) :
-mProperty_startValue (inSource.mProperty_startValue) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind_2E_fixedPoint & GGS_formulaKind_2E_fixedPoint::operator = (const GGS_formulaKind_2E_fixedPoint & inSource) {
-  mProperty_startValue = inSource.mProperty_startValue ;
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
   return *this ;
 }
 
-//---Synthetized initializer -----------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
-GGS_formulaKind_2E_fixedPoint GGS_formulaKind_2E_fixedPoint::init_21_ (const GGS_binaryset & in_startValue,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formulaKind_2E_fixedPoint result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_startValue = in_startValue ;
+GGS_setting_5F_nodeHashMapSize_2E_weak::GGS_setting_5F_nodeHashMapSize_2E_weak (const GGS_setting_5F_nodeHashMapSize & inSource) :
+GGS_abstractFormula_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setting_5F_nodeHashMapSize_2E_weak GGS_setting_5F_nodeHashMapSize_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_setting_5F_nodeHashMapSize_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formulaKind_2E_fixedPoint::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind_2E_fixedPoint::GGS_formulaKind_2E_fixedPoint (const GGS_binaryset & inOperand0) :
-mProperty_startValue (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_formulaKind_2E_fixedPoint::isValid (void) const {
-  return mProperty_startValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaKind_2E_fixedPoint::drop (void) {
-  mProperty_startValue.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaKind_2E_fixedPoint::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @formulaKind.fixedPoint:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_startValue.description (ioString, inIndentation+1) ;
+GGS_setting_5F_nodeHashMapSize GGS_setting_5F_nodeHashMapSize_2E_weak::unwrappedValue (void) const {
+  GGS_setting_5F_nodeHashMapSize result ;
+  if (isValid ()) {
+    const cPtr_setting_5F_nodeHashMapSize * p = (cPtr_setting_5F_nodeHashMapSize *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_setting_5F_nodeHashMapSize (p) ;
+    }
   }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @formulaKind.fixedPoint generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaKind_2E_fixedPoint ("formulaKind.fixedPoint",
-                                                                              nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_formulaKind_2E_fixedPoint::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_formulaKind_2E_fixedPoint ;
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_formulaKind_2E_fixedPoint::clonedObject (void) const {
+GGS_setting_5F_nodeHashMapSize GGS_setting_5F_nodeHashMapSize_2E_weak::bang_setting_5F_nodeHashMapSize_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_setting_5F_nodeHashMapSize result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_setting_5F_nodeHashMapSize) ;
+      result = GGS_setting_5F_nodeHashMapSize ((cPtr_setting_5F_nodeHashMapSize *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @setting_nodeHashMapSize.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize_2E_weak ("setting_nodeHashMapSize.weak",
+                                                                                       & kTypeDescriptor_GALGAS_abstractFormula_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_setting_5F_nodeHashMapSize_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_setting_5F_nodeHashMapSize_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_formulaKind_2E_fixedPoint (*this)) ;
+    macroMyNew (result, GGS_setting_5F_nodeHashMapSize_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formulaKind_2E_fixedPoint GGS_formulaKind_2E_fixedPoint::extractObject (const GGS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GGS_formulaKind_2E_fixedPoint result ;
-  const GGS_formulaKind_2E_fixedPoint * p = (const GGS_formulaKind_2E_fixedPoint *) inObject.embeddedObject () ;
+GGS_setting_5F_nodeHashMapSize_2E_weak GGS_setting_5F_nodeHashMapSize_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_setting_5F_nodeHashMapSize_2E_weak result ;
+  const GGS_setting_5F_nodeHashMapSize_2E_weak * p = (const GGS_setting_5F_nodeHashMapSize_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_formulaKind_2E_fixedPoint *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_setting_5F_nodeHashMapSize_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("formulaKind.fixedPoint", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("setting_nodeHashMapSize.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//Optional @formulaKind_2E_fixedPoint_3F_
-//--------------------------------------------------------------------------------------------------
 
-GGS_formulaKind_2E_fixedPoint_3F_::GGS_formulaKind_2E_fixedPoint_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind_2E_fixedPoint_3F_::GGS_formulaKind_2E_fixedPoint_3F_ (const GGS_formulaKind_2E_fixedPoint & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaKind_2E_fixedPoint_3F_ GGS_formulaKind_2E_fixedPoint_3F_::init_nil (void) {
-  GGS_formulaKind_2E_fixedPoint_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_formulaKind_2E_fixedPoint_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
+ComparisonResult GGS_setting_5F_andCacheMapSize_2E_weak::objectCompare (const GGS_setting_5F_andCacheMapSize_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_formulaKind_2E_fixedPoint_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
+GGS_setting_5F_andCacheMapSize_2E_weak::GGS_setting_5F_andCacheMapSize_2E_weak (void) :
+GGS_abstractFormula_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_formulaKind_2E_fixedPoint_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GGS_formulaKind_2E_fixedPoint () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaKind_2E_fixedPoint_3F_::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
+GGS_setting_5F_andCacheMapSize_2E_weak & GGS_setting_5F_andCacheMapSize_2E_weak::operator = (const GGS_setting_5F_andCacheMapSize & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
   }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @formulaKind.fixedPoint? generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaKind_2E_fixedPoint_3F_ ("formulaKind.fixedPoint?",
-                                                                                  nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_formulaKind_2E_fixedPoint_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_formulaKind_2E_fixedPoint_3F_ ;
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_formulaKind_2E_fixedPoint_3F_::clonedObject (void) const {
+GGS_setting_5F_andCacheMapSize_2E_weak::GGS_setting_5F_andCacheMapSize_2E_weak (const GGS_setting_5F_andCacheMapSize & inSource) :
+GGS_abstractFormula_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setting_5F_andCacheMapSize_2E_weak GGS_setting_5F_andCacheMapSize_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_setting_5F_andCacheMapSize_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setting_5F_andCacheMapSize GGS_setting_5F_andCacheMapSize_2E_weak::unwrappedValue (void) const {
+  GGS_setting_5F_andCacheMapSize result ;
+  if (isValid ()) {
+    const cPtr_setting_5F_andCacheMapSize * p = (cPtr_setting_5F_andCacheMapSize *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_setting_5F_andCacheMapSize (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setting_5F_andCacheMapSize GGS_setting_5F_andCacheMapSize_2E_weak::bang_setting_5F_andCacheMapSize_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_setting_5F_andCacheMapSize result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_setting_5F_andCacheMapSize) ;
+      result = GGS_setting_5F_andCacheMapSize ((cPtr_setting_5F_andCacheMapSize *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @setting_andCacheMapSize.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize_2E_weak ("setting_andCacheMapSize.weak",
+                                                                                       & kTypeDescriptor_GALGAS_abstractFormula_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_setting_5F_andCacheMapSize_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_setting_5F_andCacheMapSize_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_formulaKind_2E_fixedPoint_3F_ (*this)) ;
+    macroMyNew (result, GGS_setting_5F_andCacheMapSize_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formulaKind_2E_fixedPoint_3F_ GGS_formulaKind_2E_fixedPoint_3F_::extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_formulaKind_2E_fixedPoint_3F_ result ;
-  const GGS_formulaKind_2E_fixedPoint_3F_ * p = (const GGS_formulaKind_2E_fixedPoint_3F_ *) inObject.embeddedObject () ;
+GGS_setting_5F_andCacheMapSize_2E_weak GGS_setting_5F_andCacheMapSize_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_setting_5F_andCacheMapSize_2E_weak result ;
+  const GGS_setting_5F_andCacheMapSize_2E_weak * p = (const GGS_setting_5F_andCacheMapSize_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_formulaKind_2E_fixedPoint_3F_ *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_setting_5F_andCacheMapSize_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("formulaKind.fixedPoint?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("setting_andCacheMapSize.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14027,24 +13944,1223 @@ GGS_varList_2E_element GGS_varList_2E_element::extractObject (const GGS_object &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractFormula analyzeFormula'
-//
+
+GGS_formulaKind_2E_fixedPoint::GGS_formulaKind_2E_fixedPoint (void) :
+mProperty_startValue () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_analyzeFormula (cPtr_abstractFormula * inObject,
-                                         const GGS_string constin_inSourceFilePath,
-                                         const GGS_domainMap constin_inDomainMap,
-                                         GGS_computedFormulaMap & io_ioComputedFormulaMap,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractFormula) ;
-    inObject->method_analyzeFormula (constin_inSourceFilePath, constin_inDomainMap, io_ioComputedFormulaMap, inCompiler COMMA_THERE) ;
+GGS_formulaKind_2E_fixedPoint::GGS_formulaKind_2E_fixedPoint (const GGS_formulaKind_2E_fixedPoint & inSource) :
+mProperty_startValue (inSource.mProperty_startValue) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind_2E_fixedPoint & GGS_formulaKind_2E_fixedPoint::operator = (const GGS_formulaKind_2E_fixedPoint & inSource) {
+  mProperty_startValue = inSource.mProperty_startValue ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_formulaKind_2E_fixedPoint GGS_formulaKind_2E_fixedPoint::init_21_ (const GGS_binaryset & in_startValue,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formulaKind_2E_fixedPoint result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_startValue = in_startValue ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaKind_2E_fixedPoint::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind_2E_fixedPoint::GGS_formulaKind_2E_fixedPoint (const GGS_binaryset & inOperand0) :
+mProperty_startValue (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_formulaKind_2E_fixedPoint::isValid (void) const {
+  return mProperty_startValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaKind_2E_fixedPoint::drop (void) {
+  mProperty_startValue.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaKind_2E_fixedPoint::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @formulaKind.fixedPoint:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_startValue.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @formulaKind.fixedPoint generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaKind_2E_fixedPoint ("formulaKind.fixedPoint",
+                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_formulaKind_2E_fixedPoint::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formulaKind_2E_fixedPoint ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_formulaKind_2E_fixedPoint::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_formulaKind_2E_fixedPoint (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind_2E_fixedPoint GGS_formulaKind_2E_fixedPoint::extractObject (const GGS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GGS_formulaKind_2E_fixedPoint result ;
+  const GGS_formulaKind_2E_fixedPoint * p = (const GGS_formulaKind_2E_fixedPoint *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_formulaKind_2E_fixedPoint *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("formulaKind.fixedPoint", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @formulaKind_2E_fixedPoint_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind_2E_fixedPoint_3F_::GGS_formulaKind_2E_fixedPoint_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind_2E_fixedPoint_3F_::GGS_formulaKind_2E_fixedPoint_3F_ (const GGS_formulaKind_2E_fixedPoint & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind_2E_fixedPoint_3F_ GGS_formulaKind_2E_fixedPoint_3F_::init_nil (void) {
+  GGS_formulaKind_2E_fixedPoint_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_formulaKind_2E_fixedPoint_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_formulaKind_2E_fixedPoint_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaKind_2E_fixedPoint_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_formulaKind_2E_fixedPoint () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formulaKind_2E_fixedPoint_3F_::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @formulaKind.fixedPoint? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaKind_2E_fixedPoint_3F_ ("formulaKind.fixedPoint?",
+                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_formulaKind_2E_fixedPoint_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formulaKind_2E_fixedPoint_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_formulaKind_2E_fixedPoint_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_formulaKind_2E_fixedPoint_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formulaKind_2E_fixedPoint_3F_ GGS_formulaKind_2E_fixedPoint_3F_::extractObject (const GGS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GGS_formulaKind_2E_fixedPoint_3F_ result ;
+  const GGS_formulaKind_2E_fixedPoint_3F_ * p = (const GGS_formulaKind_2E_fixedPoint_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_formulaKind_2E_fixedPoint_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("formulaKind.fixedPoint?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_start_5F_symbol_i0_ (GGS_ast & outArgument_outAST,
+                                                                          Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outAST.drop () ; // Release 'out' argument
+  outArgument_outAST = GGS_ast::init (inCompiler COMMA_HERE) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    if (select_kerbdd_5F_syntax_0 (inCompiler) == 2) {
+      nt_topLevelDeClaration_ (outArgument_outAST, inCompiler) ;
+    }else{
+      repeatFlag_0 = false ;
+    }
   }
 }
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_start_5F_symbol_i0_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    if (select_kerbdd_5F_syntax_0 (inCompiler) == 2) {
+      nt_topLevelDeClaration_indexing (inCompiler) ;
+    }else{
+      repeatFlag_0 = false ;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i1_ (GGS_ast & ioArgument_ioAST,
+                                                                              Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_domain COMMA_SOURCE_FILE ("domain.galgas4", 41)) ;
+  GGS_lstring var_domainName_1549 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.galgas4", 42)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.galgas4", 43)) ;
+  GGS_domainDeclarationType var_domainDeclarationType_1596 ;
+  switch (select_kerbdd_5F_syntax_1 (inCompiler)) {
+  case 1: {
+    GGS_bddType var_type_1653 ;
+    nt_type_ (var_type_1653, inCompiler) ;
+    var_domainDeclarationType_1596 = GGS_domainDeclarationType::class_func_type (var_type_1653  COMMA_SOURCE_FILE ("domain.galgas4", 47)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("domain.galgas4", 49)) ;
+    GGS_domainFieldList var_fieldList_1761 ;
+    nt_recordFields_ (var_fieldList_1761, inCompiler) ;
+    var_domainDeclarationType_1596 = GGS_domainDeclarationType::class_func_record (var_fieldList_1761  COMMA_SOURCE_FILE ("domain.galgas4", 51)) ;
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("domain.galgas4", 52)) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("domain.galgas4", 54)) ;
+  {
+  ioArgument_ioAST.mProperty_mDomainList.setter_append (var_domainName_1549, var_domainDeclarationType_1596, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 55)) ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i1_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_domain COMMA_SOURCE_FILE ("domain.galgas4", 41)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.galgas4", 42)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.galgas4", 43)) ;
+  switch (select_kerbdd_5F_syntax_1 (inCompiler)) {
+  case 1: {
+    nt_type_indexing (inCompiler) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("domain.galgas4", 49)) ;
+    nt_recordFields_indexing (inCompiler) ;
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("domain.galgas4", 52)) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("domain.galgas4", 54)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_recordFields_i2_ (GGS_domainFieldList & outArgument_outFormulaArgumentList,
+                                                                       Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outFormulaArgumentList.drop () ; // Release 'out' argument
+  GGS_domainFieldList temp_0 = GGS_domainFieldList::init (inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 61)) ;
+  outArgument_outFormulaArgumentList = temp_0 ;
+  bool repeatFlag_1 = true ;
+  while (repeatFlag_1) {
+    GGS_lstring var_varName_2146 = inCompiler->synthetizedAttribute_tokenString () ;
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.galgas4", 63)) ;
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.galgas4", 64)) ;
+    GGS_bddType var_type_2189 ;
+    nt_type_ (var_type_2189, inCompiler) ;
+    {
+    outArgument_outFormulaArgumentList.setter_append (var_varName_2146, var_type_2189, inCompiler COMMA_SOURCE_FILE ("domain.galgas4", 66)) ;
+    }
+    if (select_kerbdd_5F_syntax_2 (inCompiler) == 2) {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("domain.galgas4", 68)) ;
+    }else{
+      repeatFlag_1 = false ;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_recordFields_i2_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.galgas4", 63)) ;
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.galgas4", 64)) ;
+    nt_type_indexing (inCompiler) ;
+    if (select_kerbdd_5F_syntax_2 (inCompiler) == 2) {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("domain.galgas4", 68)) ;
+    }else{
+      repeatFlag_0 = false ;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i3_ (GGS_bddType & outArgument_outType,
+                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outType.drop () ; // Release 'out' argument
+  switch (select_kerbdd_5F_syntax_3 (inCompiler)) {
+  case 1: {
+    GGS_lstring var_typeName_2438 = inCompiler->synthetizedAttribute_tokenString () ;
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.galgas4", 76)) ;
+    outArgument_outType = GGS_bddType::class_func_namedType (var_typeName_2438  COMMA_SOURCE_FILE ("domain.galgas4", 77)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_bool COMMA_SOURCE_FILE ("domain.galgas4", 79)) ;
+    switch (select_kerbdd_5F_syntax_4 (inCompiler)) {
+    case 1: {
+      outArgument_outType = GGS_bddType::class_func_bool (SOURCE_FILE ("domain.galgas4", 81)) ;
+    } break ;
+    case 2: {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5B_ COMMA_SOURCE_FILE ("domain.galgas4", 83)) ;
+      GGS_luint var_bitCount_2582 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("domain.galgas4", 84)) ;
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5D_ COMMA_SOURCE_FILE ("domain.galgas4", 85)) ;
+      GalgasBool test_0 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_0) {
+        test_0 = GGS_bool (ComparisonKind::equal, var_bitCount_2582.readProperty_uint ().objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+        if (GalgasBool::boolTrue == test_0) {
+          GenericArray <FixItDescription> fixItArray1 ;
+          inCompiler->emitSemanticError (var_bitCount_2582.readProperty_location (), GGS_string ("size should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("domain.galgas4", 87)) ;
+        }
+      }
+      outArgument_outType = GGS_bddType::class_func_boolArray (var_bitCount_2582.readProperty_uint ()  COMMA_SOURCE_FILE ("domain.galgas4", 89)) ;
+    } break ;
+    default:
+      break ;
+    }
+  } break ;
+  default:
+    break ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i3_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  switch (select_kerbdd_5F_syntax_3 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.galgas4", 76)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_bool COMMA_SOURCE_FILE ("domain.galgas4", 79)) ;
+    switch (select_kerbdd_5F_syntax_4 (inCompiler)) {
+    case 1: {
+    } break ;
+    case 2: {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5B_ COMMA_SOURCE_FILE ("domain.galgas4", 83)) ;
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("domain.galgas4", 84)) ;
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5D_ COMMA_SOURCE_FILE ("domain.galgas4", 85)) ;
+    } break ;
+    default:
+      break ;
+    }
+  } break ;
+  default:
+    break ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i4_ (GGS_ast & ioArgument_ioAST,
+                                                                              Lexique_kerbdd_5F_lexique * inCompiler) {
+  GGS_lstring var_formulaName_1228 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-assignment.galgas4", 28)) ;
+  GGS_domainFieldList var_domainFieldList_1264 ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 30)) ;
+  switch (select_kerbdd_5F_syntax_5 (inCompiler)) {
+  case 1: {
+    GGS_domainFieldList temp_0 = GGS_domainFieldList::init (inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 32)) ;
+    var_domainFieldList_1264 = temp_0 ;
+  } break ;
+  case 2: {
+    nt_recordFields_ (var_domainFieldList_1264, inCompiler) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 36)) ;
+  GGS_formulaKind var_kind_1394 ;
+  switch (select_kerbdd_5F_syntax_6 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A__3D_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 39)) ;
+    var_kind_1394 = GGS_formulaKind::class_func_assignment (SOURCE_FILE ("formula-assignment.galgas4", 40)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2B__3D_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 42)) ;
+    var_kind_1394 = GGS_formulaKind::class_func_fixedPoint (GGS_binaryset::class_func_emptyBinarySet (SOURCE_FILE ("formula-assignment.galgas4", 43))  COMMA_SOURCE_FILE ("formula-assignment.galgas4", 43)) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2D__3D_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 45)) ;
+    var_kind_1394 = GGS_formulaKind::class_func_fixedPoint (GGS_binaryset::class_func_fullBinarySet (SOURCE_FILE ("formula-assignment.galgas4", 46))  COMMA_SOURCE_FILE ("formula-assignment.galgas4", 46)) ;
+  } break ;
+  default:
+    break ;
+  }
+  GGS_expression var_expression_1612 ;
+  nt_expression_ (var_expression_1612, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 49)) ;
+  {
+  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_assignmentFormula::init_21__21__21__21_ (var_formulaName_1228, var_domainFieldList_1264, var_kind_1394, var_expression_1612, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 50)) ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i4_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-assignment.galgas4", 28)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 30)) ;
+  switch (select_kerbdd_5F_syntax_5 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    nt_recordFields_indexing (inCompiler) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 36)) ;
+  switch (select_kerbdd_5F_syntax_6 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A__3D_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 39)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2B__3D_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 42)) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2D__3D_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 45)) ;
+  } break ;
+  default:
+    break ;
+  }
+  nt_expression_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-assignment.galgas4", 49)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i5_ (GGS_ast & ioArgument_ioAST,
+                                                                              Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_dump COMMA_SOURCE_FILE ("formula-dump.galgas4", 18)) ;
+  GGS_lstring var_formulaName_934 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-dump.galgas4", 19)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-dump.galgas4", 20)) ;
+  {
+  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_dumpFormula::init_21_ (var_formulaName_934, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 21)) ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i5_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_dump COMMA_SOURCE_FILE ("formula-dump.galgas4", 18)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-dump.galgas4", 19)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-dump.galgas4", 20)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_expression_i6_ (GGS_expression & outArgument_outExpression,
+                                                                     Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  nt_comparison_ (outArgument_outExpression, inCompiler) ;
+  switch (select_kerbdd_5F_syntax_7 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 149)) ;
+    GGS_expression var_rightExpression_4927 ;
+    nt_comparison_ (var_rightExpression_4927, inCompiler) ;
+    outArgument_outExpression = GGS_equalExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_4927, inCompiler COMMA_HERE) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 153)) ;
+    GGS_expression var_rightExpression_5065 ;
+    nt_comparison_ (var_rightExpression_5065, inCompiler) ;
+    outArgument_outExpression = GGS_notEqualExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5065, inCompiler COMMA_HERE) ;
+  } break ;
+  default:
+    break ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_expression_i6_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  nt_comparison_indexing (inCompiler) ;
+  switch (select_kerbdd_5F_syntax_7 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 149)) ;
+    nt_comparison_indexing (inCompiler) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 153)) ;
+    nt_comparison_indexing (inCompiler) ;
+  } break ;
+  default:
+    break ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_comparison_i7_ (GGS_expression & outArgument_outExpression,
+                                                                     Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  nt_term_ (outArgument_outExpression, inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_kerbdd_5F_syntax_8 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7C_ COMMA_SOURCE_FILE ("expression.galgas4", 165)) ;
+      GGS_expression var_rightExpression_5395 ;
+      nt_term_ (var_rightExpression_5395, inCompiler) ;
+      outArgument_outExpression = GGS_orExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5395, inCompiler COMMA_HERE) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5E_ COMMA_SOURCE_FILE ("expression.galgas4", 169)) ;
+      GGS_expression var_rightExpression_5526 ;
+      nt_term_ (var_rightExpression_5526, inCompiler) ;
+      outArgument_outExpression = GGS_xorExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5526, inCompiler COMMA_HERE) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_comparison_i7_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  nt_term_indexing (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_kerbdd_5F_syntax_8 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7C_ COMMA_SOURCE_FILE ("expression.galgas4", 165)) ;
+      nt_term_indexing (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5E_ COMMA_SOURCE_FILE ("expression.galgas4", 169)) ;
+      nt_term_indexing (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i8_ (GGS_expression & outArgument_outExpression,
+                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  nt_factor_ (outArgument_outExpression, inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_kerbdd_5F_syntax_9 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__26_ COMMA_SOURCE_FILE ("expression.galgas4", 181)) ;
+      GGS_expression var_rightExpression_5849 ;
+      nt_factor_ (var_rightExpression_5849, inCompiler) ;
+      outArgument_outExpression = GGS_andExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5849, inCompiler COMMA_HERE) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2D__3E_ COMMA_SOURCE_FILE ("expression.galgas4", 185)) ;
+      GGS_expression var_rightExpression_5984 ;
+      nt_factor_ (var_rightExpression_5984, inCompiler) ;
+      outArgument_outExpression = GGS_impliesExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5984, inCompiler COMMA_HERE) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i8_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  nt_factor_indexing (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_kerbdd_5F_syntax_9 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__26_ COMMA_SOURCE_FILE ("expression.galgas4", 181)) ;
+      nt_factor_indexing (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2D__3E_ COMMA_SOURCE_FILE ("expression.galgas4", 185)) ;
+      nt_factor_indexing (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i9_ (GGS_expression & outArgument_outExpression,
+                                                                 Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  GGS_lstring var_varName_6250 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 194)) ;
+  switch (select_kerbdd_5F_syntax_10 (inCompiler)) {
+  case 1: {
+    outArgument_outExpression = GGS_varInExpression::init_21_ (var_varName_6250, inCompiler COMMA_HERE) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.galgas4", 198)) ;
+    GGS_luint var_varBit_6349 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.galgas4", 199)) ;
+    outArgument_outExpression = GGS_varBitInExpression::init_21__21_ (var_varName_6250, var_varBit_6349, inCompiler COMMA_HERE) ;
+  } break ;
+  default:
+    break ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i9_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 194)) ;
+  switch (select_kerbdd_5F_syntax_10 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.galgas4", 198)) ;
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.galgas4", 199)) ;
+  } break ;
+  default:
+    break ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i10_ (GGS_expression & outArgument_outExpression,
+                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.galgas4", 207)) ;
+  nt_expression_ (outArgument_outExpression, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.galgas4", 209)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i10_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.galgas4", 207)) ;
+  nt_expression_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.galgas4", 209)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i11_ (GGS_expression & outArgument_outExpression,
+                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7E_ COMMA_SOURCE_FILE ("expression.galgas4", 215)) ;
+  GGS_expression var_expression_6786 ;
+  nt_factor_ (var_expression_6786, inCompiler) ;
+  outArgument_outExpression = GGS_complementExpression::init_21_ (var_expression_6786, inCompiler COMMA_HERE) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i11_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7E_ COMMA_SOURCE_FILE ("expression.galgas4", 215)) ;
+  nt_factor_indexing (inCompiler) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i12_ (GGS_expression & outArgument_outExpression,
+                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_true COMMA_SOURCE_FILE ("expression.galgas4", 223)) ;
+  outArgument_outExpression = GGS_trueExpression::init (inCompiler COMMA_HERE) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i12_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_true COMMA_SOURCE_FILE ("expression.galgas4", 223)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i13_ (GGS_expression & outArgument_outExpression,
+                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_false COMMA_SOURCE_FILE ("expression.galgas4", 230)) ;
+  outArgument_outExpression = GGS_falseExpression::init (inCompiler COMMA_HERE) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i13_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_false COMMA_SOURCE_FILE ("expression.galgas4", 230)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i14_ (GGS_expression & outArgument_outExpression,
+                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  GGS_lstring var_formulaName_7411 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 237)) ;
+  GGS_formulaParameterListInExpression temp_0 = GGS_formulaParameterListInExpression::init (inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 238)) ;
+  GGS_formulaParameterListInExpression var_parameterList_7464 = temp_0 ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.galgas4", 239)) ;
+  switch (select_kerbdd_5F_syntax_11 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    bool repeatFlag_1 = true ;
+    while (repeatFlag_1) {
+      GGS_lstring var_parameterName_7539 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 243)) ;
+      GGS_lstringlist temp_2 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 244)) ;
+      GGS_lstringlist var_fieldNames_7577 = temp_2 ;
+      bool repeatFlag_3 = true ;
+      while (repeatFlag_3) {
+        if (select_kerbdd_5F_syntax_13 (inCompiler) == 2) {
+          inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.galgas4", 247)) ;
+          GGS_lstring var_fieldName_7657 = inCompiler->synthetizedAttribute_tokenString () ;
+          inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 248)) ;
+          {
+          var_fieldNames_7577.setter_append (var_fieldName_7657, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 249)) ;
+          }
+        }else{
+          repeatFlag_3 = false ;
+        }
+      }
+      {
+      var_parameterList_7464.setter_append (var_parameterName_7539, var_fieldNames_7577, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 251)) ;
+      }
+      if (select_kerbdd_5F_syntax_12 (inCompiler) == 2) {
+        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("expression.galgas4", 253)) ;
+      }else{
+        repeatFlag_1 = false ;
+      }
+    }
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.galgas4", 256)) ;
+  outArgument_outExpression = GGS_formulaInExpression::init_21__21_ (var_formulaName_7411, var_parameterList_7464, inCompiler COMMA_HERE) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i14_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 237)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.galgas4", 239)) ;
+  switch (select_kerbdd_5F_syntax_11 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    bool repeatFlag_0 = true ;
+    while (repeatFlag_0) {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 243)) ;
+      bool repeatFlag_1 = true ;
+      while (repeatFlag_1) {
+        if (select_kerbdd_5F_syntax_13 (inCompiler) == 2) {
+          inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.galgas4", 247)) ;
+          inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 248)) ;
+        }else{
+          repeatFlag_1 = false ;
+        }
+      }
+      if (select_kerbdd_5F_syntax_12 (inCompiler) == 2) {
+        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("expression.galgas4", 253)) ;
+      }else{
+        repeatFlag_0 = false ;
+      }
+    }
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.galgas4", 256)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i15_ (GGS_expression & outArgument_outExpression,
+                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3F_ COMMA_SOURCE_FILE ("expression.galgas4", 263)) ;
+  GGS_domainFieldList var_domainFieldList_8079 ;
+  nt_recordFields_ (var_domainFieldList_8079, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.galgas4", 265)) ;
+  GGS_expression var_expression_8123 ;
+  nt_expression_ (var_expression_8123, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.galgas4", 267)) ;
+  outArgument_outExpression = GGS_existInExpression::init_21__21_ (var_domainFieldList_8079, var_expression_8123, inCompiler COMMA_HERE) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i15_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3F_ COMMA_SOURCE_FILE ("expression.galgas4", 263)) ;
+  nt_recordFields_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.galgas4", 265)) ;
+  nt_expression_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.galgas4", 267)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i16_ (GGS_expression & outArgument_outExpression,
+                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21_ COMMA_SOURCE_FILE ("expression.galgas4", 274)) ;
+  GGS_domainFieldList var_domainFieldList_8404 ;
+  nt_recordFields_ (var_domainFieldList_8404, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.galgas4", 276)) ;
+  GGS_expression var_expression_8448 ;
+  nt_expression_ (var_expression_8448, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.galgas4", 278)) ;
+  outArgument_outExpression = GGS_forAllInExpression::init_21__21_ (var_domainFieldList_8404, var_expression_8448, inCompiler COMMA_HERE) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i16_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21_ COMMA_SOURCE_FILE ("expression.galgas4", 274)) ;
+  nt_recordFields_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.galgas4", 276)) ;
+  nt_expression_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.galgas4", 278)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i17_ (GGS_expression & outArgument_outExpression,
+                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7B_ COMMA_SOURCE_FILE ("expression.galgas4", 284)) ;
+  GGS_lstring var_varName_8710 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 285)) ;
+  GGS_lstringlist temp_0 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 286)) ;
+  GGS_lstringlist var_leftFieldNames_8738 = temp_0 ;
+  bool repeatFlag_1 = true ;
+  while (repeatFlag_1) {
+    if (select_kerbdd_5F_syntax_14 (inCompiler) == 2) {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.galgas4", 289)) ;
+      GGS_lstring var_fieldName_8806 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 290)) ;
+      {
+      var_leftFieldNames_8738.setter_append (var_fieldName_8806, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 291)) ;
+      }
+    }else{
+      repeatFlag_1 = false ;
+    }
+  }
+  GGS_comparison var_comparison_8881 ;
+  switch (select_kerbdd_5F_syntax_15 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 295)) ;
+    var_comparison_8881 = GGS_comparison::class_func_equal (SOURCE_FILE ("expression.galgas4", 296)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 298)) ;
+    var_comparison_8881 = GGS_comparison::class_func_notEqual (SOURCE_FILE ("expression.galgas4", 299)) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3C__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 301)) ;
+    var_comparison_8881 = GGS_comparison::class_func_lowerOrEqual (SOURCE_FILE ("expression.galgas4", 302)) ;
+  } break ;
+  case 4: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3C_ COMMA_SOURCE_FILE ("expression.galgas4", 304)) ;
+    var_comparison_8881 = GGS_comparison::class_func_lowerThan (SOURCE_FILE ("expression.galgas4", 305)) ;
+  } break ;
+  case 5: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3E__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 307)) ;
+    var_comparison_8881 = GGS_comparison::class_func_greaterOrEqual (SOURCE_FILE ("expression.galgas4", 308)) ;
+  } break ;
+  case 6: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3E_ COMMA_SOURCE_FILE ("expression.galgas4", 310)) ;
+    var_comparison_8881 = GGS_comparison::class_func_greaterThan (SOURCE_FILE ("expression.galgas4", 311)) ;
+  } break ;
+  default:
+    break ;
+  }
+  switch (select_kerbdd_5F_syntax_16 (inCompiler)) {
+  case 1: {
+    GGS_luint var_constant_9185 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.galgas4", 314)) ;
+    outArgument_outExpression = GGS_comparisonWithConstantInExpression::init_21__21__21__21_ (var_varName_8710, var_leftFieldNames_8738, var_comparison_8881, var_constant_9185, inCompiler COMMA_HERE) ;
+  } break ;
+  case 2: {
+    GGS_lstring var_rightVarName_9331 = inCompiler->synthetizedAttribute_tokenString () ;
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 317)) ;
+    GGS_lstringlist temp_2 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 318)) ;
+    GGS_lstringlist var_rightFieldNames_9366 = temp_2 ;
+    bool repeatFlag_3 = true ;
+    while (repeatFlag_3) {
+      if (select_kerbdd_5F_syntax_17 (inCompiler) == 2) {
+        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.galgas4", 321)) ;
+        GGS_lstring var_fieldName_9443 = inCompiler->synthetizedAttribute_tokenString () ;
+        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 322)) ;
+        {
+        var_rightFieldNames_9366.setter_append (var_fieldName_9443, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 323)) ;
+        }
+      }else{
+        repeatFlag_3 = false ;
+      }
+    }
+    outArgument_outExpression = GGS_variableComparisonInExpression::init_21__21__21__21__21_ (var_varName_8710, var_leftFieldNames_8738, var_comparison_8881, var_rightVarName_9331, var_rightFieldNames_9366, inCompiler COMMA_HERE) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7D_ COMMA_SOURCE_FILE ("expression.galgas4", 327)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i17_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7B_ COMMA_SOURCE_FILE ("expression.galgas4", 284)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 285)) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    if (select_kerbdd_5F_syntax_14 (inCompiler) == 2) {
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.galgas4", 289)) ;
+      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 290)) ;
+    }else{
+      repeatFlag_0 = false ;
+    }
+  }
+  switch (select_kerbdd_5F_syntax_15 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 295)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 298)) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3C__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 301)) ;
+  } break ;
+  case 4: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3C_ COMMA_SOURCE_FILE ("expression.galgas4", 304)) ;
+  } break ;
+  case 5: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3E__3D_ COMMA_SOURCE_FILE ("expression.galgas4", 307)) ;
+  } break ;
+  case 6: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3E_ COMMA_SOURCE_FILE ("expression.galgas4", 310)) ;
+  } break ;
+  default:
+    break ;
+  }
+  switch (select_kerbdd_5F_syntax_16 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.galgas4", 314)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 317)) ;
+    bool repeatFlag_1 = true ;
+    while (repeatFlag_1) {
+      if (select_kerbdd_5F_syntax_17 (inCompiler) == 2) {
+        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.galgas4", 321)) ;
+        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.galgas4", 322)) ;
+      }else{
+        repeatFlag_1 = false ;
+      }
+    }
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7D_ COMMA_SOURCE_FILE ("expression.galgas4", 327)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i18_ (GGS_ast & ioArgument_ioAST,
+                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_graphviz COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 18)) ;
+  GGS_lstring var_formulaName_942 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 19)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 20)) ;
+  {
+  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_graphvizFormula::init_21_ (var_formulaName_942, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 21)) ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i18_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_graphviz COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 18)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 19)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 20)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i19_ (GGS_ast & ioArgument_ioAST,
+                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize COMMA_SOURCE_FILE ("setting-map.galgas4", 24)) ;
+  GGS_luint var_setting_1132 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.galgas4", 25)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.galgas4", 26)) ;
+  {
+  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_setting_5F_nodeHashMapSize::init_21_ (var_setting_1132, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("setting-map.galgas4", 27)) ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i19_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize COMMA_SOURCE_FILE ("setting-map.galgas4", 24)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.galgas4", 25)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.galgas4", 26)) ;
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i20_ (GGS_ast & ioArgument_ioAST,
+                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize COMMA_SOURCE_FILE ("setting-map.galgas4", 33)) ;
+  GGS_luint var_setting_1412 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.galgas4", 34)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.galgas4", 35)) ;
+  {
+  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_setting_5F_andCacheMapSize::init_21_ (var_setting_1412, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("setting-map.galgas4", 36)) ;
+  }
+}
+
+//------------------------------------------------------------------------------------------------
+
+void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i20_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize COMMA_SOURCE_FILE ("setting-map.galgas4", 33)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.galgas4", 34)) ;
+  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.galgas4", 35)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ast::GGS_ast (void) :
+mProperty_mDomainList (),
+mProperty_mFormulaList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ast::GGS_ast (const GGS_ast & inSource) :
+mProperty_mDomainList (inSource.mProperty_mDomainList),
+mProperty_mFormulaList (inSource.mProperty_mFormulaList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ast & GGS_ast::operator = (const GGS_ast & inSource) {
+  mProperty_mDomainList = inSource.mProperty_mDomainList ;
+  mProperty_mFormulaList = inSource.mProperty_mFormulaList ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_ast GGS_ast::init (Compiler * inCompiler
+                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_ast result ;
+  result.setInitializedProperties (inCompiler) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ast::setInitializedProperties (Compiler * inCompiler) {
+GGS_domainDeclarationList temp_0 = GGS_domainDeclarationList::init (inCompiler COMMA_SOURCE_FILE ("grammar.galgas4", 25)) ;
+  mProperty_mDomainList = temp_0 ;
+GGS_formulaList temp_1 = GGS_formulaList::init (inCompiler COMMA_SOURCE_FILE ("grammar.galgas4", 26)) ;
+  mProperty_mFormulaList = temp_1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ast::GGS_ast (const GGS_domainDeclarationList & inOperand0,
+                  const GGS_formulaList & inOperand1) :
+mProperty_mDomainList (inOperand0),
+mProperty_mFormulaList (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_ast::isValid (void) const {
+  return mProperty_mDomainList.isValid () && mProperty_mFormulaList.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ast::drop (void) {
+  mProperty_mDomainList.drop () ;
+  mProperty_mFormulaList.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_ast::description (String & ioString,
+                              const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @ast:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mDomainList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormulaList.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @ast generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ast ("ast",
+                                                        nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_ast::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ast ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_ast::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_ast (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ast GGS_ast::extractObject (const GGS_object & inObject,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) {
+  GGS_ast result ;
+  const GGS_ast * p = (const GGS_ast *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_ast *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ast", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
 //--------------------------------------------------------------------------------------------------
 // @assignmentFormula reference class
 //--------------------------------------------------------------------------------------------------
@@ -14308,132 +15424,10 @@ GGS_assignmentFormula GGS_assignmentFormula::extractObject (const GGS_object & i
 }
 
 //--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_assignmentFormula_2E_weak::objectCompare (const GGS_assignmentFormula_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
+// @dumpFormula reference class
 //--------------------------------------------------------------------------------------------------
 
-GGS_assignmentFormula_2E_weak::GGS_assignmentFormula_2E_weak (void) :
-GGS_abstractFormula_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_assignmentFormula_2E_weak & GGS_assignmentFormula_2E_weak::operator = (const GGS_assignmentFormula & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_assignmentFormula_2E_weak::GGS_assignmentFormula_2E_weak (const GGS_assignmentFormula & inSource) :
-GGS_abstractFormula_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_assignmentFormula_2E_weak GGS_assignmentFormula_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_assignmentFormula_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_assignmentFormula GGS_assignmentFormula_2E_weak::unwrappedValue (void) const {
-  GGS_assignmentFormula result ;
-  if (isValid ()) {
-    const cPtr_assignmentFormula * p = (cPtr_assignmentFormula *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_assignmentFormula (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_assignmentFormula GGS_assignmentFormula_2E_weak::bang_assignmentFormula_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_assignmentFormula result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_assignmentFormula) ;
-      result = GGS_assignmentFormula ((cPtr_assignmentFormula *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @assignmentFormula.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentFormula_2E_weak ("assignmentFormula.weak",
-                                                                              & kTypeDescriptor_GALGAS_abstractFormula_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_assignmentFormula_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_assignmentFormula_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_assignmentFormula_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_assignmentFormula_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_assignmentFormula_2E_weak GGS_assignmentFormula_2E_weak::extractObject (const GGS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GGS_assignmentFormula_2E_weak result ;
-  const GGS_assignmentFormula_2E_weak * p = (const GGS_assignmentFormula_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_assignmentFormula_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("assignmentFormula.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @graphvizFormula reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_graphvizFormula::objectCompare (const GGS_graphvizFormula & inOperand) const {
+ComparisonResult GGS_dumpFormula::objectCompare (const GGS_dumpFormula & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const size_t myObjectPtr = size_t (mObjectPtr) ;
@@ -14451,74 +15445,74 @@ ComparisonResult GGS_graphvizFormula::objectCompare (const GGS_graphvizFormula &
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_graphvizFormula::GGS_graphvizFormula (void) :
+GGS_dumpFormula::GGS_dumpFormula (void) :
 GGS_abstractFormula () {
 }
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GGS_graphvizFormula GGS_graphvizFormula::
+GGS_dumpFormula GGS_dumpFormula::
 init_21_ (const GGS_lstring & in_mFormulaName,
           Compiler * inCompiler
           COMMA_LOCATION_ARGS) {
-  cPtr_graphvizFormula * object = nullptr ;
-  macroMyNew (object, cPtr_graphvizFormula (inCompiler COMMA_THERE)) ;
-  object->graphvizFormula_init_21_ (in_mFormulaName, inCompiler) ;
-  const GGS_graphvizFormula result (object) ;
+  cPtr_dumpFormula * object = nullptr ;
+  macroMyNew (object, cPtr_dumpFormula (inCompiler COMMA_THERE)) ;
+  object->dumpFormula_init_21_ (in_mFormulaName, inCompiler) ;
+  const GGS_dumpFormula result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_graphvizFormula::
-graphvizFormula_init_21_ (const GGS_lstring & in_mFormulaName,
-                          Compiler * /* inCompiler */) {
+void cPtr_dumpFormula::
+dumpFormula_init_21_ (const GGS_lstring & in_mFormulaName,
+                      Compiler * /* inCompiler */) {
   mProperty_mFormulaName = in_mFormulaName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_graphvizFormula::GGS_graphvizFormula (const cPtr_graphvizFormula * inSourcePtr) :
+GGS_dumpFormula::GGS_dumpFormula (const cPtr_dumpFormula * inSourcePtr) :
 GGS_abstractFormula (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_graphvizFormula) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_dumpFormula) ;
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS_graphvizFormula::readProperty_mFormulaName (void) const {
+GGS_lstring GGS_dumpFormula::readProperty_mFormulaName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
   }else{
-    cPtr_graphvizFormula * p = (cPtr_graphvizFormula *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_graphvizFormula) ;
+    cPtr_dumpFormula * p = (cPtr_dumpFormula *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dumpFormula) ;
     return p->mProperty_mFormulaName ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_graphvizFormula::setProperty_mFormulaName (const GGS_lstring & inValue) {
+void GGS_dumpFormula::setProperty_mFormulaName (const GGS_lstring & inValue) {
   if (nullptr != mObjectPtr) {
-    cPtr_graphvizFormula * p = (cPtr_graphvizFormula *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_graphvizFormula) ;
+    cPtr_dumpFormula * p = (cPtr_dumpFormula *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dumpFormula) ;
     p->mProperty_mFormulaName = inValue ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @graphvizFormula class
+//Pointer class for @dumpFormula class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_graphvizFormula::cPtr_graphvizFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_dumpFormula::cPtr_dumpFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_abstractFormula (inCompiler COMMA_THERE),
 mProperty_mFormulaName () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_graphvizFormula::cPtr_graphvizFormula (const GGS_lstring & in_mFormulaName,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) :
+cPtr_dumpFormula::cPtr_dumpFormula (const GGS_lstring & in_mFormulaName,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) :
 cPtr_abstractFormula (inCompiler COMMA_THERE),
 mProperty_mFormulaName () {
   mProperty_mFormulaName = in_mFormulaName ;
@@ -14526,22 +15520,22 @@ mProperty_mFormulaName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * cPtr_graphvizFormula::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_graphvizFormula ;
+const GALGAS_TypeDescriptor * cPtr_dumpFormula::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_dumpFormula ;
 }
 
-void cPtr_graphvizFormula::description (String & ioString,
-                                        const int32_t inIndentation) const {
-  ioString.appendCString ("[@graphvizFormula:") ;
+void cPtr_dumpFormula::description (String & ioString,
+                                    const int32_t inIndentation) const {
+  ioString.appendCString ("[@dumpFormula:") ;
   mProperty_mFormulaName.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AbstractPtrClass * cPtr_graphvizFormula::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+AbstractPtrClass * cPtr_dumpFormula::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_graphvizFormula (mProperty_mFormulaName, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_dumpFormula (mProperty_mFormulaName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -14549,1207 +15543,47 @@ AbstractPtrClass * cPtr_graphvizFormula::duplicate (Compiler * inCompiler COMMA_
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_graphvizFormula::printNonNullClassInstanceProperties (void) const {
+  void cPtr_dumpFormula::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
     mProperty_mFormulaName.printNonNullClassInstanceProperties ("mFormulaName") ;
   }
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//     @graphvizFormula generic code implementation
+//     @dumpFormula generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphvizFormula ("graphvizFormula",
-                                                                    & kTypeDescriptor_GALGAS_abstractFormula) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dumpFormula ("dumpFormula",
+                                                                & kTypeDescriptor_GALGAS_abstractFormula) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_graphvizFormula::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_graphvizFormula ;
+const GALGAS_TypeDescriptor * GGS_dumpFormula::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_dumpFormula ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_graphvizFormula::clonedObject (void) const {
+AC_GALGAS_root * GGS_dumpFormula::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_graphvizFormula (*this)) ;
+    macroMyNew (result, GGS_dumpFormula (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_graphvizFormula GGS_graphvizFormula::extractObject (const GGS_object & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  GGS_graphvizFormula result ;
-  const GGS_graphvizFormula * p = (const GGS_graphvizFormula *) inObject.embeddedObject () ;
+GGS_dumpFormula GGS_dumpFormula::extractObject (const GGS_object & inObject,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  GGS_dumpFormula result ;
+  const GGS_dumpFormula * p = (const GGS_dumpFormula *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_graphvizFormula *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_dumpFormula *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("graphvizFormula", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_start_5F_symbol_i0_ (GGS_ast & outArgument_outAST,
-                                                                          Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outAST.drop () ; // Release 'out' argument
-  outArgument_outAST = GGS_ast::init (inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_kerbdd_5F_syntax_0 (inCompiler) == 2) {
-      nt_topLevelDeClaration_ (outArgument_outAST, inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_start_5F_symbol_i0_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_kerbdd_5F_syntax_0 (inCompiler) == 2) {
-      nt_topLevelDeClaration_indexing (inCompiler) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i1_ (GGS_ast & ioArgument_ioAST,
-                                                                              Lexique_kerbdd_5F_lexique * inCompiler) {
-  GGS_lstring var_formulaName_1228 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-assignment.ggs", 28)) ;
-  GGS_domainFieldList var_domainFieldList_1264 ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 30)) ;
-  switch (select_kerbdd_5F_syntax_1 (inCompiler)) {
-  case 1: {
-    GGS_domainFieldList temp_0 = GGS_domainFieldList::init (inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 32)) ;
-    var_domainFieldList_1264 = temp_0 ;
-  } break ;
-  case 2: {
-    nt_recordFields_ (var_domainFieldList_1264, inCompiler) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 36)) ;
-  GGS_formulaKind var_kind_1394 ;
-  switch (select_kerbdd_5F_syntax_2 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 39)) ;
-    var_kind_1394 = GGS_formulaKind::class_func_assignment (SOURCE_FILE ("formula-assignment.ggs", 40)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2B__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 42)) ;
-    var_kind_1394 = GGS_formulaKind::class_func_fixedPoint (GGS_binaryset::class_func_emptyBinarySet (SOURCE_FILE ("formula-assignment.ggs", 43))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 43)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2D__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 45)) ;
-    var_kind_1394 = GGS_formulaKind::class_func_fixedPoint (GGS_binaryset::class_func_fullBinarySet (SOURCE_FILE ("formula-assignment.ggs", 46))  COMMA_SOURCE_FILE ("formula-assignment.ggs", 46)) ;
-  } break ;
-  default:
-    break ;
-  }
-  GGS_expression var_expression_1612 ;
-  nt_expression_ (var_expression_1612, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 49)) ;
-  {
-  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_assignmentFormula::init_21__21__21__21_ (var_formulaName_1228, var_domainFieldList_1264, var_kind_1394, var_expression_1612, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-assignment.ggs", 50)) ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i1_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-assignment.ggs", 28)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 30)) ;
-  switch (select_kerbdd_5F_syntax_1 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    nt_recordFields_indexing (inCompiler) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 36)) ;
-  switch (select_kerbdd_5F_syntax_2 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 39)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2B__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 42)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2D__3D_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 45)) ;
-  } break ;
-  default:
-    break ;
-  }
-  nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-assignment.ggs", 49)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i2_ (GGS_ast & ioArgument_ioAST,
-                                                                              Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_graphviz COMMA_SOURCE_FILE ("formula-graphviz.ggs", 18)) ;
-  GGS_lstring var_formulaName_942 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-graphviz.ggs", 19)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-graphviz.ggs", 20)) ;
-  {
-  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_graphvizFormula::init_21_ (var_formulaName_942, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.ggs", 21)) ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i2_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_graphviz COMMA_SOURCE_FILE ("formula-graphviz.ggs", 18)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-graphviz.ggs", 19)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-graphviz.ggs", 20)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i3_ (GGS_ast & ioArgument_ioAST,
-                                                                              Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize COMMA_SOURCE_FILE ("setting-map.ggs", 24)) ;
-  GGS_luint var_setting_1132 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.ggs", 25)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.ggs", 26)) ;
-  {
-  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_setting_5F_nodeHashMapSize::init_21_ (var_setting_1132, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("setting-map.ggs", 27)) ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i3_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize COMMA_SOURCE_FILE ("setting-map.ggs", 24)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.ggs", 25)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.ggs", 26)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i4_ (GGS_ast & ioArgument_ioAST,
-                                                                              Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize COMMA_SOURCE_FILE ("setting-map.ggs", 33)) ;
-  GGS_luint var_setting_1412 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.ggs", 34)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.ggs", 35)) ;
-  {
-  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_setting_5F_andCacheMapSize::init_21_ (var_setting_1412, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("setting-map.ggs", 36)) ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i4_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize COMMA_SOURCE_FILE ("setting-map.ggs", 33)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("setting-map.ggs", 34)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("setting-map.ggs", 35)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_expression_i5_ (GGS_expression & outArgument_outExpression,
-                                                                     Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_comparison_ (outArgument_outExpression, inCompiler) ;
-  switch (select_kerbdd_5F_syntax_3 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.ggs", 149)) ;
-    GGS_expression var_rightExpression_4927 ;
-    nt_comparison_ (var_rightExpression_4927, inCompiler) ;
-    outArgument_outExpression = GGS_equalExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_4927, inCompiler COMMA_HERE) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.ggs", 153)) ;
-    GGS_expression var_rightExpression_5065 ;
-    nt_comparison_ (var_rightExpression_5065, inCompiler) ;
-    outArgument_outExpression = GGS_notEqualExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5065, inCompiler COMMA_HERE) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_expression_i5_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  nt_comparison_indexing (inCompiler) ;
-  switch (select_kerbdd_5F_syntax_3 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.ggs", 149)) ;
-    nt_comparison_indexing (inCompiler) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.ggs", 153)) ;
-    nt_comparison_indexing (inCompiler) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_comparison_i6_ (GGS_expression & outArgument_outExpression,
-                                                                     Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_term_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_kerbdd_5F_syntax_4 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7C_ COMMA_SOURCE_FILE ("expression.ggs", 165)) ;
-      GGS_expression var_rightExpression_5395 ;
-      nt_term_ (var_rightExpression_5395, inCompiler) ;
-      outArgument_outExpression = GGS_orExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5395, inCompiler COMMA_HERE) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5E_ COMMA_SOURCE_FILE ("expression.ggs", 169)) ;
-      GGS_expression var_rightExpression_5526 ;
-      nt_term_ (var_rightExpression_5526, inCompiler) ;
-      outArgument_outExpression = GGS_xorExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5526, inCompiler COMMA_HERE) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_comparison_i6_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  nt_term_indexing (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_kerbdd_5F_syntax_4 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7C_ COMMA_SOURCE_FILE ("expression.ggs", 165)) ;
-      nt_term_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5E_ COMMA_SOURCE_FILE ("expression.ggs", 169)) ;
-      nt_term_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i7_ (GGS_expression & outArgument_outExpression,
-                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_factor_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_kerbdd_5F_syntax_5 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__26_ COMMA_SOURCE_FILE ("expression.ggs", 181)) ;
-      GGS_expression var_rightExpression_5849 ;
-      nt_factor_ (var_rightExpression_5849, inCompiler) ;
-      outArgument_outExpression = GGS_andExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5849, inCompiler COMMA_HERE) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2D__3E_ COMMA_SOURCE_FILE ("expression.ggs", 185)) ;
-      GGS_expression var_rightExpression_5984 ;
-      nt_factor_ (var_rightExpression_5984, inCompiler) ;
-      outArgument_outExpression = GGS_impliesExpression::init_21__21_ (outArgument_outExpression, var_rightExpression_5984, inCompiler COMMA_HERE) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_term_i7_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  nt_factor_indexing (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_kerbdd_5F_syntax_5 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__26_ COMMA_SOURCE_FILE ("expression.ggs", 181)) ;
-      nt_factor_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2D__3E_ COMMA_SOURCE_FILE ("expression.ggs", 185)) ;
-      nt_factor_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i8_ (GGS_expression & outArgument_outExpression,
-                                                                 Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GGS_lstring var_varName_6250 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 194)) ;
-  switch (select_kerbdd_5F_syntax_6 (inCompiler)) {
-  case 1: {
-    outArgument_outExpression = GGS_varInExpression::init_21_ (var_varName_6250, inCompiler COMMA_HERE) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 198)) ;
-    GGS_luint var_varBit_6349 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.ggs", 199)) ;
-    outArgument_outExpression = GGS_varBitInExpression::init_21__21_ (var_varName_6250, var_varBit_6349, inCompiler COMMA_HERE) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i8_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 194)) ;
-  switch (select_kerbdd_5F_syntax_6 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 198)) ;
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.ggs", 199)) ;
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i9_ (GGS_expression & outArgument_outExpression,
-                                                                 Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 207)) ;
-  nt_expression_ (outArgument_outExpression, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 209)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i9_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 207)) ;
-  nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 209)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i10_ (GGS_expression & outArgument_outExpression,
-                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7E_ COMMA_SOURCE_FILE ("expression.ggs", 215)) ;
-  GGS_expression var_expression_6786 ;
-  nt_factor_ (var_expression_6786, inCompiler) ;
-  outArgument_outExpression = GGS_complementExpression::init_21_ (var_expression_6786, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i10_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7E_ COMMA_SOURCE_FILE ("expression.ggs", 215)) ;
-  nt_factor_indexing (inCompiler) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i11_ (GGS_expression & outArgument_outExpression,
-                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_true COMMA_SOURCE_FILE ("expression.ggs", 223)) ;
-  outArgument_outExpression = GGS_trueExpression::init (inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i11_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_true COMMA_SOURCE_FILE ("expression.ggs", 223)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i12_ (GGS_expression & outArgument_outExpression,
-                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_false COMMA_SOURCE_FILE ("expression.ggs", 230)) ;
-  outArgument_outExpression = GGS_falseExpression::init (inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i12_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_false COMMA_SOURCE_FILE ("expression.ggs", 230)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i13_ (GGS_expression & outArgument_outExpression,
-                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  GGS_lstring var_formulaName_7411 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 237)) ;
-  GGS_formulaParameterListInExpression temp_0 = GGS_formulaParameterListInExpression::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 238)) ;
-  GGS_formulaParameterListInExpression var_parameterList_7464 = temp_0 ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 239)) ;
-  switch (select_kerbdd_5F_syntax_7 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
-      GGS_lstring var_parameterName_7539 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 243)) ;
-      GGS_lstringlist temp_2 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 244)) ;
-      GGS_lstringlist var_fieldNames_7577 = temp_2 ;
-      bool repeatFlag_3 = true ;
-      while (repeatFlag_3) {
-        if (select_kerbdd_5F_syntax_9 (inCompiler) == 2) {
-          inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 247)) ;
-          GGS_lstring var_fieldName_7657 = inCompiler->synthetizedAttribute_tokenString () ;
-          inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 248)) ;
-          {
-          var_fieldNames_7577.setter_append (var_fieldName_7657, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 249)) ;
-          }
-        }else{
-          repeatFlag_3 = false ;
-        }
-      }
-      {
-      var_parameterList_7464.setter_append (var_parameterName_7539, var_fieldNames_7577, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 251)) ;
-      }
-      if (select_kerbdd_5F_syntax_8 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("expression.ggs", 253)) ;
-      }else{
-        repeatFlag_1 = false ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 256)) ;
-  outArgument_outExpression = GGS_formulaInExpression::init_21__21_ (var_formulaName_7411, var_parameterList_7464, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i13_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 237)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 239)) ;
-  switch (select_kerbdd_5F_syntax_7 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    bool repeatFlag_0 = true ;
-    while (repeatFlag_0) {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 243)) ;
-      bool repeatFlag_1 = true ;
-      while (repeatFlag_1) {
-        if (select_kerbdd_5F_syntax_9 (inCompiler) == 2) {
-          inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 247)) ;
-          inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 248)) ;
-        }else{
-          repeatFlag_1 = false ;
-        }
-      }
-      if (select_kerbdd_5F_syntax_8 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("expression.ggs", 253)) ;
-      }else{
-        repeatFlag_0 = false ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 256)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i14_ (GGS_expression & outArgument_outExpression,
-                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3F_ COMMA_SOURCE_FILE ("expression.ggs", 263)) ;
-  GGS_domainFieldList var_domainFieldList_8079 ;
-  nt_recordFields_ (var_domainFieldList_8079, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 265)) ;
-  GGS_expression var_expression_8123 ;
-  nt_expression_ (var_expression_8123, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 267)) ;
-  outArgument_outExpression = GGS_existInExpression::init_21__21_ (var_domainFieldList_8079, var_expression_8123, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i14_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3F_ COMMA_SOURCE_FILE ("expression.ggs", 263)) ;
-  nt_recordFields_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 265)) ;
-  nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 267)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i15_ (GGS_expression & outArgument_outExpression,
-                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21_ COMMA_SOURCE_FILE ("expression.ggs", 274)) ;
-  GGS_domainFieldList var_domainFieldList_8404 ;
-  nt_recordFields_ (var_domainFieldList_8404, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 276)) ;
-  GGS_expression var_expression_8448 ;
-  nt_expression_ (var_expression_8448, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 278)) ;
-  outArgument_outExpression = GGS_forAllInExpression::init_21__21_ (var_domainFieldList_8404, var_expression_8448, inCompiler COMMA_HERE) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i15_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21_ COMMA_SOURCE_FILE ("expression.ggs", 274)) ;
-  nt_recordFields_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("expression.ggs", 276)) ;
-  nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("expression.ggs", 278)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i16_ (GGS_expression & outArgument_outExpression,
-                                                                  Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7B_ COMMA_SOURCE_FILE ("expression.ggs", 284)) ;
-  GGS_lstring var_varName_8710 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 285)) ;
-  GGS_lstringlist temp_0 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 286)) ;
-  GGS_lstringlist var_leftFieldNames_8738 = temp_0 ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    if (select_kerbdd_5F_syntax_10 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 289)) ;
-      GGS_lstring var_fieldName_8806 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 290)) ;
-      {
-      var_leftFieldNames_8738.setter_append (var_fieldName_8806, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 291)) ;
-      }
-    }else{
-      repeatFlag_1 = false ;
-    }
-  }
-  GGS_comparison var_comparison_8881 ;
-  switch (select_kerbdd_5F_syntax_11 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.ggs", 295)) ;
-    var_comparison_8881 = GGS_comparison::class_func_equal (SOURCE_FILE ("expression.ggs", 296)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.ggs", 298)) ;
-    var_comparison_8881 = GGS_comparison::class_func_notEqual (SOURCE_FILE ("expression.ggs", 299)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3C__3D_ COMMA_SOURCE_FILE ("expression.ggs", 301)) ;
-    var_comparison_8881 = GGS_comparison::class_func_lowerOrEqual (SOURCE_FILE ("expression.ggs", 302)) ;
-  } break ;
-  case 4: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3C_ COMMA_SOURCE_FILE ("expression.ggs", 304)) ;
-    var_comparison_8881 = GGS_comparison::class_func_lowerThan (SOURCE_FILE ("expression.ggs", 305)) ;
-  } break ;
-  case 5: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3E__3D_ COMMA_SOURCE_FILE ("expression.ggs", 307)) ;
-    var_comparison_8881 = GGS_comparison::class_func_greaterOrEqual (SOURCE_FILE ("expression.ggs", 308)) ;
-  } break ;
-  case 6: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3E_ COMMA_SOURCE_FILE ("expression.ggs", 310)) ;
-    var_comparison_8881 = GGS_comparison::class_func_greaterThan (SOURCE_FILE ("expression.ggs", 311)) ;
-  } break ;
-  default:
-    break ;
-  }
-  switch (select_kerbdd_5F_syntax_12 (inCompiler)) {
-  case 1: {
-    GGS_luint var_constant_9185 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.ggs", 314)) ;
-    outArgument_outExpression = GGS_comparisonWithConstantInExpression::init_21__21__21__21_ (var_varName_8710, var_leftFieldNames_8738, var_comparison_8881, var_constant_9185, inCompiler COMMA_HERE) ;
-  } break ;
-  case 2: {
-    GGS_lstring var_rightVarName_9331 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 317)) ;
-    GGS_lstringlist temp_2 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("expression.ggs", 318)) ;
-    GGS_lstringlist var_rightFieldNames_9366 = temp_2 ;
-    bool repeatFlag_3 = true ;
-    while (repeatFlag_3) {
-      if (select_kerbdd_5F_syntax_13 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 321)) ;
-        GGS_lstring var_fieldName_9443 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 322)) ;
-        {
-        var_rightFieldNames_9366.setter_append (var_fieldName_9443, inCompiler COMMA_SOURCE_FILE ("expression.ggs", 323)) ;
-        }
-      }else{
-        repeatFlag_3 = false ;
-      }
-    }
-    outArgument_outExpression = GGS_variableComparisonInExpression::init_21__21__21__21__21_ (var_varName_8710, var_leftFieldNames_8738, var_comparison_8881, var_rightVarName_9331, var_rightFieldNames_9366, inCompiler COMMA_HERE) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7D_ COMMA_SOURCE_FILE ("expression.ggs", 327)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_factor_i16_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7B_ COMMA_SOURCE_FILE ("expression.ggs", 284)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 285)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    if (select_kerbdd_5F_syntax_10 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 289)) ;
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 290)) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-  switch (select_kerbdd_5F_syntax_11 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3D_ COMMA_SOURCE_FILE ("expression.ggs", 295)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__21__3D_ COMMA_SOURCE_FILE ("expression.ggs", 298)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3C__3D_ COMMA_SOURCE_FILE ("expression.ggs", 301)) ;
-  } break ;
-  case 4: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3C_ COMMA_SOURCE_FILE ("expression.ggs", 304)) ;
-  } break ;
-  case 5: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3E__3D_ COMMA_SOURCE_FILE ("expression.ggs", 307)) ;
-  } break ;
-  case 6: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3E_ COMMA_SOURCE_FILE ("expression.ggs", 310)) ;
-  } break ;
-  default:
-    break ;
-  }
-  switch (select_kerbdd_5F_syntax_12 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("expression.ggs", 314)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 317)) ;
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
-      if (select_kerbdd_5F_syntax_13 (inCompiler) == 2) {
-        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2E_ COMMA_SOURCE_FILE ("expression.ggs", 321)) ;
-        inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("expression.ggs", 322)) ;
-      }else{
-        repeatFlag_1 = false ;
-      }
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__7D_ COMMA_SOURCE_FILE ("expression.ggs", 327)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i17_ (GGS_ast & ioArgument_ioAST,
-                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_dump COMMA_SOURCE_FILE ("formula-dump.ggs", 18)) ;
-  GGS_lstring var_formulaName_934 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-dump.ggs", 19)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-dump.ggs", 20)) ;
-  {
-  ioArgument_ioAST.mProperty_mFormulaList.setter_append (GGS_dumpFormula::init_21_ (var_formulaName_934, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.ggs", 21)) ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i17_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_dump COMMA_SOURCE_FILE ("formula-dump.ggs", 18)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("formula-dump.ggs", 19)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("formula-dump.ggs", 20)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i18_ (GGS_ast & ioArgument_ioAST,
-                                                                               Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_domain COMMA_SOURCE_FILE ("domain.ggs", 41)) ;
-  GGS_lstring var_domainName_1549 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 42)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.ggs", 43)) ;
-  GGS_domainDeclarationType var_domainDeclarationType_1596 ;
-  switch (select_kerbdd_5F_syntax_14 (inCompiler)) {
-  case 1: {
-    GGS_bddType var_type_1653 ;
-    nt_type_ (var_type_1653, inCompiler) ;
-    var_domainDeclarationType_1596 = GGS_domainDeclarationType::class_func_type (var_type_1653  COMMA_SOURCE_FILE ("domain.ggs", 47)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("domain.ggs", 49)) ;
-    GGS_domainFieldList var_fieldList_1761 ;
-    nt_recordFields_ (var_fieldList_1761, inCompiler) ;
-    var_domainDeclarationType_1596 = GGS_domainDeclarationType::class_func_record (var_fieldList_1761  COMMA_SOURCE_FILE ("domain.ggs", 51)) ;
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("domain.ggs", 52)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("domain.ggs", 54)) ;
-  {
-  ioArgument_ioAST.mProperty_mDomainList.setter_append (var_domainName_1549, var_domainDeclarationType_1596, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 55)) ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_topLevelDeClaration_i18_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_domain COMMA_SOURCE_FILE ("domain.ggs", 41)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 42)) ;
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.ggs", 43)) ;
-  switch (select_kerbdd_5F_syntax_14 (inCompiler)) {
-  case 1: {
-    nt_type_indexing (inCompiler) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__28_ COMMA_SOURCE_FILE ("domain.ggs", 49)) ;
-    nt_recordFields_indexing (inCompiler) ;
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__29_ COMMA_SOURCE_FILE ("domain.ggs", 52)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3B_ COMMA_SOURCE_FILE ("domain.ggs", 54)) ;
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_recordFields_i19_ (GGS_domainFieldList & outArgument_outFormulaArgumentList,
-                                                                        Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outFormulaArgumentList.drop () ; // Release 'out' argument
-  GGS_domainFieldList temp_0 = GGS_domainFieldList::init (inCompiler COMMA_SOURCE_FILE ("domain.ggs", 61)) ;
-  outArgument_outFormulaArgumentList = temp_0 ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    GGS_lstring var_varName_2146 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 63)) ;
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.ggs", 64)) ;
-    GGS_bddType var_type_2189 ;
-    nt_type_ (var_type_2189, inCompiler) ;
-    {
-    outArgument_outFormulaArgumentList.setter_append (var_varName_2146, var_type_2189, inCompiler COMMA_SOURCE_FILE ("domain.ggs", 66)) ;
-    }
-    if (select_kerbdd_5F_syntax_15 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("domain.ggs", 68)) ;
-    }else{
-      repeatFlag_1 = false ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_recordFields_i19_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 63)) ;
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__3A_ COMMA_SOURCE_FILE ("domain.ggs", 64)) ;
-    nt_type_indexing (inCompiler) ;
-    if (select_kerbdd_5F_syntax_15 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__2C_ COMMA_SOURCE_FILE ("domain.ggs", 68)) ;
-    }else{
-      repeatFlag_0 = false ;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i20_ (GGS_bddType & outArgument_outType,
-                                                                Lexique_kerbdd_5F_lexique * inCompiler) {
-  outArgument_outType.drop () ; // Release 'out' argument
-  switch (select_kerbdd_5F_syntax_16 (inCompiler)) {
-  case 1: {
-    GGS_lstring var_typeName_2438 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 76)) ;
-    outArgument_outType = GGS_bddType::class_func_namedType (var_typeName_2438  COMMA_SOURCE_FILE ("domain.ggs", 77)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_bool COMMA_SOURCE_FILE ("domain.ggs", 79)) ;
-    switch (select_kerbdd_5F_syntax_17 (inCompiler)) {
-    case 1: {
-      outArgument_outType = GGS_bddType::class_func_bool (SOURCE_FILE ("domain.ggs", 81)) ;
-    } break ;
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5B_ COMMA_SOURCE_FILE ("domain.ggs", 83)) ;
-      GGS_luint var_bitCount_2582 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("domain.ggs", 84)) ;
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5D_ COMMA_SOURCE_FILE ("domain.ggs", 85)) ;
-      GalgasBool test_0 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_0) {
-        test_0 = GGS_bool (ComparisonKind::equal, var_bitCount_2582.readProperty_uint ().objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-        if (GalgasBool::boolTrue == test_0) {
-          GenericArray <FixItDescription> fixItArray1 ;
-          inCompiler->emitSemanticError (var_bitCount_2582.readProperty_location (), GGS_string ("size should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("domain.ggs", 87)) ;
-        }
-      }
-      outArgument_outType = GGS_bddType::class_func_boolArray (var_bitCount_2582.readProperty_uint ()  COMMA_SOURCE_FILE ("domain.ggs", 89)) ;
-    } break ;
-    default:
-      break ;
-    }
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//------------------------------------------------------------------------------------------------
-
-void cParser_kerbdd_5F_syntax::rule_kerbdd_5F_syntax_type_i20_indexing (Lexique_kerbdd_5F_lexique * inCompiler) {
-  switch (select_kerbdd_5F_syntax_16 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_identifier COMMA_SOURCE_FILE ("domain.ggs", 76)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_bool COMMA_SOURCE_FILE ("domain.ggs", 79)) ;
-    switch (select_kerbdd_5F_syntax_17 (inCompiler)) {
-    case 1: {
-    } break ;
-    case 2: {
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5B_ COMMA_SOURCE_FILE ("domain.ggs", 83)) ;
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken_integer COMMA_SOURCE_FILE ("domain.ggs", 84)) ;
-      inCompiler->acceptTerminal (Lexique_kerbdd_5F_lexique::kToken__5D_ COMMA_SOURCE_FILE ("domain.ggs", 85)) ;
-    } break ;
-    default:
-      break ;
-    }
-  } break ;
-  default:
-    break ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ast::GGS_ast (void) :
-mProperty_mDomainList (),
-mProperty_mFormulaList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ast::GGS_ast (const GGS_ast & inSource) :
-mProperty_mDomainList (inSource.mProperty_mDomainList),
-mProperty_mFormulaList (inSource.mProperty_mFormulaList) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ast & GGS_ast::operator = (const GGS_ast & inSource) {
-  mProperty_mDomainList = inSource.mProperty_mDomainList ;
-  mProperty_mFormulaList = inSource.mProperty_mFormulaList ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_ast GGS_ast::init (Compiler * inCompiler
-                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ast result ;
-  result.setInitializedProperties (inCompiler) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_ast::setInitializedProperties (Compiler * inCompiler) {
-GGS_domainDeclarationList temp_0 = GGS_domainDeclarationList::init (inCompiler COMMA_SOURCE_FILE ("grammar.ggs", 25)) ;
-  mProperty_mDomainList = temp_0 ;
-GGS_formulaList temp_1 = GGS_formulaList::init (inCompiler COMMA_SOURCE_FILE ("grammar.ggs", 26)) ;
-  mProperty_mFormulaList = temp_1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ast::GGS_ast (const GGS_domainDeclarationList & inOperand0,
-                  const GGS_formulaList & inOperand1) :
-mProperty_mDomainList (inOperand0),
-mProperty_mFormulaList (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_ast::isValid (void) const {
-  return mProperty_mDomainList.isValid () && mProperty_mFormulaList.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_ast::drop (void) {
-  mProperty_mDomainList.drop () ;
-  mProperty_mFormulaList.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_ast::description (String & ioString,
-                              const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @ast:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mDomainList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFormulaList.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @ast generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ast ("ast",
-                                                        nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_ast::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ast ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_ast::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_ast (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ast GGS_ast::extractObject (const GGS_object & inObject,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) {
-  GGS_ast result ;
-  const GGS_ast * p = (const GGS_ast *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_ast *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("ast", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @setting_5F_andCacheMapSize reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_setting_5F_andCacheMapSize::objectCompare (const GGS_setting_5F_andCacheMapSize & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_setting_5F_andCacheMapSize::GGS_setting_5F_andCacheMapSize (void) :
-GGS_abstractFormula () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_setting_5F_andCacheMapSize GGS_setting_5F_andCacheMapSize::
-init_21_ (const GGS_luint & in_mSetting,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_setting_5F_andCacheMapSize * object = nullptr ;
-  macroMyNew (object, cPtr_setting_5F_andCacheMapSize (inCompiler COMMA_THERE)) ;
-  object->setting_5F_andCacheMapSize_init_21_ (in_mSetting, inCompiler) ;
-  const GGS_setting_5F_andCacheMapSize result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_setting_5F_andCacheMapSize::
-setting_5F_andCacheMapSize_init_21_ (const GGS_luint & in_mSetting,
-                                     Compiler * /* inCompiler */) {
-  mProperty_mSetting = in_mSetting ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_setting_5F_andCacheMapSize::GGS_setting_5F_andCacheMapSize (const cPtr_setting_5F_andCacheMapSize * inSourcePtr) :
-GGS_abstractFormula (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_setting_5F_andCacheMapSize) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_luint GGS_setting_5F_andCacheMapSize::readProperty_mSetting (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_luint () ;
-  }else{
-    cPtr_setting_5F_andCacheMapSize * p = (cPtr_setting_5F_andCacheMapSize *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_setting_5F_andCacheMapSize) ;
-    return p->mProperty_mSetting ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_setting_5F_andCacheMapSize::setProperty_mSetting (const GGS_luint & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_setting_5F_andCacheMapSize * p = (cPtr_setting_5F_andCacheMapSize *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_setting_5F_andCacheMapSize) ;
-    p->mProperty_mSetting = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @setting_andCacheMapSize class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_setting_5F_andCacheMapSize::cPtr_setting_5F_andCacheMapSize (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_abstractFormula (inCompiler COMMA_THERE),
-mProperty_mSetting () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_setting_5F_andCacheMapSize::cPtr_setting_5F_andCacheMapSize (const GGS_luint & in_mSetting,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) :
-cPtr_abstractFormula (inCompiler COMMA_THERE),
-mProperty_mSetting () {
-  mProperty_mSetting = in_mSetting ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_setting_5F_andCacheMapSize::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize ;
-}
-
-void cPtr_setting_5F_andCacheMapSize::description (String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("[@setting_andCacheMapSize:") ;
-  mProperty_mSetting.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_setting_5F_andCacheMapSize::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_setting_5F_andCacheMapSize (mProperty_mSetting, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_setting_5F_andCacheMapSize::printNonNullClassInstanceProperties (void) const {
-    cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
-    mProperty_mSetting.printNonNullClassInstanceProperties ("mSetting") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @setting_andCacheMapSize generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize ("setting_andCacheMapSize",
-                                                                               & kTypeDescriptor_GALGAS_abstractFormula) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_setting_5F_andCacheMapSize::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_setting_5F_andCacheMapSize::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_setting_5F_andCacheMapSize (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_setting_5F_andCacheMapSize GGS_setting_5F_andCacheMapSize::extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GGS_setting_5F_andCacheMapSize result ;
-  const GGS_setting_5F_andCacheMapSize * p = (const GGS_setting_5F_andCacheMapSize *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_setting_5F_andCacheMapSize *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("setting_andCacheMapSize", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("dumpFormula", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -15916,204 +15750,6 @@ GGS_varInExpression GGS_varInExpression::extractObject (const GGS_object & inObj
       result = *p ;
     }else{
       inCompiler->castError ("varInExpression", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @varBitInExpression reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_varBitInExpression::objectCompare (const GGS_varBitInExpression & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varBitInExpression::GGS_varBitInExpression (void) :
-GGS_expression () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_varBitInExpression GGS_varBitInExpression::
-init_21__21_ (const GGS_lstring & in_mVarName,
-              const GGS_luint & in_mVarBit,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_varBitInExpression * object = nullptr ;
-  macroMyNew (object, cPtr_varBitInExpression (inCompiler COMMA_THERE)) ;
-  object->varBitInExpression_init_21__21_ (in_mVarName, in_mVarBit, inCompiler) ;
-  const GGS_varBitInExpression result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_varBitInExpression::
-varBitInExpression_init_21__21_ (const GGS_lstring & in_mVarName,
-                                 const GGS_luint & in_mVarBit,
-                                 Compiler * /* inCompiler */) {
-  mProperty_mVarName = in_mVarName ;
-  mProperty_mVarBit = in_mVarBit ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varBitInExpression::GGS_varBitInExpression (const cPtr_varBitInExpression * inSourcePtr) :
-GGS_expression (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_varBitInExpression) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_varBitInExpression::readProperty_mVarName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_varBitInExpression * p = (cPtr_varBitInExpression *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_varBitInExpression) ;
-    return p->mProperty_mVarName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varBitInExpression::setProperty_mVarName (const GGS_lstring & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_varBitInExpression * p = (cPtr_varBitInExpression *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_varBitInExpression) ;
-    p->mProperty_mVarName = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luint GGS_varBitInExpression::readProperty_mVarBit (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_luint () ;
-  }else{
-    cPtr_varBitInExpression * p = (cPtr_varBitInExpression *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_varBitInExpression) ;
-    return p->mProperty_mVarBit ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varBitInExpression::setProperty_mVarBit (const GGS_luint & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_varBitInExpression * p = (cPtr_varBitInExpression *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_varBitInExpression) ;
-    p->mProperty_mVarBit = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @varBitInExpression class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_varBitInExpression::cPtr_varBitInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_expression (inCompiler COMMA_THERE),
-mProperty_mVarName (),
-mProperty_mVarBit () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_varBitInExpression::cPtr_varBitInExpression (const GGS_lstring & in_mVarName,
-                                                  const GGS_luint & in_mVarBit,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) :
-cPtr_expression (inCompiler COMMA_THERE),
-mProperty_mVarName (),
-mProperty_mVarBit () {
-  mProperty_mVarName = in_mVarName ;
-  mProperty_mVarBit = in_mVarBit ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_varBitInExpression::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varBitInExpression ;
-}
-
-void cPtr_varBitInExpression::description (String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@varBitInExpression:") ;
-  mProperty_mVarName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mVarBit.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_varBitInExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_varBitInExpression (mProperty_mVarName, mProperty_mVarBit, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_varBitInExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_expression::printNonNullClassInstanceProperties () ;
-    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
-    mProperty_mVarBit.printNonNullClassInstanceProperties ("mVarBit") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @varBitInExpression generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varBitInExpression ("varBitInExpression",
-                                                                       & kTypeDescriptor_GALGAS_expression) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_varBitInExpression::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varBitInExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_varBitInExpression::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_varBitInExpression (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varBitInExpression GGS_varBitInExpression::extractObject (const GGS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  GGS_varBitInExpression result ;
-  const GGS_varBitInExpression * p = (const GGS_varBitInExpression *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_varBitInExpression *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("varBitInExpression", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -16874,10 +16510,10 @@ GGS_variableComparisonInExpression GGS_variableComparisonInExpression::extractOb
 }
 
 //--------------------------------------------------------------------------------------------------
-// @dumpFormula reference class
+// @graphvizFormula reference class
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_dumpFormula::objectCompare (const GGS_dumpFormula & inOperand) const {
+ComparisonResult GGS_graphvizFormula::objectCompare (const GGS_graphvizFormula & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const size_t myObjectPtr = size_t (mObjectPtr) ;
@@ -16895,74 +16531,74 @@ ComparisonResult GGS_dumpFormula::objectCompare (const GGS_dumpFormula & inOpera
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula::GGS_dumpFormula (void) :
+GGS_graphvizFormula::GGS_graphvizFormula (void) :
 GGS_abstractFormula () {
 }
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GGS_dumpFormula GGS_dumpFormula::
+GGS_graphvizFormula GGS_graphvizFormula::
 init_21_ (const GGS_lstring & in_mFormulaName,
           Compiler * inCompiler
           COMMA_LOCATION_ARGS) {
-  cPtr_dumpFormula * object = nullptr ;
-  macroMyNew (object, cPtr_dumpFormula (inCompiler COMMA_THERE)) ;
-  object->dumpFormula_init_21_ (in_mFormulaName, inCompiler) ;
-  const GGS_dumpFormula result (object) ;
+  cPtr_graphvizFormula * object = nullptr ;
+  macroMyNew (object, cPtr_graphvizFormula (inCompiler COMMA_THERE)) ;
+  object->graphvizFormula_init_21_ (in_mFormulaName, inCompiler) ;
+  const GGS_graphvizFormula result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_dumpFormula::
-dumpFormula_init_21_ (const GGS_lstring & in_mFormulaName,
-                      Compiler * /* inCompiler */) {
+void cPtr_graphvizFormula::
+graphvizFormula_init_21_ (const GGS_lstring & in_mFormulaName,
+                          Compiler * /* inCompiler */) {
   mProperty_mFormulaName = in_mFormulaName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula::GGS_dumpFormula (const cPtr_dumpFormula * inSourcePtr) :
+GGS_graphvizFormula::GGS_graphvizFormula (const cPtr_graphvizFormula * inSourcePtr) :
 GGS_abstractFormula (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_dumpFormula) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_graphvizFormula) ;
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS_dumpFormula::readProperty_mFormulaName (void) const {
+GGS_lstring GGS_graphvizFormula::readProperty_mFormulaName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
   }else{
-    cPtr_dumpFormula * p = (cPtr_dumpFormula *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_dumpFormula) ;
+    cPtr_graphvizFormula * p = (cPtr_graphvizFormula *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_graphvizFormula) ;
     return p->mProperty_mFormulaName ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_dumpFormula::setProperty_mFormulaName (const GGS_lstring & inValue) {
+void GGS_graphvizFormula::setProperty_mFormulaName (const GGS_lstring & inValue) {
   if (nullptr != mObjectPtr) {
-    cPtr_dumpFormula * p = (cPtr_dumpFormula *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_dumpFormula) ;
+    cPtr_graphvizFormula * p = (cPtr_graphvizFormula *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_graphvizFormula) ;
     p->mProperty_mFormulaName = inValue ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @dumpFormula class
+//Pointer class for @graphvizFormula class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_dumpFormula::cPtr_dumpFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_graphvizFormula::cPtr_graphvizFormula (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_abstractFormula (inCompiler COMMA_THERE),
 mProperty_mFormulaName () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_dumpFormula::cPtr_dumpFormula (const GGS_lstring & in_mFormulaName,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) :
+cPtr_graphvizFormula::cPtr_graphvizFormula (const GGS_lstring & in_mFormulaName,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) :
 cPtr_abstractFormula (inCompiler COMMA_THERE),
 mProperty_mFormulaName () {
   mProperty_mFormulaName = in_mFormulaName ;
@@ -16970,22 +16606,22 @@ mProperty_mFormulaName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * cPtr_dumpFormula::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_dumpFormula ;
+const GALGAS_TypeDescriptor * cPtr_graphvizFormula::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_graphvizFormula ;
 }
 
-void cPtr_dumpFormula::description (String & ioString,
-                                    const int32_t inIndentation) const {
-  ioString.appendCString ("[@dumpFormula:") ;
+void cPtr_graphvizFormula::description (String & ioString,
+                                        const int32_t inIndentation) const {
+  ioString.appendCString ("[@graphvizFormula:") ;
   mProperty_mFormulaName.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AbstractPtrClass * cPtr_dumpFormula::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+AbstractPtrClass * cPtr_graphvizFormula::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_dumpFormula (mProperty_mFormulaName, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_graphvizFormula (mProperty_mFormulaName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -16993,47 +16629,379 @@ AbstractPtrClass * cPtr_dumpFormula::duplicate (Compiler * inCompiler COMMA_LOCA
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_dumpFormula::printNonNullClassInstanceProperties (void) const {
+  void cPtr_graphvizFormula::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
     mProperty_mFormulaName.printNonNullClassInstanceProperties ("mFormulaName") ;
   }
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//     @dumpFormula generic code implementation
+//     @graphvizFormula generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dumpFormula ("dumpFormula",
-                                                                & kTypeDescriptor_GALGAS_abstractFormula) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_graphvizFormula ("graphvizFormula",
+                                                                    & kTypeDescriptor_GALGAS_abstractFormula) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_dumpFormula::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_dumpFormula ;
+const GALGAS_TypeDescriptor * GGS_graphvizFormula::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_graphvizFormula ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_dumpFormula::clonedObject (void) const {
+AC_GALGAS_root * GGS_graphvizFormula::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GGS_dumpFormula (*this)) ;
+    macroMyNew (result, GGS_graphvizFormula (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dumpFormula GGS_dumpFormula::extractObject (const GGS_object & inObject,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  GGS_dumpFormula result ;
-  const GGS_dumpFormula * p = (const GGS_dumpFormula *) inObject.embeddedObject () ;
+GGS_graphvizFormula GGS_graphvizFormula::extractObject (const GGS_object & inObject,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  GGS_graphvizFormula result ;
+  const GGS_graphvizFormula * p = (const GGS_graphvizFormula *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_dumpFormula *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_graphvizFormula *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("dumpFormula", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("graphvizFormula", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @setting_5F_nodeHashMapSize reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_setting_5F_nodeHashMapSize::objectCompare (const GGS_setting_5F_nodeHashMapSize & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setting_5F_nodeHashMapSize::GGS_setting_5F_nodeHashMapSize (void) :
+GGS_abstractFormula () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_setting_5F_nodeHashMapSize GGS_setting_5F_nodeHashMapSize::
+init_21_ (const GGS_luint & in_mSetting,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_setting_5F_nodeHashMapSize * object = nullptr ;
+  macroMyNew (object, cPtr_setting_5F_nodeHashMapSize (inCompiler COMMA_THERE)) ;
+  object->setting_5F_nodeHashMapSize_init_21_ (in_mSetting, inCompiler) ;
+  const GGS_setting_5F_nodeHashMapSize result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_setting_5F_nodeHashMapSize::
+setting_5F_nodeHashMapSize_init_21_ (const GGS_luint & in_mSetting,
+                                     Compiler * /* inCompiler */) {
+  mProperty_mSetting = in_mSetting ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setting_5F_nodeHashMapSize::GGS_setting_5F_nodeHashMapSize (const cPtr_setting_5F_nodeHashMapSize * inSourcePtr) :
+GGS_abstractFormula (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_setting_5F_nodeHashMapSize) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_luint GGS_setting_5F_nodeHashMapSize::readProperty_mSetting (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_luint () ;
+  }else{
+    cPtr_setting_5F_nodeHashMapSize * p = (cPtr_setting_5F_nodeHashMapSize *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_setting_5F_nodeHashMapSize) ;
+    return p->mProperty_mSetting ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_setting_5F_nodeHashMapSize::setProperty_mSetting (const GGS_luint & inValue) {
+  if (nullptr != mObjectPtr) {
+    cPtr_setting_5F_nodeHashMapSize * p = (cPtr_setting_5F_nodeHashMapSize *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_setting_5F_nodeHashMapSize) ;
+    p->mProperty_mSetting = inValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @setting_nodeHashMapSize class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_setting_5F_nodeHashMapSize::cPtr_setting_5F_nodeHashMapSize (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (inCompiler COMMA_THERE),
+mProperty_mSetting () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_setting_5F_nodeHashMapSize::cPtr_setting_5F_nodeHashMapSize (const GGS_luint & in_mSetting,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (inCompiler COMMA_THERE),
+mProperty_mSetting () {
+  mProperty_mSetting = in_mSetting ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_setting_5F_nodeHashMapSize::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ;
+}
+
+void cPtr_setting_5F_nodeHashMapSize::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@setting_nodeHashMapSize:") ;
+  mProperty_mSetting.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_setting_5F_nodeHashMapSize::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_setting_5F_nodeHashMapSize (mProperty_mSetting, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_setting_5F_nodeHashMapSize::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
+    mProperty_mSetting.printNonNullClassInstanceProperties ("mSetting") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @setting_nodeHashMapSize generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ("setting_nodeHashMapSize",
+                                                                               & kTypeDescriptor_GALGAS_abstractFormula) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_setting_5F_nodeHashMapSize::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setting_5F_nodeHashMapSize ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_setting_5F_nodeHashMapSize::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_setting_5F_nodeHashMapSize (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setting_5F_nodeHashMapSize GGS_setting_5F_nodeHashMapSize::extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS_setting_5F_nodeHashMapSize result ;
+  const GGS_setting_5F_nodeHashMapSize * p = (const GGS_setting_5F_nodeHashMapSize *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_setting_5F_nodeHashMapSize *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("setting_nodeHashMapSize", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @setting_5F_andCacheMapSize reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_setting_5F_andCacheMapSize::objectCompare (const GGS_setting_5F_andCacheMapSize & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setting_5F_andCacheMapSize::GGS_setting_5F_andCacheMapSize (void) :
+GGS_abstractFormula () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_setting_5F_andCacheMapSize GGS_setting_5F_andCacheMapSize::
+init_21_ (const GGS_luint & in_mSetting,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_setting_5F_andCacheMapSize * object = nullptr ;
+  macroMyNew (object, cPtr_setting_5F_andCacheMapSize (inCompiler COMMA_THERE)) ;
+  object->setting_5F_andCacheMapSize_init_21_ (in_mSetting, inCompiler) ;
+  const GGS_setting_5F_andCacheMapSize result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_setting_5F_andCacheMapSize::
+setting_5F_andCacheMapSize_init_21_ (const GGS_luint & in_mSetting,
+                                     Compiler * /* inCompiler */) {
+  mProperty_mSetting = in_mSetting ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setting_5F_andCacheMapSize::GGS_setting_5F_andCacheMapSize (const cPtr_setting_5F_andCacheMapSize * inSourcePtr) :
+GGS_abstractFormula (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_setting_5F_andCacheMapSize) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_luint GGS_setting_5F_andCacheMapSize::readProperty_mSetting (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_luint () ;
+  }else{
+    cPtr_setting_5F_andCacheMapSize * p = (cPtr_setting_5F_andCacheMapSize *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_setting_5F_andCacheMapSize) ;
+    return p->mProperty_mSetting ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_setting_5F_andCacheMapSize::setProperty_mSetting (const GGS_luint & inValue) {
+  if (nullptr != mObjectPtr) {
+    cPtr_setting_5F_andCacheMapSize * p = (cPtr_setting_5F_andCacheMapSize *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_setting_5F_andCacheMapSize) ;
+    p->mProperty_mSetting = inValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @setting_andCacheMapSize class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_setting_5F_andCacheMapSize::cPtr_setting_5F_andCacheMapSize (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (inCompiler COMMA_THERE),
+mProperty_mSetting () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_setting_5F_andCacheMapSize::cPtr_setting_5F_andCacheMapSize (const GGS_luint & in_mSetting,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_abstractFormula (inCompiler COMMA_THERE),
+mProperty_mSetting () {
+  mProperty_mSetting = in_mSetting ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_setting_5F_andCacheMapSize::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize ;
+}
+
+void cPtr_setting_5F_andCacheMapSize::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@setting_andCacheMapSize:") ;
+  mProperty_mSetting.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_setting_5F_andCacheMapSize::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_setting_5F_andCacheMapSize (mProperty_mSetting, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_setting_5F_andCacheMapSize::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractFormula::printNonNullClassInstanceProperties () ;
+    mProperty_mSetting.printNonNullClassInstanceProperties ("mSetting") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @setting_andCacheMapSize generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize ("setting_andCacheMapSize",
+                                                                               & kTypeDescriptor_GALGAS_abstractFormula) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_setting_5F_andCacheMapSize::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setting_5F_andCacheMapSize ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_setting_5F_andCacheMapSize::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_setting_5F_andCacheMapSize (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_setting_5F_andCacheMapSize GGS_setting_5F_andCacheMapSize::extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS_setting_5F_andCacheMapSize result ;
+  const GGS_setting_5F_andCacheMapSize * p = (const GGS_setting_5F_andCacheMapSize *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_setting_5F_andCacheMapSize *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("setting_andCacheMapSize", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -17150,376 +17118,6 @@ GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::extractObject (co
       result = *p ;
     }else{
       inCompiler->castError ("2lstringlist.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element::GGS_computedFormulaMap_2E_element (void) :
-mProperty_lkey (),
-mProperty_mVarList (),
-mProperty_mBitCount (),
-mProperty_mValue () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element::GGS_computedFormulaMap_2E_element (const GGS_computedFormulaMap_2E_element & inSource) :
-mProperty_lkey (inSource.mProperty_lkey),
-mProperty_mVarList (inSource.mProperty_mVarList),
-mProperty_mBitCount (inSource.mProperty_mBitCount),
-mProperty_mValue (inSource.mProperty_mValue) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element & GGS_computedFormulaMap_2E_element::operator = (const GGS_computedFormulaMap_2E_element & inSource) {
-  mProperty_lkey = inSource.mProperty_lkey ;
-  mProperty_mVarList = inSource.mProperty_mVarList ;
-  mProperty_mBitCount = inSource.mProperty_mBitCount ;
-  mProperty_mValue = inSource.mProperty_mValue ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element GGS_computedFormulaMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                           const GGS_varList & in_mVarList,
-                                                                                           const GGS_uint & in_mBitCount,
-                                                                                           const GGS_binaryset & in_mValue,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mVarList = in_mVarList ;
-  result.mProperty_mBitCount = in_mBitCount ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element::GGS_computedFormulaMap_2E_element (const GGS_lstring & inOperand0,
-                                                                      const GGS_varList & inOperand1,
-                                                                      const GGS_uint & inOperand2,
-                                                                      const GGS_binaryset & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mVarList (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mValue (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_computedFormulaMap_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mVarList.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mValue.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @computedFormulaMap.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mVarList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mValue.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @computedFormulaMap.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_computedFormulaMap_2E_element ("computedFormulaMap.element",
-                                                                                  nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_computedFormulaMap_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_computedFormulaMap_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_computedFormulaMap_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_computedFormulaMap_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element GGS_computedFormulaMap_2E_element::extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element result ;
-  const GGS_computedFormulaMap_2E_element * p = (const GGS_computedFormulaMap_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_computedFormulaMap_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("computedFormulaMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Optional @computedFormulaMap_2E_element_3F_
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_::GGS_computedFormulaMap_2E_element_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_::GGS_computedFormulaMap_2E_element_3F_ (const GGS_computedFormulaMap_2E_element & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_ GGS_computedFormulaMap_2E_element_3F_::init_nil (void) {
-  GGS_computedFormulaMap_2E_element_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_computedFormulaMap_2E_element_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_computedFormulaMap_2E_element_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GGS_computedFormulaMap_2E_element () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element_3F_::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @computedFormulaMap.element? generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_computedFormulaMap_2E_element_3F_ ("computedFormulaMap.element?",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_computedFormulaMap_2E_element_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_computedFormulaMap_2E_element_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_computedFormulaMap_2E_element_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_computedFormulaMap_2E_element_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_ GGS_computedFormulaMap_2E_element_3F_::extractObject (const GGS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element_3F_ result ;
-  const GGS_computedFormulaMap_2E_element_3F_ * p = (const GGS_computedFormulaMap_2E_element_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_computedFormulaMap_2E_element_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("computedFormulaMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (void) :
-mProperty_mParameterName (),
-mProperty_mFieldNames () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_formulaParameterListInExpression_2E_element & inSource) :
-mProperty_mParameterName (inSource.mProperty_mParameterName),
-mProperty_mFieldNames (inSource.mProperty_mFieldNames) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element & GGS_formulaParameterListInExpression_2E_element::operator = (const GGS_formulaParameterListInExpression_2E_element & inSource) {
-  mProperty_mParameterName = inSource.mProperty_mParameterName ;
-  mProperty_mFieldNames = inSource.mProperty_mFieldNames ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::init_21__21_ (const GGS_lstring & in_mParameterName,
-                                                                                                               const GGS_lstringlist & in_mFieldNames,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mParameterName = in_mParameterName ;
-  result.mProperty_mFieldNames = in_mFieldNames ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_lstring & inOperand0,
-                                                                                                  const GGS_lstringlist & inOperand1) :
-mProperty_mParameterName (inOperand0),
-mProperty_mFieldNames (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_formulaParameterListInExpression_2E_element::isValid (void) const {
-  return mProperty_mParameterName.isValid () && mProperty_mFieldNames.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::drop (void) {
-  mProperty_mParameterName.drop () ;
-  mProperty_mFieldNames.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::description (String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @formulaParameterListInExpression.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mParameterName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFieldNames.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @formulaParameterListInExpression.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ("formulaParameterListInExpression.element",
-                                                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_formulaParameterListInExpression_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_formulaParameterListInExpression_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_formulaParameterListInExpression_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression_2E_element result ;
-  const GGS_formulaParameterListInExpression_2E_element * p = (const GGS_formulaParameterListInExpression_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_formulaParameterListInExpression_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("formulaParameterListInExpression.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -18230,6 +17828,504 @@ GGS_recordDomainMap_2E_element_3F_ GGS_recordDomainMap_2E_element_3F_::extractOb
       result = *p ;
     }else{
       inCompiler->castError ("recordDomainMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element::GGS_domainMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mBitCount (),
+mProperty_mRecordMap () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element::GGS_domainMap_2E_element (const GGS_domainMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mBitCount (inSource.mProperty_mBitCount),
+mProperty_mRecordMap (inSource.mProperty_mRecordMap) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element & GGS_domainMap_2E_element::operator = (const GGS_domainMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mBitCount = inSource.mProperty_mBitCount ;
+  mProperty_mRecordMap = inSource.mProperty_mRecordMap ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_domainMap_2E_element GGS_domainMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
+                                                                     const GGS_uint & in_mBitCount,
+                                                                     const GGS_recordDomainMap & in_mRecordMap,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_domainMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  result.mProperty_mRecordMap = in_mRecordMap ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element::GGS_domainMap_2E_element (const GGS_lstring & inOperand0,
+                                                    const GGS_uint & inOperand1,
+                                                    const GGS_recordDomainMap & inOperand2) :
+mProperty_lkey (inOperand0),
+mProperty_mBitCount (inOperand1),
+mProperty_mRecordMap (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_domainMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordMap.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mBitCount.drop () ;
+  mProperty_mRecordMap.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap_2E_element::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @domainMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mBitCount.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mRecordMap.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @domainMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainMap_2E_element ("domainMap.element",
+                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_domainMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_domainMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_domainMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_domainMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element GGS_domainMap_2E_element::extractObject (const GGS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GGS_domainMap_2E_element result ;
+  const GGS_domainMap_2E_element * p = (const GGS_domainMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_domainMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("domainMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @domainMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element_3F_::GGS_domainMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element_3F_::GGS_domainMap_2E_element_3F_ (const GGS_domainMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element_3F_ GGS_domainMap_2E_element_3F_::init_nil (void) {
+  GGS_domainMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_domainMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_domainMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_domainMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_domainMap_2E_element_3F_::description (String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @domainMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainMap_2E_element_3F_ ("domainMap.element?",
+                                                                             nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_domainMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_domainMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_domainMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_domainMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_domainMap_2E_element_3F_ GGS_domainMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GGS_domainMap_2E_element_3F_ result ;
+  const GGS_domainMap_2E_element_3F_ * p = (const GGS_domainMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_domainMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("domainMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element::GGS_varMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mIndex (),
+mProperty_mBitCount (),
+mProperty_mRecordDomainMap () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element::GGS_varMap_2E_element (const GGS_varMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mIndex (inSource.mProperty_mIndex),
+mProperty_mBitCount (inSource.mProperty_mBitCount),
+mProperty_mRecordDomainMap (inSource.mProperty_mRecordDomainMap) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element & GGS_varMap_2E_element::operator = (const GGS_varMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mIndex = inSource.mProperty_mIndex ;
+  mProperty_mBitCount = inSource.mProperty_mBitCount ;
+  mProperty_mRecordDomainMap = inSource.mProperty_mRecordDomainMap ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_varMap_2E_element GGS_varMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
+                                                                   const GGS_uint & in_mIndex,
+                                                                   const GGS_uint & in_mBitCount,
+                                                                   const GGS_recordDomainMap & in_mRecordDomainMap,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_varMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mIndex = in_mIndex ;
+  result.mProperty_mBitCount = in_mBitCount ;
+  result.mProperty_mRecordDomainMap = in_mRecordDomainMap ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element::GGS_varMap_2E_element (const GGS_lstring & inOperand0,
+                                              const GGS_uint & inOperand1,
+                                              const GGS_uint & inOperand2,
+                                              const GGS_recordDomainMap & inOperand3) :
+mProperty_lkey (inOperand0),
+mProperty_mIndex (inOperand1),
+mProperty_mBitCount (inOperand2),
+mProperty_mRecordDomainMap (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_varMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mBitCount.isValid () && mProperty_mRecordDomainMap.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mIndex.drop () ;
+  mProperty_mBitCount.drop () ;
+  mProperty_mRecordDomainMap.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap_2E_element::description (String & ioString,
+                                         const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @varMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIndex.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mBitCount.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mRecordDomainMap.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @varMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varMap_2E_element ("varMap.element",
+                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_varMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_varMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_varMap_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_varMap_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element GGS_varMap_2E_element::extractObject (const GGS_object & inObject,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  GGS_varMap_2E_element result ;
+  const GGS_varMap_2E_element * p = (const GGS_varMap_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_varMap_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("varMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @varMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element_3F_::GGS_varMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element_3F_::GGS_varMap_2E_element_3F_ (const GGS_varMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element_3F_ GGS_varMap_2E_element_3F_::init_nil (void) {
+  GGS_varMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_varMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_varMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_varMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_varMap_2E_element_3F_::description (String & ioString,
+                                             const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @varMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varMap_2E_element_3F_ ("varMap.element?",
+                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_varMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_varMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_varMap_2E_element_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_varMap_2E_element_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_varMap_2E_element_3F_ GGS_varMap_2E_element_3F_::extractObject (const GGS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GGS_varMap_2E_element_3F_ result ;
+  const GGS_varMap_2E_element_3F_ * p = (const GGS_varMap_2E_element_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_varMap_2E_element_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("varMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
