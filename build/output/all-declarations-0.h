@@ -307,7 +307,7 @@ class GGS__32_lstringlist_2E_element : public AC_GALGAS_root {
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -392,7 +392,7 @@ class cPtr_abstractFormula : public AbstractStrongPtrClass {
   public: void abstractFormula_init (Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeFormula
+//--- Extension proc analyzeFormula
   public: virtual void method_analyzeFormula (const class GGS_string arg_inSourceFilePath,
            const class GGS_domainMap arg_inDomainMap,
            class GGS_computedFormulaMap & arg_ioComputedFormulaMap,
@@ -763,7 +763,7 @@ class GGS_formulaList_2E_element : public AC_GALGAS_root {
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1081,7 +1081,7 @@ class GGS_domainDeclarationType : public AC_GALGAS_root {
   public: static class GGS_domainDeclarationType class_func_type (const class GGS_bddType & inOperand0
                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1181,7 +1181,7 @@ class GGS_domainDeclarationList_2E_element : public AC_GALGAS_root {
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1263,7 +1263,7 @@ class GGS_bddType : public AC_GALGAS_root {
   public: static class GGS_bddType class_func_namedType (const class GGS_lstring & inOperand0
                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1354,7 +1354,7 @@ class GGS_bddType_2E_boolArray : public AC_GALGAS_root {
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1504,7 +1504,7 @@ class GGS_bddType_2E_namedType : public AC_GALGAS_root {
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1904,7 +1904,7 @@ class GGS_domainFieldList_2E_element : public AC_GALGAS_root {
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -1977,7 +1977,7 @@ class GGS_domainDeclarationType_2E_record : public AC_GALGAS_root {
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -2127,7 +2127,7 @@ class GGS_domainDeclarationType_2E_type : public AC_GALGAS_root {
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -2535,7 +2535,7 @@ class GGS_recordDomainMap_2E_element : public AC_GALGAS_root {
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -2918,7 +2918,7 @@ class GGS_domainMap_2E_element : public AC_GALGAS_root {
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -3020,7 +3020,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_domainMap_2E_element_3
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@domainDeclarationList analyze'
+//Extension proc '@domainDeclarationList analyze'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3361,7 +3361,7 @@ class GGS_varList_2E_element : public AC_GALGAS_root {
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -3692,7 +3692,7 @@ class GGS_varMap_2E_element : public AC_GALGAS_root {
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -3794,7 +3794,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varMap_2E_element_3F_ 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@domainFieldList analyze'
+//Extension proc '@domainFieldList analyze'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3852,7 +3852,7 @@ class Lexique_kerbdd_5F_lexique : public Lexique {
   public: static GGS_stringlist symbols (LOCATION_ARGS) ;
 
 //--- Declaring a protected virtual destructor enables the compiler to raise
-//    an error if a direct delete is performed; only the static method
+//    an error if a direct delete is performed; only the static proc
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected: virtual ~ Lexique_kerbdd_5F_lexique (void) { }
@@ -3909,7 +3909,7 @@ class Lexique_kerbdd_5F_lexique : public Lexique {
 
 //--- Key words table 'delimitorsList'
   public: static int32_t search_into_delimitorsList (const String & inSearchedString) ;
-  
+
 
 //--- Assign from attribute
   public: GGS_lstring synthetizedAttribute_tokenString (void) const ;
@@ -3998,7 +3998,7 @@ class GGS_formulaKind : public AC_GALGAS_root {
   public: static class GGS_formulaKind class_func_fixedPoint (const class GGS_binaryset & inOperand0
                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4081,7 +4081,7 @@ class GGS_formulaKind_2E_fixedPoint : public AC_GALGAS_root {
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4243,7 +4243,7 @@ class cPtr_expression : public AbstractStrongPtrClass {
   public: void expression_init (Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -4350,7 +4350,7 @@ class cPtr_assignmentFormula : public cPtr_abstractFormula {
                                                        Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeFormula
+//--- Extension proc analyzeFormula
   public: virtual void method_analyzeFormula (const class GGS_string arg_inSourceFilePath,
            const class GGS_domainMap arg_inDomainMap,
            class GGS_computedFormulaMap & arg_ioComputedFormulaMap,
@@ -4774,7 +4774,7 @@ class GGS_computedFormulaMap_2E_element : public AC_GALGAS_root {
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -4941,7 +4941,7 @@ class cPtr_dumpFormula : public cPtr_abstractFormula {
                                      Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeFormula
+//--- Extension proc analyzeFormula
   public: virtual void method_analyzeFormula (const class GGS_string arg_inSourceFilePath,
            const class GGS_domainMap arg_inDomainMap,
            class GGS_computedFormulaMap & arg_ioComputedFormulaMap,
@@ -5053,7 +5053,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dumpFormula_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@abstractFormula analyzeFormula'
+//Abstract extension proc '@abstractFormula analyzeFormula'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -5210,7 +5210,7 @@ class cPtr_varInExpression : public cPtr_expression {
                                          Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -5393,7 +5393,7 @@ class cPtr_varBitInExpression : public cPtr_expression {
                                                 Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -5578,7 +5578,7 @@ class cPtr_andExpression : public cPtr_expression {
                                            Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -5763,7 +5763,7 @@ class cPtr_orExpression : public cPtr_expression {
                                           Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -5948,7 +5948,7 @@ class cPtr_xorExpression : public cPtr_expression {
                                            Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -6133,7 +6133,7 @@ class cPtr_equalExpression : public cPtr_expression {
                                              Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -6318,7 +6318,7 @@ class cPtr_notEqualExpression : public cPtr_expression {
                                                 Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -6503,7 +6503,7 @@ class cPtr_impliesExpression : public cPtr_expression {
                                                Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -6683,7 +6683,7 @@ class cPtr_complementExpression : public cPtr_expression {
                                               Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -6856,7 +6856,7 @@ class cPtr_trueExpression : public cPtr_expression {
   public: void trueExpression_init (Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -7025,7 +7025,7 @@ class cPtr_falseExpression : public cPtr_expression {
   public: void falseExpression_init (Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -7432,7 +7432,7 @@ class GGS_formulaParameterListInExpression_2E_element : public AC_GALGAS_root {
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -7527,7 +7527,7 @@ class cPtr_formulaInExpression : public cPtr_expression {
                                                  Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -7712,7 +7712,7 @@ class cPtr_existInExpression : public cPtr_expression {
                                                Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -7897,7 +7897,7 @@ class cPtr_forAllInExpression : public cPtr_expression {
                                                 Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -8072,7 +8072,7 @@ class GGS_comparison : public AC_GALGAS_root {
 
   public: static class GGS_comparison class_func_notEqual (LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 
@@ -8189,7 +8189,7 @@ class cPtr_comparisonWithConstantInExpression : public cPtr_expression {
                                                                         Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -8393,7 +8393,7 @@ class cPtr_variableComparisonInExpression : public cPtr_expression {
                                                                         Compiler * inCompiler) ;
 
 
-//--- Extension getter computeExpression
+//--- Extension func computeExpression
   public: virtual class GGS_binaryset getter_computeExpression (const class GGS_domainMap inDomainMap,
            const class GGS_varMap inVarMap,
            const class GGS_uint inTotalBitCount,
@@ -8514,7 +8514,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_variableComparisonInEx
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@expression computeExpression'
+//Abstract extension func '@expression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -8593,7 +8593,7 @@ class cPtr_graphvizFormula : public cPtr_abstractFormula {
                                          Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeFormula
+//--- Extension proc analyzeFormula
   public: virtual void method_analyzeFormula (const class GGS_string arg_inSourceFilePath,
            const class GGS_domainMap arg_inDomainMap,
            class GGS_computedFormulaMap & arg_ioComputedFormulaMap,
@@ -8770,7 +8770,7 @@ class cPtr_setting_5F_nodeHashMapSize : public cPtr_abstractFormula {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeFormula
+//--- Extension proc analyzeFormula
   public: virtual void method_analyzeFormula (const class GGS_string arg_inSourceFilePath,
            const class GGS_domainMap arg_inDomainMap,
            class GGS_computedFormulaMap & arg_ioComputedFormulaMap,
@@ -8947,7 +8947,7 @@ class cPtr_setting_5F_andCacheMapSize : public cPtr_abstractFormula {
                                                     Compiler * inCompiler) ;
 
 
-//--- Extension method analyzeFormula
+//--- Extension proc analyzeFormula
   public: virtual void method_analyzeFormula (const class GGS_string arg_inSourceFilePath,
            const class GGS_domainMap arg_inDomainMap,
            class GGS_computedFormulaMap & arg_ioComputedFormulaMap,
@@ -9358,7 +9358,7 @@ class GGS_ast : public AC_GALGAS_root {
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of getter 'description'
+//--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 

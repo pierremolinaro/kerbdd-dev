@@ -20,10 +20,10 @@ class CollectionElementPtr__32_lstringlist : public CollectionElementPtr {
                                                 COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr__32_lstringlist (const GGS__32_lstringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -456,7 +456,7 @@ void GGS__32_lstringlist::setter_setMValue_30_AtIndex (GGS_lstring inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS__32_lstringlist::getter_mValue_30_AtIndex (const GGS_uint & inIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
@@ -495,7 +495,7 @@ void GGS__32_lstringlist::setter_setMValue_31_AtIndex (GGS_lstring inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS__32_lstringlist::getter_mValue_31_AtIndex (const GGS_uint & inIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
@@ -846,10 +846,10 @@ class CollectionElementPtr_formulaList : public CollectionElementPtr {
                                             COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_formulaList (const GGS_formulaList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -1257,7 +1257,7 @@ void GGS_formulaList::setter_setMFormulaAtIndex (GGS_abstractFormula inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_abstractFormula GGS_formulaList::getter_mFormulaAtIndex (const GGS_uint & inIndex,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
@@ -1377,10 +1377,10 @@ class CollectionElementPtr_domainDeclarationList : public CollectionElementPtr {
                                                       COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_domainDeclarationList (const GGS_domainDeclarationList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -1813,7 +1813,7 @@ void GGS_domainDeclarationList::setter_setMDomainNameAtIndex (GGS_lstring inOper
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_domainDeclarationList::getter_mDomainNameAtIndex (const GGS_uint & inIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
@@ -1852,7 +1852,7 @@ void GGS_domainDeclarationList::setter_setMTypeAtIndex (GGS_domainDeclarationTyp
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_domainDeclarationType GGS_domainDeclarationList::getter_mTypeAtIndex (const GGS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
@@ -2027,7 +2027,7 @@ void GGS_bddType::method_extractBoolArray (GGS_uint & outAssociatedValue_size,
   if (mEnum != Enumeration::enum_boolArray) {
     outAssociatedValue_size.drop () ;
     String s ;
-    s.appendCString ("method @bddType.boolArray invoked with an invalid enum value") ;
+    s.appendCString ("proc @bddType.boolArray invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const auto ptr = (GGS_bddType_2E_boolArray *) mAssociatedValues.associatedValuesPointer () ;
@@ -2043,7 +2043,7 @@ void GGS_bddType::method_extractNamedType (GGS_lstring & outAssociatedValue_type
   if (mEnum != Enumeration::enum_namedType) {
     outAssociatedValue_typeName.drop () ;
     String s ;
-    s.appendCString ("method @bddType.namedType invoked with an invalid enum value") ;
+    s.appendCString ("proc @bddType.namedType invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const auto ptr = (GGS_bddType_2E_namedType *) mAssociatedValues.associatedValuesPointer () ;
@@ -2180,10 +2180,10 @@ class CollectionElementPtr_domainFieldList : public CollectionElementPtr {
                                                 COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_domainFieldList (const GGS_domainFieldList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -2616,7 +2616,7 @@ void GGS_domainFieldList::setter_setMVarNameAtIndex (GGS_lstring inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_domainFieldList::getter_mVarNameAtIndex (const GGS_uint & inIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
@@ -2655,7 +2655,7 @@ void GGS_domainFieldList::setter_setMTypeAtIndex (GGS_bddType inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_bddType GGS_domainFieldList::getter_mTypeAtIndex (const GGS_uint & inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
@@ -2822,7 +2822,7 @@ void GGS_domainDeclarationType::method_extractType (GGS_bddType & outAssociatedV
   if (mEnum != Enumeration::enum_type) {
     outAssociatedValue_type.drop () ;
     String s ;
-    s.appendCString ("method @domainDeclarationType.type invoked with an invalid enum value") ;
+    s.appendCString ("proc @domainDeclarationType.type invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const auto ptr = (GGS_domainDeclarationType_2E_type *) mAssociatedValues.associatedValuesPointer () ;
@@ -2838,7 +2838,7 @@ void GGS_domainDeclarationType::method_extractRecord (GGS_domainFieldList & outA
   if (mEnum != Enumeration::enum_record) {
     outAssociatedValue_fieldList.drop () ;
     String s ;
-    s.appendCString ("method @domainDeclarationType.record invoked with an invalid enum value") ;
+    s.appendCString ("proc @domainDeclarationType.record invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const auto ptr = (GGS_domainDeclarationType_2E_record *) mAssociatedValues.associatedValuesPointer () ;
@@ -4112,7 +4112,7 @@ GGS_domainMap GGS_domainMap::extractObject (const GGS_object & inObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@domainDeclarationList analyze'
+//Extension proc '@domainDeclarationList analyze'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -4248,10 +4248,10 @@ class CollectionElementPtr_varList : public CollectionElementPtr {
                                         COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_varList (const GGS_varList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -4709,7 +4709,7 @@ void GGS_varList::setter_setMVarNameAtIndex (GGS_string inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_string GGS_varList::getter_mVarNameAtIndex (const GGS_uint & inIndex,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
@@ -4748,7 +4748,7 @@ void GGS_varList::setter_setMBitIndexAtIndex (GGS_uint inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_varList::getter_mBitIndexAtIndex (const GGS_uint & inIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
@@ -4787,7 +4787,7 @@ void GGS_varList::setter_setMBitCountAtIndex (GGS_uint inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_varList::getter_mBitCountAtIndex (const GGS_uint & inIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
@@ -5529,7 +5529,7 @@ GGS_varMap GGS_varMap::extractObject (const GGS_object & inObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@domainFieldList analyze'
+//Extension proc '@domainFieldList analyze'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -6724,7 +6724,7 @@ void GGS_formulaKind::method_extractFixedPoint (GGS_binaryset & outAssociatedVal
   if (mEnum != Enumeration::enum_fixedPoint) {
     outAssociatedValue_startValue.drop () ;
     String s ;
-    s.appendCString ("method @formulaKind.fixedPoint invoked with an invalid enum value") ;
+    s.appendCString ("proc @formulaKind.fixedPoint invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const auto ptr = (GGS_formulaKind_2E_fixedPoint *) mAssociatedValues.associatedValuesPointer () ;
@@ -7776,7 +7776,7 @@ GGS_dumpFormula_2E_weak GGS_dumpFormula_2E_weak::extractObject (const GGS_object
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@abstractFormula analyzeFormula'
+//Abstract extension proc '@abstractFormula analyzeFormula'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -7787,7 +7787,7 @@ void callExtensionMethod_analyzeFormula (cPtr_abstractFormula * inObject,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
-//--- Find method
+//--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractFormula) ;
     inObject->method_analyzeFormula (constin_inSourceFilePath, constin_inDomainMap, io_ioComputedFormulaMap, inCompiler COMMA_THERE) ;
@@ -10886,10 +10886,10 @@ class CollectionElementPtr_formulaParameterListInExpression : public CollectionE
                                                                  COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_formulaParameterListInExpression (const GGS_formulaParameterListInExpression_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -11322,7 +11322,7 @@ void GGS_formulaParameterListInExpression::setter_setMParameterNameAtIndex (GGS_
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_formulaParameterListInExpression::getter_mParameterNameAtIndex (const GGS_uint & inIndex,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
@@ -11361,7 +11361,7 @@ void GGS_formulaParameterListInExpression::setter_setMFieldNamesAtIndex (GGS_lst
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstringlist GGS_formulaParameterListInExpression::getter_mFieldNamesAtIndex (const GGS_uint & inIndex,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
@@ -12655,7 +12655,7 @@ GGS_variableComparisonInExpression_2E_weak GGS_variableComparisonInExpression_2E
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@expression computeExpression'
+//Abstract extension func '@expression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 

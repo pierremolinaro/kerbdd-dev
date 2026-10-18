@@ -2338,7 +2338,7 @@ GGS_varBitInExpression GGS_varBitInExpression::extractObject (const GGS_object &
 }
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@assignmentFormula analyzeFormula'
+//Overriding extension proc '@assignmentFormula analyzeFormula'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_assignmentFormula::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
@@ -2464,7 +2464,7 @@ void cPtr_assignmentFormula::method_analyzeFormula (const GGS_string /* constinA
 }
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@dumpFormula analyzeFormula'
+//Overriding extension proc '@dumpFormula analyzeFormula'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_dumpFormula::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
@@ -2537,7 +2537,7 @@ void cPtr_dumpFormula::method_analyzeFormula (const GGS_string /* constinArgumen
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@varInExpression computeExpression'
+//Overriding extension func '@varInExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2581,7 +2581,7 @@ GGS_binaryset cPtr_varInExpression::getter_computeExpression (const GGS_domainMa
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@varBitInExpression computeExpression'
+//Overriding extension func '@varBitInExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2627,7 +2627,7 @@ GGS_binaryset cPtr_varBitInExpression::getter_computeExpression (const GGS_domai
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@andExpression computeExpression'
+//Overriding extension func '@andExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2650,7 +2650,7 @@ GGS_binaryset cPtr_andExpression::getter_computeExpression (const GGS_domainMap 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@orExpression computeExpression'
+//Overriding extension func '@orExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2673,7 +2673,7 @@ GGS_binaryset cPtr_orExpression::getter_computeExpression (const GGS_domainMap c
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@xorExpression computeExpression'
+//Overriding extension func '@xorExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2696,7 +2696,7 @@ GGS_binaryset cPtr_xorExpression::getter_computeExpression (const GGS_domainMap 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@impliesExpression computeExpression'
+//Overriding extension func '@impliesExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2719,7 +2719,7 @@ GGS_binaryset cPtr_impliesExpression::getter_computeExpression (const GGS_domain
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@equalExpression computeExpression'
+//Overriding extension func '@equalExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2742,7 +2742,7 @@ GGS_binaryset cPtr_equalExpression::getter_computeExpression (const GGS_domainMa
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@notEqualExpression computeExpression'
+//Overriding extension func '@notEqualExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2765,7 +2765,7 @@ GGS_binaryset cPtr_notEqualExpression::getter_computeExpression (const GGS_domai
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@complementExpression computeExpression'
+//Overriding extension func '@complementExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2785,7 +2785,7 @@ GGS_binaryset cPtr_complementExpression::getter_computeExpression (const GGS_dom
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@trueExpression computeExpression'
+//Overriding extension func '@trueExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2804,7 +2804,7 @@ GGS_binaryset cPtr_trueExpression::getter_computeExpression (const GGS_domainMap
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@falseExpression computeExpression'
+//Overriding extension func '@falseExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2823,7 +2823,7 @@ GGS_binaryset cPtr_falseExpression::getter_computeExpression (const GGS_domainMa
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@formulaInExpression computeExpression'
+//Overriding extension func '@formulaInExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2928,7 +2928,7 @@ GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_doma
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@existInExpression computeExpression'
+//Overriding extension func '@existInExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2954,7 +2954,7 @@ GGS_binaryset cPtr_existInExpression::getter_computeExpression (const GGS_domain
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@forAllInExpression computeExpression'
+//Overriding extension func '@forAllInExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -2980,7 +2980,7 @@ GGS_binaryset cPtr_forAllInExpression::getter_computeExpression (const GGS_domai
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@comparisonWithConstantInExpression computeExpression'
+//Overriding extension func '@comparisonWithConstantInExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3079,7 +3079,7 @@ GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension getter '@variableComparisonInExpression computeExpression'
+//Overriding extension func '@variableComparisonInExpression computeExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -3212,7 +3212,7 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
 
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@graphvizFormula analyzeFormula'
+//Overriding extension proc '@graphvizFormula analyzeFormula'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_graphvizFormula::method_analyzeFormula (const GGS_string constinArgument_inSourceFilePath,
@@ -3261,7 +3261,7 @@ void cPtr_graphvizFormula::method_analyzeFormula (const GGS_string constinArgume
 }
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@setting_nodeHashMapSize analyzeFormula'
+//Overriding extension proc '@setting_nodeHashMapSize analyzeFormula'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_setting_5F_nodeHashMapSize::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
@@ -3276,7 +3276,7 @@ void cPtr_setting_5F_nodeHashMapSize::method_analyzeFormula (const GGS_string /*
 }
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension method '@setting_andCacheMapSize analyzeFormula'
+//Overriding extension proc '@setting_andCacheMapSize analyzeFormula'
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_setting_5F_andCacheMapSize::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
