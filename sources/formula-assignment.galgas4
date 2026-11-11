@@ -47,7 +47,7 @@ rule <topLevelDeClaration>( ?!@ast ioAST) {
   end
   <expression>( ?let @expression expression)
   $;$
-  !?ioAST.mFormulaList.append (@assignmentFormula (!formulaName, !domainFieldList, !kind, !expression))
+  !?ioAST.mFormulaList.append (@assignmentFormula (formulaName, domainFieldList, kind, expression))
 }
 
 //································································································
@@ -62,29 +62,29 @@ map @computedFormulaMap {
   public var @varList mVarList
   public var @uint mBitCount
   public var @binaryset mValue
-  %insertSetter insertKey %errorMessage "the '%K' formula is already declared in %L"
-  %searchMethod searchKey %errorMessage "there is no '%K' formula"
+  #insertSetter insertKey #errorMessage "the '%K' formula is already declared in %L"
+  #searchMethod searchKey #errorMessage "there is no '%K' formula"
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override proc @assignmentFormula. analyzeFormula( 
-  ?let @string unused inSourceFilePath,
-  ?let @domainMap inDomainMap,
+  let @string _inSourceFilePath,
+  let @domainMap inDomainMap,
   ?!@computedFormulaMap ioComputedFormulaMap)
 {
 //--- Build variable map
   var @uint totalBitCount = 0
   var @varList varList = []
   var @varMap varMap = ()
-  self.mFormulaArgumentList.analyze (!inDomainMap, !?varMap, !?varList, !?totalBitCount)
+  self.mFormulaArgumentList.analyze (inDomainMap, !?varMap, !?varList, !?totalBitCount)
 //--- Compute expression
   switch self.mKind
   case assignment :
 //    println (self.mFormulaName.string + "...")
     let timer = @timer.start
-    let result = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !ioComputedFormulaMap)
-    !?ioComputedFormulaMap.insertKey (!self.mFormulaName, !varList, !totalBitCount, !result)
+    let result = self.mExpression.computeExpression (inDomainMap, varMap, totalBitCount, ioComputedFormulaMap)
+    !?ioComputedFormulaMap.insertKey (self.mFormulaName, varList, totalBitCount, result)
     let @uint64 valueCount = result.valueCount (totalBitCount)
 //    let @bigint bigValueCount = [result bigValueCount !totalBitCount]
     let @uint64 nodeCount = result.nodeCount
@@ -96,17 +96,17 @@ override proc @assignmentFormula. analyzeFormula(
 //    message self.mFormulaName.string + "..."
     let timer = @timer.start
     var @binaryset result = startValue
-    !?ioComputedFormulaMap.insertKey (!self.mFormulaName, !varList, !totalBitCount, !result)
+    !?ioComputedFormulaMap.insertKey (self.mFormulaName, varList, totalBitCount, result)
     var iterate = true ;
     var iterationCount = 0
     loop (@uint.max) while iterate do
       iterationCount += 1
-      let r = self.mExpression.computeExpression (!inDomainMap, !varMap, !totalBitCount, !ioComputedFormulaMap)
+      let r = self.mExpression.computeExpression (inDomainMap, varMap, totalBitCount, ioComputedFormulaMap)
       if result == r then
         iterate = false
       else
         result = r
-        !?ioComputedFormulaMap.setMValueForKey (!result, !self.mFormulaName.string)
+        !?ioComputedFormulaMap.setMValueForKey (result, self.mFormulaName.string)
       end
     end
     let @uint64 valueCount = result.valueCount (totalBitCount)

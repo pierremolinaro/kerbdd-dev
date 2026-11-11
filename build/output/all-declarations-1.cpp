@@ -8,2624 +8,6 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element::GGS_computedFormulaMap_2E_element (void) :
-mProperty_lkey (),
-mProperty_mVarList (),
-mProperty_mBitCount (),
-mProperty_mValue () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element::GGS_computedFormulaMap_2E_element (const GGS_computedFormulaMap_2E_element & inSource) :
-mProperty_lkey (inSource.mProperty_lkey),
-mProperty_mVarList (inSource.mProperty_mVarList),
-mProperty_mBitCount (inSource.mProperty_mBitCount),
-mProperty_mValue (inSource.mProperty_mValue) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element & GGS_computedFormulaMap_2E_element::operator = (const GGS_computedFormulaMap_2E_element & inSource) {
-  mProperty_lkey = inSource.mProperty_lkey ;
-  mProperty_mVarList = inSource.mProperty_mVarList ;
-  mProperty_mBitCount = inSource.mProperty_mBitCount ;
-  mProperty_mValue = inSource.mProperty_mValue ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element GGS_computedFormulaMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                           const GGS_varList & in_mVarList,
-                                                                                           const GGS_uint & in_mBitCount,
-                                                                                           const GGS_binaryset & in_mValue,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mVarList = in_mVarList ;
-  result.mProperty_mBitCount = in_mBitCount ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element::GGS_computedFormulaMap_2E_element (const GGS_lstring & inOperand0,
-                                                                      const GGS_varList & inOperand1,
-                                                                      const GGS_uint & inOperand2,
-                                                                      const GGS_binaryset & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mVarList (inOperand1),
-mProperty_mBitCount (inOperand2),
-mProperty_mValue (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_computedFormulaMap_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mVarList.isValid () && mProperty_mBitCount.isValid () && mProperty_mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mVarList.drop () ;
-  mProperty_mBitCount.drop () ;
-  mProperty_mValue.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @computedFormulaMap.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mVarList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mBitCount.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mValue.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @computedFormulaMap.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_computedFormulaMap_2E_element ("computedFormulaMap.element",
-                                                                                  nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_computedFormulaMap_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_computedFormulaMap_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_computedFormulaMap_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_computedFormulaMap_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element GGS_computedFormulaMap_2E_element::extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element result ;
-  const GGS_computedFormulaMap_2E_element * p = (const GGS_computedFormulaMap_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_computedFormulaMap_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("computedFormulaMap.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Optional @computedFormulaMap_2E_element_3F_
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_::GGS_computedFormulaMap_2E_element_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_::GGS_computedFormulaMap_2E_element_3F_ (const GGS_computedFormulaMap_2E_element & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_ GGS_computedFormulaMap_2E_element_3F_::init_nil (void) {
-  GGS_computedFormulaMap_2E_element_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_computedFormulaMap_2E_element_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_computedFormulaMap_2E_element_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GGS_computedFormulaMap_2E_element () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_computedFormulaMap_2E_element_3F_::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @computedFormulaMap.element? generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_computedFormulaMap_2E_element_3F_ ("computedFormulaMap.element?",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_computedFormulaMap_2E_element_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_computedFormulaMap_2E_element_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_computedFormulaMap_2E_element_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_computedFormulaMap_2E_element_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_computedFormulaMap_2E_element_3F_ GGS_computedFormulaMap_2E_element_3F_::extractObject (const GGS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GGS_computedFormulaMap_2E_element_3F_ result ;
-  const GGS_computedFormulaMap_2E_element_3F_ * p = (const GGS_computedFormulaMap_2E_element_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_computedFormulaMap_2E_element_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("computedFormulaMap.element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (void) :
-mProperty_mParameterName (),
-mProperty_mFieldNames () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_formulaParameterListInExpression_2E_element & inSource) :
-mProperty_mParameterName (inSource.mProperty_mParameterName),
-mProperty_mFieldNames (inSource.mProperty_mFieldNames) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element & GGS_formulaParameterListInExpression_2E_element::operator = (const GGS_formulaParameterListInExpression_2E_element & inSource) {
-  mProperty_mParameterName = inSource.mProperty_mParameterName ;
-  mProperty_mFieldNames = inSource.mProperty_mFieldNames ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::init_21__21_ (const GGS_lstring & in_mParameterName,
-                                                                                                               const GGS_lstringlist & in_mFieldNames,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mParameterName = in_mParameterName ;
-  result.mProperty_mFieldNames = in_mFieldNames ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element::GGS_formulaParameterListInExpression_2E_element (const GGS_lstring & inOperand0,
-                                                                                                  const GGS_lstringlist & inOperand1) :
-mProperty_mParameterName (inOperand0),
-mProperty_mFieldNames (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_formulaParameterListInExpression_2E_element::isValid (void) const {
-  return mProperty_mParameterName.isValid () && mProperty_mFieldNames.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::drop (void) {
-  mProperty_mParameterName.drop () ;
-  mProperty_mFieldNames.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formulaParameterListInExpression_2E_element::description (String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @formulaParameterListInExpression.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mParameterName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFieldNames.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @formulaParameterListInExpression.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ("formulaParameterListInExpression.element",
-                                                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_formulaParameterListInExpression_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_formulaParameterListInExpression_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_formulaParameterListInExpression_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_formulaParameterListInExpression_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formulaParameterListInExpression_2E_element GGS_formulaParameterListInExpression_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_formulaParameterListInExpression_2E_element result ;
-  const GGS_formulaParameterListInExpression_2E_element * p = (const GGS_formulaParameterListInExpression_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_formulaParameterListInExpression_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("formulaParameterListInExpression.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#include "MF_MemoryControl.h"
-#include "C_galgas_CLI_Options.h"
-
-#include "FileManager.h"
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//                             N O N    T E R M I N A L    N A M E S                                
-//
-//--------------------------------------------------------------------------------------------------
-
-static const char * gNonTerminalNames_kerbdd_grammar [27] = {
-  "<start_symbol>",// Index 0
-  "<topLevelDeClaration>",// Index 1
-  "<recordFields>",// Index 2
-  "<type>",// Index 3
-  "<expression>",// Index 4
-  "<comparison>",// Index 5
-  "<term>",// Index 6
-  "<factor>",// Index 7
-  "<select_kerbdd_5F_syntax_0>",// Index 8
-  "<select_kerbdd_5F_syntax_1>",// Index 9
-  "<select_kerbdd_5F_syntax_2>",// Index 10
-  "<select_kerbdd_5F_syntax_3>",// Index 11
-  "<select_kerbdd_5F_syntax_4>",// Index 12
-  "<select_kerbdd_5F_syntax_5>",// Index 13
-  "<select_kerbdd_5F_syntax_6>",// Index 14
-  "<select_kerbdd_5F_syntax_7>",// Index 15
-  "<select_kerbdd_5F_syntax_8>",// Index 16
-  "<select_kerbdd_5F_syntax_9>",// Index 17
-  "<select_kerbdd_5F_syntax_10>",// Index 18
-  "<select_kerbdd_5F_syntax_11>",// Index 19
-  "<select_kerbdd_5F_syntax_12>",// Index 20
-  "<select_kerbdd_5F_syntax_13>",// Index 21
-  "<select_kerbdd_5F_syntax_14>",// Index 22
-  "<select_kerbdd_5F_syntax_15>",// Index 23
-  "<select_kerbdd_5F_syntax_16>",// Index 24
-  "<select_kerbdd_5F_syntax_17>",// Index 25
-  "<>"// Index 26
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                      S L R    A N A L Y Z E R    A C T I O N    T A B L E                        
-//
-//--------------------------------------------------------------------------------------------------
-
-// Action tables handle shift and reduce actions:
-//  - a shift action is (terminal_symbol, SHIFT (n)): if shifts to state n;
-//  - the accept action is (terminal_symbol, ACCEPT);
-//  - a reduce action is (terminal_symbol, REDUCE (n)); if reduces to state n.
-
-static const int32_t gActionTable_kerbdd_grammar [] = {
-// State S0 (index = 0)
-  Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_SHIFT (1)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (2)
-, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_SHIFT (3)
-, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_SHIFT (4)
-, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_SHIFT (5)
-, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_SHIFT (6)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (21)
-, BOTTOM_UP_END
-// State S1 (index = 15)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (10)
-, BOTTOM_UP_END
-// State S2 (index = 18)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (11)
-, BOTTOM_UP_END
-// State S3 (index = 21)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (12)
-, BOTTOM_UP_END
-// State S4 (index = 24)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (13)
-, BOTTOM_UP_END
-// State S5 (index = 27)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_SHIFT (14)
-, BOTTOM_UP_END
-// State S6 (index = 30)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_SHIFT (15)
-, BOTTOM_UP_END
-// State S7 (index = 33)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_ACCEPT
-, BOTTOM_UP_END
-// State S8 (index = 36)
-, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_SHIFT (1)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (2)
-, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_SHIFT (3)
-, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_SHIFT (4)
-, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_SHIFT (5)
-, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_SHIFT (6)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (21)
-, BOTTOM_UP_END
-// State S9 (index = 51)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (0)
-, BOTTOM_UP_END
-// State S10 (index = 54)
-, Lexique_kerbdd_5F_lexique::kToken__3A_, BOTTOM_UP_SHIFT (17)
-, BOTTOM_UP_END
-// State S11 (index = 57)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (18)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (31)
-, BOTTOM_UP_END
-// State S12 (index = 62)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (21)
-, BOTTOM_UP_END
-// State S13 (index = 65)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (22)
-, BOTTOM_UP_END
-// State S14 (index = 68)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (23)
-, BOTTOM_UP_END
-// State S15 (index = 71)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (24)
-, BOTTOM_UP_END
-// State S16 (index = 74)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (22)
-, BOTTOM_UP_END
-// State S17 (index = 77)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (25)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (26)
-, Lexique_kerbdd_5F_lexique::kToken_bool, BOTTOM_UP_SHIFT (27)
-, BOTTOM_UP_END
-// State S18 (index = 84)
-, Lexique_kerbdd_5F_lexique::kToken__3A_, BOTTOM_UP_SHIFT (31)
-, BOTTOM_UP_END
-// State S19 (index = 87)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (32)
-, BOTTOM_UP_END
-// State S20 (index = 90)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (32)
-, BOTTOM_UP_END
-// State S21 (index = 93)
-, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (5)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (5)
-, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (5)
-, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (5)
-, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (5)
-, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (5)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (5)
-, BOTTOM_UP_END
-// State S22 (index = 108)
-, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (18)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (18)
-, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (18)
-, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (18)
-, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (18)
-, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (18)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (18)
-, BOTTOM_UP_END
-// State S23 (index = 123)
-, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (19)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (19)
-, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (19)
-, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (19)
-, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (19)
-, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (19)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (19)
-, BOTTOM_UP_END
-// State S24 (index = 138)
-, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (20)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (20)
-, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (20)
-, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (20)
-, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (20)
-, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (20)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (20)
-, BOTTOM_UP_END
-// State S25 (index = 153)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (27)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (27)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (27)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (27)
-, BOTTOM_UP_END
-// State S26 (index = 162)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (18)
-, BOTTOM_UP_END
-// State S27 (index = 165)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (29)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (29)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (29)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (29)
-, Lexique_kerbdd_5F_lexique::kToken__5B_, BOTTOM_UP_SHIFT (34)
-, BOTTOM_UP_END
-// State S28 (index = 176)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (23)
-, BOTTOM_UP_END
-// State S29 (index = 179)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (36)
-, BOTTOM_UP_END
-// State S30 (index = 182)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (3)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (3)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (3)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (3)
-, BOTTOM_UP_END
-// State S31 (index = 191)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (25)
-, Lexique_kerbdd_5F_lexique::kToken_bool, BOTTOM_UP_SHIFT (27)
-, BOTTOM_UP_END
-// State S32 (index = 196)
-, Lexique_kerbdd_5F_lexique::kToken__3A__3D_, BOTTOM_UP_SHIFT (38)
-, Lexique_kerbdd_5F_lexique::kToken__2B__3D_, BOTTOM_UP_SHIFT (39)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3D_, BOTTOM_UP_SHIFT (40)
-, BOTTOM_UP_END
-// State S33 (index = 203)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (42)
-, BOTTOM_UP_END
-// State S34 (index = 206)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_SHIFT (43)
-, BOTTOM_UP_END
-// State S35 (index = 209)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (28)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (28)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (28)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (28)
-, BOTTOM_UP_END
-// State S36 (index = 218)
-, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (1)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (1)
-, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (1)
-, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (1)
-, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (1)
-, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (1)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (1)
-, BOTTOM_UP_END
-// State S37 (index = 233)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (25)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (25)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_SHIFT (44)
-, BOTTOM_UP_END
-// State S38 (index = 240)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (33)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (33)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_REDUCE (33)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_REDUCE (33)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_REDUCE (33)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_REDUCE (33)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_REDUCE (33)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_REDUCE (33)
-, BOTTOM_UP_END
-// State S39 (index = 257)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (34)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (34)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_REDUCE (34)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_REDUCE (34)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_REDUCE (34)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_REDUCE (34)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_REDUCE (34)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_REDUCE (34)
-, BOTTOM_UP_END
-// State S40 (index = 274)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (35)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (35)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_REDUCE (35)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_REDUCE (35)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_REDUCE (35)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_REDUCE (35)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_REDUCE (35)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_REDUCE (35)
-, BOTTOM_UP_END
-// State S41 (index = 291)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S42 (index = 308)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (24)
-, BOTTOM_UP_END
-// State S43 (index = 311)
-, Lexique_kerbdd_5F_lexique::kToken__5D_, BOTTOM_UP_SHIFT (58)
-, BOTTOM_UP_END
-// State S44 (index = 314)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (59)
-, BOTTOM_UP_END
-// State S45 (index = 317)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (2)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (2)
-, BOTTOM_UP_END
-// State S46 (index = 322)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (60)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (45)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (45)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (45)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (45)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (45)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (45)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (45)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (45)
-, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (61)
-, BOTTOM_UP_END
-// State S47 (index = 343)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S48 (index = 360)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S49 (index = 377)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (12)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (12)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (12)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (12)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (12)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (12)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (12)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (12)
-, BOTTOM_UP_END
-// State S50 (index = 394)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (13)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (13)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (13)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (13)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (13)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (13)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (13)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (13)
-, BOTTOM_UP_END
-// State S51 (index = 411)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (18)
-, BOTTOM_UP_END
-// State S52 (index = 414)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (18)
-, BOTTOM_UP_END
-// State S53 (index = 417)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (67)
-, BOTTOM_UP_END
-// State S54 (index = 420)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_SHIFT (68)
-, BOTTOM_UP_END
-// State S55 (index = 423)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (36)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (36)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_SHIFT (69)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_SHIFT (70)
-, BOTTOM_UP_END
-// State S56 (index = 432)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_SHIFT (72)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_SHIFT (73)
-, BOTTOM_UP_END
-// State S57 (index = 445)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_SHIFT (75)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_SHIFT (76)
-, BOTTOM_UP_END
-// State S58 (index = 462)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (30)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (30)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (30)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (30)
-, BOTTOM_UP_END
-// State S59 (index = 471)
-, Lexique_kerbdd_5F_lexique::kToken__3A_, BOTTOM_UP_SHIFT (78)
-, BOTTOM_UP_END
-// State S60 (index = 474)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (79)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (47)
-, BOTTOM_UP_END
-// State S61 (index = 479)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_SHIFT (81)
-, BOTTOM_UP_END
-// State S62 (index = 482)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (9)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (9)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (9)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (9)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (9)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (9)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (9)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (9)
-, BOTTOM_UP_END
-// State S63 (index = 499)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (82)
-, BOTTOM_UP_END
-// State S64 (index = 502)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (11)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (11)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (11)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (11)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (11)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (11)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (11)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (11)
-, BOTTOM_UP_END
-// State S65 (index = 519)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (83)
-, BOTTOM_UP_END
-// State S66 (index = 522)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (84)
-, BOTTOM_UP_END
-// State S67 (index = 525)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (53)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (53)
-, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (85)
-, Lexique_kerbdd_5F_lexique::kToken__3C__3D_, BOTTOM_UP_REDUCE (53)
-, Lexique_kerbdd_5F_lexique::kToken__3C_, BOTTOM_UP_REDUCE (53)
-, Lexique_kerbdd_5F_lexique::kToken__3E__3D_, BOTTOM_UP_REDUCE (53)
-, Lexique_kerbdd_5F_lexique::kToken__3E_, BOTTOM_UP_REDUCE (53)
-, BOTTOM_UP_END
-// State S68 (index = 540)
-, Lexique_kerbdd_5F_lexique::kToken_domain, BOTTOM_UP_REDUCE (4)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (4)
-, Lexique_kerbdd_5F_lexique::kToken_dump, BOTTOM_UP_REDUCE (4)
-, Lexique_kerbdd_5F_lexique::kToken_graphviz, BOTTOM_UP_REDUCE (4)
-, Lexique_kerbdd_5F_lexique::kToken_nodeHashMapSize, BOTTOM_UP_REDUCE (4)
-, Lexique_kerbdd_5F_lexique::kToken_andCacheMapSize, BOTTOM_UP_REDUCE (4)
-, Lexique_kerbdd_5F_lexique::kToken_, BOTTOM_UP_REDUCE (4)
-, BOTTOM_UP_END
-// State S69 (index = 555)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S70 (index = 572)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S71 (index = 589)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (6)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (6)
-, BOTTOM_UP_END
-// State S72 (index = 594)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S73 (index = 611)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S74 (index = 628)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (7)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (7)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (7)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (7)
-, BOTTOM_UP_END
-// State S75 (index = 637)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S76 (index = 654)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S77 (index = 671)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (8)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (8)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (8)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (8)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (8)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (8)
-, BOTTOM_UP_END
-// State S78 (index = 684)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (25)
-, Lexique_kerbdd_5F_lexique::kToken_bool, BOTTOM_UP_SHIFT (27)
-, BOTTOM_UP_END
-// State S79 (index = 689)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (51)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (51)
-, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (94)
-, BOTTOM_UP_END
-// State S80 (index = 696)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (96)
-, BOTTOM_UP_END
-// State S81 (index = 699)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (46)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (46)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (46)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (46)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (46)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (46)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (46)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (46)
-, BOTTOM_UP_END
-// State S82 (index = 716)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (10)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (10)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (10)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (10)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (10)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (10)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (10)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (10)
-, BOTTOM_UP_END
-// State S83 (index = 733)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S84 (index = 750)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (46)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_SHIFT (47)
-, Lexique_kerbdd_5F_lexique::kToken__7E_, BOTTOM_UP_SHIFT (48)
-, Lexique_kerbdd_5F_lexique::kToken_true, BOTTOM_UP_SHIFT (49)
-, Lexique_kerbdd_5F_lexique::kToken_false, BOTTOM_UP_SHIFT (50)
-, Lexique_kerbdd_5F_lexique::kToken__3F_, BOTTOM_UP_SHIFT (51)
-, Lexique_kerbdd_5F_lexique::kToken__21_, BOTTOM_UP_SHIFT (52)
-, Lexique_kerbdd_5F_lexique::kToken__7B_, BOTTOM_UP_SHIFT (53)
-, BOTTOM_UP_END
-// State S85 (index = 767)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (99)
-, BOTTOM_UP_END
-// State S86 (index = 770)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_SHIFT (100)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_SHIFT (101)
-, Lexique_kerbdd_5F_lexique::kToken__3C__3D_, BOTTOM_UP_SHIFT (102)
-, Lexique_kerbdd_5F_lexique::kToken__3C_, BOTTOM_UP_SHIFT (103)
-, Lexique_kerbdd_5F_lexique::kToken__3E__3D_, BOTTOM_UP_SHIFT (104)
-, Lexique_kerbdd_5F_lexique::kToken__3E_, BOTTOM_UP_SHIFT (105)
-, BOTTOM_UP_END
-// State S87 (index = 783)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (37)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (37)
-, BOTTOM_UP_END
-// State S88 (index = 788)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (38)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (38)
-, BOTTOM_UP_END
-// State S89 (index = 793)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_SHIFT (72)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_SHIFT (73)
-, BOTTOM_UP_END
-// State S90 (index = 806)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (39)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_SHIFT (72)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_SHIFT (73)
-, BOTTOM_UP_END
-// State S91 (index = 819)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_SHIFT (75)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_SHIFT (76)
-, BOTTOM_UP_END
-// State S92 (index = 836)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (42)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_SHIFT (75)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_SHIFT (76)
-, BOTTOM_UP_END
-// State S93 (index = 853)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (25)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (25)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_SHIFT (44)
-, BOTTOM_UP_END
-// State S94 (index = 860)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (112)
-, BOTTOM_UP_END
-// State S95 (index = 863)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (49)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_SHIFT (113)
-, BOTTOM_UP_END
-// State S96 (index = 868)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (14)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (14)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (14)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (14)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (14)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (14)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (14)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (14)
-, BOTTOM_UP_END
-// State S97 (index = 885)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (115)
-, BOTTOM_UP_END
-// State S98 (index = 888)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_SHIFT (116)
-, BOTTOM_UP_END
-// State S99 (index = 891)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (53)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (53)
-, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (85)
-, Lexique_kerbdd_5F_lexique::kToken__3C__3D_, BOTTOM_UP_REDUCE (53)
-, Lexique_kerbdd_5F_lexique::kToken__3C_, BOTTOM_UP_REDUCE (53)
-, Lexique_kerbdd_5F_lexique::kToken__3E__3D_, BOTTOM_UP_REDUCE (53)
-, Lexique_kerbdd_5F_lexique::kToken__3E_, BOTTOM_UP_REDUCE (53)
-, BOTTOM_UP_END
-// State S100 (index = 906)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (55)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (55)
-, BOTTOM_UP_END
-// State S101 (index = 911)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (56)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (56)
-, BOTTOM_UP_END
-// State S102 (index = 916)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (57)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (57)
-, BOTTOM_UP_END
-// State S103 (index = 921)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (58)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (58)
-, BOTTOM_UP_END
-// State S104 (index = 926)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (59)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (59)
-, BOTTOM_UP_END
-// State S105 (index = 931)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_REDUCE (60)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_REDUCE (60)
-, BOTTOM_UP_END
-// State S106 (index = 936)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (118)
-, Lexique_kerbdd_5F_lexique::kToken_integer, BOTTOM_UP_SHIFT (119)
-, BOTTOM_UP_END
-// State S107 (index = 941)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (40)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (40)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (40)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (40)
-, BOTTOM_UP_END
-// State S108 (index = 950)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (41)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (41)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (41)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (41)
-, BOTTOM_UP_END
-// State S109 (index = 959)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (43)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (43)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (43)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (43)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (43)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (43)
-, BOTTOM_UP_END
-// State S110 (index = 972)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (44)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (44)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (44)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (44)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (44)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (44)
-, BOTTOM_UP_END
-// State S111 (index = 985)
-, Lexique_kerbdd_5F_lexique::kToken__28_, BOTTOM_UP_REDUCE (26)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (26)
-, BOTTOM_UP_END
-// State S112 (index = 990)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (51)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (51)
-, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (94)
-, BOTTOM_UP_END
-// State S113 (index = 997)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (122)
-, BOTTOM_UP_END
-// State S114 (index = 1000)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (48)
-, BOTTOM_UP_END
-// State S115 (index = 1003)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (15)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (15)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (15)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (15)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (15)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (15)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (15)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (15)
-, BOTTOM_UP_END
-// State S116 (index = 1020)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (16)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (16)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (16)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (16)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (16)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (16)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (16)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (16)
-, BOTTOM_UP_END
-// State S117 (index = 1037)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (54)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (54)
-, Lexique_kerbdd_5F_lexique::kToken__3C__3D_, BOTTOM_UP_REDUCE (54)
-, Lexique_kerbdd_5F_lexique::kToken__3C_, BOTTOM_UP_REDUCE (54)
-, Lexique_kerbdd_5F_lexique::kToken__3E__3D_, BOTTOM_UP_REDUCE (54)
-, Lexique_kerbdd_5F_lexique::kToken__3E_, BOTTOM_UP_REDUCE (54)
-, BOTTOM_UP_END
-// State S118 (index = 1050)
-, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (123)
-, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_REDUCE (63)
-, BOTTOM_UP_END
-// State S119 (index = 1055)
-, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_REDUCE (61)
-, BOTTOM_UP_END
-// State S120 (index = 1058)
-, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_SHIFT (125)
-, BOTTOM_UP_END
-// State S121 (index = 1061)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (52)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (52)
-, BOTTOM_UP_END
-// State S122 (index = 1066)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (51)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_REDUCE (51)
-, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (94)
-, BOTTOM_UP_END
-// State S123 (index = 1073)
-, Lexique_kerbdd_5F_lexique::kToken_identifier, BOTTOM_UP_SHIFT (127)
-, BOTTOM_UP_END
-// State S124 (index = 1076)
-, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_REDUCE (62)
-, BOTTOM_UP_END
-// State S125 (index = 1079)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (17)
-, Lexique_kerbdd_5F_lexique::kToken__3B_, BOTTOM_UP_REDUCE (17)
-, Lexique_kerbdd_5F_lexique::kToken__3D_, BOTTOM_UP_REDUCE (17)
-, Lexique_kerbdd_5F_lexique::kToken__21__3D_, BOTTOM_UP_REDUCE (17)
-, Lexique_kerbdd_5F_lexique::kToken__7C_, BOTTOM_UP_REDUCE (17)
-, Lexique_kerbdd_5F_lexique::kToken__5E_, BOTTOM_UP_REDUCE (17)
-, Lexique_kerbdd_5F_lexique::kToken__26_, BOTTOM_UP_REDUCE (17)
-, Lexique_kerbdd_5F_lexique::kToken__2D__3E_, BOTTOM_UP_REDUCE (17)
-, BOTTOM_UP_END
-// State S126 (index = 1096)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (49)
-, Lexique_kerbdd_5F_lexique::kToken__2C_, BOTTOM_UP_SHIFT (113)
-, BOTTOM_UP_END
-// State S127 (index = 1101)
-, Lexique_kerbdd_5F_lexique::kToken__2E_, BOTTOM_UP_SHIFT (123)
-, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_REDUCE (63)
-, BOTTOM_UP_END
-// State S128 (index = 1106)
-, Lexique_kerbdd_5F_lexique::kToken__29_, BOTTOM_UP_REDUCE (50)
-, BOTTOM_UP_END
-// State S129 (index = 1109)
-, Lexique_kerbdd_5F_lexique::kToken__7D_, BOTTOM_UP_REDUCE (64)
-, BOTTOM_UP_END} ;
-
-static const uint32_t gActionTableIndex_kerbdd_grammar [130] = {
-  0  // S0
-, 15  // S1
-, 18  // S2
-, 21  // S3
-, 24  // S4
-, 27  // S5
-, 30  // S6
-, 33  // S7
-, 36  // S8
-, 51  // S9
-, 54  // S10
-, 57  // S11
-, 62  // S12
-, 65  // S13
-, 68  // S14
-, 71  // S15
-, 74  // S16
-, 77  // S17
-, 84  // S18
-, 87  // S19
-, 90  // S20
-, 93  // S21
-, 108  // S22
-, 123  // S23
-, 138  // S24
-, 153  // S25
-, 162  // S26
-, 165  // S27
-, 176  // S28
-, 179  // S29
-, 182  // S30
-, 191  // S31
-, 196  // S32
-, 203  // S33
-, 206  // S34
-, 209  // S35
-, 218  // S36
-, 233  // S37
-, 240  // S38
-, 257  // S39
-, 274  // S40
-, 291  // S41
-, 308  // S42
-, 311  // S43
-, 314  // S44
-, 317  // S45
-, 322  // S46
-, 343  // S47
-, 360  // S48
-, 377  // S49
-, 394  // S50
-, 411  // S51
-, 414  // S52
-, 417  // S53
-, 420  // S54
-, 423  // S55
-, 432  // S56
-, 445  // S57
-, 462  // S58
-, 471  // S59
-, 474  // S60
-, 479  // S61
-, 482  // S62
-, 499  // S63
-, 502  // S64
-, 519  // S65
-, 522  // S66
-, 525  // S67
-, 540  // S68
-, 555  // S69
-, 572  // S70
-, 589  // S71
-, 594  // S72
-, 611  // S73
-, 628  // S74
-, 637  // S75
-, 654  // S76
-, 671  // S77
-, 684  // S78
-, 689  // S79
-, 696  // S80
-, 699  // S81
-, 716  // S82
-, 733  // S83
-, 750  // S84
-, 767  // S85
-, 770  // S86
-, 783  // S87
-, 788  // S88
-, 793  // S89
-, 806  // S90
-, 819  // S91
-, 836  // S92
-, 853  // S93
-, 860  // S94
-, 863  // S95
-, 868  // S96
-, 885  // S97
-, 888  // S98
-, 891  // S99
-, 906  // S100
-, 911  // S101
-, 916  // S102
-, 921  // S103
-, 926  // S104
-, 931  // S105
-, 936  // S106
-, 941  // S107
-, 950  // S108
-, 959  // S109
-, 972  // S110
-, 985  // S111
-, 990  // S112
-, 997  // S113
-, 1000  // S114
-, 1003  // S115
-, 1020  // S116
-, 1037  // S117
-, 1050  // S118
-, 1055  // S119
-, 1058  // S120
-, 1061  // S121
-, 1066  // S122
-, 1073  // S123
-, 1076  // S124
-, 1079  // S125
-, 1096  // S126
-, 1101  // S127
-, 1106  // S128
-, 1109  // S129
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                                  SLR states successors table                                     
-//
-//--------------------------------------------------------------------------------------------------
-
-// Successor tables handle non terminal successors ;
-// an entry is (non_terminal_symbol, n) ; successor is state n.
-
-static const int32_t gSuccessorTable_kerbdd_grammar_0 [7] = {0, 7,
-  1, 8,
-  8, 9, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_8 [5] = {1, 8,
-  8, 16, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_11 [5] = {2, 19,
-  13, 20, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_17 [7] = {3, 28,
-  9, 29,
-  11, 30, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_26 [3] = {2, 33, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_27 [3] = {12, 35, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_31 [5] = {3, 37,
-  11, 30, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_32 [3] = {14, 41, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_37 [3] = {10, 45, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_41 [9] = {4, 54,
-  5, 55,
-  6, 56,
-  7, 57, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_46 [3] = {18, 62, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_47 [9] = {4, 63,
-  5, 55,
-  6, 56,
-  7, 57, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_48 [3] = {7, 64, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_51 [3] = {2, 65, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_52 [3] = {2, 66, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_55 [3] = {15, 71, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_56 [3] = {16, 74, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_57 [3] = {17, 77, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_60 [3] = {19, 80, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_67 [3] = {22, 86, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_69 [7] = {5, 87,
-  6, 56,
-  7, 57, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_70 [7] = {5, 88,
-  6, 56,
-  7, 57, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_72 [5] = {6, 89,
-  7, 57, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_73 [5] = {6, 90,
-  7, 57, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_75 [3] = {7, 91, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_76 [3] = {7, 92, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_78 [5] = {3, 93,
-  11, 30, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_79 [3] = {21, 95, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_83 [9] = {4, 97,
-  5, 55,
-  6, 56,
-  7, 57, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_84 [9] = {4, 98,
-  5, 55,
-  6, 56,
-  7, 57, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_86 [3] = {23, 106, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_89 [3] = {16, 107, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_90 [3] = {16, 108, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_91 [3] = {17, 109, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_92 [3] = {17, 110, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_93 [3] = {10, 111, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_95 [3] = {20, 114, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_99 [3] = {22, 117, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_106 [3] = {24, 120, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_112 [3] = {21, 121, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_118 [3] = {25, 124, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_122 [3] = {21, 126, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_126 [3] = {20, 128, -1} ;
-
-static const int32_t gSuccessorTable_kerbdd_grammar_127 [3] = {25, 129, -1} ;
-
-static const int32_t * gSuccessorTable_kerbdd_grammar [130] = {
-gSuccessorTable_kerbdd_grammar_0, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_kerbdd_grammar_8, nullptr, nullptr, gSuccessorTable_kerbdd_grammar_11, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_kerbdd_grammar_17, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_26, gSuccessorTable_kerbdd_grammar_27, 
-  nullptr, nullptr, nullptr, gSuccessorTable_kerbdd_grammar_31, 
-  gSuccessorTable_kerbdd_grammar_32, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_kerbdd_grammar_37, nullptr, nullptr, 
-  nullptr, gSuccessorTable_kerbdd_grammar_41, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_46, gSuccessorTable_kerbdd_grammar_47, 
-  gSuccessorTable_kerbdd_grammar_48, nullptr, nullptr, gSuccessorTable_kerbdd_grammar_51, 
-  gSuccessorTable_kerbdd_grammar_52, nullptr, nullptr, gSuccessorTable_kerbdd_grammar_55, 
-  gSuccessorTable_kerbdd_grammar_56, gSuccessorTable_kerbdd_grammar_57, nullptr, nullptr, 
-  gSuccessorTable_kerbdd_grammar_60, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_kerbdd_grammar_67, 
-  nullptr, gSuccessorTable_kerbdd_grammar_69, gSuccessorTable_kerbdd_grammar_70, nullptr, 
-  gSuccessorTable_kerbdd_grammar_72, gSuccessorTable_kerbdd_grammar_73, nullptr, gSuccessorTable_kerbdd_grammar_75, 
-  gSuccessorTable_kerbdd_grammar_76, nullptr, gSuccessorTable_kerbdd_grammar_78, gSuccessorTable_kerbdd_grammar_79, 
-  nullptr, nullptr, nullptr, gSuccessorTable_kerbdd_grammar_83, 
-  gSuccessorTable_kerbdd_grammar_84, nullptr, gSuccessorTable_kerbdd_grammar_86, nullptr, 
-  nullptr, gSuccessorTable_kerbdd_grammar_89, gSuccessorTable_kerbdd_grammar_90, gSuccessorTable_kerbdd_grammar_91, 
-  gSuccessorTable_kerbdd_grammar_92, gSuccessorTable_kerbdd_grammar_93, nullptr, gSuccessorTable_kerbdd_grammar_95, 
-  nullptr, nullptr, nullptr, gSuccessorTable_kerbdd_grammar_99, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_106, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_kerbdd_grammar_112, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_118, nullptr, 
-  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_122, nullptr, 
-  nullptr, nullptr, gSuccessorTable_kerbdd_grammar_126, gSuccessorTable_kerbdd_grammar_127, 
-  nullptr, nullptr} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                Production rules infos (left non terminal, size of right string)                  
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gProductionsTable_kerbdd_grammar [66 * 2] = {
-  0, 1,
-  1, 5,
-  2, 4,
-  3, 1,
-  1, 7,
-  1, 3,
-  4, 2,
-  5, 2,
-  6, 2,
-  7, 2,
-  7, 3,
-  7, 2,
-  7, 1,
-  7, 1,
-  7, 4,
-  7, 5,
-  7, 5,
-  7, 6,
-  1, 3,
-  1, 3,
-  1, 3,
-  8, 0,
-  8, 2,
-  9, 1,
-  9, 3,
-  10, 0,
-  10, 5,
-  11, 1,
-  11, 2,
-  12, 0,
-  12, 3,
-  13, 0,
-  13, 1,
-  14, 1,
-  14, 1,
-  14, 1,
-  15, 0,
-  15, 2,
-  15, 2,
-  16, 0,
-  16, 3,
-  16, 3,
-  17, 0,
-  17, 3,
-  17, 3,
-  18, 0,
-  18, 2,
-  19, 0,
-  19, 3,
-  20, 0,
-  20, 4,
-  21, 0,
-  21, 3,
-  22, 0,
-  22, 3,
-  23, 1,
-  23, 1,
-  23, 1,
-  23, 1,
-  23, 1,
-  23, 1,
-  24, 1,
-  24, 2,
-  25, 0,
-  25, 3,
-  26, 1
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                           'start_symbol' non terminal implementation                             
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 0) {
-  rule_kerbdd_5F_syntax_start_5F_symbol_i0_indexing(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-void cGrammar_kerbdd_5F_grammar::nt_start_5F_symbol_ (GGS_ast &  parameter_1,
-                                Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 0) {
-  rule_kerbdd_5F_syntax_start_5F_symbol_i0_(parameter_1, inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-void cGrammar_kerbdd_5F_grammar::performIndexing (Compiler * inCompiler,
-             const String & inSourceFilePath) {
-  Lexique_kerbdd_5F_lexique * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_kerbdd_5F_lexique (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  scanner->enableIndexing () ;
-  if (scanner->sourceText ().isValid ()) {
-    const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
-                                                     gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
-                                                     gProductionsTable_kerbdd_grammar) ;
-    if (ok) {
-      cGrammar_kerbdd_5F_grammar grammar ;
-      grammar.nt_start_5F_symbol_indexing (scanner) ;
-    }
-    scanner->generateIndexFile () ;
-  }
-  macroDetachSharedObject (scanner) ;
-}
-
-void cGrammar_kerbdd_5F_grammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
-             const String & inSourceFilePath) {
-  Lexique_kerbdd_5F_lexique * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_kerbdd_5F_lexique (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText ().isValid ()) {
-    scanner->performLexicalAnalysis () ;
-  }
-  macroDetachSharedObject (scanner) ;
-}
-
-void cGrammar_kerbdd_5F_grammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
-             const String & inSourceFilePath) {
-  Lexique_kerbdd_5F_lexique * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_kerbdd_5F_lexique (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText ().isValid ()) {
-    scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
-                                     gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
-                                     gProductionsTable_kerbdd_grammar) ;
-  }
-  macroDetachSharedObject (scanner) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              Grammar start symbol implementation                                 
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (Compiler * inCompiler,
-                                GGS_lstring inFilePath,
-                                GGS_ast &  parameter_1
-                                COMMA_LOCATION_ARGS) {
-  if (inFilePath.isValid ()) {
-    const GGS_string filePathAsString = inFilePath.readProperty_string () ;
-    String filePath = filePathAsString.stringValue () ;
-    if (! FileManager::isAbsolutePath (filePath)) {
-      filePath = inCompiler->sourceFilePath ().deletingLastPathComponent ().appendingPathComponent (filePath) ;
-    }
-    if (FileManager::fileExistsAtPath (filePath)) {
-      Lexique_kerbdd_5F_lexique * scanner = nullptr ;
-      macroMyNew (scanner, Lexique_kerbdd_5F_lexique (inCompiler, filePath COMMA_HERE)) ;
-      if (scanner->sourceText ().isValid ()) {
-        const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
-                                                         gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
-                                                         gProductionsTable_kerbdd_grammar) ;
-        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
-          cGrammar_kerbdd_5F_grammar grammar ;
-          grammar.nt_start_5F_symbol_ (parameter_1, scanner) ;
-        }
-      }else{
-        String message ;
-        message.appendString ("the '") ;
-        message.appendString (filePath) ;
-        message.appendString ("' file exists, but cannot be read") ;
-        const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
-        inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
-      }
-      macroDetachSharedObject (scanner) ;
-    }else{
-      String message ;
-      message.appendString ("the '") ;
-      message.appendString (filePath) ;
-      message.appendString ("' file does not exist") ;
-      const GGS_location errorLocation (inFilePath.readProperty_location ()) ;
-      inCompiler->semanticErrorAtLocation (errorLocation, message, GenericArray <FixItDescription> () COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::_performSourceStringParsing_ (Compiler * inCompiler,
-                                GGS_string inSourceString,
-                                GGS_string inNameString,
-                                GGS_ast &  parameter_1
-                                COMMA_UNUSED_LOCATION_ARGS) {
-  if (inSourceString.isValid () && inNameString.isValid ()) {
-    const String sourceString = inSourceString.stringValue () ;
-    const String nameString = inNameString.stringValue () ;
-    Lexique_kerbdd_5F_lexique * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_kerbdd_5F_lexique (inCompiler, sourceString, nameString COMMA_HERE)) ;
-    if (scanner->sourceText ().isValid ()) {
-      const bool ok = scanner->performBottomUpParsing (gActionTable_kerbdd_grammar, gNonTerminalNames_kerbdd_grammar,
-                                                       gActionTableIndex_kerbdd_grammar, gSuccessorTable_kerbdd_grammar,
-                                                       gProductionsTable_kerbdd_grammar) ;
-      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
-        cGrammar_kerbdd_5F_grammar grammar ;
-        grammar.nt_start_5F_symbol_ (parameter_1, scanner) ;
-      }
-    }
-    macroDetachSharedObject (scanner) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                       'topLevelDeClaration' non terminal implementation                          
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 1 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i1_indexing(inLexique) ;
-    break ;
-  case 4 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i4_indexing(inLexique) ;
-    break ;
-  case 5 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i5_indexing(inLexique) ;
-    break ;
-  case 18 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i18_indexing(inLexique) ;
-    break ;
-  case 19 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i19_indexing(inLexique) ;
-    break ;
-  case 20 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i20_indexing(inLexique) ;
-    break ;
-  default :
-    inLexique->internalBottomUpParserError (HERE) ;
-    break ;
-  }
-}
-
-void cGrammar_kerbdd_5F_grammar::nt_topLevelDeClaration_ (GGS_ast &  parameter_1,
-                                Lexique_kerbdd_5F_lexique * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 1 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i1_(parameter_1, inLexique) ;
-    break ;
-  case 4 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i4_(parameter_1, inLexique) ;
-    break ;
-  case 5 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i5_(parameter_1, inLexique) ;
-    break ;
-  case 18 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i18_(parameter_1, inLexique) ;
-    break ;
-  case 19 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i19_(parameter_1, inLexique) ;
-    break ;
-  case 20 :
-      rule_kerbdd_5F_syntax_topLevelDeClaration_i20_(parameter_1, inLexique) ;
-    break ;
-  default :
-    inLexique->internalBottomUpParserError (HERE) ;
-    break ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                           'recordFields' non terminal implementation                             
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_recordFields_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 2) {
-  rule_kerbdd_5F_syntax_recordFields_i2_indexing(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-void cGrammar_kerbdd_5F_grammar::nt_recordFields_ (GGS_domainFieldList &  parameter_1,
-                                Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 2) {
-  rule_kerbdd_5F_syntax_recordFields_i2_(parameter_1, inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                               'type' non terminal implementation                                 
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_type_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 3) {
-  rule_kerbdd_5F_syntax_type_i3_indexing(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-void cGrammar_kerbdd_5F_grammar::nt_type_ (GGS_bddType &  parameter_1,
-                                Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 3) {
-  rule_kerbdd_5F_syntax_type_i3_(parameter_1, inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                            'expression' non terminal implementation                              
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_expression_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 6) {
-  rule_kerbdd_5F_syntax_expression_i6_indexing(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-void cGrammar_kerbdd_5F_grammar::nt_expression_ (GGS_expression &  parameter_1,
-                                Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 6) {
-  rule_kerbdd_5F_syntax_expression_i6_(parameter_1, inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                            'comparison' non terminal implementation                              
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_comparison_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 7) {
-  rule_kerbdd_5F_syntax_comparison_i7_indexing(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-void cGrammar_kerbdd_5F_grammar::nt_comparison_ (GGS_expression &  parameter_1,
-                                Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 7) {
-  rule_kerbdd_5F_syntax_comparison_i7_(parameter_1, inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                               'term' non terminal implementation                                 
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_term_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 8) {
-  rule_kerbdd_5F_syntax_term_i8_indexing(inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-void cGrammar_kerbdd_5F_grammar::nt_term_ (GGS_expression &  parameter_1,
-                                Lexique_kerbdd_5F_lexique * inLexique) {
-  if (inLexique->nextProductionIndex () == 8) {
-  rule_kerbdd_5F_syntax_term_i8_(parameter_1, inLexique) ;
-  }else{
-    inLexique->internalBottomUpParserError (HERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              'factor' non terminal implementation                                
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_kerbdd_5F_grammar::nt_factor_indexing (Lexique_kerbdd_5F_lexique * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 9 :
-      rule_kerbdd_5F_syntax_factor_i9_indexing(inLexique) ;
-    break ;
-  case 10 :
-      rule_kerbdd_5F_syntax_factor_i10_indexing(inLexique) ;
-    break ;
-  case 11 :
-      rule_kerbdd_5F_syntax_factor_i11_indexing(inLexique) ;
-    break ;
-  case 12 :
-      rule_kerbdd_5F_syntax_factor_i12_indexing(inLexique) ;
-    break ;
-  case 13 :
-      rule_kerbdd_5F_syntax_factor_i13_indexing(inLexique) ;
-    break ;
-  case 14 :
-      rule_kerbdd_5F_syntax_factor_i14_indexing(inLexique) ;
-    break ;
-  case 15 :
-      rule_kerbdd_5F_syntax_factor_i15_indexing(inLexique) ;
-    break ;
-  case 16 :
-      rule_kerbdd_5F_syntax_factor_i16_indexing(inLexique) ;
-    break ;
-  case 17 :
-      rule_kerbdd_5F_syntax_factor_i17_indexing(inLexique) ;
-    break ;
-  default :
-    inLexique->internalBottomUpParserError (HERE) ;
-    break ;
-  }
-}
-
-void cGrammar_kerbdd_5F_grammar::nt_factor_ (GGS_expression &  parameter_1,
-                                Lexique_kerbdd_5F_lexique * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 9 :
-      rule_kerbdd_5F_syntax_factor_i9_(parameter_1, inLexique) ;
-    break ;
-  case 10 :
-      rule_kerbdd_5F_syntax_factor_i10_(parameter_1, inLexique) ;
-    break ;
-  case 11 :
-      rule_kerbdd_5F_syntax_factor_i11_(parameter_1, inLexique) ;
-    break ;
-  case 12 :
-      rule_kerbdd_5F_syntax_factor_i12_(parameter_1, inLexique) ;
-    break ;
-  case 13 :
-      rule_kerbdd_5F_syntax_factor_i13_(parameter_1, inLexique) ;
-    break ;
-  case 14 :
-      rule_kerbdd_5F_syntax_factor_i14_(parameter_1, inLexique) ;
-    break ;
-  case 15 :
-      rule_kerbdd_5F_syntax_factor_i15_(parameter_1, inLexique) ;
-    break ;
-  case 16 :
-      rule_kerbdd_5F_syntax_factor_i16_(parameter_1, inLexique) ;
-    break ;
-  case 17 :
-      rule_kerbdd_5F_syntax_factor_i17_(parameter_1, inLexique) ;
-    break ;
-  default :
-    inLexique->internalBottomUpParserError (HERE) ;
-    break ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_0' non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_0 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  21 22
-  return inLexique->nextProductionIndex () - 20 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_1' non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_1 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  23 24
-  return inLexique->nextProductionIndex () - 22 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_2' non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_2 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  25 26
-  return inLexique->nextProductionIndex () - 24 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_3' non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_3 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  27 28
-  return inLexique->nextProductionIndex () - 26 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_4' non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_4 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  29 30
-  return inLexique->nextProductionIndex () - 28 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_5' non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_5 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  31 32
-  return inLexique->nextProductionIndex () - 30 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_6' non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_6 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  33 34 35
-  return inLexique->nextProductionIndex () - 32 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_7' non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_7 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  36 37 38
-  return inLexique->nextProductionIndex () - 35 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_8' non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_8 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  39 40 41
-  return inLexique->nextProductionIndex () - 38 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_9' non terminal implementation                       
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_9 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  42 43 44
-  return inLexique->nextProductionIndex () - 41 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_10' non terminal implementation                      
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_10 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  45 46
-  return inLexique->nextProductionIndex () - 44 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_11' non terminal implementation                      
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_11 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  47 48
-  return inLexique->nextProductionIndex () - 46 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_12' non terminal implementation                      
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_12 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  49 50
-  return inLexique->nextProductionIndex () - 48 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_13' non terminal implementation                      
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_13 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  51 52
-  return inLexique->nextProductionIndex () - 50 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_14' non terminal implementation                      
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_14 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  53 54
-  return inLexique->nextProductionIndex () - 52 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_15' non terminal implementation                      
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_15 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  55 56 57 58 59 60
-  return inLexique->nextProductionIndex () - 54 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_16' non terminal implementation                      
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_16 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  61 62
-  return inLexique->nextProductionIndex () - 60 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                    'select_kerbdd_5F_syntax_17' non terminal implementation                      
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_kerbdd_5F_grammar::select_kerbdd_5F_syntax_17 (Lexique_kerbdd_5F_lexique * inLexique) {
-// Productions numbers:  63 64
-  return inLexique->nextProductionIndex () - 62 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-// @varBitInExpression reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_varBitInExpression::objectCompare (const GGS_varBitInExpression & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varBitInExpression::GGS_varBitInExpression (void) :
-GGS_expression () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_varBitInExpression GGS_varBitInExpression::
-init_21__21_ (const GGS_lstring & in_mVarName,
-              const GGS_luint & in_mVarBit,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_varBitInExpression * object = nullptr ;
-  macroMyNew (object, cPtr_varBitInExpression (inCompiler COMMA_THERE)) ;
-  object->varBitInExpression_init_21__21_ (in_mVarName, in_mVarBit, inCompiler) ;
-  const GGS_varBitInExpression result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_varBitInExpression::
-varBitInExpression_init_21__21_ (const GGS_lstring & in_mVarName,
-                                 const GGS_luint & in_mVarBit,
-                                 Compiler * /* inCompiler */) {
-  mProperty_mVarName = in_mVarName ;
-  mProperty_mVarBit = in_mVarBit ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varBitInExpression::GGS_varBitInExpression (const cPtr_varBitInExpression * inSourcePtr) :
-GGS_expression (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_varBitInExpression) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_varBitInExpression::readProperty_mVarName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_varBitInExpression * p = (cPtr_varBitInExpression *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_varBitInExpression) ;
-    return p->mProperty_mVarName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varBitInExpression::setProperty_mVarName (const GGS_lstring & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_varBitInExpression * p = (cPtr_varBitInExpression *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_varBitInExpression) ;
-    p->mProperty_mVarName = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luint GGS_varBitInExpression::readProperty_mVarBit (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_luint () ;
-  }else{
-    cPtr_varBitInExpression * p = (cPtr_varBitInExpression *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_varBitInExpression) ;
-    return p->mProperty_mVarBit ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_varBitInExpression::setProperty_mVarBit (const GGS_luint & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_varBitInExpression * p = (cPtr_varBitInExpression *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_varBitInExpression) ;
-    p->mProperty_mVarBit = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @varBitInExpression class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_varBitInExpression::cPtr_varBitInExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_expression (inCompiler COMMA_THERE),
-mProperty_mVarName (),
-mProperty_mVarBit () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_varBitInExpression::cPtr_varBitInExpression (const GGS_lstring & in_mVarName,
-                                                  const GGS_luint & in_mVarBit,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) :
-cPtr_expression (inCompiler COMMA_THERE),
-mProperty_mVarName (),
-mProperty_mVarBit () {
-  mProperty_mVarName = in_mVarName ;
-  mProperty_mVarBit = in_mVarBit ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_varBitInExpression::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varBitInExpression ;
-}
-
-void cPtr_varBitInExpression::description (String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@varBitInExpression:") ;
-  mProperty_mVarName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mVarBit.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_varBitInExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_varBitInExpression (mProperty_mVarName, mProperty_mVarBit, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_varBitInExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_expression::printNonNullClassInstanceProperties () ;
-    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
-    mProperty_mVarBit.printNonNullClassInstanceProperties ("mVarBit") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @varBitInExpression generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varBitInExpression ("varBitInExpression",
-                                                                       & kTypeDescriptor_GALGAS_expression) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_varBitInExpression::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_varBitInExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_varBitInExpression::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_varBitInExpression (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_varBitInExpression GGS_varBitInExpression::extractObject (const GGS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  GGS_varBitInExpression result ;
-  const GGS_varBitInExpression * p = (const GGS_varBitInExpression *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_varBitInExpression *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("varBitInExpression", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@assignmentFormula analyzeFormula'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_assignmentFormula::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
-                                                    const GGS_domainMap constinArgument_inDomainMap,
-                                                    GGS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
-                                                    Compiler * inCompiler
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_uint var_totalBitCount_2740 = GGS_uint (uint32_t (0U)) ;
-  GGS_varList temp_0 = GGS_varList::init (inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 78)) ;
-  GGS_varList var_varList_2773 = temp_0 ;
-  GGS_varMap var_varMap_2800 = GGS_varMap::init (inCompiler COMMA_HERE) ;
-  const GGS_assignmentFormula temp_1 = this ;
-  extensionMethod_analyze (temp_1.readProperty_mFormulaArgumentList (), constinArgument_inDomainMap, var_varMap_2800, var_varList_2773, var_totalBitCount_2740, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 80)) ;
-  const GGS_assignmentFormula temp_2 = this ;
-  switch (temp_2.readProperty_mKind ().enumValue ()) {
-  case GGS_formulaKind::Enumeration::invalid:
-    break ;
-  case GGS_formulaKind::Enumeration::enum_assignment:
-    {
-      GGS_timer var_timer_3023 = GGS_timer::class_func_start (SOURCE_FILE ("formula-assignment.galgas4", 85)) ;
-      const GGS_assignmentFormula temp_3 = this ;
-      GGS_binaryset var_result_3052 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_3.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_2800, var_totalBitCount_2740, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 86)) ;
-      {
-      const GGS_assignmentFormula temp_4 = this ;
-      ioArgument_ioComputedFormulaMap.setter_insertKey (temp_4.readProperty_mFormulaName (), var_varList_2773, var_totalBitCount_2740, var_result_3052, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 87)) ;
-      }
-      GGS_uint_36__34_ var_valueCount_3268 = var_result_3052.getter_valueCount (var_totalBitCount_2740, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 88)) ;
-      GGS_uint_36__34_ var_nodeCount_3403 = var_result_3052.getter_nodeCount (SOURCE_FILE ("formula-assignment.galgas4", 90)) ;
-      {
-      GGS_string temp_5 ;
-      const GalgasBool test_6 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_3268.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (GalgasBool::boolTrue == test_6) {
-        temp_5 = GGS_string ("s") ;
-      }else if (GalgasBool::boolFalse == test_6) {
-        temp_5 = GGS_string::makeEmptyString () ;
-      }
-      GGS_string temp_7 ;
-      const GalgasBool test_8 = GGS_bool (ComparisonKind::greaterThan, var_nodeCount_3403.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (GalgasBool::boolTrue == test_8) {
-        temp_7 = GGS_string ("s") ;
-      }else if (GalgasBool::boolFalse == test_8) {
-        temp_7 = GGS_string::makeEmptyString () ;
-      }
-      routine_println_3F_ (GGS_string (" ").add_operation (var_valueCount_3268.getter_string (SOURCE_FILE ("formula-assignment.galgas4", 91)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 91)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 92)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 92)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 92)).add_operation (var_nodeCount_3403.getter_string (SOURCE_FILE ("formula-assignment.galgas4", 93)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 93)).add_operation (GGS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 93)).add_operation (temp_7, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 93)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 93)).add_operation (var_timer_3023.getter_string (SOURCE_FILE ("formula-assignment.galgas4", 94)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 94)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 94)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.galgas4", 91)) ;
-      }
-    }
-    break ;
-  case GGS_formulaKind::Enumeration::enum_fixedPoint:
-    {
-      GGS_binaryset extractedValue_3653_startValue_0 ;
-      temp_2.readProperty_mKind ().getAssociatedValuesFor_fixedPoint (extractedValue_3653_startValue_0) ;
-      GGS_timer var_timer_3722 = GGS_timer::class_func_start (SOURCE_FILE ("formula-assignment.galgas4", 97)) ;
-      GGS_binaryset var_result_3762 = extractedValue_3653_startValue_0 ;
-      {
-      const GGS_assignmentFormula temp_9 = this ;
-      ioArgument_ioComputedFormulaMap.setter_insertKey (temp_9.readProperty_mFormulaName (), var_varList_2773, var_totalBitCount_2740, var_result_3762, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 99)) ;
-      }
-      GGS_bool var_iterate_3883 = GGS_bool (true) ;
-      GGS_bigint var_iterationCount_3908 = GGS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.galgas4", 101)) ;
-      if (GGS_uint::class_func_max (SOURCE_FILE ("formula-assignment.galgas4", 102)).isValid ()) {
-        uint32_t variant_3931 = GGS_uint::class_func_max (SOURCE_FILE ("formula-assignment.galgas4", 102)).uintValue () ;
-        bool loop_3931 = true ;
-        while (loop_3931) {
-          loop_3931 = var_iterate_3883.isValid () ;
-          if (loop_3931) {
-            loop_3931 = var_iterate_3883.boolValue () ;
-          }
-          if (loop_3931 && (0 == variant_3931)) {
-            loop_3931 = false ;
-            inCompiler->loopRunTimeVariantError (SOURCE_FILE ("formula-assignment.galgas4", 102)) ;
-          }
-          if (loop_3931) {
-            variant_3931 -= 1 ;
-            var_iterationCount_3908.plusAssignOperation(GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.galgas4", 103)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.galgas4", 103)) ;
-            const GGS_assignmentFormula temp_10 = this ;
-            GGS_binaryset var_r_4001 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_10.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_2800, var_totalBitCount_2740, ioArgument_ioComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 104)) ;
-            GalgasBool test_11 = GalgasBool::boolTrue ;
-            if (GalgasBool::boolTrue == test_11) {
-              test_11 = GGS_bool (ComparisonKind::equal, var_result_3762.objectCompare (var_r_4001)).boolEnum () ;
-              if (GalgasBool::boolTrue == test_11) {
-                var_iterate_3883 = GGS_bool (false) ;
-              }
-            }
-            if (GalgasBool::boolFalse == test_11) {
-              var_result_3762 = var_r_4001 ;
-              {
-              const GGS_assignmentFormula temp_12 = this ;
-              ioArgument_ioComputedFormulaMap.setter_setMValueForKey (var_result_3762, temp_12.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 109)) ;
-              }
-            }
-          }
-        }
-      }
-      GGS_uint_36__34_ var_valueCount_4301 = var_result_3762.getter_valueCount (var_totalBitCount_2740, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 112)) ;
-      GGS_uint_36__34_ var_nodeCount_4364 = var_result_3762.getter_nodeCount (SOURCE_FILE ("formula-assignment.galgas4", 113)) ;
-      {
-      GGS_string temp_13 ;
-      const GalgasBool test_14 = GGS_bool (ComparisonKind::greaterThan, var_iterationCount_3908.objectCompare (GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("formula-assignment.galgas4", 115)))).boolEnum () ;
-      if (GalgasBool::boolTrue == test_14) {
-        temp_13 = GGS_string ("s") ;
-      }else if (GalgasBool::boolFalse == test_14) {
-        temp_13 = GGS_string::makeEmptyString () ;
-      }
-      GGS_string temp_15 ;
-      const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_4301.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (GalgasBool::boolTrue == test_16) {
-        temp_15 = GGS_string ("s") ;
-      }else if (GalgasBool::boolFalse == test_16) {
-        temp_15 = GGS_string::makeEmptyString () ;
-      }
-      GGS_string temp_17 ;
-      const GalgasBool test_18 = GGS_bool (ComparisonKind::greaterThan, var_nodeCount_4364.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-      if (GalgasBool::boolTrue == test_18) {
-        temp_17 = GGS_string ("s") ;
-      }else if (GalgasBool::boolFalse == test_18) {
-        temp_17 = GGS_string::makeEmptyString () ;
-      }
-      routine_println_3F_ (GGS_string (" ").add_operation (var_iterationCount_3908.getter_string (SOURCE_FILE ("formula-assignment.galgas4", 114)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 114)).add_operation (GGS_string (" iteration"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 115)).add_operation (temp_13, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 115)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 115)).add_operation (var_valueCount_4301.getter_string (SOURCE_FILE ("formula-assignment.galgas4", 116)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 116)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 116)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 116)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 116)).add_operation (var_nodeCount_4364.getter_string (SOURCE_FILE ("formula-assignment.galgas4", 117)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 117)).add_operation (GGS_string (" node"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 117)).add_operation (temp_17, inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 117)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 117)).add_operation (var_timer_3722.getter_string (SOURCE_FILE ("formula-assignment.galgas4", 118)), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 118)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("formula-assignment.galgas4", 118)), inCompiler  COMMA_SOURCE_FILE ("formula-assignment.galgas4", 114)) ;
-      }
-    }
-    break ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@dumpFormula analyzeFormula'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_dumpFormula::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
-                                              const GGS_domainMap /* constinArgument_inDomainMap */,
-                                              GGS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
-                                              Compiler * inCompiler
-                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_varList var_varList_1685 ;
-  GGS_uint var_bitCount_1699 ;
-  GGS_binaryset var_result_1714 ;
-  const GGS_dumpFormula temp_0 = this ;
-  ioArgument_ioComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_1685, var_bitCount_1699, var_result_1714, inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 37)) ;
-  GGS_uint_36__34_ var_valueCount_1736 = var_result_1714.getter_valueCount (var_bitCount_1699, inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 38)) ;
-  {
-  const GGS_dumpFormula temp_1 = this ;
-  GGS_string temp_2 ;
-  const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, var_valueCount_1736.objectCompare (GGS_uint_36__34_ (uint64_t (1ULL)))).boolEnum () ;
-  if (GalgasBool::boolTrue == test_3) {
-    temp_2 = GGS_string ("s") ;
-  }else if (GalgasBool::boolFalse == test_3) {
-    temp_2 = GGS_string::makeEmptyString () ;
-  }
-  routine_println_3F_ (GGS_string ("Dump $").add_operation (temp_1.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 39)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 39)).add_operation (var_valueCount_1736.getter_string (SOURCE_FILE ("formula-dump.galgas4", 39)), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 39)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 39)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 39)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 39)), inCompiler  COMMA_SOURCE_FILE ("formula-dump.galgas4", 39)) ;
-  }
-  GGS_stringlist temp_4 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 40)) ;
-  GGS_stringlist var_nameList_1916 = temp_4 ;
-  GGS_uintlist temp_5 = GGS_uintlist::init (inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 41)) ;
-  GGS_uintlist var_bitCountList_1946 = temp_5 ;
-  UpEnumerator_varList enumerator_1984 (var_varList_1685) ;
-  while (enumerator_1984.hasCurrentObject ()) {
-    {
-    var_nameList_1916.setter_append (enumerator_1984.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 43)) ;
-    }
-    {
-    var_bitCountList_1946.setter_append (enumerator_1984.current_mBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("formula-dump.galgas4", 44)) ;
-    }
-    enumerator_1984.gotoNextObject () ;
-  }
-  {
-  routine_println_3F_ (var_result_1714.getter_print (var_nameList_1916, var_bitCountList_1946 COMMA_SOURCE_FILE ("formula-dump.galgas4", 46)), inCompiler  COMMA_SOURCE_FILE ("formula-dump.galgas4", 46)) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                               Bool options                                                    
-//
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-//
-//                               UInt options                                                    
-//
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              String options                                                   
-//
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              String List options                                              
-//
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension func '@varInExpression computeExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_binaryset cPtr_varInExpression::getter_computeExpression (const GGS_domainMap /* constinArgument_inDomainMap */,
-                                                              const GGS_varMap constinArgument_inVarMap,
-                                                              const GGS_uint /* constinArgument_inTotalBitCount */,
-                                                              const GGS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
-                                                              Compiler * inCompiler
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_binaryset result_outResult ; // Returned variable
-  GGS_uint var_idx_10646 ;
-  GGS_uint var_bitCount_10656 ;
-  GGS_recordDomainMap var_subdomainMap_10671 ;
-  const GGS_varInExpression temp_0 = this ;
-  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_10646, var_bitCount_10656, var_subdomainMap_10671, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 354)) ;
-  GalgasBool test_1 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::greaterThan, var_subdomainMap_10671.getter_count (SOURCE_FILE ("expression.galgas4", 355)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_1) {
-      const GGS_varInExpression temp_2 = this ;
-      GenericArray <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mVarName ().readProperty_location (), GGS_string ("variable is a record; use dot notation"), fixItArray3  COMMA_SOURCE_FILE ("expression.galgas4", 356)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_1) {
-    GalgasBool test_4 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_4) {
-      test_4 = GGS_bool (ComparisonKind::notEqual, var_bitCount_10656.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
-      if (GalgasBool::boolTrue == test_4) {
-        const GGS_varInExpression temp_5 = this ;
-        GenericArray <FixItDescription> fixItArray6 ;
-        inCompiler->emitSemanticError (temp_5.readProperty_mVarName ().readProperty_location (), GGS_string ("variable is not boolean; use {...} or dot notation"), fixItArray6  COMMA_SOURCE_FILE ("expression.galgas4", 358)) ;
-      }
-    }
-  }
-  result_outResult = GGS_binaryset::class_func_binarySetWithBit (var_idx_10646, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 360)) ;
-//---
-  return result_outResult ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension func '@varBitInExpression computeExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_binaryset cPtr_varBitInExpression::getter_computeExpression (const GGS_domainMap /* constinArgument_inDomainMap */,
-                                                                 const GGS_varMap constinArgument_inVarMap,
-                                                                 const GGS_uint /* constinArgument_inTotalBitCount */,
-                                                                 const GGS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_binaryset result_outResult ; // Returned variable
-  GGS_uint var_idx_11334 ;
-  GGS_uint var_bitCount_11344 ;
-  GGS_recordDomainMap var_subdomainMap_11359 ;
-  const GGS_varBitInExpression temp_0 = this ;
-  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_11334, var_bitCount_11344, var_subdomainMap_11359, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 372)) ;
-  GalgasBool test_1 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::greaterThan, var_subdomainMap_11359.getter_count (SOURCE_FILE ("expression.galgas4", 373)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_1) {
-      const GGS_varBitInExpression temp_2 = this ;
-      GenericArray <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mVarName ().readProperty_location (), GGS_string ("variable is a record; use dot notation"), fixItArray3  COMMA_SOURCE_FILE ("expression.galgas4", 374)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_1) {
-    GalgasBool test_4 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_4) {
-      const GGS_varBitInExpression temp_5 = this ;
-      test_4 = GGS_bool (ComparisonKind::lowerOrEqual, var_bitCount_11344.objectCompare (temp_5.readProperty_mVarBit ().readProperty_uint ())).boolEnum () ;
-      if (GalgasBool::boolTrue == test_4) {
-        const GGS_varBitInExpression temp_6 = this ;
-        GenericArray <FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (temp_6.readProperty_mVarBit ().readProperty_location (), GGS_string ("bit index should be < ").add_operation (var_bitCount_11344.getter_string (SOURCE_FILE ("expression.galgas4", 376)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 376)), fixItArray7  COMMA_SOURCE_FILE ("expression.galgas4", 376)) ;
-      }
-    }
-  }
-  const GGS_varBitInExpression temp_8 = this ;
-  result_outResult = GGS_binaryset::class_func_binarySetWithBit (var_idx_11334.add_operation (temp_8.readProperty_mVarBit ().readProperty_uint (), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 378)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 378)) ;
-//---
-  return result_outResult ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension func '@andExpression computeExpression'
 //
@@ -2639,10 +21,10 @@ GGS_binaryset cPtr_andExpression::getter_computeExpression (const GGS_domainMap 
                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_andExpression temp_0 = this ;
-  GGS_binaryset var_left_11977 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 390)) ;
+  GGS_binaryset var_left_11892 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 390)) ;
   const GGS_andExpression temp_1 = this ;
-  GGS_binaryset var_right_12097 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 391)) ;
-  result_outResult = var_left_11977.operator_and (var_right_12097 COMMA_SOURCE_FILE ("expression.galgas4", 392)) ;
+  GGS_binaryset var_right_12008 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 391)) ;
+  result_outResult = var_left_11892.operator_and (var_right_12008 COMMA_SOURCE_FILE ("expression.galgas4", 392)) ;
 //---
   return result_outResult ;
 }
@@ -2662,10 +44,10 @@ GGS_binaryset cPtr_orExpression::getter_computeExpression (const GGS_domainMap c
                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_orExpression temp_0 = this ;
-  GGS_binaryset var_left_12559 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 404)) ;
+  GGS_binaryset var_left_12466 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 404)) ;
   const GGS_orExpression temp_1 = this ;
-  GGS_binaryset var_right_12679 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 405)) ;
-  result_outResult = var_left_12559.operator_or (var_right_12679 COMMA_SOURCE_FILE ("expression.galgas4", 406)) ;
+  GGS_binaryset var_right_12582 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 405)) ;
+  result_outResult = var_left_12466.operator_or (var_right_12582 COMMA_SOURCE_FILE ("expression.galgas4", 406)) ;
 //---
   return result_outResult ;
 }
@@ -2685,10 +67,10 @@ GGS_binaryset cPtr_xorExpression::getter_computeExpression (const GGS_domainMap 
                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_xorExpression temp_0 = this ;
-  GGS_binaryset var_left_13142 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 418)) ;
+  GGS_binaryset var_left_13041 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 418)) ;
   const GGS_xorExpression temp_1 = this ;
-  GGS_binaryset var_right_13262 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 419)) ;
-  result_outResult = var_left_13142.operator_xor (var_right_13262 COMMA_SOURCE_FILE ("expression.galgas4", 420)) ;
+  GGS_binaryset var_right_13157 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 419)) ;
+  result_outResult = var_left_13041.operator_xor (var_right_13157 COMMA_SOURCE_FILE ("expression.galgas4", 420)) ;
 //---
   return result_outResult ;
 }
@@ -2708,10 +90,10 @@ GGS_binaryset cPtr_impliesExpression::getter_computeExpression (const GGS_domain
                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_impliesExpression temp_0 = this ;
-  GGS_binaryset var_left_13729 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 432)) ;
+  GGS_binaryset var_left_13620 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 432)) ;
   const GGS_impliesExpression temp_1 = this ;
-  GGS_binaryset var_right_13849 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 433)) ;
-  result_outResult = var_left_13729.getter_implies (var_right_13849 COMMA_SOURCE_FILE ("expression.galgas4", 434)) ;
+  GGS_binaryset var_right_13736 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 433)) ;
+  result_outResult = var_left_13620.getter_implies (var_right_13736 COMMA_SOURCE_FILE ("expression.galgas4", 434)) ;
 //---
   return result_outResult ;
 }
@@ -2731,10 +113,10 @@ GGS_binaryset cPtr_equalExpression::getter_computeExpression (const GGS_domainMa
                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_equalExpression temp_0 = this ;
-  GGS_binaryset var_left_14322 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 446)) ;
+  GGS_binaryset var_left_14205 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 446)) ;
   const GGS_equalExpression temp_1 = this ;
-  GGS_binaryset var_right_14442 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 447)) ;
-  result_outResult = var_left_14322.operator_xor (var_right_14442 COMMA_SOURCE_FILE ("expression.galgas4", 448)).operator_tilde (SOURCE_FILE ("expression.galgas4", 448)) ;
+  GGS_binaryset var_right_14321 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 447)) ;
+  result_outResult = var_left_14205.operator_xor (var_right_14321 COMMA_SOURCE_FILE ("expression.galgas4", 448)).operator_tilde (SOURCE_FILE ("expression.galgas4", 448)) ;
 //---
   return result_outResult ;
 }
@@ -2754,10 +136,10 @@ GGS_binaryset cPtr_notEqualExpression::getter_computeExpression (const GGS_domai
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
   const GGS_notEqualExpression temp_0 = this ;
-  GGS_binaryset var_left_14913 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 460)) ;
+  GGS_binaryset var_left_14788 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 460)) ;
   const GGS_notEqualExpression temp_1 = this ;
-  GGS_binaryset var_right_15033 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 461)) ;
-  result_outResult = var_left_14913.operator_xor (var_right_15033 COMMA_SOURCE_FILE ("expression.galgas4", 462)) ;
+  GGS_binaryset var_right_14904 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inDomainMap, constinArgument_inVarMap, constinArgument_inTotalBitCount, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 461)) ;
+  result_outResult = var_left_14788.operator_xor (var_right_14904 COMMA_SOURCE_FILE ("expression.galgas4", 462)) ;
 //---
   return result_outResult ;
 }
@@ -2789,10 +171,10 @@ GGS_binaryset cPtr_complementExpression::getter_computeExpression (const GGS_dom
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset cPtr_trueExpression::getter_computeExpression (const GGS_domainMap /* constinArgument_inDomainMap */,
-                                                             const GGS_varMap /* constinArgument_inVarMap */,
-                                                             const GGS_uint /* constinArgument_inTotalBitCount */,
-                                                             const GGS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
+GGS_binaryset cPtr_trueExpression::getter_computeExpression (const GGS_domainMap /* constinArgument__5F_inDomainMap */,
+                                                             const GGS_varMap /* constinArgument__5F_inVarMap */,
+                                                             const GGS_uint /* constinArgument__5F_inTotalBitCount */,
+                                                             const GGS_computedFormulaMap /* constinArgument__5F_inComputedFormulaMap */,
                                                              Compiler */* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
@@ -2808,10 +190,10 @@ GGS_binaryset cPtr_trueExpression::getter_computeExpression (const GGS_domainMap
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset cPtr_falseExpression::getter_computeExpression (const GGS_domainMap /* constinArgument_inDomainMap */,
-                                                              const GGS_varMap /* constinArgument_inVarMap */,
-                                                              const GGS_uint /* constinArgument_inTotalBitCount */,
-                                                              const GGS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
+GGS_binaryset cPtr_falseExpression::getter_computeExpression (const GGS_domainMap /* constinArgument__5F_inDomainMap */,
+                                                              const GGS_varMap /* constinArgument__5F_inVarMap */,
+                                                              const GGS_uint /* constinArgument__5F_inTotalBitCount */,
+                                                              const GGS_computedFormulaMap /* constinArgument__5F_inComputedFormulaMap */,
                                                               Compiler */* inCompiler */
                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
@@ -2827,27 +209,27 @@ GGS_binaryset cPtr_falseExpression::getter_computeExpression (const GGS_domainMa
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_domainMap /* constinArgument_inDomainMap */,
+GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_domainMap /* constinArgument__5F_inDomainMap */,
                                                                   const GGS_varMap constinArgument_inVarMap,
-                                                                  const GGS_uint /* constinArgument_inTotalBitCount */,
+                                                                  const GGS_uint /* constinArgument__5F_inTotalBitCount */,
                                                                   const GGS_computedFormulaMap constinArgument_inComputedFormulaMap,
                                                                   Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_varList var_varList_16796 ;
-  GGS_uint var_totalBitCount_16817 ;
-  GGS_binaryset var_formulaValue_16837 ;
+  GGS_varList var_varList_16598 ;
+  GGS_uint var__5F_totalBitCount_16612 ;
+  GGS_binaryset var_formulaValue_16633 ;
   const GGS_formulaInExpression temp_0 = this ;
-  constinArgument_inComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_16796, var_totalBitCount_16817, var_formulaValue_16837, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 511)) ;
+  constinArgument_inComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_16598, var__5F_totalBitCount_16612, var_formulaValue_16633, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 511)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
     const GGS_formulaInExpression temp_2 = this ;
-    test_1 = GGS_bool (ComparisonKind::notEqual, temp_2.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.galgas4", 513)).objectCompare (var_varList_16796.getter_count (SOURCE_FILE ("expression.galgas4", 513)))).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::notEqual, temp_2.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.galgas4", 513)).objectCompare (var_varList_16598.getter_count (SOURCE_FILE ("expression.galgas4", 513)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
       const GGS_formulaInExpression temp_3 = this ;
       const GGS_formulaInExpression temp_4 = this ;
       GGS_string temp_5 ;
-      const GalgasBool test_6 = GGS_bool (ComparisonKind::greaterThan, var_varList_16796.getter_count (SOURCE_FILE ("expression.galgas4", 515)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      const GalgasBool test_6 = GGS_bool (ComparisonKind::greaterThan, var_varList_16598.getter_count (SOURCE_FILE ("expression.galgas4", 515)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_6) {
         temp_5 = GGS_string ("s") ;
       }else if (GalgasBool::boolFalse == test_6) {
@@ -2863,63 +245,63 @@ GGS_binaryset cPtr_formulaInExpression::getter_computeExpression (const GGS_doma
         temp_9 = GGS_string::makeEmptyString () ;
       }
       GenericArray <FixItDescription> fixItArray11 ;
-      inCompiler->emitSemanticError (temp_3.readProperty_mFormulaName ().readProperty_location (), GGS_string ("the $").add_operation (temp_4.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 514)).add_operation (GGS_string (" names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 514)).add_operation (var_varList_16796.getter_count (SOURCE_FILE ("expression.galgas4", 515)).getter_string (SOURCE_FILE ("expression.galgas4", 514)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 514)).add_operation (GGS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 515)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 515)).add_operation (GGS_string (", but this call names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 515)).add_operation (temp_7.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.galgas4", 517)).getter_string (SOURCE_FILE ("expression.galgas4", 516)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 516)).add_operation (GGS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 517)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 517)), fixItArray11  COMMA_SOURCE_FILE ("expression.galgas4", 514)) ;
+      inCompiler->emitSemanticError (temp_3.readProperty_mFormulaName ().readProperty_location (), GGS_string ("the $").add_operation (temp_4.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 514)).add_operation (GGS_string (" names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 514)).add_operation (var_varList_16598.getter_count (SOURCE_FILE ("expression.galgas4", 515)).getter_string (SOURCE_FILE ("expression.galgas4", 514)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 514)).add_operation (GGS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 515)).add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 515)).add_operation (GGS_string (", but this call names "), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 515)).add_operation (temp_7.readProperty_mParameterList ().getter_count (SOURCE_FILE ("expression.galgas4", 517)).getter_string (SOURCE_FILE ("expression.galgas4", 516)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 516)).add_operation (GGS_string (" variable"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 517)).add_operation (temp_9, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 517)), fixItArray11  COMMA_SOURCE_FILE ("expression.galgas4", 514)) ;
       result_outResult.drop () ; // Release error dropped variable
     }
   }
   if (GalgasBool::boolFalse == test_1) {
-    GGS_uintlist temp_12 = GGS_uintlist::init (inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 520)) ;
-    GGS_uintlist var_transformationList_17265 = temp_12 ;
+    GGS__5B_uint_5D_ temp_12 = GGS__5B_uint_5D_::init (inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 520)) ;
+    GGS__5B_uint_5D_ var_transformationList_17059 = temp_12 ;
     const GGS_formulaInExpression temp_13 = this ;
-    DownEnumerator_varList enumerator_17315 (var_varList_16796) ;
-    DownEnumerator_formulaParameterListInExpression enumerator_17361 (temp_13.readProperty_mParameterList ()) ;
-    while (enumerator_17315.hasCurrentObject () && enumerator_17361.hasCurrentObject ()) {
-      GGS_uint var_parameterIndex_17451 ;
-      GGS_uint var_parameterBitCount_17474 ;
-      GGS_recordDomainMap var_subdomainMap_17511 ;
-      constinArgument_inVarMap.method_searchKey (enumerator_17361.current_mParameterName (HERE), var_parameterIndex_17451, var_parameterBitCount_17474, var_subdomainMap_17511, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 522)) ;
-      UpEnumerator_lstringlist enumerator_17536 (enumerator_17361.current_mFieldNames (HERE)) ;
-      while (enumerator_17536.hasCurrentObject ()) {
-        GGS_uint var_fieldRelativeBitIndex_17616 ;
-        GGS_recordDomainMap var_fieldSubdomainMap_17664 ;
-        var_subdomainMap_17511.method_searchKey (enumerator_17536.current_mValue (HERE), var_fieldRelativeBitIndex_17616, var_parameterBitCount_17474, var_fieldSubdomainMap_17664, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 524)) ;
-        var_parameterIndex_17451 = var_parameterIndex_17451.add_operation (var_fieldRelativeBitIndex_17616, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 525)) ;
-        var_subdomainMap_17511 = var_fieldSubdomainMap_17664 ;
-        enumerator_17536.gotoNextObject () ;
+    DownEnumerator_varList enumerator_17103 (var_varList_16598) ;
+    DownEnumerator_formulaParameterListInExpression enumerator_17129 (temp_13.readProperty_mParameterList ()) ;
+    while (enumerator_17103.hasCurrentObject () && enumerator_17129.hasCurrentObject ()) {
+      GGS_uint var_parameterIndex_17203 ;
+      GGS_uint var_parameterBitCount_17226 ;
+      GGS_recordDomainMap var_subdomainMap_17263 ;
+      constinArgument_inVarMap.method_searchKey (enumerator_17129.current (HERE).readProperty_mParameterName (), var_parameterIndex_17203, var_parameterBitCount_17226, var_subdomainMap_17263, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 522)) ;
+      UpEnumerator__5B_lstring_5D_ enumerator_17307 (enumerator_17129.current (HERE).readProperty_mFieldNames ()) ;
+      while (enumerator_17307.hasCurrentObject ()) {
+        GGS_uint var_fieldRelativeBitIndex_17370 ;
+        GGS_recordDomainMap var_fieldSubdomainMap_17418 ;
+        var_subdomainMap_17263.method_searchKey (enumerator_17307.current (HERE), var_fieldRelativeBitIndex_17370, var_parameterBitCount_17226, var_fieldSubdomainMap_17418, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 524)) ;
+        var_parameterIndex_17203 = var_parameterIndex_17203.add_operation (var_fieldRelativeBitIndex_17370, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 525)) ;
+        var_subdomainMap_17263 = var_fieldSubdomainMap_17418 ;
+        enumerator_17307.gotoNextObject () ;
       }
       GalgasBool test_14 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_14) {
-        test_14 = GGS_bool (ComparisonKind::notEqual, enumerator_17315.current_mBitCount (HERE).objectCompare (var_parameterBitCount_17474)).boolEnum () ;
+        test_14 = GGS_bool (ComparisonKind::notEqual, enumerator_17103.current (HERE).readProperty_mBitCount ().objectCompare (var_parameterBitCount_17226)).boolEnum () ;
         if (GalgasBool::boolTrue == test_14) {
           GGS_string temp_15 ;
-          const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_parameterBitCount_17474.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_parameterBitCount_17226.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_16) {
             temp_15 = GGS_string ("s") ;
           }else if (GalgasBool::boolFalse == test_16) {
             temp_15 = GGS_string::makeEmptyString () ;
           }
           GGS_string temp_17 ;
-          const GalgasBool test_18 = GGS_bool (ComparisonKind::greaterThan, enumerator_17315.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          const GalgasBool test_18 = GGS_bool (ComparisonKind::greaterThan, enumerator_17103.current (HERE).readProperty_mBitCount ().objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_18) {
             temp_17 = GGS_string ("s") ;
           }else if (GalgasBool::boolFalse == test_18) {
             temp_17 = GGS_string::makeEmptyString () ;
           }
           GenericArray <FixItDescription> fixItArray19 ;
-          inCompiler->emitSemanticError (enumerator_17361.current_mParameterName (HERE).readProperty_location (), GGS_string ("this parameter is declared with a size of ").add_operation (var_parameterBitCount_17474.getter_string (SOURCE_FILE ("expression.galgas4", 529)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 529)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 530)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 530)).add_operation (GGS_string (", but corresponding formal argument '"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 530)).add_operation (enumerator_17315.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 531)).add_operation (GGS_string ("' is declared with a size of "), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 531)).add_operation (enumerator_17315.current_mBitCount (HERE).getter_string (SOURCE_FILE ("expression.galgas4", 531)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 531)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 532)).add_operation (temp_17, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 532)), fixItArray19  COMMA_SOURCE_FILE ("expression.galgas4", 529)) ;
+          inCompiler->emitSemanticError (enumerator_17129.current (HERE).readProperty_mParameterName ().readProperty_location (), GGS_string ("this parameter is declared with a size of ").add_operation (var_parameterBitCount_17226.getter_string (SOURCE_FILE ("expression.galgas4", 529)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 529)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 530)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 530)).add_operation (GGS_string (", but corresponding formal argument '"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 530)).add_operation (enumerator_17103.current (HERE).readProperty_mVarName (), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 531)).add_operation (GGS_string ("' is declared with a size of "), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 531)).add_operation (enumerator_17103.current (HERE).readProperty_mBitCount ().getter_string (SOURCE_FILE ("expression.galgas4", 531)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 531)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 532)).add_operation (temp_17, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 532)), fixItArray19  COMMA_SOURCE_FILE ("expression.galgas4", 529)) ;
         }
       }
-      UpEnumerator_range enumerator_18232 (GGS_range (GGS_uint (uint32_t (0U)), var_parameterBitCount_17474.substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 535)))) ;
-      while (enumerator_18232.hasCurrentObject ()) {
+      UpEnumerator_range enumerator_18006 (GGS_range (GGS_uint (uint32_t (0U)), var_parameterBitCount_17226.substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 535)))) ;
+      while (enumerator_18006.hasCurrentObject ()) {
         {
-        var_transformationList_17265.setter_append (var_parameterIndex_17451.add_operation (enumerator_18232.current (HERE), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 536)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 536)) ;
+        var_transformationList_17059.setter_append (var_parameterIndex_17203.add_operation (enumerator_18006.current (HERE), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 536)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 536)) ;
         }
-        enumerator_18232.gotoNextObject () ;
+        enumerator_18006.gotoNextObject () ;
       }
-      enumerator_17315.gotoNextObject () ;
-      enumerator_17361.gotoNextObject () ;
+      enumerator_17103.gotoNextObject () ;
+      enumerator_17129.gotoNextObject () ;
     }
-    result_outResult = var_formulaValue_16837.getter_transformedBy (var_transformationList_17265 COMMA_SOURCE_FILE ("expression.galgas4", 539)) ;
+    result_outResult = var_formulaValue_16633.getter_transformedBy (var_transformationList_17059 COMMA_SOURCE_FILE ("expression.galgas4", 539)) ;
   }
 //---
   return result_outResult ;
@@ -2939,14 +321,14 @@ GGS_binaryset cPtr_existInExpression::getter_computeExpression (const GGS_domain
                                                                 Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_varMap var_varMap_18731 = constinArgument_inVarMap ;
-  GGS_uint var_totalBitCount_18761 = constinArgument_inTotalBitCount ;
-  GGS_varList var_unusedVarList_18800 = GGS_varList::init (inCompiler COMMA_HERE) ;
+  GGS_varMap var_varMap_18505 = constinArgument_inVarMap ;
+  GGS_uint var_totalBitCount_18535 = constinArgument_inTotalBitCount ;
+  GGS_varList var_unusedVarList_18574 = GGS_varList::init (inCompiler COMMA_HERE) ;
   const GGS_existInExpression temp_0 = this ;
-  extensionMethod_analyze (temp_0.readProperty_mArgumentList (), constinArgument_inDomainMap, var_varMap_18731, var_unusedVarList_18800, var_totalBitCount_18761, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 555)) ;
+  extensionMethod_analyze (temp_0.readProperty_mArgumentList (), constinArgument_inDomainMap, var_varMap_18505, var_unusedVarList_18574, var_totalBitCount_18535, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 555)) ;
   const GGS_existInExpression temp_1 = this ;
-  GGS_binaryset var_r_18922 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_18731, var_totalBitCount_18761, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 556)) ;
-  result_outResult = var_r_18922.getter_existOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.galgas4", 557)) ;
+  GGS_binaryset var_r_18695 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_18505, var_totalBitCount_18535, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 556)) ;
+  result_outResult = var_r_18695.getter_existOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.galgas4", 557)) ;
 //---
   return result_outResult ;
 }
@@ -2965,14 +347,14 @@ GGS_binaryset cPtr_forAllInExpression::getter_computeExpression (const GGS_domai
                                                                  Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_varMap var_varMap_19418 = constinArgument_inVarMap ;
-  GGS_uint var_totalBitCount_19448 = constinArgument_inTotalBitCount ;
-  GGS_varList var_unusedVarList_19487 = GGS_varList::init (inCompiler COMMA_HERE) ;
+  GGS_varMap var_varMap_19186 = constinArgument_inVarMap ;
+  GGS_uint var_totalBitCount_19216 = constinArgument_inTotalBitCount ;
+  GGS_varList var_unusedVarList_19255 = GGS_varList::init (inCompiler COMMA_HERE) ;
   const GGS_forAllInExpression temp_0 = this ;
-  extensionMethod_analyze (temp_0.readProperty_mArgumentList (), constinArgument_inDomainMap, var_varMap_19418, var_unusedVarList_19487, var_totalBitCount_19448, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 572)) ;
+  extensionMethod_analyze (temp_0.readProperty_mArgumentList (), constinArgument_inDomainMap, var_varMap_19186, var_unusedVarList_19255, var_totalBitCount_19216, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 572)) ;
   const GGS_forAllInExpression temp_1 = this ;
-  GGS_binaryset var_r_19609 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_19418, var_totalBitCount_19448, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 573)) ;
-  result_outResult = var_r_19609.getter_forAllOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.galgas4", 574)) ;
+  GGS_binaryset var_r_19376 = callExtensionGetter_computeExpression ((const cPtr_expression *) temp_1.readProperty_mExpression ().ptr (), constinArgument_inDomainMap, var_varMap_19186, var_totalBitCount_19216, constinArgument_inComputedFormulaMap, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 573)) ;
+  result_outResult = var_r_19376.getter_forAllOnBitIndexAndBeyond (constinArgument_inTotalBitCount COMMA_SOURCE_FILE ("expression.galgas4", 574)) ;
 //---
   return result_outResult ;
 }
@@ -2984,31 +366,31 @@ GGS_binaryset cPtr_forAllInExpression::getter_computeExpression (const GGS_domai
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression (const GGS_domainMap /* constinArgument_inDomainMap */,
+GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression (const GGS_domainMap /* constinArgument__5F_inDomainMap */,
                                                                                  const GGS_varMap constinArgument_inVarMap,
-                                                                                 const GGS_uint /* constinArgument_inTotalBitCount */,
-                                                                                 const GGS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
+                                                                                 const GGS_uint /* constinArgument__5F_inTotalBitCount */,
+                                                                                 const GGS_computedFormulaMap /* constinArgument__5F_inComputedFormulaMap */,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_uint var_idx_20173 ;
-  GGS_uint var_bitCount_20185 ;
-  GGS_recordDomainMap var_subDomainMap_20213 ;
+  GGS_uint var_idx_19917 ;
+  GGS_uint var_bitCount_19929 ;
+  GGS_recordDomainMap var_subDomainMap_19957 ;
   const GGS_comparisonWithConstantInExpression temp_0 = this ;
-  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_20173, var_bitCount_20185, var_subDomainMap_20213, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 586)) ;
+  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mVarName (), var_idx_19917, var_bitCount_19929, var_subDomainMap_19957, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 586)) ;
   const GGS_comparisonWithConstantInExpression temp_1 = this ;
-  UpEnumerator_lstringlist enumerator_20234 (temp_1.readProperty_mFieldNames ()) ;
-  while (enumerator_20234.hasCurrentObject ()) {
-    GGS_uint var_fieldRelativeBitIndex_20313 ;
-    GGS_recordDomainMap var_fieldSubdomainMap_20352 ;
-    var_subDomainMap_20213.method_searchKey (enumerator_20234.current_mValue (HERE), var_fieldRelativeBitIndex_20313, var_bitCount_20185, var_fieldSubdomainMap_20352, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 588)) ;
-    var_idx_20173 = var_idx_20173.add_operation (var_fieldRelativeBitIndex_20313, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 589)) ;
-    var_subDomainMap_20213 = var_fieldSubdomainMap_20352 ;
-    enumerator_20234.gotoNextObject () ;
+  UpEnumerator__5B_lstring_5D_ enumerator_19995 (temp_1.readProperty_mFieldNames ()) ;
+  while (enumerator_19995.hasCurrentObject ()) {
+    GGS_uint var_fieldRelativeBitIndex_20054 ;
+    GGS_recordDomainMap var_fieldSubdomainMap_20093 ;
+    var_subDomainMap_19957.method_searchKey (enumerator_19995.current (HERE), var_fieldRelativeBitIndex_20054, var_bitCount_19929, var_fieldSubdomainMap_20093, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 588)) ;
+    var_idx_19917 = var_idx_19917.add_operation (var_fieldRelativeBitIndex_20054, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 589)) ;
+    var_subDomainMap_19957 = var_fieldSubdomainMap_20093 ;
+    enumerator_19995.gotoNextObject () ;
   }
   GalgasBool test_2 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_2) {
-    test_2 = GGS_bool (ComparisonKind::greaterThan, var_subDomainMap_20213.getter_count (SOURCE_FILE ("expression.galgas4", 592)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    test_2 = GGS_bool (ComparisonKind::greaterThan, var_subDomainMap_19957.getter_count (SOURCE_FILE ("expression.galgas4", 592)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_2) {
       const GGS_comparisonWithConstantInExpression temp_3 = this ;
       GenericArray <FixItDescription> fixItArray4 ;
@@ -3020,11 +402,11 @@ GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression 
     GalgasBool test_5 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_5) {
       const GGS_comparisonWithConstantInExpression temp_6 = this ;
-      test_5 = GGS_bool (ComparisonKind::greaterThan, temp_6.readProperty_mConstant ().readProperty_uint ().getter_significantBitCount (SOURCE_FILE ("expression.galgas4", 594)).objectCompare (var_bitCount_20185)).boolEnum () ;
+      test_5 = GGS_bool (ComparisonKind::greaterThan, temp_6.readProperty_mConstant ().readProperty_uint ().getter_significantBitCount (SOURCE_FILE ("expression.galgas4", 594)).objectCompare (var_bitCount_19929)).boolEnum () ;
       if (GalgasBool::boolTrue == test_5) {
         const GGS_comparisonWithConstantInExpression temp_7 = this ;
         GenericArray <FixItDescription> fixItArray8 ;
-        inCompiler->emitSemanticError (temp_7.readProperty_mConstant ().readProperty_location (), GGS_string ("Constant too large (should be < 2**").add_operation (var_bitCount_20185.getter_string (SOURCE_FILE ("expression.galgas4", 595)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 595)), fixItArray8  COMMA_SOURCE_FILE ("expression.galgas4", 595)) ;
+        inCompiler->emitSemanticError (temp_7.readProperty_mConstant ().readProperty_location (), GGS_string ("Constant too large (should be < 2**").add_operation (var_bitCount_19929.getter_string (SOURCE_FILE ("expression.galgas4", 595)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 595)), fixItArray8  COMMA_SOURCE_FILE ("expression.galgas4", 595)) ;
         result_outResult.drop () ; // Release error dropped variable
       }
     }
@@ -3036,37 +418,37 @@ GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression 
       case GGS_comparison::Enumeration::enum_equal:
         {
           const GGS_comparisonWithConstantInExpression temp_10 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithEqualToConstant (var_idx_20173, var_bitCount_20185, temp_10.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 599)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 599)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithEqualToConstant (var_idx_19917, var_bitCount_19929, temp_10.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 599)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 599)) ;
         }
         break ;
       case GGS_comparison::Enumeration::enum_notEqual:
         {
           const GGS_comparisonWithConstantInExpression temp_11 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithNotEqualToConstant (var_idx_20173, var_bitCount_20185, temp_11.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 601)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 601)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithNotEqualToConstant (var_idx_19917, var_bitCount_19929, temp_11.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 601)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 601)) ;
         }
         break ;
       case GGS_comparison::Enumeration::enum_lowerOrEqual:
         {
           const GGS_comparisonWithConstantInExpression temp_12 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithLowerOrEqualToConstant (var_idx_20173, var_bitCount_20185, temp_12.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 603)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 603)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithLowerOrEqualToConstant (var_idx_19917, var_bitCount_19929, temp_12.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 603)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 603)) ;
         }
         break ;
       case GGS_comparison::Enumeration::enum_lowerThan:
         {
           const GGS_comparisonWithConstantInExpression temp_13 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithStrictLowerThanConstant (var_idx_20173, var_bitCount_20185, temp_13.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 605)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 605)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithStrictLowerThanConstant (var_idx_19917, var_bitCount_19929, temp_13.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 605)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 605)) ;
         }
         break ;
       case GGS_comparison::Enumeration::enum_greaterOrEqual:
         {
           const GGS_comparisonWithConstantInExpression temp_14 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithGreaterOrEqualToConstant (var_idx_20173, var_bitCount_20185, temp_14.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 607)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 607)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithGreaterOrEqualToConstant (var_idx_19917, var_bitCount_19929, temp_14.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 607)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 607)) ;
         }
         break ;
       case GGS_comparison::Enumeration::enum_greaterThan:
         {
           const GGS_comparisonWithConstantInExpression temp_15 = this ;
-          result_outResult = GGS_binaryset::class_func_binarySetWithStrictGreaterThanConstant (var_idx_20173, var_bitCount_20185, temp_15.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 609)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 609)) ;
+          result_outResult = GGS_binaryset::class_func_binarySetWithStrictGreaterThanConstant (var_idx_19917, var_bitCount_19929, temp_15.readProperty_mConstant ().readProperty_uint ().getter_uint_36__34_ (SOURCE_FILE ("expression.galgas4", 609)), inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 609)) ;
         }
         break ;
       }
@@ -3083,46 +465,46 @@ GGS_binaryset cPtr_comparisonWithConstantInExpression::getter_computeExpression 
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (const GGS_domainMap /* constinArgument_inDomainMap */,
+GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (const GGS_domainMap /* constinArgument__5F_inDomainMap */,
                                                                              const GGS_varMap constinArgument_inVarMap,
-                                                                             const GGS_uint /* constinArgument_inTotalBitCount */,
-                                                                             const GGS_computedFormulaMap /* constinArgument_inComputedFormulaMap */,
+                                                                             const GGS_uint /* constinArgument__5F_inTotalBitCount */,
+                                                                             const GGS_computedFormulaMap /* constinArgument__5F_inComputedFormulaMap */,
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result_outResult ; // Returned variable
-  GGS_uint var_leftIdx_21977 ;
-  GGS_uint var_leftBitCount_21994 ;
-  GGS_recordDomainMap var_leftSubDomainMap_22027 ;
+  GGS_uint var_leftIdx_21681 ;
+  GGS_uint var_leftBitCount_21698 ;
+  GGS_recordDomainMap var_leftSubDomainMap_21731 ;
   const GGS_variableComparisonInExpression temp_0 = this ;
-  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mLeftVarName (), var_leftIdx_21977, var_leftBitCount_21994, var_leftSubDomainMap_22027, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 623)) ;
+  constinArgument_inVarMap.method_searchKey (temp_0.readProperty_mLeftVarName (), var_leftIdx_21681, var_leftBitCount_21698, var_leftSubDomainMap_21731, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 623)) ;
   const GGS_variableComparisonInExpression temp_1 = this ;
-  UpEnumerator_lstringlist enumerator_22052 (temp_1.readProperty_mLeftFieldNames ()) ;
-  while (enumerator_22052.hasCurrentObject ()) {
-    GGS_uint var_fieldRelativeBitIndex_22139 ;
-    GGS_recordDomainMap var_fieldSubdomainMap_22182 ;
-    var_leftSubDomainMap_22027.method_searchKey (enumerator_22052.current_mValue (HERE), var_fieldRelativeBitIndex_22139, var_leftBitCount_21994, var_fieldSubdomainMap_22182, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 625)) ;
-    var_leftIdx_21977 = var_leftIdx_21977.add_operation (var_fieldRelativeBitIndex_22139, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 626)) ;
-    var_leftSubDomainMap_22027 = var_fieldSubdomainMap_22182 ;
-    enumerator_22052.gotoNextObject () ;
+  UpEnumerator__5B_lstring_5D_ enumerator_21773 (temp_1.readProperty_mLeftFieldNames ()) ;
+  while (enumerator_21773.hasCurrentObject ()) {
+    GGS_uint var_fieldRelativeBitIndex_21840 ;
+    GGS_recordDomainMap var_fieldSubdomainMap_21883 ;
+    var_leftSubDomainMap_21731.method_searchKey (enumerator_21773.current (HERE), var_fieldRelativeBitIndex_21840, var_leftBitCount_21698, var_fieldSubdomainMap_21883, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 625)) ;
+    var_leftIdx_21681 = var_leftIdx_21681.add_operation (var_fieldRelativeBitIndex_21840, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 626)) ;
+    var_leftSubDomainMap_21731 = var_fieldSubdomainMap_21883 ;
+    enumerator_21773.gotoNextObject () ;
   }
-  GGS_uint var_rightIdx_22344 ;
-  GGS_uint var_rightBitCount_22361 ;
-  GGS_recordDomainMap var_rightSubDomainMap_22394 ;
+  GGS_uint var_rightIdx_22044 ;
+  GGS_uint var_rightBitCount_22061 ;
+  GGS_recordDomainMap var_rightSubDomainMap_22094 ;
   const GGS_variableComparisonInExpression temp_2 = this ;
-  constinArgument_inVarMap.method_searchKey (temp_2.readProperty_mRightVarName (), var_rightIdx_22344, var_rightBitCount_22361, var_rightSubDomainMap_22394, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 629)) ;
+  constinArgument_inVarMap.method_searchKey (temp_2.readProperty_mRightVarName (), var_rightIdx_22044, var_rightBitCount_22061, var_rightSubDomainMap_22094, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 629)) ;
   const GGS_variableComparisonInExpression temp_3 = this ;
-  UpEnumerator_lstringlist enumerator_22420 (temp_3.readProperty_mRightFieldNames ()) ;
-  while (enumerator_22420.hasCurrentObject ()) {
-    GGS_uint var_fieldRelativeBitIndex_22509 ;
-    GGS_recordDomainMap var_fieldSubdomainMap_22553 ;
-    var_rightSubDomainMap_22394.method_searchKey (enumerator_22420.current_mValue (HERE), var_fieldRelativeBitIndex_22509, var_rightBitCount_22361, var_fieldSubdomainMap_22553, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 631)) ;
-    var_rightIdx_22344 = var_rightIdx_22344.add_operation (var_fieldRelativeBitIndex_22509, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 632)) ;
-    var_rightSubDomainMap_22394 = var_fieldSubdomainMap_22553 ;
-    enumerator_22420.gotoNextObject () ;
+  UpEnumerator__5B_lstring_5D_ enumerator_22137 (temp_3.readProperty_mRightFieldNames ()) ;
+  while (enumerator_22137.hasCurrentObject ()) {
+    GGS_uint var_fieldRelativeBitIndex_22206 ;
+    GGS_recordDomainMap var_fieldSubdomainMap_22250 ;
+    var_rightSubDomainMap_22094.method_searchKey (enumerator_22137.current (HERE), var_fieldRelativeBitIndex_22206, var_rightBitCount_22061, var_fieldSubdomainMap_22250, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 631)) ;
+    var_rightIdx_22044 = var_rightIdx_22044.add_operation (var_fieldRelativeBitIndex_22206, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 632)) ;
+    var_rightSubDomainMap_22094 = var_fieldSubdomainMap_22250 ;
+    enumerator_22137.gotoNextObject () ;
   }
   GalgasBool test_4 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_4) {
-    test_4 = GGS_bool (ComparisonKind::greaterThan, var_leftSubDomainMap_22027.getter_count (SOURCE_FILE ("expression.galgas4", 635)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    test_4 = GGS_bool (ComparisonKind::greaterThan, var_leftSubDomainMap_21731.getter_count (SOURCE_FILE ("expression.galgas4", 635)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_4) {
       const GGS_variableComparisonInExpression temp_5 = this ;
       GenericArray <FixItDescription> fixItArray6 ;
@@ -3133,7 +515,7 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
   if (GalgasBool::boolFalse == test_4) {
     GalgasBool test_7 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_7) {
-      test_7 = GGS_bool (ComparisonKind::greaterThan, var_rightSubDomainMap_22394.getter_count (SOURCE_FILE ("expression.galgas4", 637)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      test_7 = GGS_bool (ComparisonKind::greaterThan, var_rightSubDomainMap_22094.getter_count (SOURCE_FILE ("expression.galgas4", 637)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_7) {
         const GGS_variableComparisonInExpression temp_8 = this ;
         GenericArray <FixItDescription> fixItArray9 ;
@@ -3144,26 +526,26 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
     if (GalgasBool::boolFalse == test_7) {
       GalgasBool test_10 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_10) {
-        test_10 = GGS_bool (ComparisonKind::notEqual, var_leftBitCount_21994.objectCompare (var_rightBitCount_22361)).boolEnum () ;
+        test_10 = GGS_bool (ComparisonKind::notEqual, var_leftBitCount_21698.objectCompare (var_rightBitCount_22061)).boolEnum () ;
         if (GalgasBool::boolTrue == test_10) {
           const GGS_variableComparisonInExpression temp_11 = this ;
           const GGS_variableComparisonInExpression temp_12 = this ;
           GGS_string temp_13 ;
-          const GalgasBool test_14 = GGS_bool (ComparisonKind::greaterThan, var_leftBitCount_21994.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          const GalgasBool test_14 = GGS_bool (ComparisonKind::greaterThan, var_leftBitCount_21698.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_14) {
             temp_13 = GGS_string ("s") ;
           }else if (GalgasBool::boolFalse == test_14) {
             temp_13 = GGS_string::makeEmptyString () ;
           }
           GGS_string temp_15 ;
-          const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_rightBitCount_22361.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+          const GalgasBool test_16 = GGS_bool (ComparisonKind::greaterThan, var_rightBitCount_22061.objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_16) {
             temp_15 = GGS_string ("s") ;
           }else if (GalgasBool::boolFalse == test_16) {
             temp_15 = GGS_string::makeEmptyString () ;
           }
           GenericArray <FixItDescription> fixItArray17 ;
-          inCompiler->emitSemanticError (temp_11.readProperty_mRightVarName ().readProperty_location (), GGS_string ("'").add_operation (temp_12.readProperty_mLeftVarName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 640)).add_operation (GGS_string ("' variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 640)).add_operation (var_leftBitCount_21994.getter_string (SOURCE_FILE ("expression.galgas4", 640)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 640)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 641)).add_operation (temp_13, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 641)).add_operation (GGS_string (", but this variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 641)).add_operation (var_rightBitCount_22361.getter_string (SOURCE_FILE ("expression.galgas4", 642)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 642)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 643)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 643)), fixItArray17  COMMA_SOURCE_FILE ("expression.galgas4", 640)) ;
+          inCompiler->emitSemanticError (temp_11.readProperty_mRightVarName ().readProperty_location (), GGS_string ("'").add_operation (temp_12.readProperty_mLeftVarName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 640)).add_operation (GGS_string ("' variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 640)).add_operation (var_leftBitCount_21698.getter_string (SOURCE_FILE ("expression.galgas4", 640)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 640)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 641)).add_operation (temp_13, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 641)).add_operation (GGS_string (", but this variable uses "), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 641)).add_operation (var_rightBitCount_22061.getter_string (SOURCE_FILE ("expression.galgas4", 642)), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 642)).add_operation (GGS_string (" bit"), inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 643)).add_operation (temp_15, inCompiler COMMA_SOURCE_FILE ("expression.galgas4", 643)), fixItArray17  COMMA_SOURCE_FILE ("expression.galgas4", 640)) ;
           result_outResult.drop () ; // Release error dropped variable
         }
       }
@@ -3174,32 +556,32 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
           break ;
         case GGS_comparison::Enumeration::enum_equal:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithEqualComparison (var_leftIdx_21977, var_leftBitCount_21994, var_rightIdx_22344, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 648)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithEqualComparison (var_leftIdx_21681, var_leftBitCount_21698, var_rightIdx_22044, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 648)) ;
           }
           break ;
         case GGS_comparison::Enumeration::enum_notEqual:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithNotEqualComparison (var_leftIdx_21977, var_leftBitCount_21994, var_rightIdx_22344, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 650)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithNotEqualComparison (var_leftIdx_21681, var_leftBitCount_21698, var_rightIdx_22044, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 650)) ;
           }
           break ;
         case GGS_comparison::Enumeration::enum_lowerOrEqual:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithLowerOrEqualComparison (var_leftIdx_21977, var_leftBitCount_21994, var_rightIdx_22344, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 652)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithLowerOrEqualComparison (var_leftIdx_21681, var_leftBitCount_21698, var_rightIdx_22044, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 652)) ;
           }
           break ;
         case GGS_comparison::Enumeration::enum_lowerThan:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithStrictLowerComparison (var_leftIdx_21977, var_leftBitCount_21994, var_rightIdx_22344, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 654)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithStrictLowerComparison (var_leftIdx_21681, var_leftBitCount_21698, var_rightIdx_22044, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 654)) ;
           }
           break ;
         case GGS_comparison::Enumeration::enum_greaterOrEqual:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithGreaterOrEqualComparison (var_leftIdx_21977, var_leftBitCount_21994, var_rightIdx_22344, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 656)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithGreaterOrEqualComparison (var_leftIdx_21681, var_leftBitCount_21698, var_rightIdx_22044, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 656)) ;
           }
           break ;
         case GGS_comparison::Enumeration::enum_greaterThan:
           {
-            result_outResult = GGS_binaryset::class_func_binarySetWithStrictGreaterComparison (var_leftIdx_21977, var_leftBitCount_21994, var_rightIdx_22344, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 658)) ;
+            result_outResult = GGS_binaryset::class_func_binarySetWithStrictGreaterComparison (var_leftIdx_21681, var_leftBitCount_21698, var_rightIdx_22044, inCompiler  COMMA_SOURCE_FILE ("expression.galgas4", 658)) ;
           }
           break ;
         }
@@ -3216,57 +598,53 @@ GGS_binaryset cPtr_variableComparisonInExpression::getter_computeExpression (con
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_graphvizFormula::method_analyzeFormula (const GGS_string constinArgument_inSourceFilePath,
-                                                  const GGS_domainMap /* constinArgument_inDomainMap */,
+                                                  const GGS_domainMap /* constinArgument__5F_inDomainMap */,
                                                   GGS_computedFormulaMap & ioArgument_ioComputedFormulaMap,
                                                   Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_varList var_varList_1693 ;
-  GGS_binaryset var_result_1711 ;
+  GGS_varList var_varList_1683 ;
+  GGS_binaryset var_result_1701 ;
   const GGS_graphvizFormula temp_0 = this ;
-  GGS_uint joker_1702 ; // Joker input parameter
-  ioArgument_ioComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_1693, joker_1702, var_result_1711, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 37)) ;
+  GGS_uint joker_1692 ; // Joker input parameter
+  ioArgument_ioComputedFormulaMap.method_searchKey (temp_0.readProperty_mFormulaName (), var_varList_1683, joker_1692, var_result_1701, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 37)) ;
   const GGS_graphvizFormula temp_1 = this ;
-  GGS_string var_filePath_1725 = constinArgument_inSourceFilePath.getter_deletingPathExtension (SOURCE_FILE ("formula-graphviz.galgas4", 38)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 38)).add_operation (temp_1.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 38)).add_operation (GGS_string (".dot"), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 38)) ;
+  GGS_string var_filePath_1715 = constinArgument_inSourceFilePath.getter_deletingPathExtension (SOURCE_FILE ("formula-graphviz.galgas4", 38)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 38)).add_operation (temp_1.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 38)).add_operation (GGS_string (".dot"), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 38)) ;
   {
   const GGS_graphvizFormula temp_2 = this ;
-  routine_println_3F_ (GGS_string ("Graphviz $").add_operation (temp_2.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 39)).add_operation (GGS_string (" -> "), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 39)).add_operation (var_filePath_1725, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 39)), inCompiler  COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 39)) ;
+  routine_println_3F_ (GGS_string ("Graphviz $").add_operation (temp_2.readProperty_mFormulaName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 39)).add_operation (GGS_string (" -> "), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 39)).add_operation (var_filePath_1715, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 39)), inCompiler  COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 39)) ;
   }
-  GGS_stringlist temp_3 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 40)) ;
-  GGS_stringlist var_bitNameList_1893 = temp_3 ;
-  DownEnumerator_varList enumerator_1932 (var_varList_1693) ;
-  while (enumerator_1932.hasCurrentObject ()) {
+  GGS__5B_string_5D_ temp_3 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 40)) ;
+  GGS__5B_string_5D_ var_bitNameList_1881 = temp_3 ;
+  DownEnumerator_varList enumerator_1920 (var_varList_1683) ;
+  while (enumerator_1920.hasCurrentObject ()) {
     GalgasBool test_4 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_4) {
-      test_4 = GGS_bool (ComparisonKind::equal, enumerator_1932.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+      test_4 = GGS_bool (ComparisonKind::equal, enumerator_1920.current_mBitCount (HERE).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_4) {
-        {
-        var_bitNameList_1893.setter_append (enumerator_1932.current_mVarName (HERE), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 43)) ;
-        }
+        var_bitNameList_1881.plusPlusAssignOperation (enumerator_1920.current_mVarName (HERE)  COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 43)) ;
       }
     }
     if (GalgasBool::boolFalse == test_4) {
-      UpEnumerator_range enumerator_2052 (GGS_range (GGS_uint (uint32_t (0U)), enumerator_1932.current_mBitCount (HERE).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 45)))) ;
-      while (enumerator_2052.hasCurrentObject ()) {
-        {
-        var_bitNameList_1893.setter_append (enumerator_1932.current_mVarName (HERE).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 46)).add_operation (enumerator_2052.current (HERE).getter_string (SOURCE_FILE ("formula-graphviz.galgas4", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 46)) ;
-        }
-        enumerator_2052.gotoNextObject () ;
+      UpEnumerator_range enumerator_2033 (GGS_range (GGS_uint (uint32_t (0U)), enumerator_1920.current_mBitCount (HERE).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 45)))) ;
+      while (enumerator_2033.hasCurrentObject ()) {
+        var_bitNameList_1881.plusPlusAssignOperation (enumerator_1920.current_mVarName (HERE).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 46)).add_operation (enumerator_2033.current (HERE).getter_string (SOURCE_FILE ("formula-graphviz.galgas4", 46)), inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 46))  COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 46)) ;
+        enumerator_2033.gotoNextObject () ;
       }
     }
-    enumerator_1932.gotoNextObject () ;
+    enumerator_1920.gotoNextObject () ;
   }
-  GGS_string var_s_2145 = var_result_1711.getter_graphviz (var_bitNameList_1893 COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 50)) ;
-  GGS_bool joker_2229 ; // Joker input parameter
-  var_s_2145.method_writeToFileWhenDifferentContents (var_filePath_1725, joker_2229, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 51)) ;
+  GGS_string var_s_2119 = var_result_1701.getter_graphviz (var_bitNameList_1881 COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 50)) ;
+  GGS_bool joker_2201 ; // Joker input parameter
+  var_s_2119.method_writeToFileWhenDifferentContents (var_filePath_1715, joker_2201, inCompiler COMMA_SOURCE_FILE ("formula-graphviz.galgas4", 51)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@setting_nodeHashMapSize analyzeFormula'
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_setting_5F_nodeHashMapSize::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
-                                                             const GGS_domainMap /* constinArgument_inDomainMap */,
-                                                             GGS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
+void cPtr_setting_5F_nodeHashMapSize::method_analyzeFormula (const GGS_string /* constinArgument__5F_inSourceFilePath */,
+                                                             const GGS_domainMap /* constinArgument__5F_inDomainMap */,
+                                                             GGS_computedFormulaMap & /* ioArgument__5F_ioComputedFormulaMap */,
                                                              Compiler * /* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   {
@@ -3279,9 +657,9 @@ void cPtr_setting_5F_nodeHashMapSize::method_analyzeFormula (const GGS_string /*
 //Overriding extension proc '@setting_andCacheMapSize analyzeFormula'
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_setting_5F_andCacheMapSize::method_analyzeFormula (const GGS_string /* constinArgument_inSourceFilePath */,
-                                                             const GGS_domainMap /* constinArgument_inDomainMap */,
-                                                             GGS_computedFormulaMap & /* ioArgument_ioComputedFormulaMap */,
+void cPtr_setting_5F_andCacheMapSize::method_analyzeFormula (const GGS_string /* constinArgument__5F_inSourceFilePath */,
+                                                             const GGS_domainMap /* constinArgument__5F_inDomainMap */,
+                                                             GGS_computedFormulaMap & /* ioArgument__5F_ioComputedFormulaMap */,
                                                              Compiler * /* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   {
@@ -3358,19 +736,19 @@ static void routine_after (Compiler * /* inCompiler */
 static void routine_programRule_5F__30_ (const GGS_lstring constinArgument_inSourceFile,
                                          Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ast var_ast_769 ;
-  var_ast_769.drop () ;
-  cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_ast_769  COMMA_SOURCE_FILE ("program.galgas4", 17)) ;
-  GGS_domainMap var_domainMap_856 ;
-  extensionMethod_analyze (var_ast_769.readProperty_mDomainList (), var_domainMap_856, inCompiler COMMA_SOURCE_FILE ("program.galgas4", 19)) ;
-  GGS_computedFormulaMap var_computedFormulaMap_916 = GGS_computedFormulaMap::init (inCompiler COMMA_HERE) ;
-  UpEnumerator_formulaList enumerator_947 (var_ast_769.readProperty_mFormulaList ()) ;
+  GGS_ast var_ast_767 ;
+  var_ast_767.drop () ;
+  cGrammar_kerbdd_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_ast_767  COMMA_SOURCE_FILE ("program.galgas4", 17)) ;
+  GGS_domainMap var_domainMap_854 ;
+  extensionMethod_analyze (var_ast_767.readProperty_mDomainList (), var_domainMap_854, inCompiler COMMA_SOURCE_FILE ("program.galgas4", 19)) ;
+  GGS_computedFormulaMap var_computedFormulaMap_914 = GGS_computedFormulaMap::init (inCompiler COMMA_HERE) ;
+  UpEnumerator_formulaList enumerator_959 (var_ast_767.readProperty_mFormulaList ()) ;
   bool bool_0 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("program.galgas4", 22)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
-  if (enumerator_947.hasCurrentObject () && bool_0) {
-    while (enumerator_947.hasCurrentObject () && bool_0) {
-      callExtensionMethod_analyzeFormula ((cPtr_abstractFormula *) enumerator_947.current_mFormula (HERE).ptr (), constinArgument_inSourceFile.readProperty_string (), var_domainMap_856, var_computedFormulaMap_916, inCompiler COMMA_SOURCE_FILE ("program.galgas4", 23)) ;
-      enumerator_947.gotoNextObject () ;
-      if (enumerator_947.hasCurrentObject ()) {
+  if (enumerator_959.hasCurrentObject () && bool_0) {
+    while (enumerator_959.hasCurrentObject () && bool_0) {
+      callExtensionMethod_analyzeFormula ((cPtr_abstractFormula *) enumerator_959.current (HERE).readProperty_mFormula ().ptr (), constinArgument_inSourceFile.readProperty_string (), var_domainMap_854, var_computedFormulaMap_914, inCompiler COMMA_SOURCE_FILE ("program.galgas4", 23)) ;
+      enumerator_959.gotoNextObject () ;
+      if (enumerator_959.hasCurrentObject ()) {
         bool_0 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("program.galgas4", 22)).objectCompare (GGS_uint (uint32_t (0U)))).isValidAndTrue () ;
       }
     }

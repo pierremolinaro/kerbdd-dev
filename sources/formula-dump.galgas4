@@ -18,7 +18,7 @@ syntax extension kerbdd_syntax {
     $dump$
     $identifier$( ?let formulaName)
     $;$
-    !?ioAST.mFormulaList.append (@dumpFormula (!formulaName))
+    !?ioAST.mFormulaList.append (@dumpFormula (formulaName))
   }
 
 //································································································
@@ -29,21 +29,21 @@ syntax extension kerbdd_syntax {
 //    ANALYZE FORMULA                                                                                                    
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-override proc @dumpFormula. analyzeFormula( 
-  ?let @string unused inSourceFilePath,
-  ?let @domainMap unused inDomainMap,
+override proc @dumpFormula.analyzeFormula( 
+  let @string _inSourceFilePath,
+  let @domainMap _inDomainMap,
   ?!@computedFormulaMap ioComputedFormulaMap)
 {
-  ioComputedFormulaMap.searchKey (!self.mFormulaName, ?let @varList varList, ?let bitCount, ?let result)
-  let @uint64 valueCount = result.valueCount (!bitCount)
+  ioComputedFormulaMap.searchKey (self.mFormulaName, ?let @varList varList, ?let bitCount, ?let result)
+  let @uint64 valueCount = result.valueCount (bitCount)
   println ("Dump $" + self.mFormulaName + " (" + valueCount + " value" + if valueCount > 1 then "s" else "" end + ")")
-  var @stringlist nameList = []
-  var @uintlist bitCountList = []
+  var [@string] nameList = []
+  var [@uint] bitCountList = []
   for (mVarName, *, mBitCount) in varList do
-    !?nameList.append (mVarName)
-    !?bitCountList.append (mBitCount)
+    nameList ++= mVarName
+    bitCountList ++= mBitCount
   end
-  println (result.print (!nameList, !bitCountList))
+  println (result.print (nameList, bitCountList))
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————

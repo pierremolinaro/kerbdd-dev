@@ -103,8 +103,8 @@ map @recordDomainMap {
   public var @uint mIndex
   public var @uint mBitCount
   public var @recordDomainMap mSubDomain
-  %insertSetter insertKey %errorMessage "the '%K' field is already declared in %L"
-  %searchMethod searchKey %errorMessage "there is no '%K' field"
+  #insertSetter insertKey #errorMessage "the '%K' field is already declared in %L"
+  #searchMethod searchKey #errorMessage "there is no '%K' field"
 }
 
 //································································································
@@ -112,44 +112,44 @@ map @recordDomainMap {
 map @domainMap {
   public var @uint mBitCount
   public var @recordDomainMap mRecordMap
-  %insertSetter insertKey %errorMessage "the '%K' domain is already declared in %L"
-  %searchMethod searchKey %errorMessage "there is no '%K' domain"
+  #insertSetter insertKey #errorMessage "the '%K' domain is already declared in %L"
+  #searchMethod searchKey #errorMessage "there is no '%K' domain"
 }
 
 //································································································
 
 proc @domainDeclarationList.analyze( !@domainMap outDomainMap) {
   outDomainMap = ()
-  for (name, typeDefinition) in self while @uint.errorCount == 0 do
-    switch typeDefinition
+  for (mDomainName, mType) in self while @uint.errorCount == 0 do
+    switch mType
     case type (@bddType type) :
       switch type
       case bool :
-        !?outDomainMap.insertKey (name, !1, ())
+        !?outDomainMap.insertKey (mDomainName, 1, ())
       case boolArray (@uint size) :
-        !?outDomainMap.insertKey (name, !size, ())
+        !?outDomainMap.insertKey (mDomainName, size, ())
       case namedType (@lstring typeName) :
-        outDomainMap.searchKey (!typeName, ?let size, ?let subdomain)
-        !?outDomainMap.insertKey (name, !size, !subdomain)
+        outDomainMap.searchKey (typeName, ?let size, ?let subdomain)
+        !?outDomainMap.insertKey (mDomainName, size, subdomain)
       end
     case record (@domainFieldList fieldList) :
       var bitIndex = 0
       var @recordDomainMap recordMap = ()
-      for > (name, typeDefinition) in fieldList while @uint.errorCount == 0 do
-        switch typeDefinition
+      for > (mVarName, mType) in fieldList while @uint.errorCount == 0 do
+        switch mType
         case bool :
-          !?recordMap.insertKey (name, !bitIndex, !1, ())
+          !?recordMap.insertKey (mVarName, bitIndex, 1, ())
           bitIndex += 1
         case boolArray (@uint size) :
-          !?recordMap.insertKey (name, !bitIndex, !size, ())
+          !?recordMap.insertKey (mVarName, bitIndex, size, ())
           bitIndex = bitIndex + size
         case namedType (@lstring typeName) :
-          outDomainMap.searchKey (!typeName, ?let size, ?let subdomain) ;
-          !?recordMap.insertKey (name, !bitIndex, !size, !subdomain)
+          outDomainMap.searchKey (typeName, ?let size, ?let subdomain) ;
+          !?recordMap.insertKey (mVarName, bitIndex, size, subdomain)
           bitIndex = bitIndex + size
         end
       end
-      !?outDomainMap.insertKey (name, !bitIndex, !recordMap)    
+      !?outDomainMap.insertKey (mDomainName, bitIndex, recordMap)    
     end
   end
 }
@@ -170,33 +170,33 @@ map @varMap {
   public var @uint mIndex
   public var @uint mBitCount
   public var @recordDomainMap mRecordDomainMap
-  %insertSetter insertKey %errorMessage "the '%K' variable is already declared in %L"
-  %searchMethod searchKey %errorMessage "there is no '%K' variable"
+  #insertSetter insertKey #errorMessage "the '%K' variable is already declared in %L"
+  #searchMethod searchKey #errorMessage "there is no '%K' variable"
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc @domainFieldList. analyze(
-  ?let @domainMap inDomainMap,
+  let @domainMap inDomainMap,
   ?!@varMap ioVarMap,
   ?!@varList ioVarList,
   ?!@uint ioTotalBitCount)
 {
 //--- Build variable map
-  for > (idf, type) in self do
-    switch type
+  for > (mVarName, mType) in self do
+    switch mType
     case bool :
-      !?ioVarMap.insertKey (idf, !ioTotalBitCount, !1, ())
-      !?ioVarList.insertAtIndex (idf.string, !ioTotalBitCount, !1, !0)
+      !?ioVarMap.insertKey (mVarName, ioTotalBitCount, 1, ())
+      !?ioVarList.insertAtIndex (mVarName.string, ioTotalBitCount, 1, 0)
       ioTotalBitCount += 1
     case boolArray (@uint size) :
-      !?ioVarMap.insertKey (idf, !ioTotalBitCount, !size, ())
-      !?ioVarList.insertAtIndex (idf.string, !ioTotalBitCount, !size, !0)
+      !?ioVarMap.insertKey (mVarName, ioTotalBitCount, size, ())
+      !?ioVarList.insertAtIndex (mVarName.string, ioTotalBitCount, size, 0)
       ioTotalBitCount = ioTotalBitCount + size
     case namedType (@lstring typeName) :
-      inDomainMap.searchKey (!typeName, ?let size, ?let subDomainMap) ;
-      !?ioVarMap.insertKey (idf, !ioTotalBitCount, !size, !subDomainMap)
-      !?ioVarList.insertAtIndex (idf.string, !ioTotalBitCount, !size, !0)
+      inDomainMap.searchKey (typeName, ?let size, ?let subDomainMap) ;
+      !?ioVarMap.insertKey (mVarName, ioTotalBitCount, size, subDomainMap)
+      !?ioVarList.insertAtIndex (mVarName.string, ioTotalBitCount, size, 0)
       ioTotalBitCount = ioTotalBitCount + size
     end
   end

@@ -24,7 +24,7 @@ syntax extension kerbdd_syntax {
     $nodeHashMapSize$
     $integer$( ?let setting)
     $;$
-    !?ioAST.mFormulaList.append (@setting_nodeHashMapSize (!setting))
+    !?ioAST.mFormulaList.append (@setting_nodeHashMapSize (setting))
   }
 
 //································································································
@@ -33,7 +33,7 @@ syntax extension kerbdd_syntax {
     $andCacheMapSize$
     $integer$( ?let setting)
     $;$
-    !?ioAST.mFormulaList.append (@setting_andCacheMapSize (!setting))
+    !?ioAST.mFormulaList.append (@setting_andCacheMapSize (setting))
   }
 
 //································································································
@@ -45,21 +45,21 @@ syntax extension kerbdd_syntax {
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override proc @setting_nodeHashMapSize. analyzeFormula ( 
-  ?let @string unused inSourceFilePath,
-  ?let @domainMap unused inDomainMap,
-  ?!@computedFormulaMap unused ioComputedFormulaMap)
+  let @string _inSourceFilePath,
+  let @domainMap _inDomainMap,
+  ?!@computedFormulaMap _ioComputedFormulaMap)
 {
-  @binaryset.setNodeTableSize (!self.mSetting.uint)
+  @binaryset.setNodeTableSize (self.mSetting.uint)
 }
 
 //································································································
 
 override proc @setting_andCacheMapSize. analyzeFormula( 
-  ?let @string unused inSourceFilePath,
-  ?let @domainMap unused inDomainMap,
-  ?!@computedFormulaMap unused ioComputedFormulaMap)
+  let @string _inSourceFilePath,
+  let @domainMap _inDomainMap,
+  ?!@computedFormulaMap _ioComputedFormulaMap)
 {
-  @binaryset.setAndTableSize (!self.mSetting.uint)
+  @binaryset.setAndTableSize (self.mSetting.uint)
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
